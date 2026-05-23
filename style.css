@@ -26,15 +26,15 @@ a{
   justify-content:space-between;
   align-items:center;
 
-  padding:24px 8%; /* Slightly increased padding for clean spacing like SS */
+  padding:24px 8%; 
 
-  background:#ffffff; /* Pure white background from screenshot */
+  background:#ffffff; 
 
-  border-bottom:1px solid #f1f5f9; /* Super subtle divider */
+  border-bottom:1px solid #f1f5f9; 
 }
 
 .logo{
-  color:#2563eb; /* Perfect bold blue */
+  color:#2563eb; 
   font-size:1.45rem;
   font-weight:700;
 }
@@ -45,9 +45,9 @@ a{
 }
 
 .nav-links a{
-  color:#64748b; /* Clean grayish tone */
+  color:#64748b; 
   font-size:0.95rem;
-  font-weight:500; /* Medium weight matching SS */
+  font-weight:500; 
   transition:.2s;
 }
 
@@ -57,13 +57,13 @@ a{
 
 /* HERO */
 .home-hero{
-  padding:120px 20px 40px; /* Better top spacing */
+  padding:120px 20px 40px; 
   text-align:center;
   background:#ffffff;
 }
 
 .home-hero h1{
-  font-size:3.2rem; /* Cleaned up heavy size to match the screenshot proportion */
+  font-size:3.5rem; 
   color:#0f172a;
   font-weight:800;
   margin-bottom:18px;
@@ -71,7 +71,7 @@ a{
 }
 
 .home-hero p{
-  color:#64748b; /* Slate steel color matching your screenshot text */
+  color:#64748b; 
   font-size:1.15rem;
   font-weight: 400;
 }
@@ -91,7 +91,7 @@ a{
   height:58px;
 
   border-radius:999px;
-  border:1px solid #e2e8f0; /* Thinner border for minimalist look */
+  border:1px solid #e2e8f0; 
 
   padding:0 70px 0 28px;
 
@@ -224,13 +224,13 @@ a{
 /* FOOTER */
 .master-footer{
   background:#ffffff;
-  border-top:1px solid #f1f5f9; /* Clean border matching the screenshot */
+  border-top:1px solid #f1f5f9; 
   padding:60px 20px 40px;
   display: flex;
-  flex-direction: column; /* Stacks text on top, links below */
+  flex-direction: column; 
   align-items: center;
   justify-content: center;
-  gap: 16px; /* Spacing between copyright text and navigation links */
+  gap: 16px; 
 }
 
 .footer-copyright{
@@ -246,11 +246,11 @@ a{
 
 .footer-links{
   display:flex;
-  gap:28px; /* Proper layout spacing like second screenshot */
+  gap:28px; 
 }
 
 .footer-links a{
-  color:#475569; /* Balanced slate tone */
+  color:#475569; 
   font-size:0.95rem;
   font-weight:500;
   transition:.2s;
@@ -268,58 +268,115 @@ a{
 }
 
 @media(max-width:768px){
+  /* HEADER MOBILE */
   .master-header{
-    padding: 16px 5%;
+    padding: 16px 4%; 
   }
 
-  .home-hero h1{
-    font-size:2.4rem;
-  }
-
-  .tool-grid{
-    gap:14px;
-    padding:25px 4% 50px;
-  }
-
-  .tool-card{
-    padding:20px 14px;
-  }
-
-  .tool-icon{
-    width:58px;
-    height:58px;
-    font-size:24px;
-  }
-
-  .tool-card h3{
-    font-size:1rem;
-  }
-
-  .tool-card p{
-    font-size:.82rem;
+  .logo {
+    font-size: 1.3rem;
   }
 
   .nav-links{
-    gap:16px;
+    gap: 14px; 
   }
 
-  .master-footer {
-    padding: 40px 20px;
+  .nav-links a{
+    font-size: 0.9rem;
   }
-  
-  .footer-links {
+
+  /* HERO MOBILE */
+  .home-hero{
+    padding: 60px 16px 30px; 
+  }
+
+  .home-hero h1{
+    font-size: 2.3rem; /* Perfect font-scale to break seamlessly into 2 lines */
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .home-hero p{
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0 10px;
+  }
+
+  /* SEARCH MOBILE */
+  .search-container {
+    margin-top: 30px;
+    padding: 0 8px;
+  }
+
+  .search-container input {
+    height: 52px; 
+    padding: 0 60px 0 20px;
+    font-size: 0.9rem;
+  }
+
+  .search-icon-btn {
+    width: 36px;
+    height: 36px;
+    right: 8px;
+  }
+
+  /* TOOL GRID MOBILE */
+  .tool-grid{
+    gap:16px;
+    padding:20px 4% 40px;
+  }
+
+  .tool-card{
+    padding:20px 16px;
+    border-radius: 20px;
+  }
+
+  .tool-icon{
+    width:56px;
+    height:56px;
+    font-size:24px;
+    margin-bottom: 14px;
+  }
+
+  .tool-card h3{
+    font-size:1.05rem;
+  }
+
+  .tool-card p{
+    font-size:.85rem;
+  }
+
+  /* FOOTER MOBILE */
+  .master-footer {
+    padding: 40px 24px 30px;
     gap: 20px;
+  }
+
+  .footer-copyright {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    max-width: 280px; /* Forces proper text wrapping matching the screenshot layout */
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    row-gap: 10px; 
+    column-gap: 24px; 
+    max-width: 260px; /* Constrains the container so 'Contact' naturally drops below */
+    margin: 0 auto;
+  }
+
+  .footer-links a {
+    font-size: 0.9rem;
   }
 }
 
 @media(max-width:480px){
   .tool-grid{
     grid-template-columns:1fr;
-  }
-  
-  .footer-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
   }
 }
