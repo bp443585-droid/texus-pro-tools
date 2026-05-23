@@ -1,18 +1,19 @@
-// related-tools.js - Content-Based Guaranteed Engine for Texus Pro Tools
+// related-tools.js - Smart Multi-Selector Universal Engine for Texus Pro Tools
 
 window.addEventListener('load', function() {
   const currentUrl = window.location.pathname.replace(/\/+$/, '').toLowerCase();
 
-  // HOMEPAGE GUARD: Agar user main homepage par hai toh related tools block ko load mat karo
+  // HOMEPAGE GUARD: Homepage par chalne se roko
   if (currentUrl === '/' || currentUrl === '') {
     console.log("Related tools update: Homepage detected, engine stopped.");
     return;
   }
 
-  // TARGET CONTROLLER: Footer ko chhodo, content wale block (.seo-prose-holder) ko pakdo!
-  const contentBlock = document.querySelector('.seo-prose-holder');
+  // DUAL TARGET CONTROLLER: Dono classes check karega (Jo milegi uske niche chipak jayega)
+  const contentBlock = document.querySelector('.seo-prose-holder') || document.querySelector('.seo-container');
+  
   if (!contentBlock) {
-    console.log("Related tools error: Content block '.seo-prose-holder' not found in DOM.");
+    console.log("Related tools error: Neither '.seo-prose-holder' nor '.seo-container' found in DOM.");
     return;
   }
 
