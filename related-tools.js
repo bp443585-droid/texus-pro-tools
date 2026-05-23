@@ -1,11 +1,20 @@
-// related-tools.js - Ultra-compact Universal Related Tools Engine
+// related-tools.js - Guaranteed Fixed Universal Engine for Texus Pro Tools
 
 window.addEventListener('load', function() {
   const currentUrl = window.location.pathname.replace(/\/+$/, '').toLowerCase();
 
-  // Find the master footer to inject our panel just before it
-const footer = document.querySelector('#site-footer');
-  if (!footer) return;
+  // HOMEPAGE GUARD: Agar user main homepage par hai toh related tools block ko load mat karo
+  if (currentUrl === '/' || currentUrl === '') {
+    console.log("Related tools update: Homepage detected, engine stopped.");
+    return;
+  }
+
+  // Find the master footer using the exact class from your HTML
+  const footer = document.querySelector('.master-footer');
+  if (!footer) {
+    console.log("Related tools error: '.master-footer' element not found in DOM.");
+    return;
+  }
 
   // Create the main panel container programmatically
   const wrapper = document.createElement('div');
@@ -19,7 +28,7 @@ const footer = document.querySelector('#site-footer');
     <div id="related_tools_injection_grid" class="rel-grid-matrix"></div>
   `;
 
-  // Inject the panel right before the footer element
+  // Inject the panel right before the footer element safely
   footer.parentNode.insertBefore(wrapper, footer);
   const container = document.getElementById('related_tools_injection_grid');
 
@@ -41,8 +50,10 @@ const footer = document.querySelector('#site-footer');
   `;
   document.head.appendChild(style);
 
-  // Cross-fetch system to crawl index pipeline smoothly
-  fetch('/')
+  // Absolute fallback path parsing mechanism
+  const fetchUrl = window.location.origin + '/';
+
+  fetch(fetchUrl)
     .then(response => {
       if (!response.ok) throw new Error('Homepage fetch structural malfunction.');
       return response.text();
@@ -50,11 +61,12 @@ const footer = document.querySelector('#site-footer');
     .then(html => {
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
-      const cards = doc.querySelectorAll('.tool-card');
-
       
-console.log(cards);
-console.log(cards.length);
+      // Target elements loop matching main index file structure exactly
+      const cards = doc.querySelectorAll('.tool-grid .tool-card');
+      
+      console.log("Total Crawled Cards from Homepage:", cards.length);
+
       if (!cards || cards.length === 0) return;
 
       const allTools = [];
@@ -170,6 +182,6 @@ console.log(cards.length);
       wrapper.style.display = 'block';
     })
     .catch(error => {
-      console.log('Related tools pipeline status: inactive.');
+      console.log('Related tools pipeline status: inactive.', error);
     });
 });
