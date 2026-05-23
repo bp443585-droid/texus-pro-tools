@@ -260,21 +260,12 @@
       .then(data => { document.getElementById('site-header').innerHTML = data; })
       .catch(err => console.error('Header failed to compile:', err));
 
-  fetch('/components/footer.html')
-  .then(res => {
-    if(!res.ok) return fetch('../../components/footer.html');
-    return res.text();
-  })
-  .then(data => {
-    document.getElementById('site-footer').innerHTML = data;
-
-    // Load related tools AFTER footer injection
-    const relatedScript = document.createElement('script');
-    relatedScript.src = '/related-tools.js';
-    document.body.appendChild(relatedScript);
-  })
+fetch('/components/footer.html')
+  .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+  .then(data => { document.getElementById('site-footer').innerHTML = data; })
   .catch(err => console.error('Footer failed to compile:', err));
 
+    
     // Calculator Workflow Scripts
     let activeProfile = 'regular';
     const principalInput = document.getElementById('principalInput');
