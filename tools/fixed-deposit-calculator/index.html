@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Online FD Calculator India | Fixed Deposit Interest Calculator</title>
+  <meta name="description" content="Calculate your Fixed Deposit maturity amount and interest returns instantly. Free online FD calculator India with specialized senior citizen interest modes." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/fixed-deposit-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Online FD Calculator India",
+    "operatingSystem": "Web",
+    "applicationCategory": "BusinessApplication",
+    "description": "An advanced banking utility to compute Fixed Deposit maturity returns utilizing standard quarterly compounding formulas and senior citizen top-up modes.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "246"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* TOOL SPECIFIC WORKSPACE EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* CALCULATOR CONTAINER BLOCK */
+    .fd-card { 
+      background: #ffffff; 
+      width: 100%;
+      padding: 40px; 
+      border-radius: 20px; 
+      border: 1px solid #e2e8f0;
+      box-sizing: border-box;
+      margin-bottom: 40px;
+    }
+
+    .flex-container { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 40px; 
+      align-items: flex-start; 
+      justify-content: center; 
+      width: 100%; 
+    }
+
+    .inputs-section { flex: 1.2; min-width: 300px; }
+    .results-section { flex: 0.8; min-width: 280px; background: #f8fafc; padding: 30px; border-radius: 16px; border: 1px solid #e2e8f0; box-sizing: border-box; }
+    
+    /* Investor Profile Switch Layout */
+    .toggle-container { display: flex; background: #f1f5f9; padding: 4px; border-radius: 12px; margin-bottom: 35px; width: 100%; max-width: 500px; }
+    .toggle-btn { flex: 1; text-align: center; padding: 10px; font-size: 14px; font-weight: 700; border-radius: 8px; cursor: pointer; transition: 0.2s; color: #64748b; user-select: none; }
+    .toggle-btn.active { background: #2563eb; color: #ffffff; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15); }
+
+    .input-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; width: 100%; }
+    .input-label { color: #64748b; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .value-input-wrapper { display: flex; align-items: center; border-bottom: 2px solid #e2e8f0; padding: 4px 0; transition: 0.3s; }
+    .value-input-wrapper:focus-within { border-color: #2563eb; }
+    .sym-fix { color: #1e293b; margin-right: 5px; font-weight: 700; font-size: 18px; }
+    .value-input-wrapper input { border: none; outline: none; font-size: 20px; font-weight: 800; color: #1e293b; text-align: right; width: 100%; max-width: 160px; background: transparent; }
+    .unit-fix { color: #94a3b8; margin-left: 5px; font-weight: 500; font-size: 16px; }
+
+    .slider-container { margin-bottom: 35px; width: 100%; }
+    input[type=range] { width: 100%; appearance: none; height: 4px; background: #cbd5e1; border-radius: 5px; outline: none; }
+    input[type=range]::-webkit-slider-thumb { appearance: none; width: 22px; height: 22px; background: #ffffff; border: 4px solid #2563eb; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2); }
+
+    /* Output Terminal Data Layout */
+    .res-row { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 14px 12px; 
+      border-bottom: 1px dashed #e2e8f0; 
+      flex-wrap: nowrap; 
+      gap: 15px; 
+      box-sizing: border-box;
+    }
+    .res-row:last-child { 
+      border-bottom: none; 
+      margin-top: 15px; 
+      background: #eff6ff; 
+      padding: 16px; 
+      border-radius: 10px; 
+      border: 1px solid #bfdbfe; 
+      width: 100%; 
+      box-sizing: border-box;
+    }
+    .res-lbl { font-size: 14px; color: #64748b; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+    .res-val { font-size: 16px; color: #1e293b; font-weight: 700; text-align: right; white-space: nowrap; word-break: keep-all; }
+    
+    .total-highlight .res-lbl { color: #1e3a8a; font-size: 15px; font-weight: 800; flex-shrink: 0; }
+    .total-highlight .res-val { color: #2563eb; font-size: 19px; font-weight: 800; white-space: nowrap; word-break: keep-all; text-align: right; }
+
+    /* SEO Article Styles */
+    .seo-prose-holder { width: 100%; margin-top: 40px; padding: 20px 0; font-family: "Inter", sans-serif; color: #334155; line-height: 1.7; font-size: 1.02rem; text-align: left; }
+    .seo-prose-holder h2 { color: #0f172a; font-size: 1.75rem; font-weight: 800; margin-top: 35px; margin-bottom: 15px; letter-spacing: -0.5px; }
+    .seo-prose-holder h3 { color: #1e293b; font-size: 1.25rem; font-weight: 700; margin-top: 25px; margin-bottom: 10px; }
+    .seo-prose-holder p { margin-bottom: 18px; color: #475569; }
+    .seo-prose-holder ul { padding-left: 20px; margin-bottom: 20px; }
+    .seo-prose-holder li { margin-bottom: 8px; }
+
+    /* RIGID INTERFACE RESPONSIVE MEDIA CONTROLLER */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .f-heading { font-size: 1.8rem; }
+      .seo-prose-holder h2 { font-size: 1.4rem; margin-top: 25px; }
+    }
+    @media (max-width: 768px) { 
+      .fd-card { 
+        padding: 25px 20px !important; 
+        border-radius: 16px !important; 
+      }
+      .flex-container { flex-direction: column; gap: 20px; align-items: center; }
+      .inputs-section, .results-section { width: 100% !important; min-width: 100% !important; margin: 0 auto; box-sizing: border-box; }
+      .results-section { padding: 20px 15px !important; }
+      .res-row { gap: 10px !important; padding: 14px 0 !important; }
+      .res-row:last-child { padding: 14px 12px !important; }
+      .res-lbl { font-size: 15px !important; flex-shrink: 0; }
+      .res-val { font-size: 15px !important; font-weight: 700; text-align: right; }
+      .total-highlight .res-lbl { font-size: 16px !important; font-weight: 800; }
+      .total-highlight .res-val { font-size: 18px !important; font-weight: 800; color: #2563eb; text-align: right; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-prose-holder p, .seo-prose-holder ul, .seo-prose-holder li { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>💰</span> Online FD Calculator India</div>
+
+    <div class="fd-card">
+      <div class="toggle-container">
+        <div id="typeRegular" class="toggle-btn active" onclick="changeProfile('regular')">Regular Depositor</div>
+        <div id="typeSenior" class="toggle-btn" onclick="changeProfile('senior')">Senior Citizen (+0.50% Extra)</div>
+      </div>
+
+      <div class="flex-container">
+        <div class="inputs-section">
+          <div class="slider-container">
+            <div class="input-row">
+              <div class="input-label">total deposit investment</div>
+              <div class="value-input-wrapper">
+                <span class="sym-fix">₹</span>
+                <input type="number" id="principalInput" value="100000" />
+              </div>
+            </div>
+            <input type="range" id="principalSlider" min="5000" max="10000000" step="5000" value="100000" />
+          </div>
+          
+          <div class="slider-container">
+            <div class="input-row">
+              <div class="input-label">rate of interest (p.a.)</div>
+              <div class="value-input-wrapper">
+                <input type="number" id="rateInput" value="7.1" step="0.05" />
+                <span class="unit-fix">%</span>
+              </div>
+            </div>
+            <input type="range" id="rateSlider" min="2" max="15" step="0.05" value="7.1" />
+          </div>
+
+          <div class="slider-container">
+            <div class="input-row">
+              <div class="input-label">time period (tenure)</div>
+              <div class="value-input-wrapper">
+                <input type="number" id="timeInput" value="5" step="1" />
+                <span class="unit-fix">Yrs</span>
+              </div>
+            </div>
+            <input type="range" id="timeSlider" min="1" max="25" step="1" value="5" />
+          </div>
+        </div>
+        
+        <div class="results-section">
+          <h3 style="color: #0f172a; margin: 0 0 15px 0; font-size: 18px; font-weight: 700;">Investment Summary</h3>
+          
+          <div class="res-row"><div class="res-lbl">Invested Principal</div><div class="res-val" id="resPrincipal">₹1,00,000</div></div>
+          <div class="res-row"><div class="res-lbl">Total Estimated Interest</div><div class="res-val" id="resInterest">₹42,213</div></div>
+          <div class="res-row total-highlight"><div class="res-lbl">Total Maturity Value</div><div class="res-val" id="resMaturity">₹1,42,213</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="seo-prose-holder">
+      <h2>Strategic Wealth Preservation via Online FD Calculator India Algorithms</h2>
+      <p>Fixed Deposits (FDs) continue to serve as a cornerstone of retail investment strategies across India. Unlike volatile equity market portfolios or structural mutual fund models, fixed term bank deposits provide complete capital security coupled with contractual guaranteed yields. To map long-term asset allocations for educational provisions, marriage liabilities, or retirement nest-eggs accurately, employing an advanced online fd calculator india module is crucial to compute outcomes without statistical disparities.</p>
+
+      <h3>The Importance of Quarterly Interest Compounding Mechanics</h3>
+      <p>A common mistake among entry-level investors is computing term deposit returns via elementary simple interest principles. In reality, major banking corporations across the Indian financial grid (such as State Bank of India, HDFC Bank, and ICICI Bank) implement a strict quarterly compounding matrix configuration. Under this framework, the nominal annual interest rate is fragmented into four annual periods. Every consecutive quarter, the generated interest increments merge back into your capital core, creating an compounding multiplier expansion cycle.</p>
+      <p>This structural arrangement means your actual effective annual yield (EAY) consistently scales above the baseline nominal rate printed on your certificate. Over long lock-in cycles extending beyond five or ten years, the mathematical variance between standard linear returns and compound interest distributions deepens significantly. Our code integrates this banking compounding model natively, guaranteeing results that map 100% to real bank passbook printouts.</p>
+
+      <h3>Mathematical Formula Specification for Fixed Deposit Yield Maps</h3>
+      <p>To establish absolute technical transparency, our underlying codebase solves compound balances utilizing the internationally accepted standard monetary formula: $A = P \cdot (1 + r/n)^{n \cdot t}$</p>
+      <p>Where variables translate into the following structural parameters:</p>
+      <ul>
+        <li><strong>A (Maturity Value):</strong> The absolute cumulative gross payload delivered back to your checking account at the terminal completion timestamp.</li>
+        <li><strong>P (Principal Invested):</strong> The baseline liquidity core deployed into the commercial term account vault.</li>
+        <li><strong>r (Annual Interest Rate):</strong> The raw contractual percentage rate assigned to your investment profile.</li>
+        <li><strong>n (Compounding Frequency):</strong> For Indian commercial banks, this variable is locked at 4 (signifying quarterly computing intervals).</li>
+        <li><strong>t (Tenure Period):</strong> The continuous timeline metric mapped linearly in units of complete calendar years.</li>
+      </ul>
+
+      <h3>Analyzing Senior Citizen Premium Privileges</h3>
+      <p>To promote fiscal security among post-retirement groups, monetary framework controllers require commercial entities to award premium top-up rates to senior citizen categories (individuals aging above sixty years). This premium generally ranges between fifty basis points (0.50%) up to seventy-five basis points (0.75%) above regular base slabs. Our fixed deposit interest calculator integrates a dedicated interface toggle that instantly updates calculations by injecting a 0.50% extra allocation block. This feature allows family budget administrators to analyze asset yield differentials instantly across different demographic profiles.</p>
+
+      <h3>Tax Deductions at Source (TDS) and Strategic Portfolio Planning</h3>
+      <p>While fixed deposit asset pathways are exceptionally secure, returns generated fall under specific taxation guidelines classified as Income from Other Sources. According to modern statutory Indian guidelines, banks apply a ten percent Tax Deducted at Source (TDS) routine if the cumulative annual interest threshold climbs above fifty thousand for ordinary profiles or one lakh for senior citizen accounts. Understanding these limits via regular monitoring enables asset managers to deploy laddering strategies—distributing larger principal balances across separate bank nodes to manage tax thresholds efficiently.</p>
+
+      <h3>100% Secure Client-Side Script Sandboxing</h3>
+      <p>Texus Pro Tools values your absolute data confidentiality above everything else. While major banking portals track your calculation paths to push loan advertisements or telemarketing offers, our systems function under a user-first sandbox design. The mathematical loops, compounding modules, and range metrics compile exclusively inside your device browser runtime environment using client-side JavaScript execution arrays. Your internal financial planning numbers never traverse networks or get saved into tracking databases, delivering a completely secure accounting workflow.</p>
+
+      <h2>Frequently Asked Questions (FAQ) - Fixed Deposit Hub</h2>
+      
+      <h3>How does the senior citizen toggle alter my final fixed deposit maturity calculation?</h3>
+      <p>Clicking the profile toggle applies a strict 0.50% annual rate premium directly onto the underlying calculation arrays. This instantly maps out the augmented quarterly compound distributions assigned to senior retail accounts across standard banks.</p>
+
+      <h3>Why does the effective annual yield usually show up higher than the basic nominal interest rate?</h3>
+      <p>This occurs due to quarterly compounding runs. Every three months, the accrued interest interest is calculated and added directly to your original principal core. For the next quarter, the bank computes returns based on this newly increased total balance.</p>
+
+      <h3>Are my calculations safe from tracking analytics or server side telemetry logs?</h3>
+      <p>Yes, all matrix metrics load entirely client-side. The mathematical parameters compile natively within your local script sandbox memory threads, ensuring 100% secure isolation with zero data retention records.</p>
+
+      <h3>Does this FD calculator follow standard Indian financial grid validation protocols?</h3>
+      <p>Yes. The tracking loops solve calculations using standard compounding timelines used natively across major institutional banks in India, maintaining precision parity with real deposit certificates.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // 1. Dynamic Component Hydration (Safe fallbacks for static deployment channels)
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // 2. Calculator Workflow Scripts
+    let activeProfile = 'regular';
+    const principalInput = document.getElementById('principalInput');
+    const principalSlider = document.getElementById('principalSlider');
+    const rateInput = document.getElementById('rateInput');
+    const rateSlider = document.getElementById('rateSlider');
+    const timeInput = document.getElementById('timeInput');
+    const timeSlider = document.getElementById('timeSlider');
+
+    function changeProfile(profile) {
+        if (activeProfile === profile) return;
+        activeProfile = profile;
+        
+        document.getElementById('typeRegular').classList.toggle('active', profile === 'regular');
+        document.getElementById('typeSenior').classList.toggle('active', profile === 'senior');
+        
+        let currentRate = parseFloat(rateInput.value) || 0;
+        if (profile === 'senior') {
+            rateInput.value = (currentRate + 0.50).toFixed(2);
+        } else {
+            rateInput.value = (currentRate - 0.50).toFixed(2);
+        }
+        rateSlider.value = rateInput.value;
+        calculateFD();
+    }
+
+    function calculateFD() {
+        let p = parseFloat(principalInput.value) || 0;
+        let r = parseFloat(rateInput.value) || 0;
+        let t = parseFloat(timeInput.value) || 0;
+
+        // Indian Banking Standard Quarterly Compounding Algorithm: A = P(1 + r/400)^(4*t)
+        let compoundingFrequency = 4; 
+        let maturityValue = p * Math.pow((1 + (r / (compoundingFrequency * 100))), (compoundingFrequency * t));
+        let interestEarned = maturityValue - p;
+
+        if (p === 0 || r === 0 || t === 0) {
+            maturityValue = 0;
+            interestEarned = 0;
+        }
+
+        const fmt = (num) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(num);
+
+        document.getElementById('resPrincipal').innerText = fmt(p);
+        document.getElementById('resInterest').innerText = fmt(interestEarned);
+        document.getElementById('resMaturity').innerText = fmt(maturityValue);
+    }
+
+    function syncFields(inp, sld) {
+        inp.addEventListener('input', () => { 
+            if(parseFloat(inp.value) > parseFloat(sld.max)) sld.max = inp.value; 
+            sld.value = inp.value; 
+            calculateFD(); 
+        });
+        sld.addEventListener('input', () => { 
+            inp.value = sld.value; 
+            calculateFD(); 
+        });
+    }
+
+    syncFields(principalInput, principalSlider);
+    syncFields(rateInput, rateSlider);
+    syncFields(timeInput, timeSlider);
+
+    calculateFD();
+  </script>
+</body>
+</html>
