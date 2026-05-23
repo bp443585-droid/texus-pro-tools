@@ -17,7 +17,6 @@ a{
 }
 
 /* HEADER */
-
 .master-header{
   position:sticky;
   top:0;
@@ -27,29 +26,28 @@ a{
   justify-content:space-between;
   align-items:center;
 
-  padding:16px 5%;
+  padding:24px 8%; /* Slightly increased padding for clean spacing like SS */
 
-  background:rgba(255,255,255,.9);
+  background:#ffffff; /* Pure white background from screenshot */
 
-  backdrop-filter:blur(10px);
-
-  border-bottom:1px solid #e2e8f0;
+  border-bottom:1px solid #f1f5f9; /* Super subtle divider */
 }
 
 .logo{
-  color:#2563eb;
-  font-size:1.4rem;
-  font-weight:800;
+  color:#2563eb; /* Perfect bold blue */
+  font-size:1.45rem;
+  font-weight:700;
 }
 
 .nav-links{
   display:flex;
-  gap:20px;
+  gap:24px;
 }
 
 .nav-links a{
-  color:#64748b;
-  font-weight:600;
+  color:#64748b; /* Clean grayish tone */
+  font-size:0.95rem;
+  font-weight:500; /* Medium weight matching SS */
   transition:.2s;
 }
 
@@ -58,30 +56,30 @@ a{
 }
 
 /* HERO */
-
 .home-hero{
-  padding:90px 20px 50px;
+  padding:120px 20px 40px; /* Better top spacing */
   text-align:center;
   background:#ffffff;
 }
 
 .home-hero h1{
-  font-size:3.5rem;
+  font-size:3.2rem; /* Cleaned up heavy size to match the screenshot proportion */
   color:#0f172a;
   font-weight:800;
-  margin-bottom:14px;
+  margin-bottom:18px;
+  letter-spacing: -1px;
 }
 
 .home-hero p{
-  color:#64748b;
-  font-size:1.1rem;
+  color:#64748b; /* Slate steel color matching your screenshot text */
+  font-size:1.15rem;
+  font-weight: 400;
 }
 
 /* SEARCH */
-
 .search-container{
-  max-width:650px;
-  margin:40px auto 0;
+  max-width:620px;
+  margin:45px auto 0;
 }
 
 .search-wrapper{
@@ -90,23 +88,27 @@ a{
 
 .search-container input{
   width:100%;
-  height:62px;
+  height:58px;
 
   border-radius:999px;
-  border:2px solid #e2e8f0;
+  border:1px solid #e2e8f0; /* Thinner border for minimalist look */
 
-  padding:0 70px 0 24px;
+  padding:0 70px 0 28px;
 
-  font-size:1rem;
-
+  font-size:0.98rem;
+  color: #334155;
   outline:none;
 
   transition:.2s;
 }
 
+.search-container input::placeholder {
+  color: #94a3b8;
+}
+
 .search-container input:focus{
   border-color:#2563eb;
-  box-shadow:0 10px 25px rgba(37,99,235,.1);
+  box-shadow:0 10px 25px rgba(37,99,235,.05);
 }
 
 .search-icon-btn{
@@ -115,8 +117,8 @@ a{
   top:50%;
   transform:translateY(-50%);
 
-  width:42px;
-  height:42px;
+  width:40px;
+  height:40px;
 
   border:none;
   border-radius:50%;
@@ -131,13 +133,12 @@ a{
 }
 
 .search-icon-btn svg{
-  width:18px;
-  height:18px;
+  width:16px;
+  height:16px;
   fill:#ffffff;
 }
 
 /* GRID */
-
 .tool-grid{
   max-width:1200px;
   margin:auto;
@@ -221,32 +222,55 @@ a{
 }
 
 /* FOOTER */
-
 .master-footer{
   background:#ffffff;
-
-  border-top:1px solid #e2e8f0;
-
-  padding:50px 20px;
-
-  text-align:center;
+  border-top:1px solid #f1f5f9; /* Clean border matching the screenshot */
+  padding:60px 20px 40px;
+  display: flex;
+  flex-direction: column; /* Stacks text on top, links below */
+  align-items: center;
+  justify-content: center;
+  gap: 16px; /* Spacing between copyright text and navigation links */
 }
 
-.master-footer p{
+.footer-copyright{
   color:#64748b;
+  font-size: 0.95rem;
+  font-weight: 400;
 }
 
-/* MOBILE */
+.footer-copyright .divider {
+  color: #cbd5e1;
+  margin: 0 4px;
+}
 
+.footer-links{
+  display:flex;
+  gap:28px; /* Proper layout spacing like second screenshot */
+}
+
+.footer-links a{
+  color:#475569; /* Balanced slate tone */
+  font-size:0.95rem;
+  font-weight:500;
+  transition:.2s;
+}
+
+.footer-links a:hover{
+  color:#2563eb;
+}
+
+/* MOBILE RESPONSIVENESS */
 @media(max-width:900px){
-
   .tool-grid{
     grid-template-columns:repeat(2,1fr);
   }
-
 }
 
 @media(max-width:768px){
+  .master-header{
+    padding: 16px 5%;
+  }
 
   .home-hero h1{
     font-size:2.4rem;
@@ -276,19 +300,26 @@ a{
   }
 
   .nav-links{
-    gap:12px;
+    gap:16px;
   }
 
-  .nav-links a{
-    font-size:.85rem;
+  .master-footer {
+    padding: 40px 20px;
   }
-
+  
+  .footer-links {
+    gap: 20px;
+  }
 }
 
 @media(max-width:480px){
-
   .tool-grid{
     grid-template-columns:1fr;
   }
-
+  
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
 }
