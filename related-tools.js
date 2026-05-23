@@ -1,4 +1,4 @@
-// related-tools.js - Guaranteed Fixed Universal Engine for Texus Pro Tools
+// related-tools.js - Content-Based Guaranteed Engine for Texus Pro Tools
 
 window.addEventListener('load', function() {
   const currentUrl = window.location.pathname.replace(/\/+$/, '').toLowerCase();
@@ -9,17 +9,17 @@ window.addEventListener('load', function() {
     return;
   }
 
-  // Find the master footer using the exact class from your HTML
-  const footer = document.querySelector('.master-footer');
-  if (!footer) {
-    console.log("Related tools error: '.master-footer' element not found in DOM.");
+  // TARGET CONTROLLER: Footer ko chhodo, content wale block (.seo-prose-holder) ko pakdo!
+  const contentBlock = document.querySelector('.seo-prose-holder');
+  if (!contentBlock) {
+    console.log("Related tools error: Content block '.seo-prose-holder' not found in DOM.");
     return;
   }
 
   // Create the main panel container programmatically
   const wrapper = document.createElement('div');
   wrapper.id = 'automated_related_tools_panel';
-  wrapper.style.cssText = 'display:none; max-width:800px; margin:40px auto 20px auto; padding:0 20px; font-family:"Inter",sans-serif; box-sizing:border-box;';
+  wrapper.style.cssText = 'display:none; max-width:1100px; margin:40px auto 20px auto; padding:0 20px; font-family:"Inter",sans-serif; box-sizing:border-box;';
   
   wrapper.innerHTML = `
     <div style="font-size:1.25rem; color:#0f172a; font-weight:800; margin-bottom:20px; display:flex; align-items:center; gap:8px; border-bottom:2px solid #f1f5f9; padding-bottom:12px;">
@@ -28,8 +28,8 @@ window.addEventListener('load', function() {
     <div id="related_tools_injection_grid" class="rel-grid-matrix"></div>
   `;
 
-  // Inject the panel right before the footer element safely
-  footer.parentNode.insertBefore(wrapper, footer);
+  // Content block ke theek baad safely insert karo
+  contentBlock.parentNode.insertBefore(wrapper, contentBlock.nextSibling);
   const container = document.getElementById('related_tools_injection_grid');
 
   // Inject CSS Styles dynamically into the head section
