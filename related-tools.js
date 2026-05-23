@@ -52,6 +52,9 @@ window.addEventListener('load', function() {
       const doc = parser.parseFromString(html, 'text/html');
       const cards = doc.querySelectorAll('.tool-card');
 
+      
+console.log(cards);
+console.log(cards.length);
       if (!cards || cards.length === 0) return;
 
       const allTools = [];
