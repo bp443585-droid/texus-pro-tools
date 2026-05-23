@@ -4,7 +4,7 @@ window.addEventListener('load', function() {
   const currentUrl = window.location.pathname.replace(/\/+$/, '').toLowerCase();
 
   // Find the master footer to inject our panel just before it
-  const footer = document.querySelector('.master-footer');
+const footer = document.querySelector('#site-footer');
   if (!footer) return;
 
   // Create the main panel container programmatically
