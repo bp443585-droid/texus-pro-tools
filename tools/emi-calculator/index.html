@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Professional Online EMI Calculator - Texus Pro Tools</title>
+  <meta name="description" content="Calculate your loan EMIs instantly with our precise monthly repayment calculator. Features fully interactive visual breakdown graphs.">
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* TOOL SPECIFIC WORKSPACE EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    .f-subheading { font-size: 1.05rem; color: #64748b; margin: 0 0 35px 0; line-height: 1.5; }
+    
+    /* EMI CALCULATOR CORE CONTAINER */
+    .emi-card { 
+      background: #ffffff; 
+      width: 100%;
+      padding: 40px; 
+      border-radius: 20px; 
+      border: 1px solid #e2e8f0;
+      box-sizing: border-box;
+      margin-bottom: 40px;
+    }
+
+    .flex-container { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 40px; 
+      align-items: center; 
+      justify-content: center; 
+      width: 100%; 
+    }
+
+    .inputs-section { flex: 1.2; min-width: 300px; }
+    .chart-section { flex: 0.8; min-width: 260px; text-align: center; position: relative; }
+    
+    .input-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; width: 100%; }
+    .input-label { color: #64748b; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .value-input-wrapper { display: flex; align-items: center; border-bottom: 2px solid #e2e8f0; padding: 4px 0; transition: 0.3s; }
+    .value-input-wrapper:focus-within { border-color: #14b8a6; }
+    .sym-fix { color: #1e293b; margin-right: 5px; font-weight: 700; font-size: 18px; }
+    .value-input-wrapper input { border: none; outline: none; font-size: 20px; font-weight: 800; color: #1e293b; text-align: right; width: 100%; max-width: 160px; background: transparent; }
+    .unit-fix { color: #94a3b8; margin-left: 5px; font-weight: 500; font-size: 16px; }
+
+    .slider-container { margin-bottom: 35px; width: 100%; }
+    input[type=range] { width: 100%; appearance: none; height: 4px; background: #cbd5e1; border-radius: 5px; outline: none; }
+    input[type=range]::-webkit-slider-thumb { appearance: none; width: 22px; height: 22px; background: #ffffff; border: 4px solid #14b8a6; border-radius: 50%; cursor: pointer; }
+
+    .total-pay-box { margin-top: 30px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #f1f5f9; padding-top: 25px; width: 100%; }
+    .monthly-label { font-size: 22px; font-weight: 800; color: #1e293b; }
+    .monthly-value { font-size: 26px; font-weight: 800; color: #14b8a6; }
+
+    .chart-center-text { position: absolute; top: 43%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 140px; }
+    .center-label { font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase; margin-bottom: 2px; }
+    .center-value { font-size: 18px; font-weight: 800; color: #1e293b; }
+
+    .legend-list { margin-top: 25px; display: flex; flex-direction: column; gap: 12px; width: 100%; }
+    .legend-item { display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+    .dot-label { display: flex; align-items: center; gap: 10px; color: #64748b; font-weight: 600; text-transform: capitalize; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .val-bold { font-weight: 700; color: #1e293b; }
+
+    #tenureType { border: none; background: #f1f5f9; padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; color: #14b8a6; cursor: pointer; outline: none; margin-right: 10px; }
+
+    /* SEO Article Styles */
+    .seo-prose-holder { width: 100%; margin-top: 40px; padding: 20px 0; font-family: "Inter", sans-serif; color: #334155; line-height: 1.7; font-size: 1.02rem; text-align: left; }
+    .seo-prose-holder h2 { color: #0f172a; font-size: 1.75rem; font-weight: 800; margin-top: 35px; margin-bottom: 15px; letter-spacing: -0.5px; }
+    .seo-prose-holder h3 { color: #1e293b; font-size: 1.25rem; font-weight: 700; margin-top: 25px; margin-bottom: 10px; }
+    .seo-prose-holder p { margin-bottom: 18px; color: #475569; }
+    .seo-prose-holder ul { padding-left: 20px; margin-bottom: 20px; }
+    .seo-prose-holder li { margin-bottom: 8px; }
+
+    /* Responsive Queries */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .f-heading { font-size: 1.8rem; }
+      .seo-prose-holder h2 { font-size: 1.4rem; margin-top: 25px; }
+    }
+    @media (max-width: 768px) { 
+      .emi-card { 
+        padding: 25px 20px !important; 
+        border-radius: 16px !important; 
+      }
+      .flex-container { gap: 25px; }
+      .monthly-label { font-size: 18px; }
+      .monthly-value { font-size: 22px; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-prose-holder p, .seo-prose-holder ul, .seo-prose-holder li { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⚙️</span> Professional EMI Calculator</div>
+    <p class="f-subheading">Plan your loans with precision. Instantly determine your monthly installments, total interest, and complete repayment parameters mapping tracks.</p>
+
+    <div class="emi-card">
+      <div class="flex-container">
+        <div class="inputs-section">
+          <div class="slider-container">
+            <div class="input-row">
+              <div class="input-label">loan amount</div>
+              <div class="value-input-wrapper">
+                <span id="currSym" class="sym-fix"></span>
+                <input type="number" id="loanInput" value="1000000">
+              </div>
+            </div>
+            <input type="range" id="loanSlider" min="10000" max="50000000" step="10000" value="1000000">
+          </div>
+          
+          <div class="slider-container">
+            <div class="input-row">
+              <div class="input-label">rate of interest</div>
+              <div class="value-input-wrapper">
+                <input type="number" id="interestInput" value="8.5" step="0.1">
+                <span class="unit-fix">%</span>
+              </div>
+            </div>
+            <input type="range" id="interestSlider" min="1" max="100" step="0.1" value="8.5">
+          </div>
+
+          <div class="slider-container">
+            <div class="input-row">
+              <div class="input-label">loan terms</div>
+              <div style="display: flex; align-items: center;">
+                <select id="tenureType">
+                  <option value="years">Years</option>
+                  <option value="months">Months</option>
+                </select>
+                <div class="value-input-wrapper">
+                  <input type="number" id="termInput" value="10">
+                  <span class="unit-fix" id="unitText">years</span>
+                </div>
+              </div>
+            </div>
+            <input type="range" id="termSlider" min="1" max="50" step="1" value="10">
+          </div>
+
+          <div class="total-pay-box">
+            <div class="monthly-label">Monthly Payment</div>
+            <div class="monthly-value" id="monthlyEmiDisplay"></div>
+          </div>
+        </div>
+        
+        <div class="chart-section">
+          <div style="width: 220px; height: 220px; margin: 0 auto; position: relative;">
+            <canvas id="emiChart"></canvas>
+            <div class="chart-center-text">
+              <div class="center-label">total amount:</div>
+              <div class="center-value" id="centerTotal"></div>
+            </div>
+          </div>
+          <div class="legend-list">
+            <div class="legend-item">
+              <div class="dot-label"><span class="dot" style="background:#1e293b;"></span> principal amount</div>
+              <div class="val-bold" id="legendPrincipal"></div>
+            </div>
+            <div class="legend-item">
+              <div class="dot-label"><span class="dot" style="background:#14b8a6;"></span> total interest</div>
+              <div class="val-bold" id="legendInterest"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="seo-prose-holder">
+      <h2>The Ultimate Guide to Understanding and Calculating Loan EMIs</h2>
+      <p>Financial independence starts with making informed decisions. Whether you are planning to purchase your first home, upgrade to a new vehicle, or take a personal loan for unforeseen expenses, the first question that arises is always about the monthly repayment. This is where an Equated Monthly Installment (EMI) Calculator becomes an indispensable tool. At Texus Pro Tools, we provide a sophisticated yet user-friendly interface to help you navigate your financial future with 100% precision.</p>
+
+      <h3>What Exactly is an EMI?</h3>
+      <p>An EMI is a fixed amount of money that a borrower pays to a lender at a specific date each calendar month. EMIs are applied to both interest and principal every month so that over a specified period, the loan is paid off in full. It is a convenient way for borrowers to repay their debt in manageable chunks rather than a lump sum payment.</p>
+      
+      <h3>How is EMI Calculated? The Mathematics Behind the Tool</h3>
+      <p>Understanding the internal logic of an EMI calculator can help you strategize your repayments better. The standard analytical framework used globally relies on checking the balance ratio across compounding interest parameters.</p>
+      <p>The math tracks the relationship where the Principal amount scales relative to monthly interest cycles (Annual rate split by twelve months) against the definitive timeline index of total monthly installment segments.</p>
+      
+      <h3>Why Use an Online EMI Calculator?</h3>
+      <p>Manual calculations are not only time-consuming but also prone to errors. An online tool like Texus Pro Tools offers several advantages:</p>
+      <ul>
+        <li><strong>Instant Results:</strong> No more complex math; get your monthly payout figure in seconds.</li>
+        <li><strong>Visual Breakdown:</strong> Our interactive doughnut chart shows you the ratio of your principal repayment versus the interest paid to the bank.</li>
+        <li><strong>Easy Comparison:</strong> You can quickly adjust the sliders to see how a change in interest rate or tenure affects your pocket.</li>
+        <li><strong>Debt Management:</strong> By knowing your total interest payable, you can decide if you should make a higher down payment or choose a shorter tenure to save money.</li>
+      </ul>
+
+      <h3>Planning Your Home Loan EMI</h3>
+      <p>A home loan is usually the largest financial commitment one makes. Since these loans have long tenures (often 15 to 30 years), even a fraction of a percentage difference in the interest rate can save you an immense amount of money over time. Our tool allows you to simulate distinct scenarios. For instance, see how increasing your EMI by just a small margin can reduce your loan tenure by several years, thanks to the power of compounding interest reduction.</p>
+
+      <h3>Factors That Influence Your Loan Interest Rates</h3>
+      <p>Banks and financial institutions do not offer the same interest rate to everyone. Your Credit Score plays a massive role. A premium rating score usually qualifies you for the best rates. Additionally, your employment status, monthly income, and existing debt-to-income ratio are crucial factors that lenders evaluate before sanctioning a loan configuration track.</p>
+
+      <h3>The Impact of Loan Tenure on Your Total Cost</h3>
+      <p>A common mistake borrowers make is choosing a very long tenure just to keep the EMI low. While it makes the monthly payment affordable, the total interest paid to the bank skyrockets. For example, on an extensive long-term loan, a maximized tenure might result in you paying back nearly triple the amount borrowed. Use our calculator to find the sweet spot—a tenure that keeps your EMI manageable without excessive interest outflow.</p>
+
+      <h3>Managing Personal and Car Loans</h3>
+      <p>Personal loans are typically unsecured, meaning they carry higher interest rates compared to home or car loans. Car loans, on the other hand, are secured by the vehicle itself. Using an EMI calculator helps you understand if the monthly installment fits into your budget after considering your existing expenses. Financial experts suggest that your total EMIs should not exceed 40% of your take-home salary.</p>
+
+      <h3>How Prepayments Can Save You Thousands</h3>
+      <p>Making a part-prepayment towards your loan principal can drastically reduce your future EMIs or shorten your tenure. Our chart helps you visualize the interest part of your debt. By reducing the principal amount early in the loan cycle, you prevent the bank from charging interest on that portion for the remaining years. This is one of the most effective ways to become debt-free faster.</p>
+
+      <h3>100% Privacy and Security with Texus Pro Tools</h3>
+      <p>We understand that financial data is sensitive. Unlike many other tools that collect your information for marketing purposes, Texus Pro Tools is built on client-side JavaScript. This means all your calculations happen directly in your browser sandbox. Your data never touches our servers. It is private, secure, and lightning-fast.</p>
+
+      <h3>Conclusion: The Path to Smarter Borrowing</h3>
+      <p>Debt can be a tool for growth or a burden of stress. The difference lies in planning. By using the Texus Pro Tools EMI Calculator, you take the first step towards a disciplined financial life. Always do your research, compare lenders, and use our tools to visualize your repayment journey before signing on the dotted line. Empower your financial decisions with precision and clarity.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // 1. Dynamic Component Hydration (Safe fallbacks for static deployment targets)
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // 2. Calculator Workflow Scripts
+    const loanInput = document.getElementById('loanInput');
+    const loanSlider = document.getElementById('loanSlider');
+    const interestInput = document.getElementById('interestInput');
+    const interestSlider = document.getElementById('interestSlider');
+    const termInput = document.getElementById('termInput');
+    const termSlider = document.getElementById('termSlider');
+    const tenureType = document.getElementById('tenureType');
+    const unitText = document.getElementById('unitText');
+
+    const userLocale = navigator.language || 'en-IN';
+    const isIndia = userLocale.includes('IN') || userLocale.includes('hi');
+    const finalLocale = isIndia ? 'en-IN' : userLocale;
+    const finalCurrency = isIndia ? 'INR' : 'USD'; 
+
+    const formatter = new Intl.NumberFormat(finalLocale, { style: 'currency', currency: finalCurrency, maximumFractionDigits: 0 });
+    const symbol = formatter.format(0).replace(/[0-9\s.,]/g, '');
+    document.getElementById('currSym').innerText = symbol;
+
+    const ctx = document.getElementById('emiChart').getContext('2d');
+    let emiChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: { datasets: [{ data: [1000000, 439080], backgroundColor: ['#1e293b', '#14b8a6'], borderWidth: 0, cutout: '85%' }] },
+        options: { plugins: { legend: { display: false } }, responsive: true, maintainAspectRatio: false }
+    });
+
+    tenureType.addEventListener('change', function() {
+        if (this.value === 'years') {
+            unitText.innerText = 'years';
+            termSlider.max = 50;
+            if (termInput.value > 50) termInput.value = 10;
+        } else {
+            unitText.innerText = 'months';
+            termSlider.max = 360;
+        }
+        updateEMI();
+    });
+
+    function updateEMI() {
+        let p = parseFloat(loanInput.value) || 0;
+        let r = parseFloat(interestInput.value) / 12 / 100 || 0;
+        let termVal = parseFloat(termInput.value) || 0;
+        let n = (tenureType.value === 'years') ? termVal * 12 : termVal;
+
+        let emi = (r > 0 && n > 0) ? (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : (n > 0 ? p / n : 0);
+        let totalAmt = emi * n;
+        let totalInt = Math.max(0, totalAmt - p);
+
+        const fmt = (num) => new Intl.NumberFormat(finalLocale, { style: 'currency', currency: finalCurrency, maximumFractionDigits: 0 }).format(num);
+
+        document.getElementById('monthlyEmiDisplay').innerText = fmt(emi);
+        document.getElementById('centerTotal').innerText = fmt(totalAmt);
+        document.getElementById('legendPrincipal').innerText = fmt(p);
+        document.getElementById('legendInterest').innerText = fmt(totalInt);
+
+        emiChart.data.datasets[0].data = [p, totalInt];
+        emiChart.update();
+    }
+
+    function sync(inp, sld) {
+        inp.addEventListener('input', () => { 
+            if(parseFloat(inp.value) > parseFloat(sld.max)) sld.max = inp.value; 
+            sld.value = inp.value; 
+            updateEMI(); 
+        });
+        sld.addEventListener('input', () => { 
+            inp.value = sld.value; 
+            updateEMI(); 
+        });
+    }
+    
+    sync(loanInput, loanSlider); 
+    sync(interestInput, interestSlider); 
+    sync(termInput, termSlider);
+    updateEMI();
+  </script>
+</body>
+</html>
