@@ -1,6 +1,6 @@
 // related-tools.js - Ultra-compact Universal Related Tools Engine
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('load', function() {
   const currentUrl = window.location.pathname.replace(/\/+$/, '').toLowerCase();
 
   // Find the master footer to inject our panel just before it
