@@ -45,7 +45,7 @@ searchInput.addEventListener("keydown", function (e) {
   }
 });
 
-// GOOGLE FORMS BACKGROUND SILENT API TRANSMISSION
+// GOOGLE FORMS BACKGROUND SILENT API TRANSMISSION + AUTO RESET CONSOLE
 function submitToolRequest() {
   const textDetails = document.getElementById('reqToolText').value.trim();
   if (!textDetails) {
@@ -53,10 +53,15 @@ function submitToolRequest() {
     return;
   }
   
+  const formWrapper = document.getElementById('reqFormWrapper');
+  const successMessage = document.getElementById('reqSuccessMessage');
+  const notFoundCard = document.getElementById('notFoundCard');
+  const cards = document.querySelectorAll(".tool-card");
+
   // Prevent duplicate clicking anomalies
-  document.getElementById('reqFormWrapper').style.display = "none";
-  document.getElementById('reqSuccessMessage').innerText = "Submitting securely...";
-  document.getElementById('reqSuccessMessage').style.display = "block";
+  formWrapper.style.display = "none";
+  successMessage.innerText = "Submitting securely...";
+  successMessage.style.display = "block";
 
   // Target structures configurations
   const googleFormId = "1FAIpQLSdliGlv58A1ksgkoRCmX7YOKliD40HfeIexe0AKZ7XcYRUS5w"; 
@@ -73,18 +78,36 @@ function submitToolRequest() {
     body: formData
   })
   .then(function() {
-    document.getElementById('reqSuccessMessage').style.background = "#f0fdf4";
-    document.getElementById('reqSuccessMessage').style.color = "#16a34a";
-    document.getElementById('reqSuccessMessage').style.borderColor = "#bbf7d0";
-    document.getElementById('reqSuccessMessage').innerText = "Thank you! Your utility tool request has been securely recorded.";
+    successMessage.style.background = "#f0fdf4";
+    successMessage.style.color = "#16a34a";
+    successMessage.style.borderColor = "#bbf7d0";
+    successMessage.style.display = "block";
+    successMessage.innerText = "Thank you! Your utility tool request has been securely recorded.";
+
+    // SMART AUTO-RESET TIMEOUT TRIGGER (After 3 Seconds)
+    setTimeout(function() {
+      // Clear inputs
+      searchInput.value = "";
+      document.getElementById('reqToolText').value = "";
+      
+      // Hide error consoles
+      notFoundCard.style.display = "none";
+      successMessage.style.display = "none";
+      
+      // Restore input block layouts
+      formWrapper.style.display = "flex";
+      
+      // Show all tools back on screen smoothly
+      cards.forEach(card => {
+        card.style.display = "block";
+      });
+    }, 3000);
+
   })
   .catch(function(error) {
-    document.getElementById('reqSuccessMessage').innerText = "Network pipeline error. Please check connection and try again.";
-    document.getElementById('reqFormWrapper').style.display = "flex"; 
+    successMessage.innerText = "Network pipeline error. Please check connection and try again.";
+    formWrapper.style.display = "flex"; 
   });
-
-  // Wipe text layer node
-  document.getElementById('reqToolText').value = "";
 }
 
 if (submitRequestBtn) {
