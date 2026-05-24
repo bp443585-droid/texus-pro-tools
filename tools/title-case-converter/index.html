@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Online Title Case Converter - Capitalize Headlines Natively</title>
+  <meta name="description" content="An advanced editorial text transformer tool that automatically capitalizes main words while filtering minor prepositions and articles based on standard style manuals." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/title-case-converter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Online Title Case Converter",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced editorial text transformer tool that automatically capitalizes main words while filtering minor prepositions and articles based on standard style manuals.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* TOOL SPECIFIC WORKSPACE EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CALCULATOR CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TEXTAREA ENTERPRISE INPUT BLOCK */
+    .f-textarea-container { margin-bottom: 18px; text-align: left; }
+    .f-title-textarea { width: 100%; height: 220px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 18px; font-size: 1.05rem; font-family: inherit; color: #1e293b; resize: vertical; outline: none; transition: all 0.2s ease; box-sizing: border-box; line-height: 1.6; }
+    .f-title-textarea:focus { border-color: #2563eb; background: #ffffff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.05); }
+
+    /* PRESENTATION LIVE REAL TIME STATUS COUNTER STRIP */
+    .f-status-strip { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: #64748b; background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px 16px; border-radius: 12px; margin-bottom: 22px; }
+
+    /* COMPACT STRIP UTILITY ACTION MATRIX */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 15px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 12px 16px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border-color: #fecaca; color: #dc2626; max-width: 100px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PRESTIGE SEO CONTENT APPARATUS STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-math-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 1.1rem; text-align: center; margin: 20px 0; font-family: monospace; color: #0f172a; font-weight: 700; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-title-textarea { height: 140px; padding: 12px; font-size: 0.95rem; }
+      .f-status-strip { font-size: 0.78rem; padding: 8px 12px; margin-bottom: 18px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 10px; font-size: 0.88rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>👑</span> Online Title Case Converter</div>
+    
+    <div class="f-card">
+      <div class="f-textarea-container">
+        <textarea id="title_converter_input" class="f-title-textarea" placeholder="Paste your titles or headlines here to process dynamic capitalization parameters..." oninput="calculateLiveTitleMetrics()"></textarea>
+      </div>
+
+      <div class="f-status-strip">
+        <span>Characters: <span id="lbl_chars">0</span></span>
+        <span>Words: <span id="lbl_words">0</span></span>
+        <span>Lines Active: <span id="lbl_lines">0</span></span>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="processTitleCaseStyle()">Convert to Title Case</button>
+        <button class="f-btn f-btn-copy" onclick="copyTitlePayload()">📋 Copy Text</button>
+        <button class="f-btn f-btn-clear" onclick="clearTitleBoard()">Clear</button>
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Informatics of Typographic Capitalization Rules: Grammatical Exceptions, String Arrays, and Editorial Architecture Standards</h2>
+      <p class="seo-p">Formatting digital asset headers, compiling textbook indexes, or automating metadata generation for electronic publishing channels requires a comprehensive technical command over lexical string manipulation, array lookups, and case exception filtering blocks. Within the fields of content design and search optimization, consistent headliner casing serves as an entry checkpoint for layout quality. An advanced Title Case Converter serves as an automated editor, executing systematic exception processing rules to capitalize principal words while holding minor grammatical elements in lowercase cleanly.</p>
+      <p class="seo-p">This long-tail operational analysis explains the architectural filters that manage headline case transformation, covers core layout requirements across leading editorial style guides, reviews tracking data matrices, and provides actionable steps to implement conversion workflows smoothly.</p>
+
+      <div class="seo-callout">
+        <strong>The First-Word Priority Filter:</strong> Professional styling manuals state that the very first and final words of a title string must <b>always</b> be capitalized, regardless of their grammatical classification or length. Even if your title ends with a tiny preposition like "In," standard editorial compliance requires shifting it into its uppercase state.
+      </div>
+
+      <h3 class="seo-h2">The Technical Mechanics of Grammatical Exception Parsing</h3>
+      <p class="seo-p">To convert standard conversational text or flat block inputs into polished editorial headers cleanly, a professional-grade web string utility processes inputs through an automated multi-phase loop sequence:</p>
+
+      <h4 class="seo-h3">1. Case Reset &amp; Array Segmentation</h4>
+      <p class="seo-p">The text processing script takes your input string, shifts it entirely into lowercase parameters to strip out old, irregular capitalization layers, and uses white space boundary tokens to split the words into a clean, trackable array index format.</p>
+
+      <h4 class="seo-h3">2. Smart Exception Array Matching</h4>
+      <p class="seo-p">As the system iterates through each index token, it cross-references words against a precompiled array of minor grammatical exceptions (including articles, coordinating conjunctions, and short prepositions like <i>of</i>, <i>with</i>, <i>and</i>, <i>the</i>, <i>for</i>). If a token is found inside the exception list, the engine skips its transformation loop, preserving its lowercase form safely.</p>
+      <div class="seo-math-box">Exception_List = ["a", "an", "the", "and", "but", "or", "for", "nor", "on", "in", "at", "to", "by", "with", "of"]</div>
+
+      <h4 class="seo-h3">3. Boundary Priority Overlay</h4>
+      <p class="seo-p">Before exporting the final text, a boundary filter checks index fields 0 (the opening word) and Length - 1 (the closing token). These boundary items automatically bypass the exception checks and are forced into capitalized forms, ensuring full compliance with standard publishing style guidelines.</p>
+
+      <h3 class="seo-h2">The Strategic Typographic Index: Reviewing Core Editorial Style Manuals</h3>
+      <p class="seo-p">Different publishing niches follow distinct capital formatting guidelines. Choosing a unified framework across your content layout systems ensures visual consistency and presents a highly polished interface to your audience:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Style Guide System Type</th>
+              <th>Core Preposition Lowercase Limits</th>
+              <th>Primary Professional Industry Application Horizon</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>AP Stylebook Standard</b></td>
+              <td>Keeps all prepositions under 3 characters long in lowercase.</td>
+              <td>Global news feeds, digital media websites, public relations wire reports, and corporate announcements.</td>
+            </tr>
+            <tr>
+              <td><b>Chicago Manual of Style</b></td>
+              <td>Holds <i>all</i> prepositions in lowercase, regardless of character length lengths.</td>
+              <td>Academic text publications, premium book design structures, non-fiction print assets, and historical documents.</td>
+            </tr>
+            <tr>
+              <td><b>APA Editorial Guide</b></td>
+              <td>Capitalizes any long word element containing 4 or more character bytes.</td>
+              <td>Scientific research updates, psychological data analysis journals, and academic thesis assets.</td>
+            </tr>
+            <tr>
+              <td><b>Wikipedia Title Rules</b></td>
+              <td>Matches the Chicago standard, filtering minor coordinate words.</td>
+              <td>Open-source encyclopedia indexes, community resource registries, and educational tools.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">How Structured Headline Architecture Boosts Organic Search Metrics</h3>
+      <p class="seo-p">When web users browse long lists of competing search results, clean Title Case layouts provide distinct competitive advantages:</p>
+      <ul class="seo-list">
+        <li><b>Enhanced Visual Polish:</b> Formatting header lines in smart Title Case gives your links an immediate editorial look, signaling premium quality that helps win user trust over flat lowercase blocks.</li>
+        <li><b>Improved Scannability:</b> Capitalizing main descriptive keywords creates strong visual anchors across your titles, helping users spot relevant terms and answer paths instantly.</li>
+        <li><b>Cleaner Snippet Extractions:</b> Search bots extract clean headers for zero-click organic answers more effectively when text structure is clearly organized under proper capitalization layouts.</li>
+      </ul>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why do style guides require keeping short prepositions like "of" or "with" in lowercase?</h3>
+      <p class="seo-p">Lowercasing minor connector words helps emphasize your principal nouns, verbs, and descriptive adjectives. This creates visual contrast across title text, making your headings faster and more natural for audiences to scan on digital screens.</p>
+
+      <h3>Can a title case converter manage multi-line batch lists at the same time?</h3>
+      <p class="seo-p">Yes, our advanced conversion logic splits inputs into separate lines before parsing words. This allows you to paste full lists of titles or book chapters into the converter and format each line as an independent title unit simultaneously.</p>
+
+      <h3>How does the converter handle hyphenated terms like "step-by-step"?</h3>
+      <p class="seo-p">Standard text modifiers often miss letters that follow hyphens, leaving them in unformatted lowercase. Our advanced conversion utility maps hyphen boundaries carefully, ensuring sub-elements like "Step-by-Step" follow proper capitalization guidelines across all editorial fields.</p>
+
+      <h3>Why is proper headline capitalization critical for digital book publishing platforms?</h3>
+      <p class="seo-p">Major digital marketplaces (like Amazon KDP) enforce strict formatting rules for metadata submission. Uploading a book cover title that mismatches the capitalization structure of your catalog records can trigger automated design errors, making title validation an essential preparation step before launching new book projects.</p>
+
+      <h3 class="seo-h2">Summary: Core Best Practices for Headline Case Optimization</h3>
+      <p class="seo-p">To build a high-performance digital presence, structure your headings uniformly by formatting search snippets and blog headers in clean Title Case. Always capitalize the opening and final words of your titles to comply with global publishing standards, use heading tags strategically to keep your content highly scannable, and leverage an automated text tool to streamline your proofreading workflows.</p>
+      <p class="seo-p">Our Advanced Online Title Case Converter automates all these smart formatting rules in real-time, providing instant visibility into your layout density metrics across any mobile or desktop view layout cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function calculateLiveTitleMetrics() {
+        var text = document.getElementById('title_converter_input').value;
+        
+        var charCount = text.length;
+        var cleanText = text.trim();
+        var wordCount = 0;
+        if (cleanText !== "") {
+            wordCount = cleanText.split(/\s+/).length;
+        }
+        var lineCount = text.length > 0 ? text.split('\n').length : 0;
+
+        document.getElementById('lbl_chars').innerText = charCount.toLocaleString('en-IN');
+        document.getElementById('lbl_words').innerText = wordCount.toLocaleString('en-IN');
+        document.getElementById('lbl_lines').innerText = lineCount;
+    }
+
+    function processTitleCaseStyle() {
+        var textArea = document.getElementById('title_converter_input');
+        var rawLines = textArea.value.split('\n');
+        
+        var minorWords = ["a", "an", "the", "and", "but", "or", "for", "nor", "on", "in", "at", "to", "by", "with", "of", "vs", "versus"];
+        var processedLines = [];
+
+        for (var i = 0; i < rawLines.length; i++) {
+            var currentLine = rawLines[i];
+            if (currentLine.trim() === "") {
+                processedLines.push("");
+                continue;
+            }
+
+            var words = currentLine.toLowerCase().split(/\s+/);
+            
+            for (var j = 0; j < words.length; j++) {
+                var word = words[j];
+                
+                if (j === 0 || j === words.length - 1 || minorWords.indexOf(word) === -1) {
+                    if (word.indexOf('-') !== -1) {
+                        var hyphenatedParts = word.split('-');
+                        for (var k = 0; k < hyphenatedParts.length; k++) {
+                            if (hyphenatedParts[k].length > 0) {
+                                hyphenatedParts[k] = hyphenatedParts[k].charAt(0).toUpperCase() + hyphenatedParts[k].substr(1);
+                            }
+                        }
+                        words[j] = hyphenatedParts.join('-');
+                    } else {
+                        words[j] = word.charAt(0).toUpperCase() + word.substr(1);
+                    }
+                }
+            }
+            processedLines.push(words.join(' '));
+        }
+
+        textArea.value = processedLines.join('\n');
+        calculateLiveTitleMetrics(); 
+    }
+
+    function copyTitlePayload() {
+        var textArea = document.getElementById('title_converter_input');
+        if (textArea.value.trim() === "") return;
+
+        textArea.select();
+        textArea.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(textArea.value);
+    }
+
+    function clearTitleBoard() {
+        var targetArea = document.getElementById('title_converter_input');
+        targetArea.value = "";
+        calculateLiveTitleMetrics();
+        targetArea.focus();
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
