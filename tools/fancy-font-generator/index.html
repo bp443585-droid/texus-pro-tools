@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Online Fancy Font Generator Engine - Texus Pro Tools</title>
+  <meta name="description" content="Convert standard characters into stylish typography arrays, aesthetic symbols, and cool unicode calligraphy structures instantly with our premium font changer." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/fancy-font-generator/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* TOOL SPECIFIC WORKSPACE EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    .f-label { font-size: 0.85rem; color: #334155; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; display: block; }
+     
+    .f-input-field { width: 100%; border: 1px solid #e2e8f0; border-radius: 12px; outline: none; transition: 0.3s; color: #1e293b; background: #ffffff; box-sizing: border-box; font-weight: 600; }
+    .f-input-field:focus { border-color: #2563eb; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.05); }
+     
+    /* STYLISH OUTPUT CARD STYLES */
+    .font-style-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); box-sizing: border-box; position: relative; overflow: hidden; }
+    .font-style-card:hover { border-color: #2563eb; background: #f8fafc; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.04); }
+     
+    .font-meta-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: #94a3b8; font-weight: 700; pointer-events: none; }
+    .font-preview-text { font-size: 1.25rem; color: #0f172a; word-break: break-all; font-weight: 500; min-height: 30px; display: flex; align-items: center; pointer-events: none; }
+     
+    .font-copy-toast { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(37, 99, 235, 0.95); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; opacity: 0; transition: opacity 0.2s ease; pointer-events: none; border-radius: 14px; }
+    .font-style-card.copied .font-copy-toast { opacity: 1; }
+
+    /* SEO Article Styles */
+    .seo-prose-holder { width: 100%; margin-top: 40px; padding: 20px 0; font-family: "Inter", sans-serif; color: #334155; line-height: 1.7; font-size: 1.02rem; text-align: left; }
+    .seo-prose-holder h2 { color: #0f172a; font-size: 1.75rem; font-weight: 800; margin-top: 35px; margin-bottom: 15px; letter-spacing: -0.5px; }
+    .seo-prose-holder h3 { color: #1e293b; font-size: 1.25rem; font-weight: 700; margin-top: 25px; margin-bottom: 10px; }
+    .seo-prose-holder p { margin-bottom: 18px; color: #475569; }
+    .seo-prose-holder ul { padding-left: 20px; margin-bottom: 20px; }
+    .seo-prose-holder li { margin-bottom: 8px; }
+
+    /* FIXED RESPONSIBLE CONSTRAINTS GRID FOR MOBILE RESPONSIVENESS */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .f-heading { font-size: 1.8rem; }
+      .seo-prose-holder h2 { font-size: 1.4rem; margin-top: 25px; }
+    }
+    @media (max-width: 768px) {
+      #fontOutputGrid { grid-template-columns: 1fr !important; gap: 12px !important; }
+      .font-preview-text { font-size: 1.15rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-prose-holder { padding: 15px 10px !important; }
+      .seo-prose-holder p, .seo-prose-holder ul, .seo-prose-holder li { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🔮</span> Fancy Font Generator Engine</div>
+
+    <div class="f-workspace" style="display: flex; flex-direction: column; gap: 25px; width: 100%; margin: 0 auto 40px auto;">
+      <div class="f-input-pane" style="width: 100%;">
+        <label class="f-label">Type or Paste Your Text Here</label>
+        <input type="text" id="fontInput" class="f-input-field" style="font-size: 1.15rem; padding: 16px 20px; border-radius: 16px;" placeholder="Enter your text here to change font style..." oninput="generateFancyFonts()"/>
+      </div>
+
+      <div class="f-output-pane" style="width: 100%;">
+        <label class="f-label" style="margin-bottom: 15px;">Click any card to copy font style instantly</label>
+        <div id="fontOutputGrid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; box-sizing: border-box;">
+           </div>
+      </div>
+    </div>
+
+    <div class="seo-prose-holder">
+      <h2>Comprehensive Guide to Fancy Font Changing and Unicode Text Configurations</h2>
+      <p>The Advanced Online Fancy Font Generator is a premium user layout engineering platform designed to transform standard ASCII text payloads into stylized unicode alphabets, aesthetic symbols structures, and calligraphic lettering portfolios instantly. Whether you are a social media copywriter designing catchy layout highlights to boost brand visibility, an online marketing professional structuring customized email subject headers, a digital profile strategist optimizing bios across various networks, or a gaming community creator building stylized nicknames, standard typography structures often look uniform and lose visual impact.</p>
+      <p>Unlike standard text modifiers that distort layouts or turn custom letters into broken unreadable question mark boxes, our systems use precise structural character cross-mapping techniques. This conversion mechanism scales seamlessly across a broad spectrum of modern operating networks, smartphone viewports, and application layouts. Operating entirely client-side within your browser sandbox threads, our solution provides top-tier data security while processing inputs without any external tracking overheads or remote network leaks.</p>
+
+      <h2>How to Operate the Cool Font Style Transformer Interface</h2>
+      <p>Converting plain texts arrays into premium aesthetic design structures using our interactive low-latency portal framework requires minimal effort. To extract high-impact character combinations seamlessly, follow these systematic optimization steps:</p>
+      <ul>
+        <li><strong>Step 1: Input Your Core Text Strings:</strong> Type out your required username, branding slogan, or decorative text block within the input form element labeled "Type or Paste Your Text Here." The system automatically reads changes to build instant preview configurations.</li>
+        <li><strong>Step 2: Scan the Dynamic Typography Portfolio:</strong> Scroll down the automatically updated typography matrix section. The system instantly applies conversion rules to reveal ten distinct styles simultaneously, including Gothic blocks, Double Struck styles, Circle text alignments, and specific Star text decorators.</li>
+        <li><strong>Step 3: Trigger One-Click Copy Actions:</strong> Simply click anywhere inside your selected style card element. The system instantly targets that specific text block, runs a background clipboard action, and overlays a confirmation notification.</li>
+        <li><strong>Step 4: Paste and Publish across Target Platforms:</strong> Open your required external profile settings page, game dashboard, or caption editor area and press paste. The specialized unicode vectors deploy seamlessly into any text editor without layout configuration losses.</li>
+      </ul>
+
+      <h2>Core Functional Feature Parameters Framework</h2>
+      <p>Our calligraphic styling engine incorporates specialized system variables that deliver optimized processing layouts:</p>
+      <ul>
+        <li><strong>Zero-Lag Input Listener Updates:</strong> Utilizes active input hooks to render unique font configurations immediately upon typing, bypassing slow manual page submissions.</li>
+        <li><strong>Airtight Unicode Multi-Slab Translation:</strong> Uses advanced font translation tables to replace basic letters with beautiful mathematical characters and gothic variations seamlessly.</li>
+        <li><strong>Frictionless Tap-to-Copy Framework:</strong> Built with embedded background input copy handlers that save users from tedious manual text highlighting and selection steps.</li>
+        <li><strong>Cross-Platform Display Reliability:</strong> Focuses specifically on high-compatibility unicode ranges to minimize layout distortion bugs across modern devices and messaging apps.</li>
+        <li><strong>Secure Offline Processing Architecture:</strong> Executes character modifications entirely within local browser memory stacks, maintaining absolute confidentiality for your text documents.</li>
+      </ul>
+
+      <h2>Why Unicode Typography Transforms Matter across Modern Communication Networks</h2>
+      <p>To typical users, changing font variations might seem like a simple cosmetic update. However, inside modern social media positioning, digital copywriting, and digital brand building fields, custom typography characters serve as critical assets for standing out and keeping users engaged.</p>
+
+      <h3>1. Enhancing Social Media Profile Conversions and Visual Branding Metrics</h3>
+      <p>Social media algorithms prioritize profiles that command high user retention metrics and stop-and-read interaction loops. When a user scrolls past standard uniform text structures, their focus drifts. Using a professional font changer lets profile designers build stylized bios, emphasize product benefits in captions, and highlight call-to-action blocks with premium bold or script accents. This strategic design choice captures attention instantly, boosts profile engagement ratios, and scales click-through metrics organically.</p>
+
+      <h3>2. Identity Prototyping, Gaming Community Branding, and Symbol Allocation</h3>
+      <p>Inside major competitive multiplayer ecosystems and streaming chat networks, profile visibility is critical for brand recognition. Gamers utilize stylized fonts and symbolic decorators to build unique clan tags, recognizable streaming brand logos, and distinct handle nicknames that standard keyboards cannot type. This generator makes sourcing these precise, high-compatibility character sets seamless, helping players stand out across modern competitive arenas.</p>
+
+      <h3>3. Copywriting Micro-Targeting and Content Layout Accentuation Tracks</h3>
+      <p>Digital copywriters writing professional review pages, notification text campaigns, or newsletter subject lines use font modifiers to create emphasis without breaking standard layouts. Applying clean double-struck font formats or geometric frame accents to key phrases helps draw eyes directly to promotions, discount codes, or major updates, ensuring critical messaging points are noticed instantly.</p>
+
+      <h2>Functional Comparison Matrix Across Configuration Font Ranges</h2>
+      <p>To analyze how inputs shift based on different formatting selections, review this systematic reference table:</p>
+      
+      <div class="f-table-container" style="width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff;">
+        <table style="width:100%; min-width: 650px; border-collapse:collapse; text-align:left; font-size: 0.95rem;">
+          <thead>
+            <tr style="background:#f8fafc; border-bottom:2px solid #e2e8f0;">
+              <th style="padding:14px 16px; font-weight: 700; color: #0f172a; border-right: 1px solid #e2e8f0;">Font Style Selection</th>
+              <th style="padding:14px 16px; font-weight: 700; color: #0f172a; border-right: 1px solid #e2e8f0;">Structural Unicode Translation Pattern</th>
+              <th style="padding:14px 16px; font-weight: 700; color: #0f172a; border-right: 1px solid #e2e8f0;">Sample Source String</th>
+              <th style="padding:14px 16px; font-weight: 700; color: #0f172a;">Rendered Styling Output Card Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+              <td style="padding:14px 16px; border-right: 1px solid #e2e8f0;"><strong>Old English Gothic</strong></td>
+              <td style="padding:14px 16px; border-right: 1px solid #e2e8f0; color: #475569;">Maps normal alphabets into historic gothic calligraphic forms.</td>
+              <td style="padding:14px 16px; border-right: 1px solid #e2e8f0; font-family: monospace;">Texus</td>
+              <td style="padding:14px 16px; font-family: monospace; color: #2563eb; font-weight: 600;">𝔗𝔢𝔵𝔲𝔰</td>
+            </tr>
+            <tr style="background:#f8fafc; border-bottom: 1px solid #e2e8f0;">
+              <td style="padding:14px 16px; border-right: 1px solid #e2e8f0;"><strong>Double Struck Outline</strong></td>
+              <td style="padding:14px 16px; border-right: 1px solid #e2e8f0; color: #475569;">Converts standard glyph paths into blackboard bold outlines.</td>
+              <td style="padding:14px 16px; border-right: 1px solid #e2e8f0; font-family: monospace;">PRO</td>
+              <td style="padding:14px 16px; font-family: monospace; color: #2563eb; font-weight: 600;">ℙℝ𝕆</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+              <td style="padding:14px 16px; border-right: 1px solid #e2e8f0;"><strong>Circular Bubble Text</strong></td>
+              <td style="padding:14px 16px; border-right: 1px solid #e2e8f0; color: #475569;">Encloses character paths cleanly within enclosed circle shapes.</td>
+              <td style="padding:14px 16px; border-right: 1px solid #e2e8f0; font-family: monospace;">font</td>
+              <td style="padding:14px 16px; font-family: monospace; color: #2563eb; font-weight: 600;">ⓕⓞⓝⓣ</td>
+            </tr>
+            <tr style="background:#f8fafc;">
+              <td style="padding:14px 16px; border-right: 1px solid #e2e8f0;"><strong>Aesthetic Star Frame</strong></td>
+              <td style="padding:14px 16px; border-right: 1px solid #e2e8f0; color: #475569;">Combines mathematical bold ranges with custom balance star borders.</td>
+              <td style="padding:14px 16px; border-right: 1px solid #e2e8f0; font-family: monospace;">COOL</td>
+              <td style="padding:14px 16px; font-family: monospace; color: #2563eb; font-weight: 600;">✧ ＣＯＯＬ ✧</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Frequently Asked Questions (FAQ) - Analytical Service Engine</h2>
+      
+      <h3>Why do some stylized fonts appear as empty boxes or question marks?</h3>
+      <p>This happens if the receiving app or older device operating systems do not support specific extended unicode character sets. Our engine intentionally uses highly compatible mathematical bold and script ranges to ensure styles render correctly across nearly all modern platforms.</p>
+
+      <h3>Can I safely paste these custom fonts into my Instagram bio and video descriptions?</h3>
+      <p>Yes, these styles are built precisely for profile optimization. They deploy beautifully across bio fields, video description layouts, and post caption boxes on major platforms like Instagram, TikTok, YouTube, and X.</p>
+
+      <h3>Will using these custom fonts impact my website's primary SEO readability indices?</h3>
+      <p>Search engines index unicode variations, but for core website copy, standard text is preferred to maintain maximum accessibility. We recommend using stylized fonts strategically for highlights, titles, and captions rather than large blocks of body paragraphs.</p>
+
+      <h3>Is there a hidden cost or character generation limit on the output panel?</h3>
+      <p>No, our utility is completely free and unrestricted. You can modify text entries as often as needed, and the output grid adapts immediately without hidden paywalls or subscription limits.</p>
+
+      <h2>Optimize Your Digital Text Configurations</h2>
+      <p>Managing extensive typography modifications requires clean workflows. After using our Fancy Font Generator, you can easily audit your characters boundaries, clean up line gaps, or restructure item arrays using our related tools like the Online Text Repeater, Character Counter, and Text Sorter system.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // DYNAMIC MAP ENGINES 
+    var dynamicSlabMaps = {
+      gothic: { caps: 0x1D504, small: 0x1D51E, fallback: { 'e': '𝔢', 'g': '𝔤', 'h': '𝔥', 'i': '𝔦', 'j': '𝔧', 'o': '𝔬', 's': '𝔰', 't': '𝔱', 'u': '𝔲', 'v': '𝔳', 'w': '𝔴', 'x': '𝔵', 'y': '𝔶', 'z': '𝔷' } },
+      gothicBold: { caps: 0x1D56C, small: 0x1D586 },
+      boldScript: { caps: 0x1D4D0, small: 0x1D4EA },
+      doubleStruck: { caps: 0x1D538, small: 0x1D552, fallback: { 'C':'ℂ','H':'ℍ','N':'ℕ','P':'ℙ','Q':'ℚ','R':'ℝ','Z':'ℤ' } },
+      sansBold: { caps: 0x1D5A0, small: 0x1D5BA },
+      sansItalic: { caps: 0x1D622, small: 0x1D63C },
+      sansBoldItalic: { caps: 0x1D656, small: 0x1D670 },
+      monospace: { caps: 0x1D670, small: 0x1D68A },
+      boldItalicSerif: { caps: 0x1D468, small: 0x1D482 }
+    };
+
+    var directStaticMaps = {
+      bubble: {"a":"ⓐ","b":"ⓑ","c":"ⓒ","d":"ⓓ","e":"ⓔ","f":"ⓕ","g":"ⓖ","h":"ⓗ","i":"ⓘ","j":"ⓙ","k":"","l":"ⓛ","m":"ⓜ","n":"ⓝ","o":"property","p":"ⓟ","q":"ⓠ","r":"ⓡ","s":"ⓢ","t":"ⓣ","u":"ⓤ","v":"ⓥ","w":"ⓦ","x":"ⓧ","y":"ⓨ","z":"ⓩ","A":"Ⓐ","B":"Ⓑ","C":"Ⓒ","D":"Ⓓ","E":"Ⓔ","F":"Ⓕ","G":"Ⓖ","H":"Ⓗ","I":"Ⓘ","J":"Ⓙ","K":"Ⓚ","L":"Ⓛ","M":"Ⓜ","N":"Ⓝ","O":"Ⓞ","P":"Ⓟ","Q":"Ⓠ","R":"Ⓡ","S":"Ⓢ","T":"Ⓣ","U":"∩","V":"Ⓥ","W":"Ⓦ","X":"Ⓧ","Y":"Ⓨ","Z":"Ⓩ"},
+      smallCaps: {"a":"ᴀ","b":"ʙ","c":"ᴄ","d":"ᴅ","e":"ᴇ","f":"ꜰ","g":"ɢ","h":"ʜ","i":"ɪ","j":"ᴊ","k":"ᴋ","l":"ʟ","m":"ᴍ","n":"ɴ","o":"ᴏ","p":"ᴘ","q":"ǫ","r":"ʀ","s":"s","t":"ᴛ","u":"ᴜ","v":"ᴠ","w":"ᴡ","x":"x","y":"currentCategory","z":"ᴢ","A":"ᴀ","B":"ʙ","C":"ᴄ","D":"ᴅ","E":"ᴇ","F":"ⓖ","G":"ɢ","H":"...","I":"ɪ","J":"ᴊ","K":"ᴋ","L":"ʟ","M":"ᴍ","N":"ɴ","O":"ᴏ","P":"ᴘ","Q":"ǫ","R":"ʀ","S":"s","T":"ᴛ","U":"ᴜ","V":"ᴠ","W":"ᴡ","X":"x","Y":"ʏ","Z":"ᴢ"},
+      square: {"a":"🄰","b":"🄱","c":"🄲","d":"🄳","e":"🄴","f":"🄵","g":"🄶","h":"🄷","i":"🄸","j":"🄹","k":"🄺","l":"🄻","m":"🄼","n":"🄽","o":"🄾","p":"🄿","q":"🄾","r":"🅁","s":"🅂","t":"🅃","u":"🅄","v":"🅅","w":"🅆","x":"🅇","y":"🅈","z":"🅉","A":"🄰","B":"🄱","C":"🄲","D":"🄳","E":"🄴","F":"🄵","G":"🄶","H":"🄷","I":"🄸","J":"🄹","K":"🄺","L":"🄻","M":"🄼","N":"🄽","O":"🄾","P":"🄿","Q":"🄾","R":"🅁","S":"🅂","T":"🅃","U":"🅄","V":"🅅","W":"🅆","X":"🅇","Y":"🅈","Z":"🅉"},
+      parenthesis: {"a":"㈠","b":"㈡","c":"㈢","d":"㈣","e":"㈤","f":"㈥","g":"㈦","h":"㈧","i":"㈨","j":"㈩","k":"ⓚ","l":"ⓛ","m":"ⓜ","n":"ⓝ","o":"ⓞ","p":"ⓟ","q":"ⓠ","r":"ⓡ","s":"ⓢ","t":"ⓣ","u":"ⓤ","v":"ⓥ","w":"ⓦ","x":"ⓧ","y":"ⓨ","z":"ⓩ","A":"㈠","B":"㈡","C":"㈢","D":"㈣","E":"㈤","F":"㈥","G":"㈦","H":"㈧","I":"㈨","J":"㈩","K":"ⓚ","L":"ⓛ","M":"ⓜ","N":"ⓝ","O":"ⓞ","P":"ⓟ","Q":"ⓠ","R":"ⓡ","S":"ⓢ","T":"ⓣ","U":"ⓤ","V":"ⓥ","W":"ⓦ","X":"ⓧ","Y":"ⓨ","Z":"ⓩ"},
+      wide: {"a":"ａ","b":"ｂ","c":"ｃ","d":"ｄ","e":"ｅ","f":"ｆ","g":"ｇ","h":"ｈ","i":"ｉ","j":"ｊ","k":"ｋ","l":"ｌ","m":"ｍ","n":"ｎ","o":"ｏ","p":"ｐ","q":"ｑ","r":"ｒ","s":"ｓ","t":"ｔ","u":"ｕ","v":"ｖ","w":"ｗ","x":"ｘ","y":"ｙ","z":"ｚ","A":"Ａ","B":"Ｂ","C":"Ｃ","D":"Ｄ","E":"Ｅ","F":"Ｆ","G":"Ｇ","H":"Ｈ","I":"Ｉ","J":"Ｊ","K":"Ｋ","L":"Ｌ","M":"Ｍ","N":"Ｎ","O":"Ｏ","P":"Ｐ","Q":"Ｑ","R":"Ｒ","S":"Ｓ","T":"Ｔ","U":"Ｕ","V":"Ⓥ","W":"Ｗ","X":"Ｘ","Y":"Ｙ","Z":"Ｚ"},
+      currency: {"a":"₳","b":"฿","c":"₵","d":"Đ","e":"Ɇ","f":"₣","g":"₲","h":"Ⱨ","i":"I","j":"","k":"₭","l":"Ⱡ","m":"₥","n":"₦","o":"Ø","p":"₱","q":"Q","r":"Ɽ","s":"₴","t":"₮","u":"U","v":"V","w":"₩","x":"𝕏","y":"¥","z":"Ƶ","A":"₳","B":"฿","C":"₵","D":"Đ","E":"Ɇ","F":"₣","G":"₲","H":"Ⱨ","I":"I","J":"","k":"₭","l":"Ⱡ","m":"₥","n":"₦","o":"Ø","p":"₱","q":"Q","r":"Ɽ","s":"₴","t":"₮","u":"U","v":"V","w":"₩","X":"𝕏","Y":"¥","Z":"Ƶ"},
+      asian: {"a":"千","b":"乃","c":"匚","d":"ᗪ","e":"乇","f":"千","g":"Ꮆ","h":"卄","i":"丨","j":"ﾌ","k":"Ҝ","l":"ㄥ","m":"爪","n":"几","o":"ㄖ","p":"卩","q":"Ɋ","r":"尺","s":"丂","t":"ㄒ","u":"ㄩ","v":"ᐪ","w":"山","x":"乂","y":"ㄚ","z":"乙","A":"千","B":"乃","C":"匚","D":"ᗪ","E":"乇","F":"千","G":"Ꮆ","H":"卄","I":"丨","J":"ﾌ","K":"Ҝ","L":"ㄥ","M":"爪","N":"几","O":"ㄖ","P":"卩","Q":"Ɋ","R":"尺","S":"丂","T":"ㄒ","U":"ㄩ","V":"ᐪ","W":"山","X":"乂","Y":"ㄚ","Z":"乙"}
+    };
+
+    var premiumTemplateBlueprints = [
+      { label: "Old English Gothic", engine: "slab", key: "gothic" },
+      { label: "Gothic Bold Calligraphy", engine: "slab", key: "gothicBold" },
+      { label: "Handwritten Bold Cursive", engine: "slab", key: "boldScript" },
+      { label: "Double Struck Outline", engine: "slab", key: "doubleStruck" },
+      { label: "Sans-Serif Bold Clean", engine: "slab", key: "sansBold" },
+      { label: "Sans Italic Standard", engine: "slab", key: "sansItalic" },
+      { label: "Sans Bold Italic Heavy", engine: "slab", key: "sansBoldItalic" },
+      { label: "Mathematical Monospace", engine: "slab", key: "monospace" },
+      { label: "Bold Italic Serif", engine: "slab", key: "boldItalicSerif" },
+      { label: "Circular Bubble Text", engine: "static", key: "bubble" },
+      { label: "Tiny Small-Caps Pro", engine: "static", key: "smallCaps" },
+      { label: "Square Block Standard", engine: "static", key: "square" },
+      { label: "Parenthesis Bracket Split", engine: "static", key: "parenthesis" },
+      { label: "Fullwidth Spaced Vapor", engine: "static", key: "wide" },
+      { label: "Crypto Currency Styling", engine: "static", key: "currency" },
+      { label: "Eastern Asian Calligraphy", engine: "static", key: "asian" },
+      { label: "Strike-Through Cross Line", engine: "slab", key: "sansBold", joiner: "\u0336" },
+      { label: "Underline Tracking Tracks", engine: "slab", key: "sansBold", joiner: "\u0332" },
+      { label: "Stink Glitch Cloud Accent", engine: "slab", key: "monospace", joiner: "\u0334" },
+      { label: "Aesthetic Star Decorator", engine: "slab", key: "boldScript", pre: "✧  ", suf: "  ✧" },
+      { label: "Cyber Glitch Lightning", engine: "slab", key: "doubleStruck", pre: "⚡ ", suf: " ⚡" },
+      { label: "Japanese Sakura Accent", engine: "slab", key: "boldScript", pre: "✿ ", suf: " ✿" },
+      { label: "Diamond Grid Frame Block", engine: "slab", key: "monospace", pre: "♦ ", suf: " ♦" },
+      { label: "Royal Crown Elite Grid", engine: "slab", key: "gothicBold", pre: "👑 ", suf: " 👑" },
+      { label: "Retro Bracket Box Header", engine: "static", key: "smallCaps", pre: "【 ", suf: " 】" },
+      { label: "Gamer Tactical Scope Target", engine: "slab", key: "sansBold", pre: "︻╦╤─ ", suf: " ─╤╦︻" },
+      { label: "Aesthetic Ribbon Border", engine: "static", key: "smallCaps", pre: "🎀  ", suf: "  🎀" },
+      { label: "Aesthetic Ribbon Double Spark", engine: "slab", key: "boldScript", pre: "✷｡  🎀  ", suf: "  🎀  ｡✷" },
+      { label: "Gamer Animal Emblem Shield", engine: "static", key: "bubble", pre: "♝🐯  ", suf: "  ♠" },
+      { label: "Double Japanese Flower Sign", engine: "static", key: "wide", pre: "ｆｆｄ ", suf: "（ネ雨気）" },
+      { label: "Retro Bracket Box Double", engine: "static", key: "wide", pre: "【﻿ ", suf: " 】" },
+      { label: "Love Heart Spark Layout", engine: "static", key: "wide", pre: "(っ◔◡◔)っ ♥ ", suf: " ♥" },
+      { label: "Wavy Water Ripple Anchor", engine: "slab", key: "sansBold", pre: "<b><i></i></b>≋ ", suf: " ≋", joiner: "\u0330" },
+      { label: "Shaded Noise Matrix Block", engine: "slab", key: "monospace", pre: "░ ", suf: " ░" },
+      { label: "Star Sparkle Crescent Moon", engine: "slab", key: "boldScript", pre: "🌙 ✨ ", suf: " ✨ 🌙" },
+      { label: "Skull Crossbones Dark Node", engine: "slab", key: "gothicBold", pre: "☠️ ", suf: " ☠️" },
+      { label: "Double Ribbon Sweets Frame", engine: "slab", key: "boldScript", pre: "🍩 ⋆ 🍒  🎀  ", suf: "  🎀  🍒 ⋆ 🍩" },
+      { label: "Double Ribbon Animal Totem", engine: "slab", key: "boldScript", pre: "🐔 ⋆ 🐫  🎀  ", suf: "  🎀  🐫 ⋆ 🐔" },
+      { label: "Dark Sea Monster Emblem", engine: "slab", key: "gothicBold", pre: "♣😡  ", suf: "  🐳👹" },
+      { label: "Mirror Inverted Typography Matrix", engine: "slab", key: "boldScript", pre: "×º°”˜`”°º× ", suf: " ×º°”˜`”°º×" },
+      { label: "Blogger Profile Text Accent", engine: "static", key: "smallCaps", pre: "•´¯`•. ", suf: " .•´¯`•" },
+      { label: "Corporate Business Portfolio", engine: "static", key: "square", pre: "💼 ", suf: " 💼" }
+    ];
+
+    function resolveSlabCharacter(char, blueprintKey) {
+        var code = char.codePointAt(0);
+        var config = dynamicSlabMaps[blueprintKey];
+        if (!config) return char;
+        if (config.fallback && config.fallback[char]) return config.fallback[char];
+        if (code >= 65 && code <= 90) {
+            return String.fromCodePoint(config.caps + (code - 65));
+        }
+        if (code >= 97 && code <= 122) {
+            return String.fromCodePoint(config.small + (code - 97));
+        }
+        return char;
+    }
+
+    function resolveStaticCharacter(char, blueprintKey) {
+        var map = directStaticMaps[blueprintKey];
+        if (!map) return char;
+        return map[char] !== undefined ? map[char] : char;
+    }
+
+    function generateFancyFonts() {
+        var inputVal = document.getElementById('fontInput').value;
+        var grid = document.getElementById('fontOutputGrid');
+        
+        var baseText = inputVal || "Texus Pro Tools";
+        var htmlBuilder = "";
+
+        premiumTemplateBlueprints.forEach(function(bp) {
+            var convertedCharsArray = [];
+            var joinerToken = bp.joiner || "";
+
+            for (var i = 0; i < baseText.length; i++) {
+                var character = baseText[i];
+                var transformedChar = character;
+
+                if (bp.engine === "slab") {
+                    transformedChar = resolveSlabCharacter(character, bp.key);
+                } else if (bp.engine === "static") {
+                    transformedChar = resolveStaticCharacter(character, bp.key);
+                }
+                
+                convertedCharsArray.push(transformedChar);
+            }
+
+            var compiledOutputText = convertedCharsArray.join(joinerToken);
+            var finalRenderedOutput = (bp.pre || "") + compiledOutputText + (bp.suf || "");
+
+            htmlBuilder += '<div class="font-style-card" onclick="copySelectedFontCard(this)">' +
+                '<span class="font-meta-label">' + bp.label + '</span>' +
+                '<div class="font-preview-text">' + finalRenderedOutput + '</div>' +
+                '<div class="font-copy-toast">Font Style Copied!</div>' +
+                '</div>';
+        });
+
+        grid.innerHTML = htmlBuilder;
+    }
+
+    function copySelectedFontCard(cardElement) {
+        var textToCopy = cardElement.querySelector('.font-preview-text').innerText;
+        
+        var dynamicBufferInput = document.createElement('textarea');
+        dynamicBufferInput.value = textToCopy;
+        document.body.appendChild(dynamicBufferInput);
+        dynamicBufferInput.select();
+        try {
+            document.execCommand('copy');
+            cardElement.classList.add('copied');
+            setTimeout(function() { cardElement.classList.remove('copied'); }, 1200);
+        } catch (err) { console.log('Matrix clipboard routing failure check.'); }
+        document.body.removeChild(dynamicBufferInput);
+    }
+
+    window.addEventListener('load', function() {
+        generateFancyFonts();
+    });
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
