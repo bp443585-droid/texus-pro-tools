@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Advanced Online Text Sorter - Alphabetical & Length Sorting</title>
+  <meta name="description" content="Organize lists and text rows line-by-line instantly. Sort alphabetically or by character length with built-in automatic deduplication." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/text-sorter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Online Text Sorter",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced array sorting system tool to organize line lists alphabetically or by length attributes while stripping duplicate items in real-time.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* TOOL SPECIFIC WORKSPACE EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* MAIN CALCULATOR & CONTENT CARD CONTAINER */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TEXTAREA ENTERPRISE INPUT BLOCK */
+    .f-textarea-container { margin-bottom: 18px; text-align: left; }
+    .f-sorter-textarea { width: 100%; height: 220px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 18px; font-size: 1.05rem; font-family: inherit; color: #1e293b; resize: vertical; outline: none; transition: all 0.2s ease; box-sizing: border-box; line-height: 1.6; }
+    .f-sorter-textarea:focus { border-color: #2563eb; background: #ffffff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.05); }
+
+    /* LIVE FILTER DYNAMICS TOGGLE STRIP */
+    .f-filter-panel { display: flex; align-items: center; justify-content: space-between; background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 20px; border-radius: 14px; margin-bottom: 20px; text-align: left; gap: 15px; }
+    .f-filter-label { font-weight: 700; color: #334155; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+    
+    .f-toggle { position: relative; display: inline-block; width: 44px; height: 24px; min-width: 44px; }
+    .f-toggle input { opacity: 0; width: 0; height: 0; }
+    .f-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .2s; border-radius: 24px; }
+    .f-slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .2s; border-radius: 50%; }
+    input:checked + .f-slider { background-color: #2563eb; }
+    input:checked + .f-slider:before { transform: translateX(20px); }
+
+    /* PRESENTATION LIVE REAL TIME STATUS COUNTER STRIP */
+    .f-status-strip { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: #64748b; background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px 16px; border-radius: 12px; margin-bottom: 22px; }
+
+    /* TRANSFORM OPERATIONS BUTTON GRID SETUP - 4 COLUMN PRO LAYER */
+    .f-operations-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 25px; }
+    .f-op-btn { background: #f1f5f9; border: 1px solid #cbd5e1; color: #475569; font-weight: 700; padding: 12px 10px; border-radius: 12px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; text-align: center; -webkit-user-select: none; user-select: none; }
+    .f-op-btn:hover { background: #e2e8f0; color: #0f172a; border-color: #94a3b8; }
+    .f-op-btn.prime-action { background: #2563eb; border-color: #2563eb; color: #ffffff; }
+    .f-op-btn.prime-action:hover { background: #1d4ed8; }
+    
+    /* UTILITY UTILS ACTION LAYER */
+    .f-util-row { display: flex; justify-content: flex-end; gap: 12px; margin-top: 15px; border-top: 1px dashed #e2e8f0; padding-top: 15px; }
+    .f-util-btn { background: #f8fafc; border: 1px solid #cbd5e1; color: #64748b; font-weight: 700; padding: 10px 18px; border-radius: 10px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; }
+    .f-util-btn:hover { background: #e2e8f0; color: #0f172a; }
+    .f-util-btn.reset-action { background: #fef2f2; border-color: #fecaca; color: #dc2626; }
+    .f-util-btn.reset-action:hover { background: #fee2e2; }
+
+    /* PRESTIGE SEO CONTENT APPARATUS STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-math-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 1.1rem; text-align: center; margin: 20px 0; font-family: monospace; color: #0f172a; font-weight: 700; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.8rem; }
+      .f-sorter-textarea { height: 150px; padding: 12px; font-size: 0.95rem; }
+      .f-filter-panel { padding: 10px 14px; font-size: 0.85rem; }
+      .f-status-strip { font-size: 0.78rem; padding: 8px 12px; margin-bottom: 18px; }
+      
+      /* DOUBLE GRID SLICING FOR MOBILE PHONE INTERFACES */
+      .f-operations-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .f-op-btn { padding: 12px 8px; font-size: 0.82rem; }
+      .f-util-row { flex-direction: column; gap: 8px; }
+      .f-util-btn { width: 100%; text-align: center; box-sizing: border-box; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📊</span> Advanced Text Sorter</div>
+    
+    <div class="f-card">
+      <div class="f-textarea-container">
+        <textarea id="text_sorter_input" class="f-sorter-textarea" placeholder="Enter or paste your unorganized list line-by-line here to initialize rapid sorting routines..." oninput="calculateLiveSorterMetrics()"></textarea>
+      </div>
+
+      <div class="f-filter-panel">
+        <div class="f-filter-label"><span>✨</span> Automatically Deduplicate (Remove Duplicate Lines)</div>
+        <label class="f-toggle">
+          <input type="checkbox" id="toggle_dedup_mode">
+          <span class="f-slider"></span>
+        </label>
+      </div>
+
+      <div class="f-status-strip">
+        <span>Total Items Count: <span id="lbl_lines">0</span></span>
+        <span>Total Characters: <span id="lbl_chars">0</span></span>
+      </div>
+
+      <div class="f-operations-grid">
+        <button class="f-op-btn prime-action" onclick="executeListSort('az')">Sort A &rarr; Z</button>
+        <button class="f-op-btn prime-action" onclick="executeListSort('za')">Sort Z &rarr; A</button>
+        <button class="f-op-btn" onclick="executeListSort('len_short')">Length: Short &rarr; Long</button>
+        <button class="f-op-btn" onclick="executeListSort('len_long')">Length: Long &rarr; Short</button>
+      </div>
+
+      <div class="f-util-row">
+        <button class="f-util-btn" onclick="copySortedPayload()">📋 Copy Sorted List</button>
+        <button class="f-util-btn reset-action" onclick="clearSorterBoard()">Reset</button>
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Informatics of Algorithmic Data Sequencing: Array Partitioning, Lexicographical Sorting Logic, and Deduplication Complexity</h2>
+      <p class="seo-p">Normalising unorganized data registries, optimizing bulk keyword indices for organic search architectures, or purifying application array feeds demands a comprehensive technical mastery over lexicographical string comparisons, merge-sort algorithms, and hash-set uniqueness filtering. Within modern software engineering and digital logistics, unstructured array fragmentation is a major processing blocker. Whether managing product SKU rosters or compiling massive link tables, an advanced Text Sorter functions as a listing optimizer that evaluates element string metrics to rearrange line blocks into cohesive data matrices cleanly.</p>
+      <p class="seo-p">This extensive algorithmic manual explores the quick-sort mechanisms that drive script-level sorting loops, covers array boundary thresholds across search indexing and system compilers, reviews complexity scales, and maps out steps to minimize list processing latencies efficiently.</p>
+
+      <div class="seo-callout">
+        <strong>The Computational Complexity Factor:</strong> Modern browser runtime engines handle list sorting using highly optimized hybrid algorithms (like V8's Timsort framework). These engines process short arrays with small execution footprints, but handling bulky directories containing tens of thousands of lines scales computational execution tracking onto an $O(n \log n)$ time-complexity scale.
+      </div>
+
+      <h3 class="seo-h2">The Underlying Mechanics: Deconstructing Sorting Algorithms</h3>
+      <p class="seo-p">To separate unorganized row strings and transform raw data pools into verified, structured layout matrices cleanly, a high-performance listing engine processes strings through distinct computational operations:</p>
+
+      <h4 class="seo-h3">1. Lexicographical Array Slicing (A-Z &amp; Z-A Modes)</h4>
+      <p class="seo-p">Lexicographical sorting relies on evaluating individual character positioning metrics based on their Unicode scalar values. The processing engine takes the text block, divides it into an explicit line array using newline breaks (\n), and applies native sorting parameters paired with localized compare systems to arrange text columns cleanly, preventing character-case differences from shifting index priorities.</p>
+      <div class="seo-math-box">Sorted_Array = Line_Array.sort((a, b) => a.localeCompare(b))</div>
+
+      <h4 class="seo-h3">2. String Length Progression Mapping</h4>
+      <p class="seo-p">Length-based sorting overrides standard alphabetical sorting loops to focus purely on individual row lengths. The calculation script measures character lengths across each array item and uses subtraction loops to order lines, smoothly moving shorter strings to the top or pushing heavier text blocks down as requested.</p>
+      <div class="seo-math-box">Length_Ascending = Line_Array.sort((a, b) => a.length - b.length)</div>
+
+      <h4 class="seo-h3">3. Linear Time Uniqueness Filtration (Deduplication)</h4>
+      <p class="seo-p">When deduplication mode is active, the script intercepts the array before sorting. It routes the lines through a JavaScript Set object structure, which instantly drops duplicate elements in linear time ($O(n)$ complexity), completely cleaning out duplicate keywords or tracking items from your list.</p>
+
+      <h3 class="seo-h2">The Structural Index: Sorting Methods &amp; Optimization Matrix</h3>
+      <p class="seo-p">Choosing the incorrect ordering system can obscure key patterns inside high-volume data sets. Mapping separate listing configurations reveals distinct technical purposes:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Sorting Operation Configuration</th>
+              <th>Internal Array Ordering Priority Matrix</th>
+              <th>Primary Professional Workflow Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Alphabetical Progression (A to Z)</b></td>
+              <td>Orders data based on character sequences, aligning strings cleanly from character index A down to Z.</td>
+              <td>Compiling dictionary sitemaps, building glossary indexes, organizing user name directories, and customer address registries.</td>
+            </tr>
+            <tr>
+              <td><b>Inverted Order (Z to A)</b></td>
+              <td>Reverses character priority metrics completely, sorting from structural index Z up to A.</td>
+              <td>Reversing database priority rosters, auditing chronological text lines, and alternative inventory tracking loops.</td>
+            </tr>
+            <tr>
+              <td><b>Character Length (Short to Long)</b></td>
+              <td>Evaluates raw character weights, moving tiny phrase elements to the top of the array grid.</td>
+              <td>Optimizing micro-copy layouts, sorting short metadata tags, and cleaning structural list strings.</td>
+            </tr>
+            <tr>
+              <td><b>Character Length (Long to Short)</b></td>
+              <td>Prioritizes heavy string blocks, pushing long sentences or text paragraphs to top hierarchy rows.</td>
+              <td>Isolating over-length social descriptions, catching long search title tags, and scanning for text bloat.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">The Importance of Clean List Sorting in Modern Search SEO</h3>
+      <p class="seo-p">While public search indexing bots do not rank user websites based on whether internally placed lists follow alphabetical orders, list architecture plays an extensive role via Keyword Clustering and Sitemap Indexing Efficiency.</p>
+      <p class="seo-p">When digital marketers and webmasters optimize their operational records, structured list sorting streamlines crawl efficiency across key organic tracking metrics:</p>
+      <ul class="seo-list">
+        <li><b>Eliminating Duplicate Link Waste:</b> Merging duplicate keyword directories strips away redundant search targets, saving crawl budgets for critical ranking pages.</li>
+        <li><b>Polished HTML Scannability:</b> Presenting directory indices or terms glossaries in clean alphabetical order enhances readability, which extends user dwell time on your site.</li>
+        <li><b>Streamlining Link Audits:</b> Organizing site backlinks by URL string length allows developers to easily scan for long, irregular tracking parameters that might indicate broken redirect loops.</li>
+      </ul>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why do uppercase letters sometimes sort ahead of lowercase blocks in raw script engines?</h3>
+      <p class="seo-p">Standard binary sorting methods evaluate text using absolute character code positions (ASCII/Unicode scales), where capital letters (ASCII 65-90) sit ahead of lowercase small letters (ASCII 97-122). Our advanced sorter uses case-insensitive comparison methods (localeCompare) to ensure words group naturally by character value rather than binary byte scores.</p>
+
+      <h3>How does the text sorter handle numerical list entries?</h3>
+      <p class="seo-p">If a list contains raw numbers, standard lexicographical sorting processes items character-by-character, meaning entry 10 will sort ahead of entry 2 because the character index 1 precedes 2. To handle complex numerical arrays safely, numbers should be padded with leading zeros or routed through a numeric sorting system.</p>
+
+      <h3>Can an online list sorter remove trailing whitespace modifications before processing?</h3>
+      <p class="seo-p">Yes, our high-performance sorting script runs a clean-up method on each row during array partition steps. This strips away edge spaces and trailing tab indents to prevent hidden whitespaces from disrupting length calculations or alphabetical sorting orders.</p>
+
+      <h3>What is the absolute maximum list size limit this text organizer can process?</h3>
+      <p class="seo-p">Because the utility operates directly inside your local web browser using client-side scripts, performance limits are tied to your device's hardware capacity. The system handles standard data directories containing up to 5,000 to 10,000 lines in real-time with zero latency, providing snappy performance without lagging your interface layout.</p>
+
+      <h3 class="seo-h2">Summary: Core Strategies for Listing Architecture Optimization</h3>
+      <p class="seo-p">To build highly efficient data layouts, utilize sorted structures to keep terms registries and index pages easily scannable for human users. Always enable deduplication mode when managing keyword lists to clean out redundant search targets, leverage length-sorting options to isolate text blocks that exceed platform character limits, and use an automated real-time text sorter to streamline your data processing workflows.</p>
+      <p class="seo-p">Our Advanced Online Text Sorter handles all these array partitioning and data cleaning steps instantly, providing immediate visibility into your list metrics across any mobile or desktop view layout cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function calculateLiveSorterMetrics() {
+        var text = document.getElementById('text_sorter_input').value;
+        
+        var charLength = text.length;
+        var lineLength = text.length > 0 ? text.split('\n').length : 0;
+
+        document.getElementById('lbl_chars').innerText = charLength.toLocaleString('en-IN');
+        document.getElementById('lbl_lines').innerText = lineLength.toLocaleString('en-IN');
+    }
+
+    function executeListSort(sortingMode) {
+        var textArea = document.getElementById('text_sorter_input');
+        var rawContent = textArea.value;
+        
+        if (rawContent.trim() === "") return; 
+
+        var lineArray = rawContent.split('\n');
+        
+        for (var i = 0; i < lineArray.length; i++) {
+            lineArray[i] = lineArray[i].trim();
+        }
+
+        var isDedupChecked = document.getElementById('toggle_dedup_mode').checked;
+        if (isDedupChecked) {
+            var uniqueSet = new Set(lineArray);
+            lineArray = Array.from(uniqueSet);
+        }
+
+        lineArray = lineArray.filter(function(row) {
+            return row.length > 0;
+        });
+
+        switch (sortingMode) {
+            case 'az':
+                lineArray.sort(function(a, b) {
+                    return a.localeCompare(b, undefined, { sensitivity: 'base', numeric: true });
+                });
+                break;
+                
+            case 'za':
+                lineArray.sort(function(a, b) {
+                    return b.localeCompare(a, undefined, { sensitivity: 'base', numeric: true });
+                });
+                break;
+                
+            case 'len_short':
+                lineArray.sort(function(a, b) {
+                    return a.length - b.length;
+                });
+                break;
+                
+            case 'len_long':
+                lineArray.sort(function(a, b) {
+                    return b.length - a.length;
+                });
+                break;
+        }
+
+        textArea.value = lineArray.join('\n');
+        calculateLiveSorterMetrics(); 
+    }
+
+    function copySortedPayload() {
+        var textArea = document.getElementById('text_sorter_input');
+        if (textArea.value.trim() === "") return;
+
+        textArea.select();
+        textArea.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(textArea.value);
+    }
+
+    function clearSorterBoard() {
+        var targetArea = document.getElementById('text_sorter_input');
+        targetArea.value = "";
+        calculateLiveSorterMetrics();
+        document.getElementById('toggle_dedup_mode').checked = false;
+        targetArea.focus();
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
