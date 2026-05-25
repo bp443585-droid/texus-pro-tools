@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Morse Code Translator | Online Audio Morse Encoder &amp; Decoder</title>
-  <meta name="description" content="Translate text to Morse code or decode Morse back to plain text instantly. Listen to real-time generated Morse audio beeps with our advanced client-side translation engine." />
+  <title>Morse Code Translator | Online Audio &amp; Light Flash Morse Tool</title>
+  <meta name="description" content="Translate text to Morse code or decode Morse back to plain text instantly. Experience real-time audio beeps and visual flashlight signals synchronously." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -31,15 +31,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
   <style>
-    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
     .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
     .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
     .f-heading span { font-size: 2.4rem; }
     
-    /* WORKSPACE CORE CONTAINER CARD */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
     
-    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
     .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
     .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
     .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -47,20 +45,26 @@
     .f-textarea-field { width: 100%; height: 180px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
     .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
     
-    /* MONOSPACED MORSE CODE TERMINAL VIEW */
     .morse-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.3rem; letter-spacing: 2px; color: #0f172a; background: #f1f5f9; }
-    .morse-font-panel:focus { background: #ffffff; }
 
-    /* UTILITY COMPACT ACTION MATRICES STRIPIES */
-    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
-    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
-    .f-btn-audio { background: #2563eb; color: #ffffff; border-color: #2563eb; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .f-btn-audio:hover { background: #1d4ed8; }
-    .f-btn-audio:disabled { background: #cbd5e1; border-color: #cbd5e1; color: #94a3b8; cursor: not-allowed; }
+    /* ULTRA MODISH DYNAMIC SIGNAL LIGHT STRIP */
+    .f-light-panel { display: flex; align-items: center; justify-content: space-between; background: #0f172a; padding: 14px 20px; border-radius: 14px; margin-bottom: 20px; color: #94a3b8; font-size: 0.9rem; font-weight: 700; }
+    .f-light-signal-wrapper { display: flex; align-items: center; gap: 10px; }
+    .f-light-bulb { width: 18px; height: 18px; background: #334155; border-radius: 50%; transition: background-color 0.05s ease, box-shadow 0.05s ease; }
+    .f-light-bulb.glow { background-color: #eab308; box-shadow: 0 0 15px #eab308, 0 0 30px #eab308; }
+
+    /* UTILITY ACTION CONTROLS BUTTON GRID */
+    .f-action-strip { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 18px; border-radius: 12px; cursor: pointer; font-size: 0.9rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; min-width: 100px; }
+    .f-btn-play { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-play:hover:not(:disabled) { background: #1d4ed8; }
+    .f-btn-stop { background: #ea580c; color: #ffffff; border-color: #ea580c; }
+    .f-btn-stop:hover:not(:disabled) { background: #c2410c; }
     .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
     .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
-    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 100px; }
     .f-btn-clear:hover { background: #fee2e2; }
+    .f-btn:disabled { background: #e2e8f0 !important; border-color: #cbd5e1 !important; color: #94a3b8 !important; cursor: not-allowed !important; box-shadow: none !important; }
 
     /* PREMIUM EDITORIAL CONTENT STYLING GRID */
     .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; }
@@ -69,6 +73,7 @@
     .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
     .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
     .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-math-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 1.1rem; text-align: center; margin: 20px 0; font-family: monospace; color: #0f172a; font-weight: 700; }
     .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
     .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
     .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
@@ -92,11 +97,8 @@
       
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .f-btn-clear { max-width: 100% !important; }
       .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
-    }
-    @media (max-width: 550px) {
-      .f-wrapper { padding: 0 24px !important; }
-      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
     }
   </style>
 </head>
@@ -120,9 +122,19 @@
         </div>
       </div>
 
+      <div class="f-light-panel">
+        <span>⚡ Synchronized Transmission Status</span>
+        <div class="f-light-signal-wrapper">
+          <span>Flash Light:</span>
+          <div id="lightBulb" class="f-light-bulb"></div>
+        </div>
+      </div>
+
       <div class="f-action-strip">
-        <button id="playAudioBtn" class="f-btn f-btn-audio" onclick="playMorseAudioBeeps()" disabled>🔊 Play Sound Wave</button>
-        <button class="f-btn f-btn-copy" onclick="copyMorseCodeOutput()">📋 Copy Morse Payload</button>
+        <button id="playAudioBtn" class="f-btn f-btn-play" onclick="playMorseTransmission()" disabled>🔊 Play Transmission</button>
+        <button id="stopAudioBtn" class="f-btn f-btn-stop" onclick="stopMorseTransmission()" disabled>⏹️ Stop</button>
+        <button id="repeatAudioBtn" class="f-btn f-btn-copy" onclick="repeatMorseTransmission()" disabled>🔁 Repeat</button>
+        <button class="f-btn f-btn-copy" onclick="copyMorseCodeOutput()">📋 Copy Morse</button>
         <button class="f-btn f-btn-clear" onclick="clearMorseWorkspace()">Clear</button>
       </div>
 
@@ -138,7 +150,7 @@
       <p class="seo-p">This extensive computing manual explores the chronological bit-timing constants approved by international telegraph agreements, reviews pricing tax limits across digital data transfers, examines signal-to-noise ratios, and details steps to deploy text converters natively inside browser memories.</p>
 
       <div class="seo-callout">
-        <strong>The International Telegraph Standard:</strong> Under the standard rules set by global telecommunication frameworks, the structural timing duration of a single **dash is exactly three times longer** than the duration of a basic dot. Maintaining this precise relational ratio ensures that electronic decoders can verify and parse characters accurately over high-frequency channels.
+        <strong>The International Telegraph Standard:</strong> Under the standard rules set by global telecommunication frameworks, the structural timing duration of a single <b>dash is exactly three times longer</b> than the duration of a basic dot. Maintaining this precise relational ratio ensures that electronic decoders can verify and parse characters accurately over high-frequency channels.
       </div>
 
       <h3 class="seo-h2">The Technical Core: Bidirectional Text to Morse Encoding Map</h3>
@@ -148,7 +160,7 @@
       <p class="seo-p">The program binds parallel event loops to both input consoles. If characters typed match plain text strings, it engages the array serializer mapping. Conversely, if it intercepts a stream composed strictly of dot and dash tokens (`.`, `-`, `/`), it overrides default behaviors to activate the reverse lexical decoder subsystem instantly.</p>
 
       <h4 class="seo-h3">2. Web Audio Audio Waves Synthesis</h4>
-      <p class="seo-p">To produce realistic audio beeps instead of relying on pre-recorded sound effects, the tool hooks directly into the browser's raw **Web Audio API**. It builds an sound engine by spawning a floating `OscillatorNode` combined with a `GainNode`, generating custom sine wave audio signals on demand.</p>
+      <p class="seo-p">To produce realistic audio beeps instead of relying on pre-recorded sound effects, the tool hooks directly into the browser's raw <b>Web Audio API</b>. It builds an sound engine by spawning a floating `OscillatorNode` combined with a `GainNode`, generating custom sine wave audio signals on demand.</p>
 
       <div class="seo-math-box">Morse_Tone_Frequency = 440 \text{ Hz (Standard Concert A Pitch Factor)}</div>
 
@@ -229,7 +241,6 @@
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
 
-    // High Fidelity Bidirectional Cryptographic Morse Matrix Map
     const TEXT_TO_MORSE_DICTIONARY = {
       'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
       'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
@@ -244,17 +255,19 @@
         MORSE_TO_TEXT_DICTIONARY[TEXT_TO_MORSE_DICTIONARY[key]] = key;
     }
 
-    let audioContextInstance = null;
+    let audioCtx = null;
+    let activeTimeouts = [];
+    let isPlaying = false;
 
     function handleTranslationPipeline(origin) {
         const textConsole = document.getElementById('plainTextConsole');
         const morseConsole = document.getElementById('morseCodeConsole');
-        const audioBtn = document.getElementById('playAudioBtn');
+        const playBtn = document.getElementById('playAudioBtn');
+        const repeatBtn = document.getElementById('repeatAudioBtn');
 
         if (origin === 'text') {
             const rawText = textConsole.value.toUpperCase();
             let morseResultArray = [];
-            
             const words = rawText.split(/\s+/);
             for (let w = 0; w < words.length; w++) {
                 let charTokens = [];
@@ -273,7 +286,6 @@
         else if (origin === 'morse') {
             const rawMorse = morseConsole.value.trim();
             let textResultStr = "";
-            
             const morseWords = rawMorse.split(/\s*\/\s*/);
             for (let mw = 0; mw < morseWords.length; mw++) {
                 const morseChars = morseWords[mw].split(/\s+/);
@@ -288,69 +300,119 @@
             textConsole.value = textResultStr.trim();
         }
 
-        // Manage audio play buttons availability state limits
-        audioBtn.disabled = !morseConsole.value.trim();
+        const state = !morseConsole.value.trim();
+        playBtn.disabled = state;
+        repeatBtn.disabled = state;
     }
 
-    function playMorseAudioBeeps() {
+    function playMorseTransmission() {
         const morseCode = document.getElementById('morseCodeConsole').value;
-        if (!morseCode.trim()) return;
+        if (!morseCode.trim() || isPlaying) return;
 
-        // Lazy initialize browser sound capabilities context safely
-        if (!audioContextInstance) {
-            audioContextInstance = new (window.AudioContext || window.webkitAudioContext)();
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         }
 
-        let currentTimelineTime = audioContextInstance.currentTime;
-        const baseUnitTimeDuration = 0.06; // Standardized Dot length constant parameter: 60ms
+        isPlaying = true;
+        document.getElementById('playAudioBtn').disabled = true;
+        document.getElementById('stopAudioBtn').disabled = false;
+        
+        let currentTimelineTime = audioCtx.currentTime;
+        let currentDelayMs = 0;
+        const baseUnitTimeDuration = 0.07; // 70ms step anchor
+        const lightBulb = document.getElementById('lightBulb');
 
         for (let idx = 0; idx < morseCode.length; idx++) {
             const currentToken = morseCode[idx];
 
             if (currentToken === '.' || currentToken === '-') {
-                const oscNode = audioContextInstance.createOscillator();
-                const gainNode = audioContextInstance.createGain();
+                const oscNode = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
 
                 oscNode.type = 'sine';
-                oscNode.frequency.setValueAtTime(440, currentTimelineTime); // Standard Concert Pitch 440Hz
+                oscNode.frequency.setValueAtTime(550, currentTimelineTime); // Clearer 550Hz Frequency
 
                 const signalDuration = currentToken === '.' ? baseUnitTimeDuration : baseUnitTimeDuration * 3;
                 
                 gainNode.gain.setValueAtTime(1, currentTimelineTime);
                 gainNode.gain.setValueAtTime(1, currentTimelineTime + signalDuration - 0.005);
-                // Linear volume ramps to eliminate raw hardware clicking noises
                 gainNode.gain.linearRampToValueAtTime(0, currentTimelineTime + signalDuration);
 
                 oscNode.connect(gainNode);
-                gainNode.connect(audioContextInstance.destination);
+                gainNode.connect(audioCtx.destination);
 
                 oscNode.start(currentTimelineTime);
                 oscNode.stop(currentTimelineTime + signalDuration);
 
+                // Flash Light On Trigger Hook
+                let tOn = setTimeout(() => { lightBulb.classList.add('glow'); }, currentDelayMs);
+                // Flash Light Off Trigger Hook
+                let tOff = setTimeout(() => { lightBulb.classList.remove('glow'); }, currentDelayMs + (signalDuration * 1000));
+                
+                activeTimeouts.push(tOn, tOff);
+
                 currentTimelineTime += signalDuration + baseUnitTimeDuration;
+                currentDelayMs += (signalDuration + baseUnitTimeDuration) * 1000;
             } 
             else if (currentToken === ' ') {
                 currentTimelineTime += baseUnitTimeDuration * 2;
+                currentDelayMs += (baseUnitTimeDuration * 2) * 1000;
             } 
             else if (currentToken === '/') {
                 currentTimelineTime += baseUnitTimeDuration * 4;
+                currentDelayMs += (baseUnitTimeDuration * 4) * 1000;
             }
         }
+
+        // Transmission Complete Status Reset Hook
+        let tEnd = setTimeout(() => {
+            resetControlButtonsState();
+        }, currentDelayMs);
+        activeTimeouts.push(tEnd);
+    }
+
+    function stopMorseTransmission() {
+        // Clear all running sync visual flash hooks
+        activeTimeouts.forEach(t => clearTimeout(t));
+        activeTimeouts = [];
+        
+        // Hard stop Web Audio hardware nodes pipelines instantly
+        if (audioCtx) {
+            audioCtx.close().then(() => {
+                audioCtx = null;
+            });
+        }
+        
+        document.getElementById('lightBulb').classList.remove('glow');
+        resetControlButtonsState();
+    }
+
+    function repeatMorseTransmission() {
+        stopMorseTransmission();
+        setTimeout(() => { playMorseTransmission(); }, 150);
+    }
+
+    function resetControlButtonsState() {
+        isPlaying = false;
+        document.getElementById('playAudioBtn').disabled = !document.getElementById('morseCodeConsole').value.trim();
+        document.getElementById('stopAudioBtn').disabled = true;
     }
 
     function copyMorseCodeOutput() {
         const morseConsole = document.getElementById('morseCodeConsole');
         if (!morseConsole.value.trim()) return;
-
         morseConsole.select();
         morseConsole.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(morseConsole.value);
     }
 
     function clearMorseWorkspace() {
+        stopMorseTransmission();
         document.getElementById('plainTextConsole').value = "";
         document.getElementById('morseCodeConsole').value = "";
         document.getElementById('playAudioBtn').disabled = true;
+        document.getElementById('stopAudioBtn').disabled = true;
+        document.getElementById('repeatAudioBtn').disabled = true;
         document.getElementById('plainTextConsole').focus();
     }
   </script>
