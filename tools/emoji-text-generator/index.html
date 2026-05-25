@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Emoji Text Generator | Large Emoji Font Banner Maker</title>
+  <meta name="description" content="Convert plain text into big banner structures built entirely out of emojis. Features real-time typing generation, custom emoji selectors, and instant copy hooks." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/emoji-text-generator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Emoji Text Generator",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced textual font mapping application to transform standard alphabetical alphanumeric inputs into large banner layouts built out of emojis.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* INPUT CONTROL SECTION CONTROLLERS */
+    .f-control-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; margin-bottom: 20px; align-items: flex-end; }
+    .f-input-group { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-input-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-field-input { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 14px 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; font-weight: 600; }
+    .f-field-input:focus { border-color: #2563eb; background: #ffffff; }
+    
+    select.f-field-input { cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>"); background-repeat: no-repeat; background-position: right 14px center; background-size: 14px; padding-right: 35px; }
+
+    /* OUTPUT DISPLAY BASE BLOCK */
+    .f-textarea-container { margin-bottom: 20px; text-align: left; }
+    .f-emoji-textarea { width: 100%; height: 320px; background: #0f172a; border: 2px solid #1e293b; border-radius: 16px; padding: 20px; font-size: 0.75rem; font-family: 'Courier New', Courier, monospace; color: #38bdf8; resize: vertical; outline: none; transition: all 0.2s ease; box-sizing: border-box; line-height: 1.2; letter-spacing: 1px; white-space: pre; overflow-x: auto; }
+    .f-emoji-textarea:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+    
+    /* ACTION LAYER BUTTON STRIPS */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border-color: #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-control-grid { grid-template-columns: 1fr; gap: 15px; }
+      .f-emoji-textarea { height: 260px; font-size: 0.6rem; padding: 12px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🔤</span> Emoji Text Generator</div>
+    
+    <div class="f-card">
+      <div class="f-control-grid">
+        <div class="f-input-group">
+          <label for="plainTextInput">Enter Plain Text (Alphanumeric)</label>
+          <input type="text" id="plainTextInput" class="f-field-input" value="HELL0" placeholder="Type text here..." oninput="generateEmojiMatrix()" />
+        </div>
+        
+        <div class="f-input-group">
+          <label for="foregroundEmojiSelect">Foreground Emoji</label>
+          <select id="foregroundEmojiSelect" class="f-field-input" onchange="handlePresetChange('fore')">
+            <option value="🔥" selected>🔥 Fire</option>
+            <option value="❤️">❤️ Heart</option>
+            <option value="👑">👑 Crown</option>
+            <option value="✨">✨ Sparkles</option>
+            <option value="💀">💀 Skull</option>
+            <option value="⭐">⭐ Star</option>
+            <option value="custom">💬 Custom...</option>
+          </select>
+          <input type="text" id="customForeInput" class="f-field-input" value="🔥" style="display: none; margin-top: 8px;" placeholder="Type 1 emoji..." max-length="2" oninput="generateEmojiMatrix()" />
+        </div>
+
+        <div class="f-input-group">
+          <label for="backgroundEmojiSelect">Background Emoji</label>
+          <select id="backgroundEmojiSelect" class="f-field-input" onchange="handlePresetChange('back')">
+            <option value="⬛" selected>⬛ Black Sq</option>
+            <option value="⬜">⬜ White Sq</option>
+            <option value="🟦">🟦 Blue Sq</option>
+            <option value="🟥">🟥 Red Sq</option>
+            <option value="✨">✨ Sparkles</option>
+            <option value="❌">❌ Cross</option>
+            <option value="custom">💬 Custom...</option>
+          </select>
+          <input type="text" id="customBackInput" class="f-field-input" value="⬛" style="display: none; margin-top: 8px;" placeholder="Type 1 emoji..." max-length="2" oninput="generateEmojiMatrix()" />
+        </div>
+      </div>
+
+      <div class="f-textarea-container">
+        <div id="emojiOutputBoard" class="f-emoji-textarea" readonly></div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="generateEmojiMatrix()">Regenerate Banner</button>
+        <button class="f-btn f-btn-copy" onclick="copyEmojiPayload()">📋 Copy Emoji Text</button>
+        <button class="f-btn f-btn-clear" onclick="clearEmojiWorkspace()">Clear</button>
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Informatics of Glyph Array Mapping: Bit-Grid Font Tokenization and Structural Emoji Typography Laws</h2>
+      <p class="seo-p">Parsing raw character data arrays and translating alphabetical metrics into big visual dot-matrix banner layouts requires an engineering understanding of custom font maps, binary bit-grids, and monospaced layout systems. Within web messaging infrastructures, digital communities, and automation frameworks, an Emoji Text Generator functions as an explicit typographic conversion engine. It maps standard structural string inputs onto preset multi-dimensional character matrix grids, producing highly scalable text layouts built entirely out of emojis cleanly.</p>
+      <p class="seo-p">This granular design manual examines the core font matrix data arrays that power character conversions, explores formatting rules across standard chat servers, analyzes responsive font scaling boundaries, and details programmatic steps to execute emoji processing loops smoothly without layout glitches.</p>
+
+      <div class="seo-callout">
+        <strong>The Monospace Alignment Factor:</strong> Standard emojis often vary slightly in display dimensions across different smartphone operating systems. Forcing large emoji text layouts into strict **monospaced typography rules** using fixed-width elements (like square block presets `⬛` or `⬜`) guarantees that character columns stay perfectly aligned across devices.
+      </div>
+
+      <h3 class="seo-h2">The Technical Mechanics of Bitwise Emoji Transformation</h3>
+      <p class="seo-p">To build big, flawless banner layouts from raw alphabetical text data strings, a high-performance web text conversion processing engine utilizes a dedicated internal font matrix system:</p>
+
+      <h4 class="seo-h3">1. Alphanumeric Tokenization Loop</h4>
+      <p class="seo-p">When a user types into the plains input area, the program captures the string buffer and converts it entirely into uppercase formatting to normalize the parameters. The loop processes characters index by index, fetching the corresponding $5 \times 5$ or $5 \times 7$ bit-grid mapping array stored inside the application layer registry.</p>
+
+      <h4 class="seo-h3">2. Bit-Grid Row Construction Matrices</h4>
+      <p class="seo-p">Every single letter inside our compiler registry is recorded as a structured matrix array containing binary integer elements (0 and 1). The 1s represent coordinate nodes that capture the foreground emoji selection, while the 0s serve as space holders allocated to load the surrounding background tracking symbols.</p>
+
+      <h4 class="seo-h3">3. Monospaced Carriage Return Sync</h4>
+      <p class="seo-p">To display the final big layout banner cleanly on screen without row overlaps, the system processes calculations horizontally row by row across all letters simultaneously, injecting clear carriage return line breaks (`\n`) to terminate line segments seamlessly.</p>
+
+      <h3 class="seo-h2">The Strategic Matrix: Optimal Casing and Platform Applications</h3>
+      <p class="seo-p">Large font emoji banners are highly valuable elements for boosting user engagement across modern digital communication channels, provided you align layouts with specific software parameters:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Communication Ecosystem Channel</th>
+              <th>Recommended Grid Preset Combination</th>
+              <th>System Layout Optimization &amp; Engagement Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Discord Server Channels</b></td>
+              <td>🔥 Foreground with ⬛ Background</td>
+              <td>Monospaced markdown code blocks (` ``` `) prevent row wrapping, keeping large text layouts sharp on desktops.</td>
+            </tr>
+            <tr>
+              <td><b>WhatsApp Chat Messaging</b></td>
+              <td>❤️ Foreground with ⬜ Background</td>
+              <td>Provides high-contrast mobile scannability, ideal for creating stylized greetings and promotional notifications.</td>
+            </tr>
+            <tr>
+              <td><b>Telegram Broadcast Groups</b></td>
+              <td>✨ Foreground with 🟦 Background</td>
+              <td>Maintains perfect column alignment across diverse responsive mobile viewports and default system text limits.</td>
+            </tr>
+            <tr>
+              <td><b>Developer Source Comments</b></td>
+              <td>⭐ Foreground with ⬛ Background</td>
+              <td>Allows software engineers to add striking visual landmarks or structural headers directly inside code files.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Operational Segment</h3>
+
+      <h3>Will an emoji text generator damage code syntax or numerical variables?</h3>
+      <p class="seo-p">No, the tokenization loop isolates your conversational words and handles strings strictly within the text container boundary limits. Punctuation characters or unmapped symbols that are missing from our internal font grid arrays are processed as empty space filters, preserving your overall paragraph data structures safely.</p>
+
+      <h3>Why do specific chat applications wrap emoji lines incorrectly on smaller screens?</h3>
+      <p class="seo-p">Line breaks can wrap irregularly because different chat networks alter text widths based on individual user display scaling. To avoid broken layouts on compact mobile views, minimize your word input length to 5-6 characters max, or wrap your output payload inside monospaced block options.</p>
+
+      <h3>Can an automated utility support custom multi-byte Unicode emojis?</h3>
+      <p class="seo-p">Yes, our engine utilizes standard JavaScript string slicing that handles multi-byte character strings cleanly. You can paste custom emojis or specialized localized symbols directly into the input fields, and the engine will scale them throughout the text matrix blocks instantly.</p>
+
+      <h3>Summary: Core Principles for Emoji Typography Management</h3>
+      <p class="seo-p">To protect layout integrity, utilize square background emojis to ensure even column spacing across different operating systems. Keep your conversational word inputs brief to prevent horizontal wrapping bugs on narrow smartphone displays, utilize the one-click clipboard payload function to preserve formatting, and leverage a real-time emoji text converter to streamline your copy workflows.</p>
+      <p class="seo-p">Our Advanced Online Emoji Text Generator automates all these structural layout conversion steps instantly, providing high-contrast visibility into your string matrices across any mobile or desktop device cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // High Fidelity 5x5 Monospaced Font Matrix Registry Map
+    const EMOJI_FONT_MAP = {
+      'A': [[0,1,1,1,0],[1,0,0,0,1],[1,1,1,1,1],[1,0,0,0,1],[1,0,0,0,1]],
+      'B': [[1,1,1,1,0],[1,0,0,0,1],[1,1,1,1,0],[1,0,0,0,1],[1,1,1,1,0]],
+      'C': [[0,1,1,1,1],[1,0,0,0,0],[1,0,0,0,0],[1,0,0,0,0],[0,1,1,1,1]],
+      'D': [[1,1,1,1,0],[1,0,0,0,1],[1,0,0,0,1],[1,0,0,0,1],[1,1,1,1,0]],
+      'E': [[1,1,1,1,1],[1,0,0,0,0],[1,1,1,1,0],[1,0,0,0,0],[1,1,1,1,1]],
+      'F': [[1,1,1,1,1],[1,0,0,0,0],[1,1,1,1,0],[1,0,0,0,0],[1,0,0,0,0]],
+      'G': [[0,1,1,1,1],[1,0,0,0,0],[1,0,0,1,1],[1,0,0,0,1],[0,1,1,1,1]],
+      'H': [[1,0,0,0,1],[1,0,0,0,1],[1,1,1,1,1],[1,0,0,0,1],[1,0,0,0,1]],
+      'I': [[1,1,1,1,1],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0],[1,1,1,1,1]],
+      'J': [[1,1,1,1,1],[0,0,1,0,0],[0,0,1,0,0],[1,0,1,0,0],[1,1,1,0,0]],
+      'K': [[1,0,0,0,1],[1,0,0,1,0],[1,1,1,0,0],[1,0,0,1,0],[1,0,0,0,1]],
+      'L': [[1,0,0,0,0],[1,0,0,0,0],[1,0,0,0,0],[1,0,0,0,0],[1,1,1,1,1]],
+      'M': [[1,0,0,0,1],[1,1,0,1,1],[1,0,1,0,1],[1,0,0,0,1],[1,0,0,0,1]],
+      'N': [[1,0,0,0,1],[1,1,0,0,1],[1,0,1,0,1],[1,0,0,1,1],[1,0,0,0,1]],
+      'O': [[0,1,1,1,0],[1,0,0,0,1],[1,0,0,0,1],[1,0,0,0,1],[0,1,1,1,0]],
+      'P': [[1,1,1,1,0],[1,0,0,0,1],[1,1,1,1,0],[1,0,0,0,0],[1,0,0,0,0]],
+      'Q': [[0,1,1,1,0],[1,0,0,0,1],[1,0,1,0,1],[1,0,0,1,1],[0,1,1,1,1]],
+      'R': [[1,1,1,1,0],[1,0,0,0,1],[1,1,1,1,0],[1,0,0,1,0],[1,0,0,0,1]],
+      'S': [[0,1,1,1,1],[1,0,0,0,0],[0,1,1,1,0],[0,0,0,0,1],[1,1,1,1,0]],
+      'T': [[1,1,1,1,1],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0]],
+      'U': [[1,0,0,0,1],[1,0,0,0,1],[1,0,0,0,1],[1,0,0,0,1],[0,1,1,1,0]],
+      'V': [[1,0,0,0,1],[1,0,0,0,1],[1,0,0,0,1],[0,1,0,1,0],[0,0,1,0,0]],
+      'W': [[1,0,0,0,1],[1,0,0,0,1],[1,0,1,0,1],[1,1,0,1,1],[1,0,0,0,1]],
+      'X': [[1,0,0,0,1],[0,1,0,1,0],[0,0,1,0,0],[0,1,0,1,0],[1,0,0,0,1]],
+      'Y': [[1,0,0,0,1],[0,1,0,1,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0]],
+      'Z': [[1,1,1,1,1],[0,0,0,1,0],[0,0,1,0,0],[0,1,0,0,0],[1,1,1,1,1]],
+      '0': [[0,1,1,1,0],[1,0,0,1,1],[1,0,1,0,1],[1,1,0,0,1],[0,1,1,1,0]],
+      '1': [[0,0,1,0,0],[0,1,1,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,1,1,1,0]],
+      '2': [[0,1,1,1,0],[1,0,0,0,1],[0,0,0,1,0],[0,1,0,0,0],[1,1,1,1,1]],
+      '3': [[1,1,1,1,0],[0,0,0,0,1],[0,1,1,1,0],[0,0,0,0,1],[1,1,1,1,0]],
+      '4': [[1,0,0,1,0],[1,0,0,1,0],[1,1,1,1,1],[0,0,0,1,0],[0,0,0,1,0]],
+      '5': [[1,1,1,1,1],[1,0,0,0,0],[1,1,1,1,0],[0,0,0,0,1],[1,1,1,1,0]],
+      '6': [[0,1,1,1,0],[1,0,0,0,0],[1,1,1,1,0],[1,0,0,0,1],[0,1,1,1,0]],
+      '7': [[1,1,1,1,1],[0,0,0,1,0],[0,0,1,0,0],[0,1,0,0,0],[1,0,0,0,0]],
+      '8': [[0,1,1,1,0],[1,0,0,0,1],[0,1,1,1,0],[1,0,0,0,1],[0,1,1,1,0]],
+      '9': [[0,1,1,1,0],[1,0,0,0,1],[0,1,1,1,1],[0,0,0,0,1],[0,1,1,1,0]],
+      ' ': [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
+    };
+
+    function handlePresetChange(type) {
+        const select = document.getElementById(type === 'fore' ? 'foregroundEmojiSelect' : 'backgroundEmojiSelect');
+        const customInput = document.getElementById(type === 'fore' ? 'customForeInput' : 'customBackInput');
+        
+        if (select.value === 'custom') {
+            customInput.style.display = 'block';
+            customInput.focus();
+        } else {
+            customInput.style.display = 'none';
+            customInput.value = select.value;
+        }
+        generateEmojiMatrix();
+    }
+
+    function generateEmojiMatrix() {
+        const inputText = document.getElementById('plainTextInput').value.toUpperCase();
+        const foreEmoji = document.getElementById('customForeInput').value || "🔥";
+        const backEmoji = document.getElementById('customBackInput').value || "⬛";
+        const outputBoard = document.getElementById('emojiOutputBoard');
+
+        if (!inputText) {
+            outputBoard.innerText = "";
+            return;
+        }
+
+        let resultBanner = "";
+        
+        // Font height is fixed at 5 rows
+        for (let row = 0; row < 5; row++) {
+            let rowString = "";
+            
+            for (let charIndex = 0; charIndex < inputText.length; charIndex++) {
+                const char = inputText[charIndex];
+                const glyph = EMOJI_FONT_MAP[char] || EMOJI_FONT_MAP[' ']; // Fallback to empty space grid
+                
+                for (let col = 0; col < 5; col++) {
+                    if (glyph[row][col] === 1) {
+                        rowString += foreEmoji;
+                    } else {
+                        rowString += backEmoji;
+                    }
+                }
+                // Letter separation padding spacing
+                rowString += backEmoji;
+            }
+            resultBanner += rowString + "\n";
+        }
+        
+        outputBoard.innerText = resultBanner;
+    }
+
+    function copyEmojiPayload() {
+        const outputBoard = document.getElementById('emojiOutputBoard');
+        const textToCopy = outputBoard.innerText;
+        if (!textToCopy.trim()) return;
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const copyBtn = document.querySelector('.f-btn-copy');
+            const originalText = copyBtn.innerText;
+            copyBtn.innerText = "⚡ Copied Output!";
+            setTimeout(() => { copyBtn.innerText = originalText; }, 2000);
+        }).catch(err => console.error('Clipboard copy failed:', err));
+    }
+
+    function clearEmojiWorkspace() {
+        document.getElementById('plainTextInput').value = "";
+        document.getElementById('emojiOutputBoard').innerText = "";
+        document.getElementById('plainTextInput').focus();
+    }
+
+    // Run baseline initialization setup
+    window.addEventListener('DOMContentLoaded', () => {
+        generateEmojiMatrix();
+    });
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
