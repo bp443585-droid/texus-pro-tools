@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Recurring Deposit (RD) Calculator - IBA Compounding Model</title>
+  <meta name="description" content="Calculate your Recurring Deposit (RD) maturity amount and interest returns online. Features interactive visual tracking based on the latest Indian banking guidelines." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/rd-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "RD Calculator India",
+    "operatingSystem": "Web",
+    "applicationCategory": "BusinessApplication",
+    "description": "An institutional grade financial calculation utility to evaluate your total interest yields and maturity corpus pools for fixed monthly Recurring Deposit accounts using standard quarterly compounding rules.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* TOOL SPECIFIC WORKSPACE EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CALCULATOR CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* SLIDER AND EDITABLE INPUT GRID SYSTEM */
+    .f-control-row { margin-bottom: 25px; text-align: left; }
+    .f-label-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .f-label-text { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    /* EDITABLE TYPING FIELD INPUT BOX */
+    .f-value-input-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; font-weight: 700; color: #2563eb; font-size: 1.05rem; width: 140px; text-align: right; font-family: inherit; outline: none; transition: border-color 0.2s; box-sizing: border-box; }
+    .f-value-input-box:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .f-slider { width: 100%; -webkit-appearance: none; appearance: none; height: 6px; background: #e2e8f0; border-radius: 5px; outline: none; margin: 12px 0; cursor: pointer; }
+    .f-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; background: #2563eb; border-radius: 50%; cursor: pointer; transition: transform 0.1s; }
+    .f-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+    /* PRESENTATION RESULTS PANEL */
+    .f-result-box { display: block; margin-top: 30px; border-top: 2px dashed #e2e8f0; padding-top: 25px; }
+    .f-metrics-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; }
+    .f-metric-tile { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px 15px; text-align: center; box-sizing: border-box; }
+    .f-metric-tile.prime { background: #eff6ff; border-color: #bfdbfe; }
+    .f-metric-tile h5 { margin: 0 0 6px 0; font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    /* ZERO GLITCH SYMBOL PARSING */
+    .f-currency-display { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0; font-size: 1.25rem; color: #0f172a; font-weight: 800; }
+    .f-metric-tile.prime .f-currency-display { color: #2563eb; font-size: 1.45rem; }
+
+    /* GRAPHIC DATA COMPILER */
+    .f-visual-bar { height: 16px; background: #cbd5e1; border-radius: 8px; display: flex; overflow: hidden; margin-top: 25px; }
+    .f-bar-invested { background: #94a3b8; width: 50%; height: 100%; transition: width 0.3s ease; }
+    .f-bar-interest { background: #2563eb; width: 50%; height: 100%; transition: width 0.3s ease; }
+    .f-legend { display: flex; justify-content: center; gap: 20px; margin-top: 15px; font-size: 0.85rem; font-weight: 600; color: #64748b; flex-wrap: wrap; }
+    .f-legend-item { display: flex; align-items: center; gap: 6px; }
+    .f-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+    /* PRESTIGE SEO CONTENT APPARATUS STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-math-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 1.1rem; text-align: center; margin: 20px 0; font-family: monospace; color: #0f172a; font-weight: 700; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* FIXED RESPONSIBLE CONSTRAINTS GRID FOR MOBILE RESPONSIVENESS */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 30px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-metrics-summary { grid-template-columns: 1fr; gap: 12px; }
+      .f-metric-tile.prime { grid-column: span 1; }
+      .f-value-input-box { padding: 8px 10px; font-size: 0.95rem; width: 110px; }
+      .f-currency-display { font-size: 1.15rem; }
+      .f-metric-tile.prime .f-currency-display { font-size: 1.5rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📅</span> Recurring Deposit (RD) Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-control-row">
+        <div class="f-label-container">
+          <span class="f-label-text">Monthly Deposit Amount (₹)</span>
+          <input type="number" id="input_monthly" class="f-value-input-box" min="100" max="1000000" value="5000" oninput="syncSliderFromInput('monthly')" />
+        </div>
+        <input type="range" id="slide_monthly" class="f-slider" min="100" max="1000000" step="500" value="5000" oninput="syncInputFromSlider('monthly')" />
+      </div>
+
+      <div class="f-control-row">
+        <div class="f-label-container">
+          <span class="f-label-text">Rate of Interest (% P.A.)</span>
+          <input type="number" id="input_interest" class="f-value-input-box" min="2" max="15" step="0.1" value="6.5" oninput="syncSliderFromInput('interest')" />
+        </div>
+        <input type="range" id="slide_interest" class="f-slider" min="2" max="15" step="0.1" value="6.5" oninput="syncInputFromSlider('interest')" />
+      </div>
+
+      <div class="f-control-row">
+        <div class="f-label-container">
+          <span class="f-label-text">Investment Tenure (Years)</span>
+          <input type="number" id="input_tenure" class="f-value-input-box" min="1" max="10" step="1" value="5" oninput="syncSliderFromInput('tenure')" />
+        </div>
+        <input type="range" id="slide_tenure" class="f-slider" min="1" max="10" step="1" value="5" oninput="syncInputFromSlider('tenure')" />
+      </div>
+
+      <div class="f-result-box">
+        <div class="f-metrics-summary">
+          <div class="f-metric-tile">
+            <h5>Total Amount Invested</h5>
+            <p class="f-currency-display"><span>₹</span><span id="res_total_invested">0</span></p>
+          </div>
+          <div class="f-metric-tile">
+            <h5>Total Interest Earned</h5>
+            <p class="f-currency-display"><span>₹</span><span id="res_total_interest">0</span></p>
+          </div>
+          <div class="f-metric-tile prime">
+            <h5>Total Maturity Amount</h5>
+            <p class="f-currency-display"><span>₹</span><span id="res_maturity_amt">0</span></p>
+          </div>
+        </div>
+
+        <div class="f-visual-bar">
+          <div class="f-bar-invested" id="bar_invested"></div>
+          <div class="f-bar-interest" id="bar_interest"></div>
+        </div>
+        <div class="f-legend">
+          <div class="f-legend-item"><span class="f-dot" style="background: #94a3b8;"></span> Total Capital Deposited</div>
+          <div class="f-legend-item"><span class="f-dot" style="background: #2563eb;"></span> Compound Interest Yield</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2>Recurring Deposit (RD) Financial Architecture: Quarterly Compounding Formulas, Tenure Structures, and Wealth Multiplier Dynamics</h2>
+      <p class="seo-p">Constructing an optimal short-to-medium-term retail debt portfolio requires analyzing systematic capital generation pathways, risk-free interest compounding matrices, and institutional liquidity parameters. Within the Indian consumer banking ecosystem, the Recurring Deposit (RD) acts as an essential systematic investment wrapper. Regulated across standard public and private banking parameters, this vehicle enables retail depositors to allocate fixed monthly tranches of liquid savings into a structured account ledger, accumulating a reliable maturity corpus without the market risk exposure of equity-heavy portfolios.</p>
+      <p class="seo-p">This detailed master guide breaks down the complex mathematical algorithms governing standard Indian banking RD returns, examines the mechanisms of quarterly compounding interest schedules, reviews modern Tax Deducted at Source (TDS) boundaries, and provides actionable asset guidelines to maximize your yield efficiency.</p>
+
+      <div class="seo-callout">
+        <strong>DICGC Insurance Shield:</strong> Every Recurring Deposit account opened across scheduled commercial banks is fully protected up to a statutory maximum limit configuration of <b>₹5,00,000</b> across principal and interest profiles by the Deposit Insurance and Credit Guarantee Corporation (DICGC), ensuring institutional safety.
+      </div>
+
+      <h3>The Underlying Mathematics: The Quarterly Compounding Formula</h3>
+      <p class="seo-p">Unlike basic lending schedules that follow single flat calculation lines, Indian commercial banks estimate RD maturity payouts using the Indian Banks' Association (IBA) approved compounding standard. Since deposits are added systematically every single month but the interest compound loop triggers strictly on a quarterly frequency cycle (4 times a year), standard future value equations cannot evaluate the balances accurately.</p>
+      <p class="seo-p">The mathematical model parses individual monthly installments as separate fractional compounding vectors, calculated using this composite algebraic equation: $M = P \times [ (1 + R/400)^{(4 \times n/12)} + (1 + R/400)^{(4 \times (n-1)/12)} + ... + (1 + R/400)^{(4 \times 1/12)} ]$</p>
+
+      <p class="seo-p">To make this computationally efficient for online web applications, engineers compress the geometric progression series into this direct operational formula format:</p>
+      <div class="seo-math-box">M = P \times \left[ \frac{(1 + i)^n - 1}{1 - (1 + i)^{-\frac{1}{3}}} \right]</div>
+
+      <p class="seo-p">Where the integrated architectural variables map directly to these user contribution metrics:</p>
+      <ul class="seo-list">
+        <li><b>M:</b> Total Consolidated Sovereign Maturity Payoff Corpus.</li>
+        <li><b>P:</b> Fixed Monthly Recurring Deposit Subscription Installment (₹).</li>
+        <li><b>i:</b> Quarterly Compounding Interest Factor per base component unit (Calculated strictly as: [Annual Interest Rate / 100] / 4).</li>
+        <li><b>n:</b> Total Operational Tenure Length expressed as the absolute number of <b>Months</b> (Years &times; 12).</li>
+      </ul>
+
+      <h3>Taxation Dynamics: Understanding Section 194A and TDS Caps</h3>
+      <p class="seo-p">While a Recurring Deposit acts as a highly reliable tool for disciplined savings, its interest accumulation layer features specific tax liabilities. Unlike PPF instruments which enjoy triple exemption paths, RD interest yields are fully taxable under the header <b>"Income from Other Sources"</b> based on your structural income tax slab index:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Depositor Category Index</th>
+              <th>Annual Interest TDS Cap Limit</th>
+              <th>Statutory Structural Operational Impact Rules</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Standard Individuals (&lt; 60 Years)</b></td>
+              <td>₹40,000 / Fiscal Year</td>
+              <td>If the total interest earned across your bank branches exceeds ₹40,000 in a year, the bank deducts 10% TDS automatically. Below this limit, no TDS applies, though you must self-report the earnings.</td>
+            </tr>
+            <tr>
+              <td><b>Senior Citizens (&ge; 60 Years)</b></td>
+              <td>₹50,000 / Fiscal Year</td>
+              <td>Under Section 80TTB, senior citizens gain an elevated threshold up to ₹50,000, shielding a larger portion of their fixed income from automated source deductions.</td>
+            </tr>
+            <tr>
+              <td><b>Non-Taxable Income Profiles</b></td>
+              <td>Form 15G / 15H Waiver</td>
+              <td>If your gross annual total income sits below the basic non-taxable limit, you can submit Form 15G (or 15H for senior citizens) to prevent the bank from executing automated TDS adjustments.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Step-by-Step Long-Term Compounding Case Study</h3>
+      <p class="seo-p">Let's walk through an investment scenario. Consider an investor who opens an RD account layer with a mid-tier commercial bank, committing to a systematic deposit layout of <b>₹10,000 every single month</b> across a clean <b>5-year investment block tenure (60 months total)</b>, assuming an annual interest rate anchor of <b>7.0% per annum</b>:</p>
+
+      <ul class="seo-list">
+        <li><b>Step 1: Tracking the Out-of-Pocket Principal Invested:</b> Over the course of the 60-month run-time horizon, the out-of-pocket investment principal piles up at a steady monthly pace. When the 5-year cycle wraps up, the investor's total out-of-pocket principal matches exactly: $\text{Total Invested Principal} = \text{₹10,000} \times 60 \text{ Months} = \mathbf{₹6,00,000}$</li>
+        <li><b>Step 2: Processing the Quarterly Compounding Curves:</b> Because early monthly contributions spend more time inside the bank's active compounding register, they generate significantly higher relative yields than installments added near the end of the tenure. The geometric distribution series tracks the growing balance month-by-month, yielding a total accrued interest return of exactly <b>₹1,16,808</b>.</li>
+        <li><b>Step 3: Calculating the Final Maturity Balance Payoff:</b> When the 5-year investment period finishes, the system merges your total deposits with your accrued interest gains. The tracking engine locks your final verified maturity distribution payout at exactly <b>₹7,16,808</b>.</li>
+      </ul>
+
+      <h3>Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What happens to the account if an investor misses consecutive monthly payments?</h3>
+      <p class="seo-p">If a depositor fails to fulfill their monthly installment payment target on time, banks typically apply a small penalty fee (often ₹1 per ₹100 of the deposit value per month). If payments are missed for 4 to 6 consecutive months, the bank holds the authority to terminate the active status of the RD, converting the account balance into a standard premature closure ledger.</p>
+
+      <h3>Are premature withdrawal features available for sudden liquidity needs?</h3>
+      <p class="seo-p">Yes, you can close an RD account prematurely before your target date to access liquidity. However, commercial banks apply a small penalty rate deduction (typically running between 0.5% and 1.0%) from the base interest rate that was applicable for the actual period the money remained deposited, slightly lowering your final return.</p>
+
+      <h3>Can an investor change their monthly deposit value midway through the tenure?</h3>
+      <p class="seo-p">No, the statutory framework requires a rigid structure. The fixed monthly deposit value and the chosen investment timeline are locked during the initial account setup. They cannot be adjusted, expanded, or reduced at any point during the active lifecycle of that specific account ledger.</p>
+
+      <h3>Is there a difference between bank RDs and Post Office Recurring Deposits?</h3>
+      <p class="seo-p">The key differences center on tenure flexibility and rate timelines. Commercial banks offer flexible options running from 6 months up to 10 years. In contrast, the Post Office Recurring Deposit features a rigid, mandatory 5-year minimum tenure block, with interest rates set directly by the government each quarter.</p>
+
+      <h3>Summary: Strategic Rules to Maximize RD Performance</h3>
+      <p class="seo-p">To build a reliable short-term safety net through a Recurring Deposit, pick your investment timeline carefully to ensure your savings pace stays sustainable across the entire tenure. Automate your monthly contributions through standing instructions to eliminate late payment penalty tracking fees, monitor your total yearly interest earnings across accounts to manage TDS thresholds cleanly, and compare lock-in rates across tenures to secure the highest available yield.</p>
+      <p class="seo-p">Our Recurring Deposit (RD) Calculator handles all these structural compounding calculations automatically, providing real-time visibility into your future wealth accumulation path across any mobile or desktop view layout seamlessly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // Two-Way Programmatic Parameter Rails
+    function syncInputFromSlider(type) {
+        var slider = document.getElementById('slide_' + type);
+        var input = document.getElementById('input_' + type);
+        input.value = slider.value;
+        runRdCalculation();
+    }
+
+    function syncSliderFromInput(type) {
+        var slider = document.getElementById('slide_' + type);
+        var input = document.getElementById('input_' + type);
+        var val = parseFloat(input.value);
+
+        if (!isNaN(val)) {
+            if (val > parseFloat(slider.max)) val = parseFloat(slider.max);
+            slider.value = val;
+            runRdCalculation();
+        }
+    }
+
+    function runRdCalculation() {
+      var monthlyDeposit = parseFloat(document.getElementById('input_monthly').value);
+      var annualRate = parseFloat(document.getElementById('input_interest').value);
+      var tenureYears = parseInt(document.getElementById('input_tenure').value);
+
+      if (isNaN(monthlyDeposit)) monthlyDeposit = 0;
+      if (isNaN(annualRate)) annualRate = 0;
+      if (isNaN(tenureYears)) tenureYears = 1;
+
+      var nMonths = tenureYears * 12;
+      var totalInvested = monthlyDeposit * nMonths;
+
+      if (totalInvested <= 0) {
+        document.getElementById('res_total_invested').innerText = "0";
+        document.getElementById('res_total_interest').innerText = "0";
+        document.getElementById('res_maturity_amt').innerText = "0";
+        return;
+      }
+
+      // IBA QUARTERLY COMPOUNDING ITERATOR LOOP
+      var maturityAmount = 0;
+      for (var k = 1; k <= nMonths; k++) {
+          maturityAmount += monthlyDeposit * Math.pow(1 + (annualRate / 400), (4 * k) / 12);
+      }
+
+      var totalInterestEarned = maturityAmount - totalInvested;
+      if (totalInterestEarned < 0) totalInterestEarned = 0;
+
+      var finalInvestedSum = Math.round(totalInvested);
+      var finalInterestSum = Math.round(totalInterestEarned);
+      var finalMaturitySum = Math.round(maturityAmount);
+
+      document.getElementById('res_total_invested').innerText = finalInvestedSum.toLocaleString('en-IN');
+      document.getElementById('res_total_interest').innerText = finalInterestSum.toLocaleString('en-IN');
+      document.getElementById('res_maturity_amt').innerText = finalMaturitySum.toLocaleString('en-IN');
+
+      var totalSum = finalMaturitySum;
+      var investedRatio = totalSum > 0 ? (finalInvestedSum / totalSum) * 100 : 100;
+      var interestRatio = totalSum > 0 ? (finalInterestSum / totalSum) * 100 : 0;
+
+      document.getElementById('bar_invested').style.width = investedRatio + "%";
+      document.getElementById('bar_interest').style.width = interestRatio + "%";
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
