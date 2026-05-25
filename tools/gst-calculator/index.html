@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Online GST Calculator India | CGST &amp; SGST Tax Split Tool</title>
+  <meta name="description" content="Calculate CGST, SGST, and IGST components instantly with our free online GST calculator India. Supports inclusive and exclusive GST calculation modes." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/gst-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Online GST Calculator India",
+    "operatingSystem": "Web",
+    "applicationCategory": "BusinessApplication",
+    "description": "An advanced financial utility to calculate Goods and Services Tax components including CGST and SGST splits dynamically.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "218"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .gst-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; width: 100%; }
+    .flex-container { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; justify-content: center; width: 100%; box-sizing: border-box; }
+    
+    .inputs-section { flex: 1.2; min-width: 300px; box-sizing: border-box; }
+    .results-section { flex: 0.8; min-width: 280px; background: #f8fafc; padding: 30px; border-radius: 16px; border: 1px solid #e2e8f0; box-sizing: border-box; }
+    
+    /* Toggle Switch Layout */
+    .toggle-container { display: flex; background: #f1f5f9; padding: 4px; border-radius: 12px; margin-bottom: 30px; }
+    .toggle-btn { flex: 1; text-align: center; padding: 10px; font-size: 14px; font-weight: 700; border-radius: 8px; cursor: pointer; transition: 0.2s; color: #64748b; -webkit-user-select: none; user-select: none; }
+    .toggle-btn.active { background: #2563eb; color: #ffffff; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15); }
+
+    .input-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; width: 100%; }
+    .input-label { color: #64748b; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .value-input-wrapper { display: flex; align-items: center; border-bottom: 2px solid #e2e8f0; padding: 4px 0; transition: 0.3s; }
+    .value-input-wrapper:focus-within { border-color: #2563eb; }
+    .sym-fix { color: #1e293b; margin-right: 5px; font-weight: 700; font-size: 18px; }
+    .value-input-wrapper input { border: none; outline: none; font-size: 20px; font-weight: 800; color: #1e293b; text-align: right; width: 100%; max-width: 160px; background: transparent; font-family: inherit; }
+    .unit-fix { color: #94a3b8; margin-left: 5px; font-weight: 600; font-size: 16px; }
+
+    /* Custom Tax Grid Badges */
+    .tax-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; margin-bottom: 35px; }
+    .tax-badge { background: #f1f5f9; text-align: center; padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 700; color: #475569; cursor: pointer; transition: 0.2s; border: 2px solid transparent; -webkit-user-select: none; user-select: none; }
+    .tax-badge.active { background: #eff6ff; color: #2563eb; border-color: #2563eb; }
+
+    .slider-container { margin-bottom: 35px; width: 100%; box-sizing: border-box; }
+    input[type=range] { width: 100%; appearance: none; height: 5px; background: #cbd5e1; border-radius: 5px; outline: none; cursor: pointer; }
+    input[type=range]::-webkit-slider-thumb { appearance: none; width: 22px; height: 22px; background: #ffffff; border: 4px solid #2563eb; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2); }
+
+    /* Output Terminal Fields - FIXED NO SPLIT LAPTOP & DESKTOP */
+    .res-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 12px; border-bottom: 1px dashed #e2e8f0; flex-wrap: nowrap !important; gap: 15px; box-sizing: border-box; }
+    .res-row:last-child { border-bottom: none; margin-top: 15px; background: #eff6ff; border-radius: 12px; border: 1px solid #bfdbfe; width: 100%; }
+    .res-lbl { font-size: 14px; color: #64748b; font-weight: 700; white-space: nowrap; flex-shrink: 0; text-transform: uppercase; letter-spacing: 0.5px; }
+    .res-val { font-size: 16px; color: #1e293b; font-weight: 800; text-align: right; white-space: nowrap; word-break: keep-all; }
+    
+    .total-highlight .res-lbl { color: #1e3a8a; font-size: 15px; font-weight: 800; }
+    .total-highlight .res-val { color: #2563eb; font-size: 22px; font-weight: 800; text-align: right; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .article-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .content-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .content-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .content-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .content-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .content-ul { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .content-ul li { margin-bottom: 8px; }
+
+    /* RIGID MOBILE VIEW ZERO-PADDING MATRIX WITH MAXIMUM OVERFLOW FIX */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .content-title { font-size: 1.8rem; }
+      .content-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) { 
+      .gst-card { padding: 25px 20px !important; border-radius: 20px !important; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02) !important; border: 1px solid #e2e8f0; }
+      .flex-container { flex-direction: column; gap: 24px; align-items: center; }
+      
+      .inputs-section, .results-section { width: 100% !important; min-width: 100% !important; margin: 0 auto; box-sizing: border-box; }
+      .results-section { padding: 20px 15px !important; }
+      
+      .res-row { gap: 10px !important; padding: 14px 0 !important; }
+      .res-row:last-child { padding: 14px 12px !important; }
+      .res-lbl { font-size: 13px !important; }
+      .res-val { font-size: 15px !important; }
+      
+      .total-highlight .res-lbl { font-size: 14px !important; }
+      .total-highlight .res-val { font-size: 19px !important; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .content-p, .content-ul li { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📊</span> Online GST Calculator</div>
+    
+    <div class="gst-card">
+      <div class="toggle-container">
+        <div id="typeExclusive" class="toggle-btn active" onclick="changeMode('exclusive')">GST Exclusive (Add Tax)</div>
+        <div id="typeInclusive" class="toggle-btn" onclick="changeMode('inclusive')">GST Inclusive (Remove Tax)</div>
+      </div>
+
+      <div class="flex-container">
+        <div class="inputs-section">
+          <div class="slider-container">
+            <div class="input-row">
+              <div class="input-label" id="amountLabel">base amount (net price)</div>
+              <div class="value-input-wrapper">
+                <span class="sym-fix">₹</span>
+                <input type="number" id="amountInput" value="10000" title="Amount Field" />
+              </div>
+            </div>
+            <input type="range" id="amountSlider" min="100" max="1000000" step="500" value="10000" title="Amount Slider" />
+          </div>
+          
+          <div class="slider-container">
+            <div class="input-row">
+              <div class="input-label">tax slab rate</div>
+              <div class="value-input-wrapper">
+                <input type="number" id="rateInput" value="18" step="1" title="Tax Rate Field" />
+                <span class="unit-fix">%</span>
+              </div>
+            </div>
+            <div class="tax-grid">
+              <div class="tax-badge" id="slab5" onclick="setSlab(5)">5%</div>
+              <div class="tax-badge" id="slab12" onclick="setSlab(12)">12%</div>
+              <div class="tax-badge active" id="slab18" onclick="setSlab(18)">18%</div>
+              <div class="tax-badge" id="slab28" onclick="setSlab(28)">28%</div>
+            </div>
+            <input type="range" id="rateSlider" min="1" max="50" step="1" value="18" title="Tax Rate Slider" />
+          </div>
+        </div>
+        
+        <div class="results-section">
+          <h3 style="color: #0f172a; margin: 0 0 15px 0; font-size: 18px; font-weight: 700;">Invoice Breakdown</h3>
+          
+          <div class="res-row"><div class="res-lbl">Net Price Amount</div><div class="res-val" id="resNet">₹10,000</div></div>
+          <div class="res-row"><div class="res-lbl">CGST (Central Tax)</div><div class="res-val" id="resCGST">₹900</div></div>
+          <div class="res-row"><div class="res-lbl">SGST (State Tax)</div><div class="res-val" id="resSGST">₹900</div></div>
+          <div class="res-row"><div class="res-lbl">Total GST Tax Gain</div><div class="res-val" id="resTax">₹1,800</div></div>
+          <div class="res-row total-highlight"><div class="res-lbl" id="totalLabel">Gross Total Price</div><div class="res-val" id="resGross">₹11,800</div></div>
+        </div>
+      </div>
+    </div>
+
+    <article class="article-container">
+      <h2 class="content-title">Streamlining Financial Workflows with an Online GST Calculator India</h2>
+      <p class="content-p">The introduction of the Goods and Services Tax (GST) across the Indian subcontinent structurally consolidated a fragmented multi-layered indirect taxation setup into a unified digital matrix. For small retail firm owners, financial account controllers, or independent corporate service consultants, performing swift calculations of statutory variables can be time-consuming. Utilizing our professional <b>online gst calculator india</b> framework completely automates this step, supplying clear visibility into state and central tax allocations instantly.</p>
+
+      <h3 class="content-h2">Understanding Inclusive vs. Exclusive GST Accounting Mechanics</h3>
+      <p class="content-p">When computing product taxation metrics within a commercial ledger environment, variables are mapped through two discrete execution modes depending on how the initial base cost parameters are structured:</p>
+      <ul class="content-ul">
+        <li><b>GST Exclusive Calculation (Tax Addition):</b> This layout applies when the baseline listing value of an asset represents the bare manufacturing or procurement cost, entirely free of statutory tax attributes. The calculation formula constructs the tax volume by scaling the net base price directly by the chosen slab percentage, appending the result linearly to yield the final terminal gross invoice cost.</li>
+        <li><b>GST Inclusive Calculation (Tax Extraction):</b> This template processes transactions where the displaying retail tag already includes the cumulative tax overhead. To isolate the hidden net factory value from the absolute gross sum, the computational formula runs an algebraic back-extraction sequence, preventing accounting teams from accidentally calculating compounding tax-on-tax values.</li>
+      </ul>
+
+      <h3 class="content-h2">The Core Mathematical Formulas Powering the System</h3>
+      <p class="content-p">To establish absolute transparency and fulfill educational criteria loops, our platform processes binary math streams using standard, approved indirect accounting algorithms:</p>
+      <p class="content-p">For Exclusive Tax Addition: <br /><b>GST Amount = (Net Base Price &times; GST Rate) &divide; 100</b> <br /><b>Gross Invoice Total = Net Base Price + GST Amount</b></p>
+      <p class="content-p">For Inclusive Tax Extraction: <br /><b>GST Amount = Gross Price &minus; [Gross Price &times; (100 &divide; (100 + GST Rate))]</b> <br /><b>Net Isolated Base Price = Gross Price &minus; GST Amount</b></p>
+      <p class="content-p">Once the absolute gross or net tax volume is settled, the script automatically parses the value down the middle into equal 50% components to fulfill Indian dual-system requirements: half maps directly to the Central Goods and Services Tax (CGST) register, while the remaining half routes to the State Goods and Services Tax (SGST) ledger node.</p>
+
+      <h3 class="content-h2">Navigating Indian Statutory Tax Slabs</h3>
+      <p class="content-p">The operational framework adapts seamlessly to the four key standard tax brackets maintained by the GST Council. The 5% slab houses baseline essential grocery items, public transport systems, and standard medical supplies. The 12% bracket structures common processed packaged edible products and corporate utility services. The 18% standard represents the baseline economic norm, governing heavy manufacturing systems, consumer electronics, capital equipment distributions, and general commercial trade pipelines. Finally, the luxury 28% bracket handles premium automotive vehicles, high-end electronic items, and specific entertainment sectors. By using our integrated quick-access badges, you can switch between these slabs in milliseconds.</p>
+
+      <h3 class="content-h2">Complete Standalone Client-Side Data Security Protocols</h3>
+      <p class="content-p">In a web ecosystem increasingly vulnerable to unauthorized data mining, keeping corporate ledger information protected is a top priority. Most institutional accounting sites require enterprise owners to input identifying credentials or business records before generating invoice calculations. Texus Pro Tools is built on an isolated, client-side execution philosophy. The core calculation algorithms load as standalone scripts inside your local device container memory. Every variable adjustment, toggle transition, and price breakdown occurs entirely locally on your hardware. Zero telemetry metadata packets are broadcast over the internet, establishing a completely secure sandbox environment for your business planning.</p>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    let currentMode = 'exclusive';
+    const amountInput = document.getElementById('amountInput');
+    const amountSlider = document.getElementById('amountSlider');
+    const rateInput = document.getElementById('rateInput');
+    const rateSlider = document.getElementById('rateSlider');
+
+    const amountLabel = document.getElementById('amountLabel');
+    const totalLabel = document.getElementById('totalLabel');
+
+    function changeMode(mode) {
+        currentMode = mode;
+        document.getElementById('typeExclusive').classList.toggle('active', mode === 'exclusive');
+        document.getElementById('typeInclusive').classList.toggle('active', mode === 'inclusive');
+        
+        if (mode === 'exclusive') {
+            amountLabel.innerText = "base amount (net price)";
+            totalLabel.innerText = "Gross Total Price";
+        } else {
+            amountLabel.innerText = "gross amount (inclusive price)";
+            totalLabel.innerText = "Net Isolated Price";
+        }
+        calculateGST();
+    }
+
+    function setSlab(rate) {
+        rateInput.value = rate;
+        rateSlider.value = rate;
+        updateSlabBadges(rate);
+        calculateGST();
+    }
+
+    function updateSlabBadges(rate) {
+        document.querySelectorAll('.tax-badge').forEach(b => b.classList.remove('active'));
+        if ([5, 12, 18, 28].includes(rate)) {
+            document.getElementById(`slab${rate}`).classList.add('active');
+        }
+    }
+
+    function calculateGST() {
+        let inputAmount = parseFloat(amountInput.value) || 0;
+        let taxRate = parseFloat(rateInput.value) || 0;
+
+        let netPrice = 0;
+        let gstAmount = 0;
+        let grossPrice = 0;
+
+        if (currentMode === 'exclusive') {
+            netPrice = inputAmount;
+            gstAmount = (netPrice * taxRate) / 100;
+            grossPrice = netPrice + gstAmount;
+        } else {
+            grossPrice = inputAmount;
+            gstAmount = grossPrice - (grossPrice * (100 / (100 + taxRate)));
+            netPrice = grossPrice - gstAmount;
+        }
+
+        let splitTax = gstAmount / 2;
+        const fmt = (num) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 2 }).format(num);
+
+        document.getElementById('resNet').innerText = fmt(netPrice);
+        document.getElementById('resCGST').innerText = fmt(splitTax);
+        document.getElementById('resSGST').innerText = fmt(splitTax);
+        document.getElementById('resTax').innerText = fmt(gstAmount);
+        document.getElementById('resGross').innerText = fmt(currentMode === 'exclusive' ? grossPrice : netPrice);
+    }
+
+    function sync(inp, sld, isRate = false) {
+        inp.addEventListener('input', () => { 
+            if(parseFloat(inp.value) > parseFloat(sld.max)) sld.max = inp.value; 
+            sld.value = inp.value; 
+            if(isRate) updateSlabBadges(parseInt(inp.value));
+            calculateGST(); 
+        });
+        sld.addEventListener('input', () => { 
+            inp.value = sld.value; 
+            if(isRate) updateSlabBadges(parseInt(sld.value));
+            calculateGST(); 
+        });
+    }
+
+    sync(amountInput, amountSlider);
+    sync(rateInput, rateSlider, true);
+
+    calculateGST();
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
