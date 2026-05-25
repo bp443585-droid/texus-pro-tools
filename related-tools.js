@@ -9,11 +9,13 @@ window.addEventListener('load', function() {
     return;
   }
 
+
 // MULTI TARGET CONTROLLER: Multiple content layouts support karega
 const contentBlock =
   document.querySelector('.seo-prose-holder') ||
   document.querySelector('.seo-container') ||
-  document.querySelector('.article-container');
+  document.querySelector('.article-container') ||
+  document.querySelector('.content-area');
 
 if (!contentBlock) {
   console.log("Related tools error: No supported content container found in DOM.");
