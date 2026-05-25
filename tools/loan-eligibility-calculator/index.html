@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Loan Eligibility Calculator India | Bank Sanction Limit Checker</title>
+  <meta name="description" content="Check your maximum bank loan eligibility amount instantly. Online loan eligibility calculator India based on monthly net income, expected interest rates, and existing EMIs." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/loan-eligibility-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Loan Eligibility Calculator India",
+    "operatingSystem": "Web",
+    "applicationCategory": "BusinessApplication",
+    "description": "An advanced banking utility to compute maximum loan eligibility and estimated monthly EMIs utilizing standard industry FOIR ratios and debt-to-income limits.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .loan-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; width: 100%; }
+    .flex-container { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; justify-content: center; width: 100%; box-sizing: border-box; }
+    
+    .inputs-section { flex: 1.2; min-width: 300px; box-sizing: border-box; }
+    .results-section { flex: 0.8; min-width: 280px; background: #f8fafc; padding: 30px; border-radius: 16px; border: 1px solid #e2e8f0; box-sizing: border-box; }
+
+    .input-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; width: 100%; }
+    .input-label { color: #64748b; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .value-input-wrapper { display: flex; align-items: center; border-bottom: 2px solid #e2e8f0; padding: 4px 0; transition: 0.3s; }
+    .value-input-wrapper:focus-within { border-color: #2563eb; }
+    .sym-fix { color: #1e293b; margin-right: 5px; font-weight: 700; font-size: 18px; }
+    .value-input-wrapper input { border: none; outline: none; font-size: 20px; font-weight: 800; color: #1e293b; text-align: right; width: 100%; max-width: 160px; background: transparent; font-family: inherit; }
+    .unit-fix { color: #94a3b8; margin-left: 5px; font-weight: 600; font-size: 16px; }
+
+    .slider-container { margin-bottom: 35px; width: 100%; box-sizing: border-box; }
+    input[type=range] { width: 100%; appearance: none; height: 5px; background: #cbd5e1; border-radius: 5px; outline: none; cursor: pointer; }
+    input[type=range]::-webkit-slider-thumb { appearance: none; width: 22px; height: 22px; background: #ffffff; border: 4px solid #2563eb; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2); }
+
+    /* Output Terminal Fields - FIXED NO SPLIT LAPTOP & DESKTOP */
+    .res-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 12px; border-bottom: 1px dashed #e2e8f0; flex-wrap: nowrap !important; gap: 15px; box-sizing: border-box; }
+    .res-row:last-child { border-bottom: none; margin-top: 15px; background: #eff6ff; border-radius: 12px; border: 1px solid #bfdbfe; width: 100%; }
+    .res-lbl { font-size: 14px; color: #64748b; font-weight: 700; white-space: nowrap; flex-shrink: 0; text-transform: uppercase; letter-spacing: 0.5px; }
+    .res-val { font-size: 16px; color: #1e293b; font-weight: 800; text-align: right; white-space: nowrap; word-break: keep-all; }
+    
+    .total-highlight .res-lbl { color: #1e3a8a; font-size: 15px; font-weight: 800; }
+    .total-highlight .res-val { color: #2563eb; font-size: 22px; font-weight: 800; text-align: right; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .article-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .content-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .content-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .content-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .content-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .info-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .math-block { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 1.1rem; text-align: center; margin: 20px 0; font-family: monospace; color: #0f172a; font-weight: 700; }
+    .content-ul { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .content-ul li { margin-bottom: 8px; }
+
+    /* RIGID MOBILE VIEW ZERO-PADDING MATRIX WITH MAXIMUM OVERFLOW FIX */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .content-title { font-size: 1.8rem; }
+      .content-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) { 
+      .loan-card { padding: 25px 20px !important; border-radius: 20px !important; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02) !important; border: 1px solid #e2e8f0; }
+      .flex-container { flex-direction: column; gap: 24px; align-items: center; }
+      
+      .inputs-section, .results-section { width: 100% !important; min-width: 100% !important; margin: 0 auto; box-sizing: border-box; }
+      .results-section { padding: 20px 15px !important; }
+      
+      .res-row { gap: 10px !important; padding: 14px 0 !important; }
+      .res-row:last-child { padding: 14px 12px !important; }
+      .res-lbl { font-size: 13px !important; }
+      .res-val { font-size: 15px !important; }
+      
+      .total-highlight .res-lbl { font-size: 14px !important; }
+      .total-highlight .res-val { font-size: 19px !important; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .content-p, .content-ul li { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📊</span> Loan Eligibility Calculator</div>
+    
+    <div class="loan-card">
+      <div class="flex-container">
+        <div class="inputs-section">
+          <div class="slider-container">
+            <div class="input-row">
+              <div class="input-label">monthly net salary / income</div>
+              <div class="value-input-wrapper">
+                <span class="sym-fix">₹</span>
+                <input type="number" id="incomeInput" value="50000" title="Income Field" />
+              </div>
+            </div>
+            <input type="range" id="incomeSlider" min="10000" max="1000000" step="2000" value="50000" title="Income Slider" />
+          </div>
+
+          <div class="slider-container">
+            <div class="input-row">
+              <div class="input-label">existing monthly emis (if any)</div>
+              <div class="value-input-wrapper">
+                <span class="sym-fix">₹</span>
+                <input type="number" id="emiInput" value="0" title="EMI Field" />
+              </div>
+            </div>
+            <input type="range" id="emiSlider" min="0" max="500000" step="1000" value="0" title="EMI Slider" />
+          </div>
+          
+          <div class="slider-container">
+            <div class="input-row">
+              <div class="input-label">expected rate of interest (p.a.)</div>
+              <div class="value-input-wrapper">
+                <input type="number" id="rateInput" value="8.5" step="0.1" title="Interest Rate Field" />
+                <span class="unit-fix">%</span>
+              </div>
+            </div>
+            <input type="range" id="rateSlider" min="5" max="20" step="0.1" value="8.5" title="Interest Rate Slider" />
+          </div>
+
+          <div class="slider-container">
+            <div class="input-row">
+              <div class="input-label">loan tenure (period)</div>
+              <div class="value-input-wrapper">
+                <input type="number" id="timeInput" value="20" step="1" title="Tenure Field" />
+                <span class="unit-fix">Yrs</span>
+              </div>
+            </div>
+            <input type="range" id="timeSlider" min="1" max="30" step="1" value="20" title="Tenure Slider" />
+          </div>
+        </div>
+        
+        <div class="results-section">
+          <h3 style="color: #0f172a; margin: 0 0 15px 0; font-size: 18px; font-weight: 700;">Eligibility Summary</h3>
+          
+          <div class="res-row"><div class="res-lbl">Allowed FOIR Limit (50%)</div><div class="res-val" id="resFOIR">₹25,000</div></div>
+          <div class="res-row"><div class="res-lbl">Max Affordable EMI</div><div class="res-val" id="resAffEMI">₹25,000</div></div>
+          <div class="res-row total-highlight"><div class="res-lbl">Eligible Loan Amount</div><div class="res-val" id="resLoan">₹27,64,268</div></div>
+        </div>
+      </div>
+    </div>
+
+    <article class="article-container">
+      <h2 class="content-title">Deciphering Borrowing Limits via an Online Loan Eligibility Calculator India</h2>
+      <p class="content-p">Securing structural financial leverage is an essential phase when making significant lifetime investments, such as purchasing prime residential real estate or expanding corporate capital machinery. However, submitting formal underwriting dossiers to banking institutions without calculating your core borrowing boundaries can cause unexpected rejections. Implementing an integrated <b>online loan eligibility calculator india</b> workflow removes this guesswork, calculating your credit limit based on standard bank parameters instantly.</p>
+
+      <h3 class="content-h2">Understanding Fixed Income to Obligation Ratio (FOIR) Banking Standards</h3>
+      <p class="content-p">When an evaluation officer runs a risk-assessment scan on an applicant's financial statements, the primary variable they calculate is the Fixed Income to Obligation Ratio (FOIR). This benchmark ratio determines the percentage of a borrower's net monthly income that can safely go toward paying monthly debt liabilities. Most commercial banking organizations across India lock this operational baseline at 50% for ordinary income profiles.</p>
+      <p class="content-p">If an individual earns a net baseline salary of fifty thousand per month, the maximum cap assigned for cumulative monthly installments cannot surpass twenty-five thousand. If the applicant already has active structural car loans or credit cards with a monthly repayment profile of five thousand, their remaining maximum affordable EMI drops to twenty thousand. Our <b>bank loan eligibility tool</b> incorporates this exact real-world risk matrix, protecting you from credit drops caused by submitting excessive loan requests to bank networks.</p>
+
+      <h3 class="content-h2">The Mathematical Logic of Present Value Amortization</h3>
+      <p class="content-p">To convert an affordable monthly payment ceiling back into a primary loan principal amount, the system utilizes present value amortization algorithms. Instead of working forward to find a monthly payment, the logic works backward from your net income boundaries using the following mathematical model:</p>
+      
+      <div class="math-block">P = E \cdot \left[ \frac{1 - (1 + r)^{-n}}{r} \right]</div>
+      
+      <p class="content-p">Where mathematical variables correlate to these underlying variables:</p>
+      <ul class="content-ul">
+        <li><b>P (Maximum Eligible Loan Principal):</b> The total capital amount a bank can safely lend to you based on your financial risk factors.</li>
+        <li><b>E (Affordable Monthly EMI):</b> The calculated income surplus remaining after subtracting existing monthly debt payments from your allowed FOIR baseline.</li>
+        <li><b>r (Monthly Interest Rate):</b> The annual percentage rate (APR) divided by twelve annual cycles and converted into a standard decimal fraction.</li>
+        <li><b>n (Total Installment Periods):</b> The absolute number of monthly repayment steps across the chosen tenure timeline (Years multiplied by 12).</li>
+      </ul>
+
+      <h3 class="content-h2">Key Drivers That Directly Shape Credit Eligibility</h3>
+      <p class="content-p">Beyond baseline income metrics, several variables determine your ultimate borrowing strength across retail banking channels. The repayment timeline (tenure) plays a major role; extending the repayment window to twenty or thirty years spreads the principal further, lowering the monthly payment and allowing you to qualify for a larger total loan amount. Additionally, maintaining a solid credit rating (such as a CIBIL score above 750) signals strong financial responsibility, which helps you unlock lower interest rates from banks. Lower interest rates minimize the interest drag on your monthly payments, expanding your absolute maximum borrowing capacity.</p>
+
+      <h3 class="content-h2">100% Client-Side Private Financial Sandboxing</h3>
+      <p class="content-p">Texus Pro Tools values your absolute data security above everything else. While major mortgage platforms track your calculation paths to sell your contact details to aggressive high-interest lenders, our tools function under a user-first sandbox design. The mathematical loops, compounding modules, and range metrics compile exclusively inside your device browser runtime environment using client-side JavaScript execution arrays. Your internal financial planning numbers never traverse networks, providing a completely secure accounting workflow.</p>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    const incomeInput = document.getElementById('incomeInput');
+    const incomeSlider = document.getElementById('incomeSlider');
+    const emiInput = document.getElementById('emiInput');
+    const emiSlider = document.getElementById('emiSlider');
+    const rateInput = document.getElementById('rateInput');
+    const rateSlider = document.getElementById('rateSlider');
+    const timeInput = document.getElementById('timeInput');
+    const timeSlider = document.getElementById('timeSlider');
+
+    function calculateEligibility() {
+        let monthlyIncome = parseFloat(incomeInput.value) || 0;
+        let existingEMI = parseFloat(emiInput.value) || 0;
+        let annualRate = parseFloat(rateInput.value) || 0;
+        let years = parseFloat(timeInput.value) || 0;
+
+        // Bank FOIR Metric Selection (Standard 50% Allocation Line)
+        let foirLimit = monthlyIncome * 0.50;
+        let affordableEMI = foirLimit - existingEMI;
+
+        if (affordableEMI < 0) affordableEMI = 0;
+
+        // Amortization Reverse Loop Math
+        let monthlyRate = (annualRate / 12) / 100;
+        let totalMonths = years * 12;
+        let maxLoan = 0;
+
+        if (affordableEMI > 0 && monthlyRate > 0) {
+            maxLoan = affordableEMI * ((Math.pow(1 + monthlyRate, totalMonths) - 1) / (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)));
+        }
+
+        const fmt = (num) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(num);
+
+        document.getElementById('resFOIR').innerText = fmt(foirLimit);
+        document.getElementById('resAffEMI').innerText = fmt(affordableEMI);
+        document.getElementById('resLoan').innerText = fmt(maxLoan);
+    }
+
+    function syncFields(inp, sld) {
+        inp.addEventListener('input', () => { 
+            if(parseFloat(inp.value) > parseFloat(sld.max)) sld.max = inp.value; 
+            sld.value = inp.value; 
+            calculateEligibility(); 
+        });
+        sld.addEventListener('input', () => { 
+            inp.value = sld.value; 
+            calculateEligibility(); 
+        });
+    }
+
+    syncFields(incomeInput, incomeSlider);
+    syncFields(emiInput, emiSlider);
+    syncFields(rateInput, rateSlider);
+    syncFields(timeInput, timeSlider);
+
+    calculateEligibility();
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
