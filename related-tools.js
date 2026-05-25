@@ -9,14 +9,16 @@ window.addEventListener('load', function() {
     return;
   }
 
-  // DUAL TARGET CONTROLLER: Dono classes check karega (Jo milegi uske niche chipak jayega)
-  const contentBlock = document.querySelector('.seo-prose-holder') || document.querySelector('.seo-container');
-  
-  if (!contentBlock) {
-    console.log("Related tools error: Neither '.seo-prose-holder' nor '.seo-container' found in DOM.");
-    return;
-  }
+// MULTI TARGET CONTROLLER: Multiple content layouts support karega
+const contentBlock =
+  document.querySelector('.seo-prose-holder') ||
+  document.querySelector('.seo-container') ||
+  document.querySelector('.article-container');
 
+if (!contentBlock) {
+  console.log("Related tools error: No supported content container found in DOM.");
+  return;
+}
   // Create the main panel container programmatically
   const wrapper = document.createElement('div');
   wrapper.id = 'automated_related_tools_panel';
