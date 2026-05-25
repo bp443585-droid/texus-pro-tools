@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Gratuity Status &amp; Payout Calculator - Payment of Gratuity Act, 1972</title>
+  <meta name="description" content="Calculate your legal gratuity payout disbursements instantly. Check eligibility rules and compare covered vs non-covered establishment formulas under latest tax slab metrics." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/gratuity-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Gratuity Calculator India",
+    "operatingSystem": "Web",
+    "applicationCategory": "BusinessApplication",
+    "description": "A high-performance corporate financial utility to estimate legal gratuity payout disbursements for employees under the Payment of Gratuity Act, 1972.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* TOOL SPECIFIC WORKSPACE EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CALCULATOR CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* SLIDER AND EDITABLE INPUT GRID SYSTEM */
+    .f-control-row { margin-bottom: 25px; text-align: left; }
+    .f-label-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .f-label-text { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    /* EDITABLE TYPING FIELD INPUT BOX & SELECTION DROPDOWN */
+    .f-value-input-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; font-weight: 700; color: #2563eb; font-size: 1.05rem; width: 130px; text-align: right; font-family: inherit; outline: none; transition: border-color 0.2s; box-sizing: border-box; }
+    .f-value-input-box:focus { border-color: #2563eb; background: #ffffff; }
+    select.f-value-input-box { text-align-last: right; padding-right: 14px; cursor: pointer; width: 180px; }
+    
+    .f-slider { width: 100%; -webkit-appearance: none; appearance: none; height: 6px; background: #e2e8f0; border-radius: 5px; outline: none; margin: 12px 0; cursor: pointer; }
+    .f-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; background: #2563eb; border-radius: 50%; cursor: pointer; transition: transform 0.1s; }
+    .f-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+    /* PRESENTATION RESULTS PANEL */
+    .f-result-box { display: block; margin-top: 30px; border-top: 2px dashed #e2e8f0; padding-top: 25px; }
+    .f-metrics-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; }
+    .f-metric-tile { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 22px 15px; text-align: center; box-sizing: border-box; }
+    .f-metric-tile.prime { background: #eff6ff; border-color: #bfdbfe; }
+    .f-metric-tile h5 { margin: 0 0 6px 0; font-size: 0.85rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    /* ZERO GLITCH SYMBOL PARSING */
+    .f-currency-display { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0; font-size: 1.25rem; color: #0f172a; font-weight: 800; }
+    .f-metric-tile.prime .f-currency-display { color: #2563eb; font-size: 1.8rem; }
+    
+    /* STATUTORY ELIGIBILITY NOTIFICATION CONTAINER */
+    .f-status-badge { background: #fef2f2; color: #991b1b; font-size: 0.95rem; font-weight: 700; padding: 12px 16px; border-radius: 12px; margin-top: 15px; display: none; text-align: center; border: 1px solid #fee2e2; }
+    .f-status-badge.eligible { background: #f0fdf4; color: #166534; border-color: #dcfce7; display: block; }
+
+    /* PRESTIGE SEO CONTENT APPARATUS STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-math-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 1.1rem; text-align: center; margin: 20px 0; font-family: monospace; color: #0f172a; font-weight: 700; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* FIXED RESPONSIBLE CONSTRAINTS GRID FOR MOBILE RESPONSIVENESS */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-metrics-summary { grid-template-columns: 1fr; gap: 12px; }
+      .f-metric-tile.prime { grid-column: span 1; }
+      .f-value-input-box { padding: 8px 10px; font-size: 0.95rem; width: 110px; }
+      select.f-value-input-box { width: 140px; }
+      .f-currency-display { font-size: 1.25rem; }
+      .f-metric-tile.prime .f-currency-display { font-size: 1.5rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>💼</span> Gratuity Status &amp; Payout Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-control-row">
+        <div class="f-label-container">
+          <span class="f-label-text">Last Drawn Basic Salary + DA (₹)</span>
+          <input type="number" id="input_salary" class="f-value-input-box" min="1000" max="1000000" value="50000" oninput="syncSliderFromInput('salary')" />
+        </div>
+        <input type="range" id="slide_salary" class="f-slider" min="1000" max="1000000" step="500" value="50000" oninput="syncInputFromSlider('salary')" />
+      </div>
+
+      <div class="f-control-row">
+        <div class="f-label-container">
+          <span class="f-label-text">Years of Continuous Service</span>
+          <input type="number" id="input_years" class="f-value-input-box" min="1" max="50" step="1" value="5" oninput="syncSliderFromInput('years')" />
+        </div>
+        <input type="range" id="slide_years" class="f-slider" min="1" max="50" step="1" value="5" oninput="syncInputFromSlider('years')" />
+      </div>
+
+      <div class="f-control-row">
+        <div class="f-label-container">
+          <span class="f-label-text">Company Category Act Type</span>
+          <select id="input_act_type" class="f-value-input-box" onchange="runGratuityCalculation()">
+            <option value="covered" selected>Covered under Gratuity Act</option>
+            <option value="not_covered">Not Covered under Act</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-result-box">
+        <div class="f-metrics-summary">
+          <div class="f-metric-tile">
+            <h5>Total Tenure Computed</h5>
+            <p class="f-currency-display"><span id="res_tenure_display">5 Years</span></p>
+          </div>
+          <div class="f-metric-tile">
+            <h5>Statutory Cap Limit</h5>
+            <p class="f-currency-display"><span>₹</span><span>20,00,000</span></p>
+          </div>
+          <div class="f-metric-tile prime">
+            <h5>Estimated Gratuity Payable</h5>
+            <p class="f-currency-display"><span>₹</span><span id="res_gratuity_amt">0</span></p>
+          </div>
+        </div>
+        
+        <div class="f-status-badge" id="res_status_badge"></div>
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Payment of Gratuity Act, 1972: Statutory Allocation Mechanics, Structural Formulas, and Corporate Disbursal Frameworks</h2>
+      <p class="seo-p">Designing an institutional financial exit strategy or verifying terminal employment benefits requires exploring state labor mandates, fixed corporate reward vectors, and statutory legal exemptions. In organize labor frameworks in India, gratuity acts as a primary defined benefit scheme. Governed under the historical mandate of the Payment of Gratuity Act of 1972, this monetary perk is a statutory terminal payout distributed by commercial organizations to line professionals as a token of gratitude for committing long-term continuous service timelines toward the growth of the enterprise.</p>
+      <p class="seo-p">This corporate guide breaks down the legal eligibility thresholds across private and public sectors, details the unique fractional 15/26 and 15/30 calculation models, explores the maximum sovereign monetary ceiling index, and provides actionable guidelines to audit tax exemptions cleanly.</p>
+
+      <div class="seo-callout">
+        <strong>Mandatory Institutional Rule:</strong> Any commercial workspace, shop, factory, mine, or corporate establishment that has employed <b>10 or more active professionals</b> on any single calendar day of the preceding 12 months is legally required to implement the Gratuity framework for its workforce. Once an organization triggers this cap, it remains bound by the act even if its active headcount drops below ten later.
+      </div>
+
+      <h3 class="seo-h2">The 5-Year Continuous Service Validation Rule</h3>
+      <p class="seo-p">To claim a valid legal stake in an organization's gratuity pool, an employee must complete a minimum threshold of <b>5 years of continuous service</b> with that single employer. However, judicial definitions and dynamic labor court updates feature deep rule conditions regarding this timeline:</p>
+
+      <h4 class="seo-h3">The 4 Years and 240 Days Calculation Rule</h4>
+      <p class="seo-p">Under standard parsing parameters across major manufacturing set ups and corporate setups working 6 days a week, if an individual completes exactly 4 years and 240 working days of continuous service in the 5th operational year, the service timeline is rounded up to 5 years by law, making them fully eligible for gratuity payouts. For organizations working a standard 5-day week, this threshold adjusts to 4 years and 190 days.</p>
+
+      <h4 class="seo-h3">Exemption from the 5-Year Rule</h4>
+      <p class="seo-p">The mandatory 5-year lock-in condition is completely waived in the tragic event of an employee's death or permanent disablement due to occupational accidents or illnesses. In these specific validation tracks, the company must disburse the entire accumulated gratuity amount directly to the nominee or legal heir, regardless of total service years.</p>
+
+      <h3 class="seo-h2">Mathematical Dissection of Gratuity Estimation Formulas</h3>
+      <p class="seo-p">The calculations used to determine gratuity diverge significantly based on whether the commercial employer is officially registered under the statutory umbrella of the Payment of Gratuity Act, 1972:</p>
+
+      <h4 class="seo-h3">Category A: Organizations Covered Under the Act, 1972</h4>
+      <p class="seo-p">For covered establishments, the math relies on a standard 26-day working month layout, with 15 days of wages allocated per completed year of service. The system processes calculations using this structural formula:</p>
+
+      <div class="seo-math-box">\text{Gratuity} = [ \text{Last Drawn Basic Salary} + \text{DA} ] \times \left( \frac{15}{26} \right) \times \text{Years of Service}</div>
+
+      <p class="seo-p">The fractional modifier <b>15/26</b> is a legal rule where the monthly basic salary pool is divided by 26 standard working days (excluding 4 monthly Sundays) to extract an accurate daily wage, which is then multiplied by 15 days of compensation.</p>
+
+      <h4 class="seo-h3">Category B: Establishments Not Covered Under the Act</h4>
+      <p class="seo-p">For organizations not bound by the statutory act, gratuity calculations follow a standard 30-day month layout, allocating half a month's salary for each completed year of service:</p>
+
+      <div class="seo-math-box">\text{Gratuity} = [ \text{Last Drawn Basic Salary} + \text{DA} ] \times \left( \frac{15}{30} \right) \times \text{Years of Service}</div>
+
+      <h3 class="seo-h2">The Statutory ₹20,00,000 Ceiling Cap Matrix</h3>
+      <p class="seo-p">Regardless of how large an employee's basic salary or service tenure may be, the absolute statutory maximum ceiling cap configuration for a tax-exempt gratuity distribution pool is strictly fixed at <b>₹20,00,000 (Twenty Lakh Rupees)</b>. Any calculated gratuity value that exceeds this 20-lakh limit is handled using these regulatory rules:</p>
+
+      <ul class="seo-list">
+        <li><b>Exempt Balance Core:</b> The initial ₹20,0,000 chunk of the gratuity payout is fully tax-exempt for the employee.</li>
+        <li><b>Taxable Excess Layer:</b> Any excess capital disbursed beyond the ₹20 lakh ceiling cap is treated as taxable salary income, with tax applied based on the individual's standard income tax slab rate for that fiscal year.</li>
+        <li><b>Government Employee Privileges:</b> Central, State, and Defense government professionals enjoy an exclusive privilege index where their entire statutory gratuity payout is 100% tax-exempt, even if the absolute distribution balance scales past the standard 20-lakh cap.</li>
+      </ul>
+
+      <h3 class="seo-h2">Comprehensive Multi-Category Case Study Comparison</h3>
+      <p class="seo-p">To see how these rules impact final payouts, let's look at a comparative case study. Consider an executive who decides to resign after completing exactly <b>20 years of continuous service</b>, with a documented final basic salary plus DA of <b>₹1,00,000 per month</b>:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Calculation Metric Element</th>
+              <th>Track 1: Company Covered Under Act</th>
+              <th>Track 2: Company NOT Covered Under Act</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Base Input Parameters</b></td>
+              <td>Salary: ₹1,00,000 | Tenure: 20 Years</td>
+              <td>Salary: ₹1,00,000 | Tenure: 20 Years</td>
+            </tr>
+            <tr>
+              <td><b>Formula Framework</b></td>
+              <td>₹1,00,000 &times; (15 / 26) &times; 20</td>
+              <td>₹1,00,000 &times; (15 / 30) &times; 20</td>
+            </tr>
+            <tr>
+              <td><b>Absolute Calculated Value</b></td>
+              <td>₹11,53,846</td>
+              <td>₹10,00,000</td>
+            </tr>
+            <tr>
+              <td><b>Tax Exemption Status</b></td>
+              <td>100% Tax Free (Below ₹20 Lakh Cap)</td>
+              <td>100% Tax Free (Below ₹20 Lakh Cap)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="seo-p">This case study demonstrates the impact of the fractional modifier. The 26-day working month model utilized in Track 1 yields an extra <b>₹1,53,846</b> in legal terminal capital for the employee compared to the 30-day model used in Track 2.</p>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>How do rounding rules apply to fractional years of service?</h3>
+      <p class="seo-p">For establishments covered under the act, any service tenure exceeding 6 months in a partial year is automatically rounded up to the next full year. For example, a tenure of 12 years and 7 months rounds up to 13 years of service. Conversely, a tenure of 12 years and 5 months rounds down to 12 years. For non-covered organizations, rounding rules are deactivated, and only fully completed years are counted.</p>
+
+      <h3>Can an employer refuse or forfeit an employee's gratuity payout?</h3>
+      <p class="seo-p">Under Section 4(6) of the Act of 1972, an organization can legally forfeit an employee's gratuity only if their employment is terminated due to verified acts of structural misconduct, theft, riotous behavior, or willful destruction of company property. The financial forfeiture must match the exact monetary damage caused to the enterprise.</p>
+
+      <h3>Is gratuity paid out if an employee chooses to switch jobs voluntarily?</h3>
+      <p class="seo-p">Yes, gratuity is a terminal benefit tied to cumulative service tenure rather than the specific nature of your exit. As long as you fulfill the 5-year continuous service threshold, you are legally entitled to receive your payout whether you resign voluntarily, face corporate layoffs, or retire at superannuation age.</p>
+
+      <h3>How can an individual ensure their gratuity claims are safe if the company goes bankrupt?</h3>
+      <p class="seo-p">The legal framework treats gratuity balances as primary secured liabilities. In insolvency proceedings, employee gratuity dues are prioritized above other commercial corporate debts, ensuring that outstanding terminal benefits are cleared cleanly during liquidation.</p>
+
+      <h3 class="seo-h2">Summary: Core Management Steps for Gratuity Optimization</h3>
+      <p class="seo-p">To manage your terminal benefits effectively, track your continuous service milestones closely before final carbon resignation schedules. Verify your organization's legal status under the Act of 1972 to ensure correct formula application, file nomination forms promptly to shield family rights from probate delays, and consult professional accounting frameworks if your returns climb near the 20-lakh tax limit.</p>
+      <p class="seo-p">Our Gratuity Payout Calculator automates all these statutory logic paths, providing real-time visibility into your terminal benefits across any mobile or desktop view layout seamlessly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function syncInputFromSlider(type) {
+        var slider = document.getElementById('slide_' + type);
+        var input = document.getElementById('input_' + type);
+        input.value = slider.value;
+        runGratuityCalculation();
+    }
+
+    function syncSliderFromInput(type) {
+        var slider = document.getElementById('slide_' + type);
+        var input = document.getElementById('input_' + type);
+        var val = parseFloat(input.value);
+
+        if (!isNaN(val)) {
+            if (val > parseFloat(slider.max)) val = parseFloat(slider.max);
+            slider.value = val;
+            runGratuityCalculation();
+        }
+    }
+
+    function runGratuityCalculation() {
+      var basicSalary = parseFloat(document.getElementById('input_salary').value);
+      var serviceYears = parseInt(document.getElementById('input_years').value);
+      var actType = document.getElementById('input_act_type').value;
+
+      if (isNaN(basicSalary)) basicSalary = 0;
+      if (isNaN(serviceYears)) serviceYears = 0;
+
+      document.getElementById('res_tenure_display').innerText = serviceYears + " Years";
+
+      var badge = document.getElementById('res_status_badge');
+      
+      if (serviceYears < 5) {
+          badge.className = "f-status-badge";
+          badge.innerText = "Status: Not Eligible. A minimum of 5 years of continuous corporate service is required by law.";
+          badge.style.display = "block";
+          document.getElementById('res_gratuity_amt').innerText = "0";
+          return;
+      }
+
+      badge.className = "f-status-badge eligible";
+      badge.innerText = "Status: Eligible. Statutory corporate benefit qualification approved under legal frameworks.";
+      
+      var computedGratuity = 0;
+      var maxCeilingCap = 2000000; 
+
+      if (actType === "covered") {
+          computedGratuity = basicSalary * (15 / 26) * serviceYears;
+      } else {
+          computedGratuity = basicSalary * (15 / 30) * serviceYears;
+      }
+
+      if (computedGratuity > maxCeilingCap) {
+          computedGratuity = maxCeilingCap;
+      }
+
+      var finalGratuityOutput = Math.round(computedGratuity);
+      document.getElementById('res_gratuity_amt').innerText = finalGratuityOutput.toLocaleString('en-IN');
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
