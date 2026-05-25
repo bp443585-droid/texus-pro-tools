@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Online Character Counter - Live Meta Length Analyzer</title>
+  <meta name="description" content="Count text characters with and without whitespace limits instantly. Check platform constraints layouts for Google title tags, meta descriptions, and social media posts." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/character-counter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Online Character Counter",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced string length analysis tool to calculate text characters with and without whitespace bounds dynamically based on active platform target limits.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* TOOL SPECIFIC WORKSPACE EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CALCULATOR CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DYNAMIC PRESETS PLATFORM DROPDOWN GRID */
+    .f-preset-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; text-align: left; }
+    .f-preset-select { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; font-weight: 700; color: #1e293b; font-size: 0.95rem; outline: none; cursor: pointer; transition: border-color 0.2s; }
+    .f-preset-select:focus { border-color: #2563eb; }
+    .f-label-text { font-size: 0.88rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* TEXTAREA ENTERPRISE INPUT BLOCK */
+    .f-textarea-container { margin-bottom: 20px; text-align: left; }
+    .f-char-textarea { width: 100%; height: 220px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 18px; font-size: 1.05rem; font-family: inherit; color: #1e293b; resize: vertical; outline: none; transition: all 0.2s ease; box-sizing: border-box; line-height: 1.6; }
+    .f-char-textarea:focus { border-color: #2563eb; background: #ffffff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.05); }
+
+    /* PRESENTATION RESULTS PANEL - 3 CONFIG MATRIX TILES */
+    .f-metrics-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+    .f-metric-tile { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 14px 10px; text-align: center; box-sizing: border-box; }
+    .f-metric-tile.prime { background: #eff6ff; border-color: #bfdbfe; padding: 18px 15px; }
+    
+    .f-metric-tile h5 { margin: 0 0 4px 0; font-size: 0.78rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-data-display { margin: 0; font-size: 1.4rem; color: #0f172a; font-weight: 800; word-break: break-all; }
+    .f-metric-tile.prime .f-data-display { color: #2563eb; font-size: 1.9rem; }
+
+    /* LIVE LIMIT PROGRESS TRACKER COMPILER */
+    .f-progress-container { margin-top: 5px; text-align: left; }
+    .f-progress-bar-bg { height: 10px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin-bottom: 8px; position: relative; }
+    .f-progress-bar-fill { height: 100%; width: 0%; background: #2563eb; transition: width 0.15s ease, background-color 0.15s ease; border-radius: 6px; }
+    .f-limit-status { display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 700; color: #64748b; }
+
+    /* BUTTON ACTION CONTROLLER */
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; font-weight: 700; padding: 10px 16px; border-radius: 10px; cursor: pointer; font-size: 0.9rem; transition: all 0.15s ease; -webkit-user-select: none; user-select: none; margin-left: auto; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PRESTIGE SEO CONTENT APPARATUS STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-math-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 1.1rem; text-align: center; margin: 20px 0; font-family: monospace; color: #0f172a; font-weight: 700; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-char-textarea { height: 150px; padding: 12px; font-size: 0.95rem; }
+      .f-preset-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .f-preset-select, .f-btn-clear { width: 100%; box-sizing: border-box; }
+      
+      .f-metrics-summary { grid-template-columns: 1fr; gap: 10px; }
+      .f-metric-tile { padding: 12px 6px; }
+      .f-data-display { font-size: 1.25rem; }
+      .f-metric-tile.prime .f-data-display { font-size: 1.6rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📏</span> Online Character Counter</div>
+    
+    <div class="f-card">
+      <div class="f-preset-row">
+        <span class="f-label-text" style="margin-bottom: 0;">Target Meta Preset:</span>
+        <select id="platform_preset" class="f-preset-select" onchange="adjustPlatformBoundary()">
+          <option value="60">Google Search Title Tag (60 Chars)</option>
+          <option value="160">Google Meta Description (160 Chars)</option>
+          <option value="280" selected>X / Twitter Post Limit (280 Chars)</option>
+          <option value="125">Facebook Ad Primary Text (125 Chars)</option>
+          <option value="10000">Custom / Unconstrained Length</option>
+        </select>
+        <button class="f-btn-clear" onclick="clearCounterBoard()">Clear</button>
+      </div>
+
+      <div class="f-textarea-container">
+        <textarea id="char_analyzer_input" class="f-char-textarea" placeholder="Type or paste your text here to track live constraint layouts..." oninput="calculateCharacterMetrics()"></textarea>
+      </div>
+
+      <div class="f-result-box">
+        <div class="f-metrics-summary">
+          <div class="f-metric-tile prime">
+            <h5>Characters (With Spaces)</h5>
+            <p class="f-data-display" id="metric_with_spaces">0</p>
+          </div>
+          <div class="f-metric-tile">
+            <h5>Characters (No Spaces)</h5>
+            <p class="f-data-display" id="metric_no_spaces">0</p>
+          </div>
+          <div class="f-metric-tile">
+            <h5>Total Words Counted</h5>
+            <p class="f-data-display" id="metric_words">0</p>
+          </div>
+        </div>
+
+        <div class="f-progress-container">
+          <div class="f-progress-bar-bg">
+            <div id="progress_bar_fill" class="f-progress-bar-fill"></div>
+          </div>
+          <div class="f-limit-status">
+            <span id="label_boundary_status">Usage: 0%</span>
+            <span id="label_remaining_count">Remaining: 280 Chars</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Informatics of String Array Metrics: Spatial Character Computation, Byte-Size Allocations, and Metadata Compression Rules</h2>
+      <p class="seo-p">Optimizing localized technical metadata tracks or balancing programmatic content payloads demands a complete mastery over string index matrices, whitespace character filtering, and multi-byte text array structures. Across digital delivery frameworks, string length restriction is a constant architectural constraint. Whether managing search snippet displays or database storage allocations, an advanced Character Counter acts as a validation engine that splits input strings into analytical arrays to isolate active characters from spatial formatting voids cleanly.</p>
+      <p class="seo-p">This long-tail master manual details the array counting logic used by modern development frameworks, covers character limits across search engine result pages (SERPs) and enterprise databases, examines spatial data consumption rules, and outlines steps to prevent metadata truncation errors.</p>
+
+      <div class="seo-callout">
+        <strong>The Space Character Reality:</strong> To a standard data register or string parser, an empty space character is not blank data—it is a valid ASCII character 32 asset that consumes exactly 1 byte of storage space. Tracking and separating string metrics into modes with or without spaces is critical for avoiding validation faults across API schemas.
+      </div>
+
+      <h3 class="seo-h2">The String Informatics Breakdown: Characters With vs Without Spaces</h3>
+      <p class="seo-p">To build a flawless string length tracking loop, a text engine handles string data inputs through two separate operational arrays:</p>
+
+      <h4 class="seo-h3">1. Absolute Total Array Mapping (Characters with Spaces)</h4>
+      <p class="seo-p">This calculation counts the entire length of the active string property without applying any structural filters. It processes every printable alphanumeric character, special symbol, punctuation mark, and blank whitespace cell directly using standard object lengths:</p>
+      <div class="seo-math-box">Total_Length = Text_String.length</div>
+
+      <h4 class="seo-h3">2. Stripped Sub-String Parsing (Characters without Spaces)</h4>
+      <p class="seo-p">To measure only your pure content characters, the calculation engine runs a global regular expression filter (`/\s/g`) that targets and strips away every whitespace character, tab space, and line break before resolving the string length:</p>
+      <div class="seo-math-box">Stripped_Length = Text_String.replace(/\s/g, "").length</div>
+
+      <h3 class="seo-h2">The Strategic Grid: Critical Character Constraints</h3>
+      <p class="seo-p">Failing to respect platform character constraints can cause search engines to truncate your text or social media APIs to reject your posts entirely. Slicing structural string thresholds across major channels reveals distinct optimization targets:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Target Platform Destination</th>
+              <th>Statutory Character Limit Configuration</th>
+              <th>Underlying UX Truncation Risk Factor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Google Title Tags (SERPs)</b></td>
+              <td>Strictly optimized at 60 Characters</td>
+              <td>Exceeding this boundary triggers trailing ellipses (...), cutting off your primary brand keywords.</td>
+            </tr>
+            <tr>
+              <td><b>Google Meta Descriptions</b></td>
+              <td>Max optimization threshold of 160 Characters</td>
+              <td>Google's snippet generator truncates excess text, lowering snippet readability and click-through rates.</td>
+            </tr>
+            <tr>
+              <td><b>X (Formerly Twitter) Feed Posts</b></td>
+              <td>Hard boundary cap at 280 Characters</td>
+              <td>The social API rejects publishing requests instantly if the string payload passes the 280-character ceiling.</td>
+            </tr>
+            <tr>
+              <td><b>SMS Gateway Messages (PDU Mode)</b></td>
+              <td>Standard base packet limit of 160 Characters</td>
+              <td>Passing 160 characters splits your text into multiple separate messages, doubling your transaction billing costs.</td>
+            </tr>
+            <tr>
+              <td><b>SQL VARCHAR(255) Database Fields</b></td>
+              <td>Strict hard limit of 255 Characters</td>
+              <td>Pasting text that exceeds this threshold triggers an absolute database overflow error, causing data loss.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">The Variable Byte Burden: ASCII vs Multi-Byte Unicode Encoding</h3>
+      <p class="seo-p">For application developers and systems engineers, character metrics are deeply tied to raw hardware storage boundaries. The baseline storage footprints of your text characters shift dramatically depending on the underlying encoding schema selected by your server:</p>
+
+      <h4 class="seo-h3">ASCII System Matrix</h4>
+      <p class="seo-p">Under standard ASCII infrastructure configurations, every standard Latin character, numerical symbol, and basic punctuation mark consumes exactly 1 byte of storage space, meaning a 160-character snippet maps directly to a 160-byte payload size.</p>
+
+      <h4 class="seo-h3">UTF-8 / Unicode Variable Scale</h4>
+      <p class="seo-p">Modern web systems utilize UTF-8 encoding to support global character sets. While basic English letters still consume 1 byte each, specialized characters like localized symbols, non-Latin alphabets, and emojis scale up significantly, consuming 2 to 4 bytes per character.</p>
+      <p class="seo-p">This means a text snippet containing complex emojis can hit database size ceilings much faster than its visual character count indicates, making real-time validation essential for preventing server exceptions.</p>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why do character counters and word processing programs often show different metrics?</h3>
+      <p class="seo-p">Variations happen because different software applications utilize distinct regex processing rules to handle hidden characters. For example, some programs skip punctuation elements entirely when tracking string properties, while web-based tools process punctuation, hidden line breaks, and space tokens as active string components.</p>
+
+      <h3>Do invisible line breaks count toward character limit parameters?</h3>
+      <p class="seo-p">Yes, hidden formatting inputs like line feeds (`\n`) and carriage returns (`\r`) are processed as active string elements by web applications. Every time you press Enter to start a new paragraph, the textarea registers 1 to 2 invisible characters that count toward your platform limit.</p>
+
+      <h3>How do you optimize ad copies for tight character constraints?</h3>
+      <p class="seo-p">To fit your marketing messages into narrow character limits safely, swap long, complex phrases for concise alternative words, eliminate unnecessary conversational fillers, replace words with punctuation symbols (like using `&amp;` instead of `and`) where appropriate, and place your primary call-to-action hooks early in your copy.</p>
+
+      <h3>What is the real-world character limit configuration for an active URL string?</h3>
+      <p class="seo-p">While modern web browsers can technically process lengthy URL paths, top-tier search engines and server networks cap reliable URL string tracking at a maximum boundary of 2,048 characters. Keeping your slug strings short and concise ensures fast crawl speeds and stable social share indexing.</p>
+
+      <h3 class="seo-h2">Summary: Core Strategies for Character Constraint Management</h3>
+      <p class="seo-p">To build a high-converting digital presence, consistently monitor your snippet and meta title character lengths to ensure they render cleanly across organic search channels. Clean out hidden formatting breaks and unwanted double spaces to preserve string data integrity before sending updates to live databases, match your copy lengths with target platform boundaries to prevent truncation, and utilize an automated real-time character counter to streamline your text production workflows.</p>
+      <p class="seo-p">Our Advanced Online Character Counter automates all these spatial string metrics steps instantly, providing real-time visibility into your character lengths across any mobile or desktop view layout cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    var activeLimitBoundary = 280; 
+
+    function adjustPlatformBoundary() {
+        var dropdown = document.getElementById('platform_preset');
+        activeLimitBoundary = parseInt(dropdown.value);
+        calculateCharacterMetrics(); 
+    }
+
+    function calculateCharacterMetrics() {
+        var text = document.getElementById('char_analyzer_input').value;
+        
+        var totalCharsWithSpaces = text.length;
+        var totalCharsNoSpaces = text.replace(/\s/g, "").length;
+        
+        var cleanText = text.trim();
+        var wordCount = 0;
+        if (cleanText !== "") {
+            wordCount = cleanText.split(/\s+/).length;
+        }
+
+        var usagePercentage = 0;
+        if (activeLimitBoundary > 0 && totalCharsWithSpaces > 0) {
+            usagePercentage = (totalCharsWithSpaces / activeLimitBoundary) * 100;
+        }
+        
+        var remainingCharacters = activeLimitBoundary - totalCharsWithSpaces;
+        var barWidth = usagePercentage;
+        if (barWidth > 100) barWidth = 100;
+        
+        var fillBar = document.getElementById('progress_bar_fill');
+        fillBar.style.width = barWidth + "%";
+
+        if (usagePercentage >= 100) {
+            fillBar.style.backgroundColor = "#dc2626"; 
+        } else if (usagePercentage >= 85) {
+            fillBar.style.backgroundColor = "#f59e0b"; 
+        } else {
+            fillBar.style.backgroundColor = "#2563eb"; 
+        }
+
+        document.getElementById('metric_with_spaces').innerText = totalCharsWithSpaces.toLocaleString('en-IN');
+        document.getElementById('metric_no_spaces').innerText = totalCharsNoSpaces.toLocaleString('en-IN');
+        document.getElementById('metric_words').innerText = wordCount.toLocaleString('en-IN');
+        
+        document.getElementById('label_boundary_status').innerText = "Usage: " + Math.round(usagePercentage) + "%";
+        
+        var remainingLabel = document.getElementById('label_remaining_count');
+        if (remainingCharacters >= 0) {
+            remainingLabel.innerText = "Remaining: " + remainingCharacters + " Chars";
+            remainingLabel.style.color = "#64748b";
+        } else {
+            remainingLabel.innerText = "Over Limit by: " + Math.abs(remainingCharacters) + " Chars";
+            remainingLabel.style.color = "#dc2626";
+        }
+    }
+
+    function clearCounterBoard() {
+        var textArea = document.getElementById('char_analyzer_input');
+        textArea.value = "";
+        calculateCharacterMetrics();
+        textArea.focus();
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
