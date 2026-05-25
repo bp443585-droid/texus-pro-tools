@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Morse Code Translator | Online Audio Morse Encoder &amp; Decoder</title>
+  <meta name="description" content="Translate text to Morse code or decode Morse back to plain text instantly. Listen to real-time generated Morse audio beeps with our advanced client-side translation engine." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/morse-code-translator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Morse Code Translator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced cryptographic text translation engine to encode alphanumeric strings into international Morse code parameters and synthesize corresponding sound waves.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 180px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    /* MONOSPACED MORSE CODE TERMINAL VIEW */
+    .morse-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.3rem; letter-spacing: 2px; color: #0f172a; background: #f1f5f9; }
+    .morse-font-panel:focus { background: #ffffff; }
+
+    /* UTILITY COMPACT ACTION MATRICES STRIPIES */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-audio { background: #2563eb; color: #ffffff; border-color: #2563eb; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .f-btn-audio:hover { background: #1d4ed8; }
+    .f-btn-audio:disabled { background: #cbd5e1; border-color: #cbd5e1; color: #94a3b8; cursor: not-allowed; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 140px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📻</span> Morse Code Translator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="plainTextConsole">Normal English Text</label>
+          <textarea id="plainTextConsole" class="f-textarea-field" placeholder="Type messages here to translate to dots and dashes..." oninput="handleTranslationPipeline('text')"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="morseCodeConsole">Morse Code Output</label>
+          <textarea id="morseCodeConsole" class="f-textarea-field morse-font-panel" placeholder="... --- ... / Paste Morse tokens here using spaces between characters..." oninput="handleTranslationPipeline('morse')"></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button id="playAudioBtn" class="f-btn f-btn-audio" onclick="playMorseAudioBeeps()" disabled>🔊 Play Sound Wave</button>
+        <button class="f-btn f-btn-copy" onclick="copyMorseCodeOutput()">📋 Copy Morse Payload</button>
+        <button class="f-btn f-btn-clear" onclick="clearMorseWorkspace()">Clear</button>
+      </div>
+
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">💡 Standardization Formatting Notice:</span>
+        Individual letters are separated by standard single whitespace, while distinct words are split via forward slashes (`/`).
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Informatics of Telecommunication Signalings: Binary Waveform Streams, Punctuation Tokens, and Cryptographic Morse Arithmetic</h2>
+      <p class="seo-p">Calibrating legacy network telemetry grids, normalising text packets before transmission, or managing character tokenization architectures requires a complete operational mastery over data parsing pipelines, pulse-duration coordinates, and cross-platform formatting standards. Within the timeline of communication systems design, Morse Code stands out as the pioneering foundational binary compression mechanism. It translates conversational text entries into high-contrast streams of short dots and long dashes, eliminating multi-byte transmission overheads cleanly.</p>
+      <p class="seo-p">This extensive computing manual explores the chronological bit-timing constants approved by international telegraph agreements, reviews pricing tax limits across digital data transfers, examines signal-to-noise ratios, and details steps to deploy text converters natively inside browser memories.</p>
+
+      <div class="seo-callout">
+        <strong>The International Telegraph Standard:</strong> Under the standard rules set by global telecommunication frameworks, the structural timing duration of a single **dash is exactly three times longer** than the duration of a basic dot. Maintaining this precise relational ratio ensures that electronic decoders can verify and parse characters accurately over high-frequency channels.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Bidirectional Text to Morse Encoding Map</h3>
+      <p class="seo-p">To convert alphabetical strings into clean Morse notation or decode corrupted token matrices back into readable prose without lag loops, a high-performance web script uses a synchronized conversion sequence:</p>
+
+      <h4 class="seo-h3">1. Bidirectional Stream Identification</h4>
+      <p class="seo-p">The program binds parallel event loops to both input consoles. If characters typed match plain text strings, it engages the array serializer mapping. Conversely, if it intercepts a stream composed strictly of dot and dash tokens (`.`, `-`, `/`), it overrides default behaviors to activate the reverse lexical decoder subsystem instantly.</p>
+
+      <h4 class="seo-h3">2. Web Audio Audio Waves Synthesis</h4>
+      <p class="seo-p">To produce realistic audio beeps instead of relying on pre-recorded sound effects, the tool hooks directly into the browser's raw **Web Audio API**. It builds an sound engine by spawning a floating `OscillatorNode` combined with a `GainNode`, generating custom sine wave audio signals on demand.</p>
+
+      <div class="seo-math-box">Morse_Tone_Frequency = 440 \text{ Hz (Standard Concert A Pitch Factor)}</div>
+
+      <h4 class="seo-h3">3. Timing Duration Amortization Loops</h4>
+      <p class="seo-p">The duration parameters map a standard unit timing system where a basic dot runs for exactly $60\text{ ms}$, a dash services for $180\text{ ms}$, character boundaries hold a $180\text{ ms}$ silence slot, and pure word forward slashes (`/`) invoke an extended $420\text{ ms}$ visual breathing gap, protecting communication strings from processing exceptions.</p>
+
+      <h3>The Statutory Reference Matrix: Alphanumeric Character Conversion Map</h3>
+      <p class="seo-p">Understanding how basic alphanumeric variables correspond to standard signal lengths is vital for auditing network communications and verifying software parameters:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Character Token Type</th>
+              <th>Alphanumeric Literal Key</th>
+              <th>International Standard Morse Code Output Representation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alphabet Key Unit</td>
+              <td><b>A / B / C</b></td>
+              <td>`.-` (Dot-Dash) &nbsp;|&nbsp; `-...` (Dash-Dot-Dot-Dot) &nbsp;|&nbsp; `-.-.` (Dash-Dot-Dash-Dot)</td>
+            </tr>
+            <tr>
+              <td>Alphabet Key Unit</td>
+              <td><b>M / N / O</b></td>
+              <td>`--` (Dash-Dash) &nbsp;|&nbsp; `-.` (Dash-Dot) &nbsp;|&nbsp; `---` (Dash-Dash-Dash)</td>
+            </tr>
+            <tr>
+              <td>Alphabet Key Unit</td>
+              <td><b>S / O / S (Distress Anchor)</b></td>
+              <td>`...` (Dot-Dot-Dot) &nbsp;|&nbsp; `---` (Dash-Dash-Dash) &nbsp;|&nbsp; `...` (Dot-Dot-Dot)</td>
+            </tr>
+            <tr>
+              <td>Numerical Matrix Key</td>
+              <td><b>1 / 2 / 5</b></td>
+              <td>`.----` &nbsp;|&nbsp; `..---` &nbsp;|&nbsp; `.....` (Five Balanced Dots Node)</td>
+            </tr>
+            <tr>
+              <td>Numerical Matrix Key</td>
+              <td><b>9 / 0 (Ceiling Anchor)</b></td>
+              <td>`----.` &nbsp;|&nbsp; `-----` (Five Absolute Dashes Structural Token)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Will a Morse code translation tool handle special symbols or emojis?</h3>
+      <p class="seo-p">Standard punctuation marks like commas (`,`), periods (`.`), and question marks (`?`) are mapped directly inside our conversion registries using long telegraph signatures. However, stylized graphics like emojis lack a historical Morse signature; the engine filters these out to protect your underlying data stream from parsing errors.</p>
+
+      <h3>Why do some communication devices use alternative dividers instead of forward slashes?</h3>
+      <p class="seo-p">Different legacy military operators or amateur radio platforms use separate token characters (like spaces or pipe lines `|`) to separate words. Our advanced converter layout uses the standard international forward slash (`/`) token to guarantee perfect, un-collapsed data segmentation across modern database backups.</p>
+
+      <h3>How does client-side audio rendering affect data privacy?</h3>
+      <p class="seo-p">Our tools operate on a standalone user sandbox model. Because the audio waves are synthesized natively inside your browser memory cache using client-side JavaScript execution arrays, your text inputs never travel over external corporate server networks—ensuring complete, private security for your data.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Signal Processing Management</h3>
+      <p class="seo-p">To ensure optimal translation performance across retail communication layouts, maintain crisp character spacing using single white spaces. Avoid long sentences to save processing memory over narrow bands, use standard monospaced displays to ensure readability on mobile screen frames, and leverage a real-time Morse translation app to streamline editing workflows.</p>
+      <p class="seo-p">Our Advanced Online Morse Code Translator automates all these sequential tokenization steps instantly, providing real-time visibility into your signaling matrices across any mobile or desktop view layout cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // High Fidelity Bidirectional Cryptographic Morse Matrix Map
+    const TEXT_TO_MORSE_DICTIONARY = {
+      'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
+      'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
+      'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+      'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
+      '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----',
+      '.': '.-.-.-', ',': '--..--', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-'
+    };
+
+    const MORSE_TO_TEXT_DICTIONARY = {};
+    for (let key in TEXT_TO_MORSE_DICTIONARY) {
+        MORSE_TO_TEXT_DICTIONARY[TEXT_TO_MORSE_DICTIONARY[key]] = key;
+    }
+
+    let audioContextInstance = null;
+
+    function handleTranslationPipeline(origin) {
+        const textConsole = document.getElementById('plainTextConsole');
+        const morseConsole = document.getElementById('morseCodeConsole');
+        const audioBtn = document.getElementById('playAudioBtn');
+
+        if (origin === 'text') {
+            const rawText = textConsole.value.toUpperCase();
+            let morseResultArray = [];
+            
+            const words = rawText.split(/\s+/);
+            for (let w = 0; w < words.length; w++) {
+                let charTokens = [];
+                for (let c = 0; c < words[w].length; c++) {
+                    const ch = words[w][c];
+                    if (TEXT_TO_MORSE_DICTIONARY[ch]) {
+                        charTokens.push(TEXT_TO_MORSE_DICTIONARY[ch]);
+                    }
+                }
+                if (charTokens.length > 0) {
+                    morseResultArray.push(charTokens.join(' '));
+                }
+            }
+            morseConsole.value = morseResultArray.join(' / ');
+        } 
+        else if (origin === 'morse') {
+            const rawMorse = morseConsole.value.trim();
+            let textResultStr = "";
+            
+            const morseWords = rawMorse.split(/\s*\/\s*/);
+            for (let mw = 0; mw < morseWords.length; mw++) {
+                const morseChars = morseWords[mw].split(/\s+/);
+                for (let mc = 0; mc < morseChars.length; mc++) {
+                    const token = morseChars[mc];
+                    if (MORSE_TO_TEXT_DICTIONARY[token]) {
+                        textResultStr += MORSE_TO_TEXT_DICTIONARY[token];
+                    }
+                }
+                textResultStr += " ";
+            }
+            textConsole.value = textResultStr.trim();
+        }
+
+        // Manage audio play buttons availability state limits
+        audioBtn.disabled = !morseConsole.value.trim();
+    }
+
+    function playMorseAudioBeeps() {
+        const morseCode = document.getElementById('morseCodeConsole').value;
+        if (!morseCode.trim()) return;
+
+        // Lazy initialize browser sound capabilities context safely
+        if (!audioContextInstance) {
+            audioContextInstance = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        let currentTimelineTime = audioContextInstance.currentTime;
+        const baseUnitTimeDuration = 0.06; // Standardized Dot length constant parameter: 60ms
+
+        for (let idx = 0; idx < morseCode.length; idx++) {
+            const currentToken = morseCode[idx];
+
+            if (currentToken === '.' || currentToken === '-') {
+                const oscNode = audioContextInstance.createOscillator();
+                const gainNode = audioContextInstance.createGain();
+
+                oscNode.type = 'sine';
+                oscNode.frequency.setValueAtTime(440, currentTimelineTime); // Standard Concert Pitch 440Hz
+
+                const signalDuration = currentToken === '.' ? baseUnitTimeDuration : baseUnitTimeDuration * 3;
+                
+                gainNode.gain.setValueAtTime(1, currentTimelineTime);
+                gainNode.gain.setValueAtTime(1, currentTimelineTime + signalDuration - 0.005);
+                // Linear volume ramps to eliminate raw hardware clicking noises
+                gainNode.gain.linearRampToValueAtTime(0, currentTimelineTime + signalDuration);
+
+                oscNode.connect(gainNode);
+                gainNode.connect(audioContextInstance.destination);
+
+                oscNode.start(currentTimelineTime);
+                oscNode.stop(currentTimelineTime + signalDuration);
+
+                currentTimelineTime += signalDuration + baseUnitTimeDuration;
+            } 
+            else if (currentToken === ' ') {
+                currentTimelineTime += baseUnitTimeDuration * 2;
+            } 
+            else if (currentToken === '/') {
+                currentTimelineTime += baseUnitTimeDuration * 4;
+            }
+        }
+    }
+
+    function copyMorseCodeOutput() {
+        const morseConsole = document.getElementById('morseCodeConsole');
+        if (!morseConsole.value.trim()) return;
+
+        morseConsole.select();
+        morseConsole.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(morseConsole.value);
+    }
+
+    function clearMorseWorkspace() {
+        document.getElementById('plainTextConsole').value = "";
+        document.getElementById('morseCodeConsole').value = "";
+        document.getElementById('playAudioBtn').disabled = true;
+        document.getElementById('plainTextConsole').focus();
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
