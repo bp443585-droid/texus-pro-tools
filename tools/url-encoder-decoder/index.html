@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no" />
+  <title>URL Encoder Decoder | Online Percent Encoding Tool</title>
+  <meta name="description" content="Encode or decode URLs instantly with our free online percent-encoding utility. Safe, browser-based bidirectional URL component translator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/url-encoder-decoder/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "URL Encoder Decoder Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced web address string serialization tool to perform percent-encoding and decoding matching RFC 3986 data boundaries seamlessly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX STYLISH LAYOUT GRID */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 200px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-math-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 1.1rem; text-align: center; margin: 20px 0; font-family: monospace; color: #0f172a; font-weight: 700; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 150px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🔗</span> URL Encoder Decoder</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="plainUrlConsole">Plain Text URL Component</label>
+          <textarea id="plainUrlConsole" class="f-textarea-field" placeholder="Paste standard URL string addresses here (e.g., product search queries with spaces)..." oninput="executeUrlPipeline('encode')"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="encodedUrlConsole">Encoded URL Payload (Percent-Encoded)</label>
+          <textarea id="encodedUrlConsole" class="f-textarea-field mono-font-panel" placeholder="https%3A%2F%2Fwww.texusprotools.com%2Fsearch%3Fq%3Dfree%2520tools..." oninput="executeUrlPipeline('decode')"></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="executeUrlPipeline('encode')">Refresh Encoding</button>
+        <button class="f-btn f-btn-copy" id="copyActiveUrlBtn" onclick="copyActiveOutputPayload()">📋 Copy Encoded Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearUrlWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Bidirectional Dynamic Parsing Approved:</span>
+        The script automatically maps parameters. Typing in either container immediately serializes target values inside the interlocking field without shifting layout positions.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Typography of Network Address Serialization: Uniform Resource Identifiers (URIs), Percent-Encoding Matrices, and RFC 3986 Compliance Laws</h2>
+      <p class="seo-p">Calibrating robust data routing structures, tracking digital marketing pixels, or configuring dynamic query fields across API gateways requires an engineering mastery over Uniform Resource Identifier (URI) characters, binary octet conversions, and strict percent-encoding frameworks. Web browsers and server backends are mathematically engineered to parse URL streams under specific ASCII rules. If a dynamic web path contains non-alphanumeric characters, spaces, or localization tokens, the underlying data sequence can fracture, causing fatal 400 Bad Request anomalies along the route.</p>
+      <p class="seo-p">This extensive computing architecture manual breaks down the programmatic data structures that guide internet data encoding, contrasts reserved versus unreserved character classifications under RFC 3986 directives, examines data payload volumes, and details steps to deploy text conversion tools natively inside client device browsers.</p>
+
+      <div class="seo-callout">
+        <strong>The Percent-Encoding Structural Rule:</strong> At the raw machine network routing layer, any character that drops outside the verified unreserved data boundary is transformed into its hexadecimal code equivalent, preceded by the universal percent indicator (<b>%</b>), ensuring stable data transport.
+      </div>
+
+      <h3 class="seo-h2">The Technical Processing Mechanics of URI Percent Encoding</h3>
+      <p class="seo-p">When a raw web address string enters an online client-side URL serialization suite, the javascript compiler divides tokens across distinct parameter vectors:</p>
+
+      <h4 class="seo-h3">1. Character Partitioning (Reserved vs Unreserved Sets)</h4>
+      <p class="seo-p">The data engine runs an event loop character-by-character to scan the string against the unreserved character registry, which strictly consists of standard alphanumeric elements: `A-Z`, `a-z`, `0-9`, hyphen `-`, period `.`, underscore `_`, and tilde `~`. These specific symbols pass through the compiler completely unaltered without taking up extra byte padding slots.</p>
+
+      <h4 class="seo-h3">2. Hexadecimal Conversion Matrix</h4>
+      <p class="seo-p">If a character token hits a reserved delimiter slot (like a blank space or an isolated character symbol), the engine extracts its decimal code unit. For instance, a standard space maps to decimal integer 32. Converting this score to a Base-16 hexadecimal sequence yields value `20` instantly.</p>
+
+      <h4 class="seo-h3">3. Percent Prefix Assembly</h4>
+      <p class="seo-p">The engine combines this hex string with the percent symbol to produce the classic percentage token code: `%20`. For complex multi-byte characters like emojis, the process handles each byte individually, resulting in multi-tiered percent sequences like `%F0%9F%94%97` seamlessly.</p>
+
+      <h3>The Statutory Reference Ledger: Universal URI Character Translation Map</h3>
+      <p class="seo-p">Understanding how common formatting symbols and query parameters map onto network percent codes is vital for auditing API gateways and checking tracking scripts:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Typographical Token Class</th>
+              <th>Literal Character Symbol</th>
+              <th>Decimal ASCII Value Code</th>
+              <th>Sovereign Percent-Encoded Output Sequence Matrix</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard Space Identifier</td>
+              <td><b>[ Space ]</b></td>
+              <td>32</td>
+              <td>`%20` (or `+` within specific application/x-www-form-urlencoded forms)</td>
+            </tr>
+            <tr>
+              <td>Protocol Scheme Delimiter</td>
+              <td><b>: / /</b></td>
+              <td>58 &nbsp;|&nbsp; 47 &nbsp;|&nbsp; 47</td>
+              <td>`%3A` &nbsp;|&nbsp; `%2F` &nbsp;|&nbsp; `%2F`</td>
+            </tr>
+            <tr>
+              <td>Query Parameters Separator</td>
+              <td><b>? / &amp; / =</b></td>
+              <td>63 &nbsp;|&nbsp; 38 &nbsp;|&nbsp; 61</td>
+              <td>`%3F` &nbsp;|&nbsp; `%26` &nbsp;|&nbsp; `%3D`</td>
+            </tr>
+            <tr>
+              <td>Common Web Symbols</td>
+              <td><b>@ / # / $</b></td>
+              <td>64 &nbsp;|&nbsp; 35 &nbsp;|&nbsp; 36</td>
+              <td>`%40` &nbsp;|&nbsp; `%23` &nbsp;|&nbsp; `%24`</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the core difference between encodeURI and encodeURIComponent?</h3>
+      <p class="seo-p">`encodeURI` is built to sanitize complete, functional URLs by leaving primary routing delimiters (like `:`, `/`, `?`, and `&amp;`) completely intact. `encodeURIComponent` applies a strict global sweep, encoding every reserved character across the board. This thorough format makes it ideal for nesting sub-URLs inside query string fields safely without fracturing the master link structure.</p>
+
+      <h3>Why do some database engines fail to parse deep percent-encoded payloads?</h3>
+      <p class="seo-p">Errors occur when server environments lack modern multi-byte UTF-8 string decoding libraries. Our advanced local web translator addresses this vulnerability by processing strings natively in JavaScript, ensuring data remains clean during bidirectional decoding loops.</p>
+
+      <h3>How does client-side data sandboxing protect tracking scripts?</h3>
+      <p class="seo-p">Texus Pro Tools values your absolute information privacy above everything else. The serialization scripts execute entirely inside your device's web browser environment cache. No data packets ever travel over external corporate network pipelines, providing a secure sandbox environment for sensitive developer workflows.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for URL Data Management</h3>
+      <p class="seo-p">To maintain total data accuracy across technical workflows, choose the correct encoding filter based on whether you are working with sub-parameters or full address paths. Use monospaced font blocks to audit nested arrays for layout syntax errors easily, monitor total character counts closely to stay within browser address bar size limits, and leverage real-time translation modules to streamline testing environments.</p>
+      <p class="seo-p">Our Advanced Online URL Percent-Encoding Suite automates all these logical conversion steps instantly, delivering immediate, error-free results on any device view framework cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function executeUrlPipeline(origin) {
+        const plainConsole = document.getElementById('plainUrlConsole');
+        const encodedConsole = document.getElementById('encodedUrlConsole');
+        const copyBtn = document.getElementById('copyActiveUrlBtn');
+
+        if (origin === 'encode') {
+            const rawText = plainConsole.value;
+            // High fidelity execution via RFC 3986 global matching component parameters
+            const serializedResult = encodeURIComponent(rawText);
+            encodedConsole.value = serializedResult;
+            copyBtn.innerText = "📋 Copy Encoded Result";
+        } 
+        else if (origin === 'decode') {
+            const rawEncoded = encodedConsole.value;
+            try {
+                const deserializedResult = decodeURIComponent(rawEncoded);
+                plainConsole.value = deserializedResult;
+                copyBtn.innerText = "📋 Copy Decoded Text";
+            } catch (exception) {
+                // Silently hold the frame input if user pastes incomplete percent arrays midway
+                return;
+            }
+        }
+    }
+
+    function copyActiveOutputPayload() {
+        const plainConsole = document.getElementById('plainUrlConsole');
+        const encodedConsole = document.getElementById('encodedUrlConsole');
+        
+        // Pick which active string payload chunk to copy to user clipboard data
+        const currentTarget = document.activeElement === plainConsole ? plainConsole : encodedConsole;
+        if (!currentTarget.value.trim()) return;
+
+        currentTarget.select();
+        navigator.clipboard.writeText(currentTarget.value).then(() => {
+            const copyBtn = document.getElementById('copyActiveUrlBtn');
+            const cachedText = copyBtn.innerText;
+            copyBtn.innerText = "⚡ URL Payload Copied!";
+            setTimeout(() => { copyBtn.innerText = cachedText; }, 2000);
+        }).catch(err => console.error('Clipboard injection failure exception node:', err));
+    }
+
+    function clearUrlWorkspace() {
+        document.getElementById('plainUrlConsole').value = "";
+        document.getElementById('encodedUrlConsole').value = "";
+        document.getElementById('copyActiveUrlBtn').innerText = "📋 Copy Encoded Result";
+        document.getElementById('plainUrlConsole').focus();
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
