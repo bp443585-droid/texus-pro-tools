@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>ASCII Converter | Online Text to ASCII Code Encoder &amp; Decoder</title>
+  <meta name="description" content="Convert plain text characters to ASCII decimal, hexadecimal, and octal codes instantly. Free bidirectional character code translation utility." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/ascii-converter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ASCII Converter Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced textual data tokenization utility to map alphabet strings into relative ASCII decimal, hex, and octal integer formats.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* INTERACTIVE GRID LAYOUT HOUSINGS */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 25px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 160px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    /* MONOSPACED STRINGS OUTPUT DISPLAY STYLES */
+    .code-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.5px; color: #0f172a; background: #f1f5f9; }
+
+    /* INTEGRATED MULTI-BASE DISPLAY LAYOUT BOX */
+    .f-multi-base-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; width: 100%; }
+    .f-base-tile { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px; text-align: left; box-sizing: border-box; }
+    .f-base-tile h5 { margin: 0 0 6px 0; font-size: 0.78rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-base-tile p { margin: 0; font-family: 'Courier New', Courier, monospace; font-size: 1.05rem; font-weight: 700; color: #2563eb; word-break: break-all; }
+
+    /* UTILITY ACTION MATRICES CONTROL STRIP ROW */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 25px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-math-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 1.1rem; text-align: center; margin: 20px 0; font-family: monospace; color: #0f172a; font-weight: 700; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 130px; font-size: 1rem; }
+      .f-multi-base-container { grid-template-columns: 1fr; gap: 10px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🔢</span> ASCII Converter</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="plainTextConsole">Normal English Text</label>
+          <textarea id="plainTextConsole" class="f-textarea-field" placeholder="Type character strings here to generate character codes matrix..." oninput="handleAsciiTransformation('text')"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="decimalOutputConsole">ASCII Decimal Code Array</label>
+          <textarea id="decimalOutputConsole" class="f-textarea-field code-font-panel" placeholder="69 77 79 74 73..." oninput="handleAsciiTransformation('decimal')"></textarea>
+        </div>
+      </div>
+
+      <div class="f-multi-base-container">
+        <div class="f-base-tile">
+          <h5>Decimal Array (Base-10)</h5>
+          <p id="resDecimalBase">0</p>
+        </div>
+        <div class="f-base-tile">
+          <h5>Hexadecimal Blocks (Base-16)</h5>
+          <p id="resHexBase">0x00</p>
+        </div>
+        <div class="f-base-tile">
+          <h5>Octal Sequences (Base-8)</h5>
+          <p id="resOctalBase">000</p>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="handleAsciiTransformation('text')">Refresh Mapping</button>
+        <button class="f-btn f-btn-copy" onclick="copyActiveAsciiOutput()">📋 Copy Decimal Array</button>
+        <button class="f-btn f-btn-clear" onclick="clearAsciiWorkspace()">Clear</button>
+      </div>
+
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Multi-Base Compiler Synchronized:</span>
+        Typing regular text strings constructs Decimal, Hex, and Octal notation arrays concurrently. Paste relative numerical code sequences in the right console for reverse decoding blocks.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Typography of Binary Encoding Protocols: Comprehensive Analysis of 7-Bit ASCII Matrices, Positional Radix Shifts, and Unicode Translation Layers</h2>
+      <p class="seo-p">Converting standard alphabet typographical records into their specific relative integer representations requires an operational mastery of character encoding protocols, bitwise positional radix mappings, and byte segmentation boundaries. The American Standard Code for Information Interchange (ASCII), finalized in the decadal close of 1963, serves as the foundational data translation layer that maps human keyboard keystrokes directly onto numerical machine parameters cleanly, ensuring smooth computing cross-compatibility nationwide.</p>
+      <p class="seo-p">This long-tail master manual analyzes the character mapping architectures maintained by standard operating systems, contrasts early 7-bit arrays against modern multi-byte Unicode registers, tracks character memory footprints, and breaks down programmatic steps to deploy client-side ASCII converters without processing glitches.</p>
+
+      <div class="seo-callout">
+        <strong>The Structural Character Cushion:</strong> The standard ASCII index contains exactly **128 unique code anchors** mapped across integers 0 to 127. This historical matrix space allocates positions 0-32 to system control tokens (such as Carriage Return `\n` or Backspace) and reserves the remaining 33-127 slots for alphanumeric keys and punctuation indicators.
+      </div>
+
+      <h3 class="seo-h2">Mathematical Dissection of Multi-Base Radix Mappings</h3>
+      <p class="seo-p">When character strings enter a high-performance web text translation routine, the engine loops across individual string tokens to parse code units across multiple distinct numerical foundations:</p>
+
+      <h4 class="seo-h3">1. Decimal Notation Mapping (Base-10 Radix)</h4>
+      <p class="seo-p">The program queries the native character encoding profile to extract the single base integer map. For example, typing the lower-case alpha key "g" translates directly to decimal value 103 under global encoding registers.</p>
+
+      <h4 class="seo-h3">2. Hexadecimal Transposition (Base-16 Radix)</h4>
+      <p class="seo-p">For advanced server engineering operations and low-level debugging workflows, base decimal scores are transposed into Base-16 hexadecimal structures utilizing alphanumeric remainder division lines. Number 103 converts to hex code tracking string: `67` ( notationally recorded as `0x67` or `\x67` across layout files).</p>
+
+      <h4 class="seo-h3">3. Octal Sequence Resolution (Base-8 Radix)</h4>
+      <p class="seo-p">Similarly, compiling values onto a Base-8 octal structure compresses values across integer tokens ranging strictly from 0 to 7. The base system maps decimal value 103 onto octal token parameter string: `147` smoothly.</p>
+
+      <h3>The Statutory Reference Ledger: Classic ASCII Translation Matrix</h3>
+      <p class="seo-p">Understanding how standard alphabets and special character tokens align across different numerical radices is vital for checking database code arrays and verifying communication strings:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Typographic Token Class</th>
+              <th>Literal Keystroke Key</th>
+              <th>Decimal Matrix (Base-10)</th>
+              <th>Hexadecimal Code (Base-16)</th>
+              <th>Octal Code Sequence (Base-8)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Capital Case Character</td>
+              <td><b>T / E / X</b></td>
+              <td>84 &nbsp;|&nbsp; 69 &nbsp;|&nbsp; 88</td>
+              <td>`54` &nbsp;|&nbsp; `45` &nbsp;|&nbsp; `58`</td>
+              <td>`124` &nbsp;|&nbsp; `105` &nbsp;|&nbsp; `130`</td>
+            </tr>
+            <tr>
+              <td>Lower Case Character</td>
+              <td><b>u / s / p</b></td>
+              <td>117 &nbsp;|&nbsp; 115 &nbsp;|&nbsp; 112</td>
+              <td>`75` &nbsp;|&nbsp; `73` &nbsp;|&nbsp; `70`</td>
+              <td>`165` &nbsp;|&nbsp; `163` &nbsp;|&nbsp; `160`</td>
+            </tr>
+            <tr>
+              <td>Numerical Character Input</td>
+              <td><b>7 / 1 / 0</b></td>
+              <td>55 &nbsp;|&nbsp; 49 &nbsp;|&nbsp; 48</td>
+              <td>`37` &nbsp;|&nbsp; `31` &nbsp;|&nbsp; `30`</td>
+              <td>`067` &nbsp;|&nbsp; `061` &nbsp;|&nbsp; `060`</td>
+            </tr>
+            <tr>
+              <td>Special Structural Identifier</td>
+              <td><b>[ Space ] / @</b></td>
+              <td>32 &nbsp;|&nbsp; 64</td>
+              <td>`20` &nbsp;|&nbsp; `40`</td>
+              <td>`040` &nbsp;|&nbsp; `100`</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the core structural difference between ASCII and Extended ASCII?</h3>
+      <p class="seo-p">The baseline standard ASCII matrix uses a 7-bit configuration layer, capping total addressable code units at 128 indices. Extended ASCII expands the data profile to an 8-bit layer, boosting character space up to 256 configurations. This extra room allows systems to integrate specialized localized currency symbols, alternative graphic dividers, and mathematical operators seamlessly.</p>
+
+      <h3>Why do web text conversions fail when processing non-English character blocks?</h3>
+      <p class="seo-p">Traditional ASCII lacks the storage capacity to index global characters like emojis or non-Latin alphabets. When processing modern text strings, our updated converter architecture handles larger Unicode UTF-16 code units seamlessly, preventing character replacement bugs or tofu display blocks.</p>
+
+      <h3>How does client-side standalone execution protect security records?</h3>
+      <p class="seo-p">Texus Pro Tools guarantees absolute security boundaries for your data. The multi-base calculation engines load entirely as local scripts inside your browser runtime memory. String conversions or code executions occur entirely on your local hardware without network telemetry broadcasts, establishing a private sandbox environment for developers.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Code Translation Management</h3>
+      <p class="seo-p">To optimize data integration workflows, use standardized single whitespaces when handling numeric code strings to ensure accurate reverse parsing. Use monospaced font blocks to audit data streams for conversion errors easily, monitor array payload weights during large database imports, and leverage real-time translation modules to streamline testing environments.</p>
+      <p class="seo-p">Our Advanced Online ASCII Multi-Base Converter automates all these sequential radix calculations instantly, providing clear visibility into your token matrices across any mobile or desktop view layout seamlessly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function handleAsciiTransformation(origin) {
+        const textConsole = document.getElementById('plainTextConsole');
+        const decimalConsole = document.getElementById('decimalOutputConsole');
+        
+        const labelDec = document.getElementById('resDecimalBase');
+        const labelHex = document.getElementById('resHexBase');
+        const labelOct = document.getElementById('resOctalBase');
+
+        if (origin === 'text') {
+            const rawText = textConsole.value;
+            let decArray = [];
+            let hexArray = [];
+            let octArray = [];
+
+            for (let idx = 0; idx < rawText.length; idx++) {
+                const charCode = rawText.charCodeAt(idx);
+                decArray.push(charCode);
+                hexArray.push(charCode.toString(16).toUpperCase());
+                octArray.push(charCode.toString(8));
+            }
+
+            decimalConsole.value = decArray.join(' ');
+            
+            labelDec.innerText = decArray.length > 0 ? decArray.join(' ') : "0";
+            labelHex.innerText = hexArray.length > 0 ? hexArray.map(h => "0x" + h).join(' ') : "0x00";
+            labelOct.innerText = octArray.length > 0 ? octArray.join(' ') : "000";
+        } 
+        else if (origin === 'decimal') {
+            const rawDecimal = decimalConsole.value.trim();
+            // Sanitize string pattern allocations safely
+            const decimalBlocks = rawDecimal.split(/\s+/);
+            let textResultStr = "";
+            let hexArray = [];
+            let octArray = [];
+
+            for (let bIdx = 0; bIdx < decimalBlocks.length; bIdx++) {
+                const decToken = parseInt(decimalBlocks[bIdx], 10);
+                if (!isNaN(decToken)) {
+                    textResultStr += String.fromCharCode(decToken);
+                    hexArray.push(decToken.toString(16).toUpperCase());
+                    octArray.push(decToken.toString(8));
+                }
+            }
+
+            textConsole.value = textResultStr;
+            
+            labelDec.innerText = decimalBlocks.length > 0 && !isNaN(parseInt(decimalBlocks[0])) ? decimalBlocks.join(' ') : "0";
+            labelHex.innerText = hexArray.length > 0 ? hexArray.map(h => "0x" + h).join(' ') : "0x00";
+            labelOct.innerText = octArray.length > 0 ? octArray.join(' ') : "000";
+        }
+    }
+
+    function copyActiveAsciiOutput() {
+        const decimalConsole = document.getElementById('decimalOutputConsole');
+        if (!decimalConsole.value.trim()) return;
+
+        decimalConsole.select();
+        navigator.clipboard.writeText(decimalConsole.value).then(() => {
+            const copyBtn = document.querySelector('.f-btn-copy');
+            const cacheText = copyBtn.innerText;
+            copyBtn.innerText = "⚡ Decimals Copied!";
+            setTimeout(() => { copyBtn.innerText = cacheText; }, 2000);
+        }).catch(err => console.error('Clipboard injection fault matrix:', err));
+    }
+
+    function clearAsciiWorkspace() {
+        document.getElementById('plainTextConsole').value = "";
+        document.getElementById('decimalOutputConsole').value = "";
+        document.getElementById('resDecimalBase').innerText = "0";
+        document.getElementById('resHexBase').innerText = "0x00";
+        document.getElementById('resOctalBase').innerText = "000";
+        document.getElementById('plainTextConsole').focus();
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
