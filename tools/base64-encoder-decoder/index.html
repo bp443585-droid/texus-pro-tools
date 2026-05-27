@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Base64 Encoder Decoder | Free Online Data Serialization Tool</title>
+  <meta name="description" content="Encode text to Base64 format or decode Base64 strings back to plain text instantly. Free web-safe binary-to-text string converter engine." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/base64-encoder-decoder/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Base64 Encoder Decoder Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced data obfuscation application to serialize plain strings into Base64 formats and unpack data streams flawlessly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID LAYOUT */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 200px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 150px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📦</span> Base64 Encoder Decoder</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="plainTextConsole">Plain Text String Input</label>
+          <textarea id="plainTextConsole" class="f-textarea-field" placeholder="Type standard character sentences or data parameters here..." oninput="executeBase64Pipeline('encode')"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="base64TextConsole">Base64 Encoded Payload</label>
+          <textarea id="base64TextConsole" class="f-textarea-field mono-font-panel" placeholder="Awaiting conversion matrix output data tokens (e.g., dGV4dXM=)..." oninput="executeBase64Pipeline('decode')"></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="executeBase64Pipeline('encode')">Refresh Matrix</button>
+        <button class="f-btn f-btn-copy" id="copyActiveBaseBtn" onclick="copyResultToClipboard()">📋 Copy Encoded Text</button>
+        <button class="f-btn f-btn-clear" onclick="clearBase64Workspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Standard Bidirectional Parsing Approved:</span>
+        The execution loop functions completely client-side. Typing or pasting text blocks inside either terminal instantly updates the corresponding foundation parameter without data padding errors.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Typography of Binary-to-Text Radix Serialization: Base64 Index Maps, 6-Bit Vector Partitioning, and Data Stream Transportation Laws</h2>
+      <p class="seo-p">Configuring high-performance API payloads, embedding inline vector graphic assets inside CSS documents, or transmitting complex multi-byte parameter files across text-restricted network layers requires an engineering mastery over Base64 character sets, binary chunk groupings, and ASCII code boundaries. The internet transmission framework, historically optimized to pass standard character sets, often corrupts raw binary streams or special character structures during complex database migrations. Utilizing an integrated online <b>base64 encoder decoder</b> workflow bypasses this vulnerability, encoding data blocks into universally stable character structures.</p>
+      <p class="seo-p">This long-tail computer architecture guide dissects the mathematical division sequences that drive real-time data serialization, outlines unreserved alphabet maps under global technical standards, monitors stream payload weights, and reviews steps to manage local data utilities safely inside device browsers.</p>
+
+      <div class="seo-callout">
+        <strong>The 6-Bit Slicing Factor:</strong> While traditional compute operations process information within strict 8-bit octet groupings (1 byte), Base64 transforms data by slicing consolidated bit pools into precise **6-bit character coordinates**, mapping values to a specialized index alphabet of 64 distinct tokens cleanly.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Binary Vector Assembly and Padding Algorithms</h3>
+      <p class="seo-p">When raw textual text elements enter a client-side multi-base processing routine, the serialization loop executes three precise algebraic phases:</p>
+
+      <h4 class="seo-h3">1. 24-Bit Boundary Aggregation</h4>
+      <p class="seo-p">The program groups data index-by-index in clusters of three consecutive 8-bit characters. For instance, processing three individual letter units creates a combined floating data pool containing exactly 24 contiguous bits ($3 \times 8 = 24$).</p>
+
+      <h4 class="seo-h3">2. 6-Bit Transposition Slicing</h4>
+      <p class="seo-p">The engine cuts this 24-bit pool into four independent 6-bit vectors ($4 \times 6 = 24$). Each vector contains a specific binary integer value that maps onto a standard 64-symbol alphabet registry: uppercase letters `A-Z` (0–25), lowercase letters `a-z` (26–51), numerical digits `0-9` (52–61), plus sign `+` (62), and forward slash `/` (63).</p>
+
+      <h4 class="seo-h3">3. Character Alignment Normalization (The Equal Padding Rule)</h4>
+      <p class="seo-p">If the data stream closes short and lacks enough bytes to fill a 24-bit cluster, the padding engine appends terminal trailing equal symbols (<b>=</b>). One or two padding tokens indicate that the raw underlying string closed one or two bytes short of the target block alignment, protecting systems against decryption buffer overflow failures.</p>
+
+      <h3>The Statutory Reference Ledger: Classic Base64 Value Mapping Matrix</h3>
+      <p class="seo-p">Understanding how standard alphabets translate into raw 6-bit indices helps software engineers analyze network payloads and audit system variables:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Base64 Index Token</th>
+              <th>Binary 6-Bit Vector Mapping</th>
+              <th>Base64 Alphabet Glyph</th>
+              <th>Base64 Index Token</th>
+              <th>Binary 6-Bit Vector Mapping</th>
+              <th>Base64 Alphabet Glyph</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Index 00</td>
+              <td>`000000`</td>
+              <td><b>A</b></td>
+              <td>Index 26</td>
+              <td>`011010`</td>
+              <td><b>a</b></td>
+            </tr>
+            <tr>
+              <td>Index 05</td>
+              <td>`000101`</td>
+              <td><b>F</b></td>
+              <td>Index 31</td>
+              <td>`011111`</td>
+              <td><b>f</b></td>
+            </tr>
+            <tr>
+              <td>Index 19</td>
+              <td>`010011`</td>
+              <td><b>T</b></td>
+              <td>Index 52</td>
+              <td>`110100`</td>
+              <td><b>0</b> (Numeric Zero Node)</td>
+            </tr>
+            <tr>
+              <td>Index 23</td>
+              <td>`010111`</td>
+              <td><b>X</b></td>
+              <td>Index 63</td>
+              <td>`111111`</td>
+              <td><b>/</b> (Ceiling Identifier Anchor)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Does Base64 processing encrypt data strings to protect business records?</h3>
+      <p class="seo-p">No, Base64 is purely a formatting serialization protocol, not an encryption framework. Because the transformation index is universally public, any standard browser can instantly run a decoding loop to extract the raw text. Treat this format strictly as a data stabilization utility rather than a network security layer.</p>
+
+      <h3>Why do encoded Base64 payloads consume more storage space than raw text lines?</h3>
+      <p class="seo-p">Because Base64 translates batches of 3 bytes into 4 separate character tokens, it introduces a permanent **33% expansion overhead** to your data payload size. Keep this storage addition in mind when calculating database column caps or network bandwidth limits for large scale data imports.</p>
+
+      <h3>How does client-side standalone execution protect information privacy?</h3>
+      <p class="seo-p">Texus Pro Tools values your absolute information privacy above everything else. The calculation modules load entirely as local scripts inside your local device container memory. String conversions or code executions occur entirely on your local hardware without network telemetry broadcasts, establishing a private sandbox environment for developers.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Data Stream Management</h3>
+      <p class="seo-p">To maintain total data accuracy across enterprise workflows, use standardized single whitespaces when handling numeric code strings to ensure accurate reverse parsing. Use monospaced font blocks to audit nested arrays for layout syntax errors easily, monitor overall data footprint sizes to stay within browser storage bar limits, and leverage real-time translation modules to streamline testing environments.</p>
+      <p class="seo-p">Our Advanced Online Base64 Suite automates all these logical conversion steps instantly, delivering immediate, error-free results on any device view framework cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function executeBase64Pipeline(origin) {
+        const plainConsole = document.getElementById('plainTextConsole');
+        const base64Console = document.getElementById('base64TextConsole');
+        const copyBtn = document.getElementById('copyActiveBaseBtn');
+
+        if (origin === 'encode') {
+            const rawText = plainConsole.value;
+            if (!rawText) {
+                base64Console.value = "";
+                return;
+            }
+            try {
+                // High-fidelity multi-byte safe standard UTF-8 string bytes encoder configuration block
+                const utf8Bytes = new TextEncoder().encode(rawText);
+                let binaryString = "";
+                for (let i = 0; i < utf8Bytes.length; i++) {
+                    binaryString += String.fromCharCode(utf8Bytes[i]);
+                }
+                base64Console.value = btoa(binaryString);
+                copyBtn.innerText = "📋 Copy Encoded Text";
+            } catch (e) {
+                console.error("Encoding runtime error exception context:", e);
+            }
+        } 
+        else if (origin === 'decode') {
+            const rawBase64 = base64Console.value.trim();
+            if (!rawBase64) {
+                plainConsole.value = "";
+                return;
+            }
+            try {
+                const binaryString = atob(rawBase64);
+                const bytesArray = new Uint8Array(binaryString.length);
+                for (let i = 0; i < binaryString.length; i++) {
+                    bytesArray[i] = binaryString.charCodeAt(i);
+                }
+                plainConsole.value = new TextDecoder().decode(bytesArray);
+                copyBtn.innerText = "📋 Copy Decoded Text";
+            } catch (exception) {
+                // Securely freeze input validation if string block contains incomplete signatures midway
+                return;
+            }
+        }
+    }
+
+    function copyResultToClipboard() {
+        const plainConsole = document.getElementById('plainTextConsole');
+        const base64Console = document.getElementById('base64TextConsole');
+        
+        const activeTarget = document.activeElement === plainConsole ? plainConsole : base64Console;
+        if (!activeTarget.value.trim()) return;
+
+        activeTarget.select();
+        navigator.clipboard.writeText(activeTarget.value).then(() => {
+            const copyBtn = document.getElementById('copyActiveBaseBtn');
+            const cacheText = copyBtn.innerText;
+            copyBtn.innerText = "⚡ Base64 Copied!";
+            setTimeout(() => { copyBtn.innerText = cacheText; }, 2000);
+        }).catch(err => console.error('Clipboard injection failure exception node:', err));
+    }
+
+    function clearBase64Workspace() {
+        document.getElementById('plainTextConsole').value = "";
+        document.getElementById('base64TextConsole').value = "";
+        document.getElementById('copyActiveBaseBtn').innerText = "📋 Copy Encoded Text";
+        document.getElementById('plainTextConsole').focus();
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
