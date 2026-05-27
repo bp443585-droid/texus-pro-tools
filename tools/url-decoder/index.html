@@ -113,11 +113,11 @@
       
       <h3 class="seo-h3">A. The Fixed-Point Halting Evaluation Loop</h3>
       <p class="seo-p">The program initializes a dual-variable string comparison track, keeping tabs on the input string ($S_{\text{input}}$) alongside a historical reference anchor ($S_{\text{previous}}$). The engine drives a `while` conditional runtime loop that runs string transformations continually as long as the current output differs from the previous pass:</p>
-      <div class="seo-math-box">\text{Execute Loop While } S_{\text{current}} \neq S_{\text{previous}} \quad \cap \quad \text{Layer\_Counter} < 10</div>
+      <div class="seo-math-box">\text{Execute Loop While } S_{\text{current}} \neq S_{\text{previous}} \quad \cap \quad \text{Layer\_Counter} < 40</div>
       <p class="seo-p">When a complete decode pass returns a string identical to its input layer, the system flags a stabilized plaintext state, halts execution, and renders the original clean web address path onto the dashboard canvas seamlessly.</p>
 
       <h3 class="seo-h3">B. Underflow and Infinite Loop Crash Shields</h3>
-      <p class="seo-p">A dangerous challenge with automated loops is handling cyclic or malicious malformed inputs, such as strings composed of infinite recursive percentage signs (`%25252525`). Left unmanaged, an infinite loop will overflow local stack frames and crash the browser interface. Our script prevents this by setting a strict security ceiling capped at 10 iteration cycles, protecting device hardware allocations completely.</p>
+      <p class="seo-p">A dangerous challenge with automated loops is handling cyclic or malicious malformed inputs, such as strings composed of infinite recursive percentage signs (`%25252525`). Left unmanaged, an infinite loop will overflow local stack frames and crash the browser interface. Our script prevents this by setting a strict security ceiling capped at 40 iteration cycles, protecting device hardware allocations completely.</p>
 
       <h3 class="seo-h3">C. Legacy Serialization Normalization (The Plus Sign Spacing Shift)</h3>
       <p class="seo-p">Many early backend database specifications and form submissions (`application/x-www-form-urlencoded`) translate regular spaces into plus signs (`+`) instead of the standard percent-encoded token `%20`. Our decoder suite uses global regular expression sweeps to normalize these custom space formatting placeholders before triggering the multi-stage decoding pipeline.</p>
@@ -239,11 +239,10 @@
         let layerCounter = 0;
         let executionError = false;
 
-        // INFINITE RECURSION SAFE LOOP TERMINATOR (MAX 10 LAYERS)
-        while (currentStr !== previousStr && layerCounter < 10) {
+        // INFINITE RECURSION SAFE LOOP TERMINATOR (MAX 40 LAYERS FOR SMOOTH HIGH FIDELITY RUNTIME)
+        while (currentStr !== previousStr && layerCounter < 40) {
             previousStr = currentStr;
             try {
-                // Handle legacy application standard space formatting switches smoothly
                 let standardizedInput = currentStr.replace(/\+/g, '%20');
                 let attemptDecode = decodeURIComponent(standardizedInput);
                 
