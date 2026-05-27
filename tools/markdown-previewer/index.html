@@ -62,6 +62,13 @@
     .f-preview-canvas pre code { background: transparent; color: inherit; padding: 0; font-size: inherit; font-weight: inherit; }
     .f-preview-canvas blockquote { border-left: 4px solid #cbd5e1; padding-left: 14px; margin: 14px 0; color: #64748b; font-style: italic; }
 
+    /* RESPONSIVE SEGMENT MATRIX FOR MARKDOWN TABLES */
+    .f-preview-canvas table { display: block; width: 100% !important; overflow-x: auto; border-collapse: collapse; margin: 20px 0 25px 0; font-size: 0.95rem; line-height: 1.5; border: 1px solid #e2e8f0; border-radius: 8px; }
+    .f-preview-canvas th { background: #f8fafc; color: #0f172a; font-weight: 700; padding: 12px 14px; border-bottom: 2px solid #e2e8f0; border-right: 1px solid #e2e8f0; text-align: left; }
+    .f-preview-canvas td { padding: 12px 14px; border-bottom: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; color: #475569; white-space: nowrap; }
+    .f-preview-canvas tr:nth-child(even) { background: #fbfcfe; }
+    .f-preview-canvas tr:last-child td { border-bottom: none; }
+
     /* UTILITY ACTION CONTROL ROW STRIP */
     .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
     .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -243,7 +250,7 @@
       .catch(err => console.error('Footer failed to compile:', err));
 
     // Baseline Markdown Initialization Mock Scripts String Data Payload
-    const INITIAL_TEMPLATE_PAYLOAD = `# Markdown Core Guide\n\nWelcome! Type text logs inside the editor box to generate live previews.\n\n## Typographic Formats\n\nManage **Bold weights** or *Italic scripts* instantly.\n\n### Code Blocks Demonstration\n\n\`\`\`javascript\n// High performance array loops\nfunction testStream() {\n    console.log("Texus Pro Tools");\n}\n\`\`\`\n\n> Create sleek blockquotes and list lines effortlessly: \n- Monospaced parameters conversion\n- Safe browser sandboxing rules`;
+    const INITIAL_TEMPLATE_PAYLOAD = `# Markdown Core Guide\n\nWelcome! Type text logs inside the editor box to generate live previews.\n\n## Typographic Formats\n\nManage **Bold weights** or *Italic scripts* instantly.\n\n### Code Blocks Demonstration\n\n\`\`\`javascript\n// High performance array loops\nfunction testStream() {\n    console.log("Texus Pro Tools");\n}\n\`\`\`\n\n> Create sleek blockquotes and list lines effortlessly: \n- Monospaced parameters conversion\n- Safe browser sandboxing rules`;
 
     function processMarkdownCompilation() {
         const editor = document.getElementById('markdownEditorConsole');
@@ -255,7 +262,6 @@
             return;
         }
 
-        // Lightweight safe custom string token transformations compiler rules
         let htmlPayloadOutput = rawMarkdown
             // Clean out malicious scripts nodes explicitly to protect data boundaries
             .replace(/<script[^>]*>([\s\S]*?)<\/script>/gi, '')
@@ -282,10 +288,48 @@
             .replace(/\*([\s\S]+?)\*/g, '<em>$1</em>')
             
             // Inline Level: Code Tokens
-            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/`([^`]+)`/g, '<code>$1</code>');
+
+        // --- CORE PARSING COMPILER MODULE FOR MARKDOWN TABLES ---
+        const lines = htmlPayloadOutput.split('\n');
+        let insideTableMode = false;
+        let compiledTableStructure = [];
+
+        for (let idx = 0; idx < lines.length; idx++) {
+            let line = lines[idx].trim();
             
-            // Clean duplicate adjacent structural container wrappers tags cleanly
-            .replace(/<\/ul>\s*<ul>/g, '');
+            // Detect raw pipe boundaries indicating standard table rows
+            if (line.startsWith('|') && line.endsWith('|')) {
+                let columns = line.split('|').map(c => c.trim()).filter((c, i, arr) => i > 0 && i < arr.length - 1);
+                
+                if (!insideTableMode) {
+                    insideTableMode = true;
+                    compiledTableStructure.push('<table><thead><tr>');
+                    columns.forEach(col => { compiledTableStructure.push('<th>' + col + '</th>'); });
+                    compiledTableStructure.push('</tr></thead><tbody>');
+                    
+                    // Skip the relative next formatting alignment dashes baseline row safely (e.g. |:---|)
+                    if (idx + 1 < lines.length && lines[idx+1].trim().includes('---')) {
+                        idx++;
+                    }
+                } else {
+                    compiledTableStructure.push('<tr>');
+                    columns.forEach(col => { compiledTableStructure.push('<td>' + col + '</td>'); });
+                    compiledTableStructure.push('</tr>');
+                }
+            } else {
+                if (insideTableMode) {
+                    insideTableMode = false;
+                    compiledTableStructure.push('</tbody></table>');
+                }
+                compiledTableStructure.push(lines[idx]);
+            }
+        }
+        if (insideTableMode) {
+            compiledTableStructure.push('</tbody></table>');
+        }
+        
+        htmlPayloadOutput = compiledTableStructure.join('\n').replace(/<\/ul>\s*<ul>/g, '');
 
         // Standard Paragraph Line Formatting Wraps Fixes Loops
         const segments = htmlPayloadOutput.split(/\n{2,}/);
@@ -293,6 +337,7 @@
             if (!segments[i].trim().startsWith('<h') && 
                 !segments[i].trim().startsWith('<pre') && 
                 !segments[i].trim().startsWith('<blockquote') && 
+                !segments[i].trim().startsWith('<table') && 
                 !segments[i].trim().startsWith('<ul')) {
                 segments[i] = '<p>' + segments[i].replace(/\n/g, '<br>') + '</p>';
             }
@@ -319,7 +364,6 @@
         document.getElementById('markdownEditorConsole').focus();
     }
 
-    // Run automatic startup layout configuration paths loading
     window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('markdownEditorConsole').value = INITIAL_TEMPLATE_PAYLOAD;
         processMarkdownCompilation();
