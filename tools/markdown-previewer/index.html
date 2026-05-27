@@ -39,9 +39,9 @@
     /* WORKSPACE CORE CONTAINER CARD */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
     
-    /* DOUBLE BOX INTERACTIVE WORKSPACE GRID */
-    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
-    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    /* DOUBLE BOX INTERACTIVE WORKSPACE GRID - FIXED MIN-WIDTH UNDERFLOW OVERLAP */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; width: 100%; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; min-width: 0; }
     .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     
     .f-textarea-field { width: 100%; height: 450px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1rem; font-family: 'Courier New', Courier, monospace; color: #0f172a; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; font-weight: 600; }
@@ -126,7 +126,7 @@
     
     <div class="f-card">
       <div class="f-io-grid">
-        <div class="f-control-panel f-panel-box">
+        <div class="f-panel-box">
           <label for="markdownEditorConsole">Markdown Source Editor</label>
           <textarea id="markdownEditorConsole" class="f-textarea-field" placeholder="Type Markdown scripts here..." oninput="processMarkdownCompilation()"></textarea>
         </div>
@@ -249,7 +249,6 @@
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
 
-    // Baseline Markdown Initialization Mock Scripts String Data Payload
     const INITIAL_TEMPLATE_PAYLOAD = `# Markdown Core Guide\n\nWelcome! Type text logs inside the editor box to generate live previews.\n\n## Typographic Formats\n\nManage **Bold weights** or *Italic scripts* instantly.\n\n### Code Blocks Demonstration\n\n\`\`\`javascript\n// High performance array loops\nfunction testStream() {\n    console.log("Texus Pro Tools");\n}\n\`\`\`\n\n> Create sleek blockquotes and list lines effortlessly: \n- Monospaced parameters conversion\n- Safe browser sandboxing rules`;
 
     function processMarkdownCompilation() {
@@ -263,34 +262,18 @@
         }
 
         let htmlPayloadOutput = rawMarkdown
-            // Clean out malicious scripts nodes explicitly to protect data boundaries
             .replace(/<script[^>]*>([\s\S]*?)<\/script>/gi, '')
-            
-            // Block Level: Multi-Line Code Pre Containers
             .replace(/```([\s\S]+?)```/g, '<pre><code>$1</code></pre>')
-            
-            // Block Level: Headings Arrays
             .replace(/^# (.*?)$/gm, '<h1>$1</h1>')
             .replace(/^## (.*?)$/gm, '<h2>$1</h2>')
             .replace(/^### (.*?)$/gm, '<h3>$1</h3>')
-            
-            // Block Level: Blockquotes Segments
             .replace(/^> (.*?)$/gm, '<blockquote>$1</blockquote>')
-            
-            // Block Level: Bullet Lists Items
             .replace(/^\- (.*?)$/gm, '<ul><li>$1</li></ul>')
             .replace(/^\* (.*?)$/gm, '<ul><li>$1</li></ul>')
-            
-            // Inline Level: Bold Elements
             .replace(/\*\*([\s\S]+?)\*\*/g, '<strong>$1</strong>')
-            
-            // Inline Level: Italic Elements
             .replace(/\*([\s\S]+?)\*/g, '<em>$1</em>')
-            
-            // Inline Level: Code Tokens
             .replace(/`([^`]+)`/g, '<code>$1</code>');
 
-        // --- CORE PARSING COMPILER MODULE FOR MARKDOWN TABLES ---
         const lines = htmlPayloadOutput.split('\n');
         let insideTableMode = false;
         let compiledTableStructure = [];
@@ -298,7 +281,6 @@
         for (let idx = 0; idx < lines.length; idx++) {
             let line = lines[idx].trim();
             
-            // Detect raw pipe boundaries indicating standard table rows
             if (line.startsWith('|') && line.endsWith('|')) {
                 let columns = line.split('|').map(c => c.trim()).filter((c, i, arr) => i > 0 && i < arr.length - 1);
                 
@@ -308,7 +290,6 @@
                     columns.forEach(col => { compiledTableStructure.push('<th>' + col + '</th>'); });
                     compiledTableStructure.push('</tr></thead><tbody>');
                     
-                    // Skip the relative next formatting alignment dashes baseline row safely (e.g. |:---|)
                     if (idx + 1 < lines.length && lines[idx+1].trim().includes('---')) {
                         idx++;
                     }
@@ -331,7 +312,6 @@
         
         htmlPayloadOutput = compiledTableStructure.join('\n').replace(/<\/ul>\s*<ul>/g, '');
 
-        // Standard Paragraph Line Formatting Wraps Fixes Loops
         const segments = htmlPayloadOutput.split(/\n{2,}/);
         for (let i = 0; i < segments.length; i++) {
             if (!segments[i].trim().startsWith('<h') && 
