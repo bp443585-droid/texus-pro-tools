@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Markdown Previewer | Free Online Live Markdown Editor</title>
+  <meta name="description" content="Type or paste Markdown scripts and preview live HTML rendering instantly. Free standalone browser-based markdown editor with real-time text visualization." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/markdown-previewer/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Markdown Previewer Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "A high-performance text parsing application to convert markdown markup strings into clean structural HTML elements in real time.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE WORKSPACE GRID */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 380px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1rem; font-family: 'Courier New', Courier, monospace; color: #0f172a; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; font-weight: 600; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    /* LIVE PREVIEW CANVAS HOUSING LAYER */
+    .f-preview-canvas { width: 100%; height: 380px; background: #ffffff; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; box-sizing: border-box; overflow-y: auto; color: #1e293b; font-size: 1rem; line-height: 1.6; }
+    
+    /* MARKDOWN INTERNAL CANVAS TYPOGRAPHY STYLE MAPS */
+    .f-preview-canvas h1 { font-size: 1.8rem; margin: 0 0 12px 0; color: #0f172a; font-weight: 800; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }
+    .f-preview-canvas h2 { font-size: 1.4rem; margin: 18px 0 10px 0; color: #1e293b; font-weight: 700; }
+    .f-preview-canvas h3 { font-size: 1.15rem; margin: 14px 0 8px 0; color: #334155; font-weight: 700; }
+    .f-preview-canvas p { margin: 0 0 12px 0; color: #475569; }
+    .f-preview-canvas ul, .f-preview-canvas ol { padding-left: 20px; margin: 0 0 14px 0; color: #475569; }
+    .f-preview-canvas li { margin-bottom: 4px; }
+    .f-preview-canvas code { background: #f1f5f9; color: #e11d48; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9rem; font-weight: 700; }
+    .f-preview-canvas pre { background: #0f172a; color: #38bdf8; padding: 14px; border-radius: 8px; overflow-x: auto; margin: 14px 0; font-family: monospace; font-size: 0.88rem; line-height: 1.4; }
+    .f-preview-canvas pre code { background: transparent; color: inherit; padding: 0; font-size: inherit; font-weight: inherit; }
+    .f-preview-canvas blockquote { border-left: 4px solid #cbd5e1; padding-left: 14px; margin: 14px 0; color: #64748b; font-style: italic; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field, .f-preview-canvas { height: 280px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📝</span> Markdown Previewer</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-control-panel f-panel-box">
+          <label for="markdownEditorConsole">Markdown Source Editor</label>
+          <textarea id="markdownEditorConsole" class="f-textarea-field" placeholder="Type Markdown scripts here..." oninput="processMarkdownCompilation()"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Real-Time Live HTML Preview</label>
+          <div id="markdownPreviewCanvas" class="f-preview-canvas"></div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="processMarkdownCompilation()">Force Full Refresh</button>
+        <button class="f-btn f-btn-copy" id="copyHtmlBtn" onclick="copyCompiledHtmlToClipboard()">📋 Copy Rendered HTML</button>
+        <button class="f-btn f-btn-clear" onclick="clearMarkdownWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Sandboxed Client-Side Parsing Active:</span>
+        The compiler executes strictly inside your device browser runtime array loops. Adjust syntax characters, and observe formatting changes inside the adjacent canvas window instantaneously.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Typography of Lightweight Markup Documentation: Syntax Parsing Engines, Regex Serialization Tokens, and AST Hierarchy Foundations</h2>
+      <p class="seo-p">Configuring clean technical documentation logs, drafting structured open-source code repositories, or formatting clean metadata inputs across digital management panels requires an absolute programmatic understanding of text serialization rules, string compilation matrices, and Abstract Syntax Trees (AST). Markdown, structured in the opening periods of 2004, acts as a primary user-friendly abstraction layer that translates plain-text typographic shorthand markers directly into valid semantic HTML layouts cleanly, bypassing heavy visual rendering lags across devices.</p>
+      <p class="seo-p">This granular computer documentation manual breaks down the binary token recognition patterns that power lightweight markup engines, contrasts inline semantic styles against block container tags, maps footprint constraints, and guides developers through executing standalone markdown previews inside device memories without script overheads.</p>
+
+      <div class="seo-callout">
+        <strong>The Tokenization Convergence Rule:</strong> At the raw calculation layer, a markdown compiler acts as a regular expression lexer. It runs an event loop character-by-character to locate syntax anchors (like asterisks or hashtags) and swaps them linearly with structured markup tags, protecting document layouts.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Lexical Block Segmentation and Inline Code Transformations</h3>
+      <p class="seo-p">When raw markdown prose strings enter an online client-side text engine, the custom interpreter parses parameters via two synchronized algorithmic sweeps:</p>
+
+      <h4 class="seo-h3">1. Block-Level Paragraph Categorization</h4>
+      <p class="seo-p">The program first slices incoming text chunks using line break delimiters (`\n\n`). For each segment, it checks the starting string boundaries. Character weights like `#` translate directly into relative structural headings (`&lt;h1&gt;` through `&lt;h6&gt;`), while leading line markers like `-` or `*` convert elements into standard bullet list blocks natively.</p>
+
+      <h4 class="seo-h3">2. Inline Regular Expression Sweeps</h4>
+      <p class="seo-p">Once block borders are secured, a second parsing loop sweeps inside the strings to process inline modifiers. Double asterisks (`**`) map directly onto strong font components, while surrounding backtick symbols (`` ` ``) isolate words inside monospaced text blocks, blocking layout execution errors.</p>
+
+      <h4 class="seo-h3">3. Safe HTML Node Output Rendering</h4>
+      <p class="seo-p">To display content without causing document crashes, the generated markup tree compiles inside the container grid elements using a isolated browser runtime property, maintaining strict padding boundaries across viewports.</p>
+
+      <h3>The Statutory Reference Ledger: Classic Markdown Syntax Conversion Map</h3>
+      <p class="seo-p">Reviewing how shorthand plain-text keyboard structures translate into standard semantic code units helps web developers optimize layouts and structure technical summaries cleanly:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Markdown Shorthand Syntax Input</th>
+              <th>Semantic HTML Code Output Counterpart</th>
+              <th>Rendered Visual Appearance Target Layout</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>`# Heading Level 1`</td>
+              <td>`&lt;h1&gt;Heading Level 1&lt;/h1&gt;`</td>
+              <td>Large bold primary structural section title text block.</td>
+            </tr>
+            <tr>
+              <td>`## Heading Level 2`</td>
+              <td>`&lt;h2&gt;Heading Level 2&lt;/h2&gt;`</td>
+              <td>Sub-heading boundary indicator row element.</td>
+            </tr>
+            <tr>
+              <td>`**Strong Bold Font**`</td>
+              <td>`&lt;strong&gt;Strong Bold Font&lt;/strong&gt;`</td>
+              <td>High-contrast typography asset to guide scanning eyes.</td>
+            </tr>
+            <tr>
+              <td>`*Emphasized Italic*`</td>
+              <td>`&lt;em&gt;Emphasized Italic&lt;/em&gt;`</td>
+              <td>Slanted editorial annotation character formatting structure.</td>
+            </tr>
+            <tr>
+              <td>`` `Inline Code Token` ``</td>
+              <td>`&lt;code&gt;Inline Code Token&lt;/code&gt;`</td>
+              <td>Isolated monospaced text indicator box with a distinct accent background.</td>
+            </tr>
+            <tr>
+              <td>`> Blockquote Segment`</td>
+              <td>`&lt;blockquote&gt;Blockquote Segment&lt;/blockquote&gt;`</td>
+              <td>Indented review commentary box with a solid side accent borderline.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Can an inline markdown previewer render nested scripts or dynamic elements?</h3>
+      <p class="seo-p">No, for safety reasons. While native markdown parsing frameworks allow inline raw HTML code strings to execute inside documents, our sandbox utility handles text strings strictly as static content. This setup screens out script elements, completely blocking malicious cross-site scripting (XSS) actions inside the live preview box.</p>
+
+      <h3>Why do code blocks wrap poorly on compact smartphone screen views?</h3>
+      <p class="seo-p">Line wrapping problems occur when custom monospaced code blocks are passed without clear overflow style rules. Our upgraded interface structure addresses this layout issue by anchoring pre-formatted elements with an autonomous horizontal scroll rule (`overflow-x: auto;`), ensuring parameters fit smoothly across all viewport configurations.</p>
+
+      <h3>How does client-side text generation protect information privacy boundaries?</h3>
+      <p class="seo-p">Texus Pro Tools values your data security above all else. The markdown compiler loads completely as local script configurations within your device browser environment cache. Every layout transition and string conversion executes natively on your hardware without server-side telemetry broadcasts, providing a 100% private sandbox for your workflows.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Technical Documentation Management</h3>
+      <p class="seo-p">To secure optimal data presentation, apply uniform syntax line breaks (`\n\n`) when dividing major paragraphs to prevent string collapse errors during HTML rendering loops. Use standard monospaced layout panels to check data streams for conversion errors easily, use explicit heading indices to keep content hierarchies clear, and leverage real-time translation modules to streamline testing environments.</p>
+      <p class="seo-p">Our Advanced Online Markdown Live Previewer automates all these structural text transformation loops instantly, providing real-time visibility into your markup scripts across any mobile or desktop view layout seamlessly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // Baseline Markdown Initialization Mock Scripts String Data Payload
+    const INITIAL_TEMPLATE_PAYLOAD = `# Markdown Core Guide\n\nWelcome! Type text logs inside the editor box to generate live previews.\n\n## Typographic Formats\n\nManage **Bold weights** or *Italic scripts* instantly.\n\n### Code Blocks Demonstration\n\n\`\`\`javascript\n// High performance array loops\nfunction testStream() {\n    console.log("Texus Pro Tools");\n}\n\`\`\`\n\n> Create sleek blockquotes and list lines effortlessly: \n- Monospaced parameters conversion\n- Safe browser sandboxing rules`;
+
+    function processMarkdownCompilation() {
+        const editor = document.getElementById('markdownEditorConsole');
+        const canvas = document.getElementById('markdownPreviewCanvas');
+        
+        let rawMarkdown = editor.value;
+        if (!rawMarkdown.trim()) {
+            canvas.innerHTML = "<p style='color:#94a3b8; font-style:italic;'>Awaiting markdown inputs...</p>";
+            return;
+        }
+
+        // Lightweight safe custom string token transformations compiler rules
+        let htmlPayloadOutput = rawMarkdown
+            // Clean out malicious scripts nodes explicitly to protect data boundaries
+            .replace(/<script[^>]*>([\s\S]*?)<\/script>/gi, '')
+            
+            // Block Level: Multi-Line Code Pre Containers
+            .replace(/```([\s\S]+?)```/g, '<pre><code>$1</code></pre>')
+            
+            // Block Level: Headings Arrays
+            .replace(/^# (.*?)$/gm, '<h1>$1</h1>')
+            .replace(/^## (.*?)$/gm, '<h2>$1</h2>')
+            .replace(/^### (.*?)$/gm, '<h3>$1</h3>')
+            
+            // Block Level: Blockquotes Segments
+            .replace(/^> (.*?)$/gm, '<blockquote>$1</blockquote>')
+            
+            // Block Level: Bullet Lists Items
+            .replace(/^\- (.*?)$/gm, '<ul><li>$1</li></ul>')
+            .replace(/^\* (.*?)$/gm, '<ul><li>$1</li></ul>')
+            
+            // Inline Level: Bold Elements
+            .replace(/\*\*([\s\S]+?)\*\*/g, '<strong>$1</strong>')
+            
+            // Inline Level: Italic Elements
+            .replace(/\*([\s\S]+?)\*/g, '<em>$1</em>')
+            
+            // Inline Level: Code Tokens
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            
+            // Clean duplicate adjacent structural container wrappers tags cleanly
+            .replace(/<\/ul>\s*<ul>/g, '');
+
+        // Standard Paragraph Line Formatting Wraps Fixes Loops
+        const segments = htmlPayloadOutput.split(/\n{2,}/);
+        for (let i = 0; i < segments.length; i++) {
+            if (!segments[i].trim().startsWith('<h') && 
+                !segments[i].trim().startsWith('<pre') && 
+                !segments[i].trim().startsWith('<blockquote') && 
+                !segments[i].trim().startsWith('<ul')) {
+                segments[i] = '<p>' + segments[i].replace(/\n/g, '<br>') + '</p>';
+            }
+        }
+        
+        canvas.innerHTML = segments.join('\n');
+    }
+
+    function copyCompiledHtmlToClipboard() {
+        const canvas = document.getElementById('markdownPreviewCanvas');
+        if (!canvas.innerText.trim()) return;
+
+        navigator.clipboard.writeText(canvas.innerHTML).then(() => {
+            const copyBtn = document.getElementById('copyHtmlBtn');
+            const cacheText = copyBtn.innerText;
+            copyBtn.innerText = "⚡ HTML Markup Copied!";
+            setTimeout(() => { copyBtn.innerText = cacheText; }, 2000);
+        }).catch(err => console.error('Clipboard buffer injection failure exception:', err));
+    }
+
+    function clearMarkdownWorkspace() {
+        document.getElementById('markdownEditorConsole').value = "";
+        processMarkdownCompilation();
+        document.getElementById('markdownEditorConsole').focus();
+    }
+
+    // Run automatic startup layout configuration paths loading
+    window.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('markdownEditorConsole').value = INITIAL_TEMPLATE_PAYLOAD;
+        processMarkdownCompilation();
+    });
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
