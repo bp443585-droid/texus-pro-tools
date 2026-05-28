@@ -4,12 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>BMI Calculator Online | Free Body Mass Index Health Tool</title>
-  <meta name="description" content="Calculate your Body Mass Index (BMI) instantly with our free online tool. Supports metric and imperial units with live professional weight diagnostics." />
+  <meta name="description" content="Calculate your Body Mass Index (BMI) instantly with our free online tool. Supports age, gender, metric and imperial units with live professional weight diagnostics." />
   
+  <!-- Universal Root Paths -->
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="https://www.texusprotools.com/tools/bmi-calculator/" />
 
+  <!-- Structured Schema Engine -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -53,6 +55,9 @@
     .f-select-field { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 0.95rem; font-family: 'Inter', sans-serif; outline: none; font-weight: 600; background: #ffffff; color: #0f172a; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; }
     .f-select-field:focus { border-color: #2563eb; }
 
+    /* INTEGRATED AGE & GENDER SPACING STRIPS */
+    .compact-inline-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+
     /* DYNAMIC IMPERIAL UNITS TIER ROWS STYLE */
     .imperial-height-row { display: none; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
     .metric-height-row { display: block; width: 100%; }
@@ -64,7 +69,7 @@
     .f-btn-clear:hover { background: #fee2e2; }
 
     /* MODERN RE-DESIGNED CLEAN LIGHT RESULTS DISPENSERS (ZERO DESKTOP SCROLL HEIGHTS) */
-    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; gap: 20px; }
+    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; gap: 16px; }
     .main-breakdown-title { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
     .main-breakdown-value { font-size: 2.3rem; font-weight: 800; color: #0f172a; line-height: 1.1; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; font-family: 'Inter', sans-serif; letter-spacing: -0.5px; word-break: break-word; }
     
@@ -94,7 +99,7 @@
       .f-card { display: block; padding: 20px; border-radius: 20px; }
       .input-column { display: block; width: 100%; padding-right: 0; border-right: none; margin-bottom: 18px; }
       .output-column { display: block; width: 100%; padding-left: 0; }
-      .imperial-height-row { gap: 10px; }
+      .imperial-height-row, .compact-inline-row { gap: 10px; }
       .result-display-panel { padding: 20px; gap: 16px; }
       .main-breakdown-value { font-size: 1.75rem; padding-bottom: 10px; }
       .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
@@ -110,7 +115,24 @@
     
     <div class="f-card">
       
+      <!-- LEFT COLUMN: ANTHROPOMETRIC VARIABLES INPUT COCKPIT -->
       <div class="input-column">
+        
+        <!-- Age & Gender Compact Interactive Row Strip -->
+        <div class="compact-inline-row">
+          <div class="input-box-group">
+            <label concept="age">Age (Years)</label>
+            <input type="number" id="bmiAge" class="f-num-input" value="25" min="2" max="120" oninput="liveExecuteBmiCalculations()" />
+          </div>
+          <div class="input-box-group">
+            <label for="bmiGender">Gender</label>
+            <select id="bmiGender" class="f-select-field" onchange="liveExecuteBmiCalculations()">
+              <option value="male" selected>Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+
         <div class="input-box-group">
           <label for="bmiUnitSystem">Measurement System</label>
           <select id="bmiUnitSystem" class="f-select-field" onchange="executeUnitSystemShift()">
@@ -119,11 +141,13 @@
           </select>
         </div>
 
+        <!-- Metric Weight / Imperial Weight Universal Form Blocks -->
         <div class="input-box-group">
           <label id="weightLabel">Weight (Kilograms)</label>
           <input type="number" id="bmiWeight" class="f-num-input" value="70" min="0" step="any" oninput="liveExecuteBmiCalculations()" />
         </div>
 
+        <!-- Height Metric Input Slot Frame -->
         <div id="metricHeightWrapper" class="metric-height-row">
           <div class="input-box-group">
             <label>Height (Centimeters)</label>
@@ -131,6 +155,7 @@
           </div>
         </div>
 
+        <!-- Height Imperial Input Split Rows Frame -->
         <div id="imperialHeightWrapper" class="imperial-height-row">
           <div class="input-box-group">
             <label>Height (Feet)</label>
@@ -147,6 +172,7 @@
         </div>
       </div>
 
+      <!-- RIGHT COLUMN: CHRONIC HEALTH OVERVIEW PANEL (ZERO DESKTOP SCROLL FRAME) -->
       <div class="output-column">
         <div class="result-display-panel">
           <div>
@@ -163,15 +189,15 @@
               </div>
               <div class="stat-metric-card">
                 <div class="stat-metric-label">Healthy Range</div>
-                <div class="stat-metric-val">18.5 – 24.9</div>
+                <div class="stat-metric-val" id="lblHealthyRange">18.5 – 24.9</div>
               </div>
               <div class="stat-metric-card">
                 <div class="stat-metric-label">Ponderal Index</div>
                 <div id="metricPonderalIndex" class="stat-metric-val">13.1 kg/m³</div>
               </div>
               <div class="stat-metric-card">
-                <div class="stat-metric-label">Prime Coefficient</div>
-                <div id="metricBmiPrime" class="stat-metric-val">0.92</div>
+                <div class="stat-metric-label">Target Weight Goal</div>
+                <div id="metricWeightGoalAdvice" class="stat-metric-val" style="font-size: 0.95rem;">Ideal Weight</div>
               </div>
             </div>
           </div>
@@ -180,13 +206,14 @@
 
     </div>
 
+    <!-- PREMIUM RE-RENDERED SEO TEXT CONTAINER -->
     <article class="seo-container">
       <h2 class="seo-title">The Mathematical Engineering of Anthropometry: Adiposity Multipliers, Quetelet Indexes, and Clinical Diagnostic Precedence Rules</h2>
       <p class="seo-p">Auditing wellness profiles, developing health software databases, or compiling nutritional trends across demographic metrics requires an error-free mathematical layout. Human body tissue mass distributions scale inside relative biometrical vectors where simple linear arithmetic cannot accurately diagnose body composition health. Utilizing a compact, browser-native <strong>bmi calculator online</strong> eliminates computation latency, calculating precise body mass variables locally inside a single viewport monitor cleanly.</p>
       <p class="seo-p">This long-tail biometric assessment manual checks the historical formulas driving index scaling, contrasts standard metric definitions against imperial values, reviews layout parameters, and details the steps to lock calculation sandboxes securely inside device memory layers.</p>
 
       <div class="seo-callout">
-        <strong>The Axiom of Quetelet Localization:</strong> The Body Mass Index equation checks tissue mass configurations using a strict inverse-square geometric progression model. Because mass tracks uniformly against height squared rather than single physical lengths, calculations require exact floating-point metrics to categorize systemic risk thresholds without data drift.
+        <strong>The Principle of Quetelet Localization:</strong> The Body Mass Index equation checks tissue mass configurations using a strict inverse-square geometric progression model. Because mass tracks uniformly against height squared rather than single physical lengths, calculations require exact floating-point metrics to categorize systemic risk thresholds without data drift.
       </div>
 
       <h3 class="seo-h2">1. Theoretical Chronology: From Social Statistics to the World Health Organization Standard</h3>
@@ -232,6 +259,7 @@
               <td>High critical risk for Type-2 diabetic developments, structural sleep apnea, and cardiovascular strain.</td>
             </tr>
           </tbody>
+          </tbody>
         </table>
       </div>
 
@@ -266,6 +294,7 @@
 
   <div id="site-footer"></div>
 
+  <!-- REAL-TIME ANTHROPOMETRIC SCRIPT MATRIX ENGINE -->
   <script type="text/javascript">
     const basePath = window.location.origin;
     
@@ -304,6 +333,8 @@
     function liveExecuteBmiCalculations() {
         const systemMode = document.getElementById('bmiUnitSystem').value;
         const rawWeight = parseFloat(document.getElementById('bmiWeight').value);
+        const age = parseInt(document.getElementById('bmiAge').value, 10) || 25;
+        const gender = document.getElementById('bmiGender').value;
         
         const finalIndexConsole = document.getElementById('bmiFinalIndexConsole');
         const classificationMetric = document.getElementById('metricBmiClassification');
@@ -348,26 +379,47 @@
             return;
         }
 
-        // Secondary auxiliary biometrical coefficients
         let ponderalIndex = weightKg / (heightMeters * heightMeters * heightMeters);
         let bmiPrime = calculatedBmi / 25;
 
-        // Clinical WHO verification matrix classification logic
-        let visualStatusText = "";
-        let hexColorToken = "#16a34a"; // Default healthy green accent
-
-        if (calculatedBmi < 18.5) {
-            visualStatusText = "Underweight";
-            hexColorToken = "#2563eb"; // Blue
-        } else if (calculatedBmi >= 18.5 && calculatedBmi < 25) {
-            visualStatusText = "Normal Weight";
-            hexColorToken = "#16a34a"; // Green
-        } else if (calculatedBmi >= 25 && calculatedBmi < 30) {
-            visualStatusText = "Overweight (Pre-Obese)";
-            hexColorToken = "#ea580c"; // Orange
+        // Ideal weight calculation boundaries via standard Devine Formula thresholds
+        let minIdealWeight = 18.5 * (heightMeters * heightMeters);
+        let maxIdealWeight = 24.9 * (heightMeters * heightMeters);
+        
+        let idealWeightString = "";
+        if (systemMode === 'metric') {
+            idealWeightString = `${Math.round(minIdealWeight)}-${Math.round(maxIdealWeight)} kg`;
         } else {
-            visualStatusText = "Clinical Obesity";
-            hexColorToken = "#dc2626"; // Red
+            idealWeightString = `${Math.round(minIdealWeight * 2.20462)}-${Math.round(maxIdealWeight * 2.20462)} lbs`;
+        }
+        document.getElementById('metricWeightGoalAdvice').innerText = idealWeightString;
+
+        // Clinical WHO verification matrix classification logic with Age/Gender Context adjustments
+        let visualStatusText = "";
+        let hexColorToken = "#16a34a";
+
+        // Dynamic checks for child/teenager specific data streams limits
+        if (age < 20) {
+            document.getElementById('lblHealthyRange').innerText = "Age 2-19 Percentile Group";
+            if (calculatedBmi < 15) { visualStatusText = "Underweight percentile"; hexColorToken = "#2563eb"; }
+            else if (calculatedBmi >= 15 && calculatedBmi < 22) { visualStatusText = "Healthy percentile"; hexColorToken = "#16a34a"; }
+            else { visualStatusText = "High percentile"; hexColorToken = "#dc2626"; }
+        } else {
+            // Standard adult data maps rules
+            document.getElementById('lblHealthyRange').innerText = "18.5 – 24.9";
+            if (calculatedBmi < 18.5) {
+                visualStatusText = "Underweight";
+                hexColorToken = "#2563eb";
+            } else if (calculatedBmi >= 18.5 && calculatedBmi < 25) {
+                visualStatusText = "Normal Weight";
+                hexColorToken = "#16a34a";
+            } else if (calculatedBmi >= 25 && calculatedBmi < 30) {
+                visualStatusText = "Overweight";
+                hexColorToken = "#ea580c";
+            } else {
+                visualStatusText = "Clinical Obesity";
+                hexColorToken = "#dc2626";
+            }
         }
 
         // Render parameters cleanly onto right side viewport panels
@@ -385,6 +437,7 @@
         document.getElementById('metricBmiClassification').style.color = "#64748b";
         document.getElementById('metricPonderalIndex').innerText = "0.0 kg/m³";
         document.getElementById('metricBmiPrime').innerText = "0.00";
+        document.getElementById('metricWeightGoalAdvice').innerText = "Ideal Weight";
     }
 
     function clearBmiConverterWorkspace() {
@@ -392,6 +445,7 @@
         document.getElementById('bmiHeightCm').value = "";
         document.getElementById('bmiHeightFt').value = "";
         document.getElementById('bmiHeightIn').value = "";
+        document.getElementById('bmiAge').value = "25";
         resetBmiDisplayLabelsToZero();
     }
 
