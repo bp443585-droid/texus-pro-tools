@@ -6,10 +6,12 @@
   <title>Basic Calculator Online | Simple Electronic Mathematical Workspace</title>
   <meta name="description" content="Use our free online basic calculator for standard arithmetic equations. Features instant live keyboard execution and mathematical history tracking parameters cleanly." />
   
+  <!-- Universal Root Paths -->
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="https://www.texusprotools.com/tools/basic-calculator/" />
 
+  <!-- Structured Schema Engine -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,10 +39,10 @@
     .f-heading span { font-size: 2.4rem; }
     
     /* WORKSPACE CORE AREA CARD CENTERED SYSTEM DESIGN WITH ADS GAP SENSITIVITY */
-    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; }
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; position: relative; }
     
     /* THE SLATE CALCULATOR VERTIKALLY ALIGNED SYSTEM HOUSING MATCHING BOTH SCREENSHOTS EXAKTLY */
-    .calc-housing { width: 100%; max-width: 420px; background: #1e293b; border-radius: 28px; padding: 24px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.22); box-sizing: border-box; }
+    .calc-housing { width: 100%; max-width: 420px; background: #1e293b; border-radius: 28px; padding: 24px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.22); box-sizing: border-box; position: relative; }
     
     /* DISPLAY PANEL SYSTEM LAYER COUPLINGS WITH INTEGRATED LOG INTERFACES */
     .calc-screen-wrapper { background: #0f172a; border-radius: 16px; padding: 20px 20px 20px 50px; margin-bottom: 20px; text-align: right; box-sizing: border-box; min-height: 110px; display: flex; flex-direction: column; justify-content: center; gap: 6px; border: 1px solid #334155; position: relative; }
@@ -51,6 +53,13 @@
     .calc-history-btn { position: absolute; left: 16px; top: 22px; background: none; border: none; color: #94a3b8; font-size: 1.35rem; cursor: pointer; transition: all 0.2s ease; padding: 4px; outline: none; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
     .calc-history-btn:hover { color: #3b82f6; background: rgba(255,255,255,0.05); transform: rotate(-15deg); }
     .calc-history-btn:active { transform: scale(0.9); }
+
+    /* MULTI-CHAIN DROPDOWN HISTORY STORAGE SLIDE DRAWER CONTAINER */
+    .calc-history-drawer { display: none; position: absolute; left: 24px; right: 24px; top: 145px; background: #0f172a; border: 1px solid #334155; border-radius: 16px; max-height: 260px; overflow-y: auto; z-index: 100; padding: 12px; box-sizing: border-box; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); }
+    .history-log-item { padding: 10px 12px; font-size: 0.88rem; color: #cbd5e1; border-bottom: 1px solid #1e293b; font-family: monospace; cursor: pointer; text-align: left; transition: all 0.15s ease; border-radius: 6px; word-break: break-all; }
+    .history-log-item:hover { background: #1e293b; color: #3b82f6; }
+    .history-log-item:last-child { border-bottom: none; }
+    .history-empty-msg { font-size: 0.85rem; color: #64748b; text-align: center; padding: 20px; font-style: italic; }
 
     /* COMPLETE ALL SCIENTIFIC AND BASIC BUTTONS LAYERED INTO AN ELEGANT COMPACT GRID SECTION */
     .calc-keypad-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 100%; }
@@ -98,6 +107,7 @@
       .calc-btn { padding: 14px 4px; font-size: 1rem; border-radius: 12px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
       .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+      .calc-history-drawer { top: 135px; left: 16px; right: 16px; }
     }
   </style>
 </head>
@@ -110,51 +120,64 @@
     
     <div class="f-card">
       
+      <!-- Slate Hardware Mathematical Tool Wrapper Grid Container Box -->
       <div class="calc-housing">
         
+        <!-- Interactive Multi-Tier Display Console Layout Layer -->
         <div class="calc-screen-wrapper">
-          <button class="calc-history-btn" title="Click to review/restore historical calculations" onclick="triggerCalculatorAction('history-toggle')">🕒</button>
+          <button class="calc-history-btn" title="Click to view/restore historical calculations" onclick="triggerCalculatorAction('history-toggle')">🕒</button>
           <div id="calcHistoryConsole" class="calc-history-track"></div>
           <div id="calcMainDisplayConsole" class="calc-main-display">0</div>
         </div>
 
+        <!-- STACK CHAIN HISTORY DRAWER DROP PANEL -->
+        <div id="historyDrawerPanel" class="calc-history-drawer"></div>
+
         <div class="calc-keypad-grid">
           
+          <!-- Row 1 -->
           <button id="toggleDegBtn" class="calc-btn btn-sci active-mode" onclick="triggerCalculatorAction('toggle-deg')">Deg</button>
           <button id="toggleRadBtn" class="calc-btn btn-sci" onclick="triggerCalculatorAction('toggle-rad')">Rad</button>
           <button id="toggleInvBtn" class="calc-btn btn-sci" onclick="triggerCalculatorAction('toggle-inv')">Inv</button>
           <button class="calc-btn btn-clear" onclick="triggerCalculatorAction('clear')">AC</button>
           
+          <!-- Row 2 -->
           <button class="calc-btn btn-sci" id="btn-sin" onclick="triggerCalculatorAction('sci-op', 'sin')">sin</button>
           <button class="calc-btn btn-sci" id="btn-cos" onclick="triggerCalculatorAction('sci-op', 'cos')">cos</button>
           <button class="calc-btn btn-sci" id="btn-tan" onclick="triggerCalculatorAction('sci-op', 'tan')">tan</button>
           <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('backspace')">⌫</button>
 
+          <!-- Row 3 -->
           <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('sci-op', 'ln')">ln</button>
           <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('sci-op', 'log')">log</button>
           <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('sci-op', 'sqrt')">√</button>
           <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '/')">÷</button>
           
+          <!-- Row 4 -->
           <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('constant', 'pi')">π</button>
           <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('constant', 'e')">e</button>
           <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('sci-op', 'fact')">x!</button>
           <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '*')">×</button>
 
+          <!-- Row 5 -->
           <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('operator', '^')">x<sup>y</sup></button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '7')">7</button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '8')">8</button>
           <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '-')">−</button>
 
+          <!-- Row 6 -->
           <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('bracket', '(')">(</button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '4')">4</button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '5')">5</button>
           <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '+')">+</button>
 
+          <!-- Row 7 -->
           <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('bracket', ')')">)</button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '1')">1</button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '2')">2</button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '3')">3</button>
 
+          <!-- Row 8 -->
           <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('operator', '%')">%</button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '0')">0</button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('decimal', '.')">.</button>
@@ -164,8 +187,8 @@
       </div>
 
       <div style="margin-top: 25px; width: 100%; max-width: 420px; font-size: 0.78rem; line-height: 1.4; color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500; box-sizing: border-box;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Interactive History Tracing System:</span>
-        Click the clock icon (🕒) inside the display terminal layout to restore or review previous equation variables. Supports comprehensive keyboard mapping bounds out-of-the-box.
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Advanced Memory Ledger Active:</span>
+        Clicking the clock icon (🕒) expands the full multi-tier calculation history list. Click any previous log formula line item to pull old equations back onto your screen buffer panel instantly.
       </div>
     </div>
 
@@ -183,7 +206,7 @@
       <p class="seo-p">By the close of 1971, microprocessing breakthroughs compressed heavy computational setups into small silicon chips. The introduction of pocket electronic architectures like the historic Texas Instruments Datamath series shifted industry frameworks, replacing gear arrays with silicon logic units. This transition allowed algebraic operations to execute instantly, establishing the core interface standards used in modern developer environments today.</p>
 
       <h2 class="seo-h2">2. Algorithmic Transformation Systems for Complex Math Formulations</h2>
-      <p class="seo-p">To convert complex mathematical functions containing trigonometric, exponential, and nested brackets operators into stable execution paths, the core engine runs continuous lexical tokenization loops across individual data segments:</p>
+      <p class="seo-p">To convert complex mathematical functions containing trigonometric, exponential, and nested brackets operators into stable execution paths, the core engine runs continuous lexical tokenization loops across individual data segments.</p>
 
       <h3 class="seo-h3">A. The Shunting-Yard Prefix Transformation Model</h3>
       <p class="seo-p">When parsing multi-tier equations like `3 + 5 × (sin(45) - log(10))`, compilers do not run computations simply from left to right. The text stream is processed through an implementation of Edsger Dijkstra's Shunting-Yard algorithm. This logic rearranges standard infix typography into an operator precedence stack or Reverse Polish Notation (RPN), sorting operational triggers securely based on strict priority factors:</p>
@@ -266,7 +289,7 @@
       <p class="seo-p">Second, apply floating-point correction bounds across all calculations. Because computers translate numbers into binary blocks, processing simple equations can yield tiny trailing digit errors. Truncating values using fixed-precision rounding filters prevents layout calculation bugs and keeps screen outputs clean across workflows.</p>
 
       <h2 class="seo-h2">5. Frequently Asked Questions (FAQ) - Deep Diagnostic Segment</h2>
-      <h3 class="seo-h3">Why do simple math equations sometimes produce strange decimal remainders on computers?</h3>
+      <h3 class="seo-h3">Why do some online calculators return strange trailing digits for simple decimal values?</h3>
       <p class="seo-p">This issue stems from hardware processing limitations defined by the global IEEE 754 fractional protocol. Since certain base values (such as $0.1$ or $0.2$) become repeating fractions within binary logic, computing their sum introduces a minor fraction remainder offset. Our upgraded compiler resolves this variance by passing output streams through an automated precision limiter (`parseFloat(result.toFixed(10))`), delivering accurate numbers every time.</p>
 
       <h3 class="seo-h3">How does the historical clock icon state loop review user variables?</h3>
@@ -283,6 +306,7 @@
 
   <div id="site-footer"></div>
 
+  <!-- SCRIPT LOGIC PROCESSOR FOR REALTIME MULTI-CHAIN RECOVERY ARRAYS -->
   <script type="text/javascript">
     const basePath = window.location.origin;
     
@@ -296,17 +320,22 @@
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
 
-    // Runtime Buffer Arrays State Storage Cells
     let currentExpressionString = "";
     let activeEvaluationHistoryRecord = "";
-    let savedCalculationLogList = []; 
+    let savedCalculationLogList = []; // Continuous stack ledger array
     let isDegreeMode = true;
     let isInverseMode = false;
 
     const displayMainNode = document.getElementById('calcMainDisplayConsole');
     const displayHistoryNode = document.getElementById('calcHistoryConsole');
+    const drawerPanelNode = document.getElementById('historyDrawerPanel');
 
     function triggerCalculatorAction(action, inputToken) {
+        // Automatically collapse the open log panel when clicking keys
+        if (action !== 'history-toggle') {
+            drawerPanelNode.style.display = 'none';
+        }
+
         if (action === 'digit' || action === 'bracket' || action === 'operator') {
             if (currentExpressionString === "0" && inputToken !== ".") {
                 currentExpressionString = inputToken;
@@ -315,7 +344,6 @@
             }
         }
         else if (action === 'decimal') {
-            // Prevent consecutive duplication tokens anomalies safely
             if (!currentExpressionString.endsWith('.')) {
                 currentExpressionString += ".";
             }
@@ -377,14 +405,12 @@
             }
         }
         else if (action === 'history-toggle') {
-            // Clock interactive routine: restore the last calculation record from memory array logs
-            if (savedCalculationLogList.length > 0) {
-                currentExpressionString = savedCalculationLogList[savedCalculationLogList.length - 1];
-                displayMainNode.innerText = currentExpressionString;
-                displayHistoryNode.innerText = "↳ Restored from Memory";
+            // Toggle slide ledger visibility
+            if (drawerPanelNode.style.display === 'block') {
+                drawerPanelNode.style.display = 'none';
             } else {
-                displayHistoryNode.innerText = "No math logs found";
-                setTimeout(() => { displayHistoryNode.innerText = activeEvaluationHistoryRecord; }, 1500);
+                drawerPanelNode.style.display = 'block';
+                renderHistoryLogView();
             }
             return;
         }
@@ -397,7 +423,6 @@
             let parsedSystemEquation = compileScientificTokenPipes(currentExpressionString);
             
             try {
-                // Compute algebraic matrix values inside an isolated function stack framework cleanly
                 let calculationResultValue = Function('"use strict"; return (' + parsedSystemEquation + ')')();
                 
                 if (calculationResultValue === undefined || isNaN(calculationResultValue) || !isFinite(calculationResultValue)) {
@@ -406,8 +431,13 @@
                     let calibratedDecimalResult = parseFloat(calculationResultValue.toFixed(10));
                     displayMainNode.innerText = calibratedDecimalResult;
                     
-                    // Cache the successful expression into the history array logs layer
-                    savedCalculationLogList.push(currentExpressionString);
+                    // Secure complete record matching equation with its evaluated output state
+                    let formattedLogEntry = `${currentExpressionString} = ${calibratedDecimalResult}`;
+                    savedCalculationLogList.push(formattedLogEntry);
+                    
+                    // Enforce maximum stack depth constraints parameters limits
+                    if (savedCalculationLogList.length > 20) savedCalculationLogList.shift();
+                    
                     currentExpressionString = String(calibratedDecimalResult);
                 }
             } catch (exceptionFaultContext) {
@@ -417,6 +447,33 @@
         }
 
         displayMainNode.innerText = currentExpressionString || "0";
+    }
+
+    function renderHistoryLogView() {
+        drawerPanelNode.innerHTML = "";
+        if (savedCalculationLogList.length === 0) {
+            drawerPanelNode.innerHTML = "<div class='history-empty-msg'>Memory logs are clear</div>";
+            return;
+        }
+        
+        // Render chronological items arrays back-to-front (most recent on top)
+        for (let idx = savedCalculationLogList.length - 1; idx >= 0; idx--) {
+            let recordItemText = savedCalculationLogList[idx];
+            let itemNode = document.createElement('div');
+            itemNode.className = "history-log-item";
+            itemNode.innerText = recordItemText;
+            
+            itemNode.onclick = () => {
+                // Extract original equation array properties chunk before the equality separator
+                let parsedFormulaSource = recordItemText.split(' = ')[0];
+                currentExpressionString = parsedFormulaSource;
+                displayMainNode.innerText = currentExpressionString;
+                displayHistoryNode.innerText = "↳ Pulled from Memory";
+                drawerPanelNode.style.display = 'none';
+            };
+            
+            drawerPanelNode.appendChild(itemNode);
+        }
     }
 
     function calculateFactorialBuffer(value) {
@@ -429,8 +486,6 @@
 
     function compileScientificTokenPipes(equationString) {
         let textStream = equationString;
-        
-        // Execute structural substitutions using sequential RegEx operations
         textStream = textStream.replace(/([0-9.]+)\!/g, (match, factorNode) => "calculateFactorialBuffer(" + factorNode + ")");
         
         const angularConversionRadMultiplier = isDegreeMode ? (Math.PI / 180) : 1;
@@ -448,14 +503,12 @@
         textStream = textStream.replace(/log\(([^)]+)\)/g, "(Math.log($1) / Math.LN10)");
         textStream = textStream.replace(/sqrt\(([^)]+)\)/g, "Math.sqrt($1)");
         
-        // Map exponential syntax operators cleanly
         textStream = textStream.replace(/\^/g, "**");
         textStream = textStream.replace(/E/g, "*10**");
 
         return textStream;
     }
 
-    // INTERCEPT PHYSICAL DEVICE HARDWARE KEYBOARD FOR QUICK CALCULATION TRACING
     window.addEventListener('keydown', (event) => {
         const physicalKeyToken = event.key;
         if (physicalKeyToken >= '0' && physicalKeyToken <= '9') triggerCalculatorAction('digit', physicalKeyToken);
@@ -468,6 +521,13 @@
             triggerCalculatorAction('evaluate');
         } else if (physicalKeyToken === 'Backspace') triggerCalculatorAction('backspace');
         else if (physicalKeyToken === 'Escape') triggerCalculatorAction('clear');
+    });
+
+    // Collapse ledger panels if clicking outside the core module element frames
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.calc-housing')) {
+            drawerPanelNode.style.display = 'none';
+        }
     });
   </script>
   
