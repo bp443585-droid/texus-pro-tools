@@ -145,15 +145,15 @@
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '7')">7</button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '8')">8</button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '9')">9</button>
-          <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '/')">÷</button>
+          <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '÷')">÷</button>
           
-          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('constant', 'pi')">π</button>
+          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('constant', 'π')">π</button>
           <button class="calc-btn btn-sci" id="btn-cos" onclick="triggerCalculatorAction('sci-op', 'cos')">cos</button>
           <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('sci-op', 'log')">log</button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '4')">4</button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '5')">5</button>
           <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '6')">6</button>
-          <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '*')">×</button>
+          <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '×')">×</button>
           
           <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('constant', 'e')">e</button>
           <button class="calc-btn btn-sci" id="btn-tan" onclick="triggerCalculatorAction('sci-op', 'tan')">tan</button>
@@ -310,8 +310,7 @@
       })
       .catch(err => console.error('Footer failed:', err));
 
-    // Dynamic Tracking Buffers
-    let currentExpressionString = ""; 
+    let currentExpressionString = "";
     let savedCalculationLogList = [];
     let isDegreeMode = true;
     let isInverseMode = false;
@@ -336,7 +335,6 @@
           break;
 
         case 'decimal':
-          // Match the precise dot splitting bounds 
           const parts = currentExpressionString.split(/[\+\-\*\/\(\)\^]/);
           const lastPart = parts[parts.length - 1];
           if (!lastPart.includes('.')) {
@@ -345,15 +343,7 @@
           break;
 
         case 'operator':
-          if (['+', '-', '*', '/', '^', '%', 'E'].includes(inputToken)) {
-            if (currentExpressionString === "" && inputToken !== '-') return;
-            const lastChar = currentExpressionString.slice(-1);
-            if (['+', '-', '*', '/', '^', '%', 'E'].includes(lastChar)) {
-              currentExpressionString = currentExpressionString.slice(0, -1) + inputToken;
-            } else {
-              currentExpressionString += inputToken;
-            }
-          }
+          currentExpressionString += inputToken;
           break;
 
         case 'bracket':
@@ -361,7 +351,7 @@
           break;
 
         case 'constant':
-          currentExpressionString += (inputToken === 'pi') ? "π" : "e";
+          currentExpressionString += inputToken; // appends 'π' or 'e' natively
           break;
 
         case 'ans':
@@ -414,9 +404,10 @@
           if (inputToken === 'fact') {
             currentExpressionString += "!";
           } else {
-            const funcName = (isInverseMode && ['sin', 'cos', 'tan'].includes(inputToken)) 
-              ? inputToken + "inv(" 
-              : inputToken + "(";
+            // Appends exactly 'sin', 'cos', 'tan', 'log', 'ln', 'sqrt' sequentially matching format rules
+            const funcName = (isInverseMode && ['sin', 'cos', 'tan'].includes(inputToken))
+              ? inputToken + "inv"
+              : inputToken;
             currentExpressionString += funcName;
           }
           break;
@@ -436,20 +427,18 @@
           try {
             displayHistoryNode.innerText = currentExpressionString + " =";
 
-            // Parse and safely evaluate equation components using global mathematical scopes
             let parsedEquation = compileScientificTokenPipes(currentExpressionString);
-            
+
             let result = Function('"use strict"; return (' + parsedEquation + ')')();
 
-            if (result === undefined || isNaN(result) || !isFinite(result)) {
+            if (result === undefined || isNaN(result)) {
               throw new Error();
             }
 
-            // Floating point correction matrix up to 12 digits
-            result = parseFloat(Number(result).toPrecision(12));
-
-            if (Math.abs(result) < 1e-12) {
-              result = 0;
+            // High precision balancing adjustments
+            if (isFinite(result)) {
+              result = parseFloat(Number(result).toPrecision(12));
+              if (Math.abs(result) < 1e-12) result = 0;
             }
 
             displayMainNode.innerText = result;
@@ -467,6 +456,7 @@
           }
           return;
       }
+
       updateDisplay();
     }
 
@@ -497,60 +487,61 @@
       if (n < 0 || !Number.isInteger(n)) return NaN;
       if (n > 170) return Infinity;
       let result = 1;
-      for (let i = 2; i <= n; i++) {
-        result *= i;
-      }
+      for (let i = 2; i <= n; i++) result *= i;
       return result;
     }
 
-    // High fidelity parsing engine matching logical outputs of eval definitions
+    // New formatExpression strategy implemented here natively
     function compileScientificTokenPipes(expression) {
-      let text = expression;
+      let expr = expression;
 
-      // Map Constants
-      text = text.replace(/π/g, `(${Math.PI})`);
-      text = text.replace(/e/g, `(${Math.E})`);
-      text = text.replace(/÷/g, "/");
-      text = text.replace(/×/g, "*");
+      // Base conversion logic overrides
+      expr = expr.replace(/÷/g, '/');
+      expr = expr.replace(/×/g, '*');
+      expr = expr.replace(/π/g, 'Math.PI');
+      expr = expr.replace(/e/g, 'Math.E');
+      
+      // EXP scientific shorthand parsing
+      expr = expr.replace(/E/g, '*10**');
 
-      // Structural percentage logic
-      text = text.replace(/([0-9.]+)%/g, "($1/100)");
+      // Factorial engine matching pattern parameters
+      expr = expr.replace(/([0-9.]+)!/g, (m, val) => `calculateFactorialBuffer(${val})`);
 
-      // Factorial parsing block
-      text = text.replace(/([0-9.]+)!/g, (m, val) => `calculateFactorialBuffer(${val})`);
+      // Radians vs Degrees angle multiplier states
+      const radMultiplier = isDegreeMode ? `*(${Math.PI}/180)` : '';
+      const degMultiplier = isDegreeMode ? `*(180/${Math.PI})` : '';
 
-      // Dynamic Radian/Degree system converters
-      const radMultiplier = isDegreeMode ? `(${Math.PI}/180)` : `1`;
-      const degMultiplier = isDegreeMode ? `(180/${Math.PI})` : `1`;
+      // Square root tracking mapping logic 
+      expr = expr.replace(/√(\d+(\.\d+)?)/g, 'Math.sqrt($1)');
 
-      // Handle custom inverse operations securely
-      text = text.replace(/sininv\(([^()]+)\)/g, `(Math.asin($1)*${degMultiplier})`);
-      text = text.replace(/cosinv\(([^()]+)\)/g, `(Math.acos($1)*${degMultiplier})`);
-      text = text.replace(/taninv\(([^()]+)\)/g, `(Math.atan($1)*${degMultiplier})`);
+      // Handle standard and inverse trigonometric replacements natively
+      expr = expr.replace(/sininv(\d+(\.\d+)?)/g, `(Math.asin($1)${degMultiplier})`);
+      expr = expr.replace(/cosinv(\d+(\.\d+)?)/g, `(Math.acos($1)${degMultiplier})`);
+      expr = expr.replace(/taninv(\d+(\.\d+)?)/g, `(Math.atan($1)${degMultiplier})`);
 
-      // Core Standard Trigonometric and Logarithmic hooks 
-      text = text.replace(/sin\(([^()]+)\)/g, `(Math.sin(($1)*${radMultiplier}))`);
-      text = text.replace(/cos\(([^()]+)\)/g, `(Math.cos(($1)*${radMultiplier}))`);
-      text = text.replace(/tan\(([^()]+)\)/g, `(Math.tan(($1)*${radMultiplier}))`);
-      text = text.replace(/ln\(([^()]+)\)/g, `(Math.log($1))`);
-      text = text.replace(/log\(([^()]+)\)/g, `(Math.log10($1))`);
-      text = text.replace(/sqrt\(([^()]+)\)/g, `(Math.sqrt($1))`);
+      expr = expr.replace(/sin(\d+(\.\d+)?)/g, `Math.sin($1${radMultiplier})`);
+      expr = expr.replace(/cos(\d+(\.\d+)?)/g, `Math.cos($1${radMultiplier})`);
+      expr = expr.replace(/tan(\d+(\.\d+)?)/g, `Math.tan($1${radMultiplier})`);
+      
+      // Logarithmic definitions mapping rules
+      expr = expr.replace(/log(\d+(\.\d+)?)/g, 'Math.log10($1)');
+      expr = expr.replace(/ln(\d+(\.\d+)?)/g, 'Math.log($1)');
 
-      // Base conversion exponents mapping hooks
-      text = text.replace(/\^/g, "**");
-      text = text.replace(/([0-9.]+)E([+-]?[0-9.]+)/g, "($1*10**$2)");
+      // Map dynamic standard exponent keys
+      expr = expr.replace(/\^/g, '**');
 
-      // Auto balancing brackets closure guard matrix
-      const openBrackets = (text.match(/\(/g) || []).length;
-      const closeBrackets = (text.match(/\)/g) || []).length;
-      if (openBrackets > closeBrackets) {
-        text += ")".repeat(openBrackets - closeBrackets);
+      // Balancing closures boundary guard matrix 
+      let open = (expr.match(/\(/g) || []).length;
+      let close = (expr.match(/\)/g) || []).length;
+      while (close < open) {
+        expr += ')';
+        close++;
       }
 
-      return text;
+      return expr;
     }
 
-    // Hardware Keyboard Listeners System Maps
+    // Hardware Keyboard Inputs Mapping Configuration hooks
     window.addEventListener('keydown', (event) => {
       const key = event.key;
       if (/[0-9]/.test(key)) {
@@ -558,7 +549,8 @@
       } else if (key === '.') {
         triggerCalculatorAction('decimal');
       } else if (['+', '-', '*', '/'].includes(key)) {
-        triggerCalculatorAction('operator', key);
+        const visualOp = key === '*' ? '×' : (key === '/' ? '÷' : key);
+        triggerCalculatorAction('operator', visualOp);
       } else if (key === '%') {
         triggerCalculatorAction('operator', '%');
       } else if (key === '^') {
