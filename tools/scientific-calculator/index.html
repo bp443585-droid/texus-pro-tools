@@ -1,411 +1,818 @@
-<!-- REPLACE ONLY YOUR <script type="text/javascript"> ... </script> WITH THIS FULL SCRIPT -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Scientific Calculator Online | Advanced Engineering &amp; Mathematical Workspace</title>
+  <meta name="description" content="Free online scientific calculator for advanced logarithmic, trigonometric, engineering, and algebraic expressions. Safe browser-based processing workspace." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/scientific-calculator/" />
 
-<script type="text/javascript">
-const basePath = window.location.origin;
-
-fetch('/components/header.html')
-  .then(res => {
-    if (!res.ok) return fetch('../../components/header.html');
-    return res.text();
-  })
-  .then(data => {
-    document.getElementById('site-header').innerHTML = data;
-  });
-
-fetch('/components/footer.html')
-  .then(res => {
-    if (!res.ok) return fetch('../../components/footer.html');
-    return res.text();
-  })
-  .then(data => {
-    document.getElementById('site-footer').innerHTML = data;
-  });
-
-let currentExpressionString = "";
-let savedCalculationLogList = [];
-let isDegreeMode = true;
-let isInverseMode = false;
-let lastCalculatedAns = "0";
-
-const displayMainNode = document.getElementById('calcMainDisplayConsole');
-const displayHistoryNode = document.getElementById('calcHistoryConsole');
-const drawerPanelNode = document.getElementById('historyDrawerPanel');
-
-function updateDisplay() {
-  displayMainNode.innerText = currentExpressionString || "0";
-}
-
-function triggerCalculatorAction(action, inputToken = "") {
-
-  if (action !== 'history-toggle') {
-    drawerPanelNode.style.display = 'none';
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Advanced Scientific Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An enterprise-grade high-precision scientific computing environment parsing complex logarithmic and transcendental formulas with zero telemetry loops.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
   }
+  </script>
 
-  switch(action) {
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1000px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE AREA CARD CENTERED SYSTEM DESIGN WITH ADS GAP SENSITIVITY */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; position: relative; }
+    
+    /* WIDE STABLE ENGINE FRAME FOR ADVANCED SCIENTIFIC BALANCES */
+    .calc-housing { width: 100%; max-width: 640px; background: #1e293b; border-radius: 28px; padding: 24px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.22); box-sizing: border-box; position: relative; }
+    
+    /* INTERACTIVE LEDGER SCREENS APPARATUS */
+    .calc-screen-wrapper { background: #0f172a; border-radius: 16px; padding: 20px 20px 20px 50px; margin-bottom: 20px; text-align: right; box-sizing: border-box; min-height: 110px; display: flex; flex-direction: column; justify-content: center; gap: 6px; border: 1px solid #334155; position: relative; }
+    .calc-history-track { font-size: 0.95rem; color: #94a3b8; font-weight: 500; min-height: 22px; word-break: break-all; font-family: monospace; letter-spacing: 0.5px; }
+    .calc-main-display { font-size: 2.4rem; color: #f8fafc; font-weight: 700; word-break: break-all; overflow: hidden; white-space: nowrap; font-family: monospace; }
+    
+    /* THE INTERACTIVE HISTORY CLOCK ACTION HOOK TRIGGER */
+    .calc-history-btn { position: absolute; left: 16px; top: 22px; background: none; border: none; color: #94a3b8; font-size: 1.35rem; cursor: pointer; transition: all 0.2s ease; padding: 4px; outline: none; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+    .calc-history-btn:hover { color: #3b82f6; background: rgba(255,255,255,0.05); transform: rotate(-15deg); }
+    .calc-history-btn:active { transform: scale(0.9); }
 
-    case 'digit':
-      currentExpressionString += inputToken;
-      break;
+    /* MULTI-CHAIN DROPDOWN HISTORY STORAGE SLIDE DRAWER CONTAINER */
+    .calc-history-drawer { display: none; position: absolute; left: 24px; right: 24px; top: 145px; background: #0f172a; border: 1px solid #334155; border-radius: 16px; max-height: 260px; overflow-y: auto; z-index: 100; padding: 12px; box-sizing: border-box; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); }
+    .history-log-item { padding: 10px 12px; font-size: 0.88rem; color: #cbd5e1; border-bottom: 1px solid #1e293b; font-family: monospace; cursor: pointer; text-align: left; transition: all 0.15s ease; border-radius: 6px; word-break: break-all; }
+    .history-log-item:hover { background: #1e293b; color: #3b82f6; }
+    .history-log-item:last-child { border-bottom: none; }
+    .history-empty-msg { font-size: 0.85rem; color: #64748b; text-align: center; padding: 20px; font-style: italic; }
 
-    case 'decimal':
-      handleDecimal();
-      break;
+    /* HIGH DENSITY SCIENTIFIC HORIZONTAL OPERATOR BLOCKS GRID SETUP (7 COLUMNS MATCHING DESK HARDWARE) */
+    .calc-keypad-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; width: 100%; }
+    
+    .calc-btn { background: #2d3748; border: none; border-radius: 16px; padding: 14px 4px; font-size: 1rem; font-weight: 600; color: #f8fafc; cursor: pointer; transition: all 0.12s ease; font-family: inherit; -webkit-user-select: none; user-select: none; outline: none; text-align: center; display: flex; align-items: center; justify-content: center; }
+    .calc-btn:hover { background: #4a5568; transform: translateY(-1px); }
+    .calc-btn:active { transform: translateY(1px); background: #1a202c; }
+    
+    /* CUSTOM FUNCTION DESIGN PROFILE GLYPH SEPARATORS */
+    .btn-sci { background: #232a37; color: #93c5fd; font-size: 0.92rem; font-weight: 500; }
+    .btn-sci:hover { background: #2d3748; color: #ffffff; }
+    .btn-sci.active-mode { background: #1d4ed8; color: #ffffff; }
+    
+    .btn-num { background: #1a202c; font-weight: 700; color: #e2e8f0; font-size: 1.15rem; }
+    .btn-num:hover { background: #2d3748; }
 
-    case 'operator':
-      handleOperator(inputToken);
-      break;
+    .btn-operator { background: #2d3748; color: #93c5fd; font-size: 1.2rem; }
+    .btn-operator:hover { background: #4a5568; color: #ffffff; }
+    
+    .btn-clear { background: #2d3748; color: #fca5a5; }
+    .btn-clear:hover { background: #ef4444; color: #ffffff; }
+    
+    .btn-equals { background: #bfdbfe; color: #1e3a8a; font-size: 1.3rem; font-weight: 700; }
+    .btn-equals:hover { background: #3b82f6; color: #ffffff; }
 
-    case 'bracket':
-      currentExpressionString += inputToken;
-      break;
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
 
-    case 'constant':
-      if (inputToken === 'pi') {
-        currentExpressionString += "π";
-      } else {
-        currentExpressionString += "e";
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 15px; border-radius: 20px; }
+      .calc-housing { padding: 16px; border-radius: 22px; max-width: 100%; }
+      .calc-keypad-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+      .calc-btn { padding: 12px 2px; font-size: 0.92rem; border-radius: 10px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+      .calc-history-drawer { top: 135px; left: 16px; right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🔬</span> Scientific Calculator</div>
+    
+    <div class="f-card">
+      
+      <div class="calc-housing">
+        
+        <div class="calc-screen-wrapper">
+          <button class="calc-history-btn" title="Click to view/restore historical calculations" onclick="triggerCalculatorAction('history-toggle')">🕒</button>
+          <div id="calcHistoryConsole" class="calc-history-track"></div>
+          <div id="calcMainDisplayConsole" class="calc-main-display">0</div>
+        </div>
+
+        <div id="historyDrawerPanel" class="calc-history-drawer"></div>
+
+        <div class="calc-keypad-grid">
+          
+          <button id="toggleDegBtn" class="calc-btn btn-sci active-mode" onclick="triggerCalculatorAction('toggle-deg')">Deg</button>
+          <button id="toggleRadBtn" class="calc-btn btn-sci" onclick="triggerCalculatorAction('toggle-rad')">Rad</button>
+          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('sci-op', 'fact')">x!</button>
+          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('bracket', '(')">(</button>
+          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('bracket', ')')">)</button>
+          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('operator', '%')">%</button>
+          <button class="calc-btn btn-clear" onclick="triggerCalculatorAction('clear')">AC</button>
+          
+          <button id="toggleInvBtn" class="calc-btn btn-sci" onclick="triggerCalculatorAction('toggle-inv')">Inv</button>
+          <button class="calc-btn btn-sci" id="btn-sin" onclick="triggerCalculatorAction('sci-op', 'sin')">sin</button>
+          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('sci-op', 'ln')">ln</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '7')">7</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '8')">8</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '9')">9</button>
+          <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '/')">÷</button>
+          
+          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('constant', 'pi')">π</button>
+          <button class="calc-btn btn-sci" id="btn-cos" onclick="triggerCalculatorAction('sci-op', 'cos')">cos</button>
+          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('sci-op', 'log')">log</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '4')">4</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '5')">5</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '6')">6</button>
+          <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '*')">×</button>
+          
+          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('constant', 'e')">e</button>
+          <button class="calc-btn btn-sci" id="btn-tan" onclick="triggerCalculatorAction('sci-op', 'tan')">tan</button>
+          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('sci-op', 'sqrt')">√</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '1')">1</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '2')">2</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '3')">3</button>
+          <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '-')">−</button>
+          
+          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('ans')">Ans</button>
+          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('operator', 'E')">EXP</button>
+          <button class="calc-btn btn-sci" onclick="triggerCalculatorAction('operator', '^')">x<sup>y</sup></button>
+          <button class="calc-btn btn-num" style="grid-column: span 1;" onclick="triggerCalculatorAction('digit', '0')">0</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('decimal', '.')">.</button>
+          <button class="calc-btn btn-equals" onclick="triggerCalculatorAction('evaluate')">=</button>
+          <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '+')">+</button>
+          
+        </div>
+      </div>
+
+      <div style="margin-top: 25px; width: 100%; max-width: 640px; font-size: 0.78rem; line-height: 1.4; color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500; box-sizing: border-box;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Multi-Tier Formula Execution Enabled:</span>
+        Supports sequential keyboard bindings natively. Tap complex trigonometric indices, logarithms, and nested bracket sequences seamlessly on your hardware console.
+      </div>
+    </div>
+
+    <article class="seo-container">
+      <h1 class="seo-title">The Engineering Architecture of Scientific Computation: Abstract Syntax Tree Tokenization, Transcendental Function Approximations, and Radix State Optimization</h1>
+      <p class="seo-p">Executing higher-order engineering equations, tracking logarithmic trends inside academic assets, or compiling structural data formulas across enterprise web blocks requires an advanced calculation runtime engine. Unlike basic arithmetic displays, a professional online <strong>scientific calculator online</strong> acts as a real-time interpreter that tokenizes compound algebraic strings into logical mathematical components, resolving operator precedence hierarchies smoothly without server background latencies.</p>
+      <p class="seo-p">This long-tail computer science guide analyzes the parsing algorithms that power scientific execution setups, reviews modern browser floating-point accuracy thresholds, outlines geometric angle transformations under global technical specifications, and breaks down the steps to manage local arithmetic sandboxes securely within device memory cells.</p>
+
+      <div class="seo-callout">
+        <strong>The Lexical Precedence Standard:</strong> Advanced calculators evaluate long text formulations using strict operator grading structures. Expressions bounded by brackets functions isolate active sorting fields, forcing parsers to compute inner tokens before returning values to the primary accumulator channel.
+      </div>
+
+      <h2 class="seo-h2">1. Theoretical Chronology of Advanced Computational Systems</h2>
+      <p class="seo-p">The quest to automate transcendental and non-linear mathematical expressions spans major technological eras. Early slide rules, designed in the 1620s following John Napier’s formulation of logarithms, mapped exponential scaling data onto physical sliding scales, allowing navigators to perform multiplication and division via analog alignment tracing. In the early part of the 19th century, Charles Babbage advanced this paradigm by drafting his specialized Difference Engine, a complex mechanical array designed to compute polynomial functions without manual lookup tables.</p>
+      <p class="seo-p">The formal electronic scientific evolution culminated in 1972 with Hewlett-Packard’s iconic HP-35 pocket calculator. This breakthrough handheld machine replaced mechanical logic bars with an integrated circuit architecture executing sophisticated transcendental algorithms like CORDIC. It compressed extensive lookup tables into small silicon gates and established the foundational interface paradigms utilized across modern digital engineering systems today.</p>
+
+      <h2 class="seo-h2">2. Algorithmic Processing Loops and Mathematical Implementations</h2>
+      <p class="seo-p">To process multi-tiered scientific formulations accurately without execution leaks, the underlying software pipeline breaks down incoming string payloads into explicit execution modules:</p>
+
+      <h3 class="seo-h3">A. Abstract Syntax Tree (AST) Parsing and Precedence Rules</h3>
+      <p class="seo-p">When an expression like `ln(e^2) + cos(pi ÷ 4) × 3^3` enters the calculation engine, the compiler does not read symbols from left to right linearly. The expression string is systematically broken down into distinct token arrays. Operators are graded on a rigid hierarchical priority spectrum:</p>
+      <div class="seo-math-box">\text{Precedence Array:} \quad \text{Functions/Trig } (5) \longrightarrow \text{Exponents } (\symbol{94}) \ (4) \longrightarrow \text{Mul/Div } (\times, \div) \ (3) \longrightarrow \text{Add/Sub } (+, -) \ (2)</div>
+      <p class="seo-p">The compiler constructs a virtual evaluation tree where higher-precedence nodes form deep branch endpoints, ensuring that exponents and trigonometric functions resolve completely before additive operations execute.</p>
+
+      <h3 class="seo-h3">B. Geometric Phase Shifts (Degree vs Radian Scale Transformations)</h3>
+      <p class="seo-p">Computing typographic metrics natively within browser runtime environments requires strict management of input angular dimensions, as core software engines process geometric values exclusively using the circular Radian standard ($2\pi$ system). When a developer interacts with the interface under the Degree option ($0^\circ$ to $360^\circ$), the numeric parameters pass through a conversion matrix before triggering active operations:</p>
+      <div class="seo-math-box">\text{Rad} = \text{Deg} \times \left( \frac{\pi}{180} \right) \quad \Longleftrightarrow \quad \text{Deg} = \text{Rad} \times \left( \frac{180}{\pi} \right)</div>
+      <p class="seo-p">For inverse functions (such as $\arcsin$, $\arccos$, or $\arctan$), the routine is run in reverse, transforming internal radian outputs back into clear geometric degrees before displaying them on screen.</p>
+
+      <h3 class="seo-h3">C. The Combinatoric Iterative Factorial Sequence</h3>
+      <p class="seo-p">Evaluating factorials ($n!$) inside statistics and probability matrices requires strict variable limits to avoid memory block overflow faults. The system executes an efficient loop that performs cumulative multiplications progressively down to the identity value of 1:</p>
+      <div class="seo-math-box">n! = n \times (n-1) \times (n-2) \times \dots \times 1 \quad \text{where } \quad 0! = 1 \quad \cap \quad n \le 170</div>
+      <p class="seo-p">The system enforces an upper boundary capped at 170. Any calculation sequence extending past this threshold resolves directly to Infinity, protecting browser threads from locking up during execution loops.</p>
+
+      <h2 class="seo-h2">3. Strategic Data Mapping: Operations, Triggers, and Lexical Tokens</h2>
+      <p class="seo-p">The technical matrix below details how advanced operators map onto software instructions and execute inside the calculator core:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Advanced Operation Target</th>
+              <th>Display Glyph Token</th>
+              <th>Keyboard Input Key Mapping</th>
+              <th>JavaScript Code Interpretation</th>
+              <th>ALU Hardware Action &amp; Error Gate Rules</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Natural Logarithm</td>
+              <td><b>ln</b></td>
+              <td>Type `ln(` string array</td>
+              <td>`Math.log(x)` Base-e</td>
+              <td>Calculates the natural log. Drops an explicit validation error if inputs drop below zero.</td>
+            </tr>
+            <tr>
+              <td>Common Logarithm</td>
+              <td><b>log</b></td>
+              <td>Type `log(` string array</td>
+              <td>`Math.log(x) / Math.LN10`</td>
+              <td>Evaluates the Base-10 logarithm profile using standardized logarithmic radix divisions.</td>
+            </tr>
+            <tr>
+              <td>Square Root Extraction</td>
+              <td><b>√</b></td>
+              <td>No custom keystroke option</td>
+              <td>`Math.sqrt(x)`</td>
+              <td>Unpacks root values instantly. Intercepts negative inputs to block imaginary number errors.</td>
+            </tr>
+            <tr>
+              <td>Exponential Power Index</td>
+              <td><b>x<sup>y</sup></b></td>
+              <td>`^` Shift-6 Key Symbol</td>
+              <td>`**` Exponent Operator</td>
+              <td>Raises base values to floating-point indices using recursive multiplier loops.</td>
+            </tr>
+            <tr>
+              <td>Scientific Notation Buffer</td>
+              <td><b>EXP</b></td>
+              <td>No custom keystroke option</td>
+              <td>`*10**x` String Shift</td>
+              <td>Shifts numbers by factors of 10, ideal for managing astronomical engineering constants.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="seo-h2">4. Core Technical Rules for Maximum Processing Reliability</h2>
+      <p class="seo-p">When parsing multi-stage formulas inside local device sandbox containers, developers must apply strict data hygiene standards to maintain stability. First, always isolate evaluation strings inside robust `try...catch` validation wrappers. If an incomplete expression—such as an unclosed bracket parameter—reaches execution blocks, the browser's native script engine can stall, freezing interface updates.</p>
+      <p class="seo-p">Second, apply floating-point adjustments across all calculations. Because digital chips translate base numbers into binary fractions, processing simple values can introduce minor precision anomalies. Truncating values using dedicated fixed-point precision filters prevents formatting layout errors and keeps display updates clean across all viewports.</p>
+
+      <h2 class="seo-h2">5. Frequently Asked Questions (FAQ) - Deep Diagnostic Segment</h2>
+      <h3 class="seo-h3">Why do trigonometric evaluations sometimes yield tiny decimal remainders instead of solid zeros?</h3>
+      <p class="seo-p">This discrepancy occurs because the mathematical value of Pi ($\pi$) is an infinite irrational number that cannot be perfectly represented inside a computer's binary fraction grid. When computing values like $\cos(90^\circ)$, the slight precision limits of the constant produce tiny remainder offsets (such as $6.12 \times 10^{-17}$). Our updated calculation system handles this variance by passing output values through a precision filter (`parseFloat(result.toFixed(10))`), ensuring accurate numbers render on screen every time.</p>
+
+      <h3 class="seo-h3">How does the continuous clock history ledger track variables across sessions?</h3>
+      <p class="seo-p">The application engine connects display updates directly to a local variable array list. When an evaluation occurs, the complete expression is compiled as a structural string block and saved to the runtime cache. Clicking the history clock icon opens this list, allowing users to restore previous equations instantly.</p>
+
+      <h3 class="seo-h3">How does local standalone compilation preserve information privacy benchmarks?</h3>
+      <p class="seo-p">Texus Pro Tools prioritizes absolute user data privacy. The entire scientific processing framework executes natively within your device's browser memory cache using client-side JavaScript execution loops. No calculation strings or configuration parameters are ever broadcast over external server networks—establishing a 100% private sandbox for secure operations.</p>
+
+      <h2 class="seo-h2">6. Summary: Technical Best Practices for Scientific Computations</h2>
+      <p class="seo-p">To secure optimal data presentation, apply uniform syntax line breaks when dividing major paragraphs to prevent string collapse errors during HTML rendering loops. Use standard monospaced layout panels to check data streams for conversion errors easily, use explicit heading indices to keep content hierarchies clear, and leverage real-time translation modules to streamline testing environments.</p>
+      <p class="seo-p">Our Advanced Online Scientific Calculator Suite automates all these computational extraction routines instantly, providing clear visibility into your token structures across any mobile or desktop device cleanly.</p>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+
+    fetch('/components/header.html')
+      .then(res => {
+        if (!res.ok) return fetch('../../components/header.html');
+        return res.text();
+      })
+      .then(data => {
+        document.getElementById('site-header').innerHTML = data;
+      })
+      .catch(err => console.error('Header failed:', err));
+
+    fetch('/components/footer.html')
+      .then(res => {
+        if (!res.ok) return fetch('../../components/footer.html');
+        return res.text();
+      })
+      .then(data => {
+        document.getElementById('site-footer').innerHTML = data;
+      })
+      .catch(err => console.error('Footer failed:', err));
+
+    let currentExpressionString = "";
+    let savedCalculationLogList = [];
+    let isDegreeMode = true;
+    let isInverseMode = false;
+    let lastCalculatedAns = "0";
+
+    const displayMainNode = document.getElementById('calcMainDisplayConsole');
+    const displayHistoryNode = document.getElementById('calcHistoryConsole');
+    const drawerPanelNode = document.getElementById('historyDrawerPanel');
+
+    function updateDisplay() {
+      displayMainNode.innerText = currentExpressionString || "0";
+    }
+
+    function triggerCalculatorAction(action, inputToken = "") {
+
+      if (action !== 'history-toggle') {
+        drawerPanelNode.style.display = 'none';
       }
-      break;
 
-    case 'ans':
-      currentExpressionString += lastCalculatedAns;
-      break;
+      switch (action) {
 
-    case 'clear':
-      currentExpressionString = "";
-      displayHistoryNode.innerText = "";
+        case 'digit':
+          currentExpressionString += inputToken;
+          break;
+
+        case 'decimal':
+          const parts = currentExpressionString.split(/[\+\-\*\/\(\)\^]/);
+          const lastPart = parts[parts.length - 1];
+
+          if (!lastPart.includes('.')) {
+            currentExpressionString += '.';
+          }
+          break;
+
+        case 'operator':
+
+          if (
+            ['+', '-', '*', '/', '^', '%'].includes(inputToken)
+          ) {
+
+            if (currentExpressionString === "" && inputToken !== '-') return;
+
+            const lastChar = currentExpressionString.slice(-1);
+
+            if (['+', '-', '*', '/', '^', '%'].includes(lastChar)) {
+              currentExpressionString =
+                currentExpressionString.slice(0, -1) + inputToken;
+            } else {
+              currentExpressionString += inputToken;
+            }
+
+          } else {
+            currentExpressionString += inputToken;
+          }
+
+          break;
+
+        case 'bracket':
+          currentExpressionString += inputToken;
+          break;
+
+        case 'constant':
+
+          if (
+            currentExpressionString &&
+            /[0-9)]$/.test(currentExpressionString)
+          ) {
+            currentExpressionString += "*";
+          }
+
+          currentExpressionString +=
+            inputToken === 'pi'
+              ? "π"
+              : "e";
+
+          break;
+
+        case 'ans':
+
+          if (
+            currentExpressionString &&
+            /[0-9)]$/.test(currentExpressionString)
+          ) {
+            currentExpressionString += "*";
+          }
+
+          currentExpressionString += lastCalculatedAns;
+          break;
+
+        case 'clear':
+          currentExpressionString = "";
+          displayHistoryNode.innerText = "";
+          updateDisplay();
+          return;
+
+        case 'backspace':
+          currentExpressionString =
+            currentExpressionString.slice(0, -1);
+          break;
+
+        case 'toggle-deg':
+
+          isDegreeMode = true;
+
+          document
+            .getElementById('toggleDegBtn')
+            .classList.add('active-mode');
+
+          document
+            .getElementById('toggleRadBtn')
+            .classList.remove('active-mode');
+
+          return;
+
+        case 'toggle-rad':
+
+          isDegreeMode = false;
+
+          document
+            .getElementById('toggleRadBtn')
+            .classList.add('active-mode');
+
+          document
+            .getElementById('toggleDegBtn')
+            .classList.remove('active-mode');
+
+          return;
+
+        case 'toggle-inv':
+
+          isInverseMode = !isInverseMode;
+
+          const invBtn = document.getElementById('toggleInvBtn');
+          const sinBtn = document.getElementById('btn-sin');
+          const cosBtn = document.getElementById('btn-cos');
+          const tanBtn = document.getElementById('btn-tan');
+
+          if (isInverseMode) {
+
+            invBtn.classList.add('active-mode');
+
+            sinBtn.innerHTML = "sin⁻¹";
+            cosBtn.innerHTML = "cos⁻¹";
+            tanBtn.innerHTML = "tan⁻¹";
+
+          } else {
+
+            invBtn.classList.remove('active-mode');
+
+            sinBtn.innerHTML = "sin";
+            cosBtn.innerHTML = "cos";
+            tanBtn.innerHTML = "tan";
+          }
+
+          return;
+
+        case 'sci-op':
+
+          if (
+            currentExpressionString &&
+            /[0-9πe)]$/.test(currentExpressionString)
+          ) {
+            currentExpressionString += "*";
+          }
+
+          if (inputToken === 'fact') {
+
+            currentExpressionString += "!";
+
+          } else {
+
+            const funcName =
+              isInverseMode &&
+              ['sin', 'cos', 'tan'].includes(inputToken)
+                ? inputToken + "inv("
+                : inputToken + "(";
+
+            currentExpressionString += funcName;
+          }
+
+          break;
+
+        case 'history-toggle':
+
+          if (drawerPanelNode.style.display === 'block') {
+
+            drawerPanelNode.style.display = 'none';
+
+          } else {
+
+            drawerPanelNode.style.display = 'block';
+            renderHistoryLogView();
+          }
+
+          return;
+
+        case 'evaluate':
+
+          if (!currentExpressionString.trim()) return;
+
+          try {
+
+            displayHistoryNode.innerText =
+              currentExpressionString + " =";
+
+            let parsedEquation =
+              compileScientificTokenPipes(
+                currentExpressionString
+              );
+
+            let result =
+              Function(
+                '"use strict"; return (' +
+                parsedEquation +
+                ')'
+              )();
+
+            if (
+              result === undefined ||
+              isNaN(result) ||
+              !isFinite(result)
+            ) {
+              throw new Error();
+            }
+
+            result =
+              parseFloat(
+                Number(result).toPrecision(12)
+              );
+
+            if (Math.abs(result) < 1e-12) {
+              result = 0;
+            }
+
+            displayMainNode.innerText = result;
+
+            savedCalculationLogList.push(
+              `${currentExpressionString} = ${result}`
+            );
+
+            if (savedCalculationLogList.length > 30) {
+              savedCalculationLogList.shift();
+            }
+
+            lastCalculatedAns = String(result);
+            currentExpressionString = String(result);
+
+          } catch (e) {
+
+            displayMainNode.innerText = "Error";
+          }
+
+          return;
+      }
+
       updateDisplay();
-      return;
-
-    case 'backspace':
-      currentExpressionString = currentExpressionString.slice(0, -1);
-      updateDisplay();
-      return;
-
-    case 'toggle-deg':
-      isDegreeMode = true;
-      document.getElementById('toggleDegBtn').classList.add('active-mode');
-      document.getElementById('toggleRadBtn').classList.remove('active-mode');
-      return;
-
-    case 'toggle-rad':
-      isDegreeMode = false;
-      document.getElementById('toggleRadBtn').classList.add('active-mode');
-      document.getElementById('toggleDegBtn').classList.remove('active-mode');
-      return;
-
-    case 'toggle-inv':
-      toggleInverseMode();
-      return;
-
-    case 'sci-op':
-      handleScientificOperation(inputToken);
-      break;
-
-    case 'history-toggle':
-      toggleHistoryDrawer();
-      return;
-
-    case 'evaluate':
-      evaluateExpression();
-      return;
-  }
-
-  updateDisplay();
-}
-
-function handleDecimal() {
-  const lastPart = currentExpressionString.split(/[\+\-\*\/\^\(\)%]/).pop();
-
-  if (!lastPart.includes(".")) {
-    currentExpressionString += ".";
-  }
-}
-
-function handleOperator(operator) {
-
-  const operators = ['+', '-', '*', '/', '^', '%'];
-
-  const lastChar = currentExpressionString.slice(-1);
-
-  if (currentExpressionString === "" && operator !== "-") return;
-
-  if (operators.includes(lastChar)) {
-    currentExpressionString =
-      currentExpressionString.slice(0, -1) + operator;
-  } else {
-    currentExpressionString += operator;
-  }
-}
-
-function toggleInverseMode() {
-
-  isInverseMode = !isInverseMode;
-
-  const invBtn = document.getElementById('toggleInvBtn');
-  const sinBtn = document.getElementById('btn-sin');
-  const cosBtn = document.getElementById('btn-cos');
-  const tanBtn = document.getElementById('btn-tan');
-
-  if (isInverseMode) {
-
-    invBtn.classList.add('active-mode');
-
-    sinBtn.innerHTML = "sin⁻¹";
-    cosBtn.innerHTML = "cos⁻¹";
-    tanBtn.innerHTML = "tan⁻¹";
-
-  } else {
-
-    invBtn.classList.remove('active-mode');
-
-    sinBtn.innerHTML = "sin";
-    cosBtn.innerHTML = "cos";
-    tanBtn.innerHTML = "tan";
-  }
-}
-
-function handleScientificOperation(operation) {
-
-  if (operation === 'fact') {
-    currentExpressionString += "!";
-    return;
-  }
-
-  const opMap = {
-    sin: isInverseMode ? "asin(" : "sin(",
-    cos: isInverseMode ? "acos(" : "cos(",
-    tan: isInverseMode ? "atan(" : "tan(",
-    log: "log(",
-    ln: "ln(",
-    sqrt: "sqrt("
-  };
-
-  currentExpressionString += opMap[operation];
-}
-
-function toggleHistoryDrawer() {
-
-  if (drawerPanelNode.style.display === 'block') {
-
-    drawerPanelNode.style.display = 'none';
-
-  } else {
-
-    drawerPanelNode.style.display = 'block';
-    renderHistoryLogView();
-  }
-}
-
-function renderHistoryLogView() {
-
-  drawerPanelNode.innerHTML = "";
-
-  if (savedCalculationLogList.length === 0) {
-
-    drawerPanelNode.innerHTML =
-      "<div class='history-empty-msg'>No calculations yet</div>";
-
-    return;
-  }
-
-  for (let i = savedCalculationLogList.length - 1; i >= 0; i--) {
-
-    const item = document.createElement('div');
-
-    item.className = "history-log-item";
-    item.innerText = savedCalculationLogList[i];
-
-    item.onclick = () => {
-
-      currentExpressionString =
-        savedCalculationLogList[i].split(" = ")[0];
-
-      updateDisplay();
-
-      drawerPanelNode.style.display = 'none';
-    };
-
-    drawerPanelNode.appendChild(item);
-  }
-}
-
-function calculateFactorialBuffer(n) {
-
-  n = Number(n);
-
-  if (n < 0 || !Number.isInteger(n)) return NaN;
-
-  if (n > 170) return Infinity;
-
-  let result = 1;
-
-  for (let i = 2; i <= n; i++) {
-    result *= i;
-  }
-
-  return result;
-}
-
-function preprocessExpression(expression) {
-
-  let exp = expression;
-
-  exp = exp.replace(/π/g, Math.PI);
-  exp = exp.replace(/\be\b/g, Math.E);
-
-  exp = exp.replace(/÷/g, '/');
-  exp = exp.replace(/×/g, '*');
-
-  exp = exp.replace(/\^/g, '**');
-
-  exp = exp.replace(/(\d+|\))\(/g, '$1*(');
-
-  exp = exp.replace(/\)(\d+)/g, ')*$1');
-
-  exp = exp.replace(/(\d+|\))(?=sin|cos|tan|asin|acos|atan|log|ln|sqrt)/g, '$1*');
-
-  exp = exp.replace(/(\d+(\.\d+)?)%/g, '($1/100)');
-
-  exp = exp.replace(/(\d+)!/g, 'calculateFactorialBuffer($1)');
-
-  exp = exp.replace(/sqrt\(/g, 'Math.sqrt(');
-
-  exp = exp.replace(/log\(/g, 'Math.log10(');
-
-  exp = exp.replace(/ln\(/g, 'Math.log(');
-
-  if (isDegreeMode) {
-
-    exp = exp.replace(/sin\((.*?)\)/g,
-      'Math.sin(($1)*Math.PI/180)');
-
-    exp = exp.replace(/cos\((.*?)\)/g,
-      'Math.cos(($1)*Math.PI/180)');
-
-    exp = exp.replace(/tan\((.*?)\)/g,
-      'Math.tan(($1)*Math.PI/180)');
-
-    exp = exp.replace(/asin\((.*?)\)/g,
-      '(Math.asin($1)*180/Math.PI)');
-
-    exp = exp.replace(/acos\((.*?)\)/g,
-      '(Math.acos($1)*180/Math.PI)');
-
-    exp = exp.replace(/atan\((.*?)\)/g,
-      '(Math.atan($1)*180/Math.PI)');
-
-  } else {
-
-    exp = exp.replace(/sin\((.*?)\)/g,
-      'Math.sin($1)');
-
-    exp = exp.replace(/cos\((.*?)\)/g,
-      'Math.cos($1)');
-
-    exp = exp.replace(/tan\((.*?)\)/g,
-      'Math.tan($1)');
-
-    exp = exp.replace(/asin\((.*?)\)/g,
-      'Math.asin($1)');
-
-    exp = exp.replace(/acos\((.*?)\)/g,
-      'Math.acos($1)');
-
-    exp = exp.replace(/atan\((.*?)\)/g,
-      'Math.atan($1)');
-  }
-
-  return exp;
-}
-
-function evaluateExpression() {
-
-  if (!currentExpressionString.trim()) return;
-
-  try {
-
-    displayHistoryNode.innerText =
-      currentExpressionString + " =";
-
-    let processedExpression =
-      preprocessExpression(currentExpressionString);
-
-    let result =
-      Function('"use strict"; return (' + processedExpression + ')')();
-
-    if (!isFinite(result) || isNaN(result)) {
-      throw new Error("Invalid");
     }
 
-    result = parseFloat(result.toFixed(12));
+    function renderHistoryLogView() {
 
-    if (Object.is(result, -0)) {
-      result = 0;
+      drawerPanelNode.innerHTML = "";
+
+      if (savedCalculationLogList.length === 0) {
+
+        drawerPanelNode.innerHTML =
+          "<div class='history-empty-msg'>No calculation history</div>";
+
+        return;
+      }
+
+      for (
+        let i = savedCalculationLogList.length - 1;
+        i >= 0;
+        i--
+      ) {
+
+        const item = document.createElement('div');
+
+        item.className = "history-log-item";
+        item.innerText = savedCalculationLogList[i];
+
+        item.onclick = () => {
+
+          const expression =
+            savedCalculationLogList[i].split(' = ')[0];
+
+          currentExpressionString = expression;
+
+          displayHistoryNode.innerText =
+            "↳ Restored from History";
+
+          updateDisplay();
+
+          drawerPanelNode.style.display = 'none';
+        };
+
+        drawerPanelNode.appendChild(item);
+      }
     }
 
-    displayMainNode.innerText = result;
+    function calculateFactorialBuffer(n) {
 
-    savedCalculationLogList.push(
-      currentExpressionString + " = " + result
-    );
+      n = Number(n);
 
-    if (savedCalculationLogList.length > 50) {
-      savedCalculationLogList.shift();
+      if (n < 0 || !Number.isInteger(n)) {
+        return NaN;
+      }
+
+      if (n > 170) {
+        return Infinity;
+      }
+
+      let result = 1;
+
+      for (let i = 2; i <= n; i++) {
+        result *= i;
+      }
+
+      return result;
     }
 
-    lastCalculatedAns = result.toString();
+    function compileScientificTokenPipes(expression) {
 
-    currentExpressionString = result.toString();
+      let text = expression;
 
-  } catch (error) {
+      text = text.replace(/π/g, `(${Math.PI})`);
 
-    displayMainNode.innerText = "Error";
-  }
-}
+      text = text.replace(
+        /([^a-zA-Z])e([^a-zA-Z]|$)/g,
+        `$1(${Math.E})$2`
+      );
 
-window.addEventListener('keydown', (event) => {
+      text = text.replace(/÷/g, "/");
+      text = text.replace(/×/g, "*");
 
-  const key = event.key;
+      text = text.replace(
+        /([0-9.]+)%/g,
+        "($1/100)"
+      );
 
-  if (key >= '0' && key <= '9') {
+      text = text.replace(
+        /(\d+|\))\(/g,
+        "$1*("
+      );
 
-    triggerCalculatorAction('digit', key);
+      text = text.replace(
+        /\)(\d+)/g,
+        ")*$1"
+      );
 
-  } else if (key === '.') {
+      text = text.replace(
+        /(\d+|\))(sin|cos|tan|log|ln|sqrt)/g,
+        "$1*$2"
+      );
 
-    triggerCalculatorAction('decimal');
+      text = text.replace(
+        /(\d+|\))(π|e)/g,
+        "$1*$2"
+      );
 
-  } else if (
-    ['+', '-', '*', '/', '%', '^'].includes(key)
-  ) {
+      text = text.replace(
+        /([0-9.]+|\))!/g,
+        (m, val) =>
+          `calculateFactorialBuffer(${val})`
+      );
 
-    triggerCalculatorAction('operator', key);
+      const radMultiplier =
+        isDegreeMode
+          ? `(${Math.PI}/180)`
+          : `1`;
 
-  } else if (key === '(' || key === ')') {
+      const degMultiplier =
+        isDegreeMode
+          ? `(180/${Math.PI})`
+          : `1`;
 
-    triggerCalculatorAction('bracket', key);
+      text = text.replace(
+        /sininv\(([^()]+)\)/g,
+        `(Math.asin($1)*${degMultiplier})`
+      );
 
-  } else if (key === 'Enter' || key === '=') {
+      text = text.replace(
+        /cosinv\(([^()]+)\)/g,
+        `(Math.acos($1)*${degMultiplier})`
+      );
 
-    event.preventDefault();
+      text = text.replace(
+        /taninv\(([^()]+)\)/g,
+        `(Math.atan($1)*${degMultiplier})`
+      );
 
-    triggerCalculatorAction('evaluate');
+      text = text.replace(
+        /sin\(([^()]+)\)/g,
+        `(Math.sin(($1)*${radMultiplier}))`
+      );
 
-  } else if (key === 'Backspace') {
+      text = text.replace(
+        /cos\(([^()]+)\)/g,
+        `(Math.cos(($1)*${radMultiplier}))`
+      );
 
-    triggerCalculatorAction('backspace');
+      text = text.replace(
+        /tan\(([^()]+)\)/g,
+        `(Math.tan(($1)*${radMultiplier}))`
+      );
 
-  } else if (key === 'Escape') {
+      text = text.replace(
+        /ln\(([^()]+)\)/g,
+        `(Math.log($1))`
+      );
 
-    triggerCalculatorAction('clear');
-  }
-});
+      text = text.replace(
+        /log\(([^()]+)\)/g,
+        `(Math.log10($1))`
+      );
 
-document.addEventListener('click', (e) => {
+      text = text.replace(
+        /sqrt\(([^()]+)\)/g,
+        `(Math.sqrt($1))`
+      );
 
-  if (!e.target.closest('.calc-housing')) {
-    drawerPanelNode.style.display = 'none';
-  }
-});
-</script>
+      text = text.replace(/\^/g, "**");
+
+      text = text.replace(
+        /(\d+)E([+-]?\d+)/g,
+        "($1*10**$2)"
+      );
+
+      const openBrackets =
+        (text.match(/\(/g) || []).length;
+
+      const closeBrackets =
+        (text.match(/\)/g) || []).length;
+
+      if (openBrackets > closeBrackets) {
+
+        text += ")".repeat(
+          openBrackets - closeBrackets
+        );
+      }
+
+      return text;
+    }
+
+    window.addEventListener('keydown', (event) => {
+
+      const key = event.key;
+
+      if (/[0-9]/.test(key)) {
+
+        triggerCalculatorAction('digit', key);
+
+      } else if (key === '.') {
+
+        triggerCalculatorAction('decimal');
+
+      } else if (
+        ['+', '-', '*', '/', '%', '^']
+          .includes(key)
+      ) {
+
+        triggerCalculatorAction('operator', key);
+
+      } else if (
+        key === '(' ||
+        key === ')'
+      ) {
+
+        triggerCalculatorAction('bracket', key);
+
+      } else if (
+        key === 'Enter' ||
+        key === '='
+      ) {
+
+        event.preventDefault();
+
+        triggerCalculatorAction('evaluate');
+
+      } else if (
+        key === 'Backspace'
+      ) {
+
+        triggerCalculatorAction('backspace');
+
+      } else if (
+        key === 'Escape'
+      ) {
+
+        triggerCalculatorAction('clear');
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+
+      if (!e.target.closest('.calc-housing')) {
+
+        drawerPanelNode.style.display = 'none';
+      }
+    });
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
