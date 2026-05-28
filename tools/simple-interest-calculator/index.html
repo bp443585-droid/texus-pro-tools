@@ -36,16 +36,15 @@
     .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
     .f-heading span { font-size: 2.2rem; }
     
-    /* MASTER CARD FRAMEWORK WITH HIGH ADS SENSITIVITY GAP AND COMPACT DESKTOP GRID */
-    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 28px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02), 0 8px 16px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; display: table; width: 100%; }
+    /* MODERN STRETCH CONSTRAINTS GRID REPLACEMENT (NO MORE STATIC TABLE BLOCKS) */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 28px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02), 0 8px 16px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; display: flex; gap: 32px; width: 100%; align-items: stretch; }
     
-    /* TABLE COUPLINGS FOR PERFECT VERTICAL ALIGNMENT AND LAPTOP HEIGHT RESTRAINTS */
-    .grid-row { display: table-row; }
-    .input-column { display: table-cell; width: 48%; padding-right: 28px; vertical-align: middle; border-right: 1px solid #e2e8f0; box-sizing: border-box; }
-    .output-column { display: table-cell; width: 52%; padding-left: 28px; vertical-align: middle; box-sizing: border-box; }
+    /* FLEX EXTENSIONS FILLING SCREEN REAL ESTATE SECURELY */
+    .input-column { flex: 1; width: 48%; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
+    .output-column { flex: 1; width: 52%; display: flex; box-sizing: border-box; }
 
     /* COMPACT INPUT CONTROL SYSTEM COMPONENTS */
-    .input-box-group { display: flex; flex-direction: column; gap: 5px; text-align: left; margin-bottom: 12px; }
+    .input-box-group { display: flex; flex-direction: column; gap: 6px; text-align: left; margin-bottom: 12px; width: 100%; }
     .input-box-group label { font-size: 0.75rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     
     .f-num-input { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1.02rem; font-family: 'Inter', sans-serif; color: #0f172a; outline: none; transition: all 0.2s ease; background: #f8fafc; box-sizing: border-box; font-weight: 600; }
@@ -55,13 +54,13 @@
     .f-select-field:focus { border-color: #2563eb; }
 
     /* ACTION CONTROLS TIMELINE BAR */
-    .f-action-strip { display: flex; gap: 12px; margin-top: 14px; width: 100%; }
+    .f-action-strip { display: flex; gap: 12px; margin-top: 4px; width: 100%; }
     .f-btn { font-weight: 700; padding: 11px 18px; border-radius: 12px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; text-transform: uppercase; letter-spacing: 0.5px; }
     .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; width: 95px; }
     .f-btn-clear:hover { background: #fee2e2; }
 
-    /* CLEAN MODERN LIGHT RESULT DISPLAY PANEL WITH COMPLETE INTER FONTS PROFILE */
-    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; gap: 20px; }
+    /* FULL FLEX VERTICAL HEIGHT CONSUMPTION COUPLING */
+    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
     .main-breakdown-title { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
     .main-breakdown-value { font-size: 2.3rem; font-weight: 800; color: #0f172a; line-height: 1.1; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; font-family: 'Inter', sans-serif; letter-spacing: -0.5px; }
     
@@ -86,7 +85,7 @@
     .seo-table tr:last-child td { border-bottom: none; }
     .seo-table tr:nth-child(even) { background: #fbfcfe; }
 
-    /* RESPONSIVE FLUID LAYOUT OVERRIDES (ADAPTIVE PHONE STREAMING) */
+    /* RESPONSIVE FLUID LAYOUT OVERRIDES (PHONE COMPATIBILITY ADAPTATIONS) */
     @media (max-width: 768px) {
       .f-card { display: block; padding: 20px; border-radius: 20px; }
       .input-column { display: block; width: 100%; padding-right: 0; border-right: none; margin-bottom: 18px; }
@@ -105,71 +104,69 @@
     <div class="f-heading"><span>💰</span> Simple Interest Calculator</div>
     
     <div class="f-card">
-      <div class="grid-row">
+      
+      <div class="input-column">
+        <div class="input-box-group">
+          <label>Principal Amount (P)</label>
+          <input type="number" id="siPrincipal" class="f-num-input" value="10000" min="0" step="any" oninput="liveExecuteSimpleInterestMath()" />
+        </div>
         
-        <div class="input-column">
-          <div class="input-box-group">
-            <label>Principal Amount (P)</label>
-            <input type="number" id="siPrincipal" class="f-num-input" value="10000" min="0" step="any" oninput="liveExecuteSimpleInterestMath()" />
-          </div>
-          
-          <div class="input-box-group">
-            <label>Rate of Interest (R% Per Annum)</label>
-            <input type="number" id="siRate" class="f-num-input" value="5" min="0" step="any" oninput="liveExecuteSimpleInterestMath()" />
-          </div>
+        <div class="input-box-group">
+          <label>Rate of Interest (R% Per Annum)</label>
+          <input type="number" id="siRate" class="f-num-input" value="5" min="0" step="any" oninput="liveExecuteSimpleInterestMath()" />
+        </div>
 
-          <div style="display: flex; gap: 12px; width:100%;">
-            <div class="input-box-group" style="flex: 2;">
-              <label>Time Duration (T)</label>
-              <input type="number" id="siTimeValue" class="f-num-input" value="2" min="0" step="any" oninput="liveExecuteSimpleInterestMath()" />
-            </div>
-            <div class="input-box-group" style="flex: 3;">
-              <label>Time Unit</label>
-              <select id="siTimeUnit" class="f-select-field" onchange="liveExecuteSimpleInterestMath()">
-                <option value="years" selected>Years</option>
-                <option value="months">Months</option>
-                <option value="days">Days</option>
-              </select>
-            </div>
+        <div style="display: flex; gap: 12px; width:100%;">
+          <div class="input-box-group" style="flex: 2;">
+            <label>Time Duration (T)</label>
+            <input type="number" id="siTimeValue" class="f-num-input" value="2" min="0" step="any" oninput="liveExecuteSimpleInterestMath()" />
           </div>
-
-          <div class="f-action-strip">
-            <button class="f-btn f-btn-clear" onclick="clearSimpleInterestWorkspace()">Clear</button>
+          <div class="input-box-group" style="flex: 3;">
+            <label>Time Unit</label>
+            <select id="siTimeUnit" class="f-select-field" onchange="liveExecuteSimpleInterestMath()">
+              <option value="years" selected>Years</option>
+              <option value="months">Months</option>
+              <option value="days">Days</option>
+            </select>
           </div>
         </div>
 
-        <div class="output-column">
-          <div class="result-display-panel">
-            <div>
-              <div class="main-breakdown-title">📈 Total Maturity Value (Principal + Interest)</div>
-              <div id="siTotalMaturityConsole" class="main-breakdown-value">0.00</div>
-            </div>
-            
-            <div>
-              <div class="main-breakdown-title" style="margin-bottom: 6px;">📊 Yield Accumulation Balance Sheet</div>
-              <div class="stats-matrix-grid">
-                <div class="stat-metric-card">
-                  <div class="stat-metric-label">Interest Earned</div>
-                  <div id="siInterestEarnedMetric" class="stat-metric-val accent-blue">0.00</div>
-                </div>
-                <div class="stat-metric-card">
-                  <div class="stat-metric-label">Initial Principal</div>
-                  <div id="siBasePrincipalMetric" class="stat-metric-val">0.00</div>
-                </div>
-                <div class="stat-metric-card">
-                  <div class="stat-metric-label">Monthly Growth</div>
-                  <div id="siMonthlyGrowthMetric" class="stat-metric-val">0.00</div>
-                </div>
-                <div class="stat-metric-card">
-                  <div class="stat-metric-label">Daily Accrual</div>
-                  <div id="siDailyAccrualMetric" class="stat-metric-val">0.00</div>
-                </div>
+        <div class="f-action-strip">
+          <button class="f-btn f-btn-clear" onclick="clearSimpleInterestWorkspace()">Clear</button>
+        </div>
+      </div>
+
+      <div class="output-column">
+        <div class="result-display-panel">
+          <div>
+            <div class="main-breakdown-title">📈 Total Maturity Value (Principal + Interest)</div>
+            <div id="siTotalMaturityConsole" class="main-breakdown-value">0.00</div>
+          </div>
+          
+          <div>
+            <div class="main-breakdown-title" style="margin-bottom: 6px;">📊 Yield Accumulation Balance Sheet</div>
+            <div class="stats-matrix-grid">
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Interest Earned</div>
+                <div id="siInterestEarnedMetric" class="stat-metric-val accent-blue">0.00</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Initial Principal</div>
+                <div id="siBasePrincipalMetric" class="stat-metric-val">0.00</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Monthly Growth</div>
+                <div id="siMonthlyGrowthMetric" class="stat-metric-val">0.00</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Daily Accrual</div>
+                <div id="siDailyAccrualMetric" class="stat-metric-val">0.00</div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
+
     </div>
 
     <article class="seo-container">
