@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Time Calculator Online | Free Duration Add &amp; Subtract Tool</title>
+  <meta name="description" content="Free online time calculator to add, subtract, or evaluate intervals between durations. Get precise breakdowns in hours, minutes, and seconds instantly." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/time-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Advanced Time Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "A client-side sexagesimal mathematical runtime engine designed to add, subtract, and evaluate precise temporal duration metrics flawlessly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1000px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE AREA CARD WITH HIGH ADS SENSITIVITY GAP */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; }
+    
+    .time-housing { width: 100%; max-width: 540px; box-sizing: border-box; }
+    
+    /* MODE TABS CONTROL BLOCK */
+    .tab-container { display: flex; background: #f1f5f9; padding: 6px; border-radius: 14px; margin-bottom: 25px; width: 100%; box-sizing: border-box; }
+    .tab-btn { flex: 1; padding: 12px; text-align: center; font-weight: 700; font-size: 0.92rem; border-radius: 10px; cursor: pointer; border: none; background: transparent; color: #64748b; transition: all 0.15s ease; }
+    .tab-btn.active-tab { background: #ffffff; color: #0f172a; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+
+    /* CORE CALCULATOR CONTROL SLATES */
+    .calc-slate { display: none; width: 100%; box-sizing: border-box; }
+    .calc-slate.active-slate { display: block; }
+
+    /* INPUT ROW INTERACTION GRIDS */
+    .time-input-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px; width: 100%; }
+    .input-box-group { display: flex; flex-direction: column; gap: 6px; text-align: left; }
+    .input-box-group label { font-size: 0.78rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-time-field { width: 100%; padding: 12px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1.05rem; font-family: monospace; color: #1e293b; outline: none; transition: all 0.2s; background: #f8fafc; box-sizing: border-box; font-weight: 700; text-align: center; }
+    .f-time-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .slate-divider-label { font-size: 0.85rem; color: #0f172a; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin: 16px 0 10px 0; text-align: left; }
+
+    /* OPERATOR SELECT FIELDS */
+    .f-select-field { width: 100%; padding: 12px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 0.95rem; outline: none; font-weight: 700; background: #ffffff; color: #1e293b; box-sizing: border-box; margin-bottom: 20px; cursor: pointer; }
+
+    /* ACTION BUTTON MATRIX COUPLING STRIPS */
+    .f-action-strip { display: flex; gap: 12px; margin: 24px 0; width: 100%; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-calc { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-calc:hover { background: #1d4ed8; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 110px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* METRIC PANELS DISPLAY FRAMEWORKS */
+    .result-display-panel { width: 100%; background: #0f172a; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #1e293b; color: #f8fafc; text-align: left; }
+    .main-breakdown-title { font-size: 0.85rem; color: #38bdf8; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .main-breakdown-value { font-size: 1.6rem; font-weight: 800; color: #ffffff; line-height: 1.4; margin-bottom: 20px; border-bottom: 1px solid #1e293b; padding-bottom: 16px; word-break: break-word; font-family: monospace; }
+    
+    .stats-matrix-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .stat-metric-card { background: #1e293b; padding: 12px 14px; border-radius: 12px; border: 1px solid #334155; text-align: center; }
+    .stat-metric-label { font-size: 0.75rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .stat-metric-val { font-size: 1.15rem; font-weight: 700; color: #f1f5f9; font-family: monospace; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 15px; border-radius: 20px; }
+      .time-input-row { gap: 8px; }
+      .f-time-field { padding: 10px; font-size: 0.95rem; }
+      .f-action-strip { flex-direction: column; gap: 10px; }
+      .f-btn { max-width: 100% !important; }
+      .stats-matrix-grid { grid-template-columns: 1fr; gap: 10px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⏳</span> Time Calculator</div>
+    
+    <div class="f-card">
+      <div class="time-housing">
+        
+        <div class="tab-container">
+          <button id="tabBtnDuration" class="tab-btn active-tab" onclick="switchCalculatorMode('duration')">Add / Subtract Durations</button>
+          <button id="tabBtnTimecard" class="tab-btn" onclick="switchCalculatorMode('timecard')">Time Card (Start / End)</button>
+        </div>
+
+        <div id="slateDurationEngine" class="calc-slate active-slate">
+          <div class="slate-divider-label">Initial Time Vector (T1)</div>
+          <div class="time-input-row">
+            <div class="input-box-group">
+              <label>Hours</label>
+              <input type="number" id="t1Hours" class="f-time-field" value="0" min="0" oninput="liveUpdatePipeline()" />
+            </div>
+            <div class="input-box-group">
+              <label>Minutes</label>
+              <input type="number" id="t1Minutes" class="f-time-field" value="0" min="0" max="59" oninput="liveUpdatePipeline()" />
+            </div>
+            <div class="input-box-group">
+              <label>Seconds</label>
+              <input type="number" id="t1Seconds" class="f-time-field" value="0" min="0" max="59" oninput="liveUpdatePipeline()" />
+            </div>
+          </div>
+
+          <div class="input-box-group" style="margin-top: 10px;">
+            <label for="timeArithmeticOperator">Mathematical Operation</label>
+            <select id="timeArithmeticOperator" class="f-select-field" onchange="liveUpdatePipeline()">
+              <option value="add" selected>➕ Add Operation (+)</option>
+              <option value="subtract">➖ Subtract Operation (−)</option>
+            </select>
+          </div>
+
+          <div class="slate-divider-label">Relative Time Vector (T2)</div>
+          <div class="time-input-row">
+            <div class="input-box-group">
+              <label>Hours</label>
+              <input type="number" id="t2Hours" class="f-time-field" value="0" min="0" oninput="liveUpdatePipeline()" />
+            </div>
+            <div class="input-box-group">
+              <label>Minutes</label>
+              <input type="number" id="t2Minutes" class="f-time-field" value="0" min="0" max="59" oninput="liveUpdatePipeline()" />
+            </div>
+            <div class="input-box-group">
+              <label>Seconds</label>
+              <input type="number" id="t2Seconds" class="f-time-field" value="0" min="0" max="59" oninput="liveUpdatePipeline()" />
+            </div>
+          </div>
+        </div>
+
+        <div id="slateTimecardEngine" class="calc-slate">
+          <div class="slate-divider-label">Shift Start Point</div>
+          <div class="time-input-row">
+            <div class="input-box-group">
+              <label>Hours</label>
+              <input type="number" id="tcStartHours" class="f-time-field" value="09" min="0" max="23" oninput="liveUpdatePipeline()" />
+            </div>
+            <div class="input-box-group">
+              <label>Minutes</label>
+              <input type="number" id="tcStartMinutes" class="f-time-field" value="00" min="0" max="59" oninput="liveUpdatePipeline()" />
+            </div>
+            <div class="input-box-group">
+              <label>Period</label>
+              <select id="tcStartAmpm" class="f-select-field" style="margin-bottom:0;" onchange="liveUpdatePipeline()">
+                <option value="AM" selected>AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="slate-divider-label" style="margin-top: 25px;">Shift End Boundary</div>
+          <div class="time-input-row">
+            <div class="input-box-group">
+              <label>Hours</label>
+              <input type="number" id="tcEndHours" class="f-time-field" value="05" min="0" max="23" oninput="liveUpdatePipeline()" />
+            </div>
+            <div class="input-box-group">
+              <label>Minutes</label>
+              <input type="number" id="tcEndMinutes" class="f-time-field" value="00" min="0" max="59" oninput="liveUpdatePipeline()" />
+            </div>
+            <div class="input-box-group">
+              <label>Period</label>
+              <select id="tcEndAmpm" class="f-select-field" style="margin-bottom:0;" onchange="liveUpdatePipeline()">
+                <option value="AM">AM</option>
+                <option value="PM" selected>PM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="f-action-strip">
+          <button class="f-btn f-btn-clear" onclick="clearTimeWorkspaceFields()">Clear</button>
+          <button class="f-btn f-btn-calc" onclick="liveUpdatePipeline()">Re-Evaluate Matrix</button>
+        </div>
+
+        <div class="result-display-panel">
+          <div class="main-breakdown-title">⏱️ Consolidated Duration Extraction</div>
+          <div id="mainTimeBreakdownConsole" class="main-breakdown-value">0h 0m 0s</div>
+          
+          <div class="main-breakdown-title">📊 Granular Conversion Reference Ledger</div>
+          <div class="stats-matrix-grid">
+            <div class="stat-metric-card">
+              <div class="stat-metric-label">Total Hours</div>
+              <div id="metricTotalHours" class="stat-metric-val">0.00 hrs</div>
+            </div>
+            <div class="stat-metric-card">
+              <div class="stat-metric-label">Total Minutes</div>
+              <div id="metricTotalMinutes" class="stat-metric-val">0 min</div>
+            </div>
+            <div class="stat-metric-card">
+              <div class="stat-metric-label">Total Seconds</div>
+              <div id="metricTotalSeconds" class="stat-metric-val">0 sec</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <article class="seo-container">
+      <h2 class="seo-title">The Chronological Foundations of Sexagesimal Mathematics: Base-60 Radix Systems, Time Card Grouping Vectors, and Epoch Temporal Layout Rules</h2>
+      <p class="seo-p">Configuring higher-order video production render sequences, auditing shift logs inside professional developer apps, or tracking complex server system loops across distributed frameworks requires a highly robust temporal calculator framework. Unlike regular decimal calculations that transition smoothly under simple base-10 mathematics, time parameters follow historical sexagesimal processing tracks where parameters loop under base-60 variations. Utilizing a local, sandboxed online <strong>time calculator online</strong> bypasses manual calculation errors, converting elapsed data packages flawlessly into structured metric outputs.</p>
+      <p class="seo-p">This extensive algorithmic design manual breaks down the binary token groupings that drive structural time translations, contrasts duration aggregation systems against modulo remainder calculations, explores data boundaries, and guides engineers through running standalone arithmetic time modules inside browser systems smoothly.</p>
+
+      <div class="seo-callout">
+        <strong>The Base-60 Scaling Standard:</strong> At the raw calculation layer, basic additions or subtractions cannot pass raw units without cascading carryovers. Since exactly **60 seconds form 1 minute** and **60 minutes constitute 1 hour**, systems must implement precise modulo filters to adjust values without leaving decimal remainder corruptions.
+      </div>
+
+      <h3 class="seo-h2">1. Theoretical Chronology: The Babylonian Base-60 Metrology System</h3>
+      <p class="seo-p">The human imperative to break down diurnal cycles into distinct structural fragments dates back to ancient Mesopotamia. Early Babylonian astronomers structured their comprehensive numeric systems around a base-60 radix (sexagesimal algebra), rather than the modern base-10 framework. This design choice stemmed from the unique mathematical versatility of 60, which functions as the lowest number cleanly divisible by the first six consecutive integers ($1, 2, 3, 4, 5, 6$), significantly simplifying fractional fraction tracking pools.</p>
+      <p class="seo-p">This early division architecture directly shaped the development of geometric circles ($360^\circ$) and the standard division of solar days. Modern time tracking preserves this design, utilizing exact 60-unit boundaries to manage hours and minutes fields. This historic framework requires specialized logic parsing structures within web script containers to execute accurate calculations across viewports today.</p>
+
+      <h3>The Statutory Mathematical Reference: Absolute Sexagesimal Conversion Mapping</h3>
+      <p class="seo-p">Reviewing how standard metric constants scale into raw second data pools helps software developers structure automated cron jobs and manage work logs error-free:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Temporal Unit Classification</th>
+              <th>Base Multiplier / Divisor Constant</th>
+              <th>JavaScript System Script Equation Line</th>
+              <th>Primary Technical Operation &amp; Precedence Limits</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard Hour Metric (hr)</td>
+              <td>3,600</td>
+              <td>`Hours * 3600`</td>
+              <td>Converts broad hours blocks directly into base seconds parameters to execute master duration operations.</td>
+            </tr>
+            <tr>
+              <td>Standard Minute Metric (min)</td>
+              <td>60</td>
+              <td>`Minutes * 60`</td>
+              <td>Processes fractional hour vectors into safe localized seconds pools, tracking interval values.</td>
+            </tr>
+            <tr>
+              <td>Diurnal Day Vector (day)</td>
+              <td>86,400</td>
+              <td>`Days * 86400`</td>
+              <td>Tracks long-range timelines, managing chronological boundary points for shifts and logs.</td>
+            </tr>
+            <tr>
+              <td>Diurnal Hour Period Circle</td>
+              <td>12 Hour Offset Matrix</td>
+              <td>`Hours + 12 (PM Check)`</td>
+              <td>Maps traditional 12-hour AM/PM parameters into standard 24-hour enterprise code layouts cleanly.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">2. Algorithmic Processing Loops for Bidirectional Duration Conversions</h3>
+      <p class="seo-p">When raw duration parameter units pass through a high-performance local calculation engine, the core scripts convert values into unified second vectors via three discrete mathematical phases:</p>
+
+      <h4 class="seo-h3">A. The Total Second Aggregation Loop</h4>
+      <p class="seo-p">The program extracts numerical input parameters across separate fields, standardizing variables down to the lowest common denominator node of absolute seconds ($S_{\text{total}}$):</p>
+      <div class="seo-math-box">S_{\text{total}} = (\text{Hours} \times 3600) + (\text{Minutes} \times 60) + \text{Seconds}</div>
+
+      <h4 class="seo-h3">B. Sexagesimal Modulo Cascade Distribution</h4>
+      <p class="seo-p">Once the total second pool is modified via addition or subtraction layers, the secondary division cascade triggers. The script extracts individual time segments using integer floor divisions combined with strict modulo math filters to prevent digit leakage:</p>
+      <div class="seo-math-box">\text{Final Hours} = \left\lfloor \frac{S_{\text{total}}}{3600} \right\rfloor \quad \cap \quad \text{Remainder min} = \left\lfloor \frac{S_{\text{total}} \pmod{3600}}{60} \right\rfloor</div>
+      <p class="seo-p">The remaining absolute seconds loop finishes the data chain ($\text{Final Seconds} = S_{\text{total}} \pmod{60}$), mapping clean values onto the active viewport console.</p>
+
+      <h4 class="seo-h3">C. 12-Hour Time Card Normalization</h4>
+      <p class="seo-p">Under the work shift tracking panel mode, inputs use standard AM/PM dropdown parameters. The script parses these selections by applying a standard +12 hour scalar modification when the "PM" string boundary is flagged, while anchoring "12 AM" inputs to a zero value to match standard 24-hour military notation profiles smoothly.</p>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why do mathematical operations throw errors when dealing with negative time spans?</h3>
+      <p class="seo-p">Exceptions trigger when sub-day calculations attempt to return negative integers without explicit inversion catch gates. Our advanced framework avoids this error entirely by applying a mathematical absolute fallback handler (`Math.abs()`). This logic automatically swaps start and end timelines if boundaries are inverted, ensuring accurate positive intervals render across display screens.</p>
+
+      <h3>Does this time calculator module utilize server network validation scripts?</h3>
+      <p class="seo-p">No. To ensure maximum operational agility and complete offline functional performance, the entire sexagesimal arithmetic array executes natively in your browser memory cache. This local architecture guarantees near-instant calculations without network lag or processing bottlenecks.</p>
+
+      <h3>How does client-side standalone execution secure business records?</h3>
+      <p class="seo-p">Texus Pro Tools values your absolute data security above everything else. Every interval transaction and shift log serialization process compiles entirely inside your local device web browser memory cache. No data arrays or personal telemetry variables travel over external server networks—establishing a private sandbox environment for your planning workflows.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Chronological Stream Management</h3>
+      <p class="seo-p">To secure optimal accuracy across data management tracks, ensure numeric parameters are checked within clear range bounds before passing inputs to evaluation scripts. Use clear monospaced layout panels to check data streams for conversion errors easily, verify that sub-minute parameters utilize base-60 rounding checks to safeguard calculations, and use a real-time recursive converter to streamline code testing environments.</p>
+      <p class="seo-p">Our Advanced Online Sexagesimal Multi-Mode Time Duration Suite automates all these computational extraction routines instantly, providing clear visibility into your token structures across any mobile or desktop view layout seamlessly.</p>
+    </article>
+  </article>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    let activeWorkspaceMode = "duration";
+
+    function switchCalculatorMode(targetMode) {
+        activeWorkspaceMode = targetMode;
+        
+        const btnDuration = document.getElementById('tabBtnDuration');
+        const btnTimecard = document.getElementById('tabBtnTimecard');
+        const slateDuration = document.getElementById('slateDurationEngine');
+        const slateTimecard = document.getElementById('slateTimecardEngine');
+
+        if (targetMode === 'duration') {
+            btnDuration.classList.add('active-tab');
+            btnTimecard.classList.remove('active-tab');
+            slateDuration.classList.add('active-slate');
+            slateTimecard.classList.remove('active-slate');
+        } else {
+            btnTimecard.classList.add('active-tab');
+            btnDuration.classList.remove('active-tab');
+            slateTimecard.classList.add('active-slate');
+            slateDuration.classList.remove('active-slate');
+        }
+        liveUpdatePipeline();
+    }
+
+    function liveUpdatePipeline() {
+        const breakdownConsole = document.getElementById('mainTimeBreakdownConsole');
+        let consolidatedSecondsPool = 0;
+
+        if (activeWorkspaceMode === 'duration') {
+            // Unpack numerical tokens from Arithmetic Duration form blocks
+            const h1 = parseInt(document.getElementById('t1Hours').value, 10) || 0;
+            const m1 = parseInt(document.getElementById('t1Minutes').value, 10) || 0;
+            const s1 = parseInt(document.getElementById('t1Seconds').value, 10) || 0;
+
+            const h2 = parseInt(document.getElementById('t2Hours').value, 10) || 0;
+            const m2 = parseInt(document.getElementById('t2Minutes').value, 10) || 0;
+            const s2 = parseInt(document.getElementById('t2Seconds').value, 10) || 0;
+
+            const op = document.getElementById('timeArithmeticOperator').value;
+
+            const totalSecT1 = (h1 * 3600) + (m1 * 60) + s1;
+            const totalSecT2 = (h2 * 3600) + (m2 * 60) + s2;
+
+            if (op === 'add') {
+                consolidatedSecondsPool = totalSecT1 + totalSecT2;
+            } else {
+                consolidatedSecondsPool = totalSecT1 - totalSecT2;
+                // Graceful Absolute Safety Layer for inversion durations
+                if (consolidatedSecondsPool < 0) consolidatedSecondsPool = Math.abs(consolidatedSecondsPool);
+            }
+        } 
+        else if (activeWorkspaceMode === 'timecard') {
+            // Unpack shift inputs parameters fields
+            let startH = parseInt(document.getElementById('tcStartHours').value, 10) || 0;
+            const startM = parseInt(document.getElementById('tcStartMinutes').value, 10) || 0;
+            const startAmPm = document.getElementById('tcStartAmpm').value;
+
+            let endH = parseInt(document.getElementById('tcEndHours').value, 10) || 0;
+            const endM = parseInt(document.getElementById('tcEndMinutes').value, 10) || 0;
+            const endAmPm = document.getElementById('tcEndAmpm').value;
+
+            // Normalize standard 12-hour values directly into international military arrays 24hr codes
+            if (startAmPm === 'PM' && startH !== 12) startH += 12;
+            if (startAmPm === 'AM' && startH === 12) startH = 0;
+            if (endAmPm === 'PM' && endH !== 12) endH += 12;
+            if (endAmPm === 'AM' && endH === 12) endH = 0;
+
+            let startMinutesTotal = (startH * 60) + startM;
+            let endMinutesTotal = (endH * 60) + endM;
+
+            // Overnight Shift Buffer Catch: If end timestamp matches prior parameters boundary loop
+            if (endMinutesTotal < startMinutesTotal) {
+                endMinutesTotal += 1440; // Add 24 Hours in full minutes dimension parameter
+            }
+
+            consolidatedSecondsPool = (endMinutesTotal - startMinutesTotal) * 60;
+        }
+
+        // Cascade execution down to granular metric display ledger rows
+        evaluateMetricsDisplayMatrix(consolidatedSecondsPool, breakdownConsole);
+    }
+
+    function evaluateMetricsDisplayMatrix(totalSeconds, consoleNode) {
+        if (totalSeconds === 0) {
+            consoleNode.innerText = "0h 0m 0s";
+            document.getElementById('metricTotalHours').innerText = "0.00 hrs";
+            document.getElementById('metricTotalMinutes').innerText = "0 min";
+            document.getElementById('metricTotalSeconds').innerText = "0 sec";
+            return;
+        }
+
+        // Apply sexagesimal floor dividers and mod loops parameters boundaries
+        const finalHours = Math.floor(totalSeconds / 3600);
+        const finalMinutes = Math.floor((totalSeconds % 3600) / 60);
+        const finalSeconds = totalSeconds % 60;
+
+        consoleNode.innerHTML = `✨ <b>${finalHours}h ${finalMinutes}m ${finalSeconds}s</b>`;
+
+        // Update statistical conversion cards
+        const decimalHours = totalSeconds / 3600;
+        document.getElementById('metricTotalHours').innerText = decimalHours.toFixed(2) + " hrs";
+        
+        const completeMinutes = Math.floor(totalSeconds / 60);
+        document.getElementById('metricTotalMinutes').innerText = completeMinutes.toLocaleString() + " min";
+        document.getElementById('metricTotalSeconds').innerText = totalSeconds.toLocaleString() + " sec";
+    }
+
+    function clearTimeWorkspaceFields() {
+        // Clear Duration Slates Input Parameters Forms
+        document.getElementById('t1Hours').value = "0";
+        document.getElementById('t1Minutes').value = "0";
+        document.getElementById('t1Seconds').value = "0";
+        document.getElementById('t2Hours').value = "0";
+        document.getElementById('t2Minutes').value = "0";
+        document.getElementById('t2Seconds').value = "0";
+
+        // Reset Shift Timecard Slate Forms
+        document.getElementById('tcStartHours').value = "09";
+        document.getElementById('tcStartMinutes').value = "00";
+        document.getElementById('tcStartAmpm').value = "AM";
+        document.getElementById('tcEndHours').value = "05";
+        document.getElementById('tcEndMinutes').value = "00";
+        document.getElementById('tcEndAmpm').value = "PM";
+
+        liveUpdatePipeline();
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
