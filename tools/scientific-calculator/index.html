@@ -310,7 +310,8 @@
       })
       .catch(err => console.error('Footer failed:', err));
 
-    let currentExpressionString = "";
+    // Dynamic Tracking Buffers
+    let currentExpressionString = ""; 
     let savedCalculationLogList = [];
     let isDegreeMode = true;
     let isInverseMode = false;
@@ -325,47 +326,34 @@
     }
 
     function triggerCalculatorAction(action, inputToken = "") {
-
       if (action !== 'history-toggle') {
         drawerPanelNode.style.display = 'none';
       }
 
       switch (action) {
-
         case 'digit':
           currentExpressionString += inputToken;
           break;
 
         case 'decimal':
+          // Match the precise dot splitting bounds 
           const parts = currentExpressionString.split(/[\+\-\*\/\(\)\^]/);
           const lastPart = parts[parts.length - 1];
-
           if (!lastPart.includes('.')) {
             currentExpressionString += '.';
           }
           break;
 
         case 'operator':
-
-          if (
-            ['+', '-', '*', '/', '^', '%'].includes(inputToken)
-          ) {
-
+          if (['+', '-', '*', '/', '^', '%', 'E'].includes(inputToken)) {
             if (currentExpressionString === "" && inputToken !== '-') return;
-
             const lastChar = currentExpressionString.slice(-1);
-
-            if (['+', '-', '*', '/', '^', '%'].includes(lastChar)) {
-              currentExpressionString =
-                currentExpressionString.slice(0, -1) + inputToken;
+            if (['+', '-', '*', '/', '^', '%', 'E'].includes(lastChar)) {
+              currentExpressionString = currentExpressionString.slice(0, -1) + inputToken;
             } else {
               currentExpressionString += inputToken;
             }
-
-          } else {
-            currentExpressionString += inputToken;
           }
-
           break;
 
         case 'bracket':
@@ -373,30 +361,10 @@
           break;
 
         case 'constant':
-
-          if (
-            currentExpressionString &&
-            /[0-9)]$/.test(currentExpressionString)
-          ) {
-            currentExpressionString += "*";
-          }
-
-          currentExpressionString +=
-            inputToken === 'pi'
-              ? "π"
-              : "e";
-
+          currentExpressionString += (inputToken === 'pi') ? "π" : "e";
           break;
 
         case 'ans':
-
-          if (
-            currentExpressionString &&
-            /[0-9)]$/.test(currentExpressionString)
-          ) {
-            currentExpressionString += "*";
-          }
-
           currentExpressionString += lastCalculatedAns;
           break;
 
@@ -407,149 +375,85 @@
           return;
 
         case 'backspace':
-          currentExpressionString =
-            currentExpressionString.slice(0, -1);
+          currentExpressionString = currentExpressionString.slice(0, -1);
           break;
 
         case 'toggle-deg':
-
           isDegreeMode = true;
-
-          document
-            .getElementById('toggleDegBtn')
-            .classList.add('active-mode');
-
-          document
-            .getElementById('toggleRadBtn')
-            .classList.remove('active-mode');
-
+          document.getElementById('toggleDegBtn').classList.add('active-mode');
+          document.getElementById('toggleRadBtn').classList.remove('active-mode');
           return;
 
         case 'toggle-rad':
-
           isDegreeMode = false;
-
-          document
-            .getElementById('toggleRadBtn')
-            .classList.add('active-mode');
-
-          document
-            .getElementById('toggleDegBtn')
-            .classList.remove('active-mode');
-
+          document.getElementById('toggleRadBtn').classList.add('active-mode');
+          document.getElementById('toggleDegBtn').classList.remove('active-mode');
           return;
 
         case 'toggle-inv':
-
           isInverseMode = !isInverseMode;
-
           const invBtn = document.getElementById('toggleInvBtn');
           const sinBtn = document.getElementById('btn-sin');
           const cosBtn = document.getElementById('btn-cos');
           const tanBtn = document.getElementById('btn-tan');
 
           if (isInverseMode) {
-
             invBtn.classList.add('active-mode');
-
             sinBtn.innerHTML = "sin⁻¹";
             cosBtn.innerHTML = "cos⁻¹";
             tanBtn.innerHTML = "tan⁻¹";
-
           } else {
-
             invBtn.classList.remove('active-mode');
-
             sinBtn.innerHTML = "sin";
             cosBtn.innerHTML = "cos";
             tanBtn.innerHTML = "tan";
           }
-
           return;
 
         case 'sci-op':
-
-          if (
-            currentExpressionString &&
-            /[0-9πe)]$/.test(currentExpressionString)
-          ) {
-            currentExpressionString += "*";
-          }
-
           if (inputToken === 'fact') {
-
             currentExpressionString += "!";
-
           } else {
-
-            const funcName =
-              isInverseMode &&
-              ['sin', 'cos', 'tan'].includes(inputToken)
-                ? inputToken + "inv("
-                : inputToken + "(";
-
+            const funcName = (isInverseMode && ['sin', 'cos', 'tan'].includes(inputToken)) 
+              ? inputToken + "inv(" 
+              : inputToken + "(";
             currentExpressionString += funcName;
           }
-
           break;
 
         case 'history-toggle':
-
           if (drawerPanelNode.style.display === 'block') {
-
             drawerPanelNode.style.display = 'none';
-
           } else {
-
             drawerPanelNode.style.display = 'block';
             renderHistoryLogView();
           }
-
           return;
 
         case 'evaluate':
-
           if (!currentExpressionString.trim()) return;
 
           try {
+            displayHistoryNode.innerText = currentExpressionString + " =";
 
-            displayHistoryNode.innerText =
-              currentExpressionString + " =";
+            // Parse and safely evaluate equation components using global mathematical scopes
+            let parsedEquation = compileScientificTokenPipes(currentExpressionString);
+            
+            let result = Function('"use strict"; return (' + parsedEquation + ')')();
 
-            let parsedEquation =
-              compileScientificTokenPipes(
-                currentExpressionString
-              );
-
-            let result =
-              Function(
-                '"use strict"; return (' +
-                parsedEquation +
-                ')'
-              )();
-
-            if (
-              result === undefined ||
-              isNaN(result) ||
-              !isFinite(result)
-            ) {
+            if (result === undefined || isNaN(result) || !isFinite(result)) {
               throw new Error();
             }
 
-            result =
-              parseFloat(
-                Number(result).toPrecision(12)
-              );
+            // Floating point correction matrix up to 12 digits
+            result = parseFloat(Number(result).toPrecision(12));
 
             if (Math.abs(result) < 1e-12) {
               result = 0;
             }
 
             displayMainNode.innerText = result;
-
-            savedCalculationLogList.push(
-              `${currentExpressionString} = ${result}`
-            );
+            savedCalculationLogList.push(`${currentExpressionString} = ${result}`);
 
             if (savedCalculationLogList.length > 30) {
               savedCalculationLogList.shift();
@@ -559,255 +463,120 @@
             currentExpressionString = String(result);
 
           } catch (e) {
-
             displayMainNode.innerText = "Error";
           }
-
           return;
       }
-
       updateDisplay();
     }
 
     function renderHistoryLogView() {
-
       drawerPanelNode.innerHTML = "";
-
       if (savedCalculationLogList.length === 0) {
-
-        drawerPanelNode.innerHTML =
-          "<div class='history-empty-msg'>No calculation history</div>";
-
+        drawerPanelNode.innerHTML = "<div class='history-empty-msg'>No calculation history</div>";
         return;
       }
 
-      for (
-        let i = savedCalculationLogList.length - 1;
-        i >= 0;
-        i--
-      ) {
-
+      for (let i = savedCalculationLogList.length - 1; i >= 0; i--) {
         const item = document.createElement('div');
-
         item.className = "history-log-item";
         item.innerText = savedCalculationLogList[i];
-
         item.onclick = () => {
-
-          const expression =
-            savedCalculationLogList[i].split(' = ')[0];
-
+          const expression = savedCalculationLogList[i].split(' = ')[0];
           currentExpressionString = expression;
-
-          displayHistoryNode.innerText =
-            "↳ Restored from History";
-
+          displayHistoryNode.innerText = "↳ Restored from History";
           updateDisplay();
-
           drawerPanelNode.style.display = 'none';
         };
-
         drawerPanelNode.appendChild(item);
       }
     }
 
     function calculateFactorialBuffer(n) {
-
       n = Number(n);
-
-      if (n < 0 || !Number.isInteger(n)) {
-        return NaN;
-      }
-
-      if (n > 170) {
-        return Infinity;
-      }
-
+      if (n < 0 || !Number.isInteger(n)) return NaN;
+      if (n > 170) return Infinity;
       let result = 1;
-
       for (let i = 2; i <= n; i++) {
         result *= i;
       }
-
       return result;
     }
 
+    // High fidelity parsing engine matching logical outputs of eval definitions
     function compileScientificTokenPipes(expression) {
-
       let text = expression;
 
+      // Map Constants
       text = text.replace(/π/g, `(${Math.PI})`);
-
-      text = text.replace(
-        /([^a-zA-Z])e([^a-zA-Z]|$)/g,
-        `$1(${Math.E})$2`
-      );
-
+      text = text.replace(/e/g, `(${Math.E})`);
       text = text.replace(/÷/g, "/");
       text = text.replace(/×/g, "*");
 
-      text = text.replace(
-        /([0-9.]+)%/g,
-        "($1/100)"
-      );
+      // Structural percentage logic
+      text = text.replace(/([0-9.]+)%/g, "($1/100)");
 
-      text = text.replace(
-        /(\d+|\))\(/g,
-        "$1*("
-      );
+      // Factorial parsing block
+      text = text.replace(/([0-9.]+)!/g, (m, val) => `calculateFactorialBuffer(${val})`);
 
-      text = text.replace(
-        /\)(\d+)/g,
-        ")*$1"
-      );
+      // Dynamic Radian/Degree system converters
+      const radMultiplier = isDegreeMode ? `(${Math.PI}/180)` : `1`;
+      const degMultiplier = isDegreeMode ? `(180/${Math.PI})` : `1`;
 
-      text = text.replace(
-        /(\d+|\))(sin|cos|tan|log|ln|sqrt)/g,
-        "$1*$2"
-      );
+      // Handle custom inverse operations securely
+      text = text.replace(/sininv\(([^()]+)\)/g, `(Math.asin($1)*${degMultiplier})`);
+      text = text.replace(/cosinv\(([^()]+)\)/g, `(Math.acos($1)*${degMultiplier})`);
+      text = text.replace(/taninv\(([^()]+)\)/g, `(Math.atan($1)*${degMultiplier})`);
 
-      text = text.replace(
-        /(\d+|\))(π|e)/g,
-        "$1*$2"
-      );
+      // Core Standard Trigonometric and Logarithmic hooks 
+      text = text.replace(/sin\(([^()]+)\)/g, `(Math.sin(($1)*${radMultiplier}))`);
+      text = text.replace(/cos\(([^()]+)\)/g, `(Math.cos(($1)*${radMultiplier}))`);
+      text = text.replace(/tan\(([^()]+)\)/g, `(Math.tan(($1)*${radMultiplier}))`);
+      text = text.replace(/ln\(([^()]+)\)/g, `(Math.log($1))`);
+      text = text.replace(/log\(([^()]+)\)/g, `(Math.log10($1))`);
+      text = text.replace(/sqrt\(([^()]+)\)/g, `(Math.sqrt($1))`);
 
-      text = text.replace(
-        /([0-9.]+|\))!/g,
-        (m, val) =>
-          `calculateFactorialBuffer(${val})`
-      );
-
-      const radMultiplier =
-        isDegreeMode
-          ? `(${Math.PI}/180)`
-          : `1`;
-
-      const degMultiplier =
-        isDegreeMode
-          ? `(180/${Math.PI})`
-          : `1`;
-
-      text = text.replace(
-        /sininv\(([^()]+)\)/g,
-        `(Math.asin($1)*${degMultiplier})`
-      );
-
-      text = text.replace(
-        /cosinv\(([^()]+)\)/g,
-        `(Math.acos($1)*${degMultiplier})`
-      );
-
-      text = text.replace(
-        /taninv\(([^()]+)\)/g,
-        `(Math.atan($1)*${degMultiplier})`
-      );
-
-      text = text.replace(
-        /sin\(([^()]+)\)/g,
-        `(Math.sin(($1)*${radMultiplier}))`
-      );
-
-      text = text.replace(
-        /cos\(([^()]+)\)/g,
-        `(Math.cos(($1)*${radMultiplier}))`
-      );
-
-      text = text.replace(
-        /tan\(([^()]+)\)/g,
-        `(Math.tan(($1)*${radMultiplier}))`
-      );
-
-      text = text.replace(
-        /ln\(([^()]+)\)/g,
-        `(Math.log($1))`
-      );
-
-      text = text.replace(
-        /log\(([^()]+)\)/g,
-        `(Math.log10($1))`
-      );
-
-      text = text.replace(
-        /sqrt\(([^()]+)\)/g,
-        `(Math.sqrt($1))`
-      );
-
+      // Base conversion exponents mapping hooks
       text = text.replace(/\^/g, "**");
+      text = text.replace(/([0-9.]+)E([+-]?[0-9.]+)/g, "($1*10**$2)");
 
-      text = text.replace(
-        /(\d+)E([+-]?\d+)/g,
-        "($1*10**$2)"
-      );
-
-      const openBrackets =
-        (text.match(/\(/g) || []).length;
-
-      const closeBrackets =
-        (text.match(/\)/g) || []).length;
-
+      // Auto balancing brackets closure guard matrix
+      const openBrackets = (text.match(/\(/g) || []).length;
+      const closeBrackets = (text.match(/\)/g) || []).length;
       if (openBrackets > closeBrackets) {
-
-        text += ")".repeat(
-          openBrackets - closeBrackets
-        );
+        text += ")".repeat(openBrackets - closeBrackets);
       }
 
       return text;
     }
 
+    // Hardware Keyboard Listeners System Maps
     window.addEventListener('keydown', (event) => {
-
       const key = event.key;
-
       if (/[0-9]/.test(key)) {
-
         triggerCalculatorAction('digit', key);
-
       } else if (key === '.') {
-
         triggerCalculatorAction('decimal');
-
-      } else if (
-        ['+', '-', '*', '/', '%', '^']
-          .includes(key)
-      ) {
-
+      } else if (['+', '-', '*', '/'].includes(key)) {
         triggerCalculatorAction('operator', key);
-
-      } else if (
-        key === '(' ||
-        key === ')'
-      ) {
-
+      } else if (key === '%') {
+        triggerCalculatorAction('operator', '%');
+      } else if (key === '^') {
+        triggerCalculatorAction('operator', '^');
+      } else if (key === '(' || key === ')') {
         triggerCalculatorAction('bracket', key);
-
-      } else if (
-        key === 'Enter' ||
-        key === '='
-      ) {
-
+      } else if (key === 'Enter' || key === '=') {
         event.preventDefault();
-
         triggerCalculatorAction('evaluate');
-
-      } else if (
-        key === 'Backspace'
-      ) {
-
+      } else if (key === 'Backspace') {
         triggerCalculatorAction('backspace');
-
-      } else if (
-        key === 'Escape'
-      ) {
-
+      } else if (key === 'Escape') {
         triggerCalculatorAction('clear');
       }
     });
 
     document.addEventListener('click', (e) => {
-
       if (!e.target.closest('.calc-housing')) {
-
         drawerPanelNode.style.display = 'none';
       }
     });
