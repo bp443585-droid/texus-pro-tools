@@ -295,20 +295,29 @@
 
   <script type="text/javascript">
     const basePath = window.location.origin;
-    
+
     fetch('/components/header.html')
-      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
-      .then(data => { document.getElementById('site-header').innerHTML = data; })
-      .catch(err => console.error('Header failed to compile:', err));
+      .then(res => {
+        if (!res.ok) return fetch('../../components/header.html');
+        return res.text();
+      })
+      .then(data => {
+        document.getElementById('site-header').innerHTML = data;
+      })
+      .catch(err => console.error('Header failed:', err));
 
     fetch('/components/footer.html')
-      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
-      .then(data => { document.getElementById('site-footer').innerHTML = data; })
-      .catch(err => console.error('Footer failed to compile:', err));
+      .then(res => {
+        if (!res.ok) return fetch('../../components/footer.html');
+        return res.text();
+      })
+      .then(data => {
+        document.getElementById('site-footer').innerHTML = data;
+      })
+      .catch(err => console.error('Footer failed:', err));
 
     let currentExpressionString = "";
-    let activeEvaluationHistoryRecord = "";
-    let savedCalculationLogList = []; 
+    let savedCalculationLogList = [];
     let isDegreeMode = true;
     let isInverseMode = false;
     let lastCalculatedAns = "0";
@@ -317,224 +326,496 @@
     const displayHistoryNode = document.getElementById('calcHistoryConsole');
     const drawerPanelNode = document.getElementById('historyDrawerPanel');
 
-    function triggerCalculatorAction(action, inputToken) {
-        if (action !== 'history-toggle') {
+    function updateDisplay() {
+      displayMainNode.innerText = currentExpressionString || "0";
+    }
+
+    function triggerCalculatorAction(action, inputToken = "") {
+
+      if (action !== 'history-toggle') {
+        drawerPanelNode.style.display = 'none';
+      }
+
+      switch (action) {
+
+        case 'digit':
+          currentExpressionString += inputToken;
+          break;
+
+        case 'decimal':
+          const parts = currentExpressionString.split(/[\+\-\*\/\(\)\^]/);
+          const lastPart = parts[parts.length - 1];
+
+          if (!lastPart.includes('.')) {
+            currentExpressionString += '.';
+          }
+          break;
+
+        case 'operator':
+
+          if (
+            ['+', '-', '*', '/', '^', '%'].includes(inputToken)
+          ) {
+
+            if (currentExpressionString === "" && inputToken !== '-') return;
+
+            const lastChar = currentExpressionString.slice(-1);
+
+            if (['+', '-', '*', '/', '^', '%'].includes(lastChar)) {
+              currentExpressionString =
+                currentExpressionString.slice(0, -1) + inputToken;
+            } else {
+              currentExpressionString += inputToken;
+            }
+
+          } else {
+            currentExpressionString += inputToken;
+          }
+
+          break;
+
+        case 'bracket':
+          currentExpressionString += inputToken;
+          break;
+
+        case 'constant':
+
+          if (
+            currentExpressionString &&
+            /[0-9)]$/.test(currentExpressionString)
+          ) {
+            currentExpressionString += "*";
+          }
+
+          currentExpressionString +=
+            inputToken === 'pi'
+              ? "π"
+              : "e";
+
+          break;
+
+        case 'ans':
+
+          if (
+            currentExpressionString &&
+            /[0-9)]$/.test(currentExpressionString)
+          ) {
+            currentExpressionString += "*";
+          }
+
+          currentExpressionString += lastCalculatedAns;
+          break;
+
+        case 'clear':
+          currentExpressionString = "";
+          displayHistoryNode.innerText = "";
+          updateDisplay();
+          return;
+
+        case 'backspace':
+          currentExpressionString =
+            currentExpressionString.slice(0, -1);
+          break;
+
+        case 'toggle-deg':
+
+          isDegreeMode = true;
+
+          document
+            .getElementById('toggleDegBtn')
+            .classList.add('active-mode');
+
+          document
+            .getElementById('toggleRadBtn')
+            .classList.remove('active-mode');
+
+          return;
+
+        case 'toggle-rad':
+
+          isDegreeMode = false;
+
+          document
+            .getElementById('toggleRadBtn')
+            .classList.add('active-mode');
+
+          document
+            .getElementById('toggleDegBtn')
+            .classList.remove('active-mode');
+
+          return;
+
+        case 'toggle-inv':
+
+          isInverseMode = !isInverseMode;
+
+          const invBtn = document.getElementById('toggleInvBtn');
+          const sinBtn = document.getElementById('btn-sin');
+          const cosBtn = document.getElementById('btn-cos');
+          const tanBtn = document.getElementById('btn-tan');
+
+          if (isInverseMode) {
+
+            invBtn.classList.add('active-mode');
+
+            sinBtn.innerHTML = "sin⁻¹";
+            cosBtn.innerHTML = "cos⁻¹";
+            tanBtn.innerHTML = "tan⁻¹";
+
+          } else {
+
+            invBtn.classList.remove('active-mode');
+
+            sinBtn.innerHTML = "sin";
+            cosBtn.innerHTML = "cos";
+            tanBtn.innerHTML = "tan";
+          }
+
+          return;
+
+        case 'sci-op':
+
+          if (
+            currentExpressionString &&
+            /[0-9πe)]$/.test(currentExpressionString)
+          ) {
+            currentExpressionString += "*";
+          }
+
+          if (inputToken === 'fact') {
+
+            currentExpressionString += "!";
+
+          } else {
+
+            const funcName =
+              isInverseMode &&
+              ['sin', 'cos', 'tan'].includes(inputToken)
+                ? inputToken + "inv("
+                : inputToken + "(";
+
+            currentExpressionString += funcName;
+          }
+
+          break;
+
+        case 'history-toggle':
+
+          if (drawerPanelNode.style.display === 'block') {
+
             drawerPanelNode.style.display = 'none';
-        }
 
-        if (action === 'digit' || action === 'bracket' || action === 'operator') {
-            if (currentExpressionString === "0" && inputToken !== ".") {
-                currentExpressionString = inputToken;
-            } else {
-                currentExpressionString += inputToken;
-            }
-        }
-        else if (action === 'decimal') {
-            if (!currentExpressionString.endsWith('.')) {
-                currentExpressionString += ".";
-            }
-        }
-        else if (action === 'constant') {
-            let coreConstantMapping = (inputToken === 'pi') ? Math.PI : Math.E;
-            currentExpressionString += parseFloat(coreConstantMapping.toFixed(8));
-        }
-        else if (action === 'ans') {
-            currentExpressionString += lastCalculatedAns;
-        }
-        else if (action === 'backspace') {
-            if (currentExpressionString.length > 0) {
-                currentExpressionString = currentExpressionString.slice(0, -1);
-            }
-        }
-        else if (action === 'clear') {
-            currentExpressionString = "";
-            activeEvaluationHistoryRecord = "";
-            displayHistoryNode.innerText = "";
-            displayMainNode.innerText = "0";
-            return;
-        }
-        else if (action === 'toggle-deg') {
-            isDegreeMode = true;
-            document.getElementById('toggleDegBtn').classList.add('active-mode');
-            document.getElementById('toggleRadBtn').classList.remove('active-mode');
-            return;
-        }
-        else if (action === 'toggle-rad') {
-            isDegreeMode = false;
-            document.getElementById('toggleRadBtn').classList.add('active-mode');
-            document.getElementById('toggleDegBtn').classList.remove('active-mode');
-            return;
-        }
-        else if (action === 'toggle-inv') {
-            isInverseMode = !isInverseMode;
-            const invBtn = document.getElementById('toggleInvBtn');
-            const sinBtn = document.getElementById('btn-sin');
-            const cosBtn = document.getElementById('btn-cos');
-            const tanBtn = document.getElementById('btn-tan');
-            
-            if (isInverseMode) {
-                invBtn.classList.add('active-mode');
-                sinBtn.innerHTML = "sin⁻¹";
-                cosBtn.innerHTML = "cos⁻¹";
-                tanBtn.innerHTML = "tan⁻¹";
-            } else {
-                invBtn.classList.remove('active-mode');
-                sinBtn.innerHTML = "sin";
-                cosBtn.innerHTML = "cos";
-                tanBtn.innerHTML = "tan";
-            }
-            return;
-        }
-        else if (action === 'sci-op') {
-            if (inputToken === 'sin' || inputToken === 'cos' || inputToken === 'tan' || inputToken === 'log' || inputToken === 'ln' || inputToken === 'sqrt') {
-                let formulaPrefixToken = isInverseMode ? inputToken + "inv(" : inputToken + "(";
-                currentExpressionString += formulaPrefixToken;
-            } else if (inputToken === 'fact') {
-                currentExpressionString += "!";
-            }
-        }
-        else if (action === 'history-toggle') {
-            if (drawerPanelNode.style.display === 'block') {
-                drawerPanelNode.style.display = 'none';
-            } else {
-                drawerPanelNode.style.display = 'block';
-                renderHistoryLogView();
-            }
-            return;
-        }
-        else if (action === 'evaluate') {
-            if (!currentExpressionString.trim()) return;
-            
-            activeEvaluationHistoryRecord = currentExpressionString;
-            displayHistoryNode.innerText = currentExpressionString + " =";
-            
-            let parsedSystemEquation = compileScientificTokenPipes(currentExpressionString);
-            
-            try {
-                let calculationResultValue = Function('"use strict"; return (' + parsedSystemEquation + ')')();
-                
-                if (calculationResultValue === undefined || isNaN(calculationResultValue) || !isFinite(calculationResultValue)) {
-                    displayMainNode.innerText = "Error";
-                } else {
-                    let calibratedDecimalResult = parseFloat(calculationResultValue.toFixed(10));
-                    displayMainNode.innerText = calibratedDecimalResult;
-                    
-                    let formattedLogEntry = `${currentExpressionString} = ${calibratedDecimalResult}`;
-                    savedCalculationLogList.push(formattedLogEntry);
-                    
-                    if (savedCalculationLogList.length > 20) savedCalculationLogList.shift();
-                    
-                    lastCalculatedAns = String(calibratedDecimalResult);
-                    currentExpressionString = String(calibratedDecimalResult);
-                }
-            } catch (exceptionFaultContext) {
-                displayMainNode.innerText = "Error";
-            }
-            return;
-        }
+          } else {
 
-        displayMainNode.innerText = currentExpressionString || "0";
+            drawerPanelNode.style.display = 'block';
+            renderHistoryLogView();
+          }
+
+          return;
+
+        case 'evaluate':
+
+          if (!currentExpressionString.trim()) return;
+
+          try {
+
+            displayHistoryNode.innerText =
+              currentExpressionString + " =";
+
+            let parsedEquation =
+              compileScientificTokenPipes(
+                currentExpressionString
+              );
+
+            let result =
+              Function(
+                '"use strict"; return (' +
+                parsedEquation +
+                ')'
+              )();
+
+            if (
+              result === undefined ||
+              isNaN(result) ||
+              !isFinite(result)
+            ) {
+              throw new Error();
+            }
+
+            result =
+              parseFloat(
+                Number(result).toPrecision(12)
+              );
+
+            if (Math.abs(result) < 1e-12) {
+              result = 0;
+            }
+
+            displayMainNode.innerText = result;
+
+            savedCalculationLogList.push(
+              `${currentExpressionString} = ${result}`
+            );
+
+            if (savedCalculationLogList.length > 30) {
+              savedCalculationLogList.shift();
+            }
+
+            lastCalculatedAns = String(result);
+            currentExpressionString = String(result);
+
+          } catch (e) {
+
+            displayMainNode.innerText = "Error";
+          }
+
+          return;
+      }
+
+      updateDisplay();
     }
 
     function renderHistoryLogView() {
-        drawerPanelNode.innerHTML = "";
-        if (savedCalculationLogList.length === 0) {
-            drawerPanelNode.innerHTML = "<div class='history-empty-msg'>Memory logs are clear</div>";
-            return;
-        }
-        
-        for (let idx = savedCalculationLogList.length - 1; idx >= 0; idx--) {
-            let recordItemText = savedCalculationLogList[idx];
-            let itemNode = document.createElement('div');
-            itemNode.className = "history-log-item";
-            itemNode.innerText = recordItemText;
-            
-            itemNode.onclick = () => {
-                let parsedFormulaSource = recordItemText.split(' = ')[0];
-                currentExpressionString = parsedFormulaSource;
-                displayMainNode.innerText = currentExpressionString;
-                displayHistoryNode.innerText = "↳ Pulled from Memory";
-                drawerPanelNode.style.display = 'none';
-            };
-            
-            drawerPanelNode.appendChild(itemNode);
-        }
+
+      drawerPanelNode.innerHTML = "";
+
+      if (savedCalculationLogList.length === 0) {
+
+        drawerPanelNode.innerHTML =
+          "<div class='history-empty-msg'>No calculation history</div>";
+
+        return;
+      }
+
+      for (
+        let i = savedCalculationLogList.length - 1;
+        i >= 0;
+        i--
+      ) {
+
+        const item = document.createElement('div');
+
+        item.className = "history-log-item";
+        item.innerText = savedCalculationLogList[i];
+
+        item.onclick = () => {
+
+          const expression =
+            savedCalculationLogList[i].split(' = ')[0];
+
+          currentExpressionString = expression;
+
+          displayHistoryNode.innerText =
+            "↳ Restored from History";
+
+          updateDisplay();
+
+          drawerPanelNode.style.display = 'none';
+        };
+
+        drawerPanelNode.appendChild(item);
+      }
     }
 
-    function calculateFactorialBuffer(value) {
-        if (value < 0) return NaN;
-        if (value === 0 || value === 1) return 1;
-        let cumulativeAccumulator = 1;
-        for (let i = 2; i <= value; i++) cumulativeAccumulator *= i;
-        return cumulativeAccumulator;
+    function calculateFactorialBuffer(n) {
+
+      n = Number(n);
+
+      if (n < 0 || !Number.isInteger(n)) {
+        return NaN;
+      }
+
+      if (n > 170) {
+        return Infinity;
+      }
+
+      let result = 1;
+
+      for (let i = 2; i <= n; i++) {
+        result *= i;
+      }
+
+      return result;
     }
 
-    // --- SANITIZED SYSTEM COMPILE AND EVAL CORE PATTERNS ---
-    function compileScientificTokenPipes(equationString) {
-        let textStream = equationString;
+    function compileScientificTokenPipes(expression) {
 
-        // 1. Convert percent (%) symbols into safe floating structures sequentially
-        textStream = textStream.replace(/([0-9.]+)\%/g, "($1/100)");
+      let text = expression;
 
-        // 2. Factorial (!) pipeline replacements mapping rules
-        textStream = textStream.replace(/([0-9.]+)\!/g, (match, factorNode) => "calculateFactorialBuffer(" + factorNode + ")");
+      text = text.replace(/π/g, `(${Math.PI})`);
 
-        // 3. Fix Implicit Multiplications profiles flawlessly across barriers
-        textStream = textStream.replace(/([0-9.]+)\s*\(/g, "$1*(");
-        textStream = textStream.replace(/\)\s*([0-9.]+)/g, ")*$1");
-        textStream = textStream.replace(/([0-9.]+)\s*(sin|cos|tan|ln|log|sqrt)/g, "$1*$2");
+      text = text.replace(
+        /([^a-zA-Z])e([^a-zA-Z]|$)/g,
+        `$1(${Math.E})$2`
+      );
 
-        const angularConversionRadMultiplier = isDegreeMode ? (Math.PI / 180) : 1;
-        const angularConversionDegMultiplier = isDegreeMode ? (180 / Math.PI) : 1;
+      text = text.replace(/÷/g, "/");
+      text = text.replace(/×/g, "*");
 
-        // 4. Parse Inverse Trigonometry functions with full cluster insulation
-        textStream = textStream.replace(/sininv\(([^)]+)\)/g, (m, coreVal) => "(Math.asin(" + coreVal + ") * " + angularConversionDegMultiplier + ")");
-        textStream = textStream.replace(/cosinv\(([^)]+)\)/g, (m, coreVal) => "(Math.acos(" + coreVal + ") * " + angularConversionDegMultiplier + ")");
-        textStream = textStream.replace(/taninv\(([^)]+)\)/g, (m, coreVal) => "(Math.atan(" + coreVal + ") * " + angularConversionDegMultiplier + ")");
-        
-        // 5. Parse standard Trigonometry mappings
-        textStream = textStream.replace(/sin\(([^)]+)\)/g, (m, coreVal) => "Math.sin((" + coreVal + ") * " + angularConversionRadMultiplier + ")");
-        textStream = textStream.replace(/cos\(([^)]+)\)/g, (m, coreVal) => "Math.cos((" + coreVal + ") * " + angularConversionRadMultiplier + ")");
-        textStream = textStream.replace(/tan\(([^)]+)\)/g, (m, coreVal) => "Math.tan((" + coreVal + ") * " + angularConversionRadMultiplier + ")");
-        
-        // 6. Logarithms and Roots functions mapping structures
-        textStream = textStream.replace(/ln\(([^)]+)\)/g, "Math.log($1)");
-        textStream = textStream.replace(/log\(([^)]+)\)/g, "(Math.log($1) / Math.LN10)");
-        textStream = textStream.replace(/sqrt\(([^)]+)\)/g, "Math.sqrt($1)");
-        
-        // 7. Base Exponents notation translation arrays
-        textStream = textStream.replace(/\^/g, "**");
-        textStream = textStream.replace(/E/g, "*10**");
+      text = text.replace(
+        /([0-9.]+)%/g,
+        "($1/100)"
+      );
 
-        // 8. Auto-Closure Safety Guard: Close open bracket anomalies cleanly before execution strings break
-        let openBracketsCount = (textStream.match(/\(/g) || []).length;
-        let closeBracketsCount = (textStream.match(/\)/g) || []).length;
-        while (openBracketsCount > closeBracketsCount) {
-            textStream += ")";
-            closeBracketsCount++;
-        }
+      text = text.replace(
+        /(\d+|\))\(/g,
+        "$1*("
+      );
 
-        return textStream;
+      text = text.replace(
+        /\)(\d+)/g,
+        ")*$1"
+      );
+
+      text = text.replace(
+        /(\d+|\))(sin|cos|tan|log|ln|sqrt)/g,
+        "$1*$2"
+      );
+
+      text = text.replace(
+        /(\d+|\))(π|e)/g,
+        "$1*$2"
+      );
+
+      text = text.replace(
+        /([0-9.]+|\))!/g,
+        (m, val) =>
+          `calculateFactorialBuffer(${val})`
+      );
+
+      const radMultiplier =
+        isDegreeMode
+          ? `(${Math.PI}/180)`
+          : `1`;
+
+      const degMultiplier =
+        isDegreeMode
+          ? `(180/${Math.PI})`
+          : `1`;
+
+      text = text.replace(
+        /sininv\(([^()]+)\)/g,
+        `(Math.asin($1)*${degMultiplier})`
+      );
+
+      text = text.replace(
+        /cosinv\(([^()]+)\)/g,
+        `(Math.acos($1)*${degMultiplier})`
+      );
+
+      text = text.replace(
+        /taninv\(([^()]+)\)/g,
+        `(Math.atan($1)*${degMultiplier})`
+      );
+
+      text = text.replace(
+        /sin\(([^()]+)\)/g,
+        `(Math.sin(($1)*${radMultiplier}))`
+      );
+
+      text = text.replace(
+        /cos\(([^()]+)\)/g,
+        `(Math.cos(($1)*${radMultiplier}))`
+      );
+
+      text = text.replace(
+        /tan\(([^()]+)\)/g,
+        `(Math.tan(($1)*${radMultiplier}))`
+      );
+
+      text = text.replace(
+        /ln\(([^()]+)\)/g,
+        `(Math.log($1))`
+      );
+
+      text = text.replace(
+        /log\(([^()]+)\)/g,
+        `(Math.log10($1))`
+      );
+
+      text = text.replace(
+        /sqrt\(([^()]+)\)/g,
+        `(Math.sqrt($1))`
+      );
+
+      text = text.replace(/\^/g, "**");
+
+      text = text.replace(
+        /(\d+)E([+-]?\d+)/g,
+        "($1*10**$2)"
+      );
+
+      const openBrackets =
+        (text.match(/\(/g) || []).length;
+
+      const closeBrackets =
+        (text.match(/\)/g) || []).length;
+
+      if (openBrackets > closeBrackets) {
+
+        text += ")".repeat(
+          openBrackets - closeBrackets
+        );
+      }
+
+      return text;
     }
 
     window.addEventListener('keydown', (event) => {
-        const physicalKeyToken = event.key;
-        if (physicalKeyToken >= '0' && physicalKeyToken <= '9') triggerCalculatorAction('digit', physicalKeyToken);
-        else if (physicalKeyToken === '.') triggerCalculatorAction('decimal', '.');
-        else if (physicalKeyToken === '+' || physicalKeyToken === '-' || physicalKeyToken === '*' || physicalKeyToken === '/' || physicalKeyToken === '%' || physicalKeyToken === '(' || physicalKeyToken === ')') {
-            triggerCalculatorAction('operator', physicalKeyToken);
-        } else if (physicalKeyToken === '^') triggerCalculatorAction('operator', '^');
-        else if (physicalKeyToken === 'Enter' || physicalKeyToken === '=') {
-            event.preventDefault();
-            triggerCalculatorAction('evaluate');
-        } else if (physicalKeyToken === 'Backspace') triggerCalculatorAction('backspace');
-        else if (physicalKeyToken === 'Escape') triggerCalculatorAction('clear');
+
+      const key = event.key;
+
+      if (/[0-9]/.test(key)) {
+
+        triggerCalculatorAction('digit', key);
+
+      } else if (key === '.') {
+
+        triggerCalculatorAction('decimal');
+
+      } else if (
+        ['+', '-', '*', '/', '%', '^']
+          .includes(key)
+      ) {
+
+        triggerCalculatorAction('operator', key);
+
+      } else if (
+        key === '(' ||
+        key === ')'
+      ) {
+
+        triggerCalculatorAction('bracket', key);
+
+      } else if (
+        key === 'Enter' ||
+        key === '='
+      ) {
+
+        event.preventDefault();
+
+        triggerCalculatorAction('evaluate');
+
+      } else if (
+        key === 'Backspace'
+      ) {
+
+        triggerCalculatorAction('backspace');
+
+      } else if (
+        key === 'Escape'
+      ) {
+
+        triggerCalculatorAction('clear');
+      }
     });
 
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.calc-housing')) {
-            drawerPanelNode.style.display = 'none';
-        }
+
+      if (!e.target.closest('.calc-housing')) {
+
+        drawerPanelNode.style.display = 'none';
+      }
     });
   </script>
   
