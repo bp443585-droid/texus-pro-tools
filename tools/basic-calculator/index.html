@@ -6,10 +6,12 @@
   <title>Basic Calculator Online | Simple Electronic Mathematical Workspace</title>
   <meta name="description" content="Use our free online basic calculator for standard arithmetic equations. Features instant live keyboard execution and mathematical history tracking parameters cleanly." />
   
+  <!-- Universal Root Paths -->
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="https://www.texusprotools.com/tools/basic-calculator/" />
 
+  <!-- Structured Schema Engine -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,35 +41,38 @@
     /* WORKSPACE CORE AREA CARD CENTERED SYSTEM DESIGN */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; }
     
-    /* THE SLATE CALCULATOR GRID CONTAINER APPARATUS */
-    .calc-housing { width: 100%; max-width: 380px; background: #0f172a; border-radius: 28px; padding: 24px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.22); box-sizing: border-box; }
+    /* THE SLATE CALCULATOR WIDE GRID HOUSING MATCHING SCREENSHOT EXACTLY */
+    .calc-housing { width: 100%; max-width: 680px; background: #1e293b; border-radius: 28px; padding: 24px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.22); box-sizing: border-box; }
     
     /* DISPLAY PANEL SYSTEM LAYER COUPLINGS */
-    .calc-screen-wrapper { background: #1e293b; border-radius: 16px; padding: 16px 20px; margin-bottom: 20px; text-align: right; box-sizing: border-box; min-height: 90px; display: flex; flex-direction: column; justify-content: center; gap: 4px; border: 1px solid #334155; }
-    .calc-history-track { font-size: 0.88rem; color: #94a3b8; font-weight: 500; min-height: 18px; word-break: break-all; font-family: monospace; letter-spacing: 0.5px; }
-    .calc-main-display { font-size: 2.1rem; color: #f8fafc; font-weight: 700; word-break: break-all; overflow: hidden; white-space: nowrap; font-family: monospace; }
+    .calc-screen-wrapper { background: #0f172a; border-radius: 16px; padding: 20px; margin-bottom: 20px; text-align: right; box-sizing: border-box; min-height: 110px; display: flex; flex-direction: column; justify-content: center; gap: 6px; border: 1px solid #334155; position: relative; }
+    .calc-history-track { font-size: 1rem; color: #94a3b8; font-weight: 500; min-height: 22px; word-break: break-all; font-family: monospace; letter-spacing: 0.5px; padding-right: 30px; }
+    .calc-main-display { font-size: 2.6rem; color: #f8fafc; font-weight: 700; word-break: break-all; overflow: hidden; white-space: nowrap; font-family: monospace; }
+    .calc-history-icon { position: absolute; left: 20px; top: 20px; color: #94a3b8; font-size: 1.2rem; opacity: 0.7; }
 
-    /* HARDWARE DIGITS GLYPH KEYPAD MATRIX BLOCK */
-    .calc-keypad-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; width: 100%; }
+    /* 7-COLUMN GLYPH KEYPAD MATRIX BLOCK MATCHING SCREENSHOT */
+    .calc-keypad-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; width: 100%; }
     
-    .calc-btn { background: #334155; border: none; border-radius: 14px; padding: 18px 10px; font-size: 1.25rem; font-weight: 700; color: #f8fafc; cursor: pointer; transition: all 0.15s ease; font-family: inherit; -webkit-user-select: none; user-select: none; outline: none; text-align: center; }
-    .calc-btn:hover { background: #475569; transform: translateY(-1px); }
-    .calc-btn:active { transform: translateY(1px); background: #1e293b; }
+    .calc-btn { background: #2d3748; border: none; border-radius: 24px; padding: 14px 5px; font-size: 1rem; font-weight: 600; color: #f8fafc; cursor: pointer; transition: all 0.15s ease; font-family: inherit; -webkit-user-select: none; user-select: none; outline: none; text-align: center; }
+    .calc-btn:hover { background: #4a5568; transform: translateY(-1px); }
+    .calc-btn:active { transform: translateY(1px); background: #1a202c; }
     
-    /* SPECIALIZED SYSTEM TOKEN COLORS STYLE MAPS */
-    .btn-operator { background: #1d4ed8; color: #ffffff; }
-    .btn-operator:hover { background: #2563eb; }
-    .btn-clear { background: #991b1b; color: #ffffff; font-size: 1.1rem; }
-    .btn-clear:hover { background: #dc2626; }
-    .btn-backspace { background: #475569; color: #f8fafc; }
-    .btn-equals { background: #166534; color: #ffffff; grid-column: span 2; }
-    .btn-equals:hover { background: #15803d; }
+    /* SPECIALIZED KEY STYLES FROM SCREENSHOT */
+    .btn-sci-func { background: #232a37; color: #93c5fd; font-size: 0.95rem; }
+    .btn-sci-func:hover { background: #2d3748; }
+    .btn-sci-func.active-mode { background: #1d4ed8; color: #ffffff; }
+    
+    .btn-num { background: #1a202c; font-weight: 700; color: #cbd5e0; font-size: 1.15rem; }
+    .btn-num:hover { background: #2d3748; }
 
-    /* ADVANCED CALC METRICS LAYER SYSTEM HOUSINGS */
-    .f-control-strip { width: 100%; max-width: 380px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px; border-radius: 16px; margin-top: 20px; box-sizing: border-box; }
-    .f-control-group { display: flex; flex-direction: column; gap: 4px; text-align: left; }
-    .f-control-group label { font-size: 0.72rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-    .f-select-field { width: 100%; padding: 8px 10px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 0.85rem; outline: none; font-weight: 600; background: #ffffff; color: #1e293b; box-sizing: border-box; }
+    .btn-operator { background: #2d3748; color: #93c5fd; font-size: 1.25rem; }
+    .btn-operator:hover { background: #4a5568; }
+    
+    .btn-clear { background: #2d3748; color: #fca5a5; }
+    .btn-clear:hover { background: #ef4444; color: #ffffff; }
+    
+    .btn-equals { background: #bfdbfe; color: #1e3a8a; font-size: 1.4rem; font-weight: 700; }
+    .btn-equals:hover { background: #3b82f6; color: #ffffff; }
 
     /* PREMIUM EDITORIAL CONTENT STYLING GRID */
     .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
@@ -92,15 +97,13 @@
       .seo-h2 { font-size: 1.35rem; }
     }
     @media (max-width: 768px) {
-      .f-card { padding: 30px 15px; border-radius: 20px; }
+      .f-card { padding: 25px 15px; border-radius: 20px; }
       .calc-housing { padding: 16px; border-radius: 22px; }
-      .calc-btn { padding: 14px 8px; font-size: 1.15rem; border-radius: 10px; }
+      .calc-keypad-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+      /* Hide some rare advanced functions on super tight mobile setups if necessary, or let wrap */
+      .calc-btn { padding: 12px 4px; font-size: 0.95rem; border-radius: 12px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
       .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
-    }
-    @media (max-width: 550px) {
-      .f-wrapper { padding: 0 24px !important; }
-      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
     }
   </style>
 </head>
@@ -113,67 +116,75 @@
     
     <div class="f-card">
       
+      <!-- Slate Hardware Mathematical Tool Wrapper Grid Container Box -->
       <div class="calc-housing">
         
+        <!-- Interactive Multi-Tier Display Console Layout Layer -->
         <div class="calc-screen-wrapper">
+          <div class="calc-history-icon">🕒</div>
           <div id="calcHistoryConsole" class="calc-history-track"></div>
           <div id="calcMainDisplayConsole" class="calc-main-display">0</div>
         </div>
 
+        <!-- 7-Column Scientific Matrix Layout Keypad Grid Section matching screenshot exact coordinates -->
         <div class="calc-keypad-grid">
           
-          <button class="calc-btn btn-clear" onclick="triggerCalculatorAction('clear')">C</button>
-          <button class="calc-btn btn-backspace" onclick="triggerCalculatorAction('backspace')">⌫</button>
+          <!-- Row 1 -->
+          <button id="toggleDegBtn" class="calc-btn btn-sci-func active-mode" onclick="triggerCalculatorAction('toggle-deg')">Deg</button>
+          <button id="toggleRadBtn" class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('toggle-rad')">Rad</button>
+          <button class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('sci-op', 'fact')">x!</button>
+          <button class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('bracket', '(')">(</button>
+          <button class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('bracket', ')')">)</button>
+          <button class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('operator', '%')">%</button>
+          <button class="calc-btn btn-clear" onclick="triggerCalculatorAction('clear')">AC</button>
+          
+          <!-- Row 2 -->
+          <button id="toggleInvBtn" class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('toggle-inv')">Inv</button>
+          <button class="calc-btn btn-sci-func" id="btn-sin" onclick="triggerCalculatorAction('sci-op', 'sin')">sin</button>
+          <button class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('sci-op', 'ln')">ln</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '7')">7</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '8')">8</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '9')">9</button>
           <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '/')">÷</button>
+          
+          <!-- Row 3 -->
+          <button class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('constant', 'pi')">π</button>
+          <button class="calc-btn btn-sci-func" id="btn-cos" onclick="triggerCalculatorAction('sci-op', 'cos')">cos</button>
+          <button class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('sci-op', 'log')">log</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '4')">4</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '5')">5</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '6')">6</button>
           <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '*')">×</button>
           
-          <button class="calc-btn" onclick="triggerCalculatorAction('digit', '7')">7</button>
-          <button class="calc-btn" onclick="triggerCalculatorAction('digit', '8')">8</button>
-          <button class="calc-btn" onclick="triggerCalculatorAction('digit', '9')">9</button>
+          <!-- Row 4 -->
+          <button class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('constant', 'e')">e</button>
+          <button class="calc-btn btn-sci-func" id="btn-tan" onclick="triggerCalculatorAction('sci-op', 'tan')">tan</button>
+          <button class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('sci-op', 'sqrt')">√</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '1')">1</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '2')">2</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '3')">3</button>
           <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '-')">−</button>
           
-          <button class="calc-btn" onclick="triggerCalculatorAction('digit', '4')">4</button>
-          <button class="calc-btn" onclick="triggerCalculatorAction('digit', '5')">5</button>
-          <button class="calc-btn" onclick="triggerCalculatorAction('digit', '6')">6</button>
+          <!-- Row 5 -->
+          <button class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('ans')">Ans</button>
+          <button class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('operator', 'E')">EXP</button>
+          <button class="calc-btn btn-sci-func" onclick="triggerCalculatorAction('operator', '^')">x<sup>y</sup></button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('digit', '0')">0</button>
+          <button class="calc-btn btn-num" onclick="triggerCalculatorAction('decimal', '.')">.</button>
+          <button class="calc-btn btn-equals" onclick="triggerCalculatorAction('evaluate')">=</button>
           <button class="calc-btn btn-operator" onclick="triggerCalculatorAction('operator', '+')">+</button>
           
-          <button class="calc-btn" onclick="triggerCalculatorAction('digit', '1')">1</button>
-          <button class="calc-btn" onclick="triggerCalculatorAction('digit', '2')">2</button>
-          <button class="calc-btn" onclick="triggerCalculatorAction('digit', '3')">3</button>
-          
-          <button class="calc-btn btn-equals" onclick="triggerCalculatorAction('evaluate')">=</button>
-          
-          <button class="calc-btn" style="grid-column: span 2;" onclick="triggerCalculatorAction('digit', '0')">0</button>
-          <button class="calc-btn" onclick="triggerCalculatorAction('decimal', '.')">.</button>
-          
         </div>
       </div>
 
-      <div class="f-control-strip">
-        <div class="f-control-group">
-          <label for="calcDelimiter">Data Delimiter</label>
-          <select id="calcDelimiter" class="f-select-field" onchange="syncDataStreamValidation()">
-            <option value=" ">Space</option>
-            <option value=",">Comma</option>
-            <option value="">None</option>
-          </select>
-        </div>
-        <div class="f-control-group">
-          <label for="calcChecksum">Active Validation</label>
-          <select id="calcChecksum" class="f-select-field" onchange="syncDataStreamValidation()">
-            <option value="8">8-bit Sum</option>
-            <option value="16">16-bit Sum</option>
-            <option value="32">32-bit Sum</option>
-          </select>
-        </div>
-      </div>
-
-      <div style="margin-top: 25px; width: 100%; max-width: 380px; font-size: 0.78rem; line-height: 1.4; color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500; box-sizing: border-box;">
+      <!-- Compact Minimalist Advisory Warning Strip Component -->
+      <div style="margin-top: 25px; width: 100%; max-width: 680px; font-size: 0.78rem; line-height: 1.4; color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500; box-sizing: border-box;">
         <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Live Physical Keyboard Routing Active:</span>
-        No need to manual click character slots elements. Type numpad values directly on your laptop key modules to compile variables effortlessly.
+        Type numpad values and operations directly on your keyboard to compile variables effortlessly. Supports brackets and advanced trigonometric ratios instantly.
       </div>
     </div>
 
+    <!-- PREMIUM SEO CONTENT APPARATUS WRAPPED IN PADDING SAFETY -->
     <div class="seo-container">
       <h2 class="seo-title">The Mathematical Foundations of Arithmetic Logic Units: Algebraic Equations Execution Loops, Floating-Point Approximations, and Electronic Computation History</h2>
       <p class="seo-p">Configuring complex data formulas, calculating business profit parameters on dynamic blogs, or balancing numeric balances inside custom web tools requires a stable processing setup. An electronic computing interface functions as a digital abstraction over a physical Arithmetic Logic Unit (ALU). By processing basic operations like addition, subtraction, multiplication, and division natively in the local workspace layout, an online <b>basic calculator online</b> gives developers immediate verification of basic math chains without server overhead blocks.</p>
@@ -253,6 +264,7 @@
 
   <div id="site-footer"></div>
 
+  <!-- SCRIPT LOGIC PROCESSOR FOR COMPLETE ADVANCED SCIENTIFIC EMULATION -->
   <script type="text/javascript">
     const basePath = window.location.origin;
     
@@ -266,152 +278,170 @@
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
 
-    let displayValueString = "0";
-    let pendingOperatorToken = null;
-    let storedAccumulatorValue = null;
-    let awaitFreshInputFlag = false;
+    // Core Scientific Execution States
+    let currentInputString = "";
+    let lastCalculatedAns = "0";
+    let isDegreeMode = true;
+    let isInverseMode = false;
 
     const displayMainNode = document.getElementById('calcMainDisplayConsole');
     const displayHistoryNode = document.getElementById('calcHistoryConsole');
 
-    function updateScreenLayoutView() {
-        displayMainNode.innerText = displayValueString;
-        
-        if (storedAccumulatorValue !== null && pendingOperatorToken !== null) {
-            let glyph = pendingOperatorToken;
-            if (glyph === '*') glyph = '×';
-            if (glyph === '/') glyph = '÷';
-            displayHistoryNode.innerText = storedAccumulatorValue + " " + glyph + " " + (awaitFreshInputFlag ? "" : displayValueString);
-        } else {
-            displayHistoryNode.innerText = "";
-        }
-    }
-
-    function triggerCalculatorAction(action, commandValue) {
-        if (action === 'digit') {
-            if (displayValueString === "0" || awaitFreshInputFlag) {
-                displayValueString = commandValue;
-                awaitFreshInputFlag = false;
+    function triggerCalculatorAction(action, value) {
+        if (action === 'digit' || action === 'bracket') {
+            if (currentInputString === "0" && value !== ".") {
+                currentInputString = value;
             } else {
-                if (displayValueString.length < 15) {
-                    displayValueString += commandValue;
-                }
+                currentInputString += value;
             }
         } 
         else if (action === 'decimal') {
-            if (awaitFreshInputFlag) {
-                displayValueString = "0.";
-                awaitFreshInputFlag = false;
-                updateScreenLayoutView();
-                return;
+            if (!currentInputString.endsWith('.')) {
+                // Allows dots if trailing tokens don't conflict
+                currentInputString += ".";
             }
-            if (!displayValueString.includes('.')) {
-                displayValueString += ".";
-            }
-        } 
-        else if (action === 'backspace') {
-            if (awaitFreshInputFlag) return;
-            if (displayValueString.length > 1) {
-                displayValueString = displayValueString.slice(0, -1);
-            } else {
-                displayValueString = "0";
-            }
-        } 
+        }
         else if (action === 'operator') {
-            const currentNumericValue = parseFloat(displayValueString);
-            
-            if (pendingOperatorToken && awaitFreshInputFlag) {
-                pendingOperatorToken = commandValue;
-                updateScreenLayoutView();
-                return;
-            }
-
-            if (storedAccumulatorValue === null) {
-                storedAccumulatorValue = currentNumericValue;
-            } else if (pendingOperatorToken) {
-                const calculationResult = executeCoreMathOperation(storedAccumulatorValue, currentNumericValue, pendingOperatorToken);
-                if (calculationResult === "Error") {
-                    clearCompleteBufferEngine();
-                    displayValueString = "Error";
-                    updateScreenLayoutView();
-                    return;
-                }
-                storedAccumulatorValue = calculationResult;
-                displayValueString = String(calculationResult);
-            }
-            
-            pendingOperatorToken = commandValue;
-            awaitFreshInputFlag = true;
-        } 
-        else if (action === 'evaluate') {
-            if (!pendingOperatorToken || storedAccumulatorValue === null) return;
-            const currentNumericValue = parseFloat(displayValueString);
-            
-            const finalResult = executeCoreMathOperation(storedAccumulatorValue, currentNumericValue, pendingOperatorToken);
-            if (finalResult === "Error") {
-                clearCompleteBufferEngine();
-                displayValueString = "Error";
-                updateScreenLayoutView();
-                return;
-            }
-            
-            displayValueString = String(finalResult);
-            storedAccumulatorValue = null;
-            pendingOperatorToken = null;
-            awaitFreshInputFlag = true;
-        } 
+            currentInputString += value;
+        }
+        else if (action === 'constant') {
+            let mapping = (value === 'pi') ? Math.PI : Math.E;
+            currentInputString += parseFloat(mapping.toFixed(8));
+        }
+        else if (action === 'ans') {
+            currentInputString += lastCalculatedAns;
+        }
         else if (action === 'clear') {
-            clearCompleteBufferEngine();
+            currentInputString = "";
+            displayHistoryNode.innerText = "";
+            displayMainNode.innerText = "0";
+            return;
+        }
+        else if (action === 'backspace') {
+            if (currentInputString.length > 0) {
+                currentInputString = currentInputString.slice(0, -1);
+            }
+        }
+        else if (action === 'toggle-deg') {
+            isDegreeMode = true;
+            document.getElementById('toggleDegBtn').classList.add('active-mode');
+            document.getElementById('toggleRadBtn').classList.remove('active-mode');
+            return;
+        }
+        else if (action === 'toggle-rad') {
+            isDegreeMode = false;
+            document.getElementById('toggleRadBtn').classList.add('active-mode');
+            document.getElementById('toggleDegBtn').classList.remove('active-mode');
+            return;
+        }
+        else if (action === 'toggle-inv') {
+            isInverseMode = !isInverseMode;
+            const invBtn = document.getElementById('toggleInvBtn');
+            const sinBtn = document.getElementById('btn-sin');
+            const cosBtn = document.getElementById('btn-cos');
+            const tanBtn = document.getElementById('btn-tan');
+            
+            if (isInverseMode) {
+                invBtn.classList.add('active-mode');
+                sinBtn.innerHTML = "sin⁻¹";
+                cosBtn.innerHTML = "cos⁻¹";
+                tanBtn.innerHTML = "tan⁻¹";
+            } else {
+                invBtn.classList.remove('active-mode');
+                sinBtn.innerHTML = "sin";
+                cosBtn.innerHTML = "cos";
+                tanBtn.innerHTML = "tan";
+            }
+            return;
+        }
+        else if (action === 'sci-op') {
+            // Apply single value evaluations or inject custom mathematical methods string arrays
+            if (value === 'sin' || value === 'cos' || value === 'tan' || value === 'log' || value === 'ln' || value === 'sqrt') {
+                let suffix = isInverseMode ? value + "inv(" : value + "(";
+                currentInputString += suffix;
+            } else if (value === 'fact') {
+                currentInputString += "!";
+            }
+        }
+        else if (action === 'evaluate') {
+            if (!currentInputString.trim()) return;
+            
+            displayHistoryNode.innerText = currentInputString + " =";
+            let parsedEquation = translateScientificTokens(currentInputString);
+            
+            try {
+                // Client-side isolated mathematical equations loop processing sandbox evaluation
+                let result = Function('"use strict"; return (' + parsedEquation + ')')();
+                
+                if (result === undefined || isNaN(result) || !isFinite(result)) {
+                    displayMainNode.innerText = "Error";
+                } else {
+                    let sanitizedResult = parseFloat(result.toFixed(10));
+                    displayMainNode.innerText = sanitizedResult;
+                    lastCalculatedAns = String(sanitizedResult);
+                    currentInputString = String(sanitizedResult);
+                }
+            } catch (e) {
+                displayMainNode.innerText = "Error";
+            }
+            return;
         }
 
-        updateScreenLayoutView();
+        displayMainNode.innerText = currentInputString || "0";
     }
 
-    function executeCoreMathOperation(valA, valB, operator) {
-        let result = 0;
-        switch (operator) {
-            case '+': result = valA + valB; break;
-            case '-': result = valA - valB; break;
-            case '*': result = valA * valB; break;
-            case '/': 
-                if (valB === 0) return "Error";
-                result = valA / valB; 
-                break;
-            default: return valB;
-        }
-        return parseFloat(result.toFixed(12));
+    // Helper to compute deep factorials recursively
+    function computeFactorial(num) {
+        if (num < 0) return NaN;
+        if (num === 0 || num === 1) return 1;
+        let val = 1;
+        for (let i = 2; i <= num; i++) val *= i;
+        return val;
     }
 
-    function clearCompleteBufferEngine() {
-        displayValueString = "0";
-        pendingOperatorToken = null;
-        storedAccumulatorValue = null;
-        awaitFreshInputFlag = false;
+    function translateScientificTokens(equation) {
+        let str = equation;
+        
+        // Custom regular expressions loops to solve specific scientific functional parameters hooks
+        str = str.replace(/([0-9.]+)\!/g, (match, p1) => "computeFactorial(" + p1 + ")");
+        
+        // Handle Trigonometric & Inverse Operations Map with local context validation multipliers
+        const degToRadMultiplier = isDegreeMode ? (Math.PI / 180) : 1;
+        const radToDegMultiplier = isDegreeMode ? (180 / Math.PI) : 1;
+
+        str = str.replace(/sininv\(([^)]+)\)/g, (m, p1) => "(Math.asin(" + p1 + ") * " + radToDegMultiplier + ")");
+        str = str.replace(/cosinv\(([^)]+)\)/g, (m, p1) => "(Math.acos(" + p1 + ") * " + radToDegMultiplier + ")");
+        str = str.replace(/taninv\(([^)]+)\)/g, (m, p1) => "(Math.atan(" + p1 + ") * " + radToDegMultiplier + ")");
+        
+        str = str.replace(/sin\(([^)]+)\)/g, (m, p1) => "Math.sin((" + p1 + ") * " + degToRadMultiplier + ")");
+        str = str.replace(/cos\(([^)]+)\)/g, (m, p1) => "Math.cos((" + p1 + ") * " + degToRadMultiplier + ")");
+        str = str.replace(/tan\(([^)]+)\)/g, (m, p1) => "Math.tan((" + p1 + ") * " + degToRadMultiplier + ")");
+        
+        // Logarithms and Core Exponents Translation Anchors
+        str = str.replace(/ln\(([^)]+)\)/g, "Math.log($1)");
+        str = str.replace(/log\(([^)]+)\)/g, "(Math.log($1) / Math.LN10)");
+        str = str.replace(/sqrt\(([^)]+)\)/g, "Math.sqrt($1)");
+        
+        // Power indices substitution mapping profiles
+        str = str.replace(/\^/g, "**");
+        str = str.replace(/E/g, "*10**");
+
+        return str;
     }
 
-    function syncDataStreamValidation() {
-        // Keeps backend metric state hooks fully compliant with selected token partitions
-        const currentDelim = document.getElementById('calcDelimiter').value;
-        const currentBitrate = document.getElementById('calcChecksum').value;
-        console.log(`[ALU Checksum Sync] Configuration matrix bounds set to ${currentBitrate}-bit using delimiter: '${currentDelim}'`);
-    }
-
+    // Capture standard physical desktop layout keystrokes natively
     window.addEventListener('keydown', (event) => {
         const key = event.key;
-        if (key >= '0' && key <= '9') {
-            triggerCalculatorAction('digit', key);
-        } else if (key === '.') {
-            triggerCalculatorAction('decimal', '.');
-        } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+        if (key >= '0' && key <= '9') triggerCalculatorAction('digit', key);
+        else if (key === '.') triggerCalculatorAction('decimal', '.');
+        else if (key === '+' || key === '-' || key === '*' || key === '/' || key === '%' || key === '(' || key === ')') {
             triggerCalculatorAction('operator', key);
-        } else if (key === 'Enter' || key === '=') {
+        } else if (key === '^') triggerCalculatorAction('operator', '^');
+        else if (key === 'Enter' || key === '=') {
             event.preventDefault();
             triggerCalculatorAction('evaluate');
-        } else if (key === 'Backspace') {
-            triggerCalculatorAction('backspace');
-        } else if (key === 'Escape' || key.toLowerCase() === 'c') {
-            triggerCalculatorAction('clear');
-        }
+        } else if (key === 'Backspace') triggerCalculatorAction('backspace');
+        else if (key === 'Escape') triggerCalculatorAction('clear');
     });
   </script>
   
