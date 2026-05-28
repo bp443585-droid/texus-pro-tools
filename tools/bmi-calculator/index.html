@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>BMI Calculator Online | Free Body Mass Index Health Tool</title>
+  <meta name="description" content="Calculate your Body Mass Index (BMI) instantly with our free online tool. Supports metric and imperial units with live professional weight diagnostics." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/bmi-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Compact BMI Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An ultra-compact anthropometric mathematical engine designed to compute accurate Body Mass Index metrics flawlessly inside a single viewport grid.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1050px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .f-heading span { font-size: 2.2rem; }
+    
+    /* MASTER VIEWPORT-LOCKED SLATE CARD REPLACEMENT */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 28px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02), 0 8px 16px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; display: flex; gap: 32px; width: 100%; align-items: stretch; }
+    
+    /* HIGH PERFORMANCE HEALTH STRETCH COLUMNS */
+    .input-column { flex: 1; width: 48%; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; border-right: 1px solid #e2e8f0; padding-right: 28px; }
+    .output-column { flex: 1; width: 52%; display: flex; box-sizing: border-box; padding-left: 28px; }
+
+    /* COMPACT INPUT CONTROL SYSTEM COMPONENTS */
+    .input-box-group { display: flex; flex-direction: column; gap: 6px; text-align: left; margin-bottom: 12px; width: 100%; }
+    .input-box-group label { font-size: 0.75rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-num-input { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1.02rem; font-family: 'Inter', sans-serif; color: #0f172a; outline: none; transition: all 0.2s ease; background: #f8fafc; box-sizing: border-box; font-weight: 600; }
+    .f-num-input:focus { border-color: #2563eb; background: #ffffff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.06); }
+    
+    .f-select-field { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 0.95rem; font-family: 'Inter', sans-serif; outline: none; font-weight: 600; background: #ffffff; color: #0f172a; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; }
+    .f-select-field:focus { border-color: #2563eb; }
+
+    /* DYNAMIC IMPERIAL UNITS TIER ROWS STYLE */
+    .imperial-height-row { display: none; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+    .metric-height-row { display: block; width: 100%; }
+
+    /* ACTION CONTROLS TIMELINE BAR */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 4px; width: 100%; }
+    .f-btn { font-weight: 700; padding: 11px 18px; border-radius: 12px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; width: 95px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* MODERN RE-DESIGNED CLEAN LIGHT RESULTS DISPENSERS (ZERO DESKTOP SCROLL HEIGHTS) */
+    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; gap: 20px; }
+    .main-breakdown-title { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
+    .main-breakdown-value { font-size: 2.3rem; font-weight: 800; color: #0f172a; line-height: 1.1; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; font-family: 'Inter', sans-serif; letter-spacing: -0.5px; word-break: break-word; }
+    
+    .stats-matrix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
+    .stat-metric-card { background: #ffffff; padding: 12px 14px; border-radius: 12px; border: 1px solid #e2e8f0; box-sizing: border-box; }
+    .stat-metric-label { font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+    .stat-metric-val { font-size: 1.15rem; font-weight: 700; color: #1e293b; font-family: 'Inter', sans-serif; text-transform: capitalize; }
+    
+    .accent-blue { color: #2563eb !important; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 35px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+
+    /* RESPONSIVE FLUID LAYOUT OVERRIDES (ADAPTIVE PHONE CONFIGURATIONS) */
+    @media (max-width: 768px) {
+      .f-card { display: block; padding: 20px; border-radius: 20px; }
+      .input-column { display: block; width: 100%; padding-right: 0; border-right: none; margin-bottom: 18px; }
+      .output-column { display: block; width: 100%; padding-left: 0; }
+      .imperial-height-row { gap: 10px; }
+      .result-display-panel { padding: 20px; gap: 16px; }
+      .main-breakdown-value { font-size: 1.75rem; padding-bottom: 10px; }
+      .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⚖️</span> BMI Calculator</div>
+    
+    <div class="f-card">
+      
+      <div class="input-column">
+        <div class="input-box-group">
+          <label for="bmiUnitSystem">Measurement System</label>
+          <select id="bmiUnitSystem" class="f-select-field" onchange="executeUnitSystemShift()">
+            <option value="metric" selected>Metric (kg / cm)</option>
+            <option value="imperial">Imperial (lbs / ft-in)</option>
+          </select>
+        </div>
+
+        <div class="input-box-group">
+          <label id="weightLabel">Weight (Kilograms)</label>
+          <input type="number" id="bmiWeight" class="f-num-input" value="70" min="0" step="any" oninput="liveExecuteBmiCalculations()" />
+        </div>
+
+        <div id="metricHeightWrapper" class="metric-height-row">
+          <div class="input-box-group">
+            <label>Height (Centimeters)</label>
+            <input type="number" id="bmiHeightCm" class="f-num-input" value="175" min="0" step="any" oninput="liveExecuteBmiCalculations()" />
+          </div>
+        </div>
+
+        <div id="imperialHeightWrapper" class="imperial-height-row">
+          <div class="input-box-group">
+            <label>Height (Feet)</label>
+            <input type="number" id="bmiHeightFt" class="f-num-input" value="5" min="0" max="10" oninput="liveExecuteBmiCalculations()" />
+          </div>
+          <div class="input-box-group">
+            <label>Height (Inches)</label>
+            <input type="number" id="bmiHeightIn" class="f-num-input" value="9" min="0" max="11" oninput="liveExecuteBmiCalculations()" />
+          </div>
+        </div>
+
+        <div class="f-action-strip">
+          <button class="f-btn f-btn-clear" onclick="clearBmiConverterWorkspace()">Clear</button>
+        </div>
+      </div>
+
+      <div class="output-column">
+        <div class="result-display-panel">
+          <div>
+            <div class="main-breakdown-title">📈 Computed Body Mass Index (BMI Value)</div>
+            <div id="bmiFinalIndexConsole" class="main-breakdown-value">22.9</div>
+          </div>
+          
+          <div>
+            <div class="main-breakdown-title" style="margin-bottom: 6px;">📊 Clinical Classification Ledger</div>
+            <div class="stats-matrix-grid">
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Health Status</div>
+                <div id="metricBmiClassification" class="stat-metric-val accent-blue" style="color: #16a34a !important;">Normal Weight</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Healthy Range</div>
+                <div class="stat-metric-val">18.5 – 24.9</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Ponderal Index</div>
+                <div id="metricPonderalIndex" class="stat-metric-val">13.1 kg/m³</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Prime Coefficient</div>
+                <div id="metricBmiPrime" class="stat-metric-val">0.92</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <article class="seo-container">
+      <h2 class="seo-title">The Mathematical Engineering of Anthropometry: Adiposity Multipliers, Quetelet Indexes, and Clinical Diagnostic Precedence Rules</h2>
+      <p class="seo-p">Auditing wellness profiles, developing health software databases, or compiling nutritional trends across demographic metrics requires an error-free mathematical layout. Human body tissue mass distributions scale inside relative biometrical vectors where simple linear arithmetic cannot accurately diagnose body composition health. Utilizing a compact, browser-native <strong>bmi calculator online</strong> eliminates computation latency, calculating precise body mass variables locally inside a single viewport monitor cleanly.</p>
+      <p class="seo-p">This long-tail biometric assessment manual checks the historical formulas driving index scaling, contrasts standard metric definitions against imperial values, reviews layout parameters, and details the steps to lock calculation sandboxes securely inside device memory layers.</p>
+
+      <div class="seo-callout">
+        <strong>The Axiom of Quetelet Localization:</strong> The Body Mass Index equation checks tissue mass configurations using a strict inverse-square geometric progression model. Because mass tracks uniformly against height squared rather than single physical lengths, calculations require exact floating-point metrics to categorize systemic risk thresholds without data drift.
+      </div>
+
+      <h3 class="seo-h2">1. Theoretical Chronology: From Social Statistics to the World Health Organization Standard</h3>
+      <p class="seo-p">The mathematical organization of relative body weights traces back to early sociological research models designed in 1832 by the prominent Belgian mathematician Adolphe Quetelet. Seeking to establish the physical metrics of standard human developments across broader cultural cohorts, Quetelet discovered that past infancy, adult weight tracking scales uniformly in perfect relation to height dimensions squared. This relationship became known across health houses as the historic Quetelet Index of body composition.</p>
+      <p class="seo-p">Following systematic verification loops driven by metabolic clinics in 1972, research teams confirmed this index as an effective indirect diagnostic indicator for absolute body fat percentages. This confirmation led to the international standardization of Body Mass Index scales by the World Health Organization (WHO), building the core reference slabs used across healthcare databases today. Modern systems implement these grids inside horizontal, side-by-side flex layouts to deliver clean weight evaluations on a single display dashboard instantly.</p>
+
+      <h3>The Statutory Mathematical Reference: Clinical Weight Classifications</h3>
+      <p class="seo-p">Understanding how specific index results align across clinical diagnostic categories enables platform software engineers to map database alerts accurately:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>BMI Index Coordinate Bounds Pool</th>
+              <th>WHO Clinical Classification Status</th>
+              <th>Ponderal Index Mean Scalar Profile</th>
+              <th>Primary Epidemiological Co-Morbidity Risk Profile</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Below 18.5</td>
+              <td>Underweight Range</td>
+              <td>Below 11.0 $$\text{kg/m}^3$$</td>
+              <td>Elevated clinical risk for nutritional deficiencies, bone mass density reduction, and immune compromise.</td>
+            </tr>
+            <tr>
+              <td>18.5 to 24.9</td>
+              <td>Normal Healthy Weight</td>
+              <td>11.0 to 14.5 $$\text{kg/m}^3$$</td>
+              <td>Baseline standardized metric threshold. Lowest relative statistical incidence for chronic metabolic stress.</td>
+            </tr>
+            <tr>
+              <td>25.0 to 29.9</td>
+              <td>Overweight Bounds (Pre-Obese)</td>
+              <td>14.6 to 17.5 $$\text{kg/m}^3$$</td>
+              <td>Moderate operational correlation with elevated blood pressure trends and lipid profile imbalances.</td>
+            </tr>
+            <tr>
+              <td>30.0 and Above</td>
+              <td>Clinical Obesity Classificatory States</td>
+              <td>Above 17.5 $$\text{kg/m}^3$$</td>
+              <td>High critical risk for Type-2 diabetic developments, structural sleep apnea, and cardiovascular strain.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">2. Algorithmic Deep Dive: Viewport-Locked Anthropometric Conversions</h3>
+      <p class="seo-p">When body metric variables enter the calculation fields, the client script runs computations across separate algorithmic pathways via three synchronized modules:</p>
+
+      <h4 class="seo-h3">A. Multi-Unit Normalization Block</h4>
+      <p class="seo-p">The program checks the selected measurement dropdown selection cell. If the user toggles the interface to the Imperial parameter scheme, the compiler runs multiplication scripts to convert input values into metric standards ($Weight_{\text{kg}}$ and $Height_{\text{meters}}$) automatically to prevent tracking drift:</p>
+      <div class="seo-math-box">\text{Weight}_{\text{kg}} = \text{Pounds} \times 0.45359237 \quad \cap \quad \text{Height}_{\text{meters}} = \frac{(\text{Feet} \times 12 + \text{Inches}) \times 2.54}{100}</div>
+
+      <h4 class="seo-h3">B. The Body Mass Index Quadratic Evaluation</h4>
+      <p class="seo-p">Once weight and height variables are securely standardized, the core engine processes the mathematical inverse-square formula without rounding drift:</p>
+      <div class="seo-math-box">\text{BMI} = \frac{\text{Weight}_{\text{kg}}}{\left(\text{Height}_{\text{meters}}\right)^2}</div>
+      <p class="seo-p">Concurrently, the system calculates the Ponderal Index—which tracks mass variations across three dimensions ($\text{Weight} \div \text{Height}^3$)—alongside the BMI Prime coefficient relative to the healthy upper bound baseline of 25.0.</p>
+
+      <h4 class="seo-h3">C. Symmetrical Output Rendering</h4>
+      <p class="seo-p">The final phase maps the calculated variables directly onto the right-hand light screen framework panels, keeping layout coordinates locked perfectly on the monitor screen.</p>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why do other online health calculation systems trigger heavy page scrolling on phones?</h3>
+      <p class="seo-p">Many old platforms organize input fields inside long vertical structures that push diagnostic results below the active screen line on small displays. Our modern design leverages compact flex layouts and customized container spacing to keep inputs and output indicators completely visible at a single glance.</p>
+
+      <h3>Does this BMI body assessment tool share metrics or track user health history logs?</h3>
+      <p class="seo-p">No. To guarantee complete user anonymity and protect confidential medical data, the entire processing framework compiles locally within your device browser environment memory cache files. No analytical data parameters travel over external server networks.</p>
+
+      <h3>Summary: Strategic Best Practices for Health Portals Audits</h3>
+      <p class="seo-p">To ensure optimal platform consistency, align text structures uniformly within the template layout grids to prevent unexpected block shifting on responsive displays. Use dedicated monospaced font styles to present currency metrics clearly, manage header weights cleanly, and apply active live listeners to keep tracking loops responsive.</p>
+      <p class="seo-p">Our Advanced Viewport-Locked Anthropometric BMI Calculator Console automates these operational tracking loops instantly, delivering clean health indicators across desktop and smartphone monitors flawlessly.</p>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header load crash:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer load crash:', err));
+
+    function executeUnitSystemShift() {
+        const systemMode = document.getElementById('bmiUnitSystem').value;
+        const weightLabel = document.getElementById('weightLabel');
+        const weightInput = document.getElementById('bmiWeight');
+        
+        const metricHeightBox = document.getElementById('metricHeightWrapper');
+        const imperialHeightBox = document.getElementById('imperialHeightWrapper');
+
+        if (systemMode === 'metric') {
+            weightLabel.innerText = "Weight (Kilograms)";
+            weightInput.value = "70";
+            metricHeightBox.style.display = "block";
+            imperialHeightBox.style.display = "none";
+        } else {
+            weightLabel.innerText = "Weight (Pounds)";
+            weightInput.value = "154";
+            metricHeightBox.style.display = "none";
+            imperialHeightBox.style.display = "grid";
+        }
+        liveExecuteBmiCalculations();
+    }
+
+    function liveExecuteBmiCalculations() {
+        const systemMode = document.getElementById('bmiUnitSystem').value;
+        const rawWeight = parseFloat(document.getElementById('bmiWeight').value);
+        
+        const finalIndexConsole = document.getElementById('bmiFinalIndexConsole');
+        const classificationMetric = document.getElementById('metricBmiClassification');
+
+        let weightKg = 0;
+        let heightMeters = 0;
+
+        if (isNaN(rawWeight) || rawWeight <= 0) {
+            resetBmiDisplayLabelsToZero();
+            return;
+        }
+
+        // --- PATH A: METRIC CALCULATION DATA MAPPING ---
+        if (systemMode === 'metric') {
+            const heightCm = parseFloat(document.getElementById('bmiHeightCm').value);
+            if (isNaN(heightCm) || heightCm <= 0) {
+                resetBmiDisplayLabelsToZero();
+                return;
+            }
+            weightKg = rawWeight;
+            heightMeters = heightCm / 100;
+        } 
+        // --- PATH B: IMPERIAL CALCULATION DATA MAPPING ---
+        else {
+            const heightFt = parseFloat(document.getElementById('bmiHeightFt').value) || 0;
+            const heightIn = parseFloat(document.getElementById('bmiHeightIn').value) || 0;
+            
+            if (heightFt <= 0 && heightIn <= 0) {
+                resetBmiDisplayLabelsToZero();
+                return;
+            }
+            weightKg = rawWeight * 0.45359237;
+            let totalInches = (heightFt * 12) + heightIn;
+            heightMeters = (totalInches * 2.54) / 100;
+        }
+
+        // Execute quadratic anthropometric algorithms
+        let calculatedBmi = weightKg / (heightMeters * heightMeters);
+        
+        if (calculatedBmi === undefined || isNaN(calculatedBmi) || !isFinite(calculatedBmi)) {
+            resetBmiDisplayLabelsToZero();
+            return;
+        }
+
+        // Secondary auxiliary biometrical coefficients
+        let ponderalIndex = weightKg / (heightMeters * heightMeters * heightMeters);
+        let bmiPrime = calculatedBmi / 25;
+
+        // Clinical WHO verification matrix classification logic
+        let visualStatusText = "";
+        let hexColorToken = "#16a34a"; // Default healthy green accent
+
+        if (calculatedBmi < 18.5) {
+            visualStatusText = "Underweight";
+            hexColorToken = "#2563eb"; // Blue
+        } else if (calculatedBmi >= 18.5 && calculatedBmi < 25) {
+            visualStatusText = "Normal Weight";
+            hexColorToken = "#16a34a"; // Green
+        } else if (calculatedBmi >= 25 && calculatedBmi < 30) {
+            visualStatusText = "Overweight (Pre-Obese)";
+            hexColorToken = "#ea580c"; // Orange
+        } else {
+            visualStatusText = "Clinical Obesity";
+            hexColorToken = "#dc2626"; // Red
+        }
+
+        // Render parameters cleanly onto right side viewport panels
+        finalIndexConsole.innerText = calculatedBmi.toFixed(1);
+        classificationMetric.innerText = visualStatusText;
+        classificationMetric.style.color = hexColorToken;
+        
+        document.getElementById('metricPonderalIndex').innerText = ponderalIndex.toFixed(1) + " kg/m³";
+        document.getElementById('metricBmiPrime').innerText = bmiPrime.toFixed(2);
+    }
+
+    function resetBmiDisplayLabelsToZero() {
+        document.getElementById('bmiFinalIndexConsole').innerText = "0.0";
+        document.getElementById('metricBmiClassification').innerText = "Awaiting Inputs";
+        document.getElementById('metricBmiClassification').style.color = "#64748b";
+        document.getElementById('metricPonderalIndex').innerText = "0.0 kg/m³";
+        document.getElementById('metricBmiPrime').innerText = "0.00";
+    }
+
+    function clearBmiConverterWorkspace() {
+        document.getElementById('bmiWeight').value = "";
+        document.getElementById('bmiHeightCm').value = "";
+        document.getElementById('bmiHeightFt').value = "";
+        document.getElementById('bmiHeightIn').value = "";
+        resetBmiDisplayLabelsToZero();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        liveExecuteBmiCalculations();
+    });
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
