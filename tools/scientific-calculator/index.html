@@ -252,7 +252,7 @@
               <td><b>x<sup>y</sup></b></td>
               <td>`^` Shift-6 Key Symbol</td>
               <td>`**` Exponent Operator</td>
-              <td>Raises base values to floating-point indices using recursive multiplier loops.</td>
+              <td>Raises base numbers to floating-point indices using recursive multiplier loops.</td>
             </tr>
             <tr>
               <td>Scientific Notation Buffer</td>
@@ -300,10 +300,9 @@
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
 
-    // Internal State Variables
     let currentExpressionString = "";
     let activeEvaluationHistoryRecord = "";
-    let savedCalculationLogList = []; // Array to store historical calculations
+    let savedCalculationLogList = []; 
     let isDegreeMode = true;
     let isInverseMode = false;
     let lastCalculatedAns = "0";
@@ -313,7 +312,6 @@
     const drawerPanelNode = document.getElementById('historyDrawerPanel');
 
     function triggerCalculatorAction(action, inputToken) {
-        // Automatically hide history panel when interacting with keys
         if (action !== 'history-toggle') {
             drawerPanelNode.style.display = 'none';
         }
@@ -465,27 +463,50 @@
         return cumulativeAccumulator;
     }
 
+    // --- FULL BUGBUSTER PARSING PIPELINE INSTALLED ---
     function compileScientificTokenPipes(equationString) {
         let textStream = equationString;
+
+        // 1. Percent (%) to safe floating segment transformation
+        textStream = textStream.replace(/([0-9.]+)\%/g, "($1/100)");
+
+        // 2. Factorial (!) process mapping
         textStream = textStream.replace(/([0-9.]+)\!/g, (match, factorNode) => "calculateFactorialBuffer(" + factorNode + ")");
-        
+
+        // 3. Robust Implicit Multiplication handler hooks
+        textStream = textStream.replace(/([0-9.]+)\s*\(/g, "$1*(");
+        textStream = textStream.replace(/\)\s*([0-9.]+)/g, ")*$1");
+        textStream = textStream.replace(/([0-9.]+)\s*(sin|cos|tan|ln|log|sqrt)/g, "$1*$2");
+
         const angularConversionRadMultiplier = isDegreeMode ? (Math.PI / 180) : 1;
         const angularConversionDegMultiplier = isDegreeMode ? (180 / Math.PI) : 1;
 
+        // 4. Inverse Trigonometric evaluation arrays
         textStream = textStream.replace(/sininv\(([^)]+)\)/g, (m, coreVal) => "(Math.asin(" + coreVal + ") * " + angularConversionDegMultiplier + ")");
         textStream = textStream.replace(/cosinv\(([^)]+)\)/g, (m, coreVal) => "(Math.acos(" + coreVal + ") * " + angularConversionDegMultiplier + ")");
         textStream = textStream.replace(/taninv\(([^)]+)\)/g, (m, coreVal) => "(Math.atan(" + coreVal + ") * " + angularConversionDegMultiplier + ")");
         
+        // 5. Standard Trigonometric parsing structures
         textStream = textStream.replace(/sin\(([^)]+)\)/g, (m, coreVal) => "Math.sin((" + coreVal + ") * " + angularConversionRadMultiplier + ")");
         textStream = textStream.replace(/cos\(([^)]+)\)/g, (m, coreVal) => "Math.cos((" + coreVal + ") * " + angularConversionRadMultiplier + ")");
         textStream = textStream.replace(/tan\(([^)]+)\)/g, (m, coreVal) => "Math.tan((" + coreVal + ") * " + angularConversionRadMultiplier + ")");
         
+        // 6. Natural and Common Logarithms + Core Roots
         textStream = textStream.replace(/ln\(([^)]+)\)/g, "Math.log($1)");
         textStream = textStream.replace(/log\(([^)]+)\)/g, "(Math.log($1) / Math.LN10)");
         textStream = textStream.replace(/sqrt\(([^)]+)\)/g, "Math.sqrt($1)");
         
+        // 7. Base Exponents indices translation parameters
         textStream = textStream.replace(/\^/g, "**");
         textStream = textStream.replace(/E/g, "*10**");
+
+        // 8. Auto-Bracket closure system engine ceiling
+        let openBracketsCount = (textStream.match(/\(/g) || []).length;
+        let closeBracketsCount = (textStream.match(/\)/g) || []).length;
+        while (openBracketsCount > closeBracketsCount) {
+            textStream += ")";
+            closeBracketsCount++;
+        }
 
         return textStream;
     }
