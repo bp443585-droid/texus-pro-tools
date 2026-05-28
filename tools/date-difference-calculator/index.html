@@ -42,13 +42,16 @@
     /* THE DURATION ENGINE APPARATUS DISPLAY */
     .date-housing { width: 100%; max-width: 520px; box-sizing: border-box; }
     
-    /* DATE INPUT INTERACTIVE FIELDS GRID */
-    .date-input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; width: 100%; }
+    /* DROPDOWN SELECTORS INTERACTIVE FIELDS MATRIX GRID */
+    .date-input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 25px; width: 100%; }
     .date-field-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
-    .date-field-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .date-field-box label { font-size: 0.85rem; color: #0f172a; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .f-date-input { width: 100%; padding: 14px 16px; border: 2px solid #e2e8f0; border-radius: 14px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; background: #f8fafc; box-sizing: border-box; font-weight: 600; }
-    .f-date-input:focus { border-color: #2563eb; background: #ffffff; }
+    /* INNER VERTICAL SPLIT FOR DAY-MONTH-YEAR SELECT FIELDS */
+    .drop-select-row { display: grid; grid-template-columns: 1fr 1.2fr 1.2fr; gap: 8px; width: 100%; }
+    
+    .f-drop-select { width: 100%; padding: 12px 10px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; background: #f8fafc; box-sizing: border-box; font-weight: 600; cursor: pointer; }
+    .f-drop-select:focus { border-color: #2563eb; background: #ffffff; }
 
     /* ACTION CONTROLS STRIP */
     .f-action-strip { display: flex; gap: 12px; margin-bottom: 30px; width: 100%; }
@@ -86,7 +89,7 @@
 
     @media (max-width: 768px) {
       .f-card { padding: 25px 15px; border-radius: 20px; }
-      .date-input-grid { grid-template-columns: 1fr; gap: 15px; }
+      .date-input-grid { grid-template-columns: 1fr; gap: 20px; }
       .f-action-strip { flex-direction: column; gap: 10px; }
       .stats-matrix-grid { grid-template-columns: 1fr; gap: 12px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
@@ -105,19 +108,30 @@
       <div class="date-housing">
         
         <div class="date-input-grid">
+          
           <div class="date-field-box">
-            <label for="startDateInput">Start Date (Initial Vector)</label>
-            <input type="date" id="startDateInput" class="f-date-input" onchange="processChronologicalGap()" />
+            <label>Start Date (Initial Vector)</label>
+            <div class="drop-select-row">
+              <select id="startDayDrop" class="f-drop-select" onchange="processChronologicalGap()"></select>
+              <select id="startMonthDrop" class="f-drop-select" onchange="processChronologicalGap()"></select>
+              <select id="startYearDrop" class="f-drop-select" onchange="processChronologicalGap()"></select>
+            </div>
           </div>
+          
           <div class="date-field-box">
-            <label for="endDateInput">End Date (Target Boundary)</label>
-            <input type="date" id="endDateInput" class="f-date-input" onchange="processChronologicalGap()" />
+            <label>End Date (Target Boundary)</label>
+            <div class="drop-select-row">
+              <select id="endDayDrop" class="f-drop-select" onchange="processChronologicalGap()"></select>
+              <select id="endMonthDrop" class="f-drop-select" onchange="processChronologicalGap()"></select>
+              <select id="endYearDrop" class="f-drop-select" onchange="processChronologicalGap()"></select>
+            </div>
           </div>
+
         </div>
 
         <div class="f-action-strip">
-          <button class="f-btn f-btn-today" onclick="setCalendarToToday('start')">Start = Today</button>
-          <button class="f-btn f-btn-today" onclick="setCalendarToToday('end')">End = Today</button>
+          <button class="f-btn f-btn-today" onclick="setCalendarDropdownsToToday('start')">Start = Today</button>
+          <button class="f-btn f-btn-today" onclick="setCalendarDropdownsToToday('end')">End = Today</button>
           <button class="f-btn f-btn-calc" onclick="processChronologicalGap()">Recalculate</button>
         </div>
 
@@ -221,7 +235,7 @@
 
       <h2 class="seo-h2">4. Core Technical Rules for Maximum Processing Reliability</h2>
       <p class="seo-p">When parsing chronological values inside local calendar code wrappers, software engineers must follow explicit code guidelines. First, always wrap date operations within high-fidelity parsing checks. If a user inserts inverted dates—where the start date parameter sits past the end date coordinate—the processing loops must handle the inversion gracefully, swapping boundary parameters to render accurate absolute values instead of negative outputs.</p>
-      <p class="seo-p">Second, confirm date strings adhere strictly to ISO 8601 formatting layouts (`YYYY-MM-DD`) during system parsing transitions. Relying on regional formatting conventions (like `MM/DD/YYYY` versus `DD/MM/YYYY`) can cause system execution faults, throwing validation errors that break application views.</p>
+      <p class="seo-p">Second, apply formatting layouts strictly during system parsing transitions. Relying on regional formatting conventions can cause system execution faults, throwing validation errors that break application views.</p>
 
       <h2 class="seo-h2">5. Frequently Asked Questions (FAQ) - Deep Diagnostic Segment</h2>
       <h3 class="seo-h3">Why do certain calendar calculators return variable day values for identical month blocks?</h3>
@@ -237,7 +251,7 @@
       <p class="seo-p">To maximize performance across automated data workflows, clear out hidden string artifacts before passing inputs into evaluation scripts. Use clear monospaced layout panels to check data streams for conversion errors easily, verify that chronological boundary values feature absolute validation checks to protect runtime states, and leverage real-time translation modules to streamline testing environments.</p>
       <p class="seo-p">Our Advanced Online Date Difference Calculator Console automates all these computational extraction routines instantly, providing clear visibility into your token structures across any mobile or desktop device cleanly.</p>
     </article>
-  </head>
+  </main>
 
   <div id="site-footer"></div>
 
@@ -254,47 +268,76 @@
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
 
-    function setCalendarToToday(fieldTarget) {
-        const todayVector = new Date();
-        const year = todayVector.getFullYear();
-        const month = String(todayVector.getMonth() + 1).padStart(2, '0');
-        const day = String(todayVector.getDate()).padStart(2, '0');
-        const formattedDateString = `${year}-${month}-${day}`;
+    const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-        if (fieldTarget === 'start') {
-            document.getElementById('startDateInput').value = formattedDateString;
-        } else if (fieldTarget === 'end') {
-            document.getElementById('endDateInput').value = formattedDateString;
+    // 1. Setup global standalone dropdown builders loop dynamically on boot
+    function initializeCalendarDropdownMatrix() {
+        const startDay = document.getElementById('startDayDrop');
+        const startMonth = document.getElementById('startMonthDrop');
+        const startYear = document.getElementById('startYearDrop');
+        
+        const endDay = document.getElementById('endDayDrop');
+        const endMonth = document.getElementById('endMonthDrop');
+        const endYear = document.getElementById('endYearDrop');
+
+        // Populate Days (1-31)
+        for (let d = 1; d <= 31; d++) {
+            let optA = new Error(); optA = document.createElement('option'); optA.value = d; optA.innerText = d;
+            let optB = document.createElement('option'); optB.value = d; optB.innerText = d;
+            startDay.appendChild(optA);
+            endDay.appendChild(optB);
         }
+
+        // Populate Months
+        MONTH_NAMES.forEach((m, idx) => {
+            let optA = document.createElement('option'); optA.value = idx; optA.innerText = m;
+            let optB = document.createElement('option'); optB.value = idx; optB.innerText = m;
+            startMonth.appendChild(optA);
+            endMonth.appendChild(optB);
+        });
+
+        // Populate Years (1900 to current 2026 threshold)
+        const currentYearLimit = 2026;
+        for (let y = currentYearLimit; y >= 1900; y--) {
+            let optA = document.createElement('option'); optA.value = y; optA.innerText = y;
+            let optB = document.createElement('option'); optB.value = y; optB.innerText = y;
+            startYear.appendChild(optA);
+            endYear.appendChild(optB);
+        }
+    }
+
+    function setCalendarDropdownsToToday(prefix) {
+        const today = new Date();
+        document.getElementById(`${prefix}DayDrop`).value = today.getDate();
+        document.getElementById(`${prefix}MonthDrop`).value = today.getMonth();
+        document.getElementById(`${prefix}YearDrop`).value = today.getFullYear();
         processChronologicalGap();
     }
 
     function processChronologicalGap() {
-        const startRaw = document.getElementById('startDateInput').value;
-        const endRaw = document.getElementById('endDateInput').value;
+        const sDay = parseInt(document.getElementById('startDayDrop').value, 10);
+        const sMonth = parseInt(document.getElementById('startMonthDrop').value, 10);
+        const sYear = parseInt(document.getElementById('startYearDrop').value, 10);
+
+        const eDay = parseInt(document.getElementById('endDayDrop').value, 10);
+        const eMonth = parseInt(document.getElementById('endMonthDrop').value, 10);
+        const eYear = parseInt(document.getElementById('endYearDrop').value, 10);
         const breakdownConsole = document.getElementById('mainBreakdownConsole');
 
-        if (!startRaw || !endRaw) {
-            breakdownConsole.innerText = "Select standard dates to evaluate duration values.";
-            clearMatrixCounters();
-            return;
-        }
+        // Form native date instances arrays
+        let dateA = new Date(sYear, sMonth, sDay);
+        let dateB = new Date(eYear, eMonth, eDay);
 
-        let dateA = new Date(startRaw);
-        let dateB = new Date(endRaw);
-
-        // Auto-Inversion Handling: Swap boundaries if user inputs inverted paths
+        // Auto-Inversion Handling Matrix
         if (dateA > dateB) {
             const cacheTemp = dateA;
             dateA = dateB;
             dateB = cacheTemp;
         }
 
-        // Calculate absolute millisecond difference pool
         const absoluteTimeDiffPool = dateB.getTime() - dateA.getTime();
         const totalElapsedDays = Math.floor(absoluteTimeDiffPool / (1000 * 60 * 60 * 24));
 
-        // Group fields inside matrix display cells
         document.getElementById('metricTotalDays').innerText = totalElapsedDays.toLocaleString();
         
         const elapsedWeeks = Math.floor(totalElapsedDays / 7);
@@ -307,7 +350,7 @@
         const approximateMinutes = approximateHours * 60;
         document.getElementById('metricTotalMinutes').innerText = approximateMinutes.toLocaleString() + " mins";
 
-        // Dynamic Exact Year-Month-Day Tracking Grid Calculation
+        // Precise Structural Calendar Splits Calculations Loop
         let startYear = dateA.getFullYear();
         let startMonth = dateA.getMonth();
         let startDay = dateA.getDate();
@@ -321,7 +364,6 @@
         let calculatedDays = endDay - startDay;
 
         if (calculatedDays < 0) {
-            // Borrow days from the previous month
             const previousMonthObj = new Date(endYear, endMonth, 0);
             calculatedDays += previousMonthObj.getDate();
             calculatedMonths--;
@@ -332,7 +374,6 @@
             calculatedYears--;
         }
 
-        // Synthesize human-readable console message output
         let textOutputMatrix = "";
         if (calculatedYears > 0) textOutputMatrix += `${calculatedYears} Year${calculatedYears > 1 ? 's' : ''}, `;
         if (calculatedMonths > 0 || calculatedYears > 0) textOutputMatrix += `${calculatedMonths} Month${calculatedMonths > 1 ? 's' : ''}, `;
@@ -341,23 +382,23 @@
         breakdownConsole.innerHTML = `✨ <b>${textOutputMatrix}</b>`;
     }
 
-    function clearMatrixCounters() {
-        document.getElementById('metricTotalDays').innerText = "0";
-        document.getElementById('metricTotalWeeks').innerText = "0";
-        document.getElementById('metricTotalHours').innerText = "0";
-        document.getElementById('metricTotalMinutes').innerText = "0";
-    }
-
-    // Set initial configuration parameters values on system frame boot
+    // Fire initialization mapping elements sequentially on window load states
     window.addEventListener('DOMContentLoaded', () => {
-        const initialDate = new Date();
-        const pastDate = new Date();
-        pastDate.setFullYear(initialDate.getFullYear() - 1); // Set 1 Year default gap window
+        initializeCalendarDropdownMatrix();
 
-        const format = (d) => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-        
-        document.getElementById('startDateInput').value = format(pastDate);
-        document.getElementById('endDateInput').value = format(initialDate);
+        // Establish 1 Year default spacing buffer path on start
+        const today = new Date();
+        const pastDate = new Date();
+        pastDate.setFullYear(today.getFullYear() - 1);
+
+        document.getElementById('startDayDrop').value = pastDate.getDate();
+        document.getElementById('startMonthDrop').value = pastDate.getMonth();
+        document.getElementById('startYearDrop').value = pastDate.getFullYear();
+
+        document.getElementById('endDayDrop').value = today.getDate();
+        document.getElementById('endMonthDrop').value = today.getMonth();
+        document.getElementById('endYearDrop').value = today.getFullYear();
+
         processChronologicalGap();
     });
   </script>
