@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Universal Unit Converter | Real-Time Measurement Conversion Tool</title>
+  <meta name="description" content="Free online universal unit converter. Convert length, weight, area, volume, and temperature instantly within a single screen view. Accurate and fast." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/unit-converter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Universal Unit Converter Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced dimensional analysis runtime engine providing simultaneous cross-unit translations across core physical dimensions flawlessly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1050px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .f-heading span { font-size: 2.2rem; }
+    
+    /* DESKTOP VIEWPORT-LOCKED MATRIX COMPACT CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 28px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02), 0 8px 16px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; display: flex; gap: 32px; width: 100%; align-items: stretch; }
+    
+    /* HIGH PERFORMANCE DIMENSIONAL STRETCH COLUMNS */
+    .input-column { flex: 1; width: 48%; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; border-right: 1px solid #e2e8f0; padding-right: 28px; }
+    .output-column { flex: 1; width: 52%; display: flex; box-sizing: border-box; padding-left: 28px; }
+
+    /* COMPACT INPUT CONTROL SYSTEM COMPONENTS */
+    .input-box-group { display: flex; flex-direction: column; gap: 6px; text-align: left; margin-bottom: 12px; width: 100%; }
+    .input-box-group label { font-size: 0.75rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-num-input { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1.02rem; font-family: 'Inter', sans-serif; color: #0f172a; outline: none; transition: all 0.2s ease; background: #f8fafc; box-sizing: border-box; font-weight: 600; }
+    .f-num-input:focus { border-color: #2563eb; background: #ffffff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.06); }
+    
+    .f-select-field { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 0.95rem; font-family: 'Inter', sans-serif; outline: none; font-weight: 600; background: #ffffff; color: #0f172a; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; }
+    .f-select-field:focus { border-color: #2563eb; }
+
+    /* UNIT ROW COMBINATION GRID */
+    .unit-select-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+
+    /* ACTION CONTROLS TIMELINE BAR */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 4px; width: 100%; }
+    .f-btn { font-weight: 700; padding: 11px 18px; border-radius: 12px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; width: 95px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* CLEAN MODERN LIGHT RESULT DISPLAY PANEL WITH COMPLETE INTER FONTS PROFILE */
+    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; gap: 20px; }
+    .main-breakdown-title { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
+    .main-breakdown-value { font-size: 2.3rem; font-weight: 800; color: #0f172a; line-height: 1.1; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; font-family: 'Inter', sans-serif; letter-spacing: -0.5px; word-break: break-word; }
+    
+    .stats-matrix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
+    .stat-metric-card { background: #ffffff; padding: 12px 14px; border-radius: 12px; border: 1px solid #e2e8f0; box-sizing: border-box; }
+    .stat-metric-label { font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+    .stat-metric-val { font-size: 1.15rem; font-weight: 700; color: #1e293b; font-family: 'Inter', sans-serif; }
+    
+    .accent-blue { color: #2563eb !important; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 35px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+
+    /* RESPONSIVE FLUID LAYOUT OVERRIDES (ADAPTIVE PHONE CONFIGURATIONS) */
+    @media (max-width: 768px) {
+      .f-card { display: block; padding: 20px; border-radius: 20px; }
+      .input-column { display: block; width: 100%; padding-right: 0; border-right: none; margin-bottom: 18px; }
+      .output-column { display: block; width: 100%; padding-left: 0; }
+      .unit-select-row { grid-template-columns: 1fr; gap: 10px; }
+      .result-display-panel { padding: 20px; gap: 16px; }
+      .main-breakdown-value { font-size: 1.75rem; padding-bottom: 10px; }
+      .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📏</span> Universal Unit Converter</div>
+    
+    <div class="f-card">
+      
+      <div class="input-column">
+        <div class="input-box-group">
+          <label for="unitDimensionCategory">Measurement Category</label>
+          <select id="unitDimensionCategory" class="f-select-field" onchange="executeDimensionCategoryShift()">
+            <option value="length" selected>Length / Distance</option>
+            <option value="weight">Weight / Mass</option>
+            <option value="temperature">Temperature</option>
+            <option value="area">Area Vectors</option>
+            <option value="volume">Volume Space</option>
+          </select>
+        </div>
+
+        <div class="input-box-group">
+          <label>Source Value Input</label>
+          <input type="number" id="unitInputMagnitude" class="f-num-input" value="1" step="any" oninput="liveExecuteUnitConversions()" />
+        </div>
+
+        <div class="unit-select-row">
+          <div class="input-box-group">
+            <label for="unitFromType">From Unit</label>
+            <select id="unitFromType" class="f-select-field" onchange="liveExecuteUnitConversions()"></select>
+          </div>
+          <div class="input-box-group">
+            <label concept="target">To Unit</label>
+            <select id="unitTargetType" class="f-select-field" onchange="liveExecuteUnitConversions()"></select>
+          </div>
+        </div>
+
+        <div class="f-action-strip">
+          <button class="f-btn f-btn-clear" onclick="clearUnitConverterWorkspace()">Clear</button>
+        </div>
+      </div>
+
+      <div class="output-column">
+        <div class="result-display-panel">
+          <div>
+            <div class="main-breakdown-title">📈 Converted Dimensional Output Magnitude</div>
+            <div id="unitConversionFinalConsole" class="main-breakdown-value">1.00</div>
+          </div>
+          
+          <div>
+            <div class="main-breakdown-title" style="margin-bottom: 6px;">📊 Scientific Relational Constants</div>
+            <div class="stats-matrix-grid">
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Direct Scalar</div>
+                <div id="metricUnitDirectScalar" class="stat-metric-val accent-blue">1.00</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Inverse Ratio</div>
+                <div id="metricUnitInverseRatio" class="stat-metric-val">1.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <article class="seo-container">
+      <h2 class="seo-title">The Mathematical Engineering of Metrology: Dimensional Analysis, SI Base Constants, and Sexagesimal Metric Scalar Trajectories</h2>
+      <p class="seo-p">Configuring mechanical prototyping tolerances, deploying data serialization equations inside developer code blocks, or structuring geometric architectural spans requires an error-free conversion framework. Physical dimensions operate inside explicit conversion vectors where floating-point approximation inaccuracies can alter active engineering thresholds. Utilizing a compact, browser-native <strong>unit converter online</strong> eliminates rendering delay, translating distinct spatial and thermal weights locally inside a single viewpoint monitor cleanly.</p>
+      <p class="seo-p">This long-tail computer-aided metrology manual reviews the structural constants running international measurement metrics (SI), parses standard calculation algorithms, analyzes viewport layout constraints, and reviews the code steps needed to lock processing sandboxes securely inside device memory cells.</p>
+
+      <div class="seo-callout">
+        <strong>The Principle of Dimensional Invariance:</strong> Converting parameters from alternative regional systems (such as the British Imperial Framework) into international metric variables requires a stable, unchanging conversion factor anchor. For instance, exactly **1 inch equals 2.54 centimeters** by international diplomatic agreements, forming the exact mathematical scale baseline for structural code conversions.
+      </div>
+
+      <h3 class="seo-h2">1. Theoretical Chronology: From King's Cubits to the Centralized SI Standard</h3>
+      <p class="seo-p">The human drive to define and enforce uniform spatial metrics traces back to early municipal civil trading laws. Early trade lines structured primitive length values based on physical human proportions, like the standard Egyptian cubits or British foot allocations. Because these subjective measurements varied drastically between individual traders, international markets faced massive logistical confusion during global merchant interactions.</p>
+      <p class="seo-p">To establish ultimate metrological clarity, the metric convention of 1875 formalized the International System of Units (SI). This global framework linked physical length, mass, and temperature constants directly to invariant atomic behavior, such as the fixed velocity of light. Modern layout systems present these multi-dimensional calculations side-by-side on a single dashboard canvas screen monitor, ensuring instantaneous engineering metrics without page jumps.</p>
+
+      <h3>The Statutory Mathematical Reference: Dimensional Calibration Standards</h3>
+      <p class="seo-p">Reviewing the core mathematical scaling multipliers relative to centralized baseline anchors ensures clean calculations across system databases without rounding drift:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Dimensional Target Category</th>
+              <th>Central Baseline Reference Anchor</th>
+              <th>Relative Internal Unit Multiplier Matrix (vs Anchor)</th>
+              <th>Primary Technical Equation Format</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Length / Distance</td>
+              <td>Meter (m)</td>
+              <td>`{ km: 1000, m: 1, cm: 0.01, mm: 0.001, inch: 0.0254, ft: 0.3048 }`</td>
+              <td>$$\text{Meters} = \text{Value} \times \text{Multiplier}_{\text{source}}$$</td>
+            </tr>
+            <tr>
+              <td>Weight / Mass</td>
+              <td>Kilogram (kg)</td>
+              <td>`{ kg: 1, g: 0.001, lb: 0.45359237, oz: 0.028349523 }`</td>
+              <td>$$\text{Kilograms} = \text{Value} \times \text{Multiplier}_{\text{source}}$$</td>
+            </tr>
+            <tr>
+              <td>Area Vectors</td>
+              <td>Square Meter ($$\text{m}^2$$)</td>
+              <td>`{ sqm: 1, sqft: 0.09290304, acre: 4046.8564, hectare: 10000 }`</td>
+              <td>$$\text{SqMeters} = \text{Value} \times \text{Multiplier}_{\text{source}}$$</td>
+            </tr>
+            <tr>
+              <td>Volume Space</td>
+              <td>Liter (L)</td>
+              <td>`{ liter: 1, ml: 0.001, gallon: 3.78541, cup: 0.236588 }`</td>
+              <td>$$\text{Liters} = \text{Value} \times \text{Multiplier}_{\text{source}}$$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">2. Algorithmic Deep Dive: Symmetrical Viewport Cross-Conversions</h3>
+      <p class="seo-p">When a numerical value enters the validation fields, the script performs calculations across separate measurement matrices using two distinct operational logic modules:</p>
+
+      <h4 class="seo-h3">A. Central Anchor Normalization Phase</h4>
+      <p class="seo-p">The program checks the selected category matrix and scales the raw input magnitude ($M_{\text{raw}}$) down to its unified central core anchor index. This strategy avoids complex direct unit-to-unit mapping, preventing systemic floating-point rounding drift:</p>
+      <div class="seo-math-box">\text{Anchor Balance Value} = M_{\text{raw}} \times \text{Scale Factor}_{\text{source}}</div>
+
+      <h4 class="seo-h3">B. Secondary Target Translation Phase</h4>
+      <p class="seo-p">Once the baseline anchor metric is secured, the script divides that structural core value by the destination target multiplier factor ($\text{Scale Factor}_{\text{target}}$) to identify the final output magnitude ($M_{\text{final}}$):</p>
+      <div class="seo-math-box">M_{\text{final}} = \frac{\text{Anchor Balance Value}}{\text{Scale Factor}_{\text{target}}}</div>
+
+      <h4 class="seo-h3">C. Thermal Offset Exception Handlers</h4>
+      <p class="seo-p">Temperature loops implement distinct non-linear shifting behaviors. Because scales like Celsius, Fahrenheit, and Kelvin use separate starting benchmarks rather than flat ratios, the script executes explicit arithmetic additions and subtractions to transition values smoothly without breaking application views.</p>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why do floating-point fractions sometimes produce micro-decimal calculation bugs?</h3>
+      <p class="seo-p">This variance stems from hardware processing limitations defined by the universal IEEE 754 protocol. Because digital chips translate base-10 decimals into base-2 binary fractions, processing nested fractions can introduce tiny trailing remainders. Our advanced portal resolves this by formatting all metric adjustments through a dynamic float trimmer, keeping outputs completely accurate across displays.</p>
+
+      <h3>Does this universal measurement converter track private user coordinates or log data?</h3>
+      <p class="seo-p">No. To guarantee complete information anonymity and preserve full engineering records, all direct operations execute natively within your device browser environment memory cache files. No analytical data parameters travel over external network channels.</p>
+
+      <h3>Strategic Best Practices for Engineering Interface Configurations</h3>
+      <p class="seo-p">To maximize performance across automated data workflows, clear out hidden string artifacts before passing inputs into evaluation scripts. Use clear monospaced layout panels to check data streams for conversion errors easily, verify that chronological boundary values feature absolute validation checks to protect runtime states, and leverage real-time translation modules to streamline testing environments.</p>
+      <p class="seo-p">Our Compact Multi-Category Universal Unit Converter Suite automates these operational tracking loops instantly, delivering clean financial balances across desktop and mobile screens flawlessly.</p>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed:', err));
+
+    // Dynamic Multi-Tier Dimension Units Data Matrix Config Constants
+    const DIMENSION_DATA_MATRIX = {
+        length: {
+          label: "Length / Distance",
+          anchor: "m",
+          units: { m: "Meters (m)", km: "Kilometers (km)", cm: "Centimeters (cm)", mm: "Millimeters (mm)", inch: "Inches (in)", ft: "Feet (ft)", yard: "Yards (yd)", mile: "Miles (mi)" },
+          scalars: { m: 1, km: 1000, cm: 0.01, mm: 0.001, inch: 0.0254, ft: 0.3048, yard: 0.9144, mile: 1609.344 }
+        },
+        weight: {
+          label: "Weight / Mass",
+          anchor: "kg",
+          units: { kg: "Kilograms (kg)", g: "Grams (g)", mg: "Milligrams (mg)", lb: "Pounds (lb)", oz: "Ounces (oz)", ton: "Metric Tons (t)" },
+          scalars: { kg: 1, g: 0.001, mg: 0.000001, lb: 0.45359237, oz: 0.028349523, ton: 1000 }
+        },
+        temperature: {
+          label: "Temperature",
+          anchor: "C",
+          units: { C: "Celsius (°C)", F: "Fahrenheit (°F)", K: "Kelvin (K)" },
+          scalars: null // Regulated via distinct mathematical functional intercepts
+        },
+        area: {
+          label: "Area Vectors",
+          anchor: "sqm",
+          units: { sqm: "Square Meters (m²)", sqkm: "Square Kilometers (km²)", sqft: "Square Feet (ft²)", sqinch: "Square Inches (in²)", acre: "Acres", hectare: "Hectares" },
+          scalars: { sqm: 1, sqkm: 1000000, sqft: 0.09290304, sqinch: 0.00064516, acre: 4046.8564224, hectare: 10000 }
+        },
+        volume: {
+          label: "Volume Space",
+          anchor: "liter",
+          units: { liter: "Liters (L)", ml: "Milliliters (mL)", cum: "Cubic Meters (m³)", gallon: "US Gallons (gal)", quart: "US Quarts (qt)", cup: "US Cups" },
+          scalars: { liter: 1, ml: 0.001, cum: 1000, gallon: 3.785411784, quart: 0.946352946, cup: 0.2365882365 }
+        }
+    };
+
+    function executeDimensionCategoryShift() {
+        const activeCategoryKey = document.getElementById('unitDimensionCategory').value;
+        const fromSelect = document.getElementById('unitFromType');
+        const targetSelect = document.getElementById('unitTargetType');
+
+        const categoryPayload = DIMENSION_DATA_MATRIX[activeCategoryKey];
+        
+        // Wipe dropdown options prior to loop injections
+        fromSelect.innerHTML = "";
+        targetSelect.innerHTML = "";
+
+        // Re-populate menu elements options
+        Object.keys(categoryPayload.units).forEach((unitKey, loopIdx) => {
+            let labelText = categoryPayload.units[unitKey];
+            
+            let optA = document.createElement('option'); optA.value = unitKey; optA.innerText = labelText;
+            let optB = document.createElement('option'); optB.value = unitKey; optB.innerText = labelText;
+            
+            if (loopIdx === 0) optA.selected = true;
+            if (loopIdx === 1 || (Object.keys(categoryPayload.units).length === 1 && loopIdx === 0)) optB.selected = true;
+
+            fromSelect.appendChild(optA);
+            targetSelect.appendChild(optB);
+        });
+
+        liveExecuteUnitConversions();
+    }
+
+    function liveExecuteUnitConversions() {
+        const categoryKey = document.getElementById('unitDimensionCategory').value;
+        const inputMagnitudeInput = document.getElementById('unitInputMagnitude');
+        const fromUnitCode = document.getElementById('unitFromType').value;
+        const targetUnitCode = document.getElementById('unitTargetType').value;
+        
+        const outputConsole = document.getElementById('unitConversionFinalConsole');
+
+        let inputMagnitude = parseFloat(inputMagnitudeInput.value);
+
+        if (isNaN(inputMagnitude) || !fromUnitCode || !targetUnitCode) {
+            outputConsole.innerText = "0.00";
+            document.getElementById('metricUnitDirectScalar').innerText = "0.00";
+            document.getElementById('metricUnitInverseRatio').innerText = "0.00";
+            return;
+        }
+
+        const activeCategory = DIMENSION_DATA_MATRIX[categoryKey];
+        let calculatedFinalMagnitude = 0;
+        let baselineReferenceScalar = 1;
+
+        // --- PATH A: THERMAL SHIFT ALGEBRA MODULES ---
+        if (categoryKey === "temperature") {
+            let tempInCelsius = 0;
+            
+            // Normalize current input to Celsius base anchor
+            if (fromUnitCode === "C") tempInCelsius = inputMagnitude;
+            else if (fromUnitCode === "F") tempInCelsius = (inputMagnitude - 32) * 5 / 9;
+            else if (fromUnitCode === "K") tempInCelsius = inputMagnitude - 273.15;
+
+            // Translate out to final destination unit codes
+            if (targetUnitCode === "C") calculatedFinalMagnitude = tempInCelsius;
+            else if (targetUnitCode === "F") calculatedFinalMagnitude = (tempInCelsius * 9 / 5) + 32;
+            else if (targetUnitCode === "K") calculatedFinalMagnitude = tempInCelsius + 273.15;
+
+            // Display flat indicative placeholders for non-linear constants ratios
+            document.getElementById('metricUnitDirectScalar').innerText = "Variable Shift";
+            document.getElementById('metricUnitInverseRatio').innerText = "Variable Shift";
+        } 
+        // --- PATH B: STANDARD LINEAR RATIO BALANCES MATRICES ---
+        else {
+            const sourceScalar = activeCategory.scalars[fromUnitCode];
+            const targetScalar = activeCategory.scalars[targetUnitCode];
+
+            // Compute equivalent value relative to standardized anchor core
+            let valueInAnchorBase = inputMagnitude * sourceScalar;
+            calculatedFinalMagnitude = valueInAnchorBase / targetScalar;
+
+            // Calculate directional indicator scalar metrics data rows
+            baselineReferenceScalar = sourceScalar / targetScalar;
+            let inverseReferenceRatio = targetScalar / sourceScalar;
+
+            document.getElementById('metricUnitDirectScalar').innerText = baselineReferenceScalar.toLocaleString(undefined, {maximumFractionDigits:6});
+            document.getElementById('metricUnitInverseRatio').innerText = inverseReferenceRatio.toLocaleString(undefined, {maximumFractionDigits:6});
+        }
+
+        // Output formatting trimmer execution
+        let processedStringOutput = Number(calculatedFinalMagnitude.toFixed(6));
+        outputConsole.innerText = processedStringOutput.toLocaleString(undefined, {maximumFractionDigits: 6});
+    }
+
+    function clearUnitConverterWorkspace() {
+        document.getElementById('unitInputMagnitude').value = "";
+        liveExecuteUnitConversions();
+    }
+
+    // Trigger configuration updates on DOM load cycle boundaries automatically
+    window.addEventListener('DOMContentLoaded', () => {
+        executeDimensionCategoryShift();
+    });
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
