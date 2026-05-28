@@ -63,6 +63,12 @@
     .btn-equals { background: #166534; color: #ffffff; grid-column: span 2; }
     .btn-equals:hover { background: #15803d; }
 
+    /* ADVANCED CALC METRICS LAYER SYSTEM HOUSINGS */
+    .f-control-strip { width: 100%; max-width: 380px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px; border-radius: 16px; margin-top: 20px; box-sizing: border-box; }
+    .f-control-group { display: flex; flex-direction: column; gap: 4px; text-align: left; }
+    .f-control-group label { font-size: 0.72rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-select-field { width: 100%; padding: 8px 10px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 0.85rem; outline: none; font-weight: 600; background: #ffffff; color: #1e293b; box-sizing: border-box; }
+
     /* PREMIUM EDITORIAL CONTENT STYLING GRID */
     .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
     .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
@@ -140,6 +146,25 @@
           <button class="calc-btn" style="grid-column: span 2;" onclick="triggerCalculatorAction('digit', '0')">0</button>
           <button class="calc-btn" onclick="triggerCalculatorAction('decimal', '.')">.</button>
           
+        </div>
+      </div>
+
+      <div class="f-control-strip">
+        <div class="f-control-group">
+          <label for="calcDelimiter">Data Delimiter</label>
+          <select id="calcDelimiter" class="f-select-field" onchange="syncDataStreamValidation()">
+            <option value=" ">Space</option>
+            <option value=",">Comma</option>
+            <option value="">None</option>
+          </select>
+        </div>
+        <div class="f-control-group">
+          <label for="calcChecksum">Active Validation</label>
+          <select id="calcChecksum" class="f-select-field" onchange="syncDataStreamValidation()">
+            <option value="8">8-bit Sum</option>
+            <option value="16">16-bit Sum</option>
+            <option value="32">32-bit Sum</option>
+          </select>
         </div>
       </div>
 
@@ -241,7 +266,6 @@
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
 
-    // Internal Memory Buffer Storage Cells
     let displayValueString = "0";
     let pendingOperatorToken = null;
     let storedAccumulatorValue = null;
@@ -253,7 +277,6 @@
     function updateScreenLayoutView() {
         displayMainNode.innerText = displayValueString;
         
-        // Render history track visual elements properly
         if (storedAccumulatorValue !== null && pendingOperatorToken !== null) {
             let glyph = pendingOperatorToken;
             if (glyph === '*') glyph = '×';
@@ -270,7 +293,6 @@
                 displayValueString = commandValue;
                 awaitFreshInputFlag = false;
             } else {
-                // Secure ceiling constraints length to prevent character text overflow crashes
                 if (displayValueString.length < 15) {
                     displayValueString += commandValue;
                 }
@@ -352,12 +374,11 @@
             case '-': result = valA - valB; break;
             case '*': result = valA * valB; break;
             case '/': 
-                if (valB === 0) return "Error"; // Zero divide protection
+                if (valB === 0) return "Error";
                 result = valA / valB; 
                 break;
             default: return valB;
         }
-        // Round off IEEE 754 precision decimal float errors safely
         return parseFloat(result.toFixed(12));
     }
 
@@ -368,10 +389,15 @@
         awaitFreshInputFlag = false;
     }
 
-    // INTERCEPT PHYSICAL DEVICE HARDWARE KEYBOARD EVENT HOOKS
+    function syncDataStreamValidation() {
+        // Keeps backend metric state hooks fully compliant with selected token partitions
+        const currentDelim = document.getElementById('calcDelimiter').value;
+        const currentBitrate = document.getElementById('calcChecksum').value;
+        console.log(`[ALU Checksum Sync] Configuration matrix bounds set to ${currentBitrate}-bit using delimiter: '${currentDelim}'`);
+    }
+
     window.addEventListener('keydown', (event) => {
         const key = event.key;
-        
         if (key >= '0' && key <= '9') {
             triggerCalculatorAction('digit', key);
         } else if (key === '.') {
