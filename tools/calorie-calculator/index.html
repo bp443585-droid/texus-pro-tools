@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Calorie Calculator Online | Free Daily Caloric Needs Tool</title>
+  <meta name="description" content="Calculate your daily calorie needs for weight loss, maintenance, or weight gain instantly. Includes precise macro distribution splits with zero desktop scrolling." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/calorie-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Advanced Calorie Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "A comprehensive nutritional mathematics engine calculating total daily energy requirements and macronutrient mass distributions inside a single screen layout.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1050px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .f-heading span { font-size: 2.2rem; }
+    
+    /* MASTER CARD DESKTOP VIEWPORT-LOCKED SYSTEM */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 28px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02), 0 8px 16px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; display: flex; gap: 32px; width: 100%; align-items: stretch; }
+    
+    /* HIGH PERFORMANCE STRUCTURAL COLUMN SPLITS */
+    .input-column { flex: 1; width: 44%; display: flex; flex-direction: column; justify-content: flex-start; box-sizing: border-box; border-right: 1px solid #e2e8f0; padding-right: 28px; }
+    .output-column { flex: 1; width: 56%; display: flex; box-sizing: border-box; padding-left: 28px; }
+
+    /* COMPACT INPUT CONTROL SYSTEM COMPONENTS */
+    .input-box-group { display: flex; flex-direction: column; gap: 6px; text-align: left; margin-bottom: 12px; width: 100%; box-sizing: border-box; }
+    .input-box-group label { font-size: 0.75rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-num-input { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1.02rem; font-family: 'Inter', sans-serif; color: #0f172a; outline: none; transition: all 0.2s ease; background: #f8fafc; box-sizing: border-box; font-weight: 600; }
+    .f-num-input:focus { border-color: #2563eb; background: #ffffff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.06); }
+    
+    .f-select-field { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 0.95rem; font-family: 'Inter', sans-serif; outline: none; font-weight: 600; background: #ffffff; color: #0f172a; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; }
+    .f-select-field:focus { border-color: #2563eb; }
+
+    /* FLEX CONTROL CONFIG ROWS */
+    .compact-inline-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+    .imperial-height-row { display: none; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+    .metric-height-row { display: block; width: 100%; }
+
+    /* ACTION CONTROLS TIMELINE STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 4px; width: 100%; }
+    .f-btn { font-weight: 700; padding: 11px 18px; border-radius: 12px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; width: 95px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* LUXURY RE-DESIGNED CLEAN LIGHT LABELS COUPLINGS */
+    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; gap: 16px; }
+    .main-breakdown-title { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
+    .main-breakdown-value { font-size: 2.2rem; font-weight: 800; color: #0f172a; line-height: 1.1; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; font-family: 'Inter', sans-serif; letter-spacing: -0.5px; }
+    
+    /* MODERN INTERACTIVE CALORIE GOALS STRUCTURE TABLE */
+    .activity-matrix-table { width: 100%; border-collapse: collapse; margin-top: 4px; font-family: 'Inter', sans-serif; }
+    .activity-matrix-table tr { border-bottom: 1px solid #e2e8f0; }
+    .activity-matrix-table tr:last-child { border-bottom: none; }
+    .activity-matrix-table td { padding: 9px 6px; font-size: 0.88rem; color: #334155; vertical-align: middle; }
+    .activity-matrix-table td.matrix-val-cell { text-align: right; font-weight: 700; color: #2563eb; font-size: 1rem; width: 110px; white-space: nowrap; }
+    .matrix-lbl-title { font-weight: 600; color: #0f172a; display: block; margin-bottom: 1px; }
+    .matrix-lbl-desc { font-size: 0.76rem; color: #64748b; display: block; }
+    
+    /* MACRONUTRIENT DISTRIBUTION BLUEPRINT SUB-GRID */
+    .stats-matrix-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; margin-top: 4px; border-top: 1px dashed #cbd5e1; padding-top: 12px; }
+    .stat-metric-card { background: #ffffff; padding: 10px 12px; border-radius: 10px; border: 1px solid #e2e8f0; box-sizing: border-box; text-align: center; }
+    .stat-metric-label { font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+    .stat-metric-val { font-size: 1.1rem; font-weight: 700; color: #1e293b; font-family: 'Inter', sans-serif; }
+    
+    .accent-blue { color: #2563eb !important; }
+    .accent-green { color: #16a34a !important; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 35px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+
+    /* RESPONSIVE FLUID LAYOUT OVERRIDES (ADAPTIVE PHONE CONFIGURATIONS) */
+    @media (max-width: 768px) {
+      .f-card { display: block; padding: 20px; border-radius: 20px; }
+      .input-column { display: block; width: 100%; padding-right: 0; border-right: none; margin-bottom: 18px; }
+      .output-column { display: block; width: 100%; padding-left: 0; }
+      .imperial-height-row, .compact-inline-row { gap: 10px; }
+      .stats-matrix-grid { grid-template-columns: 1fr; gap: 8px; }
+      .result-display-panel { padding: 20px; gap: 16px; }
+      .main-breakdown-value { font-size: 1.75rem; padding-bottom: 10px; }
+      .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🔥</span> Calorie Calculator</div>
+    
+    <div class="f-card">
+      
+      <div class="input-column">
+        
+        <div class="compact-inline-row">
+          <div class="input-box-group">
+            <label>Age (Years)</label>
+            <input type="number" id="calAge" class="f-num-input" value="25" min="15" max="110" oninput="liveExecuteCalorieCalculations()" />
+          </div>
+          <div class="input-box-group">
+            <label for="calGender">Gender</label>
+            <select id="calGender" class="f-select-field" onchange="liveExecuteCalorieCalculations()">
+              <option value="male" selected>Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="compact-inline-row">
+          <div class="input-box-group">
+            <label for="calUnitSystem">Unit System</label>
+            <select id="calUnitSystem" class="f-select-field" onchange="executeCalorieSystemToggleShift()">
+              <option value="metric" selected>Metric (kg / cm)</option>
+              <option value="imperial">Imperial (lbs / ft-in)</option>
+            </select>
+          </div>
+          <div class="input-box-group">
+            <label for="calActivityLevel">Activity Layer</label>
+            <select id="calActivityLevel" class="f-select-field" onchange="liveExecuteCalorieCalculations()">
+              <option value="1.2" selected>Sedentary (Desk Job)</option>
+              <option value="1.375">Light Activity (1-3 days/wk)</option>
+              <option value="1.55">Moderate Activity (3-5 days/wk)</option>
+              <option value="1.725">Active Intensity (6-7 days/wk)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-box-group">
+          <label id="calWeightLabel">Weight (Kilograms)</label>
+          <input type="number" id="calWeight" class="f-num-input" value="70" min="0" step="any" oninput="liveExecuteCalorieCalculations()" />
+        </div>
+
+        <div id="calMetricHeightWrapper" class="metric-height-row">
+          <div class="input-box-group">
+            <label>Height (Centimeters)</label>
+            <input type="number" id="calHeightCm" class="f-num-input" value="175" min="0" step="any" oninput="liveExecuteCalorieCalculations()" />
+          </div>
+        </div>
+
+        <div id="calImperialHeightWrapper" class="imperial-height-row">
+          <div class="input-box-group">
+            <label>Height (Feet)</label>
+            <input type="number" id="calHeightFt" class="f-num-input" value="5" min="0" max="9" oninput="liveExecuteCalorieCalculations()" />
+          </div>
+          <div class="input-box-group">
+            <label>Height (Inches)</label>
+            <input type="number" id="calHeightIn" class="f-num-input" value="9" min="0" max="11" oninput="liveExecuteCalorieCalculations()" />
+          </div>
+        </div>
+
+        <div class="f-action-strip">
+          <button class="f-btn f-btn-clear" onclick="clearCalorieWorkspaceFields()">Clear</button>
+        </div>
+      </div>
+
+      <div class="output-column">
+        <div class="result-display-panel">
+          <div>
+            <div class="main-breakdown-title">⏳ Weight Maintenance Target (TDEE Baseline)</div>
+            <div id="calMaintenanceConsoleValue" class="main-breakdown-value">0 kcal / day</div>
+          </div>
+          
+          <div>
+            <div class="main-breakdown-title">🎯 Caloric Blueprints Across Body Goals</div>
+            <table class="activity-matrix-table">
+              <tr>
+                <td>
+                  <span class="matrix-lbl-title">Mild Weight Loss</span>
+                  <span class="matrix-lbl-desc">Slow structural deficit (−0.25 kg/wk)</span>
+                </td>
+                <td id="cellGoalMildLoss" class="matrix-val-cell accent-blue">0 kcal</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="matrix-lbl-title">Standard Weight Loss</span>
+                  <span class="matrix-lbl-desc">Optimal metabolic deficit (−0.50 kg/wk)</span>
+                </td>
+                <td id="cellGoalWeightLoss" class="matrix-val-cell accent-blue">0 kcal</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="matrix-lbl-title">Mild Weight Gain</span>
+                  <span class="matrix-lbl-desc">Lean mass muscle surplus (+0.25 kg/wk)</span>
+                </td>
+                <td id="cellGoalMildGain" class="matrix-val-cell accent-green">0 kcal</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="matrix-lbl-title">Standard Weight Gain</span>
+                  <span class="matrix-lbl-desc">Caloric loading phase (+0.50 kg/wk)</span>
+                </td>
+                <td id="cellGoalWeightGain" class="matrix-val-cell accent-green">0 kcal</td>
+              </tr>
+            </table>
+          </div>
+
+          <div>
+            <div class="main-breakdown-title" style="margin-bottom: 4px;">🥗 Maintenance Macronutrient Splits (40/30/30 Blueprint)</div>
+            <div class="stats-matrix-grid">
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Carbs (40%)</div>
+                <div id="macroCarbsMetric" class="stat-metric-val">0g</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Protein (30%)</div>
+                <div id="macroProteinMetric" class="stat-metric-val" style="color: #2563eb;">0g</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Fats (30%)</div>
+                <div id="macroFatsMetric" class="stat-metric-val">0g</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <article class="seo-container">
+      <h1 class="seo-title">The Thermodynamics of Nutritional Kinetics: Total Daily Energy Expenditure (TDEE), Metabolic Mass Co-Efficients, and Macronutrient Matrix Conversions</h1>
+      <p class="seo-p">Configuring precise nutritional training paradigms, developing clinical dietary software systems, or compiling metabolic analytics dashboards inside distributed health platforms requires an error-free processing framework. Biological energy transformations comply with the fundamental laws of thermodynamics, where systemic mass reductions occur solely when absolute kinetic output values consistently surpass caloric input boundaries. Utilizing a browser-native <strong>calorie calculator online</strong> removes transaction processing overheads, computing personal intake structures locally inside a single viewport layout flawlessly.</p>
+      <p class="seo-p">This extensive guide breaks down the algebraic equations that determine human energy utilization thresholds, analyses activity multiplier constants relative to total direct expenditure, patterns layout optimization constraints, and delivers steps to secure client-side calculation sandboxes securely.</p>
+
+      <div class="seo-callout">
+        <strong>The Law of Energy Balance Equilibrium:</strong> Total Daily Energy Expenditure (TDEE) is structured by compounding separate systemic factors: Basal Metabolic Rate (BMR), the Thermic Effect of Food (TEF) parsing processing loops, and the energy demands of physical movement via deliberate exercise and Non-Exercise Activity Thermogenesis (NEAT).
+      </div>
+
+      <h2 class="seo-h2">1. Theoretical Framework: From Caloric Physics to Invariant Human Biology</h2>
+      <p class="seo-p">The evaluation of nutritional energy metrics dates back to early metabolic respiration tracking pipelines organized in the late 19th century by German physiologists. Early calorimeters measured physical energy releases by tracking heat parameters inside fully insulated water tanks, allowing research teams to isolate the exact thermal energy needed to increase one gram of water by one degree Celsius. Transforming these mechanical heat metrics into physiological evaluation guidelines enabled healthcare fields to track energetic deficits securely across broad demographic cohorts.</p>
+      <p class="seo-p">Modern sports science platforms compute foundational basal equations combined with precise macro allocations simultaneously to optimize muscle retention frameworks. To deliver this complex information grid without vertical screen disruption, developers utilize compact side-by-side flexbox grids that coordinate input cells and energy output balance sheets on one dashboard canvas screen layout cleanly.</p>
+
+      <h3>The Statutory Mathematical Reference: Macronutrient Caloric Equivalents</h3>
+      <p class="seo-p">Reviewing the technical thermodynamic mass parameters running macro conversion logic loops allows database software developers to structure error-free nutritional breakdown calculations:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Macronutrient Classification Group</th>
+              <th>Caloric Value Density Constant (per Gram)</th>
+              <th>Standard Blueprint Distribution Allocation Ratio</th>
+              <th>Primary Physiological Execution Objective Inside Body Cells</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Carbohydrates (Saccharides)</td>
+              <td>4 kcal / g</td>
+              <td>40% of Total Calorie Targets</td>
+              <td>Supplies immediate glucose payloads to fuel skeletal muscle cells and maintain central nervous system functions.</td>
+            </tr>
+            <tr>
+              <td>Proteins (Amino Acid Chains)</td>
+              <td>4 kcal / g</td>
+              <td>30% of Total Calorie Targets</td>
+              <td>Drives structural myofibrillar protein synthesis loops, repairing damaged muscle fibers post exercise.</td>
+            </tr>
+            <tr>
+              <td>Fats (Triglyceride Lipids)</td>
+              <td>9 kcal / g</td>
+              <td>30% of Total Calorie Targets</td>
+              <td>Regulates critical corporate endocrine signaling vectors, supports cellular boundary walls, and absorbs fat-soluble vitamins.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="seo-h2">2. Algorithmic Deep Dive: Single-Viewport Energy Slicing Mechanics</h2>
+      <p class="seo-p">When gross biometric inputs enter the system fields, the local calculation script routes variables across distinct processing branches inside device cache memories:</p>
+
+      <h4 class="seo-h3">A. Mifflin-St Jeor Basal Equation Execution</h4>
+      <p class="seo-p">The program standardizes incoming weight and height variables into metric units ($W_{\text{kg}}$ and $H_{\text{cm}}$), then executes the baseline metabolic regression equations relative to gender identification constants:</p>
+      <div class="seo-math-box">\text{BMR}_{\text{male}} = 10W + 6.25H - 5A + 5 \quad \cap \quad \text{BMR}_{\text{female}} = 10W + 6.25H - 5A - 161</div>
+
+      <h4 class="seo-h3">B. TDEE Activity Scaling and Deficit Vector Multipliers</h4>
+      <p class="seo-p">Once baseline BMR is established, the script injects the active lifestyle activity modifier to produce the total maintenance benchmark ($\text{TDEE} = \text{BMR} \times \text{Factor}_{\text{activity}}$). To determine body adaptation goals, the system runs explicit calorie deductions or surcharges:</p>
+      <div class="seo-math-box">\text{Standard Loss Calorie Target} = \text{TDEE} - 500 \quad \cap \quad \text{Standard Gain Calorie Target} = \text{TDEE} + 500</div>
+
+      <h4 class="seo-h3">C. Macronutrient Gram Distribution Analysis</h4>
+      <p class="seo-p">The final layer maps the baseline TDEE calories into mass targets, allocating 40% to carbohydrates ($\text{Grams} = \text{Calories} \times 0.40 \div 4$), 30% to proteins ($\text{Grams} = \text{Calories} \times 0.30 \div 4$), and 30% to structural lipids ($\text{Grams} = \text{Calories} \times 0.30 \div 9$), rendering the data smoothly on screen.</p>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why do some online nutritional trackers force massive page scrolling on smartphones?</h3>
+      <p class="seo-p">Many old platforms structure input select menus inside long vertical blocks that push goal summary lists beneath the visible screen line on small displays. Our compact design utilizes space-efficient flex distributions to keep inputs and target calorie tables entirely visible simultaneously at a single glance.</p>
+
+      <h3>Does this calorie calculation framework log private user metrics or transfer dietary history logs?</h3>
+      <p class="seo-p">No. To ensure 100% data anonymity and protect private nutritional metrics, the entire script compiles locally within your device browser environment memory cache files. No data parameters cross external server channels.</p>
+
+      <h3>Summary: Strategic Best Practices for Nutritional Planning Interfaces</h3>
+      <p class="seo-p">To optimize performance across automated direct data systems, enforce clear numeric boundaries inside input validation cells before executing calculation arrays. Use dedicated monospaced or highly readable font styles to present currency metrics clearly, manage header weights cleanly, and apply active live listeners to keep tracking loops responsive.</p>
+      <p class="seo-p">Our Advanced Viewport-Locked Real-Time Calorie Calculator Console automates these operational tracking loops instantly, delivering clean energetic balances across desktop and smartphone monitors flawlessly.</p>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function executeCalorieSystemToggleShift() {
+        const systemMode = document.getElementById('calUnitSystem').value;
+        const weightLabel = document.getElementById('calWeightLabel');
+        const weightInput = document.getElementById('calWeight');
+        
+        const metricHeightBox = document.getElementById('calMetricHeightWrapper');
+        const imperialHeightBox = document.getElementById('calImperialHeightWrapper');
+
+        if (systemMode === 'metric') {
+            weightLabel.innerText = "Weight (Kilograms)";
+            weightInput.value = "70";
+            metricHeightBox.style.display = "block";
+            imperialHeightBox.style.display = "none";
+        } else {
+            weightLabel.innerText = "Weight (Pounds)";
+            weightInput.value = "154";
+            metricHeightBox.style.display = "none";
+            imperialHeightBox.style.display = "grid";
+        }
+        liveExecuteCalorieCalculations();
+    }
+
+    function liveExecuteCalorieCalculations() {
+        const systemMode = document.getElementById('calUnitSystem').value;
+        const rawWeight = parseFloat(document.getElementById('calWeight').value);
+        const age = parseInt(document.getElementById('calAge').value, 10);
+        const gender = document.getElementById('calGender').value;
+        const activityFactor = parseFloat(document.getElementById('calActivityLevel').value);
+        
+        const maintenanceConsoleValue = document.getElementById('calMaintenanceConsoleValue');
+
+        if (isNaN(rawWeight) || rawWeight <= 0 || isNaN(age) || age <= 0) {
+            resetCalorieDisplayLabelsToZero();
+            return;
+        }
+
+        let weightKg = 0;
+        let heightCm = 0;
+
+        // --- PATH A: METRIC VALUES PARSING MATRIX ---
+        if (systemMode === 'metric') {
+            const heightCmRaw = parseFloat(document.getElementById('calHeightCm').value);
+            if (isNaN(heightCmRaw) || heightCmRaw <= 0) {
+                resetCalorieDisplayLabelsToZero();
+                return;
+            }
+            weightKg = rawWeight;
+            heightCm = heightCmRaw;
+        } 
+        // --- PATH B: IMPERIAL VALUES PARSING MATRIX ---
+        else {
+            const heightFt = parseFloat(document.getElementById('calHeightFt').value) || 0;
+            const heightIn = parseFloat(document.getElementById('calHeightIn').value) || 0;
+            
+            if (heightFt <= 0 && heightIn <= 0) {
+                resetCalorieDisplayLabelsToZero();
+                return;
+            }
+            weightKg = rawWeight * 0.45359237;
+            let totalInches = (heightFt * 12) + heightIn;
+            heightCm = totalInches * 2.54;
+        }
+
+        // --- CORE ALGEBRAIC EQUATION: MIFFLIN-ST JEOR BASELINE ---
+        let bmrBaseValue = 0;
+        if (gender === 'male') {
+            bmrBaseValue = (10 * weightKg) + (6.25 * heightCm) - (5 * age) + 5;
+        } else {
+            bmrBaseValue = (10 * weightKg) + (6.25 * heightCm) - (5 * age) - 161;
+        }
+
+        if (bmrBaseValue < 0) bmrBaseValue = 0;
+
+        // Apply dynamic active operational multipliers
+        let totalMaintenanceTdee = bmrBaseValue * activityFactor;
+
+        // Establish relative target deficit bounds parameters
+        let mildWeightLossCal = totalMaintenanceTdee - 300;
+        let standardWeightLossCal = totalMaintenanceTdee - 500;
+        let mildWeightGainCal = totalMaintenanceTdee + 300;
+        let standardWeightGainCal = totalMaintenanceTdee + 500;
+
+        // Direct floor validation checks to prevent negative values in crazy extreme entries
+        if (mildWeightLossCal < 1000) mildWeightLossCal = 1000;
+        if (standardWeightLossCal < 1000) standardWeightLossCal = 1000;
+
+        // Render main goal numbers blocks cleanly to screen elements
+        maintenanceConsoleValue.innerText = `${Math.round(totalMaintenanceTdee).toLocaleString()} kcal / day`;
+        
+        document.getElementById('cellGoalMildLoss').innerText = `${Math.round(mildWeightLossCal).toLocaleString()} kcal`;
+        document.getElementById('cellGoalWeightLoss').innerText = `${Math.round(standardWeightLossCal).toLocaleString()} kcal`;
+        document.getElementById('cellGoalMildGain').innerText = `${Math.round(mildWeightGainCal).toLocaleString()} kcal`;
+        document.getElementById('cellGoalWeightGain').innerText = `${Math.round(standardWeightGainCal).toLocaleString()} kcal`;
+
+        // --- RE-EVALUATE MACRONUTRIENT DISTRIBUTION GRAPH LEDGER ROWS ---
+        // Based on a highly balanced 40% Carbs, 30% Protein, 30% Fats clinical framework
+        let carbGrams = (totalMaintenanceTdee * 0.40) / 4;
+        let proteinGrams = (totalMaintenanceTdee * 0.30) / 4;
+        let fatGrams = (totalMaintenanceTdee * 0.30) / 9;
+
+        document.getElementById('macroCarbsMetric').innerText = `${Math.round(carbGrams)}g`;
+        document.getElementById('macroProteinMetric').innerText = `${Math.round(proteinGrams)}g`;
+        document.getElementById('macroFatsMetric').innerText = `${Math.round(fatGrams)}g`;
+    }
+
+    function resetCalorieDisplayLabelsToZero() {
+        document.getElementById('calMaintenanceConsoleValue').innerText = "0 kcal / day";
+        document.getElementById('cellGoalMildLoss').innerText = "0 kcal";
+        document.getElementById('cellGoalWeightLoss').innerText = "0 kcal";
+        document.getElementById('cellGoalMildGain').innerText = "0 kcal";
+        document.getElementById('cellGoalWeightGain').innerText = "0 kcal";
+        document.getElementById('macroCarbsMetric').innerText = "0g";
+        document.getElementById('macroProteinMetric').innerText = "0g";
+        document.getElementById('macroFatsMetric').innerText = "0g";
+    }
+
+    function clearCalorieWorkspaceFields() {
+        document.getElementById('calWeight').value = "";
+        document.getElementById('calHeightCm').value = "";
+        document.getElementById('calHeightFt').value = "";
+        document.getElementById('calHeightIn').value = "";
+        document.getElementById('calAge').value = "25";
+        resetCalorieDisplayLabelsToZero();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        liveExecuteCalorieCalculations();
+    });
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
