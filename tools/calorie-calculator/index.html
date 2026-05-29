@@ -33,8 +33,8 @@
   <style>
     /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
     .f-wrapper { width: 100%; max-width: 1050px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
-    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
-    .f-heading span { font-size: 2.2rem; }
+    .page-main-title { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .page-main-title span { font-size: 2.2rem; }
     
     /* MASTER CARD DESKTOP VIEWPORT-LOCKED SYSTEM */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 28px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02), 0 8px 16px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; display: flex; gap: 32px; width: 100%; align-items: stretch; }
@@ -59,13 +59,29 @@
     .metric-height-row { display: block; width: 100%; }
 
     /* ACTION CONTROLS TIMELINE STRIP */
-    .f-action-strip { display: flex; gap: 12px; margin-top: 4px; width: 100%; }
+    .f-action-strip { display: flex; gap: 12px; margin-top: 4px; width: 100%; margin-bottom: 20px; }
     .f-btn { font-weight: 700; padding: 11px 18px; border-radius: 12px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; text-transform: uppercase; letter-spacing: 0.5px; }
     .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; width: 95px; }
     .f-btn-clear:hover { background: #fee2e2; }
 
+    /* --- PREMIUM PURE SVG DYNAMIC MACRO DONUT VISUALIZER (FILLS DEAD VERTICAL SPACE) --- */
+    .macro-chart-container { display: flex; align-items: center; justify-content: center; gap: 24px; width: 100%; margin-top: auto; padding-top: 15px; border-top: 1px dashed #cbd5e1; box-sizing: border-box; }
+    .macro-svg-box { position: relative; width: 120px; height: 120px; transform: rotate(-90deg); }
+    .macro-svg-box svg { width: 100%; height: 100%; }
+    .macro-circle-bg { fill: none; stroke: #f1f5f9; stroke-width: 14; }
+    .macro-circle-segment { fill: none; stroke-width: 14; stroke-linecap: round; transition: stroke-dasharray 0.35s ease-in-out; }
+    
+    /* Segment Base Color Schemes */
+    .seg-carbs { stroke: #94a3b8; }     /* Soft Slate Slate */
+    .seg-protein { stroke: #2563eb; }   /* Electric Indigo Blue */
+    .seg-fats { stroke: #cbd5e1; }      /* Muted Neutral light gray */
+    
+    .macro-chart-legend { display: flex; flex-direction: column; gap: 8px; }
+    .legend-item-row { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 600; color: #475569; }
+    .legend-dot-indicator { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
     /* LUXURY RE-DESIGNED CLEAN LIGHT LABELS COUPLINGS */
-    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; gap: 16px; }
+    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; gap: 18px; }
     .main-breakdown-title { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
     .main-breakdown-value { font-size: 2.2rem; font-weight: 800; color: #0f172a; line-height: 1.1; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; font-family: 'Inter', sans-serif; letter-spacing: -0.5px; }
     
@@ -106,11 +122,10 @@
       .f-card { display: block; padding: 20px; border-radius: 20px; }
       .input-column { display: block; width: 100%; padding-right: 0; border-right: none; margin-bottom: 18px; }
       .output-column { display: block; width: 100%; padding-left: 0; }
-      .imperial-height-row, .compact-inline-row { gap: 10px; }
-      .stats-matrix-grid { grid-template-columns: 1fr; gap: 8px; }
+      .macro-chart-container { margin-top: 20px; padding-bottom: 5px; }
       .result-display-panel { padding: 20px; gap: 16px; }
       .main-breakdown-value { font-size: 1.75rem; padding-bottom: 10px; }
-      .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
+      .page-main-title { font-size: 1.5rem; margin-bottom: 14px; }
     }
   </style>
 </head>
@@ -119,7 +134,7 @@
   <div id="site-header"></div>
 
   <main class="f-wrapper">
-    <div class="f-heading"><span>🔥</span> Calorie Calculator</div>
+    <div class="page-main-title"><span>🔥</span> Calorie Calculator</div>
     
     <div class="f-card">
       
@@ -184,6 +199,23 @@
         <div class="f-action-strip">
           <button class="f-btn f-btn-clear" onclick="clearCalorieWorkspaceFields()">Clear</button>
         </div>
+
+        <div class="macro-chart-container">
+          <div class="macro-svg-box">
+            <svg viewBox="0 0 100 100">
+              <circle class="macro-circle-bg" cx="50" cy="50" r="40" />
+              <circle id="ringCarbs" class="macro-circle-segment seg-carbs" cx="50" cy="50" r="40" />
+              <circle id="ringProtein" class="macro-circle-segment seg-protein" cx="50" cy="50" r="40" />
+              <circle id="ringFats" class="macro-circle-segment seg-fats" cx="50" cy="50" r="40" />
+            </svg>
+          </div>
+          <div class="macro-chart-legend">
+            <div class="legend-item-row"><span class="legend-dot-indicator" style="background:#94a3b8;"></span> Carbs (40%)</div>
+            <div class="legend-item-row"><span class="legend-dot-indicator" style="background:#2563eb;"></span> Protein (30%)</div>
+            <div class="legend-item-row"><span class="legend-dot-indicator" style="background:#cbd5e1;"></span> Fats (30%)</div>
+          </div>
+        </div>
+
       </div>
 
       <div class="output-column">
@@ -315,11 +347,11 @@
 
       <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
 
-      <h3>Why do some online nutritional trackers force massive page scrolling on smartphones?</h3>
+      <h3>Why do other online nutritional trackers force massive page scrolling on smartphones?</h3>
       <p class="seo-p">Many old platforms structure input select menus inside long vertical blocks that push goal summary lists beneath the visible screen line on small displays. Our compact design utilizes space-efficient flex distributions to keep inputs and target calorie tables entirely visible simultaneously at a single glance.</p>
 
       <h3>Does this calorie calculation framework log private user metrics or transfer dietary history logs?</h3>
-      <p class="seo-p">No. To ensure 100% data anonymity and protect private nutritional metrics, the entire script compiles locally within your device browser environment memory cache files. No data parameters cross external server channels.</p>
+      <p class="seo-p">No. To ensure 100% data anonymity and protect private nutritional metrics, the entire script compiles locally within your device browser environment memory cache files. No data parameters cross external server networks.</p>
 
       <h3>Summary: Strategic Best Practices for Nutritional Planning Interfaces</h3>
       <p class="seo-p">To optimize performance across automated direct data systems, enforce clear numeric boundaries inside input validation cells before executing calculation arrays. Use dedicated monospaced or highly readable font styles to present currency metrics clearly, manage header weights cleanly, and apply active live listeners to keep tracking loops responsive.</p>
@@ -379,7 +411,7 @@
         }
 
         let weightKg = 0;
-        let heightCm = 0;
+        let heightMeters = 0;
 
         // --- PATH A: METRIC VALUES PARSING MATRIX ---
         if (systemMode === 'metric') {
@@ -389,7 +421,7 @@
                 return;
             }
             weightKg = rawWeight;
-            heightCm = heightCmRaw;
+            heightMeters = heightCmRaw / 100;
         } 
         // --- PATH B: IMPERIAL VALUES PARSING MATRIX ---
         else {
@@ -402,15 +434,15 @@
             }
             weightKg = rawWeight * 0.45359237;
             let totalInches = (heightFt * 12) + heightIn;
-            heightCm = totalInches * 2.54;
+            heightMeters = (totalInches * 2.54) / 100;
         }
 
         // --- CORE ALGEBRAIC EQUATION: MIFFLIN-ST JEOR BASELINE ---
         let bmrBaseValue = 0;
         if (gender === 'male') {
-            bmrBaseValue = (10 * weightKg) + (6.25 * heightCm) - (5 * age) + 5;
+            bmrBaseValue = (10 * weightKg) + (6.25 * heightMeters * 100) - (5 * age) + 5;
         } else {
-            bmrBaseValue = (10 * weightKg) + (6.25 * heightCm) - (5 * age) - 161;
+            bmrBaseValue = (10 * weightKg) + (6.25 * heightMeters * 100) - (5 * age) - 161;
         }
 
         if (bmrBaseValue < 0) bmrBaseValue = 0;
@@ -424,7 +456,6 @@
         let mildWeightGainCal = totalMaintenanceTdee + 300;
         let standardWeightGainCal = totalMaintenanceTdee + 500;
 
-        // Direct floor validation checks to prevent negative values in crazy extreme entries
         if (mildWeightLossCal < 1000) mildWeightLossCal = 1000;
         if (standardWeightLossCal < 1000) standardWeightLossCal = 1000;
 
@@ -436,8 +467,7 @@
         document.getElementById('cellGoalMildGain').innerText = `${Math.round(mildWeightGainCal).toLocaleString()} kcal`;
         document.getElementById('cellGoalWeightGain').innerText = `${Math.round(standardWeightGainCal).toLocaleString()} kcal`;
 
-        // --- RE-EVALUATE MACRONUTRIENT DISTRIBUTION GRAPH LEDGER ROWS ---
-        // Based on a highly balanced 40% Carbs, 30% Protein, 30% Fats clinical framework
+        // --- RE-EVALUATE MACRONUTRIENT DISTRIBUTION ARCHITECTURE ---
         let carbGrams = (totalMaintenanceTdee * 0.40) / 4;
         let proteinGrams = (totalMaintenanceTdee * 0.30) / 4;
         let fatGrams = (totalMaintenanceTdee * 0.30) / 9;
@@ -445,6 +475,28 @@
         document.getElementById('macroCarbsMetric').innerText = `${Math.round(carbGrams)}g`;
         document.getElementById('macroProteinMetric').innerText = `${Math.round(proteinGrams)}g`;
         document.getElementById('macroFatsMetric').innerText = `${Math.round(fatGrams)}g`;
+
+        // --- INTERACTIVE ANCHORED SVG DONUT CHART STRIP CALCULATIONS ---
+        // Circumference baseline factor is exactly 2 * Math.PI * 40 = 251.2
+        const totalCircumference = 251.2;
+        
+        const rCarbs = document.getElementById('ringCarbs');
+        const rProtein = document.getElementById('ringProtein');
+        const rFats = document.getElementById('ringFats');
+
+        // Distribution ratios: Carbs=40% (length 100.48), Protein=30% (length 75.36), Fats=30% (length 75.36)
+        let strokeCarbs = totalCircumference * 0.40;
+        let strokeProtein = totalCircumference * 0.30;
+        let strokeFats = totalCircumference * 0.30;
+
+        rCarbs.style.strokeDasharray = `${strokeCarbs} ${totalCircumference}`;
+        rCarbs.style.strokeDashoffset = "0";
+
+        rProtein.style.strokeDasharray = `${strokeProtein} ${totalCircumference}`;
+        rProtein.style.strokeDashoffset = `-${strokeCarbs}`;
+
+        rFats.style.strokeDasharray = `${strokeFats} ${totalCircumference}`;
+        rFats.style.strokeDashoffset = `-${strokeCarbs + strokeProtein}`;
     }
 
     function resetCalorieDisplayLabelsToZero() {
@@ -456,6 +508,10 @@
         document.getElementById('macroCarbsMetric').innerText = "0g";
         document.getElementById('macroProteinMetric').innerText = "0g";
         document.getElementById('macroFatsMetric').innerText = "0g";
+        
+        document.getElementById('ringCarbs').style.strokeDasharray = "0 251.2";
+        document.getElementById('ringProtein').style.strokeDasharray = "0 251.2";
+        document.getElementById('ringFats').style.strokeDasharray = "0 251.2";
     }
 
     function clearCalorieWorkspaceFields() {
