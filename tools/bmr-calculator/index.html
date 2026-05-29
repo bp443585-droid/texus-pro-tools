@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>BMR Calculator Online | Free Basal Metabolic Rate Tool</title>
+  <meta name="description" content="Calculate your Basal Metabolic Rate (BMR) and daily calorie needs instantly. Compare Mifflin-St Jeor and Harris-Benedict formulas with zero desktop scrolling." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/bmr-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Compact BMR Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced physiological metabolic calculation engine processing basal calorie thresholds and TDEE factor vectors flawlessly inside a single view layout.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1050px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .f-heading span { font-size: 2.2rem; }
+    
+    /* MASTER CARD DESKTOP VIEWPORT-LOCKED SYSTEM */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 28px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02), 0 8px 16px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; display: flex; gap: 32px; width: 100%; align-items: stretch; }
+    
+    /* HIGH PERFORMANCE STRUCTURAL COLUMN SPLITS */
+    .input-column { flex: 1; width: 48%; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; border-right: 1px solid #e2e8f0; padding-right: 28px; }
+    .output-column { flex: 1; width: 52%; display: flex; box-sizing: border-box; padding-left: 28px; }
+
+    /* COMPACT INPUT CONTROL SYSTEM COMPONENTS */
+    .input-box-group { display: flex; flex-direction: column; gap: 6px; text-align: left; margin-bottom: 12px; width: 100%; }
+    .input-box-group label { font-size: 0.75rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-num-input { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1.02rem; font-family: 'Inter', sans-serif; color: #0f172a; outline: none; transition: all 0.2s ease; background: #f8fafc; box-sizing: border-box; font-weight: 600; }
+    .f-num-input:focus { border-color: #2563eb; background: #ffffff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.06); }
+    
+    .f-select-field { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 0.95rem; font-family: 'Inter', sans-serif; outline: none; font-weight: 600; background: #ffffff; color: #0f172a; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; }
+    .f-select-field:focus { border-color: #2563eb; }
+
+    /* FLEX CONTROL CONFIG ROWS */
+    .compact-inline-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+    .imperial-height-row { display: none; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+    .metric-height-row { display: block; width: 100%; }
+
+    /* ACTION CONTROLS TIMELINE STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 4px; width: 100%; }
+    .f-btn { font-weight: 700; padding: 11px 18px; border-radius: 12px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; width: 95px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* LUXURY RE-DESIGNED CLEAN LIGHT LABELS COUPLINGS */
+    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; gap: 16px; }
+    .main-breakdown-title { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
+    .main-breakdown-value { font-size: 2.3rem; font-weight: 800; color: #0f172a; line-height: 1.1; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; font-family: 'Inter', sans-serif; letter-spacing: -0.5px; }
+    
+    .stats-matrix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
+    .stat-metric-card { background: #ffffff; padding: 12px 14px; border-radius: 12px; border: 1px solid #e2e8f0; box-sizing: border-box; }
+    .stat-metric-label { font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+    .stat-metric-val { font-size: 1.15rem; font-weight: 700; color: #1e293b; font-family: 'Inter', sans-serif; }
+    
+    .accent-blue { color: #2563eb !important; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 35px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+
+    /* RESPONSIVE FLUID LAYOUT OVERRIDES (ADAPTIVE PHONE CONFIGURATIONS) */
+    @media (max-width: 768px) {
+      .f-card { display: block; padding: 20px; border-radius: 20px; }
+      .input-column { display: block; width: 100%; padding-right: 0; border-right: none; margin-bottom: 18px; }
+      .output-column { display: block; width: 100%; padding-left: 0; }
+      .imperial-height-row, .compact-inline-row { gap: 10px; }
+      .result-display-panel { padding: 20px; gap: 16px; }
+      .main-breakdown-value { font-size: 1.75rem; padding-bottom: 10px; }
+      .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🔬</span> BMR Calculator</div>
+    
+    <div class="f-card">
+      
+      <div class="input-column">
+        
+        <div class="compact-inline-row">
+          <div class="input-box-group">
+            <label>Age (Years)</label>
+            <input type="number" id="bmrAge" class="f-num-input" value="25" min="15" max="110" oninput="liveExecuteBmrCalculations()" />
+          </div>
+          <div class="input-box-group">
+            <label for="bmrGender">Gender</label>
+            <select id="bmrGender" class="f-select-field" onchange="liveExecuteBmrCalculations()">
+              <option value="male" selected>Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="compact-inline-row">
+          <div class="input-box-group">
+            <label for="bmrUnitSystem">Unit System</label>
+            <select id="bmrUnitSystem" class="f-select-field" onchange="executeBmrSystemToggleShift()">
+              <option value="metric" selected>Metric (kg / cm)</option>
+              <option value="imperial">Imperial (lbs / ft-in)</option>
+            </select>
+          </div>
+          <div class="input-box-group">
+            <label for="bmrActivityLevel">Daily Activity</label>
+            <select id="bmrActivityLevel" class="f-select-field" onchange="liveExecuteBmrCalculations()">
+              <option value="1.2" selected>Sedentary (Office job)</option>
+              <option value="1.375">Lightly Active (1-3 days/wk)</option>
+              <option value="1.55">Moderately Active (3-5 days/wk)</option>
+              <option value="1.725">Very Active (6-7 heavy days/wk)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-box-group">
+          <label id="bmrWeightLabel">Weight (Kilograms)</label>
+          <input type="number" id="bmrWeight" class="f-num-input" value="70" min="0" step="any" oninput="liveExecuteBmrCalculations()" />
+        </div>
+
+        <div id="bmrMetricHeightWrapper" class="metric-height-row">
+          <div class="input-box-group">
+            <label>Height (Centimeters)</label>
+            <input type="number" id="bmrHeightCm" class="f-num-input" value="175" min="0" step="any" oninput="liveExecuteBmrCalculations()" />
+          </div>
+        </div>
+
+        <div id="bmrImperialHeightWrapper" class="imperial-height-row">
+          <div class="input-box-group">
+            <label>Height (Feet)</label>
+            <input type="number" id="bmrHeightFt" class="f-num-input" value="5" min="0" max="9" oninput="liveExecuteBmrCalculations()" />
+          </div>
+          <div class="input-box-group">
+            <label>Height (Inches)</label>
+            <input type="number" id="bmrHeightIn" class="f-num-input" value="9" min="0" max="11" oninput="liveExecuteBmrCalculations()" />
+          </div>
+        </div>
+
+        <div class="f-action-strip">
+          <button class="f-btn f-btn-clear" onclick="clearBmrWorkspaceFields()">Clear</button>
+        </div>
+      </div>
+
+      <div class="output-column">
+        <div class="result-display-panel">
+          <div>
+            <div class="main-breakdown-title">⏳ Basal Metabolic Rate (Mifflin-St Jeor Baseline)</div>
+            <div id="bmrPrimaryConsoleValue" class="main-breakdown-value">0 Calories / day</div>
+          </div>
+          
+          <div>
+            <div class="main-breakdown-title" style="margin-bottom: 6px;">📊 Total Energy Expenditure Allocation Sheet</div>
+            <div class="stats-matrix-grid">
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">TDEE Calorie Needs</div>
+                <div id="metricBmrTdeeValue" class="stat-metric-val accent-blue">0 kcal</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Harris-Benedict Alternate</div>
+                <div id="metricBmrHarrisValue" class="stat-metric-val">0 kcal</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Weight Maintenance</div>
+                <div id="metricBmrMaintenanceValue" class="stat-metric-val" style="color: #16a34a;">0 kcal</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Hourly Fasting Burn</div>
+                <div id="metricBmrHourlyBurnValue" class="stat-metric-val">0 kcal</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <article class="seo-container">
+      <h1 class="seo-title">The Thermodynamics of Human Metabolism: Basal Caloric Boundaries, Sexagesimal Cellular Respiration Multipliers, and TDEE Vector Formulations</h1>
+      <p class="seo-p">Auditing metabolic profiles, deploying sports nutrition tracking applications, or structuring clinical physiological calculation variables inside complex direct database blocks requires an error-free processing layout. Human biological energy pathways scale inside non-linear physical dimensions where basic arithmetic approximations cannot determine actual standard thermal thresholds safely. Utilizing an isolated, web-native <strong>bmr calculator online</strong> ensures rapid, reliable tracking variables, computing metabolic baselines locally inside a single viewport layout canvas smoothly.</p>
+      <p class="seo-p">This extensive bio-energetic compilation reviews the standard mathematical models running indirect metabolic tracking, parses specific operational multipliers across varying systemic daily stress loads, reviews design bounds, and models code practices to secure independent computing containers error-free.</p>
+
+      <div class="seo-callout">
+        <strong>The First Law of Metabolic Thermodynamics:</strong> Basal Metabolic Rate identifies the absolute structural minimum of thermal energy pool units required to support unconscious cellular execution pipelines (such as neural activity, cardiac contractions, and continuous respiratory cycles) while the body remains at complete resting homeostasis.
+      </div>
+
+      <h2 class="seo-h2">1. Theoretical Chronology: From Indirect Gas Colorimetry to Algebraic Slabs</h2>
+      <p class="seo-p">The human imperative to translate biological cell respiration metrics into explicit numeric indicators traces back to early 20th-century gas exchange frameworks pioneered by scientists like Francis Benedict. Early laboratory testing setups evaluated individual thermal performance factors manually by calculating oxygen consumption profiles inside sealed room environments, which required substantial operational latency to determine general metabolic speeds. In 1919, the classic Harris-Benedict study codified the initial structural regression equations, mapping metrics against distinct age, weight, and height variables.</p>
+      <p class="seo-p">To account for shifting lean body ratios across modern populations, medical research teams optimized calculation logic loops in 1990 via the Mifflin-St Jeor equation model. This formula offers higher accuracy thresholds for contemporary macro planning. Modern health portals present these compound formulas inside horizontal, side-by-side flex layouts to give users complete energetic insight on a single screen monitor instantly, avoiding vertical page jumps.</p>
+
+      <h3>The Statutory Mathematical Reference: Dual-Metabolic Equation Formulas</h3>
+      <p class="seo-p">Reviewing the technical direct algebraic equations running metabolic calculations enables software database engineers to construct flawless algorithmic validation paths:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Physiological Equation Target Block</th>
+              <th>Gender Identity Element</th>
+              <th>Primary Regression Equation Structure Constants Mapping</th>
+              <th>Primary Clinical Intention &amp; Precision Scope</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mifflin-St Jeor Standard (Default)</td>
+              <td>Male Vectors</td>
+              <td>$$\text{BMR} = 10 \times W_{\text{kg}} + 6.25 \times H_{\text{cm}} - 5 \times A_{\text{years}} + 5$$</td>
+              <td>Mainstream modern clinical reference model, offering precise fat-free mass correlation profiles.</td>
+            </tr>
+            <tr>
+              <td>Mifflin-St Jeor Standard (Default)</td>
+              <td>Female Vectors</td>
+              <td>$$\text{BMR} = 10 \times W_{\text{kg}} + 6.25 \times H_{\text{cm}} - 5 \times A_{\text{years}} - 161$$</td>
+              <td>Adjusts regression metrics downward to compensate for typical relative adipose distributions seamlessly.</td>
+            </tr>
+            <tr>
+              <td>Revised Harris-Benedict Model</td>
+              <td>Male Vectors</td>
+              <td>$$\text{BMR} = 13.397 \times W_{\text{kg}} + 4.799 \times H_{\text{cm}} - 5.677 \times A_{\text{years}} + 88.362$$</td>
+              <td>Alternative classic calculation layout option, useful for athletic tracking across larger muscular builds.</td>
+            </tr>
+            <tr>
+              <td>Revised Harris-Benedict Model</td>
+              <td>Female Vectors</td>
+              <td>$$\text{BMR} = 9.247 \times W_{\text{kg}} + 3.098 \times H_{\text{cm}} - 4.330 \times A_{\text{years}} + 447.593$$</td>
+              <td>Provides baseline verification checks across diverse tracking pools without execution anomalies.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="seo-h2">2. Algorithmic Deep Dive: Viewport-Locked Energy Allocation Matrices</h2>
+      <p class="seo-p">When raw body measurements pass through our compact validation panel, the script performs calculations across separate processing blocks inside device cache memories:</p>
+
+      <h4 class="seo-h3">A. Anthropometric Variable Conversion Phase</h4>
+      <p class="seo-p">The program captures the chosen system dropdown selection cell. If an Imperial parameter layout is tracked, the script executes precise multiplication filters to convert inputs into standard metric units ($W_{\text{kg}}$ and $H_{\text{cm}}$), avoiding floating data leaks:</p>
+      <div class="seo-math-box">W_{\text{kg}} = \text{Pounds} \times 0.45359237 \quad \cap \quad H_{\text{cm}} = (\text{Feet} \times 12 + \text{Inches}) \times 2.54</div>
+
+      <h4 class="seo-h3">B. The Dual-Formula Core Calculation Loop</h4>
+      <p class="seo-p">Once values are standardized, both processing tracks execute simultaneously. The script compiles the primary Mifflin-St Jeor value alongside the alternate Harris-Benedict regression, extracting precise calorie requirements without layout delays:</p>
+      <div class="seo-math-box">\text{BMR}_{\text{mifflin}} = 10W + 6.25H - 5A + \delta \quad \left[\text{where } \delta_{\text{male}} = 5, \ \delta_{\text{female}} = -161\right]</div>
+
+      <h4 class="seo-h3">C. TDEE Activity Scaling Vector Injection</h4>
+      <p class="seo-p">The final phase scales the baseline BMR by the chosen lifestyle activity coefficient ($\text{TDEE} = \text{BMR} \times \text{Factor}_{\text{activity}}$). This step evaluates daily maintenance parameters and displays the outputs across the light viewport dashboard cleanly.</p>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why do some metabolic calculators create page scrolling glitches on small touch monitors?</h3>
+      <p class="seo-p">Many platforms organize application controls within heavy vertical containers that push diagnostic results below the active screen boundary. Our compact layout implements space-efficient flex distributions to present inputs and calorie sheets simultaneously at a single glance.</p>
+
+      <h3>Does this BMR execution system monitor user metrics or transmit daily tracking profiles?</h3>
+      <p class="seo-p">No. To ensure 100% data anonymity and protect private health data parameters, all direct operations execute natively within your device browser environment memory cache files. No analytical data variables travel over external server networks.</p>
+
+      <h3>Summary: Strategic Best Practices for Physiological Data Audits</h3>
+      <p class="seo-p">To guarantee complete platform consistency, align text structures uniformly within the template layout grids to prevent unexpected block shifting on responsive displays. Use dedicated monospaced font styles to present currency metrics clearly, manage header weights cleanly, and apply active live listeners to keep tracking loops responsive.</p>
+      <p class="seo-p">Our Compact Viewport-Locked Basal Metabolic Rate Calculator Console automates these operational tracking loops instantly, delivering clean energetic balances across desktop and smartphone monitors flawlessly.</p>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header load fault:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer load fault:', err));
+
+    function executeBmrSystemToggleShift() {
+        const systemMode = document.getElementById('bmrUnitSystem').value;
+        const weightLabel = document.getElementById('bmrWeightLabel');
+        const weightInput = document.getElementById('bmrWeight');
+        
+        const metricHeightBox = document.getElementById('bmrMetricHeightWrapper');
+        const imperialHeightBox = document.getElementById('bmrImperialHeightWrapper');
+
+        if (systemMode === 'metric') {
+            weightLabel.innerText = "Weight (Kilograms)";
+            weightInput.value = "70";
+            metricHeightBox.style.display = "block";
+            imperialHeightBox.style.display = "none";
+        } else {
+            weightLabel.innerText = "Weight (Pounds)";
+            weightInput.value = "154";
+            metricHeightBox.style.display = "none";
+            imperialHeightBox.style.display = "grid";
+        }
+        liveExecuteBmrCalculations();
+    }
+
+    function liveExecuteBmrCalculations() {
+        const systemMode = document.getElementById('bmrUnitSystem').value;
+        const rawWeight = parseFloat(document.getElementById('bmrWeight').value);
+        const age = parseInt(document.getElementById('bmrAge').value, 10);
+        const gender = document.getElementById('bmrGender').value;
+        const activityMultiplier = parseFloat(document.getElementById('bmrActivityLevel').value);
+        
+        const primaryConsoleValue = document.getElementById('bmrPrimaryConsoleValue');
+
+        if (isNaN(rawWeight) || rawWeight <= 0 || isNaN(age) || age <= 0) {
+            resetBmrDisplayFieldsToZero();
+            return;
+        }
+
+        let weightKg = 0;
+        let heightCm = 0;
+
+        // --- PATH A: METRIC DATA INPUT COMPILATION ---
+        if (systemMode === 'metric') {
+            const heightCmRaw = parseFloat(document.getElementById('bmrHeightCm').value);
+            if (isNaN(heightCmRaw) || heightCmRaw <= 0) {
+                resetBmrDisplayFieldsToZero();
+                return;
+            }
+            weightKg = rawWeight;
+            heightCm = heightCmRaw;
+        } 
+        // --- PATH B: IMPERIAL DATA INPUT COMPILATION ---
+        else {
+            const heightFt = parseFloat(document.getElementById('bmrHeightFt').value) || 0;
+            const heightIn = parseFloat(document.getElementById('bmrHeightIn').value) || 0;
+            
+            if (heightFt <= 0 && heightIn <= 0) {
+                resetBmrDisplayFieldsToZero();
+                return;
+            }
+            weightKg = rawWeight * 0.45359237;
+            let totalInches = (heightFt * 12) + heightIn;
+            heightCm = totalInches * 2.54;
+        }
+
+        // --- EQUATION PHASE 1: MIFFLIN-ST JEOR FORMULA ---
+        let bmrMifflin = 0;
+        if (gender === 'male') {
+            bmrMifflin = (10 * weightKg) + (6.25 * heightCm) - (5 * age) + 5;
+        } else {
+            bmrMifflin = (10 * weightKg) + (6.25 * heightCm) - (5 * age) - 161;
+        }
+
+        // --- EQUATION PHASE 2: REVISED HARRIS-BENEDICT FORMULA ---
+        let bmrHarris = 0;
+        if (gender === 'male') {
+            bmrHarris = (13.397 * weightKg) + (4.799 * heightCm) - (5.677 * age) + 88.362;
+        } else {
+            bmrHarris = (9.247 * weightKg) + (3.098 * heightCm) - (4.330 * age) + 447.593;
+        }
+
+        if (bmrMifflin < 0) bmrMifflin = 0;
+        if (bmrHarris < 0) bmrHarris = 0;
+
+        // Compute auxiliary metabolic metrics
+        let calculatedTdee = bmrMifflin * activityMultiplier;
+        let hourlyBurnRate = bmrMifflin / 24;
+
+        // Render calculations back to UI display boxes safely
+        primaryConsoleValue.innerText = `${Math.round(bmrMifflin).toLocaleString()} Calories / day`;
+        
+        document.getElementById('metricBmrTdeeValue').innerText = `${Math.round(calculatedTdee).toLocaleString()} kcal`;
+        document.getElementById('metricBmrHarrisValue').innerText = `${Math.round(bmrHarris).toLocaleString()} kcal`;
+        document.getElementById('metricBmrMaintenanceValue').innerText = `${Math.round(calculatedTdee).toLocaleString()} kcal`;
+        document.getElementById('metricBmrHourlyBurnValue').innerText = `${hourlyBurnRate.toFixed(1)} kcal/hr`;
+    }
+
+    function resetBmrDisplayFieldsToZero() {
+        document.getElementById('bmrPrimaryConsoleValue').innerText = "0 Calories / day";
+        document.getElementById('metricBmrTdeeValue').innerText = "0 kcal";
+        document.getElementById('metricBmrHarrisValue').innerText = "0 kcal";
+        document.getElementById('metricBmrMaintenanceValue').innerText = "0 kcal";
+        document.getElementById('metricBmrHourlyBurnValue').innerText = "0 kcal/hr";
+    }
+
+    function clearBmrWorkspaceFields() {
+        document.getElementById('bmrWeight').value = "";
+        document.getElementById('bmrHeightCm').value = "";
+        document.getElementById('bmrHeightFt').value = "";
+        document.getElementById('bmrHeightIn').value = "";
+        document.getElementById('bmrAge').value = "25";
+        resetBmrDisplayFieldsToZero();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        liveExecuteBmrCalculations();
+    });
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
