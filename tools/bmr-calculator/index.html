@@ -40,8 +40,8 @@
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 28px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02), 0 8px 16px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; display: flex; gap: 32px; width: 100%; align-items: stretch; }
     
     /* HIGH PERFORMANCE STRUCTURAL COLUMN SPLITS */
-    .input-column { flex: 1; width: 48%; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; border-right: 1px solid #e2e8f0; padding-right: 28px; }
-    .output-column { flex: 1; width: 52%; display: flex; box-sizing: border-box; padding-left: 28px; }
+    .input-column { flex: 1; width: 44%; display: flex; flex-direction: column; justify-content: flex-start; box-sizing: border-box; border-right: 1px solid #e2e8f0; padding-right: 28px; }
+    .output-column { flex: 1; width: 56%; display: flex; box-sizing: border-box; padding-left: 28px; }
 
     /* COMPACT INPUT CONTROL SYSTEM COMPONENTS */
     .input-box-group { display: flex; flex-direction: column; gap: 6px; text-align: left; margin-bottom: 12px; width: 100%; }
@@ -59,22 +59,29 @@
     .metric-height-row { display: block; width: 100%; }
 
     /* ACTION CONTROLS TIMELINE STRIP */
-    .f-action-strip { display: flex; gap: 12px; margin-top: 4px; width: 100%; }
+    .f-action-strip { display: flex; gap: 12px; margin-top: 8px; width: 100%; }
     .f-btn { font-weight: 700; padding: 11px 18px; border-radius: 12px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; text-transform: uppercase; letter-spacing: 0.5px; }
     .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; width: 95px; }
     .f-btn-clear:hover { background: #fee2e2; }
 
     /* LUXURY RE-DESIGNED CLEAN LIGHT LABELS COUPLINGS */
-    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; gap: 16px; }
+    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; gap: 18px; }
     .main-breakdown-title { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
-    .main-breakdown-value { font-size: 2.3rem; font-weight: 800; color: #0f172a; line-height: 1.1; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; font-family: 'Inter', sans-serif; letter-spacing: -0.5px; }
+    .main-breakdown-value { font-size: 2.2rem; font-weight: 800; color: #0f172a; line-height: 1.1; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; font-family: 'Inter', sans-serif; letter-spacing: -0.5px; }
     
-    .stats-matrix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
-    .stat-metric-card { background: #ffffff; padding: 12px 14px; border-radius: 12px; border: 1px solid #e2e8f0; box-sizing: border-box; }
+    /* MODERN INTERACTIVE ACTIVITY LEVEL CALORIE MATRIX TABLE */
+    .activity-matrix-table { width: 100%; border-collapse: collapse; margin-top: 4px; font-family: 'Inter', sans-serif; }
+    .activity-matrix-table tr { border-bottom: 1px solid #e2e8f0; }
+    .activity-matrix-table tr:last-child { border-bottom: none; }
+    .activity-matrix-table td { padding: 10px 8px; font-size: 0.88rem; color: #334155; vertical-align: middle; }
+    .activity-matrix-table td.matrix-val-cell { text-align: right; font-weight: 700; color: #2563eb; font-size: 1rem; width: 110px; white-space: nowrap; }
+    .matrix-lbl-title { font-weight: 600; color: #0f172a; display: block; margin-bottom: 1px; }
+    .matrix-lbl-desc { font-size: 0.76rem; color: #64748b; display: block; }
+    
+    .stats-matrix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; margin-top: 6px; border-top: 1px dashed #cbd5e1; padding-top: 12px; }
+    .stat-metric-card { background: #ffffff; padding: 10px 12px; border-radius: 10px; border: 1px solid #e2e8f0; box-sizing: border-box; }
     .stat-metric-label { font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
-    .stat-metric-val { font-size: 1.15rem; font-weight: 700; color: #1e293b; font-family: 'Inter', sans-serif; }
-    
-    .accent-blue { color: #2563eb !important; }
+    .stat-metric-val { font-size: 1.1rem; font-weight: 700; color: #1e293b; font-family: 'Inter', sans-serif; }
 
     /* PREMIUM EDITORIAL CONTENT STYLING GRID */
     .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 35px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
@@ -127,28 +134,17 @@
           </div>
         </div>
 
-        <div class="compact-inline-row">
-          <div class="input-box-group">
-            <label for="bmrUnitSystem">Unit System</label>
-            <select id="bmrUnitSystem" class="f-select-field" onchange="executeBmrSystemToggleShift()">
-              <option value="metric" selected>Metric (kg / cm)</option>
-              <option value="imperial">Imperial (lbs / ft-in)</option>
-            </select>
-          </div>
-          <div class="input-box-group">
-            <label for="bmrActivityLevel">Daily Activity</label>
-            <select id="bmrActivityLevel" class="f-select-field" onchange="liveExecuteBmrCalculations()">
-              <option value="1.2" selected>Sedentary (Office job)</option>
-              <option value="1.375">Lightly Active (1-3 days/wk)</option>
-              <option value="1.55">Moderately Active (3-5 days/wk)</option>
-              <option value="1.725">Very Active (6-7 heavy days/wk)</option>
-            </select>
-          </div>
+        <div class="input-box-group">
+          <label for="bmrUnitSystem">Unit System</label>
+          <select id="bmrUnitSystem" class="f-select-field" onchange="executeBmrSystemToggleShift()">
+            <option value="metric" selected>Metric (kg / cm)</option>
+            <option value="imperial">Imperial (lbs / ft-in)</option>
+          </select>
         </div>
 
         <div class="input-box-group">
           <label id="bmrWeightLabel">Weight (Kilograms)</label>
-          <input type="number" id="bmrWeight" class="f-num-input" value="70" min="0" step="any" oninput="liveExecuteBmrCalculations()" />
+          <input type="number" id="bmrWeight" class="f-num-input" value="65" min="0" step="any" oninput="liveExecuteBmrCalculations()" />
         </div>
 
         <div id="bmrMetricHeightWrapper" class="metric-height-row">
@@ -182,24 +178,54 @@
           </div>
           
           <div>
-            <div class="main-breakdown-title" style="margin-bottom: 6px;">📊 Total Energy Expenditure Allocation Sheet</div>
-            <div class="stats-matrix-grid">
-              <div class="stat-metric-card">
-                <div class="stat-metric-label">TDEE Calorie Needs</div>
-                <div id="metricBmrTdeeValue" class="stat-metric-val accent-blue">0 kcal</div>
-              </div>
-              <div class="stat-metric-card">
-                <div class="stat-metric-label">Harris-Benedict Alternate</div>
-                <div id="metricBmrHarrisValue" class="stat-metric-val">0 kcal</div>
-              </div>
-              <div class="stat-metric-card">
-                <div class="stat-metric-label">Weight Maintenance</div>
-                <div id="metricBmrMaintenanceValue" class="stat-metric-val" style="color: #16a34a;">0 kcal</div>
-              </div>
-              <div class="stat-metric-card">
-                <div class="stat-metric-label">Hourly Fasting Burn</div>
-                <div id="metricBmrHourlyBurnValue" class="stat-metric-val">0 kcal</div>
-              </div>
+            <div class="main-breakdown-title">🔥 Daily Calorie Needs Based On Activity Level</div>
+            <table class="activity-matrix-table">
+              <tr>
+                <td>
+                  <span class="matrix-lbl-title">Sedentary</span>
+                  <span class="matrix-lbl-desc">Little or no exercise / desk job</span>
+                </td>
+                <td id="cellCalSedentary" class="matrix-val-cell">0 kcal</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="matrix-lbl-title">Lightly Active</span>
+                  <span class="matrix-lbl-desc">Light exercise or sports 1-3 days/week</span>
+                </td>
+                <td id="cellCalLight" class="matrix-val-cell">0 kcal</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="matrix-lbl-title">Moderately Active</span>
+                  <span class="matrix-lbl-desc">Moderate exercise or sports 3-5 days/week</span>
+                </td>
+                <td id="cellCalModerate" class="matrix-val-cell">0 kcal</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="matrix-lbl-title">Very Active</span>
+                  <span class="matrix-lbl-desc">Hard exercise or heavy sports 6-7 days/week</span>
+                </td>
+                <td id="cellCalActive" class="matrix-val-cell">0 kcal</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="matrix-lbl-title">Extra Active</span>
+                  <span class="matrix-lbl-desc">Very intense daily exercise / physical labor job</span>
+                </td>
+                <td id="cellCalExtra" class="matrix-val-cell">0 kcal</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="stats-matrix-grid">
+            <div class="stat-metric-card">
+              <div class="stat-metric-label">Harris-Benedict BMR</div>
+              <div id="metricBmrHarrisValue" class="stat-metric-val">0 kcal</div>
+            </div>
+            <div class="stat-metric-card">
+              <div class="stat-metric-label">Hourly Fasting Burn</div>
+              <div id="metricBmrHourlyBurnValue" class="stat-metric-val">0 kcal</div>
             </div>
           </div>
         </div>
@@ -217,7 +243,7 @@
       </div>
 
       <h2 class="seo-h2">1. Theoretical Chronology: From Indirect Gas Colorimetry to Algebraic Slabs</h2>
-      <p class="seo-p">The human imperative to translate biological cell respiration metrics into explicit numeric indicators traces back to early 20th-century gas exchange frameworks pioneered by scientists like Francis Benedict. Early laboratory testing setups evaluated individual thermal performance factors manually by calculating oxygen consumption profiles inside sealed room environments, which required substantial operational latency to determine general metabolic speeds. In 1919, the classic Harris-Benedict study codified the initial structural regression equations, mapping metrics against distinct age, weight, and height variables.</p>
+      <p class="seo-p">The mathematical organization of relative body weights traces back to early sociological research models designed in 1832 by the prominent Belgian mathematician Adolphe Quetelet. Seeking to establish the physical metrics of standard human developments across broader cultural cohorts, Quetelet discovered that past infancy, adult weight tracking scales uniformly in perfect relation to height dimensions squared. This relationship became known across health houses as the historic Quetelet Index of body composition.</p>
       <p class="seo-p">To account for shifting lean body ratios across modern populations, medical research teams optimized calculation logic loops in 1990 via the Mifflin-St Jeor equation model. This formula offers higher accuracy thresholds for contemporary macro planning. Modern health portals present these compound formulas inside horizontal, side-by-side flex layouts to give users complete energetic insight on a single screen monitor instantly, avoiding vertical page jumps.</p>
 
       <h3>The Statutory Mathematical Reference: Dual-Metabolic Equation Formulas</h3>
@@ -279,7 +305,7 @@
       <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
 
       <h3>Why do some metabolic calculators create page scrolling glitches on small touch monitors?</h3>
-      <p class="seo-p">Many platforms organize application controls within heavy vertical containers that push diagnostic results below the active screen boundary. Our compact layout implements space-efficient flex distributions to present inputs and calorie sheets simultaneously at a single glance.</p>
+      <p class="seo-p">Many platforms organize application controls within heavy vertical containers that push results below the active screen boundary. Our compact layout implements space-efficient flex distributions to present inputs and calorie sheets simultaneously at a single glance.</p>
 
       <h3>Does this BMR execution system monitor user metrics or transmit daily tracking profiles?</h3>
       <p class="seo-p">No. To ensure 100% data anonymity and protect private health data parameters, all direct operations execute natively within your device browser environment memory cache files. No analytical data variables travel over external server networks.</p>
@@ -315,12 +341,12 @@
 
         if (systemMode === 'metric') {
             weightLabel.innerText = "Weight (Kilograms)";
-            weightInput.value = "70";
+            weightInput.value = "65";
             metricHeightBox.style.display = "block";
             imperialHeightBox.style.display = "none";
         } else {
             weightLabel.innerText = "Weight (Pounds)";
-            weightInput.value = "154";
+            weightInput.value = "143";
             metricHeightBox.style.display = "none";
             imperialHeightBox.style.display = "grid";
         }
@@ -332,7 +358,6 @@
         const rawWeight = parseFloat(document.getElementById('bmrWeight').value);
         const age = parseInt(document.getElementById('bmrAge').value, 10);
         const gender = document.getElementById('bmrGender').value;
-        const activityMultiplier = parseFloat(document.getElementById('bmrActivityLevel').value);
         
         const primaryConsoleValue = document.getElementById('bmrPrimaryConsoleValue');
 
@@ -387,24 +412,30 @@
         if (bmrMifflin < 0) bmrMifflin = 0;
         if (bmrHarris < 0) bmrHarris = 0;
 
-        // Compute auxiliary metabolic metrics
-        let calculatedTdee = bmrMifflin * activityMultiplier;
         let hourlyBurnRate = bmrMifflin / 24;
 
-        // Render calculations back to UI display boxes safely
+        // Render parameters back to UI display boxes safely
         primaryConsoleValue.innerText = `${Math.round(bmrMifflin).toLocaleString()} Calories / day`;
         
-        document.getElementById('metricBmrTdeeValue').innerText = `${Math.round(calculatedTdee).toLocaleString()} kcal`;
+        // Populate the live activity scale ledger table cards automatically
+        document.getElementById('cellCalSedentary').innerText = `${Math.round(bmrMifflin * 1.2).toLocaleString()} kcal`;
+        document.getElementById('cellCalLight').innerText = `${Math.round(bmrMifflin * 1.375).toLocaleString()} kcal`;
+        document.getElementById('cellCalModerate').innerText = `${Math.round(bmrMifflin * 1.55).toLocaleString()} kcal`;
+        document.getElementById('cellCalActive').innerText = `${Math.round(bmrMifflin * 1.725).toLocaleString()} kcal`;
+        document.getElementById('cellCalExtra').innerText = `${Math.round(bmrMifflin * 1.9).toLocaleString()} kcal`;
+
         document.getElementById('metricBmrHarrisValue').innerText = `${Math.round(bmrHarris).toLocaleString()} kcal`;
-        document.getElementById('metricBmrMaintenanceValue').innerText = `${Math.round(calculatedTdee).toLocaleString()} kcal`;
         document.getElementById('metricBmrHourlyBurnValue').innerText = `${hourlyBurnRate.toFixed(1)} kcal/hr`;
     }
 
     function resetBmrDisplayFieldsToZero() {
         document.getElementById('bmrPrimaryConsoleValue').innerText = "0 Calories / day";
-        document.getElementById('metricBmrTdeeValue').innerText = "0 kcal";
+        document.getElementById('cellCalSedentary').innerText = "0 kcal";
+        document.getElementById('cellCalLight').innerText = "0 kcal";
+        document.getElementById('cellCalModerate').innerText = "0 kcal";
+        document.getElementById('cellCalActive').innerText = "0 kcal";
+        document.getElementById('cellCalExtra').innerText = "0 kcal";
         document.getElementById('metricBmrHarrisValue').innerText = "0 kcal";
-        document.getElementById('metricBmrMaintenanceValue').innerText = "0 kcal";
         document.getElementById('metricBmrHourlyBurnValue').innerText = "0 kcal/hr";
     }
 
