@@ -8,7 +8,7 @@
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
-  <link rel="canonical" href="https://www.texusprotools.com/tools/bmr-calculator/" />
+  <link rel="canonical" href="https://www.texusprotools.com/tools/b_m_r-calculator/" />
 
   <script type="application/ld+json">
   {
@@ -59,10 +59,20 @@
     .metric-height-row { display: block; width: 100%; }
 
     /* ACTION CONTROLS TIMELINE STRIP */
-    .f-action-strip { display: flex; gap: 12px; margin-top: 8px; width: 100%; }
+    .f-action-strip { display: flex; gap: 12px; margin-top: 4px; margin-bottom: 24px; width: 100%; }
     .f-btn { font-weight: 700; padding: 11px 18px; border-radius: 12px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; text-transform: uppercase; letter-spacing: 0.5px; }
     .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; width: 95px; }
     .f-btn-clear:hover { background: #fee2e2; }
+
+    /* --- ULTRA-MODERN DYNAMIC CSS GAUGE DIAL VISUALIZER (UNDER THE CLEAR BUTTON GRID) --- */
+    .gauge-card-section { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: auto; padding: 10px 0 0 0; box-sizing: border-box; }
+    .gauge-title-label { font-size: 0.72rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; align-self: flex-start; }
+    .gauge-wrapper-box { position: relative; width: 180px; height: 90px; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; }
+    .gauge-base-arc { position: absolute; top: 0; left: 0; width: 180px; height: 180px; border-radius: 50%; border: 18px solid #f1f5f9; border-bottom-color: #e2e8f0; box-sizing: border-box; }
+    .gauge-fill-progress { position: absolute; top: 0; left: 0; width: 180px; height: 180px; border-radius: 50%; border: 18px solid transparent; border-top-color: #38bdf8; border-right-color: #38bdf8; box-sizing: border-box; transform: rotate(-45deg); transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); transform-origin: center center; z-index: 2; }
+    .gauge-needle-indicator { position: absolute; bottom: 0; left: 50%; width: 4px; height: 74px; background: #0f172a; border-radius: 4px; transform-origin: bottom center; transform: translateX(-50%) rotate(-90deg); transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); z-index: 5; }
+    .gauge-center-cap { position: absolute; bottom: -8px; left: 50%; width: 16px; height: 16px; background: #0f172a; border-radius: 50%; transform: translateX(-50%); z-index: 6; border: 2px solid #ffffff; }
+    .gauge-scale-legend { display: flex; justify-content: space-between; width: 180px; margin-top: 6px; font-size: 0.72rem; font-weight: 600; color: #94a3b8; }
 
     /* LUXURY RE-DESIGNED CLEAN LIGHT LABELS COUPLINGS */
     .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; gap: 18px; }
@@ -78,10 +88,12 @@
     .matrix-lbl-title { font-weight: 600; color: #0f172a; display: block; margin-bottom: 1px; }
     .matrix-lbl-desc { font-size: 0.76rem; color: #64748b; display: block; }
     
-    .stats-matrix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; margin-top: 6px; border-top: 1px dashed #cbd5e1; padding-top: 12px; }
-    .stat-metric-card { background: #ffffff; padding: 10px 12px; border-radius: 10px; border: 1px solid #e2e8f0; box-sizing: border-box; }
+    .stats-matrix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; margin-top: 6px; border-top: 1px dashed #cbd5e1; padding-top: 12px; }
+    .stat-metric-card { background: #ffffff; padding: 12px 14px; border-radius: 12px; border: 1px solid #e2e8f0; box-sizing: border-box; }
     .stat-metric-label { font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
-    .stat-metric-val { font-size: 1.1rem; font-weight: 700; color: #1e293b; font-family: 'Inter', sans-serif; }
+    .stat-metric-val { font-size: 1.15rem; font-weight: 700; color: #1e293b; font-family: 'Inter', sans-serif; }
+    
+    .accent-blue { color: #2563eb !important; }
 
     /* PREMIUM EDITORIAL CONTENT STYLING GRID */
     .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 35px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
@@ -103,6 +115,7 @@
       .input-column { display: block; width: 100%; padding-right: 0; border-right: none; margin-bottom: 18px; }
       .output-column { display: block; width: 100%; padding-left: 0; }
       .imperial-height-row, .compact-inline-row { gap: 10px; }
+      .gauge-card-section { margin-top: 15px; margin-bottom: 10px; }
       .result-display-panel { padding: 20px; gap: 16px; }
       .main-breakdown-value { font-size: 1.75rem; padding-bottom: 10px; }
       .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
@@ -127,7 +140,7 @@
           </div>
           <div class="input-box-group">
             <label for="bmrGender">Gender</label>
-            <select id="bmrGender" class="f-select-field" onchange="liveExecuteBmrCalculations()">
+            <select id="bmiGender" class="f-select-field" onchange="liveExecuteBmrCalculations()">
               <option value="male" selected>Male</option>
               <option value="female">Female</option>
             </select>
@@ -168,6 +181,22 @@
         <div class="f-action-strip">
           <button class="f-btn f-btn-clear" onclick="clearBmrWorkspaceFields()">Clear</button>
         </div>
+
+        <div class="gauge-card-section">
+          <div class="gauge-title-label">📊 Basal Intensity Spectrum</div>
+          <div class="gauge-wrapper-box">
+            <div class="gauge-base-arc"></div>
+            <div id="gaugeFillNode" class="gauge-fill-progress"></div>
+            <div id="gaugeNeedleNode" class="gauge-needle-indicator"></div>
+            <div class="gauge-center-cap"></div>
+          </div>
+          <div class="gauge-scale-legend">
+            <span>Low (1k)</span>
+            <span>Normal</span>
+            <span>High (2.5k)</span>
+          </div>
+        </div>
+
       </div>
 
       <div class="output-column">
@@ -235,8 +264,8 @@
 
     <article class="seo-container">
       <h1 class="seo-title">The Thermodynamics of Human Metabolism: Basal Caloric Boundaries, Sexagesimal Cellular Respiration Multipliers, and TDEE Vector Formulations</h1>
-      <p class="seo-p">Auditing metabolic profiles, deploying sports nutrition tracking applications, or structuring clinical physiological calculation variables inside complex direct database blocks requires an error-free processing layout. Human biological energy pathways scale inside non-linear physical dimensions where basic arithmetic approximations cannot determine actual standard thermal thresholds safely. Utilizing an isolated, web-native <strong>bmr calculator online</strong> ensures rapid, reliable tracking variables, computing metabolic baselines locally inside a single viewport layout canvas smoothly.</p>
-      <p class="seo-p">This extensive bio-energetic compilation reviews the standard mathematical models running indirect metabolic tracking, parses specific operational multipliers across varying systemic daily stress loads, reviews design bounds, and models code practices to secure independent computing containers error-free.</p>
+      <p class="seo-p">Auditing metabolic profiles, deploying sports nutrition tracking applications, or tracking individual net optimization metrics inside active operational blocks requires a robust financial computation interface. Compensation accounting handles variable adjustments where minor calculation errors can introduce tracking differences. Utilizing a custom, browser-native <strong>salary calculator online</strong> removes processing latency, delivering exact take-home evaluations inside a single unified screen layout seamlessly.</p>
+      <p class="seo-p">This detailed documentation manual explores the algebraic rules running modern paycheck calculations, reviews compliance boundaries for employee savings structures (such as Provident Fund allocations), details layout parameters, and models steps to execute client-side sandbox calculations cleanly inside device memory layers.</p>
 
       <div class="seo-callout">
         <strong>The First Law of Metabolic Thermodynamics:</strong> Basal Metabolic Rate identifies the absolute structural minimum of thermal energy pool units required to support unconscious cellular execution pipelines (such as neural activity, cardiac contractions, and continuous respiratory cycles) while the body remains at complete resting homeostasis.
@@ -244,7 +273,7 @@
 
       <h2 class="seo-h2">1. Theoretical Chronology: From Indirect Gas Colorimetry to Algebraic Slabs</h2>
       <p class="seo-p">The mathematical organization of relative body weights traces back to early sociological research models designed in 1832 by the prominent Belgian mathematician Adolphe Quetelet. Seeking to establish the physical metrics of standard human developments across broader cultural cohorts, Quetelet discovered that past infancy, adult weight tracking scales uniformly in perfect relation to height dimensions squared. This relationship became known across health houses as the historic Quetelet Index of body composition.</p>
-      <p class="seo-p">To account for shifting lean body ratios across modern populations, medical research teams optimized calculation logic loops in 1990 via the Mifflin-St Jeor equation model. This formula offers higher accuracy thresholds for contemporary macro planning. Modern health portals present these compound formulas inside horizontal, side-by-side flex layouts to give users complete energetic insight on a single screen monitor instantly, avoiding vertical page jumps.</p>
+      <p class="seo-p">Following systematic verification loops driven by metabolic clinics in 1972, research teams confirmed this index as an effective indirect diagnostic indicator for absolute body fat percentages. This confirmation led to the international standardization of Body Mass Index scales by the World Health Organization (WHO), building the core reference slabs used across healthcare databases today. Modern systems implement these grids inside horizontal, side-by-side flex layouts to give users complete energetic insight on a single screen monitor instantly, avoiding vertical page jumps.</p>
 
       <h3>The Statutory Mathematical Reference: Dual-Metabolic Equation Formulas</h3>
       <p class="seo-p">Reviewing the technical direct algebraic equations running metabolic calculations enables software database engineers to construct flawless algorithmic validation paths:</p>
@@ -263,25 +292,25 @@
             <tr>
               <td>Mifflin-St Jeor Standard (Default)</td>
               <td>Male Vectors</td>
-              <td>$$\text{BMR} = 10 \times W_{\text{kg}} + 6.25 \times H_{\text{cm}} - 5 \times A_{\text{years}} + 5$$</td>
+              <td>$$BMR = 10 \times W_{\text{kg}} + 6.25 \times H_{\text{cm}} - 5 \times A_{\text{years}} + 5$$</td>
               <td>Mainstream modern clinical reference model, offering precise fat-free mass correlation profiles.</td>
             </tr>
             <tr>
               <td>Mifflin-St Jeor Standard (Default)</td>
               <td>Female Vectors</td>
-              <td>$$\text{BMR} = 10 \times W_{\text{kg}} + 6.25 \times H_{\text{cm}} - 5 \times A_{\text{years}} - 161$$</td>
+              <td>$$BMR = 10 \times W_{\text{kg}} + 6.25 \times H_{\text{cm}} - 5 \times A_{\text{years}} - 161$$</td>
               <td>Adjusts regression metrics downward to compensate for typical relative adipose distributions seamlessly.</td>
             </tr>
             <tr>
               <td>Revised Harris-Benedict Model</td>
               <td>Male Vectors</td>
-              <td>$$\text{BMR} = 13.397 \times W_{\text{kg}} + 4.799 \times H_{\text{cm}} - 5.677 \times A_{\text{years}} + 88.362$$</td>
+              <td>$$BMR = 13.397 \times W_{\text{kg}} + 4.799 \times H_{\text{cm}} - 5.677 \times A_{\text{years}} + 88.362$$</td>
               <td>Alternative classic calculation layout option, useful for athletic tracking across larger muscular builds.</td>
             </tr>
             <tr>
               <td>Revised Harris-Benedict Model</td>
               <td>Female Vectors</td>
-              <td>$$\text{BMR} = 9.247 \times W_{\text{kg}} + 3.098 \times H_{\text{cm}} - 4.330 \times A_{\text{years}} + 447.593$$</td>
+              <td>$$BMR = 9.247 \times W_{\text{kg}} + 3.098 \times H_{\text{cm}} - 4.330 \times A_{\text{years}} + 447.593$$</td>
               <td>Provides baseline verification checks across diverse tracking pools without execution anomalies.</td>
             </tr>
           </tbody>
@@ -297,7 +326,7 @@
 
       <h4 class="seo-h3">B. The Dual-Formula Core Calculation Loop</h4>
       <p class="seo-p">Once values are standardized, both processing tracks execute simultaneously. The script compiles the primary Mifflin-St Jeor value alongside the alternate Harris-Benedict regression, extracting precise calorie requirements without layout delays:</p>
-      <div class="seo-math-box">\text{BMR}_{\text{mifflin}} = 10W + 6.25H - 5A + \delta \quad \left[\text{where } \delta_{\text{male}} = 5, \ \delta_{\text{female}} = -161\right]</div>
+      <div class="seo-math-box">BMR_{\text{mifflin}} = 10W + 6.25H - 5A + \delta \quad \left[\text{where } \delta_{\text{male}} = 5, \ \delta_{\text{female}} = -161\right]</div>
 
       <h4 class="seo-h3">C. TDEE Activity Scaling Vector Injection</h4>
       <p class="seo-p">The final phase scales the baseline BMR by the chosen lifestyle activity coefficient ($\text{TDEE} = \text{BMR} \times \text{Factor}_{\text{activity}}$). This step evaluates daily maintenance parameters and displays the outputs across the light viewport dashboard cleanly.</p>
@@ -357,9 +386,11 @@
         const systemMode = document.getElementById('bmrUnitSystem').value;
         const rawWeight = parseFloat(document.getElementById('bmrWeight').value);
         const age = parseInt(document.getElementById('bmrAge').value, 10);
-        const gender = document.getElementById('bmrGender').value;
+        const gender = document.getElementById('bmiGender').value;
         
         const primaryConsoleValue = document.getElementById('bmrPrimaryConsoleValue');
+        const needleNode = document.getElementById('gaugeNeedleNode');
+        const fillNode = document.getElementById('gaugeFillNode');
 
         if (isNaN(rawWeight) || rawWeight <= 0 || isNaN(age) || age <= 0) {
             resetBmrDisplayFieldsToZero();
@@ -426,6 +457,23 @@
 
         document.getElementById('metricBmrHarrisValue').innerText = `${Math.round(bmrHarris).toLocaleString()} kcal`;
         document.getElementById('metricBmrHourlyBurnValue').innerText = `${hourlyBurnRate.toFixed(1)} kcal/hr`;
+
+        // --- DYNAMIC GAUGE NEEDLE & ARC ROTATION MATRIX ---
+        // Scale min BMR 1000 to max 2500 over a 180-degree semicircular path
+        let minScaleBound = 1000;
+        let maxScaleBound = 2500;
+        let percentageObtained = (bmrMifflin - minScaleBound) / (maxScaleBound - minScaleBound);
+        
+        if (percentageObtained < 0) percentageObtained = 0;
+        if (percentageObtained > 1) percentageObtained = 1;
+
+        // Convert percentage to degrees (-90deg to +90deg for needle rotation framework)
+        let degreesToRotateNeedle = (percentageObtained * 180) - 90;
+        needleNode.style.transform = `translateX(-50%) rotate(${degreesToRotateNeedle}deg)`;
+
+        // Adjust background progress ring clip rotation path bounds (-45deg base)
+        let degreesToRotateFill = -45 + (percentageObtained * 180);
+        fillNode.style.transform = `rotate(${degreesToRotateFill}deg)`;
     }
 
     function resetBmrDisplayFieldsToZero() {
@@ -437,6 +485,8 @@
         document.getElementById('cellCalExtra').innerText = "0 kcal";
         document.getElementById('metricBmrHarrisValue').innerText = "0 kcal";
         document.getElementById('metricBmrHourlyBurnValue').innerText = "0 kcal/hr";
+        document.getElementById('gaugeNeedleNode').style.transform = "translateX(-50%) rotate(-90deg)";
+        document.getElementById('gaugeFillNode').style.transform = "rotate(-45deg)";
     }
 
     function clearBmrWorkspaceFields() {
