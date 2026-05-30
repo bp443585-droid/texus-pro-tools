@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Daily Water Intake Calculator | Real-Time Hydration Target Tool</title>
+  <meta name="description" content="Calculate your daily hydration targets instantly based on your body weight, activity profiles, and local climate thresholds with zero desktop screen scrolling." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/water-intake-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Predictive Water Intake Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An automated physiological hydration calculator evaluating inter-cellular fluid turnovers, active sweat indices, and demographic metrics smoothly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1050px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .f-heading span { font-size: 2.2rem; }
+    
+    /* DESKTOP VIEWPORT-LOCKED SLATE SPLIT REPLACEMENT CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 28px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02), 0 8px 16px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; display: flex; gap: 32px; width: 100%; align-items: stretch; }
+    
+    /* HIGH PERFORMANCE COMPENSATION STRETCH COLUMNS */
+    .input-column { flex: 1; width: 44%; display: flex; flex-direction: column; justify-content: flex-start; box-sizing: border-box; border-right: 1px solid #e2e8f0; padding-right: 28px; }
+    .output-column { flex: 1; width: 56%; display: flex; box-sizing: border-box; padding-left: 28px; }
+
+    /* COMPACT INPUT CONTROL SYSTEM COMPONENTS */
+    .input-box-group { display: flex; flex-direction: column; gap: 6px; text-align: left; margin-bottom: 12px; width: 100%; box-sizing: border-box; }
+    .input-box-group label { font-size: 0.75rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-num-input { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1.02rem; font-family: 'Inter', sans-serif; color: #0f172a; outline: none; transition: all 0.2s ease; background: #f8fafc; box-sizing: border-box; font-weight: 600; }
+    .f-num-input:focus { border-color: #2563eb; background: #ffffff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.06); }
+    
+    .f-select-field { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 0.95rem; font-family: 'Inter', sans-serif; outline: none; font-weight: 600; background: #ffffff; color: #0f172a; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; }
+    .f-select-field:focus { border-color: #2563eb; }
+
+    /* CONTROL PANEL TIER ROW SPAN PACKS */
+    .compact-inline-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+
+    /* ACTION CONTROLS TIMELINE BAR */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 4px; width: 100%; margin-bottom: 20px; }
+    .f-btn { font-weight: 700; padding: 11px 18px; border-radius: 12px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; width: 95px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* --- PURE MODERN HYDRATION प्रगति TRACKER CYLINDER METER VISUALIZER --- */
+    .hydro-fluid-visualizer { width: 100%; display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: auto; padding-top: 15px; border-top: 1px dashed #cbd5e1; box-sizing: border-box; }
+    .hydro-tank-container { position: relative; width: 64px; height: 110px; border: 3px solid #0f172a; border-top: none; border-radius: 0 0 16px 16px; background: #f1f5f9; overflow: hidden; display: flex; align-items: flex-end; box-shadow: inset 0 4px 10px rgba(0,0,0,0.02); }
+    .hydro-tank-container::before { content: ''; position: absolute; top: 10px; left: 0; width: 100%; height: 1px; background: rgba(15,23,42,0.06); border-bottom: 20px dashed rgba(15,23,42,0.06); }
+    .hydro-liquid-mass { width: 100%; height: 0%; background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%); transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }
+    .hydro-liquid-mass::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: rgba(255,255,255,0.4); border-radius: 50%; opacity: 0.6; }
+    .hydro-details-legend { display: flex; flex-direction: column; gap: 6px; text-align: left; }
+    .hydro-legend-lbl { font-size: 0.82rem; font-weight: 700; color: #1e293b; display: flex; align-items: center; gap: 6px; }
+    .hydro-legend-desc { font-size: 0.74rem; color: #64748b; line-height: 1.3; max-width: 170px; }
+
+    /* LUXURY RE-DESIGNED CLEAN LIGHT RESULTS DISPENSERS (ZERO DESKTOP SCROLL MOVEMENT) */
+    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; gap: 18px; }
+    .main-breakdown-title { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
+    .main-breakdown-value { font-size: 2.2rem; font-weight: 800; color: #0284c7; line-height: 1.1; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; font-family: 'Inter', sans-serif; letter-spacing: -0.5px; }
+    
+    .stats-matrix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
+    .stat-metric-card { background: #ffffff; padding: 12px 14px; border-radius: 12px; border: 1px solid #e2e8f0; box-sizing: border-box; }
+    .stat-metric-label { font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+    .stat-metric-val { font-size: 1.15rem; font-weight: 700; color: #1e293b; font-family: 'Inter', sans-serif; }
+    
+    .accent-blue { color: #2563eb !important; }
+
+    /* NEW DIVERSIFIED SEO STYLING METHODOLOGY (SEO EXPERIMENTAL VARIANT #3) */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 35px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-main-topic { font-size: 2.1rem; color: #0f172a; font-weight: 800; margin-bottom: 22px; letter-spacing: -0.5px; line-height: 1.3; }
+    .seo-block-paragraph { font-size: 1.05rem; color: #334155; margin-bottom: 24px; text-align: justify; text-justify: inter-word; }
+    .seo-subsection-badge { font-size: 1.4rem; color: #0284c7; font-weight: 800; margin-top: 35px; margin-bottom: 14px; display: block; border-left: 4px solid #0284c7; padding-left: 12px; }
+    .seo-grid-asymmetrical-cards { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; margin: 25px 0; }
+    .seo-asym-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 16px; font-size: 0.98rem; color: #475569; }
+    .seo-asym-card strong { color: #0f172a; display: block; font-size: 1.1rem; margin-bottom: 6px; }
+    .seo-data-sheet-table { width: 100%; overflow-x: auto; margin: 25px 0; border-radius: 16px; border: 1px solid #e2e8f0; }
+    .seo-data-sheet-table table { width: 100%; min-width: 600px; border-collapse: collapse; }
+    .seo-data-sheet-table th { background: #f1f5f9; padding: 14px; text-align: left; font-weight: 700; color: #0f172a; font-size: 0.88rem; }
+    .seo-data-sheet-table td { padding: 14px; border-bottom: 1px solid #e2e8f0; font-size: 0.94rem; color: #334155; }
+    .seo-data-sheet-table tr:last-child td { border-bottom: none; }
+
+    /* RESPONSIVE FLUID LAYOUT OVERRIDES (ADAPTIVE PHONE CONFIGURATIONS) */
+    @media (max-width: 768px) {
+      .f-card { display: block; padding: 20px; border-radius: 20px; }
+      .input-column { display: block; width: 100%; padding-right: 0; border-right: none; margin-bottom: 18px; }
+      .output-column { display: block; width: 100%; padding-left: 0; }
+      .compact-inline-row { gap: 10px; }
+      .hydro-fluid-visualizer { margin-top: 20px; padding-bottom: 5px; }
+      .seo-grid-asymmetrical-cards { grid-template-columns: 1fr; }
+      .result-display-panel { padding: 20px; gap: 16px; }
+      .main-breakdown-value { font-size: 1.75rem; padding-bottom: 10px; }
+      .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>💧</span> Water Intake Calculator</div>
+    
+    <div class="f-card">
+      
+      <div class="input-column">
+        
+        <div class="compact-inline-row">
+          <div class="input-box-group">
+            <label for="watUnitSystem">Unit System</label>
+            <select id="watUnitSystem" class="f-select-field" onchange="executeWaterSystemToggleShift()">
+              <option value="metric" selected>Metric (kg / ml)</option>
+              <option value="imperial">Imperial (lbs / fl-oz)</option>
+            </select>
+          </div>
+          <div class="input-box-group">
+            <label for="watClimateType">Local Climate</label>
+            <select id="watClimateType" class="f-select-field" onchange="liveExecuteWaterCalculations()">
+              <option value="normal" selected>Temperate / Normal</option>
+              <option value="hot">Hot / Humid Climate</option>
+              <option value="cold">Cold / Dry Environment</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-box-group">
+          <label id="watWeightLabel">Body Weight (Kilograms)</label>
+          <input type="number" id="watWeightInput" class="f-num-input" value="70" min="0" step="any" oninput="liveExecuteWaterCalculations()" />
+        </div>
+
+        <div class="input-box-group">
+          <label>Daily Physical Activity (Active Exercise Minutes)</label>
+          <input type="number" id="watActivityInput" class="f-num-input" value="30" min="0" max="360" oninput="liveExecuteWaterCalculations()" />
+        </div>
+
+        <div class="f-action-strip">
+          <button class="f-btn f-btn-clear" onclick="clearWaterWorkspaceFields()">Clear</button>
+        </div>
+
+        <div class="hydro-fluid-visualizer">
+          <div class="hydro-tank-container">
+            <div id="hydroLiquidNode" class="hydro-liquid-mass"></div>
+          </div>
+          <div class="hydro-details-legend">
+            <span class="hydro-legend-lbl">💧 Cellular Volume Target</span>
+            <span class="hydro-legend-desc">Visual progress scaled mapping relative to standard fluid survival ceilings.</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="output-column">
+        <div class="result-display-panel">
+          <div>
+            <div class="main-breakdown-title">📈 Total Estimated Daily Fluid Requirements</div>
+            <div id="watFinalIntakeConsole" class="main-breakdown-value">0 ml / day</div>
+          </div>
+          
+          <div>
+            <div class="main-breakdown-title" style="margin-bottom: 6px;">📊 Distributed Hydration Logistics Sheet</div>
+            <div class="stats-matrix-grid">
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Standard Glasses (250ml)</div>
+                <div id="metricWatGlassesVal" class="stat-metric-val accent-blue">0 Glasses</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Imperial Volume Equivalent</div>
+                <div id="metricWatOuncesVal" class="stat-metric-val">0 fl oz</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Exercise Sweat Compensation</div>
+                <div id="metricWatExerciseBonus" class="stat-metric-val">0 ml</div>
+              </div>
+              <div class="stat-metric-card">
+                <div class="stat-metric-label">Basal Homeostasis Needs</div>
+                <div id="metricWatBasalVal" class="stat-metric-val">0 ml</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <article class="seo-container">
+      <h2 class="seo-main-topic">The Physiology of Human Osmoregulation: Active Hydro-Dynamics, Intracellular Plasma Turnovers, and Sweat-Loss Compensation Mathematics</h2>
+      <p class="seo-block-paragraph">Maintaining absolute homeostatic equilibrium inside human physiological systems requires a continuous, micro-calibrated adjustment of water variables. Every metabolic reaction loop—including biochemical waste filtration inside renal pathways, nutrient transport chains across blood plasma networks, and thermal regulation cycles executed via systemic perspiration—consumes a portion of the body's total water reserves. Utilizing an online <strong>water intake calculator</strong> removes data approximation errors, evaluating exact hydration benchmarks natively inside a single device viewport layout flawlessly.</p>
+      
+      <div class="seo-grid-asymmetrical-cards">
+        <div class="seo-asym-card">
+          <strong>The Danger of Dehydration Cascades:</strong> When inter-cellular water volume drops by a baseline ratio of even 1% to 2%, central nervous signaling loops experience immediate operational degradation. This drop can trigger early symptoms like vascular headaches, reduced mental processing speed, and muscle cramping during training loops.
+        </div>
+        <div class="seo-asym-card">
+          <strong>Clinical Osmotic Balance:</strong> Human internal fluid balances are tightly managed by antidiuretic hormone (ADH) secretion vectors. When plasma concentrations rise due to respiratory moisture loss or sweat evaporation, the brain triggers a thirst response—making early, proactive fluid tracking essential for long-term health management.
+        </div>
+      </div>
+
+      <span class="seo-subsection-badge">1. Fluid Precedence Equations: Mapping Weight and Activity Factors</span>
+      <p class="seo-block-paragraph">To establish an accurate operational baseline across diverse user groups, medical research networks rely on specific non-linear equations. These formulas treat body mass coefficients as the primary anchor, adding specific variable adjustments for external environmental factors and training stress levels. The initial baseline requirement scales at a standard ratio of approximately 35 milliliters of fluid per kilogram of body weight, forming a reliable baseline before accounting for exercise-induced fluid loss.</p>
+      <p class="seo-block-paragraph">When physical exertion triggers accelerated muscular contractions, core biological temperatures rise. This warming forces eccrine sweat glands to release moisture to cool the body via evaporation. To counter this rapid fluid drop without causing rounding errors or interface delays, our specialized light-themed platform evaluates inputs simultaneously, displaying exact volumetric results instantly on screen.</p>
+
+      <div class="seo-table-container seo-data-sheet-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Environmental Climate Vector</th>
+              <th>Systemic Multiplier Factor</th>
+              <th>Sweat Accumulation Formula (per Active Hour)</th>
+              <th>Primary Clinical Hydration Objective</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Temperate / Normal Base</td>
+              <td>1.00 (Neutral)</td>
+              <td>$$\text{Bonus} = \left(\frac{\text{Minutes}}{30}\right) \times 350\text{ ml}$$</td>
+              <td>Replenishes standard respiratory and metabolic moisture loss under ambient room conditions cleanly.</td>
+            </tr>
+            <tr>
+              <td>Hot / Humid Climate Zone</td>
+              <td>1.15 (Incremental)</td>
+              <td>$$\text{Bonus} = \left(\frac{\text{Minutes}}{30}\right) \times 500\text{ ml}$$</td>
+              <td>Compensates for rapid surface sweat evaporation, preventing dangerous blood volume drops.</td>
+            </tr>
+            <tr>
+              <td>Cold / Dry Environment</td>
+              <td>1.05 (Subtle Adjust)</td>
+              <td>$$\text{Bonus} = \left(\frac{\text{Minutes}}{30}\right) \times 400\text{ ml}$$</td>
+              <td>Counters moisture loss caused by heavy respiration in dry air, protecting lung moisture levels.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <span class="seo-subsection-badge">2. Algorithmic Breakdown: Viewport-Locked Fluid Processing Loops</span>
+      <p class="seo-block-paragraph">When raw metric parameters pass through our single-screen validation matrix, the calculation script evaluates fluid needs across independent math modules inside local device caches:</p>
+      <p class="seo-block-paragraph">First, the program checks the active system unit dropdown selection. If an Imperial parameter layout is verified, it executes a multiplication sequence to convert the weight inputs into standard metric units ($Weight_{\text{kg}}$) to maintain absolute mathematical calculation stability. Once standardized, the system evaluates baseline homeostatic requirements ($V_{\text{basal}} = W_{\text{kg}} \times 35$).</p>
+      <p class="seo-block-paragraph">Next, the training loop runs calculations based on the declared activity minutes, adding 350ml to 500ml of fluid for every 30-minute block of exercise depending on the selected climate filter. Finally, the system combines these values to identify the total daily intake target ($V_{\text{total}} = V_{\text{basal}} \times \text{Factor}_{\text{climate}} + V_{\text{exercise}}$), formatting the final results cleanly into standard glass metrics and fluid ounces simultaneously on screen.</p>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header load crashed:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer load crashed:', err));
+
+    function executeWaterSystemToggleShift() {
+        const systemMode = document.getElementById('watUnitSystem').value;
+        const weightLabel = document.getElementById('watWeightLabel');
+        const weightInput = document.getElementById('watWeightInput');
+
+        if (systemMode === 'metric') {
+            weightLabel.innerText = "Body Weight (Kilograms)";
+            weightInput.value = "70";
+        } else {
+            weightLabel.innerText = "Body Weight (Pounds)";
+            weightInput.value = "154";
+        }
+        liveExecuteWaterCalculations();
+    }
+
+    function liveExecuteWaterCalculations() {
+        const systemMode = document.getElementById('watUnitSystem').value;
+        const rawWeight = parseFloat(document.getElementById('watWeightInput').value);
+        const activeMinutes = parseFloat(document.getElementById('watActivityInput').value) || 0;
+        const climateType = document.getElementById('watClimateType').value;
+
+        const finalIntakeConsole = document.getElementById('watFinalIntakeConsole');
+        const liquidNode = document.getElementById('hydroLiquidNode');
+
+        if (isNaN(rawWeight) || rawWeight <= 0) {
+            resetWaterDisplayFieldsToZero();
+            return;
+        }
+
+        let weightKg = 0;
+        // --- PATH A: METRIC CALIBRATION STANDARDIZATION ---
+        if (systemMode === 'metric') {
+            weightKg = rawWeight;
+        } 
+        // --- PATH B: IMPERIAL CALIBRATION STANDARDIZATION ---
+        else {
+            weightKg = rawWeight * 0.45359237; // Convert lbs safely to kg base anchor
+        }
+
+        // Evaluate physiological baseline requirements (35 ml per kg)
+        let basalWaterVolume = weightKg * 35;
+
+        // Apply progressive climate modifier scalars
+        let climateMultiplierFactor = 1.0;
+        let exerciseLossCoefficientFactor = 350; // ml per 30 minutes baseline
+
+        if (climateType === 'hot') {
+            climateMultiplierFactor = 1.15;
+            exerciseLossCoefficientFactor = 500;
+        } else if (climateType === 'cold') {
+            climateMultiplierFactor = 1.05;
+            exerciseLossCoefficientFactor = 400;
+        }
+
+        let adjustedBasalVolume = basalWaterVolume * climateMultiplierFactor;
+        let exerciseWaterBonusVolume = (activeMinutes / 30) * exerciseLossCoefficientFactor;
+
+        // Extract total operational volumetric targets
+        let totalWaterIntakeRequiredMl = adjustedBasalVolume + exerciseWaterBonusVolume;
+
+        // Cross-calculate alternative distribution matrix indicators
+        let standard250mlGlassesCount = totalWaterIntakeRequiredMl / 250;
+        let fluidOuncesEquivalentVal = totalWaterIntakeRequiredMl * 0.033814;
+
+        // Render calculations back to display fields cleanly based on unit system preferences
+        if (systemMode === 'metric') {
+            finalIntakeConsole.innerHTML = `${Math.round(totalWaterIntakeRequiredMl).toLocaleString()} <span style="font-size: 1.2rem; color: #475569; font-weight:600;">ml / day</span>`;
+        } else {
+            finalIntakeConsole.innerHTML = `${fluidOuncesEquivalentVal.toFixed(1)} <span style="font-size: 1.2rem; color: #475569; font-weight:600;">fl oz / day</span>`;
+        }
+
+        document.getElementById('metricWatGlassesVal').innerText = `${standard250mlGlassesCount.toFixed(1)} Glasses`;
+        document.getElementById('metricWatOuncesVal').innerText = `${fluidOuncesEquivalentVal.toFixed(1)} fl oz`;
+        document.getElementById('metricWatExerciseBonus').innerText = `${Math.round(exerciseWaterBonusVolume)} ml`;
+        document.getElementById('metricWatBasalVal').innerText = `${Math.round(adjustedBasalVolume)} ml`;
+
+        // --- INTERACTIVE PROGRESS METER CYLINDER HEIGHT SCALING ---
+        // Scale fluid progress dynamically between a minimum of 1000ml and a maximum ceiling of 4500ml
+        let minTankFluidScale = 1000;
+        let maxTankFluidScale = 4500;
+        let fillPercentageScalar = (totalWaterIntakeRequiredMl - minTankFluidScale) / (maxTankFluidScale - minTankFluidScale);
+
+        if (fillPercentageScalar < 0.05) fillPercentageScalar = 0.05; // Lock absolute visible baseline minimum
+        if (fillPercentageScalar > 1.0) fillPercentageScalar = 1.0;     // Restrain overflow ceilings
+
+        liquidNode.style.height = `${fillPercentageScalar * 100}%`;
+    }
+
+    function resetWaterDisplayFieldsToZero() {
+        document.getElementById('watFinalIntakeConsole').innerText = "0 ml / day";
+        document.getElementById('metricWatGlassesVal').innerText = "0 Glasses";
+        document.getElementById('metricWatOuncesVal').innerText = "0 fl oz";
+        document.getElementById('metricWatExerciseBonus').innerText = "0 ml";
+        document.getElementById('metricWatBasalVal').innerText = "0 ml";
+        document.getElementById('hydroLiquidNode').style.height = "0%";
+    }
+
+    function clearWaterWorkspaceFields() {
+        document.getElementById('watWeightInput').value = "";
+        document.getElementById('watActivityInput').value = "30";
+        document.getElementById('watClimateType').value = "normal";
+        resetWaterDisplayFieldsToZero();
+    }
+
+    // Trigger computational loops on frame render lifecycles boundaries
+    window.addEventListener('DOMContentLoaded', () => {
+        liveExecuteWaterCalculations();
+    });
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
