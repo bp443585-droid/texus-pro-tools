@@ -40,7 +40,7 @@
     /* UNIFIED DASHBOARD CONTAINER FRAME */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px; box-shadow: 0 15px 35px -5px rgba(0,0,0,0.03), 0 10px 20px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; gap: 24px; }
     
-    /* NEW ULTRA-SIMPLE DROPZONE WORKSPACE INTERFACE */
+    /* ULTRA-SIMPLE DROPZONE WORKSPACE INTERFACE */
     .compress-dropzone-area { width: 100%; border: 3px dashed #cbd5e1; background: #f8fafc; border-radius: 16px; padding: 40px 20px; text-align: center; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; position: relative; }
     .compress-dropzone-area:hover, .compress-dropzone-area.dragover { border-color: #2563eb; background: #eff6ff; }
     .dropzone-icon { font-size: 3rem; margin: 0; line-height: 1; }
@@ -49,12 +49,21 @@
     
     #hiddenFileInputNode { display: none; }
 
+    /* SIMPLE MANUAL CONTROLS STRIP */
+    .manual-control-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box; width: 100%; }
+    .control-label-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; font-weight: 700; color: #1e293b; text-transform: uppercase; letter-spacing: 0.3px; }
+    .slider-wrapper { display: flex; align-items: center; gap: 15px; width: 100%; }
+    .f-slider { flex: 1; appearance: none; width: 100%; height: 6px; background: #cbd5e1; border-radius: 5px; outline: none; transition: background 0.15s ease; cursor: pointer; }
+    .f-slider::-webkit-slider-thumb { appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #2563eb; cursor: pointer; transition: transform 0.1s ease; }
+    .f-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    .slider-badge { font-size: 0.82rem; font-weight: 700; color: #2563eb; background: #eff6ff; border: 1px solid #bfdbfe; padding: 4px 10px; border-radius: 8px; min-width: 65px; text-align: center; }
+
     /* ELITE USER-CENTRIC SINGLE COMPACT RESULT PANEL */
     .analytics-output-container { display: none; flex-direction: column; width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; gap: 20px; transition: all 0.3s ease; }
     
     .be-badge-header { font-size: 1.15rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 4px; }
     
-    /* 3 CORE USER QUICK CARDS CONFIGS */
+    /* CORE USER QUICK CARDS CONFIGS */
     .be-focus-row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
     .be-focus-block { display: flex; flex-direction: column; gap: 4px; }
     .be-focus-title { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -99,6 +108,7 @@
     @media (max-width: 768px) {
       .f-card { padding: 20px; border-radius: 20px; gap: 20px; }
       .compress-dropzone-area { padding: 30px 14px; }
+      .manual-control-box { padding: 14px; }
       .analytics-output-container { padding: 18px; gap: 18px; }
       .be-focus-row { grid-template-columns: 1fr; gap: 18px; }
       .be-focus-main-val { font-size: 2.1rem; }
@@ -122,7 +132,17 @@
         <p class="dropzone-icon">📁</p>
         <h3 class="dropzone-title">Click to Upload or Drag &amp; Drop Image Here</h3>
         <p class="dropzone-desc">Supports PNG, JPEG, JPG, and WEBP assets instantly</p>
-        <input type="file" id="hiddenFileInputNode" accept="image/png, image/jpeg, image/jpg, image/webp" onchange="processIncomingImageCompressionLoop(this)" />
+        <input type="file" id="hiddenFileInputNode" accept="image/png, image/jpeg, image/jpg, image/webp" onchange="handleFileSelection()" />
+      </div>
+
+      <div class="manual-control-box">
+        <div class="control-label-row">
+          <span>Compression Power (Manual Control)</span>
+          <span id="sliderValueBadge" class="slider-badge">Balanced</span>
+        </div>
+        <div class="slider-wrapper">
+          <input type="range" id="compressionQualitySlider" class="f-slider" min="10" max="95" value="78" oninput="updateSliderLabelAndRecompress()" />
+        </div>
       </div>
 
       <div id="compressionOutputContainer" class="analytics-output-container">
@@ -151,7 +171,7 @@
             <span id="lblCompressedSizeText" class="mini-val">0 KB</span>
           </div>
           <div class="mini-table-row">
-            <span class="mini-lbl" style="font-weight: 600; color: #0f172a;">Total Saved Space Space</span>
+            <span class="mini-lbl" style="font-weight: 600; color: #0f172a;">Total Saved Space</span>
             <span id="lblSavedBytesText" class="mini-val accent-green">0 KB</span>
           </div>
         </div>
@@ -167,8 +187,8 @@
 
       <span class="seo-subsection-badge">🛠️ How to Use the Online Image Compressor Instantly</span>
       <p class="seo-block-paragraph"><strong>Step 1: Upload Your Target Media File</strong> — Click anywhere inside our clean drag-and-drop workspace container, or drag an uncompressed image file directly from your local system file rows. The platform natively recognizes inputs across broad formats, including PNG, JPEG, JPG, and WEBP frameworks, immediately loading the raw values into local thread structures safely.</p>
-      <p class="seo-block-paragraph"><strong>Step 2: Automated Quantum Compression Execution</strong> — The moment your file is detected, the browser-native canvas pipeline takes over. It maps the image pixels cleanly to compute optimal sampling paths without sending data out to external third-party server nodes, securing absolute privacy boundaries smoothly.</p>
-      <p class="seo-block-paragraph"><strong>Step 3: Download and Verify Space Space Savings</strong> — Once the processing loops terminate, the system displays your space savings instantly. Review the precise before-and-after size metrics, then click the download button to save your optimized production asset directly to your device local storage cache.</p>
+      <p class="seo-block-paragraph"><strong>Step 2: Set Manual Compression Preference</strong> — Adjust the optional compression power slider layout manually to control the exact export threshold. Leaving the slider at its default "Balanced" state yields optimal file weight savings while retaining standard crystal-clear resolution profiles seamlessly.</p>
+      <p class="seo-block-paragraph"><strong>Step 3: Download and Verify Space Savings</strong> — Once the processing loops terminate, the system displays your space savings instantly. Review the precise before-and-after size metrics, then click the download button to save your optimized production asset directly to your device local storage cache.</p>
 
       <span class="seo-subsection-badge">⚠️ Strategic Best Practices: What Is Good and Bad Image Optimization?</span>
       <div class="seo-grid-asymmetrical-cards">
@@ -213,7 +233,7 @@
   <div id="site-footer"></div>
 
   <script type="text/javascript">
-    const basePath = window.location.origin;
+    let activeLoadedFileReference = null;
     
     // Asynchronous layout block integration loops
     fetch('/components/header.html')
@@ -241,7 +261,7 @@
         const incomingFilesList = dataTransfer.files;
         if(incomingFilesList.length > 0) {
             document.getElementById('hiddenFileInputNode').files = incomingFilesList;
-            processIncomingImageCompressionLoop({ files: incomingFilesList });
+            handleFileSelection();
         }
     });
 
@@ -249,9 +269,41 @@
         document.getElementById('hiddenFileInputNode').click();
     }
 
-    function processIncomingImageCompressionLoop(inputNode) {
-        const fileTarget = inputNode.files[0];
+    function handleFileSelection() {
+        const fileTarget = document.getElementById('hiddenFileInputNode').files[0];
         if (!fileTarget) return;
+        activeLoadedFileReference = fileTarget;
+        executeImageCompressionEngine();
+    }
+
+    function updateSliderLabelAndRecompress() {
+        const sliderValue = parseInt(document.getElementById('compressionQualitySlider').value);
+        const labelBadge = document.getElementById('sliderValueBadge');
+        
+        // Map slider numeric boundaries down to simple human terms
+        if (sliderValue > 85) {
+            labelBadge.innerText = "Max Quality";
+        } else if (sliderValue >= 70) {
+            labelBadge.innerText = "Balanced";
+        } else if (sliderValue >= 40) {
+            labelBadge.innerText = "High Comp";
+        } else {
+            labelBadge.innerText = "Max Speed";
+        }
+
+        // Live refresh computation only if an asset has already been fed inside the cache loop
+        if (activeLoadedFileReference) {
+            executeImageCompressionEngine();
+        }
+    }
+
+    function executeImageCompressionEngine() {
+        const fileTarget = activeLoadedFileReference;
+        if (!fileTarget) return;
+
+        const sliderValue = parseInt(document.getElementById('compressionQualitySlider').value);
+        // Inverse math logic: Higher slider value = better image quality (lower compression multiplier factor)
+        const canvasQualityFactor = sliderValue / 100;
 
         // Extract native original file weight metrics 
         const originalBytesWeight = fileTarget.size;
@@ -272,15 +324,19 @@
                 canvasElement.height = tempImageElement.height;
                 canvasContext.drawImage(tempImageElement, 0, 0, canvasElement.width, canvasElement.height);
 
-                // Execute multi-tier lossy down-sampling quality baseline factor ratio (Locked at optimal 0.78 scale)
-                const optimizedImageBlobDataUrl = canvasElement.toDataURL('image/jpeg', 0.78);
+                // Execute lossy down-sampling quality baseline factor ratio controlled natively via user slider settings
+                const optimizedImageBlobDataUrl = canvasElement.toDataURL('image/jpeg', canvasQualityFactor);
                 
                 // Reverse-calculate simulated byte allocations based on dataUrl characters footprint metrics safely
                 const dataUrlCharacterCount = optimizedImageBlobDataUrl.split(',')[1].length;
                 const approximateCompressedBytesWeight = dataUrlCharacterCount * (3 / 4) - 2; // Exact Base64 bit-to-byte calculation rule
 
                 let finalSavingsPercentageRatio = ((originalBytesWeight - approximateCompressedBytesWeight) / originalBytesWeight) * 100;
-                if (finalSavingsPercentageRatio < 5) finalSavingsPercentageRatio = 24.5; // Force visual minimum boundary calibration offset
+                
+                // Defensive rendering checks to avoid negative layout percentages if user sets quality slider to maximum
+                if (finalSavingsPercentageRatio < 0) {
+                    finalSavingsPercentageRatio = 0;
+                }
 
                 // Pop values back inside DOM display nodes cleanly
                 document.getElementById('txtCompressionSavingsRatio').innerText = `${Math.round(finalSavingsPercentageRatio)}%`;
@@ -296,10 +352,6 @@
                 document.getElementById('compressionOutputContainer').style.display = "flex";
             };
         };
-    }
-
-    function resetImageCompressorDisplayFields() {
-        document.getElementById('compressionOutputContainer').style.display = "none";
     }
   </script>
   
