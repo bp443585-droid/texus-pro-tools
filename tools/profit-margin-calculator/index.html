@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- CRITICAL INITIALIZATION: Google AdSense Global Verification Script Block Embedded Physically -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Profit Margin Calculator | Free Business Margin &amp; Markup Tool</title>
+  <meta name="description" content="Calculate gross profit margin, net margins, and markups instantly. View real-time revenue breakdown with a clean, viewport-locked interactive circular graph dashboard." />
+  
+  <!-- Universal Root Paths -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/profit-margin-calculator/" />
+
+  <!-- Structured Schema Engine -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Advanced Profit Margin Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An automated financial ledger accounting engine calculating gross margins, net profit metrics, and pricing markups seamlessly in real-time.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1050px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .f-heading span { font-size: 2.2rem; }
+    
+    /* DESKTOP VIEWPORT-LOCKED CARD LAYOUT STRETCH SYSTEM */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 28px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02), 0 8px 16px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; display: flex; gap: 32px; width: 100%; align-items: stretch; }
+    
+    /* HIGH PERFORMANCE COMPENSATION STRETCH COLUMNS */
+    .input-column { flex: 1; width: 44%; display: flex; flex-direction: column; justify-content: flex-start; box-sizing: border-box; border-right: 1px solid #e2e8f0; padding-right: 28px; }
+    .output-column { flex: 1; width: 56%; display: flex; box-sizing: border-box; padding-left: 28px; }
+
+    /* COMPACT INPUT CONTROL SYSTEM COMPONENTS */
+    .input-box-group { display: flex; flex-direction: column; gap: 6px; text-align: left; margin-bottom: 12px; width: 100%; box-sizing: border-box; }
+    .input-box-group label { font-size: 0.75rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-num-input { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1.02rem; font-family: 'Inter', sans-serif; color: #0f172a; outline: none; transition: all 0.2s ease; background: #f8fafc; box-sizing: border-box; font-weight: 600; }
+    .f-num-input:focus { border-color: #2563eb; background: #ffffff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.06); }
+
+    .compact-inline-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+
+    /* ACTION CONTROLS TIMELINE BAR */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 4px; width: 100%; margin-bottom: 16px; }
+    .f-btn { font-weight: 700; padding: 11px 18px; border-radius: 12px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; width: 95px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* --- PREMIUM REVENUE BREAKDOWN CIRCULAR DONUT GRAPH VISUALIZER --- */
+    .margin-chart-container { display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; margin-top: auto; padding-top: 14px; border-top: 1px dashed #cbd5e1; box-sizing: border-box; }
+    .margin-svg-box { position: relative; width: 90px; height: 90px; transform: rotate(-90deg); flex-shrink: 0; }
+    .margin-svg-box svg { width: 100%; height: 100%; }
+    .margin-circle-bg { fill: none; stroke: #f1f5f9; stroke-width: 14; }
+    .margin-circle-segment { fill: none; stroke-width: 14; stroke-linecap: round; transition: stroke-dasharray 0.35s ease-in-out; }
+    
+    .seg-cost { stroke: #94a3b8; }    /* Muted Slate Gray for COGS */
+    .seg-profit { stroke: #2563eb; }  /* Deep Electric Blue for Net Profit */
+    
+    .margin-chart-legend { display: flex; flex-direction: column; gap: 6px; }
+    .legend-item-row { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 600; color: #475569; }
+    .legend-dot-indicator { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+    /* LUXURY RE-DESIGNED CLEAN LIGHT RESULTS DISPENSERS */
+    .result-display-panel { width: 100%; background: #f8fafc; border-radius: 20px; padding: 24px; box-sizing: border-box; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; gap: 16px; }
+    .main-breakdown-title { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
+    .main-breakdown-value { font-size: 2.2rem; font-weight: 800; color: #2563eb; line-height: 1.1; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; font-family: 'Inter', sans-serif; letter-spacing: -0.5px; }
+    
+    /* CLEAN INTERACTIVE MARGIN ANALYTICS MATRIX TABLE */
+    .margin-matrix-table { width: 100%; border-collapse: collapse; margin-top: 4px; font-family: 'Inter', sans-serif; }
+    .margin-matrix-table tr { border-bottom: 1px solid #e2e8f0; }
+    .margin-matrix-table tr:last-child { border-bottom: none; }
+    .margin-matrix-table td { padding: 9px 6px; font-size: 0.85rem; color: #334155; vertical-align: middle; }
+    .margin-matrix-table td.matrix-val-cell { text-align: right; font-weight: 700; color: #1e293b; font-size: 0.98rem; width: 110px; white-space: nowrap; }
+    .matrix-lbl-title { font-weight: 600; color: #0f172a; display: block; margin-bottom: 1px; }
+    .matrix-lbl-desc { font-size: 0.74rem; color: #64748b; display: block; }
+
+    .stats-matrix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; border-top: 1px dashed #cbd5e1; padding-top: 14px; }
+    .stat-metric-card { background: #ffffff; padding: 12px 14px; border-radius: 12px; border: 1px solid #e2e8f0; box-sizing: border-box; }
+    .stat-metric-label { font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+    .stat-metric-val { font-size: 1.15rem; font-weight: 700; color: #1e293b; font-family: 'Inter', sans-serif; }
+    
+    /* APP COMPACT COMPLIANCE DISCLAIMER NOTICE */
+    .margin-app-disclaimer { font-size: 0.72rem; color: #64748b; line-height: 1.45; border-top: 1px solid #e2e8f0; padding-top: 10px; margin-top: 2px; font-weight: 500; text-align: justify; }
+
+    .accent-green { color: #16a34a !important; }
+
+    /* DIVERSIFIED HIGH-DENSITY EDITORIAL CONTENT (SEO STRATEGY VARIANT #9 - GAAP MATRIX) */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 35px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-main-topic { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 22px; letter-spacing: -0.5px; line-height: 1.3; }
+    .seo-block-paragraph { font-size: 1.05rem; color: #334155; margin-bottom: 22px; text-align: justify; text-justify: inter-word; }
+    .seo-subsection-badge { font-size: 1.5rem; color: #2563eb; font-weight: 800; margin-top: 38px; margin-bottom: 16px; display: block; border-left: 4px solid #2563eb; padding-left: 12px; }
+    .seo-grid-asymmetrical-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 25px 0; }
+    .seo-asym-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 22px; border-radius: 16px; font-size: 0.98rem; color: #475569; line-height: 1.7; }
+    .seo-asym-card strong { color: #0f172a; display: block; font-size: 1.1rem; margin-bottom: 8px; }
+    .seo-data-sheet-table { width: 100%; overflow-x: auto; margin: 25px 0; border-radius: 16px; border: 1px solid #e2e8f0; }
+    .seo-data-sheet-table table { width: 100%; min-width: 650px; border-collapse: collapse; }
+    .seo-data-sheet-table th { background: #f1f5f9; padding: 14px 16px; text-align: left; font-weight: 700; color: #0f172a; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .seo-data-sheet-table td { padding: 14px 16px; border-bottom: 1px solid #e2e8f0; font-size: 0.94rem; color: #334155; }
+    .seo-data-sheet-table tr:last-child td { border-bottom: none; }
+    .seo-data-sheet-table tr:nth-child(even) { background: #fbfcfe; }
+
+    /* RESPONSIVE FLUID LAYOUT OVERRIDES */
+    @media (max-width: 768px) {
+      .f-card { display: block; padding: 20px; border-radius: 20px; }
+      .input-column { display: block; width: 100%; padding-right: 0; border-right: none; margin-bottom: 18px; }
+      .output-column { display: block; width: 100%; padding-left: 0; }
+      .compact-inline-row { gap: 10px; }
+      .margin-chart-container { margin-top: 20px; padding-bottom: 5px; }
+      .seo-grid-asymmetrical-cards { grid-template-columns: 1fr; }
+      .result-display-panel { padding: 20px; gap: 16px; }
+      .main-breakdown-value { font-size: 1.75rem; padding-bottom: 10px; }
+      .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📊</span> Profit Margin Calculator</div>
+    
+    <div class="f-card">
+      
+      <!-- LEFT COLUMN: LEDGER REVENUE INPUT PANEL -->
+      <div class="input-column">
+        
+        <div class="compact-inline-row">
+          <div class="input-box-group">
+            <label>Cost of Item (COGS)</label>
+            <input type="number" id="marginCostInput" class="f-num-input" value="60" min="0" step="any" oninput="liveExecuteMarginLedgerCalculations()" />
+          </div>
+          <div class="input-box-group">
+            <label>Selling Price (Revenue)</label>
+            <input type="number" id="marginPriceInput" class="f-num-input" value="100" min="0" step="any" oninput="liveExecuteMarginLedgerCalculations()" />
+          </div>
+        </div>
+
+        <div class="input-box-group">
+          <label>Operating Expenses / Marketing Fixed Costs (Optional)</label>
+          <input type="number" id="marginOpExInput" class="f-num-input" value="15" min="0" step="any" oninput="liveExecuteMarginLedgerCalculations()" />
+        </div>
+
+        <div class="f-action-strip">
+          <button class="f-btn f-btn-clear" onclick="clearMarginEngineFields()">Clear</button>
+        </div>
+
+        <!-- --- RE-BALANCED PREMIUM SVG DONUT REVENUE GRAPH VISUALIZER --- -->
+        <div class="margin-chart-container">
+          <div class="margin-svg-box">
+            <svg viewBox="0 0 100 100">
+              <circle class="margin-circle-bg" cx="50" cy="50" r="40" />
+              <!-- Symmetrical Segments Stack Layers Calculated relative to 2*Math.PI*40 = 251.2 Baseline Circumference -->
+              <circle id="graphSegCost" class="margin-circle-segment seg-cost" cx="50" cy="50" r="40" />
+              <circle id="graphSegProfit" class="margin-circle-segment seg-profit" cx="50" cy="50" r="40" />
+            </svg>
+          </div>
+          <div class="margin-chart-legend">
+            <div class="legend-item-row"><span class="legend-dot-indicator" style="background:#94a3b8;"></span> Item Cost (COGS)</div>
+            <div class="legend-item-row"><span class="legend-dot-indicator" style="background:#2563eb;"></span> Net Profit Share</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: SINGLE VIEWPORT CORPORATE BALANCE ANALYTICS -->
+      <div class="output-column">
+        <div class="result-display-panel">
+          <div>
+            <div class="main-breakdown-title">📈 Total Estimated Gross Profit Margin</div>
+            <div id="marginGrossConsoleValue" class="main-breakdown-value">0.00 %</div>
+          </div>
+          
+          <div>
+            <div class="main-breakdown-title" style="margin-bottom: 4px;">📊 Comprehensive Ledger Revenue Distribution Sheet</div>
+            <table class="margin-matrix-table">
+              <tr>
+                <td>
+                  <span class="matrix-lbl-title">Net Profit Margin</span>
+                  <span class="matrix-lbl-desc">True profit ratio after deducting OpEx expenses</span>
+                </td>
+                <td id="cellNetMarginVal" class="matrix-val-cell" style="color: #2563eb;">0.00 %</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="matrix-lbl-title">Gross Profit Value</span>
+                  <span class="matrix-lbl-desc">Selling Price minus pure item cost base</span>
+                </td>
+                <td id="cellGrossProfitAbs" class="matrix-val-cell accent-green">$0.00</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="matrix-lbl-title">Pricing Markup</span>
+                  <span class="matrix-lbl-desc">Cost multiplication index factor percentage</span>
+                </td>
+                <td id="cellMarkupPct" class="matrix-val-cell">0.00 %</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="stats-matrix-grid">
+            <div class="stat-metric-card">
+              <div class="stat-metric-label">Net Profit Absolute Value</div>
+              <div id="lblNetProfitAbs" class="stat-metric-val accent-green">$0.00</div>
+            </div>
+            <div class="stat-metric-card">
+              <div class="stat-metric-label">Total Break-Even Cost Threshold</div>
+              <div id="lblTotalCostsAbs" class="stat-metric-val">$0.00</div>
+            </div>
+          </div>
+
+          <!-- COMPLIANCE FINANCIAL ACCOUNTING LEGAL DISCLAIMER NOTICE -->
+          <div class="margin-app-disclaimer">
+            ⚠️ <strong>Legal Note:</strong> This ledger accounting apparatus performs calculations based on standardized General Accepted Accounting Principles (GAAP). Individual company taxation metrics and platform transactional processing fees must be balanced separately.
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- HIGHY DENSE DIVERSIFIED UN-TRUNCATED LONG TEXT MANUAL (SEO STRATEGY VARIANT #9) -->
+    <article class="seo-container">
+      <h2 class="seo-main-topic">The Algebra of Corporate Pricing Structures: Gross Margin vs. Markup Co-efficients, Cost of Goods Sold (COGS), and GAAP Accounting Allocations</h2>
+      <p class="seo-block-paragraph">Configuring distributed enterprise commerce architectures, building secure dynamic payroll ledgers inside isolated corporate infrastructure arrays, or tracking financial liquidity patterns across software databases requires an error-free processing framework. Standard corporate revenue operations rely on explicit financial formulas where loose decimal adjustments can create compound reporting discrepancies down systemic income reporting ledgers. Utilizing a native <strong>profit margin calculator</strong> provides instant processing performance, evaluating core markup matrices natively within a single device monitor screen flawlessly.</p>
+      <p class="seo-block-paragraph">This advanced micro-economic metrology handbook breaks down the algebraic definitions separating margin layers from simple markup variables, tracks product cost variables across retail frameworks, outlines responsive CSS display configurations, and demonstrates safe methods to handle computation parameters cleanly inside device local session memory banks.</p>
+      
+      <div class="seo-grid-asymmetrical-cards">
+        <div class="seo-asym-card">
+          <strong>The Geometry of the Margin vs. Markup Paradox:</strong> Many startup business models experience early financial friction due to a fundamental misunderstanding of pricing metrics. While a product markup coefficient looks at the raw percentage increase applied to an item's wholesale cost base ($Cost$), a profit margin index measures the percentage of the final retail price ($Price$) that remains as pure profit—meaning a 100% markup can only produce a 50% absolute gross margin.
+        </div>
+        <div class="seo-asym-card">
+          <strong>GAAP Cost Component Isolation:</strong> Accurately tracking operational liquidity require corporate networks to strictly separate direct Cost of Goods Sold (COGS)—such as bulk material acquisitions and inventory overheads—from variable secondary operating expenses (OpEx), including marketing acquisitions and processing costs.
+        </div>
+      </div>
+
+      <span class="seo-subsection-badge">1. Analytical Formulations: The Strict Mathematics of Profitability Projections</span>
+      <p class="seo-block-paragraph">To maintain complete accounting transparency across multi-tier retail platforms, calculations rely on a standardized financial baseline: gross operational revenue ($R$). The system normalizes incoming currency text fields into raw floating-point integers inside device cache variables before initiating any subtraction or percentage division algorithms. This defensive validation step isolates core numbers from formatting noise, preventing calculation failures across local device memory pools.</p>
+      <p class="seo-block-paragraph">Once baseline revenue strings are verified, the ledger accounting script evaluates gross performance profiles by subtracting direct item costs from final wholesale prices ($\text{Gross Profit} = \text{Price} - \text{COGS}$). To convert this value into a scalable gross margin percentage, the system divides the profit by the final retail price, multiplying by 100 to map the value onto a clean dashboard canvas seamlessly.</p>
+
+      <div class="seo-data-sheet-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Financial Margin Classification Tier</th>
+              <th>Primary Algebraic Equations Model</th>
+              <th>Standard Variable Threshold Objectives</th>
+              <th>Primary Analytical Purpose inside Enterprise Databases</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Gross Profit Margin Ratio</td>
+              <td>$$\text{Margin}_{\text{Gross}} = \left(\frac{\text{Revenue} - \text{COGS}}{\text{Revenue}}\right) \times 100$$</td>
+              <td>Tracks direct manufacturing cost safety</td>
+              <td>Measures fundamental production efficiency metrics before factoring in global administrative expenses or marketing costs.</td>
+            </tr>
+            <tr>
+              <td>Pricing Markup Coefficient</td>
+              <td>$$\text{Markup} = \left(\frac{\text{Revenue} - \text{COGS}}{\text{COGS}}\right) \times 100$$</td>
+              <td>Calculates initial cost price premiums</td>
+              <td>Defines the exact percentage premium added to base item wholesale costs to cover retail overhead thresholds safely.</td>
+            </tr>
+            <tr>
+              <td>Net Profit Margin Boundary</td>
+              <td>$$\text{Margin}_{\text{Net}} = \left(\frac{\text{Net Profit}}{\text{Revenue}}\right) \times 100$$</td>
+              <td>Evaluates bottom-line structural survival</td>
+              <td>Provides absolute tracking clarity by accounting for all secondary overhead expenses like tax tiers and shipping costs.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <span class="seo-subsection-badge">2. Script Processing Engine: Viewport-Locked Ledger Execution Loops</span>
+      <p class="seo-block-paragraph">When numeric strings enter our single-viewport interface workspace, the system routes instructions across separate logic tracks inside device memory: First, the filter routines scan both form fields, verifying that pricing numbers consistently exceed zero to avoid division-by-zero errors in the math loops. Once verified, the basal homeostatic calculations trigger, computing absolute gross gains alongside fixed operational expenditure offsets simultaneously.</p>
+      <p class="seo-block-paragraph">Next, the program hooks into the interactive circular SVG donut module vector fields, evaluating circumference allocations ($251.2$ baseline factor) to scale graph sections based on cost-to-profit ratios. These adjustments render instantly as smooth arc movements, updating metrics dynamically across desktop and smartphone displays without layout shift or latency. To optimize indexing, clear out floating whitespace gaps inside production files to protect script integrity.</p>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <!-- REAL-TIME BUSINESS LEDGER PROFIT MATRIX ENGINE SCRIPT -->
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header component failed to ingest:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer component failed to ingest:', err));
+
+    function liveExecuteMarginLedgerCalculations() {
+        const costValue = parseFloat(document.getElementById('marginCostInput').value);
+        const priceValue = parseFloat(document.getElementById('marginPriceInput').value);
+        const opexValue = parseFloat(document.getElementById('marginOpExInput').value) || 0;
+
+        const grossConsole = document.getElementById('marginGrossConsoleValue');
+        
+        const gSegCost = document.getElementById('graphSegCost');
+        const gSegProfit = document.getElementById('graphSegProfit');
+
+        // Validation gate to block processing during blank fields initialize scenarios
+        if (isNaN(costValue) || isNaN(priceValue) || priceValue <= 0 || costValue < 0) {
+            resetMarginLedgerDisplayFields();
+            return;
+        }
+
+        // --- GAAP LEDGER CONVERSION PIPELINE ENGINE ---
+        let grossProfitAbsoluteValue = priceValue - costValue;
+        let grossProfitMarginPercentage = (grossProfitAbsoluteValue / priceValue) * 100;
+        
+        let totalExpensesAccumulated = costValue + opexValue;
+        let netProfitAbsoluteValue = priceValue - totalExpensesAccumulated;
+        let netProfitMarginPercentage = (netProfitAbsoluteValue / priceValue) * 100;
+
+        let pricingMarkupPercentage = (costValue > 0) ? (grossProfitAbsoluteValue / costValue) * 100 : 0;
+
+        // Render strings securely back to primary HTML text blocks 
+        grossConsole.innerText = `${grossProfitMarginPercentage.toFixed(2)} %`;
+        
+        document.getElementById('cellNetMarginVal').innerText = `${netProfitMarginPercentage.toFixed(2)} %`;
+        document.getElementById('cellGrossProfitAbs').innerText = `$ ${grossProfitAbsoluteValue.toFixed(2)}`;
+        document.getElementById('cellMarkupPct').innerText = `${pricingMarkupPercentage.toFixed(2)} %`;
+        
+        document.getElementById('lblNetProfitAbs').innerText = `$ ${netProfitAbsoluteValue.toFixed(2)}`;
+        document.getElementById('lblTotalCostsAbs').innerText = `$ ${totalExpensesAccumulated.toFixed(2)}`;
+
+        // --- INTERACTIVE SVG DYNAMIC DONUT CHART GRAPH VISUALIZER MAPS ---
+        // Circumference constant baseline factor factor equals exactly 2 * Math.PI * 40 = 251.2
+        const totalGraphCircumference = 251.2;
+        
+        let costRatioFraction = costValue / priceValue;
+        let netProfitRatioFraction = netProfitAbsoluteValue / priceValue;
+
+        if (netProfitRatioFraction < 0) netProfitRatioFraction = 0; // Prevent chart breakage during negative deficit models
+        if (costRatioFraction > 1) costRatioFraction = 1;
+
+        let strokeCostAllocation = totalGraphCircumference * costRatioFraction;
+        let strokeProfitAllocation = totalGraphCircumference * netProfitRatioFraction;
+
+        gSegCost.style.strokeDasharray = `${strokeCostAllocation} ${totalGraphCircumference}`;
+        gSegCost.style.strokeDashoffset = "0";
+
+        gSegProfit.style.strokeDasharray = `${strokeProfitAllocation} ${totalGraphCircumference}`;
+        // Push profit segment forward to perfectly align where cost allocation line terminates
+        gSegProfit.style.strokeDashoffset = `-${strokeCostAllocation}`;
+    }
+
+    function resetMarginLedgerDisplayFields() {
+        document.getElementById('marginGrossConsoleValue').innerText = "0.00 %";
+        document.getElementById('cellNetMarginVal').innerText = "0.00 %";
+        document.getElementById('cellGrossProfitAbs').innerText = "$0.00";
+        document.getElementById('cellMarkupPct').innerText = "0.00 %";
+        document.getElementById('lblNetProfitAbs').innerText = "$0.00";
+        document.getElementById('lblTotalCostsAbs').innerText = "$0.00";
+        
+        document.getElementById('graphSegCost').style.strokeDasharray = "0 251.2";
+        document.getElementById('graphSegProfit').style.strokeDasharray = "0 251.2";
+    }
+
+    function clearMarginEngineFields() {
+        document.getElementById('marginCostInput').value = "";
+        document.getElementById('marginPriceInput').value = "";
+        document.getElementById('marginOpExInput').value = "";
+        resetMarginLedgerDisplayFields();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        liveExecuteMarginLedgerCalculations();
+    });
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
