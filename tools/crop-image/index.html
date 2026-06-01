@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- CRITICAL INITIALIZATION: Google AdSense Global Verification Script Block Embedded Physically -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164" crossorigin="anonymous"></script>
 
   <meta charset="UTF-8">
@@ -8,10 +9,12 @@
   <title>Free Image Cropper Online | Crop Images to Exact Sizes</title>
   <meta name="description" content="Crop your images online instantly. Free, simple tool to trim edges, adjust aspect ratios, and crop photos for social media with zero desktop scrolling." />
   
+  <!-- Universal Root Paths -->
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="https://www.texusprotools.com/tools/crop-image/" />
 
+  <!-- Structured Schema Engine -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -57,14 +60,20 @@
     .ratio-btn:hover { border-color: #cbd5e1; }
     .ratio-btn.active { border-color: #2563eb; color: #2563eb; background: #eff6ff; }
 
-    /* NATIVE CROP PREVIEW CONTAINER CANVAS MAPPING WRAPPER */
-    .crop-workspace-viewport { display: none; width: 100%; border: 1px solid #cbd5e1; border-radius: 16px; background: #0f172a; position: relative; overflow: hidden; align-items: center; justify-content: center; max-height: 400px; padding: 10px; box-sizing: border-box; }
-    .crop-workspace-viewport img { max-width: 100%; max-height: 380px; display: block; user-select: none; -webkit-user-drag: none; }
+    /* FIXED LIVE VIEWPORT PREVIEW CANVAS CONTAINER WRAPPER */
+    .crop-workspace-viewport { display: none; width: 100%; border: 1px solid #cbd5e1; border-radius: 16px; background: #0f172a; position: relative; overflow: hidden; align-items: center; justify-content: center; max-height: 450px; min-height: 200px; padding: 0; box-sizing: border-box; }
+    .img-relative-wrapper { position: relative; display: inline-block; line-height: 0; max-height: 450px; }
+    .crop-workspace-viewport img { max-width: 100%; max-height: 450px; display: block; user-select: none; -webkit-user-drag: none; pointer-events: none; }
     
     /* THE MINIMALIST CSS FLOATING SELECTION OVERLAY METER BOX */
-    .crop-selection-box { position: absolute; border: 2px solid #ffffff; box-shadow: 0 0 0 4000px rgba(0, 0, 0, 0.6); cursor: move; box-sizing: border-box; display: none; }
-    .crop-handle { position: absolute; width: 10px; height: 10px; background: #ffffff; border: 1px solid #000000; border-radius: 50%; }
-    .handle-br { bottom: -5px; right: -5px; cursor: se-resize; }
+    .crop-selection-box { position: absolute; border: 2px solid #ffffff; box-shadow: 0 0 0 4000px rgba(0, 0, 0, 0.65); cursor: move; box-sizing: border-box; display: none; z-index: 10; line-height: normal; }
+    
+    /* INTERNAL SHARP LINES CRUCIAL FOR MOBILE PRECISION SIGHTING */
+    .crop-selection-box::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: 1px dashed rgba(255,255,255,0.4); pointer-events: none; }
+    
+    /* LARGE TOUCH-OPTIMIZED RESIZE HANDLES FOR ALL VIEWPORTS */
+    .crop-handle { position: absolute; width: 16px; height: 16px; background: #2563eb; border: 2px solid #ffffff; border-radius: 50%; z-index: 20; box-shadow: 0 2px 4px rgba(0,0,0,0.3); touch-action: none; }
+    .handle-br { bottom: -8px; right: -8px; cursor: se-resize; }
 
     /* AUTOMATED OUTPUT AREA CONTAINER */
     .analytics-output-container { display: none; flex-direction: column; width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; gap: 20px; }
@@ -78,7 +87,7 @@
     .f-btn-download { background: #10b981; color: #ffffff; font-weight: 700; padding: 12px 28px; border-radius: 12px; cursor: pointer; font-size: 0.9rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.15s ease; width: fit-content; text-decoration: none; text-align: center; }
     .f-btn-download:hover { background: #059669; }
 
-    /* NEW CLEAN HELPFUL CONTENT STRUCTURE DESIGN SYSTEM */
+    /* 100% CLEAN HIGHLY ACTIONABLE CONTENT INFRASTRUCTURE (NO AI REPETITIVE FLUFF) */
     .seo-clean-container { width: 100%; line-height: 1.75; text-align: left; margin-top: 30px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 35px; color: #334155; }
     .seo-block-title { font-size: 1.6rem; color: #0f172a; font-weight: 800; margin-top: 30px; margin-bottom: 14px; }
     .seo-para { font-size: 1rem; margin-bottom: 16px; text-align: justify; }
@@ -113,6 +122,7 @@
     
     <div class="f-card">
       
+      <!-- DROPZONE FILE UPLOADER WORKSPACE -->
       <div id="dropzoneWorkspaceNode" class="compress-dropzone-area" onclick="triggerHiddenFileInputClick()">
         <p class="dropzone-icon">🖼️</p>
         <h3 class="dropzone-title">Click to Upload or Drag &amp; Drop Image</h3>
@@ -120,6 +130,7 @@
         <input type="file" id="hiddenFileInputNode" accept="image/png, image/jpeg, image/jpg, image/webp" onchange="handleFileSelection()" />
       </div>
 
+      <!-- ASPECT RATIO CONTROL CHANNELS -->
       <div class="aspect-preset-box">
         <div class="control-label-row">Choose Aspect Ratio Preset</div>
         <div class="preset-btn-strip">
@@ -130,13 +141,17 @@
         </div>
       </div>
 
+      <!-- THE LIVE VIEWPORT CANVAS AREA BOUNDED CORRECTLY WITH ABSOLUTE IMAGE HOUSING WRAPPER -->
       <div id="viewportContainer" class="crop-workspace-viewport">
-        <img id="sourcePreviewImage" src="#" alt="Crop Preview Target" />
-        <div id="cropSelectionBox" class="crop-selection-box">
-          <div class="crop-handle handle-br"></div>
+        <div id="relativeImageHousing" class="img-relative-wrapper">
+          <img id="sourcePreviewImage" src="#" alt="Crop Preview Target" />
+          <div id="cropSelectionBox" class="crop-selection-box">
+            <div class="crop-handle handle-br"></div>
+          </div>
         </div>
       </div>
 
+      <!-- OUTPUT GENERATED LAYER ACTIONS -->
       <div id="compressionOutputContainer" class="analytics-output-container">
         <div class="be-badge-header">Crop Area Selected</div>
         <div class="be-focus-row">
@@ -153,6 +168,7 @@
 
     </div>
 
+    <!-- 100% CLEAN HIGHLY ACTIONABLE CONTENT INFRASTRUCTURE (NO AI REPETITIVE FLUFF) -->
     <article class="seo-clean-container">
       
       <h2 class="seo-block-title" style="margin-top:0;">1. Quick Introduction</h2>
@@ -244,12 +260,13 @@
 
   <div id="site-footer"></div>
 
+  <!-- CROSS-PLATFORM INTERACTIVE TOUCH/MOUSE BI-DIRECTIONAL ENGINE SCRIPT -->
   <script type="text/javascript">
     let activeLoadedImageElement = null;
     let cropRatioMode = 'free';
     
-    // Core selection variables
-    let selectionX = 50, selectionY = 50, selectionW = 200, selectionH = 150;
+    // Core selection variables relative to image bounding box dimensions
+    let selectionX = 0, selectionY = 0, selectionW = 150, selectionH = 150;
     let isDraggingSelection = false, isResizingSelection = false;
     let dragStartX = 0, dragStartY = 0;
     
@@ -282,13 +299,20 @@
                 document.getElementById('viewportContainer').style.display = "flex";
                 document.getElementById('compressionOutputContainer').style.display = "flex";
                 
-                // Initialize clean default selection values
-                selectionX = 20; selectionY = 20;
-                selectionW = Math.round(previewImg.clientWidth * 0.6);
-                selectionH = Math.round(previewImg.clientHeight * 0.6);
+                // CRITICAL INVISIBLE WALL FIX: Initialize boundaries based strictly on rendered img dimensions
+                selectionX = Math.round(previewImg.clientWidth * 0.1);
+                selectionY = Math.round(previewImg.clientHeight * 0.1);
+                selectionW = Math.round(previewImg.clientWidth * 0.8);
+                selectionH = (cropRatioMode !== 'free') ? Math.round(selectionW / cropRatioMode) : Math.round(previewImg.clientHeight * 0.8);
                 
+                // Check edge overflows on default init
+                if(selectionY + selectionH > previewImg.clientHeight) {
+                    selectionH = previewImg.clientHeight - selectionY;
+                    if(cropRatioMode !== 'free') selectionW = Math.round(selectionH * cropRatioMode);
+                }
+
                 applyCropSelectionUIBounds();
-                setupInteractionEventListeners();
+                setupUniversalInputEventListeners();
             };
         };
     }
@@ -300,12 +324,16 @@
         
         if (activeLoadedImageElement) {
             if (cropRatioMode !== 'free') {
+                selectionW = Math.round(activeLoadedImageElement.clientWidth * 0.7);
                 selectionH = Math.round(selectionW / cropRatioMode);
-                // Restrain vertical overflow caps safely
-                if (selectionY + selectionH > activeLoadedImageElement.clientHeight) {
-                    selectionH = activeLoadedImageElement.clientHeight - selectionY;
+                
+                // Correct bounding checks if preset values exceed structural dimensions
+                if (selectionH > activeLoadedImageElement.clientHeight) {
+                    selectionH = Math.round(activeLoadedImageElement.clientHeight * 0.7);
                     selectionW = Math.round(selectionH * cropRatioMode);
                 }
+                selectionX = Math.round((activeLoadedImageElement.clientWidth - selectionW) / 2);
+                selectionY = Math.round((activeLoadedImageElement.clientHeight - selectionH) / 2);
             }
             applyCropSelectionUIBounds();
         }
@@ -319,7 +347,6 @@
         selectionBox.style.width = selectionW + "px";
         selectionBox.style.height = selectionH + "px";
 
-        // Map relative browser pixels back to true original image dimensions
         if (activeLoadedImageElement) {
             const widthScaleMultiplier = activeLoadedImageElement.naturalWidth / activeLoadedImageElement.clientWidth;
             const heightScaleMultiplier = activeLoadedImageElement.naturalHeight / activeLoadedImageElement.clientHeight;
@@ -330,69 +357,95 @@
         }
     }
 
-    function setupInteractionEventListeners() {
+    function setupUniversalInputEventListeners() {
         const box = document.getElementById('cropSelectionBox');
         const handle = document.querySelector('.handle-br');
         
-        // Selection dragging sequence
-        box.onmousedown = function(e) {
-            if (e.target === handle) return;
-            isDraggingSelection = true;
-            dragStartX = e.clientX - selectionX;
-            dragStartY = e.clientY - selectionY;
-            e.preventDefault();
-        };
+        // Auxiliary function to map client coordinates uniformly across desktop mouse and mobile touch inputs
+        function getEventCoordinates(e) {
+            if (e.touches && e.touches.length > 0) {
+                return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            }
+            return { x: e.clientX, y: e.clientY };
+        }
 
-        // Selection handle resizing sequence
-        handle.onmousedown = function(e) {
-            isResizingSelection = true;
-            dragStartX = e.clientX;
-            dragStartY = e.clientY;
-            e.preventDefault();
-            e.stopPropagation();
-        };
-
-        window.onmousemove = function(e) {
+        function initiateDragSequence(e) {
             if (!activeLoadedImageElement) return;
-            
+            const coords = getEventCoordinates(e);
+            isDraggingSelection = true;
+            dragStartX = coords.x - selectionX;
+            dragStartY = coords.y - selectionY;
+            // Prevent scrolling on mobile touch drags
+            if (e.cancelable) e.preventDefault();
+        }
+
+        function initiateResizeSequence(e) {
+            if (!activeLoadedImageElement) return;
+            const coords = getEventCoordinates(e);
+            isResizingSelection = true;
+            dragStartX = coords.x;
+            dragStartY = coords.y;
+            if (e.cancelable) e.preventDefault();
+            e.stopPropagation();
+        }
+
+        function executeUniversalMovementLoop(e) {
+            if (!activeLoadedImageElement || (!isDraggingSelection && !isResizingSelection)) return;
+            const coords = getEventCoordinates(e);
+
+            // CRITICAL INVISIBLE WALL BOUNDARY RE-ROUTING (Uses activeLoadedImageElement constraints directly)
+            const maxAllowedWidth = activeLoadedImageElement.clientWidth;
+            const maxAllowedHeight = activeLoadedImageElement.clientHeight;
+
             if (isDraggingSelection) {
-                selectionX = e.clientX - dragStartX;
-                selectionY = e.clientY - dragStartY;
+                selectionX = coords.x - dragStartX;
+                selectionY = coords.y - dragStartY;
                 
-                // Keep bounding selections securely within preview borders
                 if (selectionX < 0) selectionX = 0;
                 if (selectionY < 0) selectionY = 0;
-                if (selectionX + selectionW > activeLoadedImageElement.clientWidth) {
-                    selectionX = activeLoadedImageElement.clientWidth - selectionW;
-                }
-                if (selectionY + selectionH > activeLoadedImageElement.clientHeight) {
-                    selectionY = activeLoadedImageElement.clientHeight - selectionH;
-                }
+                if (selectionX + selectionW > maxAllowedWidth) selectionX = maxAllowedWidth - selectionW;
+                if (selectionY + selectionH > maxAllowedHeight) selectionY = maxAllowedHeight - selectionH;
+                
                 applyCropSelectionUIBounds();
+                if (e.cancelable) e.preventDefault();
             }
             
             if (isResizingSelection) {
-                let deltaX = e.clientX - dragStartX;
+                let deltaX = coords.x - dragStartX;
                 let calculatedW = selectionW + deltaX;
-                let calculatedH = selectionH + (cropRatioMode !== 'free' ? Math.round(deltaX / cropRatioMode) : (e.clientY - dragStartY));
+                let calculatedH = selectionH + (cropRatioMode !== 'free' ? Math.round(deltaX / cropRatioMode) : (coords.y - dragStartY));
 
-                if (calculatedW > 30 && calculatedH > 30 && 
-                    (selectionX + calculatedW <= activeLoadedImageElement.clientWidth) && 
-                    (selectionY + calculatedH <= activeLoadedImageElement.clientHeight)) {
+                // Restrict resizing checks relative to actual current image edges
+                if (calculatedW > 35 && calculatedH > 35 && 
+                    (selectionX + calculatedW <= maxAllowedWidth) && 
+                    (selectionY + calculatedH <= maxAllowedHeight)) {
                     
                     selectionW = calculatedW;
                     selectionH = calculatedH;
-                    dragStartX = e.clientX;
-                    dragStartY = e.clientY;
+                    dragStartX = coords.x;
+                    dragStartY = coords.y;
                     applyCropSelectionUIBounds();
                 }
+                if (e.cancelable) e.preventDefault();
             }
-        };
+        }
 
-        window.onmouseup = function() {
+        function terminateUniversalSequence() {
             isDraggingSelection = false;
             isResizingSelection = false;
-        };
+        }
+
+        // MOUSE DESKTOP REGISTRATION EVENTS
+        box.addEventListener('mousedown', initiateDragSequence);
+        handle.addEventListener('mousedown', initiateResizeSequence);
+        window.addEventListener('mousemove', executeUniversalMovementLoop);
+        window.addEventListener('mouseup', terminateUniversalSequence);
+
+        // MOBILE PHONE SMART TOUCH REGISTRATION EVENTS
+        box.addEventListener('touchstart', initiateDragSequence, { passive: false });
+        handle.addEventListener('touchstart', initiateResizeSequence, { passive: false });
+        window.addEventListener('touchmove', executeUniversalMovementLoop, { passive: false });
+        window.addEventListener('touchend', terminateUniversalSequence);
     }
 
     function executeNativeCanvasCropOperation(event) {
@@ -412,11 +465,13 @@
         exportCanvas.height = sourceH;
         
         const context = exportCanvas.getContext('2d');
+        // Crop rendering process using high interpolation canvas attributes
+        context.imageSmoothingEnabled = true;
+        context.imageSmoothingQuality = 'high';
         context.drawImage(activeLoadedImageElement, sourceX, sourceY, sourceW, sourceH, 0, 0, sourceW, sourceH);
 
-        // Download trigger sequence mapping
         const downloadAnchor = document.createElement('a');
-        downloadAnchor.href = exportCanvas.toDataURL('image/jpeg', 0.9);
+        downloadAnchor.href = exportCanvas.toDataURL('image/jpeg', 0.92);
         downloadAnchor.download = `cropped-photo.jpg`;
         document.body.appendChild(downloadAnchor);
         downloadAnchor.click();
