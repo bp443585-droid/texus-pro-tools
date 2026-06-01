@@ -14,6 +14,7 @@ window.addEventListener('load', function() {
 const contentBlock =
   document.querySelector('.seo-prose-holder') ||
   document.querySelector('.seo-container') ||
+  document.querySelector('.seo-clean-container') ||
   document.querySelector('.article-container') ||
   document.querySelector('.content-area');
 
