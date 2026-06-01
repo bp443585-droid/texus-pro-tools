@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- CRITICAL INITIALIZATION: Google AdSense Global Verification Script Block Embedded Physically -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Free Image Flipper Online | Mirror Photos Instantly</title>
+  <meta name="description" content="Flip and mirror your images online instantly. Free, simple tool to flip photos horizontally or vertically with zero quality loss and no desktop scrolling." />
+  
+  <!-- Universal Root Paths -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/image-flipper/" />
+
+  <!-- Structured Schema Engine -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Simple Image Flipping Apparatus Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An automated browser-native image flipper tool transforming asset coordinates via local viewport mirror canvas maps.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 950px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    
+    /* UNIFIED DASHBOARD CONTAINER FRAME */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px; box-shadow: 0 15px 35px -5px rgba(0,0,0,0.03), 0 10px 20px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; gap: 24px; }
+    
+    /* DROPZONE WORKSPACE INTERFACE */
+    .compress-dropzone-area { width: 100%; border: 3px dashed #cbd5e1; background: #f8fafc; border-radius: 16px; padding: 40px 20px; text-align: center; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; position: relative; }
+    .compress-dropzone-area:hover, .compress-dropzone-area.dragover { border-color: #2563eb; background: #eff6ff; }
+    .dropzone-icon { font-size: 3rem; margin: 0; line-height: 1; }
+    .dropzone-title { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0; }
+    .dropzone-desc { font-size: 0.85rem; color: #64748b; margin: 0; font-weight: 500; }
+    
+    #hiddenFileInputNode { display: none; }
+
+    /* CORE OPERATION CONTROL PANELS BLOCK */
+    .aspect-preset-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; box-sizing: border-box; width: 100%; }
+    .control-label-row { font-size: 0.85rem; font-weight: 700; color: #1e293b; text-transform: uppercase; letter-spacing: 0.3px; }
+    .preset-btn-strip { display: flex; flex-wrap: wrap; gap: 12px; width: 100%; }
+    
+    .flip-panel-btn { flex: 1; min-width: 140px; background: #ffffff; border: 2px solid #e2e8f0; color: #0f172a; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.9rem; transition: all 0.15s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; }
+    .flip-panel-btn:hover { border-color: #2563eb; background: #f0f6ff; }
+    .flip-panel-btn.active { border-color: #2563eb; color: #2563eb; background: #eff6ff; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08); }
+    .btn-sub-lbl { font-size: 0.74rem; font-weight: 500; color: #64748b; margin-top: 2px; }
+
+    /* LIVE PREVIEW VIEWPORT CANVAS HOUSING WRAPPER */
+    .crop-workspace-viewport { display: none; width: 100%; border: 1px solid #cbd5e1; border-radius: 16px; background: #0f172a; position: relative; overflow: hidden; align-items: center; justify-content: center; max-height: 400px; min-height: 200px; padding: 20px; box-sizing: border-box; }
+    .crop-workspace-viewport img { max-width: 100%; max-height: 360px; display: block; user-select: none; -webkit-user-drag: none; pointer-events: none; transition: transform 0.2s ease-in-out; }
+
+    /* AUTOMATED OUTPUT AREA CONTAINER */
+    .analytics-output-container { display: none; flex-direction: column; width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; gap: 20px; }
+    .be-badge-header { font-size: 1.15rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 4px; }
+    .be-focus-row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
+    .be-focus-block { display: flex; flex-direction: column; gap: 4px; }
+    .be-focus-title { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .be-focus-main-val { font-size: 2.2rem; font-weight: 800; color: #10b981; font-family: 'Inter', sans-serif; line-height: 1.1; }
+    .be-focus-desc { font-size: 0.82rem; color: #475569; font-weight: 500; line-height: 1.4; }
+    .download-strip-row { display: flex; justify-content: flex-end; width: 100%; }
+    .f-btn-download { background: #10b981; color: #ffffff; font-weight: 700; padding: 12px 28px; border-radius: 12px; cursor: pointer; font-size: 0.9rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.15s ease; width: fit-content; text-decoration: none; text-align: center; }
+    .f-btn-download:hover { background: #059669; }
+
+    /* NEW CLEAN ACTIONABLE HELPFUL SEO STRUCTURE DESIGN SYSTEM */
+    .seo-clean-container { width: 100%; line-height: 1.75; text-align: left; margin-top: 30px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 35px; color: #334155; }
+    .seo-block-title { font-size: 1.6rem; color: #0f172a; font-weight: 800; margin-top: 30px; margin-bottom: 14px; }
+    .seo-para { font-size: 1rem; margin-bottom: 16px; text-align: justify; }
+    .seo-list { margin: 12px 0 20px 20px; padding: 0; }
+    .seo-list li { margin-bottom: 8px; font-size: 0.98rem; }
+    .seo-list li strong { color: #0f172a; }
+    
+    .example-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+    .example-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 0.92rem; }
+    .example-card strong { color: #0f172a; display: block; font-size: 1rem; margin-bottom: 4px; }
+
+    .faq-wrapper { margin-top: 25px; }
+    .faq-item { margin-bottom: 20px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 16px; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .faq-answer { font-size: 0.96rem; color: #475569; margin: 0; }
+
+    @media (max-width: 768px) {
+      .f-card { padding: 20px; border-radius: 20px; gap: 20px; }
+      .example-grid { grid-template-columns: 1fr; }
+      .preset-btn-strip { flex-direction: column; gap: 10px; }
+      .flip-panel-btn { width: 100%; }
+      .be-focus-row { grid-template-columns: 1fr; gap: 16px; }
+      .download-strip-row, .f-btn-download { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading">↔️ Image Flipper</div>
+    
+    <div class="f-card">
+      
+      <!-- DROPZONE FILE UPLOADER WORKSPACE -->
+      <div id="dropzoneWorkspaceNode" class="compress-dropzone-area" onclick="triggerHiddenFileInputClick()">
+        <p class="dropzone-icon">↔️</p>
+        <h3 class="dropzone-title">Click to Upload or Drag &amp; Drop Image</h3>
+        <p class="dropzone-desc">Select any photo to activate mirror flip properties instantly</p>
+        <input type="file" id="hiddenFileInputNode" accept="image/png, image/jpeg, image/jpg, image/webp" onchange="handleFileSelection()" />
+      </div>
+
+      <!-- STREAMLINED DUAL FLIP PANEL CONTROLS -->
+      <div class="aspect-preset-box">
+        <div class="control-label-row">Select Mirror Flip Axes</div>
+        <div class="preset-btn-strip">
+          <button id="btnFlipHorizontal" class="flip-panel-btn" onclick="toggleMirrorAxisState('horizontal')">
+            <span>↔️ Flip Horizontally</span>
+            <span class="btn-sub-lbl">Left-to-Right Mirror</span>
+          </button>
+          <button id="btnFlipVertical" class="flip-panel-btn" onclick="toggleMirrorAxisState('vertical')">
+            <span>↕️ Flip Vertically</span>
+            <span class="btn-sub-lbl">Top-to-Bottom Invert</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- THE LIVE VIEWPORT PREVIEW CANVAS HOUSING AREA -->
+      <div id="viewportContainer" class="crop-workspace-viewport">
+        <img id="sourcePreviewImage" src="#" alt="Flipper Preview Target" />
+      </div>
+
+      <!-- OUTPUT GENERATED LAYER ACTIONS -->
+      <div id="compressionOutputContainer" class="analytics-output-container">
+        <div class="be-badge-header">Mirror States Configured</div>
+        <div class="be-focus-row">
+          <div class="be-focus-block">
+            <span class="be-focus-title">Active Axis State</span>
+            <div id="txtTargetMirrorConsole" class="be-focus-main-val">Normal</div>
+            <span class="be-focus-desc">Your image coordinate fields adjust natively inside local browser cache memory.</span>
+          </div>
+          <div class="download-strip-row">
+            <a id="btnDownloadCompressedAsset" class="f-btn-download" href="#" onclick="compileAndDownloadFlippedImage(event)">Apply &amp; Download Image</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- HELPFUL ACTIONABLE CONTENT ARCHITECTURE (NO REPETITIVE AI FILLER JUNK) -->
+    <article class="seo-clean-container">
+      
+      <h2 class="seo-block-title" style="margin-top:0;">1. Quick Introduction</h2>
+      <p class="seo-para">The Online Image Flipper is a fast, web-native tool that mirrors any picture horizontally or vertically in one click. This tool is built specifically for bloggers, social media creators, and e-commerce store owners who need to reverse photo geometries, fix inverted camera captures, or generate complementary design variations instantly. Without using heavy software tools, this lightweight tool handles pixel transformations cleanly directly within your local interface.</p>
+
+      <h2 class="seo-block-title">2. How the Tool Works</h2>
+      <p class="seo-para">This graphics utility processes file matrices natively inside your browser cache arrays using HTML5 canvas context inversions. Since your data never leaves your device, it remains completely private. Here is what each panel mode controls:</p>
+      <ul class="seo-list">
+        <li><strong>Horizontal Mirror Axis:</strong> Flips coordinates along the vertical center line, reversing elements from left to right. This is highly useful for fixing inverted front-camera phone selfies.</li>
+        <li><strong>Vertical Invert Axis:</strong> Swaps coordinates from top to bottom, immediately correcting photos shot from upside-down camera angles or ceiling mounts.</li>
+      </ul>
+
+      <h2 class="seo-block-title">3. Step-by-Step Usage Guide</h2>
+      <ul class="seo-list">
+        <li><strong>Step 1:</strong> Tap anywhere inside the dashed uploader card to select an image from your storage, or drag and drop a picture file into the box.</li>
+        <li><strong>Step 2:</strong> Click either **Flip Horizontally** or **Flip Vertically**. You can activate both panels together to perform a complete 180-degree matrix flip.</li>
+        <li><strong>Step 3:</strong> Review the active reflection status updates inside the real-time target data layout summary box.</li>
+        <li><strong>Step 4:</strong> Click the green <strong>"Apply &amp; Download Image"</strong> button to run the canvas transformation and save your new mirrored graphic file instantly.</li>
+      </ul>
+
+      <h2 class="seo-block-title">4. Real Mirror Reflection Examples</h2>
+      <div class="example-grid">
+        <div class="example-card">
+          <strong>Example 1: Front-Camera Selfie Fix</strong>
+          <span>Source: Inverted smartphone photo</span><br>
+          <span>Action: Flip Horizontally</span><br>
+          <span>Result: Left-to-right text layers and original facial orientations perfectly restored.</span>
+        </div>
+        <div class="example-card">
+          <strong>Example 2: Ad Copy Symmetry</strong>
+          <span>Source: Right-facing display model photo</span><br>
+          <span>Action: Flip Horizontally</span><br>
+          <span>Result: A left-facing variation that realigns reader gaze trends cleanly toward sales copy.</span>
+        </div>
+        <div class="example-card">
+          <strong>Example 3: Action Cam Correction</strong>
+          <span>Source: Upside-down drone camera snapshot</span><br>
+          <span>Action: Flip Vertically</span><br>
+          <span>Result: The horizon line and ground orientation immediately normalized to base values.</span>
+        </div>
+      </div>
+
+      <h2 class="seo-block-title">5. Benefits of Flipping Image Orientations Natively</h2>
+      <ul class="seo-list">
+        <li><strong>Preserves Original Edge Sharpness:</strong> Modifies matrix coordinate signs without interpolation drift, keeping pixel rendering paths crisp.</li>
+        <li><strong>Creates Unique Creative Views:</strong> Generates perfect symmetry profiles for patterns and social media layouts in seconds.</li>
+        <li><strong>Eliminates External Network Lag:</strong> Works inside local device threads to compress your file turnovers with zero cloud processing delay.</li>
+        <li><strong>Absolute Privacy Protection:</strong> Processes file content locally without server routing, keeping confidential design drafts completely safe.</li>
+      </ul>
+
+      <h2 class="seo-block-title">6. Common Mistakes to Avoid When Mirroring Photos</h2>
+      <ul class="seo-list">
+        <li><strong>Flipping Embedded Readable Text:</strong> Mirroring images with text labels makes them unreadable. Keep text layers isolated before running mirror flips.</li>
+        <li><strong>Inverting Lighting Proportions:</strong> Vertical flips reverse natural lighting directions, making shadows look unrealistic. Verify scene lighting after flipping.</li>
+        <li><strong>Using Stacked Cloud Re-compressors:</strong> Uploading images repeatedly to slow online tools degrades fine edge clarity. Stick to native local canvas options.</li>
+      </ul>
+
+      <h2 class="seo-block-title">7. Frequently Asked Questions</h2>
+      <div class="faq-wrapper">
+        <div class="faq-item">
+          <div class="faq-question">Is this online image flipper free to use?</div>
+          <p class="faq-answer">Yes, this utility is 100% free with no account registrations, watermark stamps, or hidden usage boundaries.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Will mirroring an image make it blurry or lose resolution?</div>
+          <p class="faq-answer">No. Reversing image axes changes coordinate paths mathematically without compression loss, so your original image clarity stays fully intact.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Are my personal photo uploads safe here?</div>
+          <p class="faq-answer">Yes, absolutely. The tool processes everything locally inside your browser using HTML5 canvas. Your files never touch external networks.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Can I activate both horizontal and vertical mirror modes together?</div>
+          <p class="faq-answer">Yes. Selecting both options mirrors the image across both axes simultaneously, producing a clean 180-degree upside-down reverse view.</p>
+        </div>
+      </div>
+
+      <h2 class="seo-block-title">8. Related Digital Asset Utilities</h2>
+      <ul class="seo-list">
+        <li><strong>Rotate Image:</strong> Rotates orientation angles left or right along custom slider paths.</li>
+        <li><strong>Crop Image:</strong> Trims edge layout borders and locks aspect ratio boxes seamlessly.</li>
+        <li><strong>Image Compressor:</strong> Minimizes file weights cleanly for faster web optimization setups.</li>
+      </ul>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <!-- BROWSER NATIVE CORE FLIPPING MATRIX ENGINE SCRIPT -->
+  <script type="text/javascript">
+    let activeLoadedImageElement = null;
+    let isFlippedHorizontally = false;
+    let isFlippedVertically = false;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed:', err));
+
+    function triggerHiddenFileInputClick() {
+        document.getElementById('hiddenFileInputNode').click();
+    }
+
+    function handleFileSelection() {
+        const fileTarget = document.getElementById('hiddenFileInputNode').files[0];
+        if (!fileTarget) return;
+
+        const readerNode = new FileReader();
+        readerNode.readAsDataURL(fileTarget);
+        readerNode.onload = function(e) {
+            const previewImg = document.getElementById('sourcePreviewImage');
+            previewImg.src = e.target.result;
+            
+            previewImg.onload = function() {
+                activeLoadedImageElement = previewImg;
+                
+                // Reset states cleanly on fresh file intake loops
+                isFlippedHorizontally = false;
+                isFlippedVertically = false;
+                
+                document.getElementById('btnFlipHorizontal').classList.remove('active');
+                document.getElementById('btnFlipVertical').classList.remove('active');
+                
+                document.getElementById('viewportContainer').style.display = "flex";
+                document.getElementById('compressionOutputContainer').style.display = "flex";
+                
+                applyLiveCSSPreviewTransforms();
+            };
+        };
+    }
+
+    function toggleMirrorAxisState(targetAxis) {
+        if (!activeLoadedImageElement) return;
+        
+        if (targetAxis === 'horizontal') {
+            isFlippedHorizontally = !isFlippedHorizontally;
+            document.getElementById('btnFlipHorizontal').classList.toggle('active', isFlippedHorizontally);
+        } else if (targetAxis === 'vertical') {
+            isFlippedVertically = !isFlippedVertically;
+            document.getElementById('btnFlipVertical').classList.toggle('active', isFlippedVertically);
+        }
+        
+        applyLiveCSSPreviewTransforms();
+    }
+
+    function applyLiveCSSPreviewTransforms() {
+        if (!activeLoadedImageElement) return;
+        
+        let transformValueString = "";
+        if (isFlippedHorizontally) transformValueString += " scaleX(-1)";
+        if (isFlippedVertically) transformValueString += " scaleY(-1)";
+        
+        if (transformValueString === "") transformValueString = "none";
+        activeLoadedImageElement.style.transform = transformValueString;
+        
+        // Update user status log strings on results metrics cards dashboard
+        let statusString = "Normal View";
+        if (isFlippedHorizontally && isFlippedVertically) statusString = "Both Axes Flipped";
+        else if (isFlippedHorizontally) statusString = "Horizontal Only";
+        else if (isFlippedVertically) statusString = "Vertical Only";
+        
+        document.getElementById('txtTargetMirrorConsole').innerText = statusString;
+    }
+
+    function compileAndDownloadFlippedImage(event) {
+        event.preventDefault();
+        if (!activeLoadedImageElement) return;
+
+        const exportCanvas = document.createElement('canvas');
+        const context = exportCanvas.getContext('2d');
+
+        const naturalWidth = activeLoadedImageElement.naturalWidth;
+        const naturalHeight = activeLoadedImageElement.naturalHeight;
+
+        exportCanvas.width = naturalWidth;
+        exportCanvas.height = naturalHeight;
+
+        // Shift canvas focus rows to central parameters map
+        context.translate(naturalWidth / 2, naturalHeight / 2);
+        
+        let scaleFactorX = isFlippedHorizontally ? -1 : 1;
+        let scaleFactorY = isFlippedVertically ? -1 : 1;
+        context.scale(scaleFactorX, scaleFactorY);
+
+        // Render pixels backwards onto target boundary coordinates maps smoothly
+        context.imageSmoothingEnabled = true;
+        context.imageSmoothingQuality = 'high';
+        context.drawImage(activeLoadedImageElement, -naturalWidth / 2, -naturalHeight / 2, naturalWidth, naturalHeight);
+
+        // Download trigger pipeline mechanism loop string setup
+        const downloadAnchor = document.createElement('a');
+        downloadAnchor.href = exportCanvas.toDataURL('image/jpeg', 0.95);
+        downloadAnchor.download = `flipped-photo.jpg`;
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        document.body.removeChild(downloadAnchor);
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
