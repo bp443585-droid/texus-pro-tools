@@ -56,9 +56,16 @@
     .ratio-btn { background: #ffffff; border: 2px solid #e2e8f0; color: #334155; font-weight: 600; padding: 10px 16px; border-radius: 10px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; display: flex; align-items: center; gap: 6px; }
     .ratio-btn:hover { border-color: #cbd5e1; color: #2563eb; }
 
+    /* MANUAL SLIDER SLIDESTRIP STRUCTURAL WRAPPER */
+    .manual-slider-container { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; width: 100%; box-sizing: border-box; }
+    .slider-header-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; font-weight: 600; color: #475569; }
+    .rotation-range-input { -webkit-appearance: none; width: 100%; height: 8px; border-radius: 6px; background: #e2e8f0; outline: none; margin: 8px 0; cursor: pointer; }
+    .rotation-range-input::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #2563eb; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); transition: background 0.15s ease; }
+    .rotation-range-input::-webkit-slider-thumb:hover { background: #1d4ed8; }
+
     /* LIVE PREVIEW VIEWPORT CANVAS HOUSING WRAPPER */
-    .crop-workspace-viewport { display: none; width: 100%; border: 1px solid #cbd5e1; border-radius: 16px; background: #0f172a; position: relative; overflow: hidden; align-items: center; justify-content: center; max-height: 400px; min-height: 200px; padding: 20px; box-sizing: border-box; }
-    .crop-workspace-viewport img { max-width: 100%; max-height: 360px; display: block; user-select: none; -webkit-user-drag: none; pointer-events: none; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+    .crop-workspace-viewport { display: none; width: 100%; border: 1px solid #cbd5e1; border-radius: 16px; background: #0f172a; position: relative; overflow: hidden; align-items: center; justify-content: center; max-height: 400px; min-height: 200px; padding: 40px; box-sizing: border-box; }
+    .crop-workspace-viewport img { max-width: 100%; max-height: 320px; display: block; user-select: none; -webkit-user-drag: none; pointer-events: none; transition: transform 0.1s linear; }
 
     /* AUTOMATED OUTPUT AREA CONTAINER */
     .analytics-output-container { display: none; flex-direction: column; width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; gap: 20px; }
@@ -72,7 +79,7 @@
     .f-btn-download { background: #10b981; color: #ffffff; font-weight: 700; padding: 12px 28px; border-radius: 12px; cursor: pointer; font-size: 0.9rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.15s ease; width: fit-content; text-decoration: none; text-align: center; }
     .f-btn-download:hover { background: #059669; }
 
-    /* NEW CLEAN HELPFUL CONTENT STRUCTURE DESIGN SYSTEM */
+    /* HELPFUL CONTENT INFRASTRUCTURE (SAME AS BEFORE) */
     .seo-clean-container { width: 100%; line-height: 1.75; text-align: left; margin-top: 30px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 35px; color: #334155; }
     .seo-block-title { font-size: 1.6rem; color: #0f172a; font-weight: 800; margin-top: 30px; margin-bottom: 14px; }
     .seo-para { font-size: 1rem; margin-bottom: 16px; text-align: justify; }
@@ -122,6 +129,14 @@
           <button class="ratio-btn" onclick="executeLiveFlipTransform('horizontal')">↔️ Flip Horizontal</button>
           <button class="ratio-btn" onclick="executeLiveFlipTransform('vertical')">↕️ Flip Vertical</button>
         </div>
+
+        <div class="manual-slider-container">
+          <div class="slider-header-row">
+            <span>🎚️ Manual Rotation Tuning</span>
+            <span id="sliderValueFeedbackLabel">0°</span>
+          </div>
+          <input type="range" id="manualRotationSlider" class="rotation-range-input" min="0" max="360" value="0" oninput="handleManualSliderDragInput(this.value)" disabled />
+        </div>
       </div>
 
       <div id="viewportContainer" class="crop-workspace-viewport">
@@ -145,7 +160,6 @@
     </div>
 
     <article class="seo-clean-container">
-      
       <h2 class="seo-block-title" style="margin-top:0;">1. Quick Introduction</h2>
       <p class="seo-para">The Online Image Rotator allows you to quickly change the orientation of any image, fix upside-down photos, or mirror graphics horizontally and vertically. This lightweight tool is designed for bloggers, content managers, and online sellers who need to repair photo alignments instantly without opening heavy graphic software. Whether you need to fix a mobile camera snapshot or mirror product mockups, this browser-native component shifts pixel coordinate metrics cleanly in one click.</p>
 
@@ -271,6 +285,12 @@
                 isFlippedHorizontally = false;
                 isFlippedVertically = false;
                 
+                // Reset and enable manual slider
+                const slider = document.getElementById('manualRotationSlider');
+                slider.value = 0;
+                slider.disabled = false;
+                document.getElementById('sliderValueFeedbackLabel').innerText = "0°";
+                
                 document.getElementById('viewportContainer').style.display = "flex";
                 document.getElementById('compressionOutputContainer').style.display = "flex";
                 
@@ -282,6 +302,19 @@
     function executeLiveRotationTransform(angleOffsetDegrees) {
         if (!activeLoadedImageElement) return;
         currentRotationAngleDegrees = (currentRotationAngleDegrees + angleOffsetDegrees) % 360;
+        if (currentRotationAngleDegrees < 0) currentRotationAngleDegrees += 360;
+        
+        // Update slider position to sync with quick preset buttons
+        document.getElementById('manualRotationSlider').value = currentRotationAngleDegrees;
+        document.getElementById('sliderValueFeedbackLabel').innerText = `${currentRotationAngleDegrees}°`;
+        
+        applyLiveCSSPreviewTransforms();
+    }
+
+    function handleManualSliderDragInput(sliderValue) {
+        if (!activeLoadedImageElement) return;
+        currentRotationAngleDegrees = parseInt(sliderValue, 10);
+        document.getElementById('sliderValueFeedbackLabel').innerText = `${currentRotationAngleDegrees}°`;
         applyLiveCSSPreviewTransforms();
     }
 
@@ -305,8 +338,7 @@
         activeLoadedImageElement.style.transform = transformValueString;
         
         // Output visual angle logs back to user dashboard metrics text panel
-        let localizedAngleValue = currentRotationAngleDegrees < 0 ? currentRotationAngleDegrees + 360 : currentRotationAngleDegrees;
-        document.getElementById('txtTargetRotationConsole').innerText = `${localizedAngleValue}°`;
+        document.getElementById('txtTargetRotationConsole').innerText = `${currentRotationAngleDegrees}°`;
     }
 
     function compileAndDownloadRotatedImage(event) {
@@ -319,17 +351,20 @@
         const naturalWidth = activeLoadedImageElement.naturalWidth;
         const naturalHeight = activeLoadedImageElement.naturalHeight;
 
-        // --- CANVAS BOUNDS SWAPPING CALCULATION FOR 90/270 DEGREE TURNS ---
-        const is90Or270DegreeTurn = Math.abs(currentRotationAngleDegrees % 180) === 90;
-        const canvasTargetWidth = is90Or270DegreeTurn ? naturalHeight : naturalWidth;
-        const canvasTargetHeight = is90Or270DegreeTurn ? naturalWidth : naturalHeight;
+        // Custom angle operation requires bounding box padding calculation to avoid clipping corner edges
+        const radiansAngle = (currentRotationAngleDegrees * Math.PI) / 180;
+        const absoluteCosine = Math.abs(Math.cos(radiansAngle));
+        const absoluteSine = Math.abs(Math.sin(radiansAngle));
+        
+        const canvasTargetWidth = Math.round(naturalWidth * absoluteCosine + naturalHeight * absoluteSine);
+        const canvasTargetHeight = Math.round(naturalWidth * absoluteSine + naturalHeight * absoluteCosine);
 
         exportCanvas.width = canvasTargetWidth;
         exportCanvas.height = canvasTargetHeight;
 
         // Shift origin points to absolute matrix center row to allow symmetrical pivoting offsets
         context.translate(canvasTargetWidth / 2, canvasTargetHeight / 2);
-        context.rotate((currentRotationAngleDegrees * Math.PI) / 180);
+        context.rotate(radiansAngle);
 
         // Execute dynamic scaling matrix flips natively inside browser context threads
         let scaleFactorX = isFlippedHorizontally ? -1 : 1;
