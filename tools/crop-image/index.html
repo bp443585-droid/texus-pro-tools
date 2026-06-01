@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Free Image Cropper Online | Crop Images to Exact Sizes</title>
+  <meta name="description" content="Crop your images online instantly. Free, simple tool to trim edges, adjust aspect ratios, and crop photos for social media with zero desktop scrolling." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/crop-image/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Simple Image Cropping Apparatus Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An automated browser-native image cropper tool adjusting asset area dimensions seamlessly via local viewport canvas grids.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 950px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    
+    /* UNIFIED DASHBOARD CONTAINER FRAME */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px; box-shadow: 0 15px 35px -5px rgba(0,0,0,0.03), 0 10px 20px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; gap: 24px; }
+    
+    /* DROPZONE WORKSPACE INTERFACE */
+    .compress-dropzone-area { width: 100%; border: 3px dashed #cbd5e1; background: #f8fafc; border-radius: 16px; padding: 40px 20px; text-align: center; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; position: relative; }
+    .compress-dropzone-area:hover, .compress-dropzone-area.dragover { border-color: #2563eb; background: #eff6ff; }
+    .dropzone-icon { font-size: 3rem; margin: 0; line-height: 1; }
+    .dropzone-title { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0; }
+    .dropzone-desc { font-size: 0.85rem; color: #64748b; margin: 0; font-weight: 500; }
+    
+    #hiddenFileInputNode { display: none; }
+
+    /* RE-ENGINEERED OPTIONAL ASPECT RATIO CONSOLE BUTTONS */
+    .aspect-preset-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; box-sizing: border-box; width: 100%; }
+    .control-label-row { font-size: 0.85rem; font-weight: 700; color: #1e293b; text-transform: uppercase; letter-spacing: 0.3px; }
+    .preset-btn-strip { display: flex; flex-wrap: wrap; gap: 10px; width: 100%; }
+    .ratio-btn { background: #ffffff; border: 2px solid #e2e8f0; color: #334155; font-weight: 600; padding: 10px 16px; border-radius: 10px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; }
+    .ratio-btn:hover { border-color: #cbd5e1; }
+    .ratio-btn.active { border-color: #2563eb; color: #2563eb; background: #eff6ff; }
+
+    /* NATIVE CROP PREVIEW CONTAINER CANVAS MAPPING WRAPPER */
+    .crop-workspace-viewport { display: none; width: 100%; border: 1px solid #cbd5e1; border-radius: 16px; background: #0f172a; position: relative; overflow: hidden; align-items: center; justify-content: center; max-height: 400px; padding: 10px; box-sizing: border-box; }
+    .crop-workspace-viewport img { max-width: 100%; max-height: 380px; display: block; user-select: none; -webkit-user-drag: none; }
+    
+    /* THE MINIMALIST CSS FLOATING SELECTION OVERLAY METER BOX */
+    .crop-selection-box { position: absolute; border: 2px solid #ffffff; box-shadow: 0 0 0 4000px rgba(0, 0, 0, 0.6); cursor: move; box-sizing: border-box; display: none; }
+    .crop-handle { position: absolute; width: 10px; height: 10px; background: #ffffff; border: 1px solid #000000; border-radius: 50%; }
+    .handle-br { bottom: -5px; right: -5px; cursor: se-resize; }
+
+    /* AUTOMATED OUTPUT AREA CONTAINER */
+    .analytics-output-container { display: none; flex-direction: column; width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; gap: 20px; }
+    .be-badge-header { font-size: 1.15rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 4px; }
+    .be-focus-row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
+    .be-focus-block { display: flex; flex-direction: column; gap: 4px; }
+    .be-focus-title { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .be-focus-main-val { font-size: 2.2rem; font-weight: 800; color: #10b981; font-family: 'Inter', sans-serif; line-height: 1.1; }
+    .be-focus-desc { font-size: 0.82rem; color: #475569; font-weight: 500; line-height: 1.4; }
+    .download-strip-row { display: flex; justify-content: flex-end; width: 100%; }
+    .f-btn-download { background: #10b981; color: #ffffff; font-weight: 700; padding: 12px 28px; border-radius: 12px; cursor: pointer; font-size: 0.9rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.15s ease; width: fit-content; text-decoration: none; text-align: center; }
+    .f-btn-download:hover { background: #059669; }
+
+    /* NEW CLEAN HELPFUL CONTENT STRUCTURE DESIGN SYSTEM */
+    .seo-clean-container { width: 100%; line-height: 1.75; text-align: left; margin-top: 30px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 35px; color: #334155; }
+    .seo-block-title { font-size: 1.6rem; color: #0f172a; font-weight: 800; margin-top: 30px; margin-bottom: 14px; }
+    .seo-para { font-size: 1rem; margin-bottom: 16px; text-align: justify; }
+    .seo-list { margin: 12px 0 20px 20px; padding: 0; }
+    .seo-list li { margin-bottom: 8px; font-size: 0.98rem; }
+    .seo-list li strong { color: #0f172a; }
+    
+    .example-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+    .example-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 0.92rem; }
+    .example-card strong { color: #0f172a; display: block; font-size: 1rem; margin-bottom: 4px; }
+
+    .faq-wrapper { margin-top: 25px; }
+    .faq-item { margin-bottom: 20px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 16px; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .faq-answer { font-size: 0.96rem; color: #475569; margin: 0; }
+
+    @media (max-width: 768px) {
+      .f-card { padding: 20px; border-radius: 20px; gap: 20px; }
+      .example-grid { grid-template-columns: 1fr; }
+      .be-focus-row { grid-template-columns: 1fr; gap: 16px; }
+      .download-strip-row, .f-btn-download { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading">✂️ Crop Image</div>
+    
+    <div class="f-card">
+      
+      <div id="dropzoneWorkspaceNode" class="compress-dropzone-area" onclick="triggerHiddenFileInputClick()">
+        <p class="dropzone-icon">🖼️</p>
+        <h3 class="dropzone-title">Click to Upload or Drag &amp; Drop Image</h3>
+        <p class="dropzone-desc">Select any photo to activate local crop boundaries instantly</p>
+        <input type="file" id="hiddenFileInputNode" accept="image/png, image/jpeg, image/jpg, image/webp" onchange="handleFileSelection()" />
+      </div>
+
+      <div class="aspect-preset-box">
+        <div class="control-label-row">Choose Aspect Ratio Preset</div>
+        <div class="preset-btn-strip">
+          <button class="ratio-btn active" onclick="changeCropRatioPreset('free', this)">Free Form</button>
+          <button class="ratio-btn" onclick="changeCropRatioPreset(1, this)">Square (1:1)</button>
+          <button class="ratio-btn" onclick="changeCropRatioPreset(16/9, this)">YouTube Thumbnail (16:9)</button>
+          <button class="ratio-btn" onclick="changeCropRatioPreset(4/3, this)">Standard Photo (4:3)</button>
+        </div>
+      </div>
+
+      <div id="viewportContainer" class="crop-workspace-viewport">
+        <img id="sourcePreviewImage" src="#" alt="Crop Preview Target" />
+        <div id="cropSelectionBox" class="crop-selection-box">
+          <div class="crop-handle handle-br"></div>
+        </div>
+      </div>
+
+      <div id="compressionOutputContainer" class="analytics-output-container">
+        <div class="be-badge-header">Crop Area Selected</div>
+        <div class="be-focus-row">
+          <div class="be-focus-block">
+            <span class="be-focus-title">Target Output Dimensions</span>
+            <div id="txtTargetResolutionConsole" class="be-focus-main-val">0 x 0</div>
+            <span class="be-focus-desc">Click down below to compile your newly bounded image asset cleanly.</span>
+          </div>
+          <div class="download-strip-row">
+            <a id="btnDownloadCompressedAsset" class="f-btn-download" href="#" onclick="executeNativeCanvasCropOperation(event)">Crop &amp; Download Image</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <article class="seo-clean-container">
+      
+      <h2 class="seo-block-title" style="margin-top:0;">1. Quick Introduction</h2>
+      <p class="seo-para">The Online Image Cropper helps you trim the outer edges of any photo, adjust its orientation, or lock it into standard dimensions before publishing. This tool is built specifically for social media creators, web designers, and shop owners who need to modify image frames quickly without installing heavy photo editing software. Whether you need to fit an avatar into a perfect square or match digital aspect ratios, this browser-native component handles pixel boundaries instantly.</p>
+
+      <h2 class="seo-block-title">2. How the Tool Works</h2>
+      <p class="seo-para">This image cropper runs entirely inside your browser cache memory using the native HTML5 rendering system, ensuring absolute privacy for your personal files. Here is the operational breakdown of each option:</p>
+      <ul class="seo-list">
+        <li><strong>Free Form Preset:</strong> Removes all boundary constraints, allowing you to drag selection boxes freely across any custom width and height.</li>
+        <li><strong>Square (1:1):</strong> Locks vertical and horizontal dimensions equally—ideal for Instagram posts and profile pictures.</li>
+        <li><strong>YouTube Thumbnail (16:9):</strong> Forces a widescreen aspect ratio layout, standard for modern display monitors and video banners.</li>
+        <li><strong>Standard Photo (4:3):</strong> Replicates classic digital photography frameworks, matching universal print document alignments.</li>
+      </ul>
+
+      <h2 class="seo-block-title">3. Step-by-Step Usage Guide</h2>
+      <ul class="seo-list">
+        <li><strong>Step 1:</strong> Click anywhere inside the dashed dropzone area, or drag a picture file directly from your local desktop.</li>
+        <li><strong>Step 2:</strong> Select your preferred aspect ratio option from the layout preset buttons.</li>
+        <li><strong>Step 3:</strong> Click and drag the selection rectangle box to frame the exact area you want to keep. Drag the corner handles to rescale the borders.</li>
+        <li><strong>Step 4:</strong> Review your target output pixel dimensions inside the confirmation summary panel.</li>
+        <li><strong>Step 5:</strong> Click the <strong>"Crop &amp; Download Image"</strong> button to save the newly trimmed file instantly.</li>
+      </ul>
+
+      <h2 class="seo-block-title">4. Real Crop Examples</h2>
+      <div class="example-grid">
+        <div class="example-card">
+          <strong>Example 1: E-Commerce Grid</strong>
+          <span>Source: Raw product photo</span><br>
+          <span>Ratio: 1:1 Square</span><br>
+          <span>Result: Clean centered asset optimized for online catalog grids.</span>
+        </div>
+        <div class="example-card">
+          <strong>Example 2: Video Thumbnail</strong>
+          <span>Source: Landscape snapshot</span><br>
+          <span>Ratio: 16:9 Widescreen</span><br>
+          <span>Result: High-impact banner ready for immediate social media distribution.</span>
+        </div>
+        <div class="example-card">
+          <strong>Example 3: Document Layout</strong>
+          <span>Source: Digital camera scan</span><br>
+          <span>Ratio: 4:3 Standard</span><br>
+          <span>Result: Proportional presentation slide asset with zero aspect skewing.</span>
+        </div>
+      </div>
+
+      <h2 class="seo-block-title">5. Benefits of Bounding Your Images Correctly</h2>
+      <ul class="seo-list">
+        <li><strong>Protects Visual Compositions:</strong> Removes messy, unaligned objects from edge areas, focusing attention entirely on your main subject.</li>
+        <li><strong>Fixes Aspect Ratio Skewing:</strong> Locks photo boundaries into native web specs, preventing stretching issues on responsive templates.</li>
+        <li><strong>Saves Storage Space:</strong> Deletes useless outer layout pixels to drop file weights and speed up web loading times.</li>
+        <li><strong>Maintains Complete Privacy:</strong> Runs entirely on client-side memory threads without uploading your images to remote servers.</li>
+      </ul>
+
+      <h2 class="seo-block-title">6. Common Image Cropping Mistakes to Avoid</h2>
+      <ul class="seo-list">
+        <li><strong>Ignoring Target Aspect Ratios:</strong> Manually trimming files without locking aspect ratios often causes layout formatting issues on website templates.</li>
+        <li><strong>Over-Cropping Small Photos:</strong> Trimming small, low-resolution files too tightly reduces pixel rows, making the output look blurry.</li>
+        <li><strong>Cutting Essential Subject Areas:</strong> Placing bounding boxes too close to text blocks or human profiles can clip critical details on mobile views.</li>
+      </ul>
+
+      <h2 class="seo-block-title">7. Frequently Asked Questions</h2>
+      <div class="faq-wrapper">
+        <div class="faq-item">
+          <div class="faq-question">Is this image cropper free to use?</div>
+          <p class="faq-answer">Yes, this utility is 100% free with no account sign-ups, watermark stamps, or daily usage caps.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Will cropping my images reduce their file quality?</div>
+          <p class="faq-answer">No. This tool copies the selected pixels directly using high-quality rendering loops, keeping original crispness intact.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Are my personal photo uploads safe here?</div>
+          <p class="faq-answer">Yes, absolutely. The tool processes everything locally inside your browser using HTML5 canvas. Your files never touch external networks.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Can I undo a crop and start over?</div>
+          <p class="faq-answer">Yes. You can adjust the selection handles at any time or select a different preset ratio before saving your file.</p>
+        </div>
+      </div>
+
+      <h2 class="seo-block-title">8. Related Digital Asset Utilities</h2>
+      <ul class="seo-list">
+        <li><strong>Image Compressor:</strong> Minimizes file weights cleanly for faster web optimization setups.</li>
+        <li><strong>Image Resizer:</strong> Modifies absolute horizontal width and height pixel boundaries smoothly.</li>
+        <li><strong>Profit Margin Calculator:</strong> Models pricing matrix structures across e-commerce product listings.</li>
+      </ul>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let activeLoadedImageElement = null;
+    let cropRatioMode = 'free';
+    
+    // Core selection variables
+    let selectionX = 50, selectionY = 50, selectionW = 200, selectionH = 150;
+    let isDraggingSelection = false, isResizingSelection = false;
+    let dragStartX = 0, dragStartY = 0;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed:', err));
+
+    function triggerHiddenFileInputClick() {
+        document.getElementById('hiddenFileInputNode').click();
+    }
+
+    function handleFileSelection() {
+        const fileTarget = document.getElementById('hiddenFileInputNode').files[0];
+        if (!fileTarget) return;
+
+        const readerNode = new FileReader();
+        readerNode.readAsDataURL(fileTarget);
+        readerNode.onload = function(e) {
+            const previewImg = document.getElementById('sourcePreviewImage');
+            previewImg.src = e.target.result;
+            
+            previewImg.onload = function() {
+                activeLoadedImageElement = previewImg;
+                document.getElementById('viewportContainer').style.display = "flex";
+                document.getElementById('compressionOutputContainer').style.display = "flex";
+                
+                // Initialize clean default selection values
+                selectionX = 20; selectionY = 20;
+                selectionW = Math.round(previewImg.clientWidth * 0.6);
+                selectionH = Math.round(previewImg.clientHeight * 0.6);
+                
+                applyCropSelectionUIBounds();
+                setupInteractionEventListeners();
+            };
+        };
+    }
+
+    function changeCropRatioPreset(chosenRatio, btnElement) {
+        document.querySelectorAll('.ratio-btn').forEach(b => b.classList.remove('active'));
+        btnElement.classList.add('active');
+        cropRatioMode = chosenRatio;
+        
+        if (activeLoadedImageElement) {
+            if (cropRatioMode !== 'free') {
+                selectionH = Math.round(selectionW / cropRatioMode);
+                // Restrain vertical overflow caps safely
+                if (selectionY + selectionH > activeLoadedImageElement.clientHeight) {
+                    selectionH = activeLoadedImageElement.clientHeight - selectionY;
+                    selectionW = Math.round(selectionH * cropRatioMode);
+                }
+            }
+            applyCropSelectionUIBounds();
+        }
+    }
+
+    function applyCropSelectionUIBounds() {
+        const selectionBox = document.getElementById('cropSelectionBox');
+        selectionBox.style.display = "block";
+        selectionBox.style.left = selectionX + "px";
+        selectionBox.style.top = selectionY + "px";
+        selectionBox.style.width = selectionW + "px";
+        selectionBox.style.height = selectionH + "px";
+
+        // Map relative browser pixels back to true original image dimensions
+        if (activeLoadedImageElement) {
+            const widthScaleMultiplier = activeLoadedImageElement.naturalWidth / activeLoadedImageElement.clientWidth;
+            const heightScaleMultiplier = activeLoadedImageElement.naturalHeight / activeLoadedImageElement.clientHeight;
+            
+            let outputPixelWidth = Math.round(selectionW * widthScaleMultiplier);
+            let outputPixelHeight = Math.round(selectionH * heightScaleMultiplier);
+            document.getElementById('txtTargetResolutionConsole').innerText = `${outputPixelWidth} x ${outputPixelHeight} px`;
+        }
+    }
+
+    function setupInteractionEventListeners() {
+        const box = document.getElementById('cropSelectionBox');
+        const handle = document.querySelector('.handle-br');
+        
+        // Selection dragging sequence
+        box.onmousedown = function(e) {
+            if (e.target === handle) return;
+            isDraggingSelection = true;
+            dragStartX = e.clientX - selectionX;
+            dragStartY = e.clientY - selectionY;
+            e.preventDefault();
+        };
+
+        // Selection handle resizing sequence
+        handle.onmousedown = function(e) {
+            isResizingSelection = true;
+            dragStartX = e.clientX;
+            dragStartY = e.clientY;
+            e.preventDefault();
+            e.stopPropagation();
+        };
+
+        window.onmousemove = function(e) {
+            if (!activeLoadedImageElement) return;
+            
+            if (isDraggingSelection) {
+                selectionX = e.clientX - dragStartX;
+                selectionY = e.clientY - dragStartY;
+                
+                // Keep bounding selections securely within preview borders
+                if (selectionX < 0) selectionX = 0;
+                if (selectionY < 0) selectionY = 0;
+                if (selectionX + selectionW > activeLoadedImageElement.clientWidth) {
+                    selectionX = activeLoadedImageElement.clientWidth - selectionW;
+                }
+                if (selectionY + selectionH > activeLoadedImageElement.clientHeight) {
+                    selectionY = activeLoadedImageElement.clientHeight - selectionH;
+                }
+                applyCropSelectionUIBounds();
+            }
+            
+            if (isResizingSelection) {
+                let deltaX = e.clientX - dragStartX;
+                let calculatedW = selectionW + deltaX;
+                let calculatedH = selectionH + (cropRatioMode !== 'free' ? Math.round(deltaX / cropRatioMode) : (e.clientY - dragStartY));
+
+                if (calculatedW > 30 && calculatedH > 30 && 
+                    (selectionX + calculatedW <= activeLoadedImageElement.clientWidth) && 
+                    (selectionY + calculatedH <= activeLoadedImageElement.clientHeight)) {
+                    
+                    selectionW = calculatedW;
+                    selectionH = calculatedH;
+                    dragStartX = e.clientX;
+                    dragStartY = e.clientY;
+                    applyCropSelectionUIBounds();
+                }
+            }
+        };
+
+        window.onmouseup = function() {
+            isDraggingSelection = false;
+            isResizingSelection = false;
+        };
+    }
+
+    function executeNativeCanvasCropOperation(event) {
+        event.preventDefault();
+        if (!activeLoadedImageElement) return;
+
+        const widthScaleMultiplier = activeLoadedImageElement.naturalWidth / activeLoadedImageElement.clientWidth;
+        const heightScaleMultiplier = activeLoadedImageElement.naturalHeight / activeLoadedImageElement.clientHeight;
+
+        let sourceX = selectionX * widthScaleMultiplier;
+        let sourceY = selectionY * heightScaleMultiplier;
+        let sourceW = selectionW * widthScaleMultiplier;
+        let sourceH = selectionH * heightScaleMultiplier;
+
+        const exportCanvas = document.createElement('canvas');
+        exportCanvas.width = sourceW;
+        exportCanvas.height = sourceH;
+        
+        const context = exportCanvas.getContext('2d');
+        context.drawImage(activeLoadedImageElement, sourceX, sourceY, sourceW, sourceH, 0, 0, sourceW, sourceH);
+
+        // Download trigger sequence mapping
+        const downloadAnchor = document.createElement('a');
+        downloadAnchor.href = exportCanvas.toDataURL('image/jpeg', 0.9);
+        downloadAnchor.download = `cropped-photo.jpg`;
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        document.body.removeChild(downloadAnchor);
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
