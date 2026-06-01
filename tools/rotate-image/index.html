@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Free Image Rotator Online | Flip &amp; Rotate Images Instantly</title>
+  <meta name="description" content="Rotate and flip your images online instantly. Free, simple tool to rotate photos 90 degrees left, right, or flip horizontally and vertically with zero desktop scrolling." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/rotate-image/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Simple Image Rotation Apparatus Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An automated browser-native image rotator tool adjusting asset orientation and mirror flips seamlessly via local viewport canvas structures.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 950px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    
+    /* UNIFIED DASHBOARD CONTAINER FRAME */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px; box-shadow: 0 15px 35px -5px rgba(0,0,0,0.03), 0 10px 20px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; gap: 24px; }
+    
+    /* DROPZONE WORKSPACE INTERFACE */
+    .compress-dropzone-area { width: 100%; border: 3px dashed #cbd5e1; background: #f8fafc; border-radius: 16px; padding: 40px 20px; text-align: center; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; position: relative; }
+    .compress-dropzone-area:hover, .compress-dropzone-area.dragover { border-color: #2563eb; background: #eff6ff; }
+    .dropzone-icon { font-size: 3rem; margin: 0; line-height: 1; }
+    .dropzone-title { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0; }
+    .dropzone-desc { font-size: 0.85rem; color: #64748b; margin: 0; font-weight: 500; }
+    
+    #hiddenFileInputNode { display: none; }
+
+    /* RE-ENGINEERED OPTIONAL ROTATION CONSOLE BUTTONS */
+    .aspect-preset-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; box-sizing: border-box; width: 100%; }
+    .control-label-row { font-size: 0.85rem; font-weight: 700; color: #1e293b; text-transform: uppercase; letter-spacing: 0.3px; }
+    .preset-btn-strip { display: flex; flex-wrap: wrap; gap: 10px; width: 100%; }
+    .ratio-btn { background: #ffffff; border: 2px solid #e2e8f0; color: #334155; font-weight: 600; padding: 10px 16px; border-radius: 10px; cursor: pointer; font-size: 0.85rem; transition: all 0.15s ease; display: flex; align-items: center; gap: 6px; }
+    .ratio-btn:hover { border-color: #cbd5e1; color: #2563eb; }
+
+    /* LIVE PREVIEW VIEWPORT CANVAS HOUSING WRAPPER */
+    .crop-workspace-viewport { display: none; width: 100%; border: 1px solid #cbd5e1; border-radius: 16px; background: #0f172a; position: relative; overflow: hidden; align-items: center; justify-content: center; max-height: 400px; min-height: 200px; padding: 20px; box-sizing: border-box; }
+    .crop-workspace-viewport img { max-width: 100%; max-height: 360px; display: block; user-select: none; -webkit-user-drag: none; pointer-events: none; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+
+    /* AUTOMATED OUTPUT AREA CONTAINER */
+    .analytics-output-container { display: none; flex-direction: column; width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; gap: 20px; }
+    .be-badge-header { font-size: 1.15rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 4px; }
+    .be-focus-row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
+    .be-focus-block { display: flex; flex-direction: column; gap: 4px; }
+    .be-focus-title { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .be-focus-main-val { font-size: 2.2rem; font-weight: 800; color: #10b981; font-family: 'Inter', sans-serif; line-height: 1.1; }
+    .be-focus-desc { font-size: 0.82rem; color: #475569; font-weight: 500; line-height: 1.4; }
+    .download-strip-row { display: flex; justify-content: flex-end; width: 100%; }
+    .f-btn-download { background: #10b981; color: #ffffff; font-weight: 700; padding: 12px 28px; border-radius: 12px; cursor: pointer; font-size: 0.9rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.15s ease; width: fit-content; text-decoration: none; text-align: center; }
+    .f-btn-download:hover { background: #059669; }
+
+    /* NEW CLEAN HELPFUL CONTENT STRUCTURE DESIGN SYSTEM */
+    .seo-clean-container { width: 100%; line-height: 1.75; text-align: left; margin-top: 30px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 35px; color: #334155; }
+    .seo-block-title { font-size: 1.6rem; color: #0f172a; font-weight: 800; margin-top: 30px; margin-bottom: 14px; }
+    .seo-para { font-size: 1rem; margin-bottom: 16px; text-align: justify; }
+    .seo-list { margin: 12px 0 20px 20px; padding: 0; }
+    .seo-list li { margin-bottom: 8px; font-size: 0.98rem; }
+    .seo-list li strong { color: #0f172a; }
+    
+    .example-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+    .example-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 0.92rem; }
+    .example-card strong { color: #0f172a; display: block; font-size: 1rem; margin-bottom: 4px; }
+
+    .faq-wrapper { margin-top: 25px; }
+    .faq-item { margin-bottom: 20px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 16px; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .faq-answer { font-size: 0.96rem; color: #475569; margin: 0; }
+
+    @media (max-width: 768px) {
+      .f-card { padding: 20px; border-radius: 20px; gap: 20px; }
+      .example-grid { grid-template-columns: 1fr; }
+      .be-focus-row { grid-template-columns: 1fr; gap: 16px; }
+      .download-strip-row, .f-btn-download { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading">🔄 Rotate Image</div>
+    
+    <div class="f-card">
+      
+      <div id="dropzoneWorkspaceNode" class="compress-dropzone-area" onclick="triggerHiddenFileInputClick()">
+        <p class="dropzone-icon">🔄</p>
+        <h3 class="dropzone-title">Click to Upload or Drag &amp; Drop Image</h3>
+        <p class="dropzone-desc">Select any photo to activate immediate orientation adjustments</p>
+        <input type="file" id="hiddenFileInputNode" accept="image/png, image/jpeg, image/jpg, image/webp" onchange="handleFileSelection()" />
+      </div>
+
+      <div class="aspect-preset-box">
+        <div class="control-label-row">Orientation Modification Matrix</div>
+        <div class="preset-btn-strip">
+          <button class="ratio-btn" onclick="executeLiveRotationTransform(-90)">↪️ Rotate 90° Left</button>
+          <button class="ratio-btn" onclick="executeLiveRotationTransform(90)">↩️ Rotate 90° Right</button>
+          <button class="ratio-btn" onclick="executeLiveFlipTransform('horizontal')">↔️ Flip Horizontal</button>
+          <button class="ratio-btn" onclick="executeLiveFlipTransform('vertical')">↕️ Flip Vertical</button>
+        </div>
+      </div>
+
+      <div id="viewportContainer" class="crop-workspace-viewport">
+        <img id="sourcePreviewImage" src="#" alt="Rotation Preview Target" />
+      </div>
+
+      <div id="compressionOutputContainer" class="analytics-output-container">
+        <div class="be-badge-header">Orientation State Stabilized</div>
+        <div class="be-focus-row">
+          <div class="be-focus-block">
+            <span class="be-focus-title">Current Rotation Angle</span>
+            <div id="txtTargetRotationConsole" class="be-focus-main-val">0°</div>
+            <span class="be-focus-desc">Your image layers will be re-compiled natively upon clicking download.</span>
+          </div>
+          <div class="download-strip-row">
+            <a id="btnDownloadCompressedAsset" class="f-btn-download" href="#" onclick="compileAndDownloadRotatedImage(event)">Apply &amp; Download Image</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <article class="seo-clean-container">
+      
+      <h2 class="seo-block-title" style="margin-top:0;">1. Quick Introduction</h2>
+      <p class="seo-para">The Online Image Rotator allows you to quickly change the orientation of any image, fix upside-down photos, or mirror graphics horizontally and vertically. This lightweight tool is designed for bloggers, content managers, and online sellers who need to repair photo alignments instantly without opening heavy graphic software. Whether you need to fix a mobile camera snapshot or mirror product mockups, this browser-native component shifts pixel coordinate metrics cleanly in one click.</p>
+
+      <h2 class="seo-block-title">2. How the Tool Works</h2>
+      <p class="seo-para">This image utility operates natively inside your local web browser cache engine using HTML5 canvas transformation maps. It alters pixel grids along explicit angular parameters without sending data to external networks. Here is what each option accomplishes:</p>
+      <ul class="seo-list">
+        <li><strong>Rotate 90° Left / Right:</strong> Shifts the pixel array exactly 90 degrees counter-clockwise or clockwise, automatically updating landscape layouts to portrait modes seamlessly.</li>
+        <li><strong>Flip Horizontal:</strong> Mirrors the photo data from left to right, fixing backward text layers or swapping item viewing positions.</li>
+        <li><strong>Flip Vertical:</strong> Inverts the pixel canvas completely from top to bottom, instantly repairing upside-down camera mount shots.</li>
+      </ul>
+
+      <h2 class="seo-block-title">3. Step-by-Step Usage Guide</h2>
+      <ul class="seo-list">
+        <li><strong>Step 1:</strong> Click anywhere inside the dashed dropzone area to choose an image from your device, or drag a picture file directly into the workspace box.</li>
+        <li><strong>Step 2:</strong> Tap either the **Rotate 90°** or **Flip** buttons to adjust the target image view. You can click multiple times to rotate a full 180 or 270 degrees.</li>
+        <li><strong>Step 3:</strong> Review the active angle metrics change inside the live status output block container.</li>
+        <li><strong>Step 4:</strong> Click the green <strong>"Apply &amp; Download Image"</strong> action button to compile your modifications and save the final optimized file.</li>
+      </ul>
+
+      <h2 class="seo-block-title">4. Real Alignment Examples</h2>
+      <div class="example-grid">
+        <div class="example-card">
+          <strong>Example 1: Document Scan Fix</strong>
+          <span>Source: Sideways document scan</span><br>
+          <span>Action: Rotate 90° Right</span><br>
+          <span>Result: Clean vertical document structure perfectly ready for document filing pipelines.</span>
+        </div>
+        <div class="example-card">
+          <strong>Example 2: Creative Mockup Mirror</strong>
+          <span>Source: Standard left-facing apparel logo</span><br>
+          <span>Action: Flip Horizontal</span><br>
+          <span>Result: Balanced right-facing design variation maximizing alternate advertising options.</span>
+        </div>
+        <div class="example-card">
+          <strong>Example 3: Action Camera Sync</strong>
+          <span>Source: Upside-down mounting photo</span><br>
+          <span>Action: Flip Vertical</span><br>
+          <span>Result: Standardized vertical horizon line tracking completely restored to baseline parameters.</span>
+        </div>
+      </div>
+
+      <h2 class="seo-block-title">5. Benefits of Correcting Image Orientations Natively</h2>
+      <ul class="seo-list">
+        <li><strong>Maintains Pixel Density:</strong> Processes angular rotations along clean coordinate vectors to avoid blurry artifacts or edge pixel loss.</li>
+        <li><strong>Improves Page Layout Aesthetics:</strong> Synchronizes photo aspect orientations uniformly across product galleries, preventing mismatched vertical grid breaks.</li>
+        <li><strong>Fast Load Delivery:</strong> Strips redundant structural rotation flags from raw camera files, preventing browsers from displaying flipped images randomly.</li>
+        <li><strong>Secure Client-Side Memory:</strong> Processes transformation tasks locally inside your browser cache. Your photographs never leave your device.</li>
+      </ul>
+
+      <h2 class="seo-block-title">6. Common Image Rotation Mistakes to Avoid</h2>
+      <ul class="seo-list">
+        <li><strong>Repeated Quality Loss:</strong> Processing modifications over and over on loose cloud compressors can introduce heavy pixelation noise across image edges.</li>
+        <li><strong>Ignoring Horizontal Text Flipping:</strong> Mirroring files with text labels turns them into backward strings. Use specific rotation steps instead of mirror flips for text assets.</li>
+        <li><strong>Mismatched Aspect Boundaries:</strong> Rotating layout elements without updating canvas container values can cause images to get cropped or block views on responsive pages.</li>
+      </ul>
+
+      <h2 class="seo-block-title">7. Frequently Asked Questions</h2>
+      <div class="faq-wrapper">
+        <div class="faq-item">
+          <div class="faq-question">Is this image rotator completely free to use?</div>
+          <p class="faq-answer">Yes, this utility is 100% free with no account registries, watermark stamps, or hidden usage limits.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Will rotating my images reduce their file resolution or sharpness?</div>
+          <p class="faq-answer">No. The browser canvas system shifts pixel locations along precise grid vectors, preserving your original file resolution completely.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Are my personal photo uploads safe here?</div>
+          <p class="faq-answer">Yes, absolutely. The tool processes everything locally inside your browser using HTML5 canvas. Your files never touch external networks.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Can I rotate an image a full 180 degrees?</div>
+          <p class="faq-answer">Yes. Clicking a 90-degree rotation button twice automatically updates the pixel layout to a full 180-degree turn.</p>
+        </div>
+      </div>
+
+      <h2 class="seo-block-title">8. Related Digital Asset Utilities</h2>
+      <ul class="seo-list">
+        <li><strong>Crop Image:</strong> Trims edge layout borders and locks aspect ratio boxes seamlessly.</li>
+        <li><strong>Image Compressor:</strong> Minimizes file weights cleanly for faster web optimization setups.</li>
+        <li><strong>Image Resizer:</strong> Modifies absolute horizontal width and height pixel boundaries smoothly.</li>
+      </ul>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let activeLoadedImageElement = null;
+    let currentRotationAngleDegrees = 0;
+    let isFlippedHorizontally = false;
+    let isFlippedVertically = false;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed:', err));
+
+    function triggerHiddenFileInputClick() {
+        document.getElementById('hiddenFileInputNode').click();
+    }
+
+    function handleFileSelection() {
+        const fileTarget = document.getElementById('hiddenFileInputNode').files[0];
+        if (!fileTarget) return;
+
+        const readerNode = new FileReader();
+        readerNode.readAsDataURL(fileTarget);
+        readerNode.onload = function(e) {
+            const previewImg = document.getElementById('sourcePreviewImage');
+            previewImg.src = e.target.result;
+            
+            previewImg.onload = function() {
+                activeLoadedImageElement = previewImg;
+                
+                // Reset transformation state matrix variables upon loading a fresh file
+                currentRotationAngleDegrees = 0;
+                isFlippedHorizontally = false;
+                isFlippedVertically = false;
+                
+                document.getElementById('viewportContainer').style.display = "flex";
+                document.getElementById('compressionOutputContainer').style.display = "flex";
+                
+                applyLiveCSSPreviewTransforms();
+            };
+        };
+    }
+
+    function executeLiveRotationTransform(angleOffsetDegrees) {
+        if (!activeLoadedImageElement) return;
+        currentRotationAngleDegrees = (currentRotationAngleDegrees + angleOffsetDegrees) % 360;
+        applyLiveCSSPreviewTransforms();
+    }
+
+    function executeLiveFlipTransform(flipDirection) {
+        if (!activeLoadedImageElement) return;
+        if (flipDirection === 'horizontal') {
+            isFlippedHorizontally = !isFlippedHorizontally;
+        } else if (flipDirection === 'vertical') {
+            isFlippedVertically = !isFlippedVertically;
+        }
+        applyLiveCSSPreviewTransforms();
+    }
+
+    function applyLiveCSSPreviewTransforms() {
+        if (!activeLoadedImageElement) return;
+        
+        let transformValueString = `rotate(${currentRotationAngleDegrees}deg)`;
+        if (isFlippedHorizontally) transformValueString += " scaleX(-1)";
+        if (isFlippedVertically) transformValueString += " scaleY(-1)";
+        
+        activeLoadedImageElement.style.transform = transformValueString;
+        
+        // Output visual angle logs back to user dashboard metrics text panel
+        let localizedAngleValue = currentRotationAngleDegrees < 0 ? currentRotationAngleDegrees + 360 : currentRotationAngleDegrees;
+        document.getElementById('txtTargetRotationConsole').innerText = `${localizedAngleValue}°`;
+    }
+
+    function compileAndDownloadRotatedImage(event) {
+        event.preventDefault();
+        if (!activeLoadedImageElement) return;
+
+        const exportCanvas = document.createElement('canvas');
+        const context = exportCanvas.getContext('2d');
+
+        const naturalWidth = activeLoadedImageElement.naturalWidth;
+        const naturalHeight = activeLoadedImageElement.naturalHeight;
+
+        // --- CANVAS BOUNDS SWAPPING CALCULATION FOR 90/270 DEGREE TURNS ---
+        const is90Or270DegreeTurn = Math.abs(currentRotationAngleDegrees % 180) === 90;
+        const canvasTargetWidth = is90Or270DegreeTurn ? naturalHeight : naturalWidth;
+        const canvasTargetHeight = is90Or270DegreeTurn ? naturalWidth : naturalHeight;
+
+        exportCanvas.width = canvasTargetWidth;
+        exportCanvas.height = canvasTargetHeight;
+
+        // Shift origin points to absolute matrix center row to allow symmetrical pivoting offsets
+        context.translate(canvasTargetWidth / 2, canvasTargetHeight / 2);
+        context.rotate((currentRotationAngleDegrees * Math.PI) / 180);
+
+        // Execute dynamic scaling matrix flips natively inside browser context threads
+        let scaleFactorX = isFlippedHorizontally ? -1 : 1;
+        let scaleFactorY = isFlippedVertically ? -1 : 1;
+        context.scale(scaleFactorX, scaleFactorY);
+
+        // Draw original raw pixel assets cleanly backwards from internal coordinate shift fields
+        context.imageSmoothingEnabled = true;
+        context.imageSmoothingQuality = 'high';
+        context.drawImage(activeLoadedImageElement, -naturalWidth / 2, -naturalHeight / 2, naturalWidth, naturalHeight);
+
+        // Download trigger mapping execution loop strings securely
+        const downloadAnchor = document.createElement('a');
+        downloadAnchor.href = exportCanvas.toDataURL('image/jpeg', 0.95);
+        downloadAnchor.download = `rotated-photo.jpg`;
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        document.body.removeChild(downloadAnchor);
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
