@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Free Image Resizer | Change Image Dimensions Online Instantly</title>
+  <meta name="description" content="Resize your images online instantly. Fast, simple, and free tool to change image width and height in pixels without losing quality with zero desktop scrolling." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/image-resizer/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Simple Image Resizing Apparatus Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An automated browser-native image resizing utility adjusting asset dimension layers seamlessly via local canvas rescaling loops.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 950px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    
+    /* UNIFIED DASHBOARD CONTAINER FRAME */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px; box-shadow: 0 15px 35px -5px rgba(0,0,0,0.03), 0 10px 20px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; gap: 24px; }
+    
+    /* ULTRA-SIMPLE DROPZONE WORKSPACE INTERFACE */
+    .compress-dropzone-area { width: 100%; border: 3px dashed #cbd5e1; background: #f8fafc; border-radius: 16px; padding: 40px 20px; text-align: center; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; position: relative; }
+    .compress-dropzone-area:hover, .compress-dropzone-area.dragover { border-color: #2563eb; background: #eff6ff; }
+    .dropzone-icon { font-size: 3rem; margin: 0; line-height: 1; }
+    .dropzone-title { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0; }
+    .dropzone-desc { font-size: 0.85rem; color: #64748b; margin: 0; font-weight: 500; }
+    
+    #hiddenFileInputNode { display: none; }
+
+    /* SIMPLE DIMENSION INPUT CONTROLS ROW MATRIX */
+    .manual-control-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; gap: 14px; }
+    .control-label-row { font-size: 0.85rem; font-weight: 700; color: #1e293b; text-transform: uppercase; letter-spacing: 0.3px; }
+    .dimensions-input-row { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 16px; align-items: end; }
+    .dim-box { display: flex; flex-direction: column; gap: 6px; }
+    .dim-box label { font-size: 0.75rem; color: #475569; font-weight: 700; text-transform: uppercase; }
+    
+    .f-num-input { width: 100%; padding: 11px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; font-family: 'Inter', sans-serif; color: #0f172a; outline: none; transition: all 0.2s ease; background: #ffffff; box-sizing: border-box; font-weight: 600; }
+    .f-num-input:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.06); }
+    
+    /* ASPECT RATIO TOGGLE CHECKBOX SLIDERS */
+    .aspect-lock-wrapper { display: flex; align-items: center; gap: 8px; background: #ffffff; border: 2px solid #e2e8f0; padding: 11px 14px; border-radius: 12px; box-sizing: border-box; height: 46px; cursor: pointer; user-select: none; font-size: 0.88rem; font-weight: 600; color: #334155; }
+    .aspect-lock-wrapper input { cursor: pointer; width: 16px; height: 16px; margin: 0; accent-color: #2563eb; }
+
+    /* ELITE USER-CENTRIC SINGLE COMPACT RESULT PANEL */
+    .analytics-output-container { display: none; flex-direction: column; width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; gap: 20px; transition: all 0.3s ease; }
+    
+    .be-badge-header { font-size: 1.15rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 4px; }
+    
+    /* 3 CORE USER QUICK CARDS CONFIGS */
+    .be-focus-row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
+    .be-focus-block { display: flex; flex-direction: column; gap: 4px; }
+    .be-focus-title { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .be-focus-main-val { font-size: 2.2rem; font-weight: 800; color: #10b981; font-family: 'Inter', sans-serif; line-height: 1.1; }
+    .be-focus-desc { font-size: 0.82rem; color: #475569; font-weight: 500; line-height: 1.4; }
+
+    /* ACTION BUTTON EXECUTION ALIGNMENTS */
+    .download-strip-row { display: flex; justify-content: flex-end; width: 100%; }
+    .f-btn-download { background: #2563eb; color: #ffffff; font-weight: 700; padding: 12px 28px; border-radius: 12px; cursor: pointer; font-size: 0.9rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.15s ease; width: fit-content; text-decoration: none; text-align: center; }
+    .f-btn-download:hover { background: #1d4ed8; }
+
+    /* CRISP STATISTICAL MATRIX FOR PER-FILE BREAKDOWNS */
+    .mini-breakdown-box { width: 100%; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 20px; box-sizing: border-box; }
+    .mini-box-title { font-size: 0.82rem; color: #1e293b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; display: block; }
+    
+    .mini-table-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.88rem; }
+    .mini-table-row:last-child { border-bottom: none; padding-bottom: 0; font-weight: 700; color: #10b981; }
+    .mini-lbl { color: #475569; font-weight: 500; }
+    .mini-val { font-weight: 700; color: #0f172a; font-family: 'Inter', sans-serif; }
+
+    /* HIGHWORDS 2500+ WORDS MASSIVE UN-TRUNCATED SEO APPARATUS TEXT RIGS */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.85; text-align: left; margin-top: 35px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-main-topic { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 22px; letter-spacing: -0.5px; line-height: 1.3; }
+    .seo-block-paragraph { font-size: 1.05rem; color: #334155; margin-bottom: 24px; text-align: justify; text-justify: inter-word; }
+    .seo-subsection-badge { font-size: 1.5rem; color: #2563eb; font-weight: 800; margin-top: 40px; margin-bottom: 16px; display: block; border-left: 4px solid #2563eb; padding-left: 12px; }
+    
+    /* ASYMMETRICAL COMPARATIVE CONTENT CARD STRIPS */
+    .seo-grid-asymmetrical-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 25px 0; }
+    .seo-asym-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 22px; border-radius: 16px; font-size: 0.98rem; color: #475569; line-height: 1.7; }
+    .seo-asym-card strong { color: #0f172a; display: block; font-size: 1.1rem; margin-bottom: 8px; }
+    .seo-asym-card.good-card { border-left: 4px solid #16a34a; background: #f0fdf4; color: #166534; }
+    .seo-asym-card.good-card strong { color: #14532d; }
+    .seo-asym-card.bad-card { border-left: 4px solid #dc2626; background: #fdf2f2; color: #991b1b; }
+    .seo-asym-card.bad-card strong { color: #7f1d1d; }
+
+    /* QNA EXPANDED ACCORDION SHARDS STYLE MATRIX */
+    .seo-qna-block { margin-bottom: 25px; background: #ffffff; padding: 6px 0; }
+    .seo-qna-question { font-size: 1.2rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; display: block; letter-spacing: -0.3px; }
+    .seo-qna-answer { font-size: 1.02rem; color: #334155; line-height: 1.75; text-align: justify; }
+
+    /* RESPONSIVE FLUID LAYOUT OVERRIDES (ADAPTIVE PHONE CONFIGURATIONS) */
+    @media (max-width: 768px) {
+      .f-card { padding: 20px; border-radius: 20px; gap: 20px; }
+      .compress-dropzone-area { padding: 30px 14px; }
+      .dimensions-input-row { grid-template-columns: 1fr; gap: 12px; }
+      .aspect-lock-wrapper { height: 44px; }
+      .analytics-output-container { padding: 18px; gap: 18px; }
+      .be-focus-row { grid-template-columns: 1fr; gap: 18px; }
+      .be-focus-main-val { font-size: 1.85rem; }
+      .download-strip-row { justify-content: fill; }
+      .f-btn-download { width: 100%; }
+      .seo-grid-asymmetrical-cards { grid-template-columns: 1fr; }
+      .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📐</span> Image Resizer</div>
+    
+    <div class="f-card">
+      
+      <div id="dropzoneWorkspaceNode" class="compress-dropzone-area" onclick="triggerHiddenFileInputClick()">
+        <p class="dropzone-icon">🖼️</p>
+        <h3 class="dropzone-title">Click to Upload or Drag &amp; Drop Image Here</h3>
+        <p class="dropzone-desc">Upload your file to unlock dimensional modifications instantly</p>
+        <input type="file" id="hiddenFileInputNode" accept="image/png, image/jpeg, image/jpg, image/webp" onchange="handleFileSelection()" />
+      </div>
+
+      <div class="manual-control-box">
+        <div class="control-label-row">Target Dimensions Configurator</div>
+        <div class="dimensions-input-row">
+          <div class="dim-box">
+            <label>Width (Pixels)</label>
+            <input type="number" id="resizeWidthInput" class="f-num-input" placeholder="Width" min="1" oninput="handleDimensionChange('width')" />
+          </div>
+          <div class="dim-box">
+            <label>Height (Pixels)</label>
+            <input type="number" id="resizeHeightInput" class="f-num-input" placeholder="Height" min="1" oninput="handleDimensionChange('height')" />
+          </div>
+          <div class="dim-box">
+            <label class="aspect-lock-wrapper" for="aspectRatioLockCheckbox">
+              <input type="checkbox" id="aspectRatioLockCheckbox" checked onchange="handleLockToggleTrigger()" />
+              🔗 Lock Aspect Ratio
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div id="compressionOutputContainer" class="analytics-output-container">
+        
+        <div class="be-badge-header">✅ Resizing Process Completed</div>
+        
+        <div class="be-focus-row">
+          <div class="be-focus-block">
+            <span class="be-focus-title">New Resolution Mapping</span>
+            <div id="txtTargetResolutionConsole" class="be-focus-main-val">0 x 0</div>
+            <span class="be-focus-desc">Your image asset has been re-scaled using clean browser interpolations natively.</span>
+          </div>
+          <div class="download-strip-row">
+            <a id="btnDownloadCompressedAsset" class="f-btn-download" href="#" download="resized-image.jpg">Download Resized Image</a>
+          </div>
+        </div>
+
+        <div class="mini-breakdown-box">
+          <span class="mini-box-title">Per Unit Breakdown</span>
+          <div class="mini-table-row">
+            <span class="mini-lbl">Original Dimensions</span>
+            <span id="lblOriginalResolutionText" class="mini-val">0 x 0 px</span>
+          </div>
+          <div class="mini-table-row">
+            <span class="mini-lbl">Optimized Target Dimensions</span>
+            <span id="lblCompressedResolutionText" class="mini-val">0 x 0 px</span>
+          </div>
+          <div class="mini-table-row">
+            <span class="mini-lbl" style="font-weight: 600; color: #0f172a;">Current Proportional Scale Ratio</span>
+            <span id="lblScaleFactorText" class="mini-val accent-green">100 %</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <article class="seo-container">
+      <h2 class="seo-main-topic">The Biophysics of Image Matrix Quantization: Browser-Native Canvas Encoding, Lossless Optimization Vectors, and Core Web Vitals Engineering</h2>
+      <p class="seo-block-paragraph">Configuring high-traffic enterprise media repositories, embedding automated asset compression scripts within isolated cloud storage environments, or serving heavy imagery layout elements across continuous responsive systems requires a complete elimination of data bulk errors. Digital asset delivery operations count parameters directly across network bandwidth pipes where unoptimized files trigger severe server latency, drag down operational caching indexes, and degrade Core Web Vitals metrics. Utilizing a browser-native <strong>free image resizer online</strong> ensures rapid client-side performance, running complex matrix sub-sampling loops cleanly within device local threads flawlessly.</p>
+      <p class="seo-block-paragraph">This exhaustive web performance engineering handbook reviews the processing principles driving direct data optimization, outlines the step-by-step actions required to clear network load errors, evaluates strategic compression behavior profiles, and isolates programming parameters to secure uniform local script asset generation error-free.</p>
+
+      <span class="seo-subsection-badge">🛠️ How to Use the Online Image Resizer Instantly</span>
+      <p class="seo-block-paragraph"><strong>Step 1: Upload Your Target Media File</strong> — Click anywhere inside our clean drag-and-drop workspace container, or drag an uncompressed image file directly from your local system file rows. The platform natively recognizes inputs across broad formats, including PNG, JPEG, JPG, and WEBP frameworks, immediately loading the raw values into local thread structures safely.</p>
+      <p class="seo-block-paragraph"><strong>Step 2: Enter Custom Dimensional Target Columns</strong> — Input your required width or height values inside the dedicated pixel form cells. Keeping the "Lock Aspect Ratio" box active guarantees that the system automatically handles matching calculations, avoiding skewing loops or visual distortion blocks cleanly.</p>
+      <p class="seo-block-paragraph"><strong>Step 3: Download Your Scaled Asset Instantly</strong> — Once the native background canvas interpolation pipeline finishes executing, the output sheet displays your final layout proportions. Review your target parameters, then hit the download action button to save the newly scaled image directly down to your file storage system.</p>
+
+      <span class="seo-subsection-badge">⚠️ Strategic Best Practices: What Is Good and Bad Image Resizing?</span>
+      <div class="seo-grid-asymmetrical-cards">
+        <div class="seo-asym-card good-card">
+          <strong>✅ Good Resizing Practices:</strong>
+          • Keeping the native aspect ratio linked uniformly to prevent distorted horizontal stretching across web pages.<br>
+          • Resizing source files downwards to perfectly match your website layout container specs, avoiding wasted pixel downloads.<br>
+          • Using browser-native canvas elements to scale pixels locally, safeguarding individual user privacy loops smoothly.
+        </div>
+        <div class="seo-asym-card bad-card">
+          <strong>❌ Bad Resizing Mistakes:</strong>
+          • Upscaling tiny low-resolution graphics into massive pixel blocks, creating blurry, aliased layout visuals.<br>
+          • Bypassing aspect ratios constraints entirely, compressing human shapes or product icons into warped visual structures.<br>
+          • Uploading unoptimized web assets to external cloud relays for basic rendering tasks, increasing system latency paths.
+        </div>
+      </div>
+
+      <span class="seo-subsection-badge">🧠 Frequently Asked Questions: Dissecting Web Imagery Turnovers</span>
+      
+      <div class="seo-qna-block">
+        <span class="seo-qna-question">Q1: Does locking the aspect ratio change how images scale inside the calculator?</span>
+        <p class="seo-qna-answer">A1: Yes, absolutely. Aspect ratios are fixed proportional multipliers connecting horizontal width dimensions to vertical heights. Locking this structural relationship forces the engine to adjust the matching field immediately as you type, protecting your photos from turning into stretched, unprofessional layout blocks on your website pipelines.</p>
+      </div>
+
+      <div class="seo-qna-block">
+        <span class="seo-qna-question">Q2: Why are exact pixel dimensions critical for Google Search Console indexing and SEO ranking thresholds?</span>
+        <p class="seo-qna-answer">A2: Modern search indexing spiders use page loading speed indices—specifically Cumulative Layout Shift (CLS) benchmarks—as a key signal to rank web domains. When heavy unscaled image banners expand unpredictably inside layout rows, text containers pop around chaotically. Standardizing raw asset footprints fixes container volumes, maximizing indexing scores smoothly.</p>
+      </div>
+
+      <div class="seo-qna-block">
+        <span class="seo-qna-question">Q3: Is it completely safe to upload personal data inventory photographs here?</span>
+        <p class="seo-qna-answer">A3: Yes, absolutely. Unlike traditional optimization platforms that upload files to remote servers, our tool runs entirely within your browser using native HTML5 canvas loops. Your data never leaves your device, providing an airtight privacy shield that keeps your internal operational files secure against data leaks.</p>
+      </div>
+
+      <div class="seo-qna-block">
+        <span class="seo-qna-question">Q4: What is the mechanical difference between downscaling and compression metrics?</span>
+        <p class="seo-qna-answer">A4: Downscaling directly deletes unnecessary outer grid pixel columns, reducing the image's physical width and height layout grid footprints. Compression routines keep dimensions constant, instead targeting internal color redundancies and compression metadata lines to minimize byte space weight targets smoothly.</p>
+      </div>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let activeLoadedFileReference = null;
+    let baselineOriginalImageWidth = 0;
+    let baselineOriginalImageHeight = 0;
+    let calculationEngineLockState = false; // Prevents recursive input event collision loops
+    
+    // Asynchronous layout block integration loops
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header component fault:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer component fault:', err));
+
+    const dropzone = document.getElementById('dropzoneWorkspaceNode');
+    
+    // Ingest dragover structural event listener configurations
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); }, false);
+    });
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); }, false);
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+        const dataTransfer = e.dataTransfer;
+        const incomingFilesList = dataTransfer.files;
+        if(incomingFilesList.length > 0) {
+            document.getElementById('hiddenFileInputNode').files = incomingFilesList;
+            handleFileSelection();
+        }
+    });
+
+    function triggerHiddenFileInputClick() {
+        document.getElementById('hiddenFileInputNode').click();
+    }
+
+    function handleFileSelection() {
+        const fileTarget = document.getElementById('hiddenFileInputNode').files[0];
+        if (!fileTarget) return;
+        activeLoadedFileReference = fileTarget;
+
+        const fileReaderModule = new FileReader();
+        fileReaderModule.readAsDataURL(fileTarget);
+        fileReaderModule.onload = function(event) {
+            const tempImageElement = new Image();
+            tempImageElement.src = event.target.result;
+            tempImageElement.onload = function() {
+                // Store structural baseline references for internal dynamic calculations
+                baselineOriginalImageWidth = tempImageElement.width;
+                baselineOriginalImageHeight = tempImageElement.height;
+
+                // Populate initial target dimensions inside visible input fields
+                document.getElementById('resizeWidthInput').value = baselineOriginalImageWidth;
+                document.getElementById('resizeHeightInput').value = baselineOriginalImageHeight;
+
+                executeImageResizingEngine();
+            };
+        };
+    }
+
+    function handleDimensionChange(triggeredFieldDirection) {
+        if (calculationEngineLockState || !activeLoadedFileReference) return;
+        
+        const lockCheckbox = document.getElementById('aspectRatioLockCheckbox').checked;
+        const widthInput = document.getElementById('resizeWidthInput');
+        const heightInput = document.getElementById('resizeHeightInput');
+
+        let targetWidth = parseInt(widthInput.value, 10) || 0;
+        let targetHeight = parseInt(heightInput.value, 10) || 0;
+
+        if (targetWidth <= 0 || targetHeight <= 0) return;
+
+        // --- ASPECT RATIO PROPORTIONAL MULTIPLIER BALANCE LAYER ---
+        if (lockCheckbox && baselineOriginalImageWidth > 0 && baselineOriginalImageHeight > 0) {
+            calculationEngineLockState = true; // Engage execution guard line
+            const originalProportionalAspectBaseFactor = baselineOriginalImageWidth / baselineOriginalImageHeight;
+            
+            if (triggeredFieldDirection === 'width') {
+                targetHeight = Math.round(targetWidth / originalProportionalAspectBaseFactor);
+                heightInput.value = targetHeight;
+            } else if (triggeredFieldDirection === 'height') {
+                targetWidth = Math.round(targetHeight * originalProportionalAspectBaseFactor);
+                widthInput.value = targetWidth;
+            }
+            calculationEngineLockState = false; // Disengage safety guard line
+        }
+
+        executeImageResizingEngine();
+    }
+
+    function handleLockToggleTrigger() {
+        if (activeLoadedFileReference) {
+            handleDimensionChange('width'); // Enforce current proportions immediately upon lock activation
+        }
+    }
+
+    function executeImageResizingEngine() {
+        const fileTarget = activeLoadedFileReference;
+        if (!fileTarget) return;
+
+        const targetWidth = parseInt(document.getElementById('resizeWidthInput').value, 10) || baselineOriginalImageWidth;
+        const targetHeight = parseInt(document.getElementById('resizeHeightInput').value, 10) || baselineOriginalImageHeight;
+
+        const fileReaderModule = new FileReader();
+        fileReaderModule.readAsDataURL(fileTarget);
+        fileReaderModule.onload = function(event) {
+            const tempImageElement = new Image();
+            tempImageElement.src = event.target.result;
+            tempImageElement.onload = function() {
+                // --- BROWSER-NATIVE CANVAS INTERPOLATION MATRIX ---
+                const canvasElement = document.createElement('canvas');
+                const canvasContext = canvasElement.getContext('2d');
+
+                canvasElement.width = targetWidth;
+                canvasElement.height = targetHeight;
+                
+                // Enforce clear bicubic image smoothing rules parameters inside canvas device memory pipelines
+                canvasContext.imageSmoothingEnabled = true;
+                canvasContext.imageSmoothingQuality = 'high';
+                canvasContext.drawImage(tempImageElement, 0, 0, targetWidth, targetHeight);
+
+                const optimizedResizedImageBlobDataUrl = canvasElement.toDataURL('image/jpeg', 0.85);
+                
+                // Calculate dynamic tracking metrics to render inside the unit summary grid
+                let scaleFactorPercentage = (targetWidth / baselineOriginalImageWidth) * 100;
+
+                document.getElementById('txtTargetResolutionConsole').innerText = `${targetWidth} x ${targetHeight}`;
+                document.getElementById('lblOriginalResolutionText').innerText = `${baselineOriginalImageWidth} x ${baselineOriginalImageHeight} px`;
+                document.getElementById('lblCompressedResolutionText').innerText = `${targetWidth} x ${targetHeight} px`;
+                document.getElementById('lblScaleFactorText').innerText = `${scaleFactorPercentage.toFixed(1)} %`;
+
+                // Bind updated binary string content securely back to download action button
+                const downloadBtnNode = document.getElementById('btnDownloadCompressedAsset');
+                downloadBtnNode.href = optimizedResizedImageBlobDataUrl;
+                downloadBtnNode.download = `resized-${targetWidth}x${targetHeight}-${fileTarget.name.split('.')[0]}.jpg`;
+
+                // Unhide output visualization dashboard matrix panel smoothly
+                document.getElementById('compressionOutputContainer').style.display = "flex";
+            };
+        };
+    }
+
+    function resetImageResizerDisplayFields() {
+        document.getElementById('compressionOutputContainer').style.display = "none";
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
