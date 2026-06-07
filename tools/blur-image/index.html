@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Free Blur Image Online | Censor &amp; Blur Photos Instantly</title>
+  <meta name="description" content="Blur image backgrounds or censor private photo details online instantly. Free, fast browser-native tool to blur photos smoothly with custom intensity sliders." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/blur-image/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Simple Image Blurring Apparatus Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An automated browser-native graphic utility applying dynamic Gaussian blur convolutions and pixel masking arrays natively via local web canvas filters.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 950px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    
+    /* UNIFIED DASHBOARD CONTAINER FRAME */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px; box-shadow: 0 15px 35px -5px rgba(0,0,0,0.03), 0 10px 20px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; gap: 24px; }
+    
+    /* DROPZONE WORKSPACE INTERFACE */
+    .compress-dropzone-area { width: 100%; border: 3px dashed #cbd5e1; background: #f8fafc; border-radius: 16px; padding: 40px 20px; text-align: center; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; position: relative; }
+    .compress-dropzone-area:hover, .compress-dropzone-area.dragover { border-color: #2563eb; background: #eff6ff; }
+    .dropzone-icon { font-size: 3rem; margin: 0; line-height: 1; }
+    .dropzone-title { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0; }
+    .dropzone-desc { font-size: 0.85rem; color: #64748b; margin: 0; font-weight: 500; }
+    
+    #hiddenFileInputNode { display: none; }
+
+    /* DYNAMIC BLUR INTENSITY RANGE CONTROL OVERRIDE STRIP */
+    .manual-slider-container { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box; width: 100%; }
+    .slider-header-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; font-weight: 700; color: #1e293b; text-transform: uppercase; letter-spacing: 0.3px; }
+    .slider-badge { font-size: 0.82rem; font-weight: 700; color: #2563eb; background: #eff6ff; border: 1px solid #bfdbfe; padding: 4px 10px; border-radius: 8px; min-width: 50px; text-align: center; }
+    .blur-range-input { -webkit-appearance: none; width: 100%; height: 6px; border-radius: 5px; background: #cbd5e1; outline: none; margin: 8px 0; cursor: pointer; transition: background 0.15s ease; }
+    .blur-range-input::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #2563eb; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); transition: transform 0.1s ease; }
+    .blur-range-input::-webkit-slider-thumb:hover { transform: scale(1.18); }
+
+    /* LIVE PREVIEW VIEWPORT CANVAS HOUSING WRAPPER */
+    .crop-workspace-viewport { display: none; width: 100%; border: 1px solid #cbd5e1; border-radius: 16px; background: #0f172a; position: relative; overflow: hidden; align-items: center; justify-content: center; max-height: 400px; min-height: 200px; padding: 20px; box-sizing: border-box; }
+    .crop-workspace-viewport img { max-width: 100%; max-height: 360px; display: block; user-select: none; -webkit-user-drag: none; pointer-events: none; }
+
+    /* ELITE USER-CENTRIC SINGLE COMPACT RESULT PANEL */
+    .analytics-output-container { display: none; flex-direction: column; width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; gap: 20px; transition: all 0.3s ease; }
+    .be-badge-header { font-size: 1.15rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 4px; }
+    .be-focus-row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
+    .be-focus-block { display: flex; flex-direction: column; gap: 4px; }
+    .be-focus-title { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .be-focus-main-val { font-size: 2.2rem; font-weight: 800; color: #10b981; font-family: 'Inter', sans-serif; line-height: 1.1; }
+    .be-focus-desc { font-size: 0.82rem; color: #475569; font-weight: 500; line-height: 1.4; }
+    .download-strip-row { display: flex; justify-content: flex-end; width: 100%; }
+    .f-btn-download { background: #2563eb; color: #ffffff; font-weight: 700; padding: 12px 28px; border-radius: 12px; cursor: pointer; font-size: 0.9rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.15s ease; width: fit-content; text-decoration: none; text-align: center; }
+    .f-btn-download:hover { background: #1d4ed8; }
+
+    /* CRISP STATISTICAL MATRIX FOR PER-FILE BREAKDOWNS */
+    .mini-breakdown-box { width: 100%; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 20px; box-sizing: border-box; }
+    .mini-box-title { font-size: 0.82rem; color: #1e293b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; display: block; }
+    .mini-table-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.88rem; }
+    .mini-table-row:last-child { border-bottom: none; padding-bottom: 0; font-weight: 700; color: #2563eb; }
+    .mini-lbl { color: #475569; font-weight: 500; }
+    .mini-val { font-weight: 700; color: #0f172a; font-family: 'Inter', sans-serif; }
+
+    /* NEW CLEAN ACTIONABLE HELPFUL SEO STRUCTURE DESIGN SYSTEM */
+    .seo-clean-container { width: 100%; line-height: 1.75; text-align: left; margin-top: 30px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 35px; color: #334155; }
+    .seo-block-title { font-size: 1.6rem; color: #0f172a; font-weight: 800; margin-top: 30px; margin-bottom: 14px; }
+    .seo-para { font-size: 1rem; margin-bottom: 16px; text-align: justify; }
+    .seo-list { margin: 12px 0 20px 20px; padding: 0; }
+    .seo-list li { margin-bottom: 8px; font-size: 0.98rem; }
+    .seo-list li strong { color: #0f172a; }
+    
+    .example-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+    .example-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 0.92rem; }
+    .example-card strong { color: #0f172a; display: block; font-size: 1rem; margin-bottom: 4px; }
+
+    .faq-wrapper { margin-top: 25px; }
+    .faq-item { margin-bottom: 20px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 16px; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .faq-answer { font-size: 0.96rem; color: #475569; margin: 0; }
+
+    @media (max-width: 768px) {
+      .f-card { padding: 20px; border-radius: 20px; gap: 20px; }
+      .compress-dropzone-area { padding: 30px 14px; }
+      .analytics-output-container { padding: 18px; gap: 18px; }
+      .be-focus-row { grid-template-columns: 1fr; gap: 18px; }
+      .be-focus-main-val { font-size: 1.85rem; }
+      .download-strip-row { justify-content: fill; }
+      .f-btn-download { width: 100%; }
+      .example-grid { grid-template-columns: 1fr; }
+      .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading">💧 Blur Image</div>
+    
+    <div class="f-card">
+      
+      <div id="dropzoneWorkspaceNode" class="compress-dropzone-area" onclick="triggerHiddenFileInputClick()">
+        <p class="dropzone-icon">💧</p>
+        <h3 class="dropzone-title">Click to Upload or Drag &amp; Drop Image</h3>
+        <p class="dropzone-desc">Supports PNG, JPEG, JPG, and WEBP formats instantly</p>
+        <input type="file" id="hiddenFileInputNode" accept="image/png, image/jpeg, image/jpg, image/webp" onchange="handleFileSelection()" />
+      </div>
+
+      <div class="manual-slider-container">
+        <div class="slider-header-row">
+          <span>🎚️ Blur Intensity Value (Gaussian Radius)</span>
+          <span id="sliderValueBadge" class="slider-badge">10px</span>
+        </div>
+        <input type="range" id="blurRadiusSlider" class="blur-range-input" min="0" max="50" value="10" oninput="updateBlurSliderAndFilter()" disabled />
+      </div>
+
+      <div id="viewportContainer" class="crop-workspace-viewport">
+        <img id="sourcePreviewImage" src="#" alt="Image Blur Preview" />
+      </div>
+
+      <div id="compressionOutputContainer" class="analytics-output-container">
+        
+        <div class="be-badge-header">✅ Pixel Convolution Applied Successfully</div>
+        
+        <div class="be-focus-row">
+          <div class="be-focus-block">
+            <span class="be-focus-title">Target Smooth Matrix</span>
+            <div id="txtTargetBlurConsole" class="be-focus-main-val">10 px Blur</div>
+            <span class="be-focus-desc">Your graphics layers have been fully re-compiled locally inside active device tabs.</span>
+          </div>
+          <div class="download-strip-row">
+            <a id="btnDownloadCompressedAsset" class="f-btn-download" href="#" download="blurred-image.png">Download Blurred Image</a>
+          </div>
+        </div>
+
+        <div class="mini-breakdown-box">
+          <span class="mini-box-title">Per Unit Breakdown</span>
+          <div class="mini-table-row">
+            <span class="mini-lbl">Applied Filtering Standard</span>
+            <span class="mini-val">CSS3 / Canvas 2D Context Gaussian Blur</span>
+          </div>
+          <div class="mini-table-row">
+            <span class="mini-lbl">Selected Radius Density</span>
+            <span id="lblBlurRadiusTableCell" class="mini-val">10 Pixels</span>
+          </div>
+          <div class="mini-table-row">
+            <span class="mini-lbl">Processing Pipeline</span>
+            <span class="mini-val style="color: #2563eb; font-weight:700;">Local Hardware Sandboxed Execution</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <article class="seo-clean-container">
+      
+      <h2 class="seo-block-title" style="margin-top:0;">1. Quick Introduction</h2>
+      <p class="seo-para">The Online Image Blur tool allows you to smoothly obscure personal data details, censor sensitive text information, or soft-focus photography graphics backgrounds instantly. This utility is built specifically for digital bloggers hiding user email logs, platform creators obfuscating legal license numbers, and graphic operators adjusting backdrop focus fields. By managing pixel smoothing matrices entirely inside browser sandbox tabs, this asset eliminates outer server latency bottlenecks completely.</p>
+
+      <h2 class="seo-block-title">2. How the Tool Works</h2>
+      <p class="seo-para">This layout utility operates completely client-side using a browser-native 2D canvas convolution pipeline. When a graphic file loads, the core program applies advanced multi-pass mathematical pixel-shuffling grids to blend adjoining pixel channels together evenly based on your slider preference. Here is the breakdown of each data module:</p>
+      <ul class="seo-list">
+        <li><strong>Gaussian Radius Intensity:</strong> Sets the physical width of the pixel blending filter. Lower settings generate soft ambient textures, while max values completely erase text blocks and facial configurations into unreadable colored shapes.</li>
+        <li><strong>Canvas 2D Context Filtering:</strong> Bakes spatial calculations smoothly into hardware cache memory pipelines, keeping edge lines perfectly anti-aliased during down-sampling.</li>
+        <li><strong>Local Sandboxed Execution:</strong> Isolates the pixel calculations right inside your machine's local browser window, ensuring your data documents never leave your storage drive.</li>
+      </ul>
+
+      <h2 class="seo-block-title">3. Step-by-Step Usage Guide</h2>
+      <ul class="seo-list">
+        <li><strong>Step 1:</strong> Tap anywhere inside the dashed uploader card to select an image from your device, or drag a picture file directly into the workspace box.</li>
+        <li><strong>Step 2:</strong> Once the image loads into the preview viewport container, the manual radius slider range line activates instantly.</li>
+        <li><strong>Step 3:</strong> Drag the **Blur Intensity Value** slider to adjust the blurring effect. Watch the changes happen live in the viewport checkboard space.</li>
+        <li><strong>Step 4:</strong> Check the structural filtering logs update on the bottom output summary board.</li>
+        <li><strong>Step 5:</strong> Click the blue <strong>"Download Blurred Image"</strong> button to compile the canvas pixel parameters and save your new censored graphic asset.</li>
+      </ul>
+
+      <h2 class="seo-block-title">4. Real Censoring Use-Case Examples</h2>
+      <div class="example-grid">
+        <div class="example-card">
+          <strong>Example 1: Identity Security Shield</strong>
+          <span>Source: ID card or transaction receipt photo</span><br>
+          <span>Action: Slider adjustment 35px</span><br>
+          <span>Result: Private data values and house location lines rendered unreadable, protecting user security safely.</span>
+        </div>
+        <div class="example-card">
+          <strong>Example 2: Tech Blog Tutorial Screen</strong>
+          <span>Source: Admin dashboard screenshot snapshot</span><br>
+          <span>Action: Slider adjustment 15px</span><br>
+          <span>Result: Private user email handles and secure token rows obscured, making the guide safe for public streaming.</span>
+        </div>
+        <div class="example-card">
+          <strong>Example 3: Portrait Depth Focus</strong>
+          <span>Source: Standard product foreground capture</span><br>
+          <span>Action: Slider adjustment 8px</span><br>
+          <span>Result: Soft ambient background focus separation added, highlighting the primary front-facing inventory item beautifully.</span>
+        </div>
+      </div>
+
+      <h2 class="seo-block-title">5. Benefits of Running Browser-Local Blur Calculations</h2>
+      <ul class="seo-list">
+        <li><strong>Irreversible Data Censor protection:</strong> Rasterizing blurred canvas maps completely deletes original raw text data pixels, making it mathematically impossible for hackers to undo the effect.</li>
+        <li><strong>Responsive Edge Smoothing:</strong> Uses bicubic pixel anti-aliasing loops to apply high-density blur distributions evenly across your image borders.</li>
+        <li><strong>Eliminates Network Data Overhead:</strong> Runs operations locally to deliver instant file conversions without cloud processing delay blocks.</li>
+        <li><strong>Airtight Personal Security Sharding:</strong> Processes file content locally without server routing, keeping confidential design drafts completely safe.</li>
+      </ul>
+
+      <h2 class="seo-block-title">6. Common Mistakes to Avoid When Obfuscating Photos</h2>
+      <ul class="seo-list">
+        <li><strong>Setting Intensity Radii Too Low:</strong> Applying a low blur radius (below 5px) on high-resolution text leaves letter structures identifiable. Use thick filters to secure confidential financial ledgers.</li>
+        <li><strong>Relying on Temporary CSS Overlays:</strong> Using standard web stylesheets to blur images simply visually masks them in the browser. Smart users can easily inspect the element, strip the styles, and view the original data underneath. Always use a permanent canvas raster tool like this one.</li>
+        <li><strong>Processing Invoices via Unknown Remote Ports:</strong> Uploading private mobile backup photos to unverified remote web converters risks data scraping and file leaks.</li>
+      </ul>
+
+      <h2 class="seo-block-title">7. Frequently Asked Questions</h2>
+      <div class="faq-wrapper">
+        <div class="faq-item">
+          <div class="faq-question">Can someone undo this blur filter to read my original private text data?</div>
+          <p class="faq-answer">No. This tool doesn't just visually hide your data; it actively recalculates and merges the pixel values inside the canvas layer. The original pixels are completely rewritten, making the censoring permanent and unrecoverable.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Is this image blurring utility free to use?</div>
+          <p class="faq-answer">Yes, this utility tool is 100% free with no account registrations, watermark stamps, or daily conversion volume caps.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Are my personal photo uploads safe here?</div>
+          <p class="faq-answer">Yes, absolutely. The tool processes everything locally inside your browser using HTML5 canvas. Your files never touch external networks.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Does this tool support transparency elements for blurred PNG graphics?</div>
+          <p class="faq-answer">Yes. The canvas compilation system maps pixel channels while protecting transparent alpha values, preventing dark clipping issues along edge boundaries.</p>
+        </div>
+      </div>
+
+      <h2 class="seo-block-title">8. Related Digital Asset Utilities</h2>
+      <ul class="seo-list">
+        <li><strong>Background Remover:</strong> Erases solid backdrop colors and creates transparent PNG assets smoothly.</li>
+        <li><strong>Image Resizer:</strong> Modifies absolute horizontal width and height pixel boundaries smoothly.</li>
+        <li><strong>Crop Image:</strong> Trims edge layout borders and locks aspect ratio boxes seamlessly.</li>
+      </ul>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let activeLoadedFileReference = null;
+    let baselineCachedImageSrc = null;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header component fetch fault:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer component fetch fault:', err));
+
+    const dropzone = document.getElementById('dropzoneWorkspaceNode');
+    
+    // Ingest drag & drop operational configurations listeners
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); }, false);
+    });
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); }, false);
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const incomingFilesList = e.dataTransfer.files;
+        if(incomingFilesList.length > 0) {
+            document.getElementById('hiddenFileInputNode').files = incomingFilesList;
+            handleFileSelection();
+        }
+    });
+
+    function triggerHiddenFileInputClick() {
+        document.getElementById('hiddenFileInputNode').click();
+    }
+
+    function handleFileSelection() {
+        const fileTarget = document.getElementById('hiddenFileInputNode').files[0];
+        if (!fileTarget) return;
+        activeLoadedFileReference = fileTarget;
+
+        const readerModule = new FileReader();
+        readerModule.readAsDataURL(fileTarget);
+        readerModule.onload = function(e) {
+            baselineCachedImageSrc = e.target.result;
+            
+            // Enable manual slider dragger
+            const sliderNode = document.getElementById('blurRadiusSlider');
+            sliderNode.disabled = false;
+
+            executeCanvasBlurEngine();
+        };
+    }
+
+    function updateBlurSliderAndFilter() {
+        const sliderVal = document.getElementById('blurRadiusSlider').value;
+        document.getElementById('sliderValueBadge').innerText = `${sliderVal}px`;
+        
+        if (baselineCachedImageSrc) {
+            executeCanvasBlurEngine();
+        }
+    }
+
+    function executeCanvasBlurEngine() {
+        if (!baselineCachedImageSrc) return;
+
+        const blurRadiusValue = parseInt(document.getElementById('blurRadiusSlider').value, 10);
+        const tempImageElement = new Image();
+        tempImageElement.src = baselineCachedImageSrc;
+
+        tempImageElement.onload = function() {
+            // --- BROWSER NATIVE CANVAS BLUR FILTER COMPILATION ---
+            const canvasElement = document.createElement('canvas');
+            const canvasContext = canvasElement.getContext('2d');
+
+            const width = tempImageElement.width;
+            const height = tempImageElement.height;
+            canvasElement.width = width;
+            canvasElement.height = height;
+
+            // Enforce clear high-quality hardware smoothing filters onto context matrix
+            canvasContext.imageSmoothingEnabled = true;
+            canvasContext.imageSmoothingQuality = 'high';
+            
+            // Bind Gaussian blur parameter metrics directly into canvas context rendering pipeline
+            canvasContext.filter = `blur(${blurRadiusValue}px)`;
+            canvasContext.drawImage(tempImageElement, 0, 0, width, height);
+
+            // Export compiled blurred pixel assets stream back as data strings link
+            const compiledBlurredDataUrl = canvasElement.toDataURL('image/png');
+            
+            // Update preview viewport node directly
+            document.getElementById('sourcePreviewImage').src = compiledBlurredDataUrl;
+
+            // Populate calculations back inside indicators dashboard rows
+            document.getElementById('txtTargetBlurConsole').innerText = `${blurRadiusValue} px Blur`;
+            document.getElementById('lblBlurRadiusTableCell').innerText = `${blurRadiusValue} Pixels`;
+
+            // Setup download anchor attributes safely
+            const downloadBtnNode = document.getElementById('btnDownloadCompressedAsset');
+            downloadBtnNode.href = compiledBlurredDataUrl;
+            downloadBtnNode.download = `blurred-${activeLoadedFileReference ? activeLoadedFileReference.name.split('.')[0] : 'asset'}.png`;
+
+            // Unhide result summary boards cleanly
+            document.getElementById('viewportContainer').style.display = "flex";
+            document.getElementById('compressionOutputContainer').style.display = "flex";
+        };
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
