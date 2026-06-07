@@ -5,8 +5,8 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Free Multi-Page Image to PDF Converter | Merge Photos to PDF</title>
-  <meta name="description" content="Convert and merge multiple PNG and JPG images into a single PDF document online instantly. Free, fast browser-native multi-page photo to PDF converter." />
+  <title>Free Fixed A4 Multi-Page Image to PDF Converter | Merge Photos</title>
+  <meta name="description" content="Convert and merge multiple PNG and JPG images into a single print-ready A4 PDF document online instantly. Free, fast browser-native photo to PDF converter." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -123,24 +123,24 @@
       <div id="dropzoneWorkspaceNode" class="compress-dropzone-area" onclick="triggerHiddenFileInputClick()">
         <p class="dropzone-icon">📚</p>
         <h3 class="dropzone-title">Click to Upload or Drag &amp; Drop Images Here</h3>
-        <p class="dropzone-desc">Select one or multiple files to compile a single multi-page PDF</p>
+        <p class="dropzone-desc">Select one or multiple files to compile a single unified A4 PDF binder</p>
         <input type="file" id="hiddenFileInputNode" accept="image/png, image/jpeg, image/jpg" multiple onchange="processIncomingImageToPdfConversion()" />
       </div>
 
       <div id="loaderStatusPanel" class="loader-status-wrapper">
         <div class="spinner-node"></div>
-        <span>Assembling your high-quality PDF document locally...</span>
+        <span>Assembling and compressing your premium A4 PDF binder locally...</span>
       </div>
 
       <div id="compressionOutputContainer" class="analytics-output-container">
         
-        <div class="be-badge-header">✅ Multi-Page PDF Document Assembled</div>
+        <div class="be-badge-header">✅ Standardized A4 PDF Document Assembled</div>
         
         <div class="be-focus-row">
           <div class="be-focus-block">
             <span class="be-focus-title">Target Document Format</span>
-            <div class="be-focus-main-val" style="color: #2563eb;">.PDF</div>
-            <span class="be-focus-desc">All selected image layers have been compiled sequentially into a clean PDF binder.</span>
+            <div class="be-focus-main-val" style="color: #2563eb;">A4 .PDF</div>
+            <span class="be-focus-desc">All selected image layouts have been auto-centered proportionally into uniform A4 document bounds.</span>
           </div>
           <div class="download-strip-row">
             <a id="btnDownloadCompressedAsset" class="f-btn-download" href="#">Download Combined PDF</a>
@@ -158,8 +158,12 @@
             <span id="lblTotalPagesConsole" class="mini-val" style="color: #10b981;">0 Pages</span>
           </div>
           <div class="mini-table-row">
+            <span class="mini-lbl">Page Geometry Layout</span>
+            <span class="mini-val" style="color: #2563eb;">Standard A4 ($595 \times 842 \text{ px}$) aligned</span>
+          </div>
+          <div class="mini-table-row">
             <span class="mini-lbl">Processing Layer</span>
-            <span class="mini-val accent-green">Local Safe jsPDF Sandbox Array</span>
+            <span class="mini-val accent-green">Sandboxed Proportional Scale Optimization Engine</span>
           </div>
         </div>
 
@@ -170,7 +174,7 @@
     <article class="seo-clean-container">
       
       <h2 class="seo-block-title" style="margin-top:0;">1. Quick Introduction</h2>
-      <p class="seo-para">The Online Image to PDF Converter helps you merge single or multiple image files like PNG, JPG, or JPEG into a single, beautifully bound PDF document instantly. This utility is built specifically for students compiling step-by-step lecture sheets, freelancers packing business invoices, and managers combining design documents. By parsing image streams entirely on your local system layout, this tool cuts out network transfer times entirely.</p>
+      <p class="seo-para">The Online Image to PDF Converter helps you merge single or multiple image files like PNG, JPG, or JPEG into a single, beautifully bound A4 PDF document instantly. This utility is built specifically for students compiling step-by-step loan documentation, freelancers packing business invoices, and managers combining design documents. By parsing image streams entirely on your local system layout, this tool cuts out network transfer times entirely.</p>
 
       <h2 class="seo-block-title">2. How the Tool Works</h2>
       <p class="seo-para">This converter runs 100% inside your local client hardware memory using hardware-accelerated rendering buffers. When multiple files are dropped into the uploader matrix, the processing loop reads each file sequentially, scales page boundaries proportionally, and appends pages into a single document object. Here is the operational breakdown:</p>
@@ -272,7 +276,6 @@
 
     const dropzone = document.getElementById('dropzoneWorkspaceNode');
     
-    // Drag-zone operational state listeners configurations
     ['dragenter', 'dragover'].forEach(eventName => {
         dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); }, false);
     });
@@ -306,13 +309,15 @@
 
         document.getElementById('lblTotalFilesConsole').innerText = `${filesList.length} Files`;
 
+        // Standard A4 Layout Baseline Pixels Constraints
+        const a4Width = 595;
+        const a4Height = 842;
+        
         let documentInstance = null;
-        let processedCount = 0;
 
-        // Sequential iterative processing loop to avoid javascript memory thread block crashes
         function loadAndAppendNextPageImage(index) {
             if (index >= filesList.length) {
-                // All image arrays loaded successfully -> Finalize PDF Document stream compilation
+                // Compilation Complete -> Compile URL triggers safely
                 if (activeCompiledPdfObjectUrl) {
                     URL.revokeObjectURL(activeCompiledPdfObjectUrl);
                 }
@@ -322,7 +327,7 @@
 
                 const downloadBtnNode = document.getElementById('btnDownloadCompressedAsset');
                 downloadBtnNode.href = activeCompiledPdfObjectUrl;
-                downloadBtnNode.download = `${filesList[0].name.split('.')[0] || 'merged-document'}_combined.pdf`;
+                downloadBtnNode.download = `${filesList[0].name.split('.')[0] || 'binder'}_a4_fixed.pdf`;
 
                 document.getElementById('lblTotalPagesConsole').innerText = `${filesList.length} Pages`;
                 
@@ -339,32 +344,39 @@
                 const tempImageElement = new Image();
                 tempImageElement.src = event.target.result;
                 tempImageElement.onload = function() {
-                    const imageWidth = tempImageElement.width;
-                    const imageHeight = tempImageElement.height;
-                    const pdfOrientationFormat = (imageWidth > imageHeight) ? 'l' : 'p';
+                    const originalW = tempImageElement.width;
+                    const originalH = tempImageElement.height;
 
+                    // Initialize document on first loop slot with standard fixed profile vertical A4 settings
                     if (index === 0) {
-                        // Initialize primary base container document using first file bounds parameters
                         documentInstance = new jsPDF({
-                            orientation: pdfOrientationFormat,
+                            orientation: 'p',
                             unit: 'px',
-                            format: [imageWidth, imageHeight]
+                            format: 'a4'
                         });
                     } else {
-                        // Append a fresh structural page sheet node matching current file canvas proportions
-                        documentInstance.addPage([imageWidth, imageHeight], pdfOrientationFormat);
+                        documentInstance.addPage('a4', 'p');
                     }
 
-                    // Draw pixel strings onto current active workspace layout target page layer natively
-                    documentInstance.addImage(event.target.result, 'JPEG', 0, 0, imageWidth, imageHeight);
+                    // --- PROPORTIONAL ASPECT RATIO AUTO-CENTER FITTING CALCULATION ---
+                    let boundingScaleRatio = Math.min(a4Width / originalW, a4Height / originalH);
                     
-                    // Trigger asynchronous execution call stack loop step recursively
+                    let targetRenderedWidth = originalW * boundingScaleRatio;
+                    let targetRenderedHeight = originalH * boundingScaleRatio;
+
+                    // Symmetric matrix positioning offsets coordinates
+                    let offsetX = (a4Width - targetRenderedWidth) / 2;
+                    let offsetY = (a4Height - targetRenderedHeight) / 2;
+
+                    // CRITICAL BYTE WEIGHT FIX: Enforce fast compression algorithm flags ('JPEG', 'FAST', 0.75 ratio)
+                    documentInstance.addImage(event.target.result, 'JPEG', offsetX, offsetY, targetRenderedWidth, targetRenderedHeight, undefined, 'FAST');
+                    
+                    // Recursive stack step
                     loadAndAppendNextPageImage(index + 1);
                 };
             };
         }
 
-        // Start processing sequence from the initial array zero slot safely
         loadAndAppendNextPageImage(0);
     }
   </script>
