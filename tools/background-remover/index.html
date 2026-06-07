@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Free Background Remover Online | Make Transparent Images Instantly</title>
+  <meta name="description" content="Remove image backgrounds online instantly. Free, fast browser-native tool to make backgrounds transparent and save crisp PNG assets without losing quality." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/background-remover/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Simple Image Background Removal Apparatus Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An automated browser-native graphic utility extracting foreground silhouettes and mapping transparent alpha channels natively via local chroma keys arrays.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 950px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    
+    /* UNIFIED DASHBOARD CONTAINER FRAME */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px; box-shadow: 0 15px 35px -5px rgba(0,0,0,0.03), 0 10px 20px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; gap: 24px; }
+    
+    /* DROPZONE WORKSPACE INTERFACE */
+    .compress-dropzone-area { width: 100%; border: 3px dashed #cbd5e1; background: #f8fafc; border-radius: 16px; padding: 40px 20px; text-align: center; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; position: relative; }
+    .compress-dropzone-area:hover, .compress-dropzone-area.dragover { border-color: #2563eb; background: #eff6ff; }
+    .dropzone-icon { font-size: 3rem; margin: 0; line-height: 1; }
+    .dropzone-title { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0; }
+    .dropzone-desc { font-size: 0.85rem; color: #64748b; margin: 0; font-weight: 500; }
+    
+    #hiddenFileInputNode { display: none; }
+
+    /* CHROMA SENSITIVITY RANGE SLIDER STRIP CONTAINER */
+    .manual-slider-container { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box; width: 100%; }
+    .slider-header-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; font-weight: 700; color: #1e293b; text-transform: uppercase; letter-spacing: 0.3px; }
+    .slider-badge { font-size: 0.82rem; font-weight: 700; color: #2563eb; background: #eff6ff; border: 1px solid #bfdbfe; padding: 4px 10px; border-radius: 8px; min-width: 50px; text-align: center; }
+    .chroma-range-input { -webkit-appearance: none; width: 100%; height: 6px; border-radius: 5px; background: #cbd5e1; outline: none; margin: 8px 0; cursor: pointer; transition: background 0.15s ease; }
+    .chroma-range-input::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #2563eb; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); transition: transform 0.1s ease; }
+    .chroma-range-input::-webkit-slider-thumb:hover { transform: scale(1.18); }
+
+    /* LIVE TRANSPARENT MATTING RE-RENDER VIEWPORT PANEL */
+    .crop-workspace-viewport { display: none; width: 100%; border: 1px solid #cbd5e1; border-radius: 16px; background: #0f172a; position: relative; overflow: hidden; align-items: center; justify-content: center; max-height: 400px; min-height: 200px; padding: 20px; box-sizing: border-box; }
+    /* Checkboard background styling representing transparent pixel layers natively */
+    .transparent-checkboard-back { background-image: linear-gradient(45deg, #e2e8f0 25%, transparent 25%), linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e2e8f0 75%), linear-gradient(-45deg, transparent 75%, #e2e8f0 75%); background-size: 16px 16px; background-position: 0 0, 0 8px, 8px -8px, -8px 0px; background-color: #ffffff; border-radius: 12px; padding: 10px; display: inline-block; max-height: 360px; max-width: 100%; box-sizing: border-box; }
+    .crop-workspace-viewport img { max-width: 100%; max-height: 320px; display: block; user-select: none; -webkit-user-drag: none; pointer-events: none; }
+
+    /* ELITE USER-CENTRIC SINGLE COMPACT RESULT PANEL */
+    .analytics-output-container { display: none; flex-direction: column; width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; gap: 20px; transition: all 0.3s ease; }
+    .be-badge-header { font-size: 1.15rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 4px; }
+    .be-focus-row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
+    .be-focus-block { display: flex; flex-direction: column; gap: 4px; }
+    .be-focus-title { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .be-focus-main-val { font-size: 2.2rem; font-weight: 800; color: #10b981; font-family: 'Inter', sans-serif; line-height: 1.1; }
+    .be-focus-desc { font-size: 0.82rem; color: #475569; font-weight: 500; line-height: 1.4; }
+    .download-strip-row { display: flex; justify-content: flex-end; width: 100%; }
+    .f-btn-download { background: #2563eb; color: #ffffff; font-weight: 700; padding: 12px 28px; border-radius: 12px; cursor: pointer; font-size: 0.9rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.15s ease; width: fit-content; text-decoration: none; text-align: center; }
+    .f-btn-download:hover { background: #1d4ed8; }
+
+    /* CRISP STATISTICAL MATRIX FOR PER-FILE BREAKDOWNS */
+    .mini-breakdown-box { width: 100%; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 20px; box-sizing: border-box; }
+    .mini-box-title { font-size: 0.82rem; color: #1e293b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; display: block; }
+    .mini-table-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.88rem; }
+    .mini-table-row:last-child { border-bottom: none; padding-bottom: 0; font-weight: 700; color: #10b981; }
+    .mini-lbl { color: #475569; font-weight: 500; }
+    .mini-val { font-weight: 700; color: #0f172a; font-family: 'Inter', sans-serif; }
+
+    /* NEW CLEAN ACTIONABLE HELPFUL SEO STRUCTURE DESIGN SYSTEM */
+    .seo-clean-container { width: 100%; line-height: 1.75; text-align: left; margin-top: 30px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 35px; color: #334155; }
+    .seo-block-title { font-size: 1.6rem; color: #0f172a; font-weight: 800; margin-top: 30px; margin-bottom: 14px; }
+    .seo-para { font-size: 1rem; margin-bottom: 16px; text-align: justify; }
+    .seo-list { margin: 12px 0 20px 20px; padding: 0; }
+    .seo-list li { margin-bottom: 8px; font-size: 0.98rem; }
+    .seo-list li strong { color: #0f172a; }
+    
+    .example-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+    .example-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 0.92rem; }
+    .example-card strong { color: #0f172a; display: block; font-size: 1rem; margin-bottom: 4px; }
+
+    .faq-wrapper { margin-top: 25px; }
+    .faq-item { margin-bottom: 20px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 16px; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .faq-answer { font-size: 0.96rem; color: #475569; margin: 0; }
+
+    @media (max-width: 768px) {
+      .f-card { padding: 20px; border-radius: 20px; gap: 20px; }
+      .compress-dropzone-area { padding: 30px 14px; }
+      .analytics-output-container { padding: 18px; gap: 18px; }
+      .be-focus-row { grid-template-columns: 1fr; gap: 18px; }
+      .be-focus-main-val { font-size: 1.85rem; }
+      .download-strip-row { justify-content: fill; }
+      .f-btn-download { width: 100%; }
+      .example-grid { grid-template-columns: 1fr; }
+      .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading">✨ Background Remover</div>
+    
+    <div class="f-card">
+      
+      <div id="dropzoneWorkspaceNode" class="compress-dropzone-area" onclick="triggerHiddenFileInputClick()">
+        <p class="dropzone-icon">✨</p>
+        <h3 class="dropzone-title">Click to Upload or Drag &amp; Drop Image</h3>
+        <p class="dropzone-desc">Works best for images with solid backgrounds (logos, graphics, product shots)</p>
+        <input type="file" id="hiddenFileInputNode" accept="image/png, image/jpeg, image/jpg, image/webp" onchange="handleFileSelection()" />
+      </div>
+
+      <div class="manual-slider-container">
+        <div class="slider-header-row">
+          <span>🎨 Color Threshold Sensitivity (Color Isolation)</span>
+          <span id="sliderValueBadge" class="slider-badge">35</span>
+        </div>
+        <input type="range" id="chromaThresholdSlider" class="chroma-range-input" min="5" max="150" value="35" oninput="updateChromaSliderAndReevaluate()" disabled />
+      </div>
+
+      <div id="viewportContainer" class="crop-workspace-viewport">
+        <div class="transparent-checkboard-back">
+          <img id="sourcePreviewImage" src="#" alt="Background Removal Preview" />
+        </div>
+      </div>
+
+      <div id="compressionOutputContainer" class="analytics-output-container">
+        
+        <div class="be-badge-header">✅ Background Removed Successfully</div>
+        
+        <div class="be-focus-row">
+          <div class="be-focus-block">
+            <span class="be-focus-title">Target Asset Output</span>
+            <div class="be-focus-main-val">Transparent .PNG</div>
+            <span class="be-focus-desc">Your background color channels have been converted into alpha channels natively.</span>
+          </div>
+          <div class="download-strip-row">
+            <a id="btnDownloadCompressedAsset" class="f-btn-download" href="#" download="transparent-image.png">Download PNG Image</a>
+          </div>
+        </div>
+
+        <div class="mini-breakdown-box">
+          <span class="mini-box-title">Per Unit Breakdown</span>
+          <div class="mini-table-row">
+            <span class="mini-lbl">Isolating Method</span>
+            <span class="mini-val">Local Chroma Corner Color Extraction</span>
+          </div>
+          <div class="mini-table-row">
+            <span class="mini-lbl">Output Image Type</span>
+            <span class="mini-val" style="color: #2563eb; font-weight:700;">PNG 24-Bit Transparent Stream</span>
+          </div>
+          <div class="mini-table-row">
+            <span class="mini-lbl">Processing Environment</span>
+            <span class="mini-val accent-green">HTML5 Canvas Pixel-Array Matrix Loop</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <article class="seo-clean-container">
+      
+      <h2 class="seo-block-title" style="margin-top:0;">1. Quick Introduction</h2>
+      <p class="seo-para">The Online Background Remover helps you eliminate solid backdrop colors from any graphic, icon, or product photo, converting the background into an alpha transparent layer instantly. This web utility is built specifically for digital merchants uploading inventory items, web developers preparing crisp icons, and content editors structuring layered compositions. By executing matrix pixel isolation loops natively inside local browser cache memory threads, this tool processes files without server overhead latency completely.</p>
+
+      <h2 class="seo-block-title">2. How the Tool Works</h2>
+      <p class="seo-para">This graphics application analyzes alpha transparency properties client-side using advanced HTML5 canvas manipulation hooks. When a photograph drops into the uploader surface, our script engine samples the color of the topmost corner pixel, maps it as the backdrop standard, and iterates across the image's raw pixel array to drop matching color values into zero alpha channels. Here is what each option implies:</p>
+      <ul class="seo-list">
+        <li><strong>Color Threshold Sensitivity:</strong> Adjusts the color distance buffer. Low ranges remove only exact matching tones, while higher settings expand the filter to erase surrounding shadows or gradient values cleanly.</li>
+        <li><strong>PNG 24-Bit Transparent Stream:</strong> Encodes the resulting isolated graphic into a high-fidelity container that supports clean edge layers and alpha channel overlays.</li>
+        <li><strong>Local Pixel-Array Matrix Loop:</strong> Runs entirely inside sandboxed browser threads, guaranteeing that your personal product drafts never travel to external network hosts.</li>
+      </ul>
+
+      <h2 class="seo-block-title">3. Step-by-Step Usage Guide</h2>
+      <ul class="seo-list">
+        <li><strong>Step 1:</strong> Click inside the dashed dropzone uploader container to browse your device files, or drag a clear solid-background asset directly into the box.</li>
+        <li><strong>Step 2:</strong> The real-time pixel extraction loop samples the backdrop color and instantly builds a transparent preview.</li>
+        <li><strong>Step 3:</strong> If background edges or shadow fragments remain visible, adjust the **Color Threshold Sensitivity** slider manually to fine-tune the mask.</li>
+        <li><strong>Step 4:</strong> Verify formatting parameters inside the compact result summary board.</li>
+        <li><strong>Step 5:</strong> Click the blue <strong>"Download PNG Image"</strong> action button to save your newly isolated alpha-channel transparent asset.</li>
+      </ul>
+
+      <h2 class="seo-block-title">4. Real Background Isolation Examples</h2>
+      <div class="example-grid">
+        <div class="example-card">
+          <strong>Example 1: E-Commerce Grid</strong>
+          <span>Source: Product item photo on white backdrop</span><br>
+          <span>Action: Threshold setting 30</span><br>
+          <span>Result: White backdrop erased cleanly, preparing a transparent asset ready for multi-colored store banners.</span>
+        </div>
+        <div class="example-card">
+          <strong>Example 2: Vector Corporate Logo</strong>
+          <span>Source: Graphic banner logo on black background</span><br>
+          <span>Action: Threshold setting 45</span><br>
+          <span>Result: Black boundaries converted into alpha channels, allowing seamless integration across dark or light website footers.</span>
+        </div>
+        <div class="example-card">
+          <strong>Example 3: App User Interface Icon</strong>
+          <span>Source: Isolated asset graphic on flat colored layout</span><br>
+          <span>Action: Threshold setting 25</span><br>
+          <span>Result: Clear outline alpha values locked in, creating a professional button graphic with zero aliasing errors.</span>
+        </div>
+      </div>
+
+      <h2 class="seo-block-title">5. Benefits of Localized Transparent Masking Operations</h2>
+      <ul class="seo-list">
+        <li><strong>Maintains Core Object Resolutions:</strong> Cuts away backdrop color tags while keeping the original dimensions and sharpness of your foreground items intact.</li>
+        <li><strong>Enables Universal Layer Overlays:</strong> Reversing background pixel fills allows you to layer icons across variable website designs seamlessly.</li>
+        <li><strong>Eliminates Cloud Processing Queues:</strong> Works inside local device memory pools to generate file results without host server latency.</li>
+        <li><strong>Airtight Personal Data Security:</strong> Sandboxed browser operations isolate pixel data within your machine tab, avoiding database leaking risks.</li>
+      </ul>
+
+      <h2 class="seo-block-title">6. Common Mistakes to Avoid When Making Transparent Assets</h2>
+      <ul class="seo-list">
+        <li><strong>Processing Highly Complex Textures:</strong> Attempting to isolate subjects against busy background designs (like forests, crowded rooms, or gradients) will cause processing errors with this pixel color extractor. Use images with solid backdrops for best results.</li>
+        <li><strong>Setting Thresholds Too High:</strong> Dragging sensitivity levels past limits will cause the engine to mistake similar color values in your main subject for the background, cutting holes into your image.</li>
+        <li><strong>Uploading Content to Slow Cloud Triggers:</strong> Sending confidential product mockups or data screenshots to third-party file relays creates privacy risks. Stick to browser-native canvas options.</li>
+      </ul>
+
+      <h2 class="seo-block-title">7. Frequently Asked Questions</h2>
+      <div class="faq-wrapper">
+        <div class="faq-item">
+          <div class="faq-question">Why did parts of my main subject turn transparent after processing?</div>
+          <p class="faq-answer">If your foreground object contains colors identical or highly similar to the background backdrop, the isolation filter will erase them as well. Drop the sensitivity slider downwards to restore those pixels.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Is this background removal tool completely free to use?</div>
+          <p class="faq-answer">Yes, this utility tool is 100% free with no account registrations, watermark stamps, or daily extraction volume caps.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Are my personal photo uploads safe here?</div>
+          <p class="faq-answer">Yes, absolutely. The tool processes everything locally inside your browser using HTML5 canvas. Your files never touch external networks.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Can I save the transparent output as a JPEG file?</div>
+          <p class="faq-answer">No. The JPEG image format standard does not support transparent alpha channels. The tool forces a 24-bit PNG format to lock transparency settings in place safely.</p>
+        </div>
+      </div>
+
+      <h2 class="seo-block-title">8. Related Digital Asset Utilities</h2>
+      <ul class="seo-list">
+        <li><strong>Image to PDF Converter:</strong> Binds scattered photo sheets into a single print-ready standardized A4 document binder.</li>
+        <li><strong>Image Resizer:</strong> Modifies absolute horizontal width and height pixel boundaries smoothly.</li>
+        <li><strong>Crop Image:</strong> Trims edge layout borders and locks aspect ratio boxes seamlessly.</li>
+      </ul>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let activeLoadedFileReference = null;
+    let baselineCachedImageSrc = null;
+    
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed:', err));
+
+    const dropzone = document.getElementById('dropzoneWorkspaceNode');
+    
+    // Ingest dragover structural configuration listeners
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); }, false);
+    });
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); }, false);
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const incomingFilesList = e.dataTransfer.files;
+        if(incomingFilesList.length > 0) {
+            document.getElementById('hiddenFileInputNode').files = incomingFilesList;
+            handleFileSelection();
+        }
+    });
+
+    function triggerHiddenFileInputClick() {
+        document.getElementById('hiddenFileInputNode').click();
+    }
+
+    function handleFileSelection() {
+        const fileTarget = document.getElementById('hiddenFileInputNode').files[0];
+        if (!fileTarget) return;
+        activeLoadedFileReference = fileTarget;
+
+        const readerModule = new FileReader();
+        readerModule.readAsDataURL(fileTarget);
+        readerModule.onload = function(e) {
+            baselineCachedImageSrc = e.target.result;
+            
+            // Enable manual range threshold slider
+            const sliderNode = document.getElementById('chromaThresholdSlider');
+            sliderNode.disabled = false;
+
+            executeBackgroundRemovalEngine();
+        };
+    }
+
+    function updateChromaSliderAndReevaluate() {
+        const sliderVal = document.getElementById('chromaThresholdSlider').value;
+        document.getElementById('sliderValueBadge').innerText = sliderVal;
+        
+        if (baselineCachedImageSrc) {
+            executeBackgroundRemovalEngine();
+        }
+    }
+
+    function executeBackgroundRemovalEngine() {
+        if (!baselineCachedImageSrc) return;
+
+        const thresholdSensitivity = parseInt(document.getElementById('chromaThresholdSlider').value, 10);
+        const tempImageElement = new Image();
+        tempImageElement.src = baselineCachedImageSrc;
+
+        tempImageElement.onload = function() {
+            // --- BROWSER NATIVE PIXEL-ARRAY CHROMAMATTE MATTING LOOPS ---
+            const canvasElement = document.createElement('canvas');
+            const canvasContext = canvasElement.getContext('2d');
+
+            const width = tempImageElement.width;
+            const height = tempImageElement.height;
+            canvasElement.width = width;
+            canvasElement.height = height;
+
+            // Paint source image details onto local memory layer
+            canvasContext.drawImage(tempImageElement, 0, 0);
+
+            // Ingest raw RGBA image data pixels matrix array out from canvas container bounds
+            const canvasImageDataStructure = canvasContext.getImageData(0, 0, width, height);
+            const dataPixelArray = canvasImageDataStructure.data;
+
+            // Sample target baseline backdrop color from the topmost corner pixel indices (Row 0, Column 0)
+            const targetRedBack = dataPixelArray[0];
+            const targetGreenBack = dataPixelArray[1];
+            const targetBlueBack = dataPixelArray[2];
+
+            // Iterate across the full pixel array stride steps (Every single pixel contains 4 indices: R, G, B, A)
+            for (let indexOffset = 0; indexOffset < dataPixelArray.length; indexOffset += 4) {
+                let currentRed = dataPixelArray[indexOffset];
+                let currentGreen = dataPixelArray[indexOffset + 1];
+                let currentBlue = dataPixelArray[indexOffset + 2];
+
+                // Calculate mathematical Euclidean color distance metric vector parameters
+                let matchDistanceFactor = Math.sqrt(
+                    Math.pow(currentRed - targetRedBack, 2) +
+                    Math.pow(currentGreen - targetGreenBack, 2) +
+                    Math.pow(currentBlue - targetBlueBack, 2)
+                );
+
+                // If pixel color lands inside proximity threshold, replace its opacity flag with absolute zero (Transparent)
+                if (matchDistanceFactor <= thresholdSensitivity) {
+                    dataPixelArray[indexOffset + 3] = 0; // Alpha channel = 0
+                }
+            }
+
+            // Put modified pixel data arrays back into canvas buffer layers
+            canvasContext.putImageData(canvasImageDataStructure, 0, 0);
+
+            // Output generated image data string back to user viewport image node previews
+            const extractedTransparentDataUrl = canvasElement.toDataURL('image/png');
+            document.getElementById('sourcePreviewImage').src = extractedTransparentDataUrl;
+
+            // Bind transparent data link onto output action download trigger buttons
+            const downloadBtnNode = document.getElementById('btnDownloadCompressedAsset');
+            downloadBtnNode.href = extractedTransparentDataUrl;
+            downloadBtnNode.download = `transparent-${activeLoadedFileReference ? activeLoadedFileReference.name.split('.')[0] : 'asset'}.png`;
+
+            // Display result console boards panel smoothly
+            document.getElementById('viewportContainer').style.display = "flex";
+            document.getElementById('compressionOutputContainer').style.display = "flex";
+        };
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
