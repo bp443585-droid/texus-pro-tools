@@ -136,7 +136,7 @@
               <span>Linear Rotation Angle</span>
               <span id="lblDegreeCounter" class="degree-counter-badge">135°</span>
             </div>
-            <input type="range" id="gradientDegreeSlider" class="range-range-slider-input range-slider-input" min="0" max="360" value="135" oninput="handleDegreeSliderInput(this.value)" />
+            <input type="range" id="gradientDegreeSlider" class="range-slider-input" min="0" max="360" value="135" oninput="handleDegreeSliderInput(this.value)" />
           </div>
         </div>
 
@@ -294,6 +294,34 @@
         document.getElementById('inputStandardCssStringField').value = `background: ${standardCssStyle};`;
         document.getElementById('inputWebkitCssStringField').value = `background: ${webkitCssStyle};`;
     }
+
+    // --- CRITICAL CORRECTION FIX: BROWSER NATIVE CLIPBOARD COPY FUNCTION LAYER ---
+    function copyStringValueNodeField(elementInputFieldId, buttonElementNode) {
+        const inputNode = document.getElementById(elementInputFieldId);
+        inputNode.select();
+        inputNode.setSelectionRange(0, 99999); // Optimal responsive selection bounds on touch elements
+
+        try {
+            navigator.clipboard.writeText(inputNode.value);
+            const standardBtnLbl = buttonElementNode.innerText;
+            buttonElementNode.innerText = "COPIED!";
+            
+            // Dynamic auto-reset feedback loop timeout
+            setTimeout(() => { 
+                buttonElementNode.innerText = standardBtnLbl; 
+            }, 1200);
+        } catch (err) {
+            console.error("Clipboard routing failed:", err);
+            // Secure secondary alternative execution fallback path
+            document.execCommand('copy');
+            const standardBtnLbl = buttonElementNode.innerText;
+            buttonElementNode.innerText = "COPIED!";
+            setTimeout(() => { buttonElementNode.innerText = standardBtnLbl; }, 1200);
+        }
+    }
+
+    // Fire baseline execution trigger loop right after script parsing completes to set engine defaults
+    executeGradientGenerationEngine();
   </script>
   
   <script src="/related-tools.js" defer></script>
