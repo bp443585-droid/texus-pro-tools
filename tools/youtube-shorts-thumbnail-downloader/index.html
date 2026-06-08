@@ -55,18 +55,19 @@
     
     /* RESOLUTION EXTRACTION RESOLUTION GRID SYSTEM */
     .thumbnail-resolutions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; box-sizing: border-box; }
-    .resolution-preview-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 14px; box-sizing: border-box; }
+    .resolution-preview-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 14px; box-sizing: border-box; align-items: center; }
     
-    /* Vertical proportional housing matching YouTube Shorts native ratios specs */
-    .preview-housing { width: 100%; background: #0f172a; border: 1px solid #cbd5e1; border-radius: 12px; overflow: hidden; position: relative; aspect-ratio: 16/9; line-height: 0; }
-    .preview-housing img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* MODIFIED: High-converting strict vertical phone viewport mask overrides */
+    .preview-housing { width: 100%; max-width: 220px; background: #0f172a; border: 1px solid #cbd5e1; border-radius: 14px; overflow: hidden; position: relative; aspect-ratio: 9/16; line-height: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    /* Scales and crops external horizontal images cleanly inside local DOM views */
+    .preview-housing img { width: auto; height: 100%; position: absolute; left: 50%; top: 0; transform: translateX(-50%); display: block; min-width: 300%; object-fit: cover; }
     
-    .card-meta-action-row { display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; width: 100%; }
-    .meta-title-block { display: flex; flex-direction: column; gap: 2px; }
+    .card-meta-action-row { display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; width: 100%; margin-top: 6px; }
+    .meta-title-block { display: flex; flex-direction: column; gap: 2px; text-align: left; }
     .res-label { font-size: 0.95rem; font-weight: 800; color: #0f172a; }
-    .res-dimensions { font-size: 0.78rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.3px; }
+    .res-dimensions { font-size: 0.78rem; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 0.3px; }
     
-    .f-btn-card-download { background: #10b981; color: #ffffff; font-weight: 700; padding: 10px 18px; border-radius: 10px; cursor: pointer; font-size: 0.85rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none; text-align: center; display: inline-block; transition: background 0.15s ease; }
+    .f-btn-card-download { background: #10b981; color: #ffffff; font-weight: 700; padding: 12px 18px; border-radius: 12px; cursor: pointer; font-size: 0.85rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none; text-align: center; display: block; width: 100%; transition: background 0.15s ease; box-sizing: border-box; }
     .f-btn-card-download:hover { background: #059669; }
     .f-btn-card-download.loading { background: #64748b; pointer-events: none; }
 
@@ -92,7 +93,7 @@
       .f-card { padding: 20px; border-radius: 20px; gap: 20px; }
       .input-wrapper-row { flex-direction: column; gap: 12px; }
       .f-btn-fetch { width: 100%; text-align: center; padding: 14px; }
-      .thumbnail-resolutions-grid { grid-template-columns: 1fr; gap: 20px; }
+      .thumbnail-resolutions-grid { grid-template-columns: 1fr; gap: 24px; }
       .example-grid { grid-template-columns: 1fr; }
       .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
     }
@@ -117,33 +118,33 @@
 
       <div id="compressionOutputContainer" class="analytics-output-container">
         
-        <div class="be-badge-header">🎯 Shorts Cover Streams Isolated Natively</div>
+        <div class="be-badge-header">🎯 Shorts Vertical Cover Cropped Natively</div>
         
         <div class="thumbnail-resolutions-grid">
           
           <div class="resolution-preview-card">
             <div class="preview-housing">
-              <img id="imgMaxResPreview" src="#" alt="Maximum Resolution Preview" />
+              <img id="imgMaxResPreview" src="#" alt="Maximum Resolution Preview" crossOrigin="anonymous" />
             </div>
             <div class="card-meta-action-row">
               <div class="meta-title-block">
                 <span class="res-label">Maximum HD Quality</span>
-                <span class="res-dimensions">HD Resolution (1080p / 720p)</span>
+                <span class="res-dimensions">Vertical Smartphone Aspect (9:16)</span>
               </div>
-              <button class="f-btn-card-download" onclick="triggerDirectBlobDownload('imgMaxResPreview', 'shorts_maxres_thumbnail.jpg', this)">Download</button>
+              <button class="f-btn-card-download" onclick="cropAndDownloadShortsVerticalBlob('imgMaxResPreview', 'shorts_hd_cover.jpg', this)">Download Auto-Cropped Cover</button>
             </div>
           </div>
 
           <div class="resolution-preview-card">
             <div class="preview-housing">
-              <img id="imgHqPreview" src="#" alt="High Quality Preview" />
+              <img id="imgHqPreview" src="#" alt="High Quality Preview" crossOrigin="anonymous" />
             </div>
             <div class="card-meta-action-row">
               <div class="meta-title-block">
                 <span class="res-label">Standard High Quality</span>
-                <span class="res-dimensions">HQ Resolution (480p)</span>
+                <span class="res-dimensions">Standard Mobile Aspect (9:16)</span>
               </div>
-              <button class="f-btn-card-download" onclick="triggerDirectBlobDownload('imgHqPreview', 'shorts_hq_thumbnail.jpg', this)">Download</button>
+              <button class="f-btn-card-download" onclick="cropAndDownloadShortsVerticalBlob('imgHqPreview', 'shorts_hq_cover.jpg', this)">Download Auto-Cropped Cover</button>
             </div>
           </div>
 
@@ -154,7 +155,6 @@
     </div>
 
     <article class="seo-clean-container">
-      
       <h2 class="seo-block-title" style="margin-top:0;">1. Quick Introduction</h2>
       <p class="seo-para">The Online YouTube Shorts Thumbnail Downloader is a specialized utility built to extract, isolate, and save vertical video cover arts directly from Google’s primary media CDN server nodes. This tool is built specifically for creators tracking viral mobile video trends, mobile marketing operators evaluating text caption positions on shorts templates, and graphic creators compiling design mockups. Operating natively inside localized client-side javascript configurations, it fetches high-resolution visual covers safely without third-party redirects.</p>
 
@@ -208,7 +208,7 @@
       <ul class="seo-list">
         <li><strong>Expecting True 9:16 Unpadded Images from CDN:</strong> Google's server architecture natively packs vertical Shorts thumbnails inside standard 16:9 landscape envelopes with black side bars. To isolate the vertical frame, simply use our image cropper tool after downloading.</li>
         <li><strong>Using Malicious Pop-Up Rich Web Apps:</strong> Avoid using sketchy download portals that trigger hidden script loops or system cookie alerts. Stick to clean browser-native scripts.</li>
-        <li><strong>Disregarding Video Creator Copyrights:</strong> Banners are the artistic property of their uploaders. Use extracted assets for research, competitive critique, or layout ideation while avoiding uncredited commercial re-use.</li>
+        <li><strong>Disregarding Video Creator Copyrights:</strong> Banners are the artistic property of their uploaders. Use extracted assets for research, competitive critique, or layout ideation while avoiding uncredited re-uploads.</li>
       </ul>
 
       <h2 class="seo-block-title">7. Frequently Asked Questions</h2>
@@ -260,7 +260,6 @@
         }
     }
 
-    // Advanced Regex engineered specifically to isolate short paths along with traditional links
     function parseExtractYouTubeShortsId(urlValueString) {
         const shortsRegexMatcher = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|shorts\/)([^#\&\?]*).*/;
         const matchesCollection = urlValueString.match(shortsRegexMatcher);
@@ -284,57 +283,106 @@
             return;
         }
 
-        // --- GOOGLE OFFICIAL IMAGE SERVER SOURCE PATH SEGMENTATION ---
         const maxResCdnPath  = `https://img.youtube.com/vi/${extractedVideoIdToken}/maxresdefault.jpg`;
         const highQualCdnPath = `https://img.youtube.com/vi/${extractedVideoIdToken}/hqdefault.jpg`;
 
-        // Bind source strings natively onto localized layout preview image nodes tags
         document.getElementById('imgMaxResPreview').src = maxResCdnPath;
         document.getElementById('imgHqPreview').src = highQualCdnPath;
 
-        // Display results console container panel smoothly
         document.getElementById('compressionOutputContainer').style.display = "flex";
     }
 
-    // --- AIRTIGHT BLOB BACKGROUND FETCH MATRIX FORCE DOWNLOAD SYSTEM ---
-    function triggerDirectBlobDownload(imgElementId, fileName, buttonElement) {
+    // --- NATIVE CLIENT-SIDE PIXEL AUTOCROP MAPPING MATRIX ENGINE ---
+    function cropAndDownloadShortsVerticalBlob(imgElementId, fileName, buttonElement) {
         const targetImgSrc = document.getElementById(imgElementId).src;
         if (!targetImgSrc || targetImgSrc === window.location.href || targetImgSrc.endsWith('#')) return;
 
         const baselineBtnText = buttonElement.innerText;
-        buttonElement.innerText = "WAIT...";
+        buttonElement.innerText = "CROPPING...";
         buttonElement.classList.add('loading');
 
-        // Execute background fetch threads natively across cross-origin servers bounds
-        fetch(targetImgSrc)
-            .then(response => {
-                if(!response.ok) throw new Error("Network connectivity fault");
-                return response.blob();
-            })
-            .then(imageBlobData => {
-                // Instantiates dynamic object URL arrays maps
-                const sandboxedBlobUrl = URL.createObjectURL(imageBlobData);
-                
-                const hiddenAnchorNode = document.createElement('a');
-                hiddenAnchorNode.href = sandboxedBlobUrl;
-                hiddenAnchorNode.download = fileName;
-                
-                document.body.appendChild(hiddenAnchorNode);
-                hiddenAnchorNode.click();
-                
-                // Clear structural elements loops and release data strings pointers out from RAM bounds
-                document.body.removeChild(hiddenAnchorNode);
-                URL.revokeObjectURL(sandboxedBlobUrl);
+        // Create virtual hardware-accelerated image element thread to read unscaled natural parameters
+        const processingImage = new Image();
+        processingImage.crossOrigin = "anonymous"; // Bypass canvas taint boundaries tracking flags
+        processingImage.src = targetImgSrc;
 
-                buttonElement.innerText = baselineBtnText;
-                buttonElement.classList.remove('loading');
+        processingImage.onload = function() {
+            try {
+                const canvasElement = document.createElement('canvas');
+                const context = canvasElement.getContext('2d');
+
+                const fullWidth = processingImage.naturalWidth;
+                const fullHeight = processingImage.naturalHeight;
+
+                // --- 9:16 VERTICAL CROP MATHEMATICS ARRAY ROWS ---
+                // Traditional YouTube Thumbnails carry absolute 16:9 bounds box setup. 
+                // Central phone view vertical parameter slices are perfectly derived by dividing height by 9 and multiplying by 16.
+                const croppedWidth = Math.round((fullHeight / 16) * 9);
+                const croppedHeight = fullHeight;
+                
+                // Subtract cropped width from full landscape envelope to find absolute symmetrical start indices x position
+                const startX = Math.round((fullWidth - croppedWidth) / 2);
+                const startY = 0;
+
+                canvasElement.width = croppedWidth;
+                canvasElement.height = croppedHeight;
+
+                // Execute crisp slice capture sequence vectors cleanly onto local memory matrix
+                context.imageSmoothingEnabled = true;
+                context.imageSmoothingQuality = 'high';
+                context.drawImage(processingImage, startX, startY, croppedWidth, croppedHeight, 0, 0, croppedWidth, croppedHeight);
+
+                // Export cropped image directly as un-tainted secure data blob URLs
+                canvasElement.toBlob(function(outputBlob) {
+                    const localObjectUrl = URL.createObjectURL(outputBlob);
+                    
+                    const hiddenAnchorNode = document.createElement('a');
+                    hiddenAnchorNode.href = localObjectUrl;
+                    hiddenAnchorNode.download = fileName;
+                    
+                    document.body.appendChild(hiddenAnchorNode);
+                    hiddenAnchorNode.click();
+                    
+                    // Release cache parameters arrays out from RAM configurations
+                    document.body.removeChild(hiddenAnchorNode);
+                    URL.revokeObjectURL(localObjectUrl);
+
+                    buttonElement.innerText = baselineBtnText;
+                    buttonElement.classList.remove('loading');
+                }, 'image/jpeg', 0.95);
+
+            } catch (error) {
+                console.error("Canvas cropping failed, launching secure backup fetch stream down:", error);
+                // Fallback backup channel loop: Run standard download if CORS fails explicitly
+                runSecureFetchStreamFallback(targetImgSrc, fileName, buttonElement, baselineBtnText);
+            }
+        };
+
+        processingImage.onerror = function() {
+            runSecureFetchStreamFallback(targetImgSrc, fileName, buttonElement, baselineBtnText);
+        };
+    }
+
+    // Secure Fallback method to run direct stream handling if canvas taints activate
+    function runSecureFetchStreamFallback(sourceUrl, fileLabel, btnNode, originalText) {
+        fetch(sourceUrl)
+            .then(res => res.blob())
+            .then(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fileLabel;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                btnNode.innerText = originalText;
+                btnNode.classList.remove('loading');
             })
-            .catch(err => {
-                console.error("Blob extraction pipeline encountered an error:", err);
-                buttonElement.innerText = baselineBtnText;
-                buttonElement.classList.remove('loading');
-                // Absolute Safe Fallback routine channel
-                window.open(targetImgSrc, '_blank');
+            .catch(e => {
+                btnNode.innerText = originalText;
+                btnNode.classList.remove('loading');
+                window.open(sourceUrl, '_blank');
             });
     }
   </script>
