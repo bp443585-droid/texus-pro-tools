@@ -49,7 +49,7 @@
     .control-label-row { font-size: 0.85rem; font-weight: 700; color: #1e293b; text-transform: uppercase; letter-spacing: 0.3px; }
     
     .input-wrapper-row { display: flex; gap: 12px; width: 100%; box-sizing: border-box; align-items: center; }
-    .hex-text-field { flex: 1; padding: 14px 16px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 1.1rem; font-family: 'Inter', sans-serif; color: #0f172a; outline: none; background: #ffffff; font-weight: 600; transition: all 0.2s ease; box-sizing: border-box; text-transform: uppercase; }
+    .hex-text-field { flex: 1; padding: 14px 16px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 1.1rem; font-family: 'Inter', sans-serif; color: #0f172a; outline: none; background: #ffffff; font-weight: 600; transition: all 0.2s ease; box-sizing: border-box; text-transform: uppercase; min-width: 0; }
     .hex-text-field:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08); }
     
     .native-color-block-well { -webkit-appearance: none; border: none; width: 54px; height: 50px; border-radius: 12px; cursor: pointer; background: none; padding: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); flex-shrink: 0; }
@@ -96,8 +96,8 @@
       .color-picker-workspace-grid { grid-template-columns: 1fr !important; gap: 20px; }
       .workspace-block-panel { width: 100% !important; }
       .analytics-output-container { padding: 18px; width: 100% !important; box-sizing: border-box; }
-      .code-row-item { gap: 8px; padding: 8px 10px; }
-      .active-main-hex-val { font-size: 1.5rem; }
+      .code-row-item { gap: 8px; padding: 8px 10px; width: 100% !important; box-sizing: border-box; }
+      .active-main-hex-val { font-size: 1.4rem; }
       .example-grid { grid-template-columns: 1fr; }
       .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
     }
@@ -167,7 +167,6 @@
     </div>
 
     <article class="seo-clean-container">
-      
       <h2 class="seo-block-title" style="margin-top:0;">1. Quick Introduction</h2>
       <p class="seo-para">The Online HEX to RGB Converter helps you parse hexadecimal color strings natively and translate them into standardized Red, Green, Blue coordinate matrices instantly. This micro-utility is built specifically for frontend web developers organizing utility class stylesheets, graphic engineers mapping vector graphics color profiles, and UI programmers matching mobile runtime assets styles. Running completely inside device browser sandboxes, this tool computes conversions without server-side request overhead latency.</p>
 
@@ -242,9 +241,9 @@
 
       <h2 class="seo-block-title">8. Related Digital Asset Utilities</h2>
       <ul class="seo-list">
-        <li><strong>Color Picker:</strong> Extracts precise HEX, RGB, and HSL matrix strings from wheel palettes or uploaded graphics smoothly.</li>
-        <li><strong>Favicon Generator:</strong> Resamples design logos into multi-resolution application icon packages instantly.</li>
-        <li><strong>Add Text to Image:</strong> Overlays custom typography captions and watermarks onto imagery assets with drag control.</li>
+        <li># Color Picker: Extracts precise HEX, RGB, and HSL matrix strings from wheel palettes or uploaded graphics smoothly.</li>
+        <li>Favicon Generator: Resamples design logos into multi-resolution application icon packages instantly.</li>
+        <li>Add Text to Image: Overlays custom typography captions and watermarks onto imagery assets with drag control.</li>
       </ul>
     </article>
   </main>
@@ -270,29 +269,23 @@
     function executeHexToRgbParsingEngine() {
         let rawInputString = document.getElementById('hexInputStringField').value.trim();
         
-        // Auto strip heading hashtag character strings if present
         if (rawInputString.startsWith('#')) {
             rawInputString = rawInputString.slice(1);
         }
 
-        // Enforce strict regular expressions verification for 3-digit or 6-digit alpha-numeric strings
         const hexRegexMatcher = /^([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
         if (!hexRegexMatcher.test(rawInputString)) {
-            // Keep output display static if user inputs corrupted characters parameters
             return;
         }
 
-        // Shorthand duplication mapping array adjustments (e.g. "ABC" -> "AABBCC")
         if (rawInputString.length === 3) {
             rawInputString = rawInputString.split('').map(char => char + char).join('');
         }
 
-        // --- NATIVE RADIX CONVERSION MATHEMATICS ---
         const r = parseInt(rawInputString.slice(0, 2), 16);
         const g = parseInt(rawInputString.slice(2, 4), 16);
         const b = parseInt(rawInputString.slice(4, 6), 16);
 
-        // Calculate dynamic relative percentages matrix channels rows
         const rPercent = Math.round((r / 255) * 100);
         const gPercent = Math.round((g / 255) * 100);
         const bPercent = Math.round((b / 255) * 100);
@@ -300,13 +293,11 @@
         const compiledCssRgbString = `rgb(${r}, ${g}, ${b})`;
         const hexColorSyncToken = `#${rawInputString}`;
 
-        // --- UI RE-BALANCING SYNCHRONIZATION VIEWS ---
         document.getElementById('activeColorBlockIndicator').style.backgroundColor = hexColorSyncToken;
         document.getElementById('syncColorPickerWell').value = hexColorSyncToken.toLowerCase();
         
         document.getElementById('txtDisplayMainRgbValue').innerText = compiledCssRgbString;
 
-        // Ingest text string output data arrays fields values logs
         document.getElementById('inputCssRgbStringField').value = compiledCssRgbString;
         document.getElementById('inputRawRgbStringField').value = `${r}, ${g}, ${b}`;
         document.getElementById('inputPercentageRgbStringField').value = `${rPercent}%, ${gPercent}%, ${bPercent}%`;
@@ -315,6 +306,7 @@
     function copyStringValueNodeField(elementInputFieldId, buttonElementNode) {
         const inputNode = document.getElementById(elementInputFieldId);
         inputNode.select();
+        inputNode.setSelectionRange(0, 99999);
         try {
             navigator.clipboard.writeText(inputNode.value);
             const standardBtnLbl = buttonElementNode.innerText;
