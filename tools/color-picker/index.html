@@ -64,18 +64,14 @@
 
     /* REAL-TIME PREVIEW VIEWPORT FOR LOADED IMAGES */
     .image-canvas-viewport { display: none; width: 100%; border: 1px solid #e2e8f0; border-radius: 16px; background: #ffffff; padding: 12px; box-sizing: border-box; justify-content: center; align-items: center; position: relative; max-height: 250px; overflow: hidden; }
-    
-    /* Modified cursor layout to indicate selection states cleanly */
     .image-canvas-viewport canvas { max-width: 100%; max-height: 220px; display: block; cursor: crosshair; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 
     /* ELITE USER-CENTRIC RESULT MATRIX CODES CARD */
     .analytics-output-container { width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px; }
     .color-swatch-main-badge-row { display: flex; gap: 16px; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 16px; }
     .active-color-block-indicator { width: 64px; height: 64px; border-radius: 16px; border: 2px solid #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background-color: #2563eb; transition: background-color 0.1s linear; }
-    .active-meta-titles-block { display: flex; flex-direction: column; gap: 2px; }
+    .active-meta-titles-block { display: flex; flex-main: column; gap: 2px; }
     .active-main-hex-val { font-size: 1.8rem; font-weight: 800; color: #0f172a; font-family: 'Inter', sans-serif; line-height: 1.1; }
-    
-    /* LOCK STATE NOTIFIER INDICATOR LBL */
     .active-main-hex-lbl { font-size: 0.78rem; color: #2563eb; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
 
     /* STRUCTURAL CODE STRINGS CHANNELS LISTS */
@@ -104,9 +100,11 @@
     .faq-question { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
     .faq-answer { font-size: 0.96rem; color: #475569; margin: 0; }
 
+    /* CRITICAL MOBILE SPECIFIC RESPONSIVE OVERRIDES FIXED */
     @media (max-width: 768px) {
       .f-card { padding: 20px; border-radius: 20px; gap: 20px; }
       .color-picker-workspace-grid { grid-template-columns: 1fr; gap: 20px; }
+      .analytics-output-container { padding: 18px; }
       .example-grid { grid-template-columns: 1fr; }
       .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
     }
@@ -153,7 +151,7 @@
             <div class="color-swatch-main-badge-row">
               <div id="activeColorBlockIndicator" class="active-color-block-indicator"></div>
               <div class="active-meta-titles-block">
-                <span id="txtDisplayMainHexValue" class="active-color-block-indicator-hex active-main-hex-val">#2563EB</span>
+                <span id="txtDisplayMainHexValue" class="active-main-hex-val">#2563EB</span>
                 <span id="lblColorSelectionStatus" class="active-main-hex-lbl" style="color: #64748b;">🟢 Hovering spectrum...</span>
               </div>
             </div>
@@ -239,7 +237,7 @@
 
       <h2 class="seo-block-title">6. Common Color Picking Pitfalls to Avoid</h2>
       <ul class="seo-list">
-        <li><strong>Sampling Compressed Anti-Aliased Edges:</strong> Clicking along highly compressed image borders can sample blended transition pixels instead of the true color. Always zoom into flat color blocks to extract true hex representations.</li>
+        <li><strong>Sample Compressed Anti-Aliased Edges:</strong> Clicking along highly compressed image borders can sample blended transition pixels instead of the true color. Always zoom into flat color blocks to extract true hex representations.</li>
         <li><strong>Expecting Eyedropper Support on Old Browsers:</strong> Legacy web browsers do not support the native screen Eyedropper API function block. If you use older browser engines, rely on our file dropzone canvas sampling tool instead.</li>
         <li><strong>Manually Writing Complex Formatting Strings:</strong> Mistyping values when manually copying color metrics into code strings can create layout display bugs. Always use our quick copy buttons to avoid input errors.</li>
       </ul>
@@ -278,20 +276,9 @@
   <script type="text/javascript">
     let imageSamplingCanvasNode = null;
     let canvasContext2DReference = null;
-    
-    // Core state variable locking state tracking loops
     let isColorLocked = false;
 
-    fetch('/components/header.html')
-      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
-      .then(data => { document.getElementById('site-header').innerHTML = data; })
-      .catch(err => console.error('Header load sequences faulted:', err));
-
-    fetch('/components/footer.html')
-      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
-      .then(data => { document.getElementById('site-footer').innerHTML = data; })
-      .catch(err => console.error('Footer load sequences faulted:', err));
-
+    // Synchronize multi-touch loops for responsive smartphone compatibility tracking
     document.addEventListener("DOMContentLoaded", () => {
         imageSamplingCanvasNode = document.getElementById('imageSamplingCanvas');
         canvasContext2DReference = imageSamplingCanvasNode.getContext('2d');
@@ -302,10 +289,25 @@
             eyedropperBtn.innerText = "Eyedropper Not Supported";
         }
 
-        // Setup mouse canvas interactive listeners tracking
         imageSamplingCanvasNode.addEventListener('mousemove', handleCanvasPixelHoverSampling);
         imageSamplingCanvasNode.addEventListener('click', toggleCanvasPixelLockStateAction);
+        
+        // Touch events targeting responsive elements fields
+        imageSamplingCanvasNode.addEventListener('touchmove', (e) => {
+            if(e.touches.length > 0) handleCanvasPixelHoverSampling(e.touches[0]);
+        }, { passive: true });
+        imageSamplingCanvasNode.addEventListener('touchend', toggleCanvasPixelLockStateAction);
     });
+
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed:', err));
 
     function triggerHiddenFileInputClick() {
         document.getElementById('hiddenFileInputNode').click();
@@ -322,22 +324,18 @@
             tempImg.src = e.target.result;
             tempImg.onload = function() {
                 document.getElementById('viewportContainer').style.display = "flex";
-                
-                // Reset locking mechanics cleanly upon loading a fresh file image framework
                 isColorLocked = false;
                 document.getElementById('lblColorSelectionStatus').innerText = "🟢 Hovering spectrum...";
                 document.getElementById('lblColorSelectionStatus').style.color = "#64748b";
 
                 imageSamplingCanvasNode.width = tempImg.width;
                 imageSamplingCanvasNode.height = tempImg.height;
-                
                 canvasContext2DReference.drawImage(tempImg, 0, 0);
             };
         };
     }
 
     function handleNativePaletteInput(hexValue) {
-        // Multi spectrum color palette input updates bypasses lock parameters safely
         isColorLocked = true;
         document.getElementById('lblColorSelectionStatus').innerText = "🔒 Palette Locked";
         document.getElementById('lblColorSelectionStatus').style.color = "#10b981";
@@ -346,7 +344,6 @@
 
     function executeNativeBrowserEyedropperPipeline() {
         if (!window.EyeDropper) return;
-        
         const eyedropperInstance = new EyeDropper();
         eyedropperInstance.open()
             .then(resultToken => {
@@ -354,14 +351,11 @@
                     isColorLocked = true;
                     document.getElementById('lblColorSelectionStatus').innerText = "🔒 Eyedropper Locked";
                     document.getElementById('lblColorSelectionStatus').style.color = "#10b981";
-                    
                     updateMasterColorDashboardDisplays(resultToken.sRGBHex);
                     document.getElementById('nativePaletteBlockWell').value = resultToken.sRGBHex;
                 }
             })
-            .catch(err => {
-                console.warn("User exited native eyedropper loupe tracker structure.");
-            });
+            .catch(err => console.warn("Eyedropper closed"));
     }
 
     function handleCanvasPixelHoverSampling(e) {
@@ -371,26 +365,19 @@
         const positionX = Math.floor((e.clientX - boundingClientRect.left) * (imageSamplingCanvasNode.width / boundingClientRect.width));
         const positionY = Math.floor((e.clientY - boundingClientRect.top) * (imageSamplingCanvasNode.height / boundingClientRect.height));
 
+        // Block index validation leaks paths coordinates bounds
+        if (positionX < 0 || positionX >= imageSamplingCanvasNode.width || positionY < 0 || positionY >= imageSamplingCanvasNode.height) return;
+
         try {
             const pixelDataBlock = canvasContext2DReference.getImageData(positionX, positionY, 1, 1).data;
-            const r = pixelDataBlock[0];
-            const g = pixelDataBlock[1];
-            const b = pixelDataBlock[2];
-
-            const parsedHexCode = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-            
+            const parsedHexCode = "#" + ((1 << 24) + (pixelDataBlock[0] << 16) + (pixelDataBlock[1] << 8) + pixelDataBlock[2]).toString(16).slice(1);
             updateMasterColorDashboardDisplays(parsedHexCode);
             document.getElementById('nativePaletteBlockWell').value = parsedHexCode;
-        } catch (error) {
-            // Mute cross origin taint bugs arrays layers smoothly
-        }
+        } catch (error) {}
     }
 
-    // --- INTERACTIVE LOCK-ON CLICK LOGIC TRACKING CHANNELS ---
     function toggleCanvasPixelLockStateAction(e) {
         if (!canvasContext2DReference) return;
-
-        // Toggle state variable tracking loops definitions parameters
         isColorLocked = !isColorLocked;
 
         const statusLabel = document.getElementById('lblColorSelectionStatus');
@@ -400,8 +387,7 @@
         } else {
             statusLabel.innerText = "🟢 Hovering spectrum...";
             statusLabel.style.color = "#64748b";
-            // Run immediate update step to catch active pixel indices coordinates position logs
-            handleCanvasPixelHoverSampling(e);
+            if(e.clientX) handleCanvasPixelHoverSampling(e);
         }
     }
 
@@ -409,16 +395,12 @@
         let r = parseInt(rawHex.slice(1, 3), 16) / 255;
         let g = parseInt(rawHex.slice(3, 5), 16) / 255;
         let b = parseInt(rawHex.slice(5, 7), 16) / 255;
-
         let maxVal = Math.max(r, g, b), minVal = Math.min(r, g, b);
         let h, s, l = (maxVal + minVal) / 2;
 
-        if (maxVal === minVal) {
-            h = s = 0;
-        } else {
+        if (maxVal === minVal) { h = s = 0; } else {
             let differenceFactor = maxVal - minVal;
             s = l > 0.5 ? differenceFactor / (2 - maxVal - minVal) : differenceFactor / (maxVal + minVal);
-            
             switch (maxVal) {
                 case r: h = (g - b) / differenceFactor + (g < b ? 6 : 0); break;
                 case g: h = (b - r) / differenceFactor + 2; break;
@@ -430,18 +412,13 @@
     }
 
     function convertHexToRgbStringValue(hexValue) {
-        let r = parseInt(hexValue.slice(1, 3), 16);
-        let g = parseInt(hexValue.slice(3, 5), 16);
-        let b = parseInt(hexValue.slice(5, 7), 16);
-        return `rgb(${r}, ${g}, ${b})`;
+        return `rgb(${parseInt(hexValue.slice(1, 3), 16)}, ${parseInt(hexValue.slice(3, 5), 16)}, ${parseInt(hexValue.slice(5, 7), 16)})`;
     }
 
     function updateMasterColorDashboardDisplays(targetHexCodeString) {
         const uppercaseHexValue = targetHexCodeString.toUpperCase();
-        
         document.getElementById('activeColorBlockIndicator').style.backgroundColor = uppercaseHexValue;
         document.getElementById('txtDisplayMainHexValue').innerText = uppercaseHexValue;
-
         document.getElementById('inputHexCodeStringField').value = uppercaseHexValue;
         document.getElementById('inputRgbCodeStringField').value = convertHexToRgbStringValue(uppercaseHexValue);
         document.getElementById('inputHslCodeStringField').value = convertRgbToHslCoordinatesFormula(uppercaseHexValue);
@@ -450,16 +427,12 @@
     function copyStringValueNodeField(elementInputFieldId, buttonElementNode) {
         const inputNode = document.getElementById(elementInputFieldId);
         inputNode.select();
-        inputNode.setSelectionRange(0, 99999);
-
         try {
             navigator.clipboard.writeText(inputNode.value);
             const standardBtnLbl = buttonElementNode.innerText;
             buttonElementNode.innerText = "COPIED!";
             setTimeout(() => { buttonElementNode.innerText = standardBtnLbl; }, 1200);
-        } catch (err) {
-            console.error("Clipboard routing failed:", err);
-        }
+        } catch (err) {}
     }
   </script>
   
