@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Meme Generator Online - Make Custom Memes Instantly (Free)</title>
+  <meta name="description" content="Create custom memes online instantly. Free, fast browser-native meme maker tool to add drag-and-drop top and bottom text to your templates with zero quality loss." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/meme-generator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Advanced Canvas Meme Generation Apparatus Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An automated browser-native graphic utility rendering dual dynamic text overlays onto meme templates via hardware-accelerated canvas threads.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 950px; margin: 25px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    
+    /* UNIFIED DASHBOARD CONTAINER FRAME */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px; box-shadow: 0 15px 35px -5px rgba(0,0,0,0.03), 0 10px 20px -6px rgba(0,0,0,0.02); margin-bottom: 30px; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; gap: 24px; }
+    
+    /* DROPZONE WORKSPACE INTERFACE */
+    .compress-dropzone-area { width: 100%; border: 3px dashed #cbd5e1; background: #f8fafc; border-radius: 16px; padding: 40px 20px; text-align: center; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; position: relative; }
+    .compress-dropzone-area:hover, .compress-dropzone-area.dragover { border-color: #2563eb; background: #eff6ff; }
+    .dropzone-icon { font-size: 3rem; margin: 0; line-height: 1; }
+    .dropzone-title { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin: 0; }
+    .dropzone-desc { font-size: 0.85rem; color: #64748b; margin: 0; font-weight: 500; }
+    
+    #hiddenFileInputNode { display: none; }
+
+    /* RE-ENGINEERED COMPACT CONSOLE PANEL FOR INTERACTIVE MEME PROPERTIES */
+    .manual-control-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; gap: 16px; }
+    .control-label-row { font-size: 0.85rem; font-weight: 700; color: #1e293b; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+    
+    /* DUAL INPUTS STRUCTURAL SECTIONS */
+    .meme-text-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; box-sizing: border-box; }
+    .text-input-field { width: 100%; padding: 12px 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 0.95rem; font-family: 'Inter', sans-serif; color: #0f172a; outline: none; background: #ffffff; box-sizing: border-box; font-weight: 600; transition: border-color 0.2s ease; }
+    .text-input-field:focus { border-color: #2563eb; }
+
+    .control-customization-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-items: center; margin-top: 4px; }
+    .option-cell { display: flex; flex-direction: column; gap: 6px; }
+    .option-cell label { font-size: 0.75rem; color: #475569; font-weight: 700; text-transform: uppercase; }
+    
+    .f-color-picker { width: 100%; height: 42px; padding: 2px; border: 2px solid #e2e8f0; border-radius: 10px; background: #ffffff; cursor: pointer; box-sizing: border-box; }
+
+    .slider-row { display: flex; align-items: center; gap: 10px; }
+    .range-slider-input { -webkit-appearance: none; flex: 1; height: 6px; border-radius: 5px; background: #cbd5e1; outline: none; cursor: pointer; }
+    .range-slider-input::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #2563eb; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+    .slider-counter-badge { font-size: 0.8rem; font-weight: 700; color: #2563eb; background: #eff6ff; border: 1px solid #bfdbfe; padding: 3px 8px; border-radius: 6px; min-width: 32px; text-align: center; }
+
+    /* THE LIVE VIEWPORT MEME CANVAS HOUSING AREA */
+    .crop-workspace-viewport { display: none; width: 100%; border: 1px solid #cbd5e1; border-radius: 16px; background: #0f172a; position: relative; overflow: hidden; align-items: center; justify-content: center; max-height: 480px; min-height: 200px; padding: 20px; box-sizing: border-box; }
+    .canvas-wrapper-node { max-width: 100%; max-height: 440px; box-shadow: 0 12px 30px rgba(0,0,0,0.4); border-radius: 8px; overflow: hidden; line-height: 0; cursor: move; position: relative; }
+    .canvas-wrapper-node canvas { max-width: 100%; max-height: 440px; display: block; height: auto; }
+
+    /* ELITE USER-CENTRIC SINGLE COMPACT RESULT PANEL */
+    .analytics-output-container { display: none; flex-direction: column; width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; gap: 20px; transition: all 0.3s ease; }
+    .be-badge-header { font-size: 1.15rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 4px; }
+    .be-focus-row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
+    .be-focus-block { display: flex; flex-direction: column; gap: 4px; }
+    .be-focus-title { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .be-focus-main-val { font-size: 2.2rem; font-weight: 800; color: #10b981; font-family: 'Inter', sans-serif; line-height: 1.1; }
+    .be-focus-desc { font-size: 0.82rem; color: #475569; font-weight: 500; line-height: 1.4; }
+    .download-strip-row { display: flex; justify-content: flex-end; width: 100%; }
+    .f-btn-download { background: #2563eb; color: #ffffff; font-weight: 700; padding: 12px 28px; border-radius: 12px; cursor: pointer; font-size: 0.9rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.15s ease; width: fit-content; text-decoration: none; text-align: center; }
+    .f-btn-download:hover { background: #1d4ed8; }
+
+    /* CRISP STATISTICAL MATRIX FOR PER-FILE BREAKDOWNS */
+    .mini-breakdown-box { width: 100%; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 20px; box-sizing: border-box; }
+    .mini-box-title { font-size: 0.82rem; color: #1e293b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; display: block; }
+    .mini-table-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.88rem; }
+    .mini-table-row:last-child { border-bottom: none; padding-bottom: 0; font-weight: 700; color: #2563eb; }
+    .mini-lbl { color: #475569; font-weight: 500; }
+    .mini-val { font-weight: 700; color: #0f172a; font-family: 'Inter', sans-serif; }
+
+    /* NEW CLEAN INTENT-LINKED SEO STRUCTURE DESIGN SYSTEM */
+    .seo-clean-container { width: 100%; line-height: 1.75; text-align: left; margin-top: 30px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 35px; color: #334155; }
+    .seo-block-title { font-size: 1.6rem; color: #0f172a; font-weight: 800; margin-top: 30px; margin-bottom: 14px; }
+    .seo-para { font-size: 1rem; margin-bottom: 16px; text-align: justify; }
+    .seo-list { margin: 12px 0 20px 20px; padding: 0; }
+    .seo-list li { margin-bottom: 8px; font-size: 0.98rem; }
+    .seo-list li strong { color: #0f172a; }
+    
+    .example-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+    .example-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 12px; font-size: 0.92rem; }
+    .example-card strong { color: #0f172a; display: block; font-size: 1rem; margin-bottom: 4px; }
+
+    .faq-wrapper { margin-top: 25px; }
+    .faq-item { margin-bottom: 20px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 16px; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .faq-answer { font-size: 0.96rem; color: #475569; margin: 0; }
+
+    @media (max-width: 768px) {
+      .f-card { padding: 20px; border-radius: 20px; gap: 20px; }
+      .compress-dropzone-area { padding: 30px 14px; }
+      .meme-text-row { grid-template-columns: 1fr; gap: 12px; }
+      .control-customization-grid { grid-template-columns: 1fr; gap: 14px; }
+      .analytics-output-container { padding: 18px; gap: 18px; }
+      .be-focus-row { grid-template-columns: 1fr; }
+      .be-focus-main-val { font-size: 1.85rem; }
+      .download-strip-row { justify-content: fill; }
+      .f-btn-download { width: 100%; }
+      .example-grid { grid-template-columns: 1fr; }
+      .f-heading { font-size: 1.5rem; margin-bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading">🤡 Meme Generator</div>
+    
+    <div class="f-card">
+      
+      <div id="dropzoneWorkspaceNode" class="compress-dropzone-area" onclick="triggerHiddenFileInputClick()">
+        <p class="dropzone-icon">🤡</p>
+        <h3 class="dropzone-title">Click to Upload or Drag &amp; Drop Meme Template</h3>
+        <p class="dropzone-desc">Supports standard PNG, JPEG, JPG, and WEBP template layouts instantly</p>
+        <input type="file" id="hiddenFileInputNode" accept="image/png, image/jpeg, image/jpg, image/webp" onchange="handleFileSelection()" />
+      </div>
+
+      <div class="manual-control-box">
+        <span class="control-label-row">Configure Meme Captions (Drag Text Layers Anywhere Inside Image)</span>
+        
+        <div class="meme-text-row">
+          <input type="text" id="topTextInputField" class="text-input-field" placeholder="Top Caption text..." value="WHEN THE CODE WORKS" oninput="liveUpdateMemeCanvas()" disabled />
+          <input type="text" id="bottomTextInputField" class="text-input-field" placeholder="Bottom Caption text..." value="ON THE FIRST TRY" oninput="liveUpdateMemeCanvas()" disabled />
+        </div>
+        
+        <div class="control-customization-grid">
+          <div class="option-cell">
+            <label>Font Color</label>
+            <input type="color" id="textColorPicker" class="f-color-picker" value="#ffffff" onchange="liveUpdateMemeCanvas()" disabled />
+          </div>
+          <div class="option-cell">
+            <label>Font Size</label>
+            <div class="slider-row">
+              <input type="range" id="fontSizeSlider" class="range-slider-input" min="16" max="100" value="40" oninput="handleFontSizeSliderInput(this.value)" disabled />
+              <span id="fontSizeCounterLabel" class="slider-counter-badge">40px</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="viewportContainer" class="crop-workspace-viewport">
+        <div id="canvasWrapper" class="canvas-wrapper-node">
+          <canvas id="mainRenderCanvasNode"></canvas>
+        </div>
+      </div>
+
+      <div id="compressionOutputContainer" class="analytics-output-container">
+        
+        <div class="be-badge-header">✅ Meme Raster Stream Compiled Successfully</div>
+        
+        <div class="be-focus-row">
+          <div class="be-focus-block">
+            <span class="be-focus-title">Meme Export Quality</span>
+            <div class="be-focus-main-val">HD Vector Overlay</div>
+            <span class="be-focus-desc">Captions have been deeply rasterized directly onto template coordinates with thick impact strokes.</span>
+          </div>
+          <div class="download-strip-row">
+            <a id="btnDownloadCompressedAsset" class="f-btn-download" href="#">Download Meme Image</a>
+          </div>
+        </div>
+
+        <div class="mini-breakdown-box">
+          <span class="mini-box-title">Per Unit Breakdown</span>
+          <div class="mini-table-row">
+            <span class="mini-lbl">Typography Rendering Style</span>
+            <span class="mini-val">Standard Impact Header Style (Bold Stroke Bounds)</span>
+          </div>
+          <div class="mini-table-row">
+            <span class="mini-lbl">Text Drag Interface</span>
+            <span class="mini-val">Bi-Channel Bidirectional Pointer Vector Tracking</span>
+          </div>
+          <div class="mini-table-row">
+            <span class="mini-lbl">Processing Architecture</span>
+            <span class="mini-val" style="color: #2563eb; font-weight:700;">Local Client Sandbox Device Storage</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <article class="seo-clean-container">
+      
+      <h2 class="seo-block-title" style="margin-top:0;">1. Quick Introduction</h2>
+      <p class="seo-para">The Online Meme Generator helps you instantly create custom text memes, design humorous internet graphics, and apply bold captions to your favorite templates. This web-native utility is engineered specifically for social media managers pushing rapid viral content layouts, community creators building funny presentation slides, and internet users crafting quick reaction cards. By processing multi-layered image rendering completely inside client-side canvas layers, it eliminates external server loading bottlenecks completely.</p>
+
+      <h2 class="seo-block-title">2. How to Make Custom Memes Online Instantly</h2>
+      <p class="seo-para">This meme-making application executes raster typography overlays locally using advanced HTML5 canvas 2D multi-pass context rendering properties. When a blank template file is dropped onto the dropzone surface, our script engine analyzes its true resolution parameters, instantiates dual text channel arrays, and applies thick high-contrast edge strokes around your words to preserve absolute legibility across dark or light image areas. Here is the operational breakdown:</p>
+      <ul class="seo-list">
+        <li><strong>Dual Input Text Fields:</strong> Isolates top and bottom text streams, supporting real-time key-logging updates so you can preview changes as fast as you type.</li>
+        <li><strong>Impact Bold Typography:</strong> Implements a heavy uppercase font styling combined with a distinct black outer boundary stroke line, matching the universal classic meme layout standard.</li>
+        <li><strong>Interactive Pointer Tracking:</strong> Employs mouse and mobile touch position registers, enabling you to drag captions left, right, top, or bottom to avoid blocking primary facial expressions or character views.</li>
+      </ul>
+
+      <h2 class="seo-block-title">3. Step-by-Step Usage Guide</h2>
+      <ul class="seo-list">
+        <li><strong>Step 1:</strong> Select a local template photo from your storage drive, or drag a picture file directly into the dashed uploader rectangle box.</li>
+        <li><strong>Step 2:</strong> Once the image displays inside the center viewport box, the top and bottom text input lines will unlock automatically.</li>
+        <li><strong>Step 3:</strong> Fill out your funny phrases inside the text control panel rows, then select your preferred font size slider parameter.</li>
+        <li><strong>Step 4:</strong> Click and hold or touch your finger directly on the text strings inside the image to drag them to any specific custom coordinate offset.</li>
+        <li><strong>Step 5:</strong> Click the green <strong>"Download Meme Image"</strong> button to run the local compilation script and save your high-definition meme instantly.</li>
+      </ul>
+
+      <h2 class="seo-block-title">4. Real Viral Content Creation Examples</h2>
+      <div class="example-grid">
+        <div class="example-card">
+          <strong>Example 1: Gaming Reaction Card</strong>
+          <span>Source: High-resolution gameplay screenshot</span><br>
+          <span>Settings: White Text / 36px / Custom Upper Drift</span><br>
+          <span>Result: Aligned reaction card generated cleanly, ready for immediate distribution across gaming forums.</span>
+        </div>
+        <div class="example-card">
+          <strong>Example 2: Office Office Humorous Sheet</strong>
+          <span>Source: Classic corporate stock template layout</span><br>
+          <span>Settings: Red Text / 48px / Bottom Bounds Drag</span><br>
+          <span>Result: Crisp high-contrast humor banner created, with thick border lines to ensure perfect readability on mobile layouts.</span>
+        </div>
+        <div class="example-card">
+          <strong>Example 3: Tech Community Banner</strong>
+          <span>Source: Software development layout block draft</span><br>
+          <span>Settings: Yellow Text / 40px / Variable Position Offset</span><br>
+          <span>Result: Captioned template safely exported, completely avoiding pixel blurring across high-definition desktop monitors.</span>
+        </div>
+      </div>
+
+      <h2 class="seo-block-title">5. Benefits of Using Client Memory Sandbox Binders</h2>
+      <ul class="seo-list">
+        <li><strong>Zero Generation Quality Decays:</strong> Processes font compilation over direct target pixel vectors, ensuring text elements don't get fuzzy or blurred during saving.</li>
+        <li><strong>Responsive Mobile Interface:</strong> Full support for multi-touch interaction loops allows you to position text layers seamlessly on phones and tablets.</li>
+        <li><strong>Eliminates Hosting Bandwidth Costs:</strong> Handles graphic raster operations entirely on your device, delivering instant file conversions with zero web server load.</li>
+        <li><strong>Absolute Individual Data Confidentiality:</strong> Your uploaded images are processed entirely within local storage layers, guaranteeing complete security against data leaks.</li>
+      </ul>
+
+      <h2 class="seo-block-title">6. Common Meme Making Mistakes to Avoid</h2>
+      <ul class="seo-list">
+        <li><strong>Over-Scaling Long Phrases:</strong> Typing massive sentences while keeping maximum font sizes will force text past the outer edges of your template. Adjust the font size slider downwards to fit long jokes properly.</li>
+        <li><strong>Obscuring Key Character Faces:</strong> Placing captions directly over main subject faces ruins the joke's impact. Use our drag feature to reposition text into blank negative spaces.</li>
+        <li><strong>Using Sluggish Server-Side Compilers:</strong> Uploading heavy background templates to slow remote sites wastes data packages and adds processing delays. Stick to browser-native canvas options.</li>
+      </ul>
+
+      <h2 class="seo-block-title">7. Frequently Asked Questions</h2>
+      <div class="faq-wrapper">
+        <div class="faq-item">
+          <div class="faq-question">Can I choose which specific text layer I want to drag when both strings are active?</div>
+          <p class="faq-answer">Yes. The engine automatically calculates the pointer distance to the closest text block upon clicking or touching, allowing you to select and move either the top or bottom caption independently.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Is this online meme generator completely free to use?</div>
+          <p class="faq-answer">Yes, this utility tool is 100% free with no account registries, watermark stamps, or daily download volume caps.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Are my personal custom templates safe from data leaks here?</div>
+          <p class="faq-answer">Yes, absolutely. The tool processes everything locally inside your browser using HTML5 canvas. Your files never touch external networks.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Will the downloaded meme carry watermark lines from this platform?</div>
+          <p class="faq-answer">No. Every graphic asset generated on this platform is completely clean, untagged, and unrestricted for commercial use.</p>
+        </div>
+      </div>
+
+      <h2 class="seo-block-title">8. Related Digital Asset Utilities</h2>
+      <ul class="seo-list">
+        <li><strong>Add Text to Image:</strong> Adds custom titles, headings, and secure watermarks onto photos natively.</li>
+        <li><strong>Blur Image:</strong> Softens background textures or obfuscates confidential text areas permanently.</li>
+        <li><strong>Background Remover:</strong> Erases solid backdrop colors and creates transparent PNG assets smoothly.</li>
+      </ul>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let originalMemeTemplateImageElement = null;
+    
+    // Core state coordinate trackers for top and bottom text matrices
+    let topTextX = null, topTextY = null;
+    let bottomTextX = null, bottomTextY = null;
+    
+    let activeDraggedTargetIndex = null; // 1 = Top Text, 2 = Bottom Text
+
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed:', err));
+
+    const dropzone = document.getElementById('dropzoneWorkspaceNode');
+    const canvasWrapper = document.getElementById('canvasWrapper');
+    const mainCanvasNode = document.getElementById('mainRenderCanvasNode');
+    
+    // Ingest drag-over active configuration listeners
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); }, false);
+    });
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); }, false);
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const incomingFilesList = e.dataTransfer.files;
+        if(incomingFilesList.length > 0) {
+            document.getElementById('hiddenFileInputNode').files = incomingFilesList;
+            handleFileSelection();
+        }
+    });
+
+    function triggerHiddenFileInputClick() {
+        document.getElementById('hiddenFileInputNode').click();
+    }
+
+    function handleFileSelection() {
+        const fileTarget = document.getElementById('hiddenFileInputNode').files[0];
+        if (!fileTarget) return;
+
+        const readerModule = new FileReader();
+        readerModule.readAsDataURL(fileTarget);
+        readerModule.onload = function(e) {
+            const tempImg = new Image();
+            tempImg.src = e.target.result;
+            tempImg.onload = function() {
+                originalMemeTemplateImageElement = tempImg;
+                
+                // Initialize default spatial coordinate parameters based on target width and height rows
+                topTextX = originalMemeTemplateImageElement.width / 2;
+                topTextY = 50; // Aligned at top header line block
+                
+                bottomTextX = originalMemeTemplateImageElement.width / 2;
+                bottomTextY = originalMemeTemplateImageElement.height - 50; // Aligned at footer line block
+
+                // Unlock console controllers elements
+                document.getElementById('topTextInputField').disabled = false;
+                document.getElementById('bottomTextInputField').disabled = false;
+                document.getElementById('textColorPicker').disabled = false;
+                document.getElementById('fontSizeSlider').disabled = false;
+
+                document.getElementById('viewportContainer').style.display = "flex";
+                document.getElementById('compressionOutputContainer').style.display = "flex";
+
+                liveUpdateMemeCanvas();
+            };
+        };
+    }
+
+    function handleFontSizeSliderInput(sliderValue) {
+        document.getElementById('fontSizeCounterLabel').innerText = `${sliderValue}px`;
+        liveUpdateMemeCanvas();
+    }
+
+    // --- INTERACTIVE BI-CHANNEL MOUSE & TOUCH DRAG & DROP PARAMETERS MAPPING ---
+    function getCanvasCoordinatesFromEvent(e) {
+        const boundingClientRect = mainCanvasNode.getBoundingClientRect();
+        
+        const scalingFactorX = mainCanvasNode.width / boundingClientRect.width;
+        const scalingFactorY = mainCanvasNode.height / boundingClientRect.height;
+        
+        let clientEventX, clientEventY;
+        
+        if (e.touches && e.touches.length > 0) {
+            clientEventX = e.touches[0].clientX;
+            clientEventY = e.touches[0].clientY;
+        } else {
+            clientEventX = e.clientX;
+            clientEventY = e.clientY;
+        }
+        
+        return {
+            x: (clientEventX - boundingClientRect.left) * scalingFactorX,
+            y: (clientEventY - boundingClientRect.top) * scalingFactorY
+        };
+    }
+
+    function handlePointerDownAction(e) {
+        if (!originalMemeTemplateImageElement) return;
+        const eventCoords = getCanvasCoordinatesFromEvent(e);
+        
+        // Calculate the closest text block index factor using absolute distance tracking
+        let distanceToTopText = Math.hypot(eventCoords.x - topTextX, eventCoords.y - topTextY);
+        let distanceToBottomText = Math.hypot(eventCoords.x - bottomTextX, eventCoords.y - bottomTextY);
+
+        if (distanceToTopText < distanceToBottomText) {
+            activeDraggedTargetIndex = 1; // Pick top string channel
+        } else {
+            activeDraggedTargetIndex = 2; // Target bottom string channel
+        }
+    }
+
+    canvasWrapper.addEventListener('mousedown', handlePointerDownAction);
+    canvasWrapper.addEventListener('touchstart', (e) => { handlePointerDownAction(e); e.preventDefault(); }, { passive: false });
+
+    window.addEventListener('mousemove', (e) => {
+        if (!activeDraggedTargetIndex) return;
+        const eventCoords = getCanvasCoordinatesFromEvent(e);
+
+        if (activeDraggedTargetIndex === 1) {
+            topTextX = eventCoords.x; topTextY = eventCoords.y;
+        } else if (activeDraggedTargetIndex === 2) {
+            bottomTextX = eventCoords.x; bottomTextY = eventCoords.y;
+        }
+        liveUpdateMemeCanvas();
+    });
+
+    window.addEventListener('touchmove', (e) => {
+        if (!activeDraggedTargetIndex) return;
+        const eventCoords = getCanvasCoordinatesFromEvent(e);
+
+        if (activeDraggedTargetIndex === 1) {
+            topTextX = eventCoords.x; topTextY = eventCoords.y;
+        } else if (activeDraggedTargetIndex === 2) {
+            bottomTextX = eventCoords.x; bottomTextY = eventCoords.y;
+        }
+        liveUpdateMemeCanvas();
+        e.preventDefault();
+    }, { passive: false });
+
+    window.addEventListener('mouseup', () => { activeDraggedTargetIndex = null; });
+    window.addEventListener('touchend', () => { activeDraggedTargetIndex = null; });
+
+    // High performance core canvas drawing pipeline
+    function liveUpdateMemeCanvas() {
+        if (!originalMemeTemplateImageElement) return;
+
+        const context = mainCanvasNode.getContext('2d');
+        const imageWidth = originalMemeTemplateImageElement.width;
+        const imageHeight = originalMemeTemplateImageElement.height;
+        
+        mainCanvasNode.width = imageWidth;
+        mainCanvasNode.height = imageHeight;
+
+        // Render base template layer bounds
+        context.drawImage(originalMemeTemplateImageElement, 0, 0, imageWidth, imageHeight);
+
+        // Extract slider variables parameters
+        const topTextString = document.getElementById('topTextInputField').value;
+        const bottomTextString = document.getElementById('bottomTextInputField').value;
+        const colorPickerValue = document.getElementById('textColorPicker').value;
+        const fontSizeVal = parseInt(document.getElementById('fontSizeSlider').value, 10);
+
+        // Bind standard classic bold Impact typography configurations context matrix
+        context.fillStyle = colorPickerValue;
+        context.strokeStyle = '#000000'; // Outer black border stroke definition
+        context.lineWidth = Math.max(4, fontSizeVal / 7); // Balance boundary width proportionally
+        
+        context.font = `900 ${fontSizeVal}px 'Impact', 'Inter', sans-serif`;
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+
+        // Force boundary limit configurations to prevent texts from vanishing entirely off-screen
+        if(topTextX < 0) topTextX = 0; if(topTextX > imageWidth) topTextX = imageWidth;
+        if(topTextY < 0) topTextY = 0; if(topTextY > imageHeight) topTextY = imageHeight;
+        if(bottomTextX < 0) bottomTextX = 0; if(bottomTextX > imageWidth) bottomTextX = imageWidth;
+        if(bottomTextY < 0) bottomTextY = 0; if(bottomTextY > imageHeight) bottomTextY = imageHeight;
+
+        // Render Top Text Page Layer Strings
+        if (topTextString) {
+            context.strokeText(topTextString.toUpperCase(), topTextX, topTextY);
+            context.fillText(topTextString.toUpperCase(), topTextX, topTextY);
+        }
+
+        // Render Bottom Text Page Layer Strings
+        if (bottomTextString) {
+            context.strokeText(bottomTextString.toUpperCase(), bottomTextX, bottomTextY);
+            context.fillText(bottomTextString.toUpperCase(), bottomTextX, bottomTextY);
+        }
+
+        // Bind dataURL data streams back onto download anchor buttons
+        const outputMemeUrlString = mainCanvasNode.toDataURL('image/png');
+        const downloadBtnNode = document.getElementById('btnDownloadCompressedAsset');
+        downloadBtnNode.href = outputMemeUrlString;
+        downloadBtnNode.download = `meme_${Date.now()}.png`;
+    }
+  </script>
+  
+  <script src="/related-tools.js" defer></script>
+</body>
+</html>
