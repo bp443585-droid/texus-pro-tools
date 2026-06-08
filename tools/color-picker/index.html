@@ -374,8 +374,13 @@
         if (!canvasContext2DReference || isColorLocked) return;
 
         const boundingClientRect = imageSamplingCanvasNode.getBoundingClientRect();
-        const positionX = Math.floor((e.clientX - boundingClientRect.left) * (imageSamplingCanvasNode.width / boundingClientRect.width));
-        const positionY = Math.floor((e.clientY - boundingClientRect.top) * (imageSamplingCanvasNode.height / boundingClientRect.height));
+        
+        // CRITICAL MOB SYNCHRONIZATION FROM THE LOGIC YOU SPECIFIED ABOVE
+        const scalingFactorX = imageSamplingCanvasNode.width / boundingClientRect.width;
+        const scalingFactorY = imageSamplingCanvasNode.height / boundingClientRect.height;
+
+        const positionX = Math.floor((e.clientX - boundingClientRect.left) * scalingFactorX);
+        const positionY = Math.floor((e.clientY - boundingClientRect.top) * scalingFactorY);
 
         if (positionX < 0 || positionX >= imageSamplingCanvasNode.width || positionY < 0 || positionY >= imageSamplingCanvasNode.height) return;
 
