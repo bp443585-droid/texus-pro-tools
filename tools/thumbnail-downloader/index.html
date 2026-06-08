@@ -66,6 +66,7 @@
     
     .f-btn-card-download { background: #10b981; color: #ffffff; font-weight: 700; padding: 10px 18px; border-radius: 10px; cursor: pointer; font-size: 0.85rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none; text-align: center; display: inline-block; transition: background 0.15s ease; }
     .f-btn-card-download:hover { background: #059669; }
+    .f-btn-card-download.loading { background: #64748b; pointer-events: none; }
 
     /* NEW CLEAN INTENT-LINKED SEO STRUCTURE DESIGN SYSTEM */
     .seo-clean-container { width: 100%; line-height: 1.75; text-align: left; margin-top: 30px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 35px; color: #334155; }
@@ -127,7 +128,7 @@
                 <span class="res-label">Full HD Quality</span>
                 <span class="res-dimensions">Maximum Resolution (1080p / 720p)</span>
               </div>
-              <a id="btnLinkMaxResDownload" class="f-btn-card-download" href="#" target="_blank" download="maxres_thumbnail.jpg">Download</a>
+              <button class="f-btn-card-download" onclick="triggerDirectBlobDownload('imgMaxResPreview', 'maxres_thumbnail.jpg', this)">Download</button>
             </div>
           </div>
 
@@ -140,7 +141,7 @@
                 <span class="res-label">Standard High Quality</span>
                 <span class="res-dimensions">HQ Resolution (480p)</span>
               </div>
-              <a id="btnLinkHqDownload" class="f-btn-card-download" href="#" target="_blank" download="hq_thumbnail.jpg">Download</a>
+              <button class="f-btn-card-download" onclick="triggerDirectBlobDownload('imgHqPreview', 'hq_thumbnail.jpg', this)">Download</button>
             </div>
           </div>
 
@@ -153,7 +154,7 @@
                 <span class="res-label">Medium Quality</span>
                 <span class="res-dimensions">MQ Resolution (360p)</span>
               </div>
-              <a id="btnLinkMqDownload" class="f-btn-card-download" href="#" target="_blank" download="mq_thumbnail.jpg">Download</a>
+              <button class="f-btn-card-download" onclick="triggerDirectBlobDownload('imgMqPreview', 'mq_thumbnail.jpg', this)">Download</button>
             </div>
           </div>
 
@@ -166,7 +167,7 @@
                 <span class="res-label">Normal Definition</span>
                 <span class="res-dimensions">Default Quality (120p)</span>
               </div>
-              <a id="btnLinkDefaultDownload" class="f-btn-card-download" href="#" target="_blank" download="default_thumbnail.jpg">Download</a>
+              <button class="f-btn-card-download" onclick="triggerDirectBlobDownload('imgDefaultPreview', 'default_thumbnail.jpg', this)">Download</button>
             </div>
           </div>
 
@@ -177,7 +178,6 @@
     </div>
 
     <article class="seo-clean-container">
-      
       <h2 class="seo-block-title" style="margin-top:0;">1. Quick Introduction</h2>
       <p class="seo-para">The Online YouTube Thumbnail Downloader helps you extract and save official video covers directly from Google’s high-speed media CDN servers instantly. This tool is built specifically for digital video creators studying click-through rate (CTR) visual strategies, graphic designers collecting thumbnail layout ideas, and presentation editors compilation references. By stripping link tags entirely on local browser script interfaces, this tool provides resolution asset fetches safely without requiring third-party API keys.</p>
 
@@ -280,14 +280,11 @@
     function autoClearOnEmptyField() {
         const inputFieldValue = document.getElementById('youtubeUrlInputField').value.trim();
         if(inputFieldValue === "") {
-            // Smoothly collapse results console grid if input layer is wiped clean
             document.getElementById('compressionOutputContainer').style.display = "none";
         }
     }
 
-    // High performance regex based unique video token sharder function
     function parseExtractYouTubeVideoId(urlValueString) {
-        // Standard regular expression sequence matching watch logs, share nodes, shorts, and embedded frames paths uniformly
         const youtubeRegexMatcher = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|^shorts\/)([^#\&\?]*).*/;
         const matchesCollection = urlValueString.match(youtubeRegexMatcher);
         
@@ -310,26 +307,59 @@
             return;
         }
 
-        // --- GOOGLE OFFICIAL CDN SOURCE PATH STRUCTURING ---
         const maxResCdnPath  = `https://img.youtube.com/vi/${extractedVideoIdToken}/maxresdefault.jpg`;
         const highQualCdnPath = `https://img.youtube.com/vi/${extractedVideoIdToken}/hqdefault.jpg`;
         const medQualCdnPath  = `https://img.youtube.com/vi/${extractedVideoIdToken}/mqdefault.jpg`;
         const defaultCdnPath  = `https://img.youtube.com/vi/${extractedVideoIdToken}/default.jpg`;
 
-        // Bind structured source tracks directly back onto localized UI layout preview image tags
         document.getElementById('imgMaxResPreview').src = maxResCdnPath;
         document.getElementById('imgHqPreview').src = highQualCdnPath;
         document.getElementById('imgMqPreview').src = medQualCdnPath;
         document.getElementById('imgDefaultPreview').src = defaultCdnPath;
 
-        // Sync download attributes button targets smoothly
-        document.getElementById('btnLinkMaxResDownload').href = maxResCdnPath;
-        document.getElementById('btnLinkHqDownload').href = highQualCdnPath;
-        document.getElementById('btnLinkMqDownload').href = medQualCdnPath;
-        document.getElementById('btnLinkDefaultDownload').href = defaultCdnPath;
-
-        // Unhide core result console cards container dashboard smoothly
         document.getElementById('compressionOutputContainer').style.display = "flex";
+    }
+
+    // --- NEW MASTER FIX: NATIVE CROSS-ORIGIN BLOB FORCE DOWNLOAD SYSTEM ---
+    function triggerDirectBlobDownload(imgElementId, fileName, buttonElement) {
+        const targetImgSrc = document.getElementById(imgElementId).src;
+        if (!targetImgSrc || targetImgSrc === window.location.href || targetImgSrc.endsWith('#')) return;
+
+        const baselineBtnText = buttonElement.innerText;
+        buttonElement.innerText = "WAIT...";
+        buttonElement.classList.add('loading');
+
+        // Execute dynamic background network fetch mapping array layers natively
+        fetch(targetImgSrc)
+            .then(response => {
+                if(!response.ok) throw new Error("Network response mismatch");
+                return response.blob();
+            })
+            .then(imageBlobData => {
+                // Securely wrap binary data grids inside local memory object url streams
+                const sandboxedBlobUrl = URL.createObjectURL(imageBlobData);
+                
+                const hiddenAnchorNode = document.createElement('a');
+                hiddenAnchorNode.href = sandboxedBlobUrl;
+                hiddenAnchorNode.download = fileName;
+                
+                document.body.appendChild(hiddenAnchorNode);
+                hiddenAnchorNode.click();
+                
+                // Clean up DOM tree and revoke block variables to shield user RAM fields
+                document.body.removeChild(hiddenAnchorNode);
+                URL.revokeObjectURL(sandboxedBlobUrl);
+
+                buttonElement.innerText = baselineBtnText;
+                buttonElement.classList.remove('loading');
+            })
+            .catch(err => {
+                console.error("Blob stream extraction faulted:", err);
+                buttonElement.innerText = baselineBtnText;
+                buttonElement.classList.remove('loading');
+                // Secure Fallback: If strict adblockers block fetch, fallback cleanly to direct tab view
+                window.open(targetImgSrc, '_blank');
+            });
     }
   </script>
   
