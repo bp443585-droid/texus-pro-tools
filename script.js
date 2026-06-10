@@ -1,3 +1,38 @@
+// Google Analytics Loader
+const gaScript = document.createElement("script");
+gaScript.async = true;
+gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-83V8ELYZ65";
+document.head.appendChild(gaScript);
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+
+gtag('js', new Date());
+gtag('config', 'G-83V8ELYZ65');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // script.js
 
 const searchInput = document.getElementById("toolSearch");
@@ -121,26 +156,3 @@ if (submitRequestBtn) {
 
 
 
-
-
-
-// GOOGLE ANALYTICS GA4
-(function () {
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = "https://www.googletagmanager.com/gtag/js?id=G-83V8ELYZ65";
-  document.head.appendChild(script);
-
-  script.onload = function () {
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    window.gtag = gtag;
-
-    gtag('js', new Date());
-    gtag('config', 'G-83V8ELYZ65');
-  };
-})();
