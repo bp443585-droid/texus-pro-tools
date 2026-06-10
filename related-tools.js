@@ -1,3 +1,21 @@
+// Google Analytics 4 Loader
+const gaScript = document.createElement('script');
+gaScript.async = true;
+gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-83V8ELYZ65';
+document.head.appendChild(gaScript);
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-83V8ELYZ65');
+
+
+
+
+
+
+
+
 // related-tools.js - Smart Multi-Selector Universal Engine for Texus Pro Tools
 
 window.addEventListener('load', function() {
