@@ -285,14 +285,21 @@
   <div id="site-footer"></div>
 
   <script type="text/javascript">
+    // Core structural layout mapping array functions for structural components load sequencing
+    fetch('/components/header.html')
+      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to sync:', err));
+
+    fetch('/components/footer.html')
+      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to sync:', err));
+
     document.addEventListener("DOMContentLoaded", () => {
-        // Read native environment values immediately on intake loops
         const dpr = window.devicePixelRatio || 1.0;
         document.getElementById('lblDevicePixelRatioToken').innerText = dpr.toFixed(1);
-        
-        // Typical desktop base baseline is 96 DPI. Scale up tracking ratios cleanly
         document.getElementById('lblEstimatedScreenDpi').innerText = `${Math.round(dpr * 96)} DPI / PPI`;
-
         calculateCustomDpiMetricsEngine();
     });
 
@@ -310,7 +317,6 @@
             const tempImg = new Image();
             tempImg.src = e.target.result;
             tempImg.onload = function() {
-                // Pipe extracted image parameters straight back into core calculation form text boxes
                 document.getElementById('inputDpiWidth').value = tempImg.naturalWidth;
                 document.getElementById('inputDpiHeight').value = tempImg.naturalHeight;
                 calculateCustomDpiMetricsEngine();
@@ -318,12 +324,10 @@
         };
     }
 
-    // Great Common Divisor solver sub-script to output clean aspect ratios mapping
     function calculateGreatestCommonDivisorFormula(x, y) {
         return (y === 0) ? x : calculateGreatestCommonDivisorFormula(y, x % y);
     }
 
-    // High performance local density vector calculator engine loop
     function calculateCustomDpiMetricsEngine() {
         let width = parseInt(document.getElementById('inputDpiWidth').value, 10);
         let height = parseInt(document.getElementById('inputDpiHeight').value, 10);
@@ -333,14 +337,10 @@
         if (isNaN(height) || height <= 0) height = 1;
         if (isNaN(diagonal) || diagonal <= 0) diagonal = 1.0;
 
-        // 1. Core Pythagoras Diagonal Vector Math Calculation
         const diagonalPixels = Math.sqrt((width * width) + (height * height));
         const finalPpiDpiResult = diagonalPixels / diagonal;
-
-        // 2. Dot Pitch Size Millimeters Mapping Formula
         const dotPitchSizeMm = 25.4 / finalPpiDpiResult;
 
-        // 3. Aspect Ratio Tracker Logic Loop
         const gcd = calculateGreatestCommonDivisorFormula(width, height);
         const aspectX = width / gcd;
         const aspectY = height / gcd;
@@ -351,9 +351,7 @@
 
         const formattedTotalPixelsString = (width * height).toLocaleString();
 
-        // --- UI RE-PAINT PANEL SYNCHRONIZATION VIEWS ---
         document.getElementById('txtDisplayMainDpiValue').innerText = `${finalPpiDpiResult.toFixed(2)} DPI / PPI`;
-        
         document.getElementById('outputTotalPixelsField').value = `${formattedTotalPixelsString} Pixels`;
         document.getElementById('outputAspectRatioField').value = `${aspectX}:${aspectY} (${orientationLabel})`;
         document.getElementById('outputDotPitchField').value = `${dotPitchSizeMm.toFixed(4)} mm`;
