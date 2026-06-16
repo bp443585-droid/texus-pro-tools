@@ -12,11 +12,12 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="https://www.texusprotools.com/tools/screenshot-to-pdf/" />
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Advanced Client-Side Screenshot to PDF Compilation Apparatus Pro",
+    "@type": "Advanced Client-Side Screenshot to PDF Compilation Apparatus Pro",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
     "description": "An automated browser-native utility compiling image rasters and mobile screenshots into highly optimized standardized PDF document assets flawlessly.",
@@ -49,6 +50,11 @@
     .dropzone-desc { font-size: 0.85rem; color: #64748b; margin: 0; font-weight: 500; }
     #hiddenFileInputNode { display: none; }
 
+    /* RUNNING LOADING PROGRESS SPINNER METER */
+    .loader-status-wrapper { display: none; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 600; color: #2563eb; background: #eff6ff; padding: 12px 16px; border-radius: 12px; border: 1px dashed #bfdbfe; width: 100%; box-sizing: border-box; }
+    .spinner-node { width: 18px; height: 18px; border: 3px solid #cbd5e1; border-top-color: #2563eb; border-radius: 50%; animation: spinLoop 0.8s linear infinite; }
+    @keyframes spinLoop { to { transform: rotate(360deg); } }
+
     /* CARD 2: PREMIUM QUEUE LIST LAYOUT STRIP */
     .screenshot-queue-card { display: none; width: 100%; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; flex-direction: column; gap: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
     .control-label-row { font-size: 0.85rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -66,10 +72,26 @@
     .f-btn-remove-node:hover { background: #fee2e2; }
 
     /* CARD 3: PREMIUM UNIFORM ACTION DASHBOARD SYSTEM */
-    .analytics-output-container { display: none; width: 100%; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 24px; box-sizing: border-box; flex-direction: column; gap: 16px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02); }
-    .f-btn-download { background: #10b981; color: #ffffff; font-weight: 700; padding: 16px 28px; border-radius: 14px; cursor: pointer; font-size: 1rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.15s ease; width: 100%; text-decoration: none; text-align: center; display: block; box-sizing: border-box; }
-    .f-btn-download:hover { background: #059669; }
-    .f-btn-download.loading { background: #64748b; pointer-events: none; }
+    .analytics-output-container { display: none; flex-direction: column; width: 100%; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 24px; box-sizing: border-box; gap: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02); }
+    .be-badge-header { font-size: 1.15rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 4px; }
+    
+    .be-focus-row { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: center; }
+    .be-focus-block { display: flex; flex-direction: column; gap: 4px; }
+    .be-focus-title { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .be-focus-main-val { font-size: 2.2rem; font-weight: 800; color: #2563eb; font-family: 'Inter', sans-serif; line-height: 1.1; }
+    .be-focus-desc { font-size: 0.82rem; color: #475569; font-weight: 500; line-height: 1.4; }
+
+    .download-strip-row { width: 100%; box-sizing: border-box; }
+    .f-btn-download { background: #2563eb; color: #ffffff; font-weight: 700; padding: 16px 28px; border-radius: 14px; cursor: pointer; font-size: 1rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.15s ease; width: 100%; text-decoration: none; text-align: center; display: block; box-sizing: border-box; }
+    .f-btn-download:hover { background: #1d4ed8; }
+
+    /* CRISP STATISTICAL MATRIX FOR PER-FILE BREAKDOWNS */
+    .mini-breakdown-box { width: 100%; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 20px; box-sizing: border-box; }
+    .mini-box-title { font-size: 0.82rem; color: #1e293b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; display: block; }
+    .mini-table-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.88rem; }
+    .mini-table-row:last-child { border-bottom: none; padding-bottom: 0; font-weight: 700; color: #2563eb; }
+    .mini-lbl { color: #475569; font-weight: 500; }
+    .mini-val { font-weight: 700; color: #0f172a; font-family: 'Inter', sans-serif; }
 
     /* CARD 4: CONCISE UNIQUE SEO INFORMATION METRICS */
     .seo-clean-container { width: 100%; line-height: 1.75; text-align: left; margin-top: 20px; font-family: 'Inter', sans-serif; border: 1px solid #e2e8f0; background: #ffffff; border-radius: 24px; padding: 32px; box-sizing: border-box; color: #334155; }
@@ -88,6 +110,8 @@
     /* DESKTOP INTEGRITY LAYOUT ALIGNMENTS RESTORED NATIVELY */
     @media (min-width: 769px) {
       .color-picker-workspace-grid { grid-template-columns: 1.1fr 0.9fr; display: grid; gap: 28px; }
+      .be-focus-row { grid-template-columns: 1.2fr 0.8fr; gap: 24px; }
+      .f-btn-download { width: fit-content; }
       .seo-clean-container { margin-top: 35px; }
     }
   </style>
@@ -110,10 +134,14 @@
           <input type="file" id="hiddenFileInputNode" accept="image/png, image/jpeg, image/jpg, image/webp" multiple onchange="handleIncomingFileSelection()" />
         </div>
 
+        <div id="loaderStatusPanel" class="loader-status-wrapper">
+          <div class="spinner-node"></div>
+          <span>Compiling local screenshot data buffers seamlessly...</span>
+        </div>
+
         <div id="queueCardContainer" class="screenshot-queue-card">
           <span class="control-label-row">Uploaded Asset Queue</span>
-          <div id="queueItemsStackNode" class="queue-items-stack">
-            </div>
+          <div id="queueItemsStackNode" class="queue-items-stack"></div>
         </div>
 
       </div>
@@ -121,18 +149,34 @@
       <div class="workspace-block-panel">
         
         <div id="compilationOutputContainer" class="analytics-output-container">
-          <label class="control-label-row">Document Processing Pipeline</label>
-          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.88rem;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 600; color: #475569;">
-              <span>Total Pages:</span>
-              <span id="lblTotalPagesCount" style="font-weight: 800; color: #0f172a;">0 Pages</span>
+          <div class="be-badge-header">✅ Standardized A4 PDF Document Assembled</div>
+          
+          <div class="be-focus-row">
+            <div class="be-focus-block">
+              <span class="be-focus-title">Target Document Format</span>
+              <div id="lblTotalPagesCount" class="be-focus-main-val">A4 .PDF</div>
+              <span class="be-focus-desc">All selected image layouts have been auto-centered proportionally into uniform A4 document bounds.</span>
             </div>
-            <div style="display: flex; justify-content: space-between; font-weight: 600; color: #475569;">
-              <span>Rendering Method:</span>
-              <span style="color: #2563eb; font-weight: 800;">Local Sandbox PDF Engine</span>
+            <div class="download-strip-row">
+              <a id="btnDownloadCompressedAsset" class="f-btn-download" href="#">Download Combined PDF</a>
             </div>
           </div>
-          <button id="btnCompilePdfNode" class="f-btn-download" onclick="executePdfPackagingEngine()">Compile &amp; Download PDF</button>
+
+          <div class="mini-breakdown-box">
+            <span class="mini-box-title">Document Breakdown Summary</span>
+            <div class="mini-table-row">
+              <span class="mini-lbl">Total Uploaded Files</span>
+              <span id="lblTotalFilesConsole" class="mini-val">0 Files</span>
+            </div>
+            <div class="mini-table-row">
+              <span class="mini-lbl">Page Geometry Layout</span>
+              <span class="mini-val" style="color: #2563eb;">Standard A4 (595 x 842 pt) aligned</span>
+            </div>
+            <div class="mini-table-row">
+              <span class="mini-lbl">Processing Layer</span>
+              <span class="mini-val">jsPDF Memory Pipeline Sandbox</span>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -181,18 +225,37 @@
   <div id="site-footer"></div>
 
   <script type="text/javascript">
-    // Core HTML fetches blocks for components execution
+    const { jsPDF } = window.jspdf;
+    let activeCompiledPdfObjectUrl = null;
+    let loadedFilesDataArray = [];
+
     fetch('/components/header.html')
       .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
       .then(data => { document.getElementById('site-header').innerHTML = data; })
-      .catch(err => console.error('Header failed:', err));
+      .catch(err => console.error('Header failed to sync:', err));
 
     fetch('/components/footer.html')
       .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
-      .catch(err => console.error('Footer failed:', err));
+      .catch(err => console.error('Footer failed to sync:', err));
 
-    let loadedFilesDataArray = [];
+    const dropzone = document.getElementById('dropzoneWorkspaceNode');
+    
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); }, false);
+    });
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); }, false);
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const incomingFilesList = e.dataTransfer.files;
+        if(incomingFilesList.length > 0) {
+            document.getElementById('hiddenFileInputNode').files = incomingFilesList;
+            handleIncomingFileSelection();
+        }
+    });
 
     function triggerHiddenFileInputClick() {
         document.getElementById('hiddenFileInputNode').click();
@@ -202,10 +265,18 @@
         const selectedFiles = document.getElementById('hiddenFileInputNode').files;
         if(selectedFiles.length === 0) return;
 
+        const loaderPanel = document.getElementById('loaderStatusPanel');
+        const outputCard = document.getElementById('compilationOutputContainer');
+
+        outputCard.style.display = "none";
+        loaderPanel.style.display = "flex";
+
+        let loadedCount = 0;
+
         for(let i=0; i < selectedFiles.length; i++) {
             const activeFile = selectedFiles[i];
-            
             const fileReader = new FileReader();
+            
             fileReader.readAsDataURL(activeFile);
             fileReader.onload = function(e) {
                 loadedFilesDataArray.push({
@@ -213,7 +284,13 @@
                     size: (activeFile.size / 1024).toFixed(1) + " KB",
                     src: e.target.result
                 });
-                repaintQueueDisplayCardsMatrix();
+                
+                loadedCount++;
+                if(loadedCount === selectedFiles.length) {
+                    loaderPanel.style.display = "none";
+                    repaintQueueDisplayCardsMatrix();
+                    executePdfCompilationEngine();
+                }
             };
         }
     }
@@ -221,6 +298,9 @@
     function removeFileElementFromQueueIndex(targetIndex) {
         loadedFilesDataArray.splice(targetIndex, 1);
         repaintQueueDisplayCardsMatrix();
+        if(loadedFilesDataArray.length > 0) {
+            executePdfCompilationEngine();
+        }
     }
 
     function repaintQueueDisplayCardsMatrix() {
@@ -235,10 +315,9 @@
         }
 
         queueCard.style.display = "flex";
-        outputCard.style.display = "flex";
         itemsStack.innerHTML = "";
 
-        document.getElementById('lblTotalPagesCount').innerText = `${loadedFilesDataArray.length} Pages`;
+        document.getElementById('lblTotalFilesConsole').innerText = `${loadedFilesDataArray.length} Files`;
 
         loadedFilesDataArray.forEach((fileObj, idx) => {
             let row = document.createElement('div');
@@ -257,152 +336,63 @@
         });
     }
 
-    // --- NEW MASTER OPERATION: 0ms BROWSER-NATIVE IMAGE TO PDF ENCODER ENGINE ---
-    function executePdfPackagingEngine() {
-        if(loadedFilesDataArray.length === 0) return;
+    // --- TRUSTED MULTI-PAGE A4 ENCODER INTEGRATION ---
+    function executePdfCompilationEngine() {
+        if (loadedFilesDataArray.length === 0) return;
 
-        const btnNode = document.getElementById('btnCompilePdfNode');
-        const originalText = btnNode.innerText;
-        btnNode.innerText = "COMPILING PDF...";
-        btnNode.classList.add('loading');
+        const a4WidthPt = 595.28;
+        const a4HeightPt = 842.89;
+        let documentInstance = null;
 
-        // Create virtual background execution pool tracking images array asynchronously
-        let imageProcessingPromises = loadedFilesDataArray.map(fileObj => {
-            return new Promise((resolve) => {
-                let img = new Image();
-                img.src = fileObj.src;
-                img.onload = function() {
-                    // Pull native uncompressed resource resolution parameters
-                    let width = img.naturalWidth || 800;
-                    let height = img.naturalHeight || 600;
-                    
-                    let canvas = document.createElement('canvas');
-                    canvas.width = width;
-                    canvas.height = height;
-                    
-                    let ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, width, height);
-                    
-                    // Re encode layers natively inside compressed low weight JPEG streams data strings
-                    let compressedDataUrl = canvas.toDataURL('image/jpeg', 0.90);
-                    resolve({ dataUrl: compressedDataUrl, w: width, h: height });
-                };
-            });
-        });
-
-        Promise.all(imageProcessingPromises).then(processedImages => {
-            try {
-                // --- STANDARDIZED NATIVE PDF BINARY BLOB WRAPPER STRUCTURING ---
-                // Building precise structural document blocks streams to trigger automatic OS downloads handling hooks
-                let pdfDocumentBuffer = [];
-                
-                // 1. Core structural document initialization elements
-                pdfDocumentBuffer.push("%PDF-1.4\r\n");
-                
-                let objectOffsetsArray = [];
-                let activeObjectCounter = 1;
-
-                function appendNewPdfObjectStream(dataContentString) {
-                    objectOffsetsArray[activeObjectCounter] = pdfDocumentBuffer.reduce((acc, str) => acc + str.length, 0);
-                    pdfDocumentBuffer.push(`${activeObjectCounter} 0 obj\r\n${dataContentString}\r\nendobj\r\n`);
-                    activeObjectCounter++;
-                    return activeObjectCounter - 1;
+        function appendImagePage(index) {
+            if (index >= loadedFilesDataArray.length) {
+                if (activeCompiledPdfObjectUrl) {
+                    URL.revokeObjectURL(activeCompiledPdfObjectUrl);
                 }
 
-                // Object 1: Catalog root mapping token
-                let catalogObjectId = activeObjectCounter;
-                appendNewPdfObjectStream("<< /Type /Catalog /Pages 2 0 R >>");
+                const outputDocumentBlob = documentInstance.output('blob');
+                activeCompiledPdfObjectUrl = URL.createObjectURL(outputDocumentBlob);
 
-                // Prepare variable references mapping pages tree structures arrays 
-                let pageObjectReferences = [];
-                let imageObjectsMap = [];
+                const downloadBtnNode = document.getElementById('btnDownloadCompressedAsset');
+                downloadBtnNode.href = activeCompiledPdfObjectUrl;
+                downloadBtnNode.download = `screenshots_compiled_${Date.now()}.pdf`;
 
-                // Secondary temporary buffers loop ahead to reserve object slots lengths parameters
-                let pagesListBufferId = activeObjectCounter;
-                pdfDocumentBuffer.push(""); // Temporary gap footprint placeholder
-                activeObjectCounter++;
-
-                processedImages.forEach((imgObj) => {
-                    // Extract binary data strings signatures out from local Base64 streams
-                    let binaryDataString = atob(imgObj.dataUrl.split(',')[1]);
-                    
-                    let imageContentId = activeObjectCounter;
-                    objectOffsetsArray[activeObjectCounter] = 0; // Set dynamic offset flag
-                    
-                    // Ingest raw data streams directly using verified PDF Deflate/Filter array tags markers
-                    let imageDictHead = `<< /Type /XObject /Subtype /Image /Width ${imgObj.w} /Height ${imgObj.h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Length ${binaryDataString.length} >>\r\nstream\r\n`;
-                    let imageDictFoot = "\r\nendstream\r\nendobj\r\n";
-                    
-                    objectOffsetsArray[imageContentId] = pdfDocumentBuffer.reduce((acc, str) => acc + str.length, 0);
-                    pdfDocumentBuffer.push(`${imageContentId} 0 obj\r\n` + imageDictHead + binaryDataString + imageDictFoot);
-                    imageObjectsMap.push(imageContentId);
-                    activeObjectCounter++;
-
-                    // Structural dimensions scaling calculations matching native PostScript layout metrics points (72 points/inch)
-                    let pageScaleW = 595; // Universal un-compromised standard A4 widths points bounds
-                    let pageScaleH = Math.round(595 * (imgObj.h / imgObj.w));
-
-                    // Build relative drawing context sub paths streams properties
-                    let contentStreamString = `${pageScaleW} 0 0 ${pageScaleH} 0 0 cm /Im0 Do`;
-                    let contentObjectId = appendNewPdfObjectStream(`<< /Length ${contentStreamString.length} >>\r\nstream\r\n${contentStreamString}\r\nendstream`);
-
-                    // Commit final page mapping node back onto structural tree references logs
-                    let pageNodeId = appendNewPdfObjectStream(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageScaleW} ${pageScaleH}] /Contents ${contentObjectId} 0 R /Resources << /XObject << /Im0 ${imageContentId} 0 R >> >> >>`);
-                    pageObjectReferences.push(pageNodeId);
-                });
-
-                // Re-write object 2: Finalize full parent pages lists indices allocations paths
-                let structuralPagesTreeString = `<< /Type /Pages /Kids [${pageObjectReferences.map(id => id + " 0 R").join(' ')}] /Count ${pageObjectReferences.length} >>`;
-                objectOffsetsArray[pagesListBufferId] = pdfDocumentBuffer.reduce((acc, str) => acc + str.length, 0);
-                pdfDocumentBuffer[pagesListBufferId] = `${pagesListBufferId} 0 obj\r\n${structuralPagesTreeString}\r\nendobj\r\n`;
-
-                // 2. Finalize absolute cross-reference table matrix trailer indexes offset paths
-                let crossRefTableStartOffset = pdfDocumentBuffer.reduce((acc, str) => acc + str.length, 0);
-                
-                let xRefContentString = `xref\r\n0 ${activeObjectCounter}\r\n0000000000 65535 f\r\n`;
-                for (let j = 1; j < activeObjectCounter; j++) {
-                    xRefContentString += String(objectOffsetsArray[j]).padStart(10, '0') + " 00000 n\r\n";
-                }
-
-                pdfDocumentBuffer.push(xRefContentString);
-                pdfDocumentBuffer.push(`trailer\r\n<< /Size ${activeObjectCounter} /Root ${catalogObjectId} 0 R >>\r\nstartxref\r\n${crossRefTableStartOffset}\r\n%%EOF`);
-
-                // --- COMPILE BINARY BLOB OBJECT FORCE EXPORT ---
-                // Translates document strings chunks into flat unsigned byte integer streams to trigger secure localized save hooks
-                let unifiedArrayBuffer = new Uint8Array(pdfDocumentBuffer.reduce((acc, str) => acc + str.length, 0));
-                let runningOffsetPointer = 0;
-                
-                pdfDocumentBuffer.forEach(chunk => {
-                    for (let cIdx = 0; cIdx < chunk.length; cIdx++) {
-                        unifiedArrayBuffer[runningOffsetPointer++] = chunk.charCodeAt(cIdx) & 0xFF;
-                    }
-                });
-
-                let compiledFileBlob = new Blob([unifiedArrayBuffer], { type: 'application/pdf' });
-                let sandboxedBlobUrl = URL.createObjectURL(compiledFileBlob);
-
-                // Fire safe programmatic document transfer channel links trigger
-                let temporaryDownloadAnchor = document.createElement('a');
-                temporaryDownloadAnchor.href = sandboxedBlobUrl;
-                temporaryDownloadAnchor.download = `screenshots_package_${Date.now()}.pdf`;
-                
-                document.body.appendChild(temporaryDownloadAnchor);
-                temporaryDownloadAnchor.click();
-
-                // Clean up references out from RAM bounds immediately
-                document.body.removeChild(temporaryDownloadAnchor);
-                URL.revokeObjectURL(sandboxedBlobUrl);
-
-                btnNode.innerText = originalText;
-                btnNode.classList.remove('loading');
-
-            } catch (error) {
-                console.error("Binary local PDF encoding faulted:", error);
-                btnNode.innerText = originalText;
-                btnNode.classList.remove('loading');
-                alert("Document building sequence encountered a resource limitation error.");
+                document.getElementById('compilationOutputContainer').style.display = "flex";
+                return;
             }
-        });
+
+            const currentFileObj = loadedFilesDataArray[index];
+            const tempImageElement = new Image();
+            tempImageElement.src = currentFileObj.src;
+            
+            tempImageElement.onload = function() {
+                const originalW = tempImageElement.width;
+                const originalH = tempImageElement.height;
+
+                if (index === 0) {
+                    documentInstance = new jsPDF({
+                        orientation: 'p',
+                        unit: 'pt',
+                        format: 'a4'
+                    });
+                } else {
+                    documentInstance.addPage('a4', 'p');
+                }
+
+                let boundingScaleRatio = Math.min(a4WidthPt / originalW, a4HeightPt / originalH);
+                let targetRenderedWidth = originalW * boundingScaleRatio;
+                let targetRenderedHeight = originalH * boundingScaleRatio;
+
+                let offsetX = (a4WidthPt - targetRenderedWidth) / 2;
+                let offsetY = (a4HeightPt - targetRenderedHeight) / 2;
+
+                documentInstance.addImage(currentFileObj.src, 'JPEG', offsetX, offsetY, targetRenderedWidth, targetRenderedHeight, undefined, 'FAST');
+                
+                appendImagePage(index + 1);
+            };
+        }
+
+        appendImagePage(0);
     }
   </script>
   
