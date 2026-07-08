@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- CRITICAL INITIALIZATION: Google AdSense Global Verification Script Block Embedded Physically -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164" crossorigin="anonymous"></script>
 
   <meta charset="UTF-8">
@@ -9,15 +8,12 @@
   <title>QR Code Generator - Create Custom QR Codes Online (Free)</title>
   <meta name="description" content="Generate high-resolution custom QR codes online instantly. Free, fast browser-native QR generator tool to customize colors, preview layouts, and download clean images safely." />
   
-  <!-- Universal Root Paths -->
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="https://www.texusprotools.com/tools/qr-generator/" />
 
-  <!-- PRODUCTION STANDARD CLIENT-SIDE HIGH-FIDELITY QR COMPILER LIBRARY -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <!-- Structured Schema Engine -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -120,16 +116,13 @@
     
     <div class="color-picker-workspace-grid">
       
-      <!-- COLUMN LEFT PANEL: INTERACTIVE CONFIGURATION BLOCKS -->
       <div class="workspace-block-panel">
         
-        <!-- CARD 1: DATA STRINGS ENTRY PLATFORM -->
         <div class="interactive-spectrum-box">
           <label class="control-label-row" for="qrInputDataField">Target Link or Data Payload</label>
           <input type="text" id="qrInputDataField" class="text-input-field" placeholder="Paste your website URL link or text info here..." value="https://www.texusprotools.com" oninput="executeQrGenerationEngine()" />
         </div>
 
-        <!-- CARD 2: DESIGN CUSTOMIZER DRAWER SYSTEM -->
         <div class="interactive-spectrum-box">
           <span class="control-label-row">Customize QR Aesthetics</span>
           <div class="brush-controls-grid">
@@ -146,15 +139,12 @@
 
       </div>
 
-      <!-- COLUMN RIGHT PANEL: LIVE DISPLAY EXPORT TERMINALS -->
       <div class="workspace-block-panel">
         
-        <!-- CARD 3: APPLICATION RESULTS MONITOR BOARDS -->
         <div class="analytics-output-container">
           <label class="control-label-row" style="align-self: flex-start; margin: 0;">Live Rendered Matrix</label>
           <div id="paletteSwatchesContainer" class="preview-canvas-wrapper">
-            <!-- Dynamic library injection matrix housing slot element -->
-          </div>
+            </div>
           <button id="btnDownloadQrNode" class="f-btn-download" onclick="triggerQrBlobAssetDownload()">Download QR Code Image</button>
         </div>
 
@@ -162,7 +152,6 @@
 
     </div>
 
-    <!-- CARD 4: EXHAUSTIVE 3000+ WORDS COMPREHENSIVE RE-ALIGNED STRATEGIC CONTENT MANUAL -->
     <article class="seo-clean-container">
       
       <h2 class="seo-block-title" style="margin-top:0;">1. Quick Introduction to Quick Response Technology</h2>
@@ -171,7 +160,6 @@
       <h2 class="seo-block-title">2. Architectural Specifications of QR Matrix Specifications</h2>
       <p class="seo-para">To meet professional requirements, our tool processes data payloads against explicit technical standards defined by ISO/IEC 18004. Grids adjust dynamic capacities based on raw string weights cleanly:</p>
       
-      <!-- FIXED RESPONSIVE TABLE HOUSING: STOPS SCREEN HORIZONTAL SCROLL DEVIATIONS -->
       <div class="seo-table-responsive">
         <table class="seo-data-table">
           <thead>
@@ -292,7 +280,6 @@
 
   <div id="site-footer"></div>
 
-  <!-- PRODUCTION READY VERIFIED SCANNABLE QR ENGINE INITIALIZER -->
   <script type="text/javascript">
     let qrCodeInstanceReference = null;
 
@@ -330,7 +317,7 @@
         });
     }
 
-    // --- 100% FIXED SECURE MULTI-PLATFORM EXTRACTION LINK DOWNLOAD PIPELINE ---
+    // --- 100% FIXED SECURE MULTI-PLATFORM EXTRACTION LINK DOWNLOAD PIPELINE WITH AUTO-BACKGROUND AND ROUNDED CORNERS ---
     function triggerQrBlobAssetDownload() {
         const targetContainer = document.getElementById('paletteSwatchesContainer');
         const generatedCanvas = targetContainer.querySelector('canvas');
@@ -340,9 +327,39 @@
             return;
         }
 
+        const bgColor = document.getElementById('qrBgColorWell').value;
+
         try {
-            // Direct extraction tracking URL link to force automatic OS downloads across phone and laptop environments perfectly
-            const finalImageBase64Url = generatedCanvas.toDataURL('image/png');
+            // 1. Create a dynamic high-resolution background layout mapping canvas
+            const paddingOffset = 50; // Premium surrounding margin cushion space
+            const borderRadiusRadius = 32; // Insta-styled rounded export border
+            
+            const exportCanvas = document.createElement('canvas');
+            exportCanvas.width = generatedCanvas.width + (paddingOffset * 2);
+            exportCanvas.height = generatedCanvas.height + (paddingOffset * 2);
+            
+            const exportCtx = exportCanvas.getContext('2d');
+
+            // 2. Draw modern rounded corner support rectangle background block path natively
+            exportCtx.fillStyle = bgColor;
+            exportCtx.beginPath();
+            exportCtx.moveTo(borderRadiusRadius, 0);
+            exportCtx.lineTo(exportCanvas.width - borderRadiusRadius, 0);
+            exportCtx.quadraticCurveTo(exportCanvas.width, 0, exportCanvas.width, borderRadiusRadius);
+            exportCtx.lineTo(exportCanvas.width, exportCanvas.height - borderRadiusRadius);
+            exportCtx.quadraticCurveTo(exportCanvas.width, exportCanvas.height, exportCanvas.width - borderRadiusRadius, exportCanvas.height);
+            exportCtx.lineTo(borderRadiusRadius, exportCanvas.height);
+            exportCtx.quadraticCurveTo(0, exportCanvas.height, 0, exportCanvas.height - borderRadiusRadius);
+            exportCtx.lineTo(0, borderRadiusRadius);
+            exportCtx.quadraticCurveTo(0, 0, borderRadiusRadius, 0);
+            exportCtx.closePath();
+            exportCtx.fill();
+
+            // 3. Superimpose the original pure scannable QR code right at the absolute center
+            exportCtx.drawImage(generatedCanvas, paddingOffset, paddingOffset);
+
+            // 4. Force save compiled stream straight into local device manager
+            const finalImageBase64Url = exportCanvas.toDataURL('image/png');
             
             const temporaryAnchorElement = document.createElement('a');
             temporaryAnchorElement.href = finalImageBase64Url;
@@ -350,8 +367,6 @@
             
             document.body.appendChild(temporaryAnchorElement);
             temporaryAnchorElement.click();
-            
-            // Re-allocate layout traces instantly out from document tree references logs
             document.body.removeChild(temporaryAnchorElement);
         } catch(error) {
             console.error("Canvas stream capture extraction failure:", error);
