@@ -121,6 +121,9 @@
         <div class="interactive-spectrum-box">
           <label class="control-label-row" for="qrInputDataField">Target Link or Data Payload</label>
           <input type="text" id="qrInputDataField" class="text-input-field" placeholder="Paste your website URL link or text info here..." value="https://www.texusprotools.com" oninput="executeQrGenerationEngine()" />
+          
+          <label class="control-label-row" for="qrBrandingTextField" style="margin-top: 6px;">Optional Branding Text (Below QR)</label>
+          <input type="text" id="qrBrandingTextField" class="text-input-field" placeholder="e.g. SCAN TO PAY, SCAN ME..." value="" />
         </div>
 
         <div class="interactive-spectrum-box">
@@ -327,16 +330,24 @@
             return;
         }
 
+        const blockColor = document.getElementById('qrBlockColorWell').value;
         const bgColor = document.getElementById('qrBgColorWell').value;
+        const brandingText = document.getElementById('qrBrandingTextField').value.trim();
 
         try {
             // 1. Create a dynamic high-resolution background layout mapping canvas
             const paddingOffset = 50; // Premium surrounding margin cushion space
             const borderRadiusRadius = 32; // Insta-styled rounded export border
             
+            // Dynamic text layout spacing allocation adjustments
+            let textSpacingHeight = 0;
+            if(brandingText !== "") {
+                textSpacingHeight = 50; // Extra room for textual fields
+            }
+
             const exportCanvas = document.createElement('canvas');
             exportCanvas.width = generatedCanvas.width + (paddingOffset * 2);
-            exportCanvas.height = generatedCanvas.height + (paddingOffset * 2);
+            exportCanvas.height = generatedCanvas.height + (paddingOffset * 2) + textSpacingHeight;
             
             const exportCtx = exportCanvas.getContext('2d');
 
@@ -358,7 +369,21 @@
             // 3. Superimpose the original pure scannable QR code right at the absolute center
             exportCtx.drawImage(generatedCanvas, paddingOffset, paddingOffset);
 
-            // 4. Force save compiled stream straight into local device manager
+            // 4. If branding text layer is filled, repaint typography structures cleanly onto intermediate slices
+            if (brandingText !== "") {
+                exportCtx.fillStyle = blockColor;
+                exportCtx.font = "bold 20px 'Inter', sans-serif";
+                exportCtx.textAlign = "center";
+                exportCtx.textBaseline = "middle";
+                
+                // Calculate spatial coordinates anchors vectors perfectly centered
+                let textPositionX = exportCanvas.width / 2;
+                let textPositionY = exportCanvas.height - paddingOffset + 5;
+                
+                exportCtx.fillText(brandingText, textPositionX, textPositionY);
+            }
+
+            // 5. Force save compiled stream straight into local device manager
             const finalImageBase64Url = exportCanvas.toDataURL('image/png');
             
             const temporaryAnchorElement = document.createElement('a');
