@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="https://www.texusprotools.com/tools/qr-generator/" />
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -58,10 +60,10 @@
     .native-color-block-well::-webkit-color-swatch-wrapper { padding: 0; }
     .native-color-block-well::-webkit-color-swatch { border: 1px solid #cbd5e1; border-radius: 10px; }
 
-    /* CARD 3: PREMIUM UNIFORM APP RESULTS VIEWPORT HOUSING */
+    /* CARD 3: PREMIUM UNIFORM APP RESULTS VIEWPORT HOUSING (MODERN INSTA/TELEGRAM WRAPPERS) */
     .analytics-output-container { width: 100%; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02); align-items: center; }
-    .preview-canvas-wrapper { width: 220px; height: 220px; border-radius: 16px; border: 1px solid #cbd5e1; overflow: hidden; padding: 10px; background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
-    .preview-canvas-wrapper canvas { max-width: 100%; max-height: 100%; display: block; }
+    .preview-canvas-wrapper { width: 240px; height: 240px; border-radius: 24px; border: 1px solid #e2e8f0; overflow: hidden; padding: 20px; background: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
+    .preview-canvas-wrapper img { width: 100%; height: 100%; display: block; border-radius: 12px; }
     
     .f-btn-download { background: #10b981; color: #ffffff; font-weight: 700; padding: 16px 28px; border-radius: 14px; cursor: pointer; font-size: 1rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.15s ease; width: 100%; text-decoration: none; text-align: center; display: block; box-sizing: border-box; }
     .f-btn-download:hover { background: #059669; }
@@ -91,7 +93,7 @@
       .brush-controls-grid { flex-direction: row; gap: 12px; }
       .brush-node-row { flex: 1; }
       .native-color-block-well { max-width: 100%; }
-      .preview-canvas-wrapper { width: 240px; height: 220px; }
+      .preview-canvas-wrapper { width: 240px; height: 240px; }
       .seo-clean-container { margin-top: 35px; padding: 48px; }
     }
   </style>
@@ -132,9 +134,8 @@
         
         <div class="analytics-output-container">
           <label class="control-label-row" style="align-self: flex-start; margin: 0;">Live Rendered Matrix</label>
-          <div class="preview-canvas-wrapper">
-            <canvas id="qrCodeRenderCanvas"></canvas>
-          </div>
+          <div id="paletteSwatchesContainer" class="preview-canvas-wrapper">
+            </div>
           <button id="btnDownloadQrNode" class="f-btn-download" onclick="triggerQrBlobAssetDownload()">Download QR Code Image</button>
         </div>
 
@@ -230,123 +231,46 @@
   <div id="site-footer"></div>
 
   <script type="text/javascript">
-    // Core HTML fetches blocks for components execution channels
-    fetch('/components/header.html')
-      .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
-      .then(data => { document.getElementById('site-header').innerHTML = data; })
-      .catch(err => console.error('Header load sequence faulted:', err));
+    let qrCodeInstanceReference = null;
 
-    fetch('/components/footer.html')
-      .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
-      .then(data => { document.getElementById('site-footer').innerHTML = data; })
-      .catch(err => console.error('Footer load sequence faulted:', err));
-
-    document.addEventListener("DOMContentLoaded", () => {
-        executeQrGenerationEngine();
-    });
-
-    // --- HIGH PERFORMANCE BROWSER-NATIVE 0ms QR ENGINE GENERATOR LOGIC ---
-    // Lightweight bitstream chunk grid sharder script executing purely inside client environment
-    function generateQrCodeMatrixData(textString) {
-        // Safe baseline fallbacks parameters arrays strings configurations
-        let qrSizeBits = 25; 
-        let matrixGrid = Array(qrSizeBits).fill(null).map(() => Array(qrSizeBits).fill(0));
-
-        // 1. Programmatically seed three essential standard W3C anchor orientation square bounds loops
-        function injectAnchorSquareBlock(startX, startY) {
-            for (let r = 0; r < 7; r++) {
-                for (let c = 0; c < 7; c++) {
-                    if (r === 0 || r === 6 || c === 0 || c === 6 || (r >= 2 && r <= 4 && c >= 2 && c <= 4)) {
-                        matrixGrid[startY + r][startX + c] = 1;
-                    }
-                }
-            }
-        }
-        injectAnchorSquareBlock(0, 0);                 // Top-Left Corner Anchor
-        injectAnchorSquareBlock(qrSizeBits - 7, 0);    // Top-Right Corner Anchor
-        injectAnchorSquareBlock(0, qrSizeBits - 7);    // Bottom-Left Corner Anchor
-
-        // 2. Inject structural sync tracking dotted connector lines parameters
-        for (let i = 7; i < qrSizeBits - 7; i++) {
-            matrixGrid[6][i] = (i % 2 === 0) ? 1 : 0;
-            matrixGrid[i][6] = (i % 2 === 0) ? 1 : 0;
-        }
-
-        // 3. Simple hash sharder algorithm to distribute dynamic input characters over the remaining grid squares safely
-        let stringSeedValue = 0;
-        for (let k = 0; k < textString.length; k++) {
-            stringSeedValue += textString.charCodeAt(k) * (k + 1);
-        }
-
-        for (let r = 0; r < qrSizeBits; r++) {
-            for (let c = 0; c < qrSizeBits; c++) {
-                // Safeguard anchor block spaces to prevent overlapping orientation fields
-                if ((r < 8 && c < 8) || (r < 8 && c > qrSizeBits - 9) || (r > qrSizeBits - 9 && c < 8)) {
-                    continue;
-                }
-                // Bitwise pseudo random pixel distribution calculation
-                let pseudoRandomHash = Math.abs(Math.sin(stringSeedValue + (r * 13) + (c * 37)));
-                matrixGrid[r][c] = (pseudoRandomHash > 0.45) ? 1 : 0;
-            }
-        }
-        return matrixGrid;
-    }
-
+    // High performance real-time compiler injection routine
     function executeQrGenerationEngine() {
         const dataPayload = document.getElementById('qrInputDataField').value.trim() || "https://www.texusprotools.com";
         const blockColor = document.getElementById('qrBlockColorWell').value;
         const bgColor = document.getElementById('qrBgColorWell').value;
+        const targetContainer = document.getElementById('paletteSwatchesContainer');
 
-        const renderCanvas = document.getElementById('qrCodeRenderCanvas');
-        const ctx = renderCanvas.getContext('2d');
+        // Clear layout node completely to prepare for incoming refresh loops
+        targetContainer.innerHTML = "";
 
-        // Compile matrix array patterns cleanly
-        const calculatedMatrixGrid = generateQrCodeMatrixData(dataPayload);
-        const totalGridModules = calculatedMatrixGrid.length;
-
-        // Force premium clean high-density resolution parameters mappings
-        const resolutionDimensionFactor = 440;
-        renderCanvas.width = resolutionDimensionFactor;
-        renderCanvas.height = resolutionDimensionFactor;
-
-        const moduleSizeBlock = Math.floor(resolutionDimensionFactor / totalGridModules);
-        const alignmentMarginOffset = Math.floor((resolutionDimensionFactor - (moduleSizeBlock * totalGridModules)) / 2);
-
-        // Fill background swatch bounds
-        ctx.fillStyle = bgColor;
-        ctx.fillRect(0, 0, resolutionDimensionFactor, resolutionDimensionFactor);
-
-        // Repaint block structures natively inside canvas layout space grids
-        ctx.fillStyle = blockColor;
-        for (let r = 0; r < totalGridModules; r++) {
-            for (let c = 0; c < totalGridModules; c++) {
-                if (calculatedMatrixGrid[r][c] === 1) {
-                    ctx.fillRect(
-                        alignmentMarginOffset + (c * moduleSizeBlock),
-                        alignmentMarginOffset + (r * moduleSizeBlock),
-                        moduleSizeBlock,
-                        moduleSizeBlock
-                    );
-                }
-            }
-        }
+        // Instantiate trusted framework compiler natively into DOM
+        qrCodeInstanceReference = new QRCode(targetContainer, {
+            text: dataPayload,
+            width: 256,
+            height: 256,
+            colorDark: blockColor,
+            colorLight: bgColor,
+            correctLevel: QRCode.CorrectLevel.M // High-performance 15% error compensation threshold
+        });
     }
 
-    // --- SECURE LOCAL DATA RAW IMAGE STREAM BLOB SAVE HANDLER ---
+    // --- SECURE PNG STORAGE CONVERSION CAPTURE LOOP ---
     function triggerQrBlobAssetDownload() {
-        const renderCanvas = document.getElementById('qrCodeRenderCanvas');
-        if (!renderCanvas) return;
-
-        // Extract un-tainted data streams anchors properties directly into local system download paths
-        const compiledImageBase64Url = renderCanvas.toDataURL('image/png');
+        const targetContainer = document.getElementById('paletteSwatchesContainer');
+        // Fetch the compiled image element embedded inside library node housing
+        const generatedImgNode = targetContainer.querySelector('img');
         
+        if (!generatedImgNode) {
+            alert("No QR code found to download.");
+            return;
+        }
+
         const temporaryAnchorElement = document.createElement('a');
-        temporaryAnchorElement.href = compiledImageBase64Url;
-        temporaryAnchorElement.download = `qr_code_asset_${Date.now()}.png`;
+        temporaryAnchorElement.href = generatedImgNode.src;
+        temporaryAnchorElement.download = `premium_scannable_qr_${Date.now()}.png`;
         
         document.body.appendChild(temporaryAnchorElement);
         temporaryAnchorElement.click();
-        
         document.body.removeChild(temporaryAnchorElement);
     }
   </script>
