@@ -81,7 +81,7 @@
   <div id="site-header"></div>
 
   <main class="f-wrapper">
-    <div class="f-heading">📱 Free PDF Compressor</div>
+    <div class="f-heading">📄 Free PDF Compressor</div>
     
     <div class="color-picker-workspace-grid">
       
@@ -112,9 +112,9 @@
           <div class="slider-container-box">
             <div class="control-label-row">
               <span>Compression Level (High % means smaller file size)</span>
-              <span id="lblSliderValueBadge" style="color: #2563eb; font-weight: 800;">50%</span>
+              <span id="lblSliderValueBadge" style="color: #2563eb; font-weight: 800;">45%</span>
             </div>
-            <input type="range" id="compressionManualSlider" class="custom-range-slider" min="10" max="90" value="50" oninput="handleSliderMovementValueChange()" onchange="triggerSilentCompressionCache()" />
+            <input type="range" id="compressionManualSlider" class="custom-range-slider" min="10" max="90" value="45" oninput="handleSliderMovementValueChange()" onchange="triggerSilentCompressionCache()" />
           </div>
           
           <div class="meta-dimension-badge-strip">
@@ -206,6 +206,7 @@
   <div id="site-footer"></div>
 
   <script type="text/javascript">
+    // Direct initialization of pdf.js worker natively inside standard window scope threads
     window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
 
     let globalFileArrayBuffer = null;
@@ -267,6 +268,8 @@
             loaderPanel.style.display = "none";
             controlsCard.style.display = "flex";
             outputCard.style.display = "flex";
+            
+            // Set default preset mode to mid balance
             applyPresetMode('medium');
         };
     }
@@ -287,13 +290,13 @@
 
         if(mode === 'low') {
             document.getElementById('presetLow').classList.add('active');
-            slider.value = 15; // Balanced 15% drop target
+            slider.value = 15; // 15% slider = 0.85 Quality Factor
         } else if(mode === 'medium') {
             document.getElementById('presetMedium').classList.add('active');
-            slider.value = 45; // Sweet spot balance
+            slider.value = 45; // 45% slider = 0.55 Quality Factor
         } else if(mode === 'high') {
             document.getElementById('presetHigh').classList.add('active');
-            slider.value = 80; // High compression mode
+            slider.value = 80; // 80% slider = 0.20 Quality Factor
         }
 
         handleSliderMovementValueChange();
@@ -313,10 +316,10 @@
             if(sliderValue == 45) { document.getElementById('presetMedium').classList.add('active'); }
             if(sliderValue == 80) { document.getElementById('presetHigh').classList.add('active'); }
         }
-        document.getElementById('lblExpectedSizeBadge').innerText = "Calculating size...";
+        document.getElementById('lblExpectedSizeBadge').innerText = "Calculating final size...";
     }
 
-    // --- STRATEGIC BACKGROUND CACHING ENGINE WITH GRADUAL SCALE FACTORS ---
+    // --- STRATEGIC SYNCHRONIZED REAL COMPRESSION & CACHING PIPELINE ---
     async function triggerSilentCompressionCache() {
         if(!globalFileArrayBuffer) return;
 
@@ -327,29 +330,33 @@
 
         downloadBtn.disabled = true;
         downloadBtn.style.opacity = "0.6";
-        document.getElementById('lblExpectedSizeBadge').innerText = "Optimizing quality layers...";
+        document.getElementById('lblExpectedSizeBadge').innerText = "Compressing pages layers...";
         loaderPanel.style.display = "flex";
 
         try {
-            // FIXED LINEAR EQUATION: Maps quality dynamically from 0.95 (Low) down to 0.35 (High) safely
-            const imageQualitySetting = 1.0 - (sliderValue * 0.0075); 
+            // Safe linear image encoding quality constraint calculations mapping calibrated values
+            const imageQualitySetting = 1.0 - (sliderValue * 0.0075); // Low = 0.88, Med = 0.66, High = 0.40 Quality
             
-            // Fixed Page Dimension Scale - Stays stable to prevent file footprint collapsing at Low values
-            let internalRenderingScale = 1.35; 
-            if(sliderValue > 50) internalRenderingScale = 1.1; 
-            if(sliderValue > 75) internalRenderingScale = 0.85; // Sharp compression threshold only for High preset
+            // Fixed Page Resolution Constraints—Never drop past 1.0 to keep layout dimensions crisp
+            let internalRenderingScale = 1.4; 
+            if(sliderValue > 40) internalRenderingScale = 1.15; 
+            if(sliderValue > 75) internalRenderingScale = 1.0; 
 
-            const sourcePdfTask = await pdfjsLib.getDocument({ data: globalFileArrayBuffer }).promise;
-            const totalPagesCount = sourcePdfTask.numPages;
+            // Initialize pdf.js source binary extractor task
+            const typedBinaryDataArray = new Uint8Array(globalFileArrayBuffer);
+            const sourcePdfjsDocInstance = await pdfjsLib.getDocument({ data: typedBinaryDataArray }).promise;
+            const totalPagesCount = sourcePdfjsDocInstance.numPages;
 
+            // Instantiate a blank pdf-lib production container object housing
             const outputPdfDocument = await window.PDFLib.PDFDocument.create();
+            
             const hiddenCanvasElement = document.createElement('canvas');
             const canvasRenderContext = hiddenCanvasElement.getContext('2d');
 
             for (let pageNum = 1; pageNum <= totalPagesCount; pageNum++) {
-                progressStatusText.innerText = `Analyzing layout dimensions: Processing Page ${pageNum} of ${totalPagesCount}...`;
+                progressStatusText.innerText = `Re-sampling Scans & Graphics: Page ${pageNum} of ${totalPagesCount}...`;
                 
-                const activePageInstance = await sourcePdfTask.getPage(pageNum);
+                const activePageInstance = await sourcePdfjsDocInstance.getPage(pageNum);
                 const standardViewportOptions = activePageInstance.getViewport({ scale: internalRenderingScale });
                 
                 hiddenCanvasElement.width = standardViewportOptions.width;
@@ -359,9 +366,11 @@
                     canvasContext: canvasRenderContext,
                     viewport: standardViewportOptions
                 };
+                
+                // Synchronously wait for standard layout raster blitting completion parameters
                 await activePageInstance.render(renderContextParameters).promise;
 
-                // Native JPEG re-encoding layer
+                // Extract authentic re-sampled compressed raw JPEG strings values array
                 const compressedImageBytesUrl = hiddenCanvasElement.toDataURL('image/jpeg', imageQualitySetting);
                 
                 const freshEmbedImageObject = await outputPdfDocument.embedJpg(compressedImageBytesUrl);
@@ -375,31 +384,36 @@
                 });
             }
 
+            // Save finalized real compressed byte array parameters cleanly inside core local cache memory
             cachedCompressedBytesArray = await outputPdfDocument.save();
             
-            // Output 100% true synchronized size to display badge item
+            // Output 100% genuine accurate size to screen item (mismatch solved)
             document.getElementById('lblExpectedSizeBadge').innerText = formatSizeMetrics(cachedCompressedBytesArray.length);
             downloadBtn.disabled = false;
             downloadBtn.style.opacity = "1";
 
         } catch(error) {
-            console.error("Background caching thread exception:", error);
-            document.getElementById('lblExpectedSizeBadge').innerText = "Failed to calculate.";
+            console.error("Asynchronous processing pipeline exception:", error);
+            document.getElementById('lblExpectedSizeBadge').innerText = "Processing Error.";
         } finally {
             loaderPanel.style.display = "none";
             progressStatusText.innerText = "Reading your PDF document file layout, please wait a moment...";
         }
     }
 
+    // --- INSTANT CACHED BINARY DOWNLOAD EXPORT HOOK ---
     function downloadPreCompressedCachedPdf() {
-        if(!cachedCompressedBytesArray) return;
+        if(!cachedCompressedBytesArray) {
+            alert("Please wait until the compression calculation loop finishes.");
+            return;
+        }
 
         const finalDocumentBlob = new Blob([cachedCompressedBytesArray], { type: 'application/pdf' });
         const systemBlobUrl = URL.createObjectURL(finalDocumentBlob);
 
         const temporaryAnchorElement = document.createElement('a');
         temporaryAnchorElement.href = systemBlobUrl;
-        temporaryAnchorElement.download = `optimized_document_${Date.now()}.pdf`;
+        temporaryAnchorElement.download = `compressed_document_${Date.now()}.pdf`;
         
         document.body.appendChild(temporaryAnchorElement);
         temporaryAnchorElement.click();
