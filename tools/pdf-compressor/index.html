@@ -293,7 +293,7 @@
             slider.value = 45; 
         } else if(mode === 'high') {
             document.getElementById('presetHigh').classList.add('active');
-            slider.value = 75; 
+            slider.value = 80; 
         }
 
         handleSliderMovementValueChange();
@@ -304,19 +304,19 @@
         const sliderValue = document.getElementById('compressionManualSlider').value;
         document.getElementById('lblSliderValueBadge').innerText = sliderValue + "%";
 
-        if(sliderValue != 15 && sliderValue != 45 && sliderValue != 75) {
+        if(sliderValue != 15 && sliderValue != 45 && sliderValue != 80) {
             document.getElementById('presetLow').classList.remove('active');
             document.getElementById('presetMedium').classList.remove('active');
             document.getElementById('presetHigh').classList.remove('active');
         } else {
             if(sliderValue == 15) { document.getElementById('presetLow').classList.add('active'); }
             if(sliderValue == 45) { document.getElementById('presetMedium').classList.add('active'); }
-            if(sliderValue == 75) { document.getElementById('presetHigh').classList.add('active'); }
+            if(sliderValue == 80) { document.getElementById('presetHigh').classList.add('active'); }
         }
         document.getElementById('lblExpectedSizeBadge').innerText = "Calculating final size...";
     }
 
-    // --- AUTOMATED CALIBRATED BRACKETS MAPPING ALGORITHM ---
+    // --- PRO LEVEL BALANCED MULTI-TIER RE-SAMPLING COMPRESSION ENGINE ---
     async function triggerSilentCompressionCache() {
         if(!globalFileArrayBuffer) return;
 
@@ -331,25 +331,26 @@
         loaderPanel.style.display = "flex";
 
         try {
-            // STEP MAPPING: Discrete production brackets control quality + dimensions proportionally
-            let imageQualitySetting = 0.95;
-            let internalRenderingScale = 1.0;
+            // RE-CALIBRATED DISCRETE BRACKETS: Strict non-aggressive parameters block mapping
+            let imageQualitySetting = 1.0;
+            let internalRenderingScale = 1.35; // Sharp definition canvas baseline scale mapping
 
-            if (sliderValue <= 20) {
+            if (sliderValue <= 25) {
+                // Low Compression Bracket (Slider 10% - 25%): Almost lossless bounds (~24MB - 28MB)
                 imageQualitySetting = 0.98;
-                internalRenderingScale = 1.0;
-            } else if (sliderValue <= 40) {
-                imageQualitySetting = 0.92;
-                internalRenderingScale = 0.98;
-            } else if (sliderValue <= 60) {
-                imageQualitySetting = 0.82;
-                internalRenderingScale = 0.94;
-            } else if (sliderValue <= 80) {
-                imageQualitySetting = 0.65;
-                internalRenderingScale = 0.85;
+                internalRenderingScale = 1.35;
+            } else if (sliderValue <= 55) {
+                // Medium Compression Bracket (Slider 26% - 55%): Steady reduction down to half (~13MB - 18MB)
+                imageQualitySetting = 0.88;
+                internalRenderingScale = 1.25;
+            } else if (sliderValue <= 75) {
+                // High Compression Bracket (Slider 56% - 75%): Steeper shrink down (~6MB - 10MB)
+                imageQualitySetting = 0.72;
+                internalRenderingScale = 1.05;
             } else {
-                imageQualitySetting = 0.40;
-                internalRenderingScale = 0.70;
+                // Extreme Compression Bracket (Slider 76% - 90%): Full crush for portal thresholds (~2MB - 5MB)
+                imageQualitySetting = 0.45;
+                internalRenderingScale = 0.80;
             }
 
             const sourcePdfTask = await pdfjsLib.getDocument({ data: globalFileArrayBuffer }).promise;
@@ -375,7 +376,7 @@
                 
                 await activePageInstance.render(renderContextParameters).promise;
 
-                // Extract exact custom re-sampled raster stream data URLs
+                // Extract custom re-sampled raster stream data URLs
                 const compressedImageBytesUrl = hiddenCanvasElement.toDataURL('image/jpeg', imageQualitySetting);
                 
                 const freshEmbedImageObject = await outputPdfDocument.embedJpg(compressedImageBytesUrl);
@@ -389,16 +390,16 @@
                 });
             }
 
-            // Save exactly optimized bytes stream directly inside local runtime session memory cache
+            // Save optimized bytes stream directly into local cache memory
             cachedCompressedBytesArray = await outputPdfDocument.save();
             
-            // Render 100% genuine synchronized values onto the UI badge element
+            // Output true exact synchronized values onto the display badge item
             document.getElementById('lblExpectedSizeBadge').innerText = formatSizeMetrics(cachedCompressedBytesArray.length);
             downloadBtn.disabled = false;
             downloadBtn.style.opacity = "1";
 
         } catch(error) {
-            console.error("Asynchronous compression algorithm mapping trace faulted:", error);
+            console.error("Asynchronous processing pipeline exception:", error);
             document.getElementById('lblExpectedSizeBadge').innerText = "Processing Error.";
         } finally {
             loaderPanel.style.display = "none";
