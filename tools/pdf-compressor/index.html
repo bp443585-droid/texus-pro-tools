@@ -316,7 +316,7 @@
         document.getElementById('lblExpectedSizeBadge').innerText = "Calculating final size...";
     }
 
-    // --- PRO LEVEL BALANCED MULTI-TIER RE-SAMPLING COMPRESSION ENGINE ---
+    // --- ACCURATE TARGET-MAPPED CALIBRATION RE-SAMPLING ENGINE ---
     async function triggerSilentCompressionCache() {
         if(!globalFileArrayBuffer) return;
 
@@ -331,26 +331,22 @@
         loaderPanel.style.display = "flex";
 
         try {
-            // RE-CALIBRATED DISCRETE BRACKETS: Strict non-aggressive parameters block mapping
-            let imageQualitySetting = 1.0;
-            let internalRenderingScale = 1.35; // Sharp definition canvas baseline scale mapping
+            // FIXED CALIBRATION LOGIC BASED ON TARGET METRICS:
+            let imageQualitySetting = 0.92;
+            let internalRenderingScale = 1.25;
 
             if (sliderValue <= 25) {
-                // Low Compression Bracket (Slider 10% - 25%): Almost lossless bounds (~24MB - 28MB)
-                imageQualitySetting = 0.98;
+                // Target: 22MB - 23MB for 30MB Input -> Very High Quality & Full Crisp Scale
+                imageQualitySetting = 0.99;
                 internalRenderingScale = 1.35;
             } else if (sliderValue <= 55) {
-                // Medium Compression Bracket (Slider 26% - 55%): Steady reduction down to half (~13MB - 18MB)
-                imageQualitySetting = 0.88;
+                // Target: ~14MB - 15MB for 30MB Input -> Balanced Matrix Reduction
+                imageQualitySetting = 0.92;
                 internalRenderingScale = 1.25;
-            } else if (sliderValue <= 75) {
-                // High Compression Bracket (Slider 56% - 75%): Steeper shrink down (~6MB - 10MB)
-                imageQualitySetting = 0.72;
-                internalRenderingScale = 1.05;
             } else {
-                // Extreme Compression Bracket (Slider 76% - 90%): Full crush for portal thresholds (~2MB - 5MB)
-                imageQualitySetting = 0.45;
-                internalRenderingScale = 0.80;
+                // Target: ~3MB for 30MB Input -> Aggressive Downsize for restrictive portals
+                imageQualitySetting = 0.40;
+                internalRenderingScale = 0.75;
             }
 
             const sourcePdfTask = await pdfjsLib.getDocument({ data: globalFileArrayBuffer }).promise;
