@@ -287,13 +287,13 @@
 
         if(mode === 'low') {
             document.getElementById('presetLow').classList.add('active');
-            slider.value = 15; // Low slider % -> Minimal compression (High quality factor)
+            slider.value = 15; 
         } else if(mode === 'medium') {
             document.getElementById('presetMedium').classList.add('active');
-            slider.value = 45; // Medium balance
+            slider.value = 45; 
         } else if(mode === 'high') {
             document.getElementById('presetHigh').classList.add('active');
-            slider.value = 80; // High slider % -> Maximum size reduction
+            slider.value = 75; 
         }
 
         handleSliderMovementValueChange();
@@ -304,19 +304,19 @@
         const sliderValue = document.getElementById('compressionManualSlider').value;
         document.getElementById('lblSliderValueBadge').innerText = sliderValue + "%";
 
-        if(sliderValue != 15 && sliderValue != 45 && sliderValue != 80) {
+        if(sliderValue != 15 && sliderValue != 45 && sliderValue != 75) {
             document.getElementById('presetLow').classList.remove('active');
             document.getElementById('presetMedium').classList.remove('active');
             document.getElementById('presetHigh').classList.remove('active');
         } else {
             if(sliderValue == 15) { document.getElementById('presetLow').classList.add('active'); }
             if(sliderValue == 45) { document.getElementById('presetMedium').classList.add('active'); }
-            if(sliderValue == 80) { document.getElementById('presetHigh').classList.add('active'); }
+            if(sliderValue == 75) { document.getElementById('presetHigh').classList.add('active'); }
         }
         document.getElementById('lblExpectedSizeBadge').innerText = "Calculating final size...";
     }
 
-    // --- STRATEGIC BACKGROUND CACHING ENGINE WITH RE-INVERTED PARAMETERS ---
+    // --- AUTOMATED CALIBRATED BRACKETS MAPPING ALGORITHM ---
     async function triggerSilentCompressionCache() {
         if(!globalFileArrayBuffer) return;
 
@@ -331,15 +331,26 @@
         loaderPanel.style.display = "flex";
 
         try {
-            // FIXED INVERSION: High Slider % means lower quality setting value (Aggressive compression)
-            // Slider 15% -> Quality 0.85 (Big file, high clear quality)
-            // Slider 80% -> Quality 0.20 (Small file, compressed quality)
-            const imageQualitySetting = (100 - sliderValue) / 100; 
-            
-            // Re-align dimension scale targets smoothly
-            let internalRenderingScale = 1.3; 
-            if(sliderValue > 40) internalRenderingScale = 1.05; 
-            if(sliderValue > 75) internalRenderingScale = 0.80; 
+            // STEP MAPPING: Discrete production brackets control quality + dimensions proportionally
+            let imageQualitySetting = 0.95;
+            let internalRenderingScale = 1.0;
+
+            if (sliderValue <= 20) {
+                imageQualitySetting = 0.98;
+                internalRenderingScale = 1.0;
+            } else if (sliderValue <= 40) {
+                imageQualitySetting = 0.92;
+                internalRenderingScale = 0.98;
+            } else if (sliderValue <= 60) {
+                imageQualitySetting = 0.82;
+                internalRenderingScale = 0.94;
+            } else if (sliderValue <= 80) {
+                imageQualitySetting = 0.65;
+                internalRenderingScale = 0.85;
+            } else {
+                imageQualitySetting = 0.40;
+                internalRenderingScale = 0.70;
+            }
 
             const sourcePdfTask = await pdfjsLib.getDocument({ data: globalFileArrayBuffer }).promise;
             const totalPagesCount = sourcePdfTask.numPages;
@@ -349,7 +360,7 @@
             const canvasRenderContext = hiddenCanvasElement.getContext('2d');
 
             for (let pageNum = 1; pageNum <= totalPagesCount; pageNum++) {
-                progressStatusText.innerText = `Re-sampling Scans & Graphics: Page ${pageNum} of ${totalPagesCount}...`;
+                progressStatusText.innerText = `Processing element streams: Page ${pageNum} of ${totalPagesCount}...`;
                 
                 const activePageInstance = await sourcePdfTask.getPage(pageNum);
                 const standardViewportOptions = activePageInstance.getViewport({ scale: internalRenderingScale });
@@ -364,7 +375,7 @@
                 
                 await activePageInstance.render(renderContextParameters).promise;
 
-                // Extract authentic canvas JPEG string value array mapping quality correctly
+                // Extract exact custom re-sampled raster stream data URLs
                 const compressedImageBytesUrl = hiddenCanvasElement.toDataURL('image/jpeg', imageQualitySetting);
                 
                 const freshEmbedImageObject = await outputPdfDocument.embedJpg(compressedImageBytesUrl);
@@ -378,15 +389,16 @@
                 });
             }
 
+            // Save exactly optimized bytes stream directly inside local runtime session memory cache
             cachedCompressedBytesArray = await outputPdfDocument.save();
             
-            // Output 100% genuine accurate size to screen item (mismatch solved permanently)
+            // Render 100% genuine synchronized values onto the UI badge element
             document.getElementById('lblExpectedSizeBadge').innerText = formatSizeMetrics(cachedCompressedBytesArray.length);
             downloadBtn.disabled = false;
             downloadBtn.style.opacity = "1";
 
         } catch(error) {
-            console.error("Asynchronous processing pipeline exception:", error);
+            console.error("Asynchronous compression algorithm mapping trace faulted:", error);
             document.getElementById('lblExpectedSizeBadge').innerText = "Processing Error.";
         } finally {
             loaderPanel.style.display = "none";
