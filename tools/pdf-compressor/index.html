@@ -114,7 +114,7 @@
               <span>Compression Level (High % means smaller file size)</span>
               <span id="lblSliderValueBadge" style="color: #2563eb; font-weight: 800;">50%</span>
             </div>
-            <input type="range" id="compressionManualSlider" class="custom-range-slider" min="10" max="90" value="50" oninput="handleSliderMovementValueChange()" />
+            <input type="range" id="compressionManualSlider" class="custom-range-slider" min="10" max="90" value="50" oninput="handleSliderMovementValueChange()" onchange="triggerSilentCompressionCache()" />
           </div>
           
           <div class="meta-dimension-badge-strip">
@@ -123,8 +123,8 @@
               <span id="lblOriginalSizeBadge" class="val-meta-dim">0.00 MB</span>
             </div>
             <div class="size-badge-row" style="border-top: 1px dashed #e2e8f0; padding-top: 10px;">
-              <span class="lbl-meta-dim" style="color: #0f172a;">Expected Size After Compress:</span>
-              <span id="lblExpectedSizeBadge" class="val-meta-dim expected">~0.00 MB</span>
+              <span class="lbl-meta-dim" style="color: #0f172a;">Size After Compression:</span>
+              <span id="lblExpectedSizeBadge" class="val-meta-dim expected">Calculating...</span>
             </div>
           </div>
         </div>
@@ -138,7 +138,7 @@
           <p style="font-size: 0.9rem; color: #475569; margin: 0 0 4px 0; line-height: 1.6;">
             You can use the manual range slider or quick presets on the left side to instantly control the target file weight. When the expected size looks optimal for your application, click the action button below to save the compressed file.
           </p>
-          <button id="btnCompilePdfNode" class="f-btn-download" onclick="executePdfCompressionPipeline()">Compress &amp; Download PDF</button>
+          <button id="btnCompilePdfNode" class="f-btn-download" onclick="downloadPreCompressedCachedPdf()">Download Compressed PDF</button>
         </div>
 
       </div>
@@ -168,6 +168,9 @@
 
     let globalFileArrayBuffer = null;
     let globalOriginalSizeInBytes = 0;
+    
+    // Core structural variable storage holding 100% exact compressed bytes in memory cache
+    let cachedCompressedBytesArray = null;
 
     fetch('/components/header.html')
       .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
@@ -247,70 +250,62 @@
             slider.value = 25;
         } else if(mode === 'medium') {
             document.getElementById('presetMedium').classList.add('active');
-            slider.value = 55;
+            slider.value = 50;
         } else if(mode === 'high') {
             document.getElementById('presetHigh').classList.add('active');
-            slider.value = 85;
+            slider.value = 80;
         }
 
         handleSliderMovementValueChange();
+        triggerSilentCompressionCache(); // Trigger background compiler
     }
 
     function handleSliderMovementValueChange() {
         const sliderValue = document.getElementById('compressionManualSlider').value;
         document.getElementById('lblSliderValueBadge').innerText = sliderValue + "%";
 
-        if(sliderValue != 25 && sliderValue != 55 && sliderValue != 85) {
+        if(sliderValue != 25 && sliderValue != 50 && sliderValue != 80) {
             document.getElementById('presetLow').classList.remove('active');
             document.getElementById('presetMedium').classList.remove('active');
             document.getElementById('presetHigh').classList.remove('active');
         } else {
             if(sliderValue == 25) { document.getElementById('presetLow').classList.add('active'); }
-            if(sliderValue == 55) { document.getElementById('presetMedium').classList.add('active'); }
-            if(sliderValue == 85) { document.getElementById('presetHigh').classList.add('active'); }
+            if(sliderValue == 50) { document.getElementById('presetMedium').classList.add('active'); }
+            if(sliderValue == 80) { document.getElementById('presetHigh').classList.add('active'); }
         }
-
-        // Highly accurate visual simulation mapping: High slider means hard mathematical down-sampling weight drop
-        let imageQualitySetting = Math.max(0.40, (100 - sliderValue) / 100); 
-        let internalRenderingScale = sliderValue > 60 ? 0.75 : 1.0; 
-        
-        let calculatedExpectedBytes = globalOriginalSizeInBytes * (imageQualitySetting * internalRenderingScale * 0.42);
-        
-        document.getElementById('lblExpectedSizeBadge').innerText = "~" + formatSizeMetrics(calculatedExpectedBytes);
+        document.getElementById('lblExpectedSizeBadge').innerText = "Calculating size...";
     }
 
-    // --- REAL CANVAS RENDER + IMAGE EMBEDDING PIPELINE ---
-    async function executePdfCompressionPipeline() {
+    // --- STRATEGIC ASYNCHRONOUS BACKGROUND RENDERING AND CACHING METHOD ---
+    async function triggerSilentCompressionCache() {
         if(!globalFileArrayBuffer) return;
 
-        const btnNode = document.getElementById('btnCompilePdfNode');
         const progressStatusText = document.getElementById('lblProgressStatusText');
         const loaderPanel = document.getElementById('loaderStatusPanel');
         const sliderValue = parseInt(document.getElementById('compressionManualSlider').value, 10);
-        
-        btnNode.innerText = "PROCESSING PAGES...";
-        btnNode.classList.add('loading');
+        const downloadBtn = document.getElementById('btnCompilePdfNode');
+
+        downloadBtn.disabled = true;
+        downloadBtn.style.opacity = "0.6";
+        document.getElementById('lblExpectedSizeBadge').innerText = "Optimizing quality layers...";
         loaderPanel.style.display = "flex";
 
         try {
-            // Quality scale factors strictly tied to user control slider inputs
-            const imageQualitySetting = Math.max(0.40, (100 - sliderValue) / 100); // Caps lowest quality at 0.40 to avoid unreadable pixel blur
-            let internalRenderingScale = 1.0; 
-            if(sliderValue > 60) internalRenderingScale = 0.75; // Downscale canvas size dimensions on High settings
-            if(sliderValue < 30) internalRenderingScale = 1.3;
+            // Mapping Aggressive Scale Factors cleanly to achieve genuine high weight drops
+            const imageQualitySetting = Math.max(0.15, (100 - sliderValue) / 100); 
+            let internalRenderingScale = 1.2; 
+            if(sliderValue > 45) internalRenderingScale = 0.85; 
+            if(sliderValue > 75) internalRenderingScale = 0.60; // Highly aggressive rendering grid constraints for text readability
 
-            // Load original file elements inside pdf.js context
             const sourcePdfTask = await pdfjsLib.getDocument({ data: globalFileArrayBuffer }).promise;
             const totalPagesCount = sourcePdfTask.numPages;
 
-            // Instantiate an absolute new clean PDF package via window.PDFLib
             const outputPdfDocument = await window.PDFLib.PDFDocument.create();
-            
             const hiddenCanvasElement = document.createElement('canvas');
             const canvasRenderContext = hiddenCanvasElement.getContext('2d');
 
             for (let pageNum = 1; pageNum <= totalPagesCount; pageNum++) {
-                progressStatusText.innerText = `Re-sampling Scans and Graphics: Page ${pageNum} of ${totalPagesCount}...`;
+                progressStatusText.innerText = `Analyzing layout dimensions: Processing Page ${pageNum} of ${totalPagesCount}...`;
                 
                 const activePageInstance = await sourcePdfTask.getPage(pageNum);
                 const standardViewportOptions = activePageInstance.getViewport({ scale: internalRenderingScale });
@@ -324,7 +319,7 @@
                 };
                 await activePageInstance.render(renderContextParameters).promise;
 
-                // Real Down-sampling: compress canvas to binary raw JPEG base64 strings arrays
+                // Native JPEG re-encoding execution pipeline
                 const compressedImageBytesUrl = hiddenCanvasElement.toDataURL('image/jpeg', imageQualitySetting);
                 
                 const freshEmbedImageObject = await outputPdfDocument.embedJpg(compressedImageBytesUrl);
@@ -338,34 +333,44 @@
                 });
             }
 
-            progressStatusText.innerText = "Packing compressed file streams safely...";
-            const fullyCompressedPdfBytes = await outputPdfDocument.save();
+            // Save the exact compressed final data array straight to cache variable array
+            cachedCompressedBytesArray = await outputPdfDocument.save();
             
-            // Re-sync final display with true actual downloaded size length parameters arrays
-            document.getElementById('lblExpectedSizeBadge').innerText = "~" + formatSizeMetrics(fullyCompressedPdfBytes.length);
-
-            const finalDocumentBlob = new Blob([fullyCompressedPdfBytes], { type: 'application/pdf' });
-            const systemBlobUrl = URL.createObjectURL(finalDocumentBlob);
-
-            const temporaryAnchorElement = document.createElement('a');
-            temporaryAnchorElement.href = systemBlobUrl;
-            temporaryAnchorElement.download = `optimized_document_${Date.now()}.pdf`;
-            
-            document.body.appendChild(temporaryAnchorElement);
-            temporaryAnchorElement.click();
-            
-            document.body.removeChild(temporaryAnchorElement);
-            URL.revokeObjectURL(systemBlobUrl);
+            // Output true exact size length metrics to display element safely
+            document.getElementById('lblExpectedSizeBadge').innerText = formatSizeMetrics(cachedCompressedBytesArray.length);
+            downloadBtn.disabled = false;
+            downloadBtn.style.opacity = "1";
 
         } catch(error) {
-            console.error("Canvas core compression processing glitch:", error);
-            alert("An error occurred during canvas processing. Please check your file constraints.");
+            console.error("Background caching thread exception:", error);
+            document.getElementById('lblExpectedSizeBadge').innerText = "Failed to calculate.";
         } finally {
             loaderPanel.style.display = "none";
             progressStatusText.innerText = "Reading your PDF document file layout, please wait a moment...";
-            btnNode.innerText = "COMPRESS & DOWNLOAD PDF";
-            btnNode.classList.remove('loading');
         }
+    }
+
+    // --- INSTANT CACHED BINARY DOWNLOAD EXPORT HOOK ---
+    function downloadUnContaminatedCachedPdf() {
+        if(!cachedCompressedBytesArray) return;
+
+        const finalDocumentBlob = new Blob([cachedCompressedBytesArray], { type: 'application/pdf' });
+        const systemBlobUrl = URL.createObjectURL(finalDocumentBlob);
+
+        const temporaryAnchorElement = document.createElement('a');
+        temporaryAnchorElement.href = systemBlobUrl;
+        temporaryAnchorElement.download = `optimized_document_${Date.now()}.pdf`;
+        
+        document.body.appendChild(temporaryAnchorElement);
+        temporaryAnchorElement.click();
+        
+        document.body.removeChild(temporaryAnchorElement);
+        URL.revokeObjectURL(systemBlobUrl);
+    }
+
+    // Wrapper link mapping to prevent missing execution identifiers inside button
+    function downloadPreCompressedCachedPdf() {
+        downloadUnContaminatedCachedPdf();
     }
   </script>
   
