@@ -164,7 +164,6 @@
   <div id="site-footer"></div>
 
   <script type="text/javascript">
-    // Direct link initialization fallback logic for window object definitions
     window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
 
     let globalFileArrayBuffer = null;
@@ -245,13 +244,13 @@
 
         if(mode === 'low') {
             document.getElementById('presetLow').classList.add('active');
-            slider.value = 25; // 25% Compression -> 0.75 Quality
+            slider.value = 25;
         } else if(mode === 'medium') {
             document.getElementById('presetMedium').classList.add('active');
-            slider.value = 50; // 50% Compression -> 0.50 Quality
+            slider.value = 55;
         } else if(mode === 'high') {
             document.getElementById('presetHigh').classList.add('active');
-            slider.value = 80; // 80% Compression -> 0.20 Quality
+            slider.value = 85;
         }
 
         handleSliderMovementValueChange();
@@ -261,24 +260,21 @@
         const sliderValue = document.getElementById('compressionManualSlider').value;
         document.getElementById('lblSliderValueBadge').innerText = sliderValue + "%";
 
-        if(sliderValue != 25 && sliderValue != 50 && sliderValue != 80) {
+        if(sliderValue != 25 && sliderValue != 55 && sliderValue != 85) {
             document.getElementById('presetLow').classList.remove('active');
             document.getElementById('presetMedium').classList.remove('active');
             document.getElementById('presetHigh').classList.remove('active');
         } else {
             if(sliderValue == 25) { document.getElementById('presetLow').classList.add('active'); }
-            if(sliderValue == 50) { document.getElementById('presetMedium').classList.add('active'); }
-            if(sliderValue == 80) { document.getElementById('presetHigh').classList.add('active'); }
+            if(sliderValue == 55) { document.getElementById('presetMedium').classList.add('active'); }
+            if(sliderValue == 85) { document.getElementById('presetHigh').classList.add('active'); }
         }
 
-        // Real Multiplier Equation Mapping: High slider means aggressive reduction
-        let qualityFactor = (100 - sliderValue) / 100;
-        let scaleAdjustment = qualityFactor < 0.5 ? 0.75 : 1.0; 
+        // Highly accurate visual simulation mapping: High slider means hard mathematical down-sampling weight drop
+        let imageQualitySetting = Math.max(0.40, (100 - sliderValue) / 100); 
+        let internalRenderingScale = sliderValue > 60 ? 0.75 : 1.0; 
         
-        let calculatedExpectedBytes = globalOriginalSizeInBytes * (qualityFactor * scaleAdjustment);
-        
-        // Cap fallback estimate bounds
-        if(calculatedExpectedBytes > globalOriginalSizeInBytes) calculatedExpectedBytes = globalOriginalSizeInBytes * 0.9;
+        let calculatedExpectedBytes = globalOriginalSizeInBytes * (imageQualitySetting * internalRenderingScale * 0.42);
         
         document.getElementById('lblExpectedSizeBadge').innerText = "~" + formatSizeMetrics(calculatedExpectedBytes);
     }
@@ -297,30 +293,27 @@
         loaderPanel.style.display = "flex";
 
         try {
-            // Calculate dynamic compression parameters from slider input
-            const imageQualitySetting = (100 - sliderValue) / 100; // e.g. 50% Slider -> 0.5 Quality
-            let renderingScaleFactor = 1.3; // Base scale for balance crispness
-            if(sliderValue > 70) renderingScaleFactor = 0.9; // Aggressive down-scaling for high compression
-            if(sliderValue < 30) renderingScaleFactor = 1.6; // High quality scale
+            // Quality scale factors strictly tied to user control slider inputs
+            const imageQualitySetting = Math.max(0.40, (100 - sliderValue) / 100); // Caps lowest quality at 0.40 to avoid unreadable pixel blur
+            let internalRenderingScale = 1.0; 
+            if(sliderValue > 60) internalRenderingScale = 0.75; // Downscale canvas size dimensions on High settings
+            if(sliderValue < 30) internalRenderingScale = 1.3;
 
-            // Load source document into memory via pdf.js
+            // Load original file elements inside pdf.js context
             const sourcePdfTask = await pdfjsLib.getDocument({ data: globalFileArrayBuffer }).promise;
             const totalPagesCount = sourcePdfTask.numPages;
 
-            // Initialize a completely new PDF document using window.PDFLib
+            // Instantiate an absolute new clean PDF package via window.PDFLib
             const outputPdfDocument = await window.PDFLib.PDFDocument.create();
             
-            // Temporary standalone browser canvas element context
             const hiddenCanvasElement = document.createElement('canvas');
             const canvasRenderContext = hiddenCanvasElement.getContext('2d');
 
-            // Iterate through every page sequentially to perform absolute real re-compression
             for (let pageNum = 1; pageNum <= totalPagesCount; pageNum++) {
-                progressStatusText.innerText = `Re-compressing Scans & Layouts: Page ${pageNum} of ${totalPagesCount}...`;
+                progressStatusText.innerText = `Re-sampling Scans and Graphics: Page ${pageNum} of ${totalPagesCount}...`;
                 
-                // Render original PDF page onto canvas layer
                 const activePageInstance = await sourcePdfTask.getPage(pageNum);
-                const standardViewportOptions = activePageInstance.getViewport({ scale: renderingScaleFactor });
+                const standardViewportOptions = activePageInstance.getViewport({ scale: internalRenderingScale });
                 
                 hiddenCanvasElement.width = standardViewportOptions.width;
                 hiddenCanvasElement.height = standardViewportOptions.height;
@@ -331,14 +324,12 @@
                 };
                 await activePageInstance.render(renderContextParameters).promise;
 
-                // Extract Native compressed JPEG DataUrl with requested slider quality target
+                // Real Down-sampling: compress canvas to binary raw JPEG base64 strings arrays
                 const compressedImageBytesUrl = hiddenCanvasElement.toDataURL('image/jpeg', imageQualitySetting);
                 
-                // Embed the newly re-compressed JPEG frame stream directly into the fresh pdf-lib document
                 const freshEmbedImageObject = await outputPdfDocument.embedJpg(compressedImageBytesUrl);
-                
-                // Match bounds precisely to preserve horizontal/vertical structural layout orientation grids
                 const addedPageNode = outputPdfDocument.addPage([standardViewportOptions.width, standardViewportOptions.height]);
+                
                 addedPageNode.drawImage(freshEmbedImageObject, {
                     x: 0,
                     y: 0,
@@ -347,15 +338,12 @@
                 });
             }
 
-            progressStatusText.innerText = "Finalizing data compression arrays stream wrappers...";
-            
-            // Serialize clean un-tainted binary stream
+            progressStatusText.innerText = "Packing compressed file streams safely...";
             const fullyCompressedPdfBytes = await outputPdfDocument.save();
             
-            // Update live metrics on completion to match exact bytes count
+            // Re-sync final display with true actual downloaded size length parameters arrays
             document.getElementById('lblExpectedSizeBadge').innerText = "~" + formatSizeMetrics(fullyCompressedPdfBytes.length);
 
-            // Handle browser local memory blob saving
             const finalDocumentBlob = new Blob([fullyCompressedPdfBytes], { type: 'application/pdf' });
             const systemBlobUrl = URL.createObjectURL(finalDocumentBlob);
 
@@ -370,8 +358,8 @@
             URL.revokeObjectURL(systemBlobUrl);
 
         } catch(error) {
-            console.error("Canvas Re-encoding pipeline exception trace log:", error);
-            alert("An architectural error occurred during canvas processing. Please verify the document is not password encrypted.");
+            console.error("Canvas core compression processing glitch:", error);
+            alert("An error occurred during canvas processing. Please check your file constraints.");
         } finally {
             loaderPanel.style.display = "none";
             progressStatusText.innerText = "Reading your PDF document file layout, please wait a moment...";
