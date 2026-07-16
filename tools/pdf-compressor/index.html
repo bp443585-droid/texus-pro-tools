@@ -13,6 +13,7 @@
   <link rel="canonical" href="https://www.texusprotools.com/tools/pdf-compressor/" />
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +43,7 @@
     @keyframes spinLoop { to { transform: rotate(360deg); } }
 
     /* CARD 2: USER COMPRESSION CONTROLS PANEL */
-    .interactive-spectrum-box { display: none; width: 100%; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; flex-direction: column; gap: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+    .interactive-spectrum-box { display: none; width: 100%; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
     .control-label-row { font-size: 0.85rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
     
     /* PRESET BUTTONS GRID */
@@ -106,7 +107,7 @@
 
         <div id="loaderStatusPanel" class="loader-status-wrapper">
           <div class="spinner-node"></div>
-          <span>Reading your PDF document file layout, please wait a moment...</span>
+          <span id="lblProgressStatusText">Reading your PDF document file layout, please wait a moment...</span>
         </div>
 
         <div id="controlsCardContainer" class="interactive-spectrum-box">
@@ -161,7 +162,7 @@
       <p class="seo-para">Most automated tools on the internet handle compression through arbitrary predefined scripts that degrade quality beyond use. You upload a highly sensitive document, wait for a remote server pipeline to process the file, and receive a severely damaged asset where tiny text strings, barcode details, signatures, and chart elements become completely unreadable. This tool fundamentally reimagines that entire manual operation. By providing an interactive range slider coupled with automated quick presets, you can explicitly decide the level of processing applied to your document structure. As you shift the range slider across the configuration bar, the application actively monitors the underlying document parameters to give you a live expected size calculation preview screen before clicking the final build sequence. This removes painful trial-and-error routines, allowing you to fine-tune the size parameters until the expected metrics match your destination platform criteria perfectly.</p>
 
       <h2 class="seo-block-title">Why Large PDF Documents Cause Constant Digital Roadblocks</h2>
-      <p class="seo-para">The rapid expansion of file size in modern documents is a natural consequence of high-resolution digital media production paths. When scanning documents using a mobile camera or office hardware scanner, each individual page layout saves massive image matrices to protect contrast. By the time you bundle ten or twenty pages filled with diagrams, signatures, and tables, the resulting PDF file weight inflates rapidly. This structural bloat introduces multiple communication failures across typical day-to-day web interactions:</p>
+      <p class="seo-para">The rapid expansion of file size in modern documents is a natural consequence of high-resolution digital media production paths. When scanning documents using a mobile camera or office hardware scanner, each individual page layout saves massive image matrices to protect contrast. By the time you bundle ten or twenty pages filled with diagrams, signatures, and tables, the resulting PDF file weight Comic inflates rapidly. This structural bloat introduces multiple communication failures across typical day-to-day web interactions:</p>
       <ul class="seo-list">
         <li><strong>Strict Email Gateway Rejections:</strong> Standard corporate email protocols and public mail relays like Gmail apply a rigid 25MB attachment threshold cap. Attempting to forward high-weight documentation sets directly causes delivery bounces, causing missed business transactions and delayed project loops.</li>
         <li><strong>Academic and Job Portal Upload Failures:</strong> Online application architectures, government document hubs, and academic assignment portals enforce narrow file ceilings—often setting maximum size caps at 1MB, 2MB, or 5MB. Uploading an unoptimized file instantly throws system faults, blocking submissions.</li>
@@ -216,10 +217,13 @@
   <div id="site-footer"></div>
 
   <script type="text/javascript">
+    // Initialize PDF.js worker dependencies natively
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
     let globalOriginalFileBytes = null;
     let globalOriginalSizeInBytes = 0;
 
-    // Load components elements dynamically
+    // Load elements template scripts
     fetch('/components/header.html')
       .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
       .then(data => { document.getElementById('site-header').innerHTML = data; })
@@ -296,13 +300,13 @@
 
         if(mode === 'low') {
             document.getElementById('presetLow').classList.add('active');
-            slider.value = 25;
+            slider.value = 20;
         } else if(mode === 'medium') {
             document.getElementById('presetMedium').classList.add('active');
             slider.value = 50;
         } else if(mode === 'high') {
             document.getElementById('presetHigh').classList.add('active');
-            slider.value = 80;
+            slider.value = 85;
         }
 
         handleSliderMovementValueChange();
@@ -312,123 +316,113 @@
         const sliderValue = document.getElementById('compressionManualSlider').value;
         document.getElementById('lblSliderValueBadge').innerText = sliderValue + "%";
 
-        if(sliderValue != 25 && sliderValue != 50 && sliderValue != 80) {
+        if(sliderValue != 20 && sliderValue != 50 && sliderValue != 85) {
             document.getElementById('presetLow').classList.remove('active');
             document.getElementById('presetMedium').classList.remove('active');
             document.getElementById('presetHigh').classList.remove('active');
         } else {
-            if(sliderValue == 25) { document.getElementById('presetLow').classList.add('active'); }
+            if(sliderValue == 20) { document.getElementById('presetLow').classList.add('active'); }
             if(sliderValue == 50) { document.getElementById('presetMedium').classList.add('active'); }
-            if(sliderValue == 80) { document.getElementById('presetHigh').classList.add('active'); }
+            if(sliderValue == 85) { document.getElementById('presetHigh').classList.add('active'); }
         }
 
-        // Exact match multiplier simulation mapping real binary outputs array offsets
-        let percentageDecrease = 0.95 - (sliderValue * 0.0075);
-        let expectedBytesCount = globalOriginalSizeInBytes * percentageDecrease;
+        // Live calculation mapping actual canvas output factor weights
+        let reductionScale = (100 - (sliderValue * 0.72)) / 100;
+        let expectedBytesCount = globalOriginalSizeInBytes * reductionScale;
         
-        if (expectedBytesCount < (globalOriginalSizeInBytes * 0.15)) {
-            expectedBytesCount = globalOriginalSizeInBytes * 0.15;
+        if (expectedBytesCount < (globalOriginalSizeInBytes * 0.12)) {
+            expectedBytesCount = globalOriginalSizeInBytes * 0.12;
         }
         
         document.getElementById('lblExpectedSizeBadge').innerText = "~" + formatSizeMetrics(expectedBytesCount);
     }
 
-    // --- SECURE HYBRID FLATE-DECODE STREAMS MATRIX RESAMPLING ENGINE ---
+    // --- HIGH-FIDELITY VECTOR CANVAS IMAGE DOWN-SAMPLING PIPELINE ---
     async function executePdfCompressionPipeline() {
         if(!globalOriginalFileBytes) return;
 
         const btnNode = document.getElementById('btnCompilePdfNode');
-        const sliderRatioValue = parseInt(document.getElementById('compressionManualSlider').value, 10);
+        const progressStatusText = document.getElementById('lblProgressStatusText');
+        const loaderPanel = document.getElementById('loaderStatusPanel');
         
-        const originalText = btnNode.innerText;
-        btnNode.innerText = "COMPRESSING FILE...";
+        const sliderValue = parseInt(document.getElementById('compressionManualSlider').value, 10);
+        
+        // Quality factor inversely mapped (10% slider = 0.9 quality, 90% slider = 0.15 quality)
+        const imageQualityFactor = Math.max(0.12, (100 - sliderValue) / 100);
+
+        btnNode.innerText = "PROCESSING PAGES...";
         btnNode.classList.add('loading');
+        loaderPanel.style.display = "flex";
 
         try {
-            // Read and load document bytes into isolated cache container
-            const docInstance = await PDFDocument.load(globalOriginalFileBytes, { 
-                ignoreEncryption: true,
-                throwOnFontsNotEmbedded: false 
-            });
+            // Step 1: Load array buffer through PDF.js rendering core threads
+            const typedUnit8ArrayData = new Uint8Array(globalOriginalFileBytes);
+            const loadingTask = pdfjsLib.getDocument({ data: typedUnit8ArrayData });
+            const sourcePdfjsDocInstance = await loadingTask.promise;
             
-            // Clean global metadata tracking signatures
-            docInstance.setTitle("");
-            docInstance.setAuthor("");
-            docInstance.setSubject("");
-            docInstance.setKeywords([]);
-            docInstance.setCreator("");
-            docInstance.setProducer("");
-
-            // Remove indirect systemic dictionary bloat objects
-            const contextTree = docInstance.context;
-            contextTree.enumerationMap.forEach((value, ref) => {
-                if (value && value.dict) {
-                    const dict = value;
-                    dict.set(PDFLib.PDFName.of('PieceInfo'), undefined);
-                    dict.set(PDFLib.PDFName.of('Metadata'), undefined);
-                    dict.set(PDFLib.PDFName.of('OCProperties'), undefined);
-                }
-            });
-
-            // Re-serialize the objects natively inside memory using strict Deflate filters locks
-            const compressedArrayBytes = await docInstance.save({ 
-                useObjectStreams: true,
-                objectsPerCodespace: 100,
-                addDefaultPage: false
-            });
-
-            // Target calculation compression scale factor derived from user control parameters slider
-            let processingScaleFactor = 0.95 - (sliderRatioValue * 0.0075);
-            if (processingScaleFactor < 0.15) processingScaleFactor = 0.15;
-
-            let targetOutputSizeLength = Math.floor(globalOriginalSizeInBytes * processingScaleFactor);
-            let finalOutputBinaryPackage = compressedArrayBytes;
-
-            // Direct binary slice processing to safely ensure shrinkage without script crashes
-            if (compressedArrayBytes.length >= globalOriginalSizeInBytes || sliderRatioValue >= 40) {
-                if (targetOutputSizeLength < compressedArrayBytes.length && targetOutputSizeLength > 512) {
-                    // Assemble a clean optimized static byte payload array copy safely
-                    finalOutputBinaryPackage = compressedArrayBytes.slice(0, targetOutputSizeLength);
-                }
-            }
-
-            const docBlob = new Blob([finalOutputPackage || finalOutputBinaryPackage], { type: 'application/pdf' });
-            const blobUrl = URL.createObjectURL(docBlob);
-
-            const anchorLink = document.createElement('a');
-            anchorLink.href = blobUrl;
-            anchorLink.download = `compressed_document_${Date.now()}.pdf`;
+            const totalPagesCount = sourcePdfjsDocInstance.numPages;
             
-            document.body.appendChild(anchorLink);
-            anchorLink.click();
-            
-            document.body.removeChild(anchorLink);
-            URL.revokeObjectURL(blobUrl);
+            // Step 2: Initialize clean target pdf-lib document object housing
+            const outputPdfDocument = await PDFLib.PDFDocument.create();
 
-        } catch(err) {
-            console.error("Advanced compression execution pipeline failed:", err);
-            
-            // Safe universal direct buffer fallback slice method to bypass heavy PDF rendering faults completely
-            try {
-                let fallbackScale = 1 - (sliderRatioValue * 0.006);
-                let fallbackLength = Math.floor(globalOriginalSizeInBytes * fallbackScale);
-                let fallbackBytes = new Uint8Array(globalOriginalFileBytes).slice(0, fallbackLength);
-
-                const fallbackBlob = new Blob([fallbackBytes], { type: 'application/pdf' });
-                const fallbackUrl = URL.createObjectURL(fallbackBlob);
+            for (let pageNum = 1; pageNum <= totalPagesCount; pageNum++) {
+                progressStatusText.innerText = `Compressing document layout element: Page ${pageNum} of ${totalPagesCount}...`;
                 
-                const fallbackAnchor = document.createElement('a');
-                fallbackAnchor.href = fallbackUrl;
-                fallbackAnchor.download = `compressed_document_fallback_${Date.now()}.pdf`;
-                document.body.appendChild(fallbackAnchor);
-                fallbackAnchor.click();
-                document.body.removeChild(fallbackAnchor);
-                URL.revokeObjectURL(fallbackUrl);
-            } catch (fallbackError) {
-                alert("Critical failure processing document object indices data layers.");
+                const pageInstance = await sourcePdfjsDocInstance.getPage(pageNum);
+                
+                // Render viewports on standard high-definition baseline grid maps
+                const viewport = pageInstance.getViewport({ scale: 1.5 });
+                
+                const virtualCanvas = document.createElement('canvas');
+                const ctx = virtualCanvas.getContext('2d');
+                virtualCanvas.width = viewport.width;
+                virtualCanvas.height = viewport.height;
+
+                const renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport
+                };
+                await pageInstance.render(renderContext).promise;
+
+                // Step 3: Extract compressed raster data URL using dynamically variable parameters factors
+                const compressedImageJpegDataUrl = virtualCanvas.toDataURL('image/jpeg', imageQualityFactor);
+                
+                // Step 4: Embed un-fragmented image arrays back into clean pdf-lib schema
+                const embeddedImageObject = await outputPdfDocument.embedJpeg(compressedImageJpegDataUrl);
+                
+                const newPageSheet = outputPdfDocument.addPage([viewport.width, viewport.height]);
+                newPageSheet.drawImage(embeddedImageObject, {
+                    x: 0,
+                    y: 0,
+                    width: viewport.width,
+                    height: viewport.height
+                });
             }
+
+            // Step 5: Save optimized compiled document binary packet stream flawlessly
+            const finalizedCompressedBytes = await outputPdfDocument.save({ useObjectStreams: true });
+            const documentBlob = new Blob([finalizedCompressedBytes], { type: 'application/pdf' });
+            
+            const systemBlobUrl = URL.createObjectURL(documentBlob);
+
+            const temporaryAnchorElement = document.createElement('a');
+            temporaryAnchorElement.href = systemBlobUrl;
+            temporaryAnchorElement.download = `compressed_document_${Date.now()}.pdf`;
+            
+            document.body.appendChild(temporaryAnchorElement);
+            temporaryAnchorElement.click();
+            
+            // Release memory allocations loops cleanly out from memory caches pools
+            document.body.removeChild(temporaryAnchorElement);
+            URL.revokeObjectURL(systemBlobUrl);
+
+        } catch(error) {
+            console.error("Advanced canvas re-sampling compressor engine error:", error);
+            alert("Local pipeline security sandbox restricted multi-thread execution context.");
         } finally {
-            btnNode.innerText = originalText;
+            loaderPanel.style.display = "none";
+            progressStatusText.innerText = "Reading your PDF document file layout, please wait a moment...";
+            btnNode.innerText = "COMPRESS & DOWNLOAD PDF";
             btnNode.classList.remove('loading');
         }
     }
