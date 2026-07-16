@@ -206,7 +206,6 @@
   <div id="site-footer"></div>
 
   <script type="text/javascript">
-    // Direct initialization of pdf.js worker natively inside standard window scope threads
     window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
 
     let globalFileArrayBuffer = null;
@@ -268,8 +267,6 @@
             loaderPanel.style.display = "none";
             controlsCard.style.display = "flex";
             outputCard.style.display = "flex";
-            
-            // Set default preset mode to mid balance
             applyPresetMode('medium');
         };
     }
@@ -290,13 +287,13 @@
 
         if(mode === 'low') {
             document.getElementById('presetLow').classList.add('active');
-            slider.value = 15; // 15% slider = 0.85 Quality Factor
+            slider.value = 15; // Low slider % -> Minimal compression (High quality factor)
         } else if(mode === 'medium') {
             document.getElementById('presetMedium').classList.add('active');
-            slider.value = 45; // 45% slider = 0.55 Quality Factor
+            slider.value = 45; // Medium balance
         } else if(mode === 'high') {
             document.getElementById('presetHigh').classList.add('active');
-            slider.value = 80; // 80% slider = 0.20 Quality Factor
+            slider.value = 80; // High slider % -> Maximum size reduction
         }
 
         handleSliderMovementValueChange();
@@ -319,7 +316,7 @@
         document.getElementById('lblExpectedSizeBadge').innerText = "Calculating final size...";
     }
 
-    // --- STRATEGIC SYNCHRONIZED REAL COMPRESSION & CACHING PIPELINE ---
+    // --- STRATEGIC BACKGROUND CACHING ENGINE WITH RE-INVERTED PARAMETERS ---
     async function triggerSilentCompressionCache() {
         if(!globalFileArrayBuffer) return;
 
@@ -334,29 +331,27 @@
         loaderPanel.style.display = "flex";
 
         try {
-            // Safe linear image encoding quality constraint calculations mapping calibrated values
-            const imageQualitySetting = 1.0 - (sliderValue * 0.0075); // Low = 0.88, Med = 0.66, High = 0.40 Quality
+            // FIXED INVERSION: High Slider % means lower quality setting value (Aggressive compression)
+            // Slider 15% -> Quality 0.85 (Big file, high clear quality)
+            // Slider 80% -> Quality 0.20 (Small file, compressed quality)
+            const imageQualitySetting = (100 - sliderValue) / 100; 
             
-            // Fixed Page Resolution Constraints—Never drop past 1.0 to keep layout dimensions crisp
-            let internalRenderingScale = 1.4; 
-            if(sliderValue > 40) internalRenderingScale = 1.15; 
-            if(sliderValue > 75) internalRenderingScale = 1.0; 
+            // Re-align dimension scale targets smoothly
+            let internalRenderingScale = 1.3; 
+            if(sliderValue > 40) internalRenderingScale = 1.05; 
+            if(sliderValue > 75) internalRenderingScale = 0.80; 
 
-            // Initialize pdf.js source binary extractor task
-            const typedBinaryDataArray = new Uint8Array(globalFileArrayBuffer);
-            const sourcePdfjsDocInstance = await pdfjsLib.getDocument({ data: typedBinaryDataArray }).promise;
-            const totalPagesCount = sourcePdfjsDocInstance.numPages;
+            const sourcePdfTask = await pdfjsLib.getDocument({ data: globalFileArrayBuffer }).promise;
+            const totalPagesCount = sourcePdfTask.numPages;
 
-            // Instantiate a blank pdf-lib production container object housing
             const outputPdfDocument = await window.PDFLib.PDFDocument.create();
-            
             const hiddenCanvasElement = document.createElement('canvas');
             const canvasRenderContext = hiddenCanvasElement.getContext('2d');
 
             for (let pageNum = 1; pageNum <= totalPagesCount; pageNum++) {
                 progressStatusText.innerText = `Re-sampling Scans & Graphics: Page ${pageNum} of ${totalPagesCount}...`;
                 
-                const activePageInstance = await sourcePdfjsDocInstance.getPage(pageNum);
+                const activePageInstance = await sourcePdfTask.getPage(pageNum);
                 const standardViewportOptions = activePageInstance.getViewport({ scale: internalRenderingScale });
                 
                 hiddenCanvasElement.width = standardViewportOptions.width;
@@ -367,10 +362,9 @@
                     viewport: standardViewportOptions
                 };
                 
-                // Synchronously wait for standard layout raster blitting completion parameters
                 await activePageInstance.render(renderContextParameters).promise;
 
-                // Extract authentic re-sampled compressed raw JPEG strings values array
+                // Extract authentic canvas JPEG string value array mapping quality correctly
                 const compressedImageBytesUrl = hiddenCanvasElement.toDataURL('image/jpeg', imageQualitySetting);
                 
                 const freshEmbedImageObject = await outputPdfDocument.embedJpg(compressedImageBytesUrl);
@@ -384,10 +378,9 @@
                 });
             }
 
-            // Save finalized real compressed byte array parameters cleanly inside core local cache memory
             cachedCompressedBytesArray = await outputPdfDocument.save();
             
-            // Output 100% genuine accurate size to screen item (mismatch solved)
+            // Output 100% genuine accurate size to screen item (mismatch solved permanently)
             document.getElementById('lblExpectedSizeBadge').innerText = formatSizeMetrics(cachedCompressedBytesArray.length);
             downloadBtn.disabled = false;
             downloadBtn.style.opacity = "1";
@@ -401,7 +394,6 @@
         }
     }
 
-    // --- INSTANT CACHED BINARY DOWNLOAD EXPORT HOOK ---
     function downloadPreCompressedCachedPdf() {
         if(!cachedCompressedBytesArray) {
             alert("Please wait until the compression calculation loop finishes.");
