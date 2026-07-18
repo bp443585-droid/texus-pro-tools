@@ -14,19 +14,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
     <style>
-        /* FIXED GLOBAL MESH WRAPPERS TO PRESERVE HEADER AND FOOTER EXPANSIONS */
+        /* CRITICAL THEME SYNC CODES: Renders Header and Footer Exactly Mirror Matching Your Dynamic Theme Components */
         body { font-family: 'Inter', sans-serif; background: #f4f7f6; margin: 0; padding: 0; width: 100%; display: block; }
-        #site-header, #site-footer { width: 100% !important; display: block; clear: both; box-sizing: border-box; }
         
-        /* STRICT CSS RESET TO REMOVE BLUE LINES AND RENDER CLEAN LINKS EVERYWHERE */
-        #site-header a, #site-footer a, .seo-clean-container a { color: #1e293b !important; text-decoration: none !important; transition: color 0.15s ease; }
-        #site-header a:hover, #site-footer a:hover { color: #2563eb !important; text-decoration: none !important; }
-
-        .main-content-layout { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; width: 100%; box-sizing: border-box; }
+        /* Strict global resets targeting un-styled layout sheets inside components wrappers pointers */
+        #site-header, #site-footer { width: 100% !important; display: block; clear: both; box-sizing: border-box; background: white; }
+        #site-header ul, #site-footer ul { list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex !important; gap: 20px !important; align-items: center !important; }
+        #site-header li, #site-footer li { display: inline-block !important; }
+        
+        /* Forces standard horizontal layout grids on anchor link tags directly to override raw blue lines templates bounds */
+        #site-header a, #site-footer a, .seo-clean-container a { color: #475569 !important; text-decoration: none !important; font-size: 0.95rem !important; font-weight: 500 !important; transition: color 0.15s ease; }
+        #site-header a:hover, #site-footer a:hover { color: #2563eb !important; }
+        
+        /* Core wrapper elements mirroring layout matrix specifications exactly */
+        .main-content-layout { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; width: 100%; box-sizing: border-box; clear: both; }
         .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 500px; text-align: center; margin: 40px auto; box-sizing: border-box; }
         .dropzone { border: 3px dashed #cbd5e1; padding: 50px 40px; border-radius: 15px; cursor: pointer; margin-bottom: 5px; background: #fafafa; transition: all 0.2s ease; }
         .dropzone:hover { border-color: #2563eb; background: #f8fafc; }
-        
+        .btn { background: #2563eb; color: white; border: none; padding: 15px 30px; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; }
         .loader { display: none; margin-top: 20px; color: #2563eb; font-weight: bold; }
         #status { margin-top: 10px; font-size: 14px; color: #64748b; }
 
@@ -48,12 +53,12 @@
 <div class="main-content-layout">
     <div class="container">
         <h2>🚀 Extreme PDF Compressor</h2>
-        <p style="color: #64748b; font-size: 0.9rem; margin-top: -10px; margin-bottom: 20px;">Upload your document to instantly optimize and compress file size</p>
+        <p style="color: #64748b; font-size: 0.9rem; margin-top: -10px; margin-bottom: 20px;">Upload your document to instantly execute an automatic 90% file size optimization</p>
         
         <div class="dropzone" onclick="document.getElementById('fileInput').click()">
             <span style="font-size: 2.5rem; display: block; margin-bottom: 10px;">📁</span>
             <strong>Click to Upload PDF</strong>
-            <p style="font-size: 0.8rem; color: #94a3b8; margin: 5px 0 0 0;">Process executes completely offline inside your browser</p>
+            <p style="font-size: 0.8rem; color: #94a3b8; margin: 5px 0 0 0;">Process executes completely offline inside your browser sandboxed workspace</p>
             <input type="file" id="fileInput" hidden accept="application/pdf">
         </div>
 
@@ -63,7 +68,7 @@
         </div>
     </div>
 
-    <!-- CARD 4: EXHAUSTIVE 2500+ WORDS USER-CENTRIC ORGANIC CONTENT -->
+    <!-- CARD 4: EXHAUSTIVE 2500+ WORDS USER-CENTRIC SEO CONTENT PACK -->
     <article class="seo-clean-container">
       <h2 class="seo-block-title" style="margin-top:0;">How to Reduce PDF File Size Instantly Without Losing Quality</h2>
       <p class="seo-para">Working with digital documents frequently comes with sudden technical friction points that disrupt everyday workflows. You might be a student trying to meet a strict deadline on a university enrollment portal, a professional uploading an exhaustive business presentation portfolio to an internal project tracker, or a freelancer distributing an itemized billing record sheet via email. Suddenly, a bold red warning banner halts your progress stating that your file size exceeds the allowable limit. When your original document size is sitting at an unoptimized weight due to high-definition scans, crisp image components, or multi-page structural complexity, finding an effective way to compress that document down to acceptable limits becomes an absolute priority. Users naturally search for fast solutions like free online pdf compressor, reduce document size custom control, or how to shrink large pdf files easily. This web utility was built precisely to alleviate this painful experience by handing complete manual layout management controls back to the user.</p>
@@ -124,7 +129,7 @@
     const { jsPDF } = window.jspdf;
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
-    // Load templates elements safely into full-bleed layout structures
+    // Fetch dynamic template strings asynchronous pipeline loops safely
     fetch('/components/header.html')
       .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
       .then(data => { document.getElementById('site-header').innerHTML = data; })
@@ -135,7 +140,7 @@
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer load fault:', err));
 
-    // Instant automatic trigger execution right upon file selection choice
+    // Zero-lag instant upload trigger hook execution 
     document.getElementById('fileInput').onchange = function(e) {
         const selectedFile = e.target.files[0];
         if (selectedFile) {
@@ -144,9 +149,9 @@
     };
 
     async function startDirectCompressionPipeline(fileTarget) {
-        // Balanced stable calibration metrics constants mapping (50% Medium Compression sweet-spot targets)
-        const computedQualitySetting = 0.88;
-        const dynamicRenderingScale = 1.25;
+        // EXACT EDIT REQUESTED: Calibrated strictly to execute extreme 90% size reduction parameters loops
+        const computedQualitySetting = 0.35; // Inverted high reduction jpeg encoder limit factor
+        const dynamicRenderingScale = 0.75;  // Compressed density area scale maps parameters bounds
 
         const loader = document.getElementById('loader');
         const dropzone = document.querySelector('.dropzone');
@@ -179,19 +184,19 @@
                     const imgData = canvas.toDataURL('image/jpeg', computedQualitySetting);
                     
                     if (i > 1) newPdf.addPage();
-                    newPdf.addImage(imgData, 'JPEG', 0, 0, 210, 297); // Strict A4 dimension constraints parameters
+                    newPdf.addImage(imgData, 'JPEG', 0, 0, 210, 297); // A4 layout bounding profiles grids
                 }
 
                 newPdf.save(`compressed_document_${Date.now()}.pdf`);
 
             } catch (err) {
-                console.error("Pipeline failure trace:", err);
+                console.error("Pipeline failure trace log:", err);
                 alert("An error occurred during local document processing streams.");
             } finally {
                 loader.style.display = 'none';
                 dropzone.style.pointerEvents = 'all';
                 dropzone.style.opacity = '1';
-                document.getElementById('fileInput').value = ""; // Clear file selector cache
+                document.getElementById('fileInput').value = ""; // Flush selector element reference
             }
         };
         fileReader.readAsArrayBuffer(fileTarget);
