@@ -6,7 +6,7 @@
   crossorigin="anonymous"></script>
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" style="content-type: width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Rotate PDF Pages Online Free - Permanent Rotation System Model</title>
   <meta name="description" content="Rotate PDF pages online for free instantly. Rotate individual pages or whole documents 90, 180, or 270 degrees with a live layout preview matrix." />
   
@@ -40,6 +40,7 @@
     
     /* WORKSPACE ACTION CONTROL HEADER BLOCKS */
     .bulk-controls-panel { display: none; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; margin-bottom: 25px; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; text-align: left; }
+    .bulk-title-group { text-align: left; }
     .bulk-title-group h4 { margin: 0; color: #0f172a; font-weight: 800; font-size: 1.05rem; }
     .bulk-title-group p { margin: 3px 0 0 0; color: #64748b; font-size: 0.82rem; font-weight: 500; }
     .bulk-actions-buttons { display: flex; gap: 10px; }
@@ -197,13 +198,10 @@
 
   <!-- NATIVE OPERATIONAL DATA FLOW PIPELINE LOGIC CONTROLS -->
   <script type="text/javascript">
-    // Configure standalone fallback pathways pointers for window threads context structures
     window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
     let uploadedOriginalBytesBuffer = null;
     let totalDocumentPagesCount = 0;
-    
-    // Core state variable catalog mapping tracking real angles parameters sequentially
     let pageRotationsStateMap = {}; 
 
     fetch('/components/header.html')
@@ -217,16 +215,15 @@
       .catch(err => console.error('Footer setup fault link trace:', err));
 
     function triggerHiddenFileInputClick() {
-        document.getElementById('fileInput').click();
+        document.getElementById('hiddenFileInputNode').click();
     }
 
     function handleIncomingFileSelection() {
-        const targetFile = document.getElementById('fileInput').files[0];
+        const targetFile = document.getElementById('hiddenFileInputNode').files[0];
         if(!targetFile) return;
 
         document.getElementById('dropzoneContainer').style.display = 'none';
         document.getElementById('loader').style.display = 'block';
-
         document.getElementById('lblDocumentMetaTitle').innerText = targetFile.name;
 
         const reader = new FileReader();
@@ -240,21 +237,21 @@
     // --- RENDER DYNAMIC VISUAL THUMBNAIL MATRIX FLOWS NATIVELY ---
     async function renderDocumentPagesPreviewGrid() {
         const matrixContainer = document.getElementById('pagesGridContainer');
-        matrixContainer.innerHTML = ""; // Clear active panels layout cache
+        matrixContainer.innerHTML = ""; 
         
         try {
             const castTypedArray = new Uint8Array(uploadedOriginalBytesBuffer);
             const loadedPdfTask = await pdfjsLib.getDocument({ data: castTypedArray }).promise;
             totalDocumentPagesCount = loadedPdfTask.numPages;
 
-            for (let pageIdx = 1; pageNum <= totalDocumentPagesCount; pageIdx++) {
-                // Initialize default angles state inside tracking map dictionaries
+            // TYPO FIXED: Crucial conditional variables synchronized properly
+            for (let pageIdx = 1; pageIdx <= totalDocumentPagesCount; pageIdx++) {
                 pageRotationsStateMap[pageIdx] = 0;
 
                 document.getElementById('progress').innerText = `Rendering Previews... ${Math.round((pageIdx / totalDocumentPagesCount) * 100)}%`;
                 
                 const pageInstance = await loadedPdfTask.getPage(pageIdx);
-                const baselineViewport = pageInstance.getViewport({ scale: 0.4 }); // Thumbnail scaling optimized density
+                const baselineViewport = pageInstance.getViewport({ scale: 0.4 }); 
                 
                 const temporaryCanvas = document.createElement('canvas');
                 const canvasContext = temporaryCanvas.getContext('2d');
@@ -263,7 +260,6 @@
 
                 await pageInstance.render({ canvasContext: canvasContext, viewport: baselineViewport }).promise;
 
-                // Build structural UI wrapper elements matching standard system look precisely
                 const outerCardNode = document.createElement('div');
                 outerCardNode.className = "page-thumbnail-card";
                 outerCardNode.id = `pageCardWrapper_${pageIdx}`;
@@ -276,7 +272,6 @@
                 embeddedCanvasElement.width = baselineViewport.width;
                 embeddedCanvasElement.height = baselineViewport.height;
                 
-                // Blit image data onto cloned canvas framework elements
                 const embeddedCanvasContext = embeddedCanvasElement.getContext('2d');
                 embeddedCanvasContext.drawImage(temporaryCanvas, 0, 0);
                 
@@ -288,7 +283,6 @@
 
                 const buttonsStripNode = document.createElement('div');
                 buttonsStripNode.className = "card-actions-strip";
-                
                 buttonsStripNode.innerHTML = `
                     <button type="button" class="rotate-single-icon-btn" onclick="rotateSinglePageElement(${pageIdx}, -90)" title="Rotate Counter-Clockwise">↩️</button>
                     <button type="button" class="rotate-single-icon-btn" onclick="rotateSinglePageElement(${pageIdx}, 90)" title="Rotate Clockwise">↪️</button>
@@ -301,7 +295,6 @@
                 matrixContainer.appendChild(outerCardNode);
             }
 
-            // Reveal action configuration dashboard controls
             document.getElementById('loader').style.display = 'none';
             document.getElementById('bulkControlsStrip').style.display = 'flex';
 
@@ -312,7 +305,6 @@
         }
     }
 
-    // --- EXECUTE INDIVIDUAL SEPARATE PANEL ROTATION GRID MODIFIERS ---
     function rotateSinglePageElement(targetPageIndex, directionDeltaAngle) {
         let currentActiveAngle = pageRotationsStateMap[targetPageIndex];
         let updatedCalculatedAngle = (currentActiveAngle + directionDeltaAngle) % 360;
@@ -323,21 +315,18 @@
 
         pageRotationsStateMap[targetPageIndex] = updatedCalculatedAngle;
         
-        // Execute structural CSS visual transforms animations loops directly onto targeted element contexts
         const visualCanvasNode = document.getElementById(`previewCanvasNode_${targetPageIndex}`);
         if(visualCanvasNode) {
             visualCanvasNode.style.transform = `rotate(${updatedCalculatedAngle}deg)`;
         }
     }
 
-    // --- SHORTCUT BULK METHOD OVERWRITING ENTIRE DATA POOLS AT ONCE ---
     function applyBulkRotationToAllPages(baseBulkAngleDelta) {
         for (let pageKey = 1; pageKey <= totalDocumentPagesCount; pageKey++) {
             rotateSinglePageElement(pageKey, baseBulkAngleDelta);
         }
     }
 
-    // --- COMPILE CLEAN COMPACT ROTATED PAYLOAD VIA NATIVE METADATA SYSTEM WRITES ---
     async function compileAndDownloadRotatedPdf() {
         if(!uploadedOriginalBytesBuffer) return;
 
@@ -346,7 +335,6 @@
         document.getElementById('progress').innerText = "Compiling document dictionary markers...";
 
         try {
-            // Instantiate clean target document structure inside memory context profiles using window.PDFLib
             const workingDocObject = await window.PDFLib.PDFDocument.load(uploadedOriginalBytesBuffer, { ignoreEncryption: true });
             const pagesInstancesList = workingDocObject.getPages();
 
@@ -358,14 +346,11 @@
                     let nativeCurrentAngleObj = pagesInstancesList[idx].getRotation();
                     let absoluteFinalRotationTarget = (nativeCurrentAngleObj.angle + scheduledDegreesDelta) % 360;
                     
-                    // Rewrite explicit geometric catalog dictionary entries directly without canvas scaling drops
                     pagesInstancesList[idx].setRotation(window.PDFLib.degrees(absoluteFinalRotationTarget));
                 }
             }
 
             const compiledBinaryStreamArray = await workingDocObject.save();
-            
-            // Build local memory download anchor endpoints hooks elements
             const outputBlobPayload = new Blob([compiledBinaryStreamArray], { type: 'application/pdf' });
             const systemObjectBlobUrl = URL.createObjectURL(outputBlobPayload);
 
