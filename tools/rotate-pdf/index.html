@@ -327,7 +327,7 @@
         }
     }
 
-    // --- NEW HYBRID EXECUTABLE PIPELINE: DIRECT SEAMLESS SAVING VIA HIGH-STABILITY jspdf STREAM ---
+    // --- FIX STABLE MATRIX PIPELINE: SEQUENTIAL BLOCK RESOLUTION WITHOUT BUFFER TIMEOUT CRASHES ---
     async function compileAndDownloadRotatedPdf() {
         if(!uploadedOriginalBytesBuffer) return;
 
@@ -338,15 +338,13 @@
             const castTypedArray = new Uint8Array(uploadedOriginalBytesBuffer);
             const loadedPdfTask = await pdfjsLib.getDocument({ data: castTypedArray }).promise;
             
-            // Generate clean instance shell layout matrix
-            const finalPdfDocument = new jsPDF();
+            // Standard A4 orientation container setup
+            const finalPdfDocument = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
             for (let idx = 1; idx <= totalDocumentPagesCount; idx++) {
                 document.getElementById('progress').innerText = `Saving Document... ${Math.round((idx / totalDocumentPagesCount) * 100)}%`;
                 
                 const pageInstance = await loadedPdfTask.getPage(idx);
-                
-                // Render at full scale high fidelity baseline density factor
                 const originalViewport = pageInstance.getViewport({ scale: 1.5 });
                 
                 const processingCanvas = document.createElement('canvas');
@@ -356,11 +354,9 @@
 
                 await pageInstance.render({ canvasContext: canvasContext, viewport: originalViewport }).promise;
 
-                // Capture the exact angular state selected by user on UI
                 let targetAngleDegrees = pageRotationsStateMap[idx] || 0;
-
-                // Execute local canvas matrix translation manipulation if rotation occurs
                 let finalExportCanvas = processingCanvas;
+
                 if (targetAngleDegrees !== 0) {
                     const rotationCanvas = document.createElement('canvas');
                     const rotationContext = rotationCanvas.getContext('2d');
@@ -379,19 +375,17 @@
                     finalExportCanvas = rotationCanvas;
                 }
 
-                // Export rasterized stream data smoothly
-                const pageImageDataUrl = finalExportCanvas.toDataURL('image/jpeg', 0.95);
+                // High fidelity compression extraction channel
+                const pageImageDataUrl = finalExportCanvas.toDataURL('image/jpeg', 0.92);
                 
                 if (idx > 1) finalPdfDocument.addPage();
-                
-                // Fit nicely inside standard A4 boundaries frameworks limits
                 finalPdfDocument.addImage(pageImageDataUrl, 'JPEG', 0, 0, 210, 297);
             }
 
             finalPdfDocument.save(`rotated_document_${Date.now()}.pdf`);
 
         } catch(error) {
-            console.error("Binary orientation re-serialization exception loop:", error);
+            console.error("Binary processing failure catch details:", error);
             alert("An error occurred during local document processing streams.");
         } finally {
             document.getElementById('loader').style.display = 'none';
