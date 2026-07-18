@@ -327,7 +327,7 @@
         }
     }
 
-    // --- FIX STABLE MATRIX PIPELINE: SEQUENTIAL BLOCK RESOLUTION WITHOUT BUFFER TIMEOUT CRASHES ---
+  // --- ACCURATE STABLE MATRIX PIPELINE FIXED PERMANENTLY ---
     async function compileAndDownloadRotatedPdf() {
         if(!uploadedOriginalBytesBuffer) return;
 
@@ -338,8 +338,8 @@
             const castTypedArray = new Uint8Array(uploadedOriginalBytesBuffer);
             const loadedPdfTask = await pdfjsLib.getDocument({ data: castTypedArray }).promise;
             
-            // Standard A4 orientation container setup
-            const finalPdfDocument = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+            // Create target instance using safe fallback configurations matrix
+            const finalPdfDocument = new jspdf.jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
 
             for (let idx = 1; idx <= totalDocumentPagesCount; idx++) {
                 document.getElementById('progress').innerText = `Saving Document... ${Math.round((idx / totalDocumentPagesCount) * 100)}%`;
@@ -375,17 +375,20 @@
                     finalExportCanvas = rotationCanvas;
                 }
 
-                // High fidelity compression extraction channel
+                // High-fidelity absolute sync matrix generation parameters channels
                 const pageImageDataUrl = finalExportCanvas.toDataURL('image/jpeg', 0.92);
                 
                 if (idx > 1) finalPdfDocument.addPage();
                 finalPdfDocument.addImage(pageImageDataUrl, 'JPEG', 0, 0, 210, 297);
+                
+                // Explicit references breakdown to protect local storage pools
+                processingCanvas.width = 0; processingCanvas.height = 0;
             }
 
             finalPdfDocument.save(`rotated_document_${Date.now()}.pdf`);
 
         } catch(error) {
-            console.error("Binary processing failure catch details:", error);
+            console.error("Binary serialization fatal tracking log:", error);
             alert("An error occurred during local document processing streams.");
         } finally {
             document.getElementById('loader').style.display = 'none';
