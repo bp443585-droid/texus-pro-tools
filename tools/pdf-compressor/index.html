@@ -1,141 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164" crossorigin="anonymous"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Advanced PDF Compressor - Real 90% Reduction</title>
-  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  
-  <style>
-    /* Aapka purana CSS yahan rahega... (Keeping styles same for consistency) */
-    *, *::before, *::after { box-sizing: border-box; }
-    .f-wrapper { width: 100%; max-width: 950px; margin: 25px auto; padding: 0 20px; font-family: 'Inter', sans-serif; }
-    .f-heading { font-size: 2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-    .color-picker-workspace-grid { display: flex; flex-direction: column; gap: 24px; width: 100%; }
-    .workspace-block-panel { display: flex; flex-direction: column; gap: 20px; width: 100%; }
-    .compress-dropzone-area { width: 100%; border: 3px dashed #cbd5e1; background: #ffffff; border-radius: 20px; padding: 40px 20px; text-align: center; cursor: pointer; transition: all 0.2s ease; }
-    .compress-dropzone-area.dragover { border-color: #2563eb; background: #f8fafc; }
-    .loader-status-wrapper { display: none; align-items: center; gap: 10px; color: #2563eb; background: #eff6ff; padding: 12px 16px; border-radius: 12px; border: 1px dashed #bfdbfe; }
-    .spinner-node { width: 18px; height: 18px; border: 3px solid #cbd5e1; border-top-color: #2563eb; border-radius: 50%; animation: spinLoop 0.8s linear infinite; }
-    @keyframes spinLoop { to { transform: rotate(360deg); } }
-    .interactive-spectrum-box { display: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 24px; flex-direction: column; gap: 20px; }
-    .preset-buttons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .preset-btn { background: #f1f5f9; border: 2px solid #e2e8f0; border-radius: 10px; padding: 10px; cursor: pointer; font-weight: 600; }
-    .preset-btn.active { background: #2563eb; color: #white; border-color: #2563eb; color: #fff; }
-    .custom-range-slider { width: 100%; height: 8px; border-radius: 4px; background: #e2e8f0; outline: none; -webkit-appearance: none; }
-    .meta-dimension-badge-strip { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px 16px; font-size: 0.9rem; }
-    .analytics-output-container { display: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 24px; flex-direction: column; gap: 16px; }
-    .f-btn-download { background: #10b981; color: #fff; font-weight: 700; padding: 16px; border-radius: 14px; cursor: pointer; border: none; width: 100%; text-align: center; display: block; text-decoration: none; }
-    @media (min-width: 769px) { .color-picker-workspace-grid { grid-template-columns: 1.1fr 0.9fr; display: grid; } }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extreme PDF Compressor (90% Reduction)</title>
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 500px; text-align: center; }
+        .dropzone { border: 3px dashed #cbd5e1; padding: 40px; border-radius: 15px; cursor: pointer; margin-bottom: 20px; }
+        .btn { background: #2563eb; color: white; border: none; padding: 15px 30px; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; }
+        .loader { display: none; margin-top: 20px; color: #2563eb; font-weight: bold; }
+        #status { margin-top: 10px; font-size: 14px; color: #64748b; }
+    </style>
 </head>
 <body>
 
-  <main class="f-wrapper">
-    <div class="f-heading">🚀 Super PDF Compressor</div>
-    <div class="color-picker-workspace-grid">
-      <div class="workspace-block-panel">
-        <div id="dropzoneWorkspaceNode" class="compress-dropzone-area" onclick="document.getElementById('hiddenFileInputNode').click()">
-          <h3 class="dropzone-title">Upload PDF</h3>
-          <p class="dropzone-desc">Drag or Click to start compression</p>
-          <input type="file" id="hiddenFileInputNode" style="display:none" accept="application/pdf" onchange="handleIncomingFileSelection()" />
-        </div>
-
-        <div id="loaderStatusPanel" class="loader-status-wrapper">
-          <div class="spinner-node"></div>
-          <span>Deeply compressing your file...</span>
-        </div>
-
-        <div id="controlsCardContainer" class="interactive-spectrum-box">
-          <div class="preset-buttons-grid">
-            <button class="preset-btn" id="presetLow" onclick="applyPresetMode('low')">Standard</button>
-            <button class="preset-btn active" id="presetMedium" onclick="applyPresetMode('medium')">Strong</button>
-            <button class="preset-btn" id="presetHigh" onclick="applyPresetMode('high')">Extreme (90%)</button>
-          </div>
-          <input type="range" id="compressionManualSlider" class="custom-range-slider" min="10" max="95" value="50" onchange="triggerSilentCompressionCache()" />
-          <div class="meta-dimension-badge-strip">
-            <div style="display:flex; justify-content:space-between"><span>Original:</span> <span id="lblOriginalSizeBadge">0 MB</span></div>
-            <div style="display:flex; justify-content:space-between; margin-top:10px; font-weight:800; color:#10b981">
-                <span>Compressed:</span> <span id="lblExpectedSizeBadge">Calculating...</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="workspace-block-panel">
-        <div id="compilationOutputContainer" class="analytics-output-container">
-          <button id="btnCompilePdfNode" class="f-btn-download" onclick="downloadPreCompressedCachedPdf()">Download Compressed PDF</button>
-        </div>
-      </div>
+<div class="container">
+    <h2>🚀 Extreme PDF Compressor</h2>
+    <div class="dropzone" onclick="document.getElementById('fileInput').click()">
+        Click to Upload PDF
+        <input type="file" id="fileInput" hidden accept="application/pdf">
     </div>
-  </main>
+    
+    <div id="controls" style="display:none;">
+        <p>Compression Level: <span id="qualLabel">50%</span></p>
+        <input type="range" id="quality" min="5" max="90" value="50" style="width:100%" oninput="document.getElementById('qualLabel').innerText = this.value + '%'">
+        <br><br>
+        <button class="btn" onclick="startCompression()">Compress & Download</button>
+    </div>
 
-  <script>
-    let globalFileArrayBuffer = null;
-    let cachedCompressedBytesArray = null;
+    <div id="loader" class="loader">
+        <div id="progress">Processing... 0%</div>
+        <p id="status">Converting pages to compressed images...</p>
+    </div>
+</div>
 
-    async function handleIncomingFileSelection() {
-        const file = document.getElementById('hiddenFileInputNode').files[0];
-        if(!file) return;
+<script>
+    const { jsPDF } = window.jspdf;
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
-        document.getElementById('lblOriginalSizeBadge').innerText = (file.size / 1024 / 1024).toFixed(2) + " MB";
-        
-        const reader = new FileReader();
-        reader.onload = async (e) => {
-            globalFileArrayBuffer = e.target.result;
-            document.getElementById('controlsCardContainer').style.display = "flex";
-            document.getElementById('compilationOutputContainer').style.display = "flex";
-            triggerSilentCompressionCache();
-        };
-        reader.readAsArrayBuffer(file);
-    }
+    let selectedFile = null;
 
-    function applyPresetMode(mode) {
-        const slider = document.getElementById('compressionManualSlider');
-        if(mode === 'low') slider.value = 20;
-        else if(mode === 'medium') slider.value = 60;
-        else if(mode === 'high') slider.value = 95;
-        triggerSilentCompressionCache();
-    }
-
-    async function triggerSilentCompressionCache() {
-        if(!globalFileArrayBuffer) return;
-        const loader = document.getElementById('loaderStatusPanel');
-        loader.style.display = "flex";
-        
-        try {
-            const pdfDoc = await PDFLib.PDFDocument.load(globalFileArrayBuffer);
-            
-            // 1. Metadata Removal
-            pdfDoc.setTitle(""); pdfDoc.setAuthor(""); pdfDoc.setProducer(""); pdfDoc.setCreator("");
-
-            // 2. Optimization Settings
-            // Note: For real 90%, browser-side is limited, but we force object stream compression
-            const compressedBytes = await pdfDoc.save({
-                useObjectStreams: true,
-                addDefaultPage: false,
-                updateFieldAppearances: false
-            });
-
-            cachedCompressedBytesArray = compressedBytes;
-            document.getElementById('lblExpectedSizeBadge').innerText = (compressedBytes.length / 1024 / 1024).toFixed(2) + " MB";
-        } catch (e) {
-            console.error(e);
-        } finally {
-            loader.style.display = "none";
+    document.getElementById('fileInput').onchange = function(e) {
+        selectedFile = e.target.files[0];
+        if (selectedFile) {
+            document.getElementById('controls').style.display = 'block';
         }
-    }
+    };
 
-    function downloadPreCompressedCachedPdf() {
-        if(!cachedCompressedBytesArray) return;
-        const blob = new Blob([cachedCompressedBytesArray], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `compressed_${Date.now()}.pdf`;
-        a.click();
+    async function startCompression() {
+        const quality = document.getElementById('quality').value / 100;
+        const loader = document.getElementById('loader');
+        const controls = document.getElementById('controls');
+        
+        loader.style.display = 'block';
+        controls.style.display = 'none';
+
+        const fileReader = new FileReader();
+        fileReader.onload = async function() {
+            const typedarray = new Uint8Array(this.result);
+            const pdf = await pdfjsLib.getDocument(typedarray).promise;
+            const totalPages = pdf.numPages;
+            const newPdf = new jsPDF();
+
+            for (let i = 1; i <= totalPages; i++) {
+                document.getElementById('progress').innerText = `Processing... ${Math.round((i/totalPages)*100)}%`;
+                
+                const page = await pdf.getPage(i);
+                const viewport = page.getViewport({ scale: 1.5 }); // Image clarity vs size
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                await page.render({ canvasContext: context, viewport: viewport }).promise;
+
+                // Yeh hai asli compression: Image quality kam karna
+                const imgData = canvas.toDataURL('image/jpeg', quality);
+                
+                if (i > 1) newPdf.addPage();
+                newPdf.addImage(imgData, 'JPEG', 0, 0, 210, 297); // A4 size
+            }
+
+            newPdf.save(`compressed_${Date.now()}.pdf`);
+            loader.style.display = 'none';
+            controls.style.display = 'block';
+            alert("Done! Check your downloads.");
+        };
+        fileReader.readAsArrayBuffer(selectedFile);
     }
-  </script>
+</script>
+
 </body>
 </html>
