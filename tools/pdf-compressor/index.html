@@ -16,12 +16,17 @@
     <style>
         /* FIXED GLOBAL MESH WRAPPERS TO PRESERVE HEADER AND FOOTER EXPANSIONS */
         body { font-family: 'Inter', sans-serif; background: #f4f7f6; margin: 0; padding: 0; width: 100%; display: block; }
-        #site-header, #site-footer { width: 100% !important; display: block; clear: both; }
+        #site-header, #site-footer { width: 100% !important; display: block; clear: both; box-sizing: border-box; }
         
+        /* STRICT CSS RESET TO REMOVE BLUE LINES AND RENDER CLEAN LINKS EVERYWHERE */
+        #site-header a, #site-footer a, .seo-clean-container a { color: #1e293b !important; text-decoration: none !important; transition: color 0.15s ease; }
+        #site-header a:hover, #site-footer a:hover { color: #2563eb !important; text-decoration: none !important; }
+
         .main-content-layout { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; width: 100%; box-sizing: border-box; }
         .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 500px; text-align: center; margin: 40px auto; box-sizing: border-box; }
-        .dropzone { border: 3px dashed #cbd5e1; padding: 40px; border-radius: 15px; cursor: pointer; margin-bottom: 20px; }
-        .btn { background: #2563eb; color: white; border: none; padding: 15px 30px; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; }
+        .dropzone { border: 3px dashed #cbd5e1; padding: 50px 40px; border-radius: 15px; cursor: pointer; margin-bottom: 5px; background: #fafafa; transition: all 0.2s ease; }
+        .dropzone:hover { border-color: #2563eb; background: #f8fafc; }
+        
         .loader { display: none; margin-top: 20px; color: #2563eb; font-weight: bold; }
         #status { margin-top: 10px; font-size: 14px; color: #64748b; }
 
@@ -43,21 +48,18 @@
 <div class="main-content-layout">
     <div class="container">
         <h2>🚀 Extreme PDF Compressor</h2>
-        <div class="dropzone" onclick="document.getElementById('fileInput').click()">
-            Click to Upload PDF
-            <input type="file" id="fileInput" hidden accept="application/pdf">
-        </div>
+        <p style="color: #64748b; font-size: 0.9rem; margin-top: -10px; margin-bottom: 20px;">Upload your document to instantly optimize and compress file size</p>
         
-        <div id="controls" style="display:none;">
-            <p>Compression Level: <span id="qualLabel">50%</span></p>
-            <input type="range" id="quality" min="5" max="90" value="50" style="width:100%" oninput="document.getElementById('qualLabel').innerText = this.value + '%'">
-            <br><br>
-            <button class="btn" onclick="startCompression()">Compress & Download</button>
+        <div class="dropzone" onclick="document.getElementById('fileInput').click()">
+            <span style="font-size: 2.5rem; display: block; margin-bottom: 10px;">📁</span>
+            <strong>Click to Upload PDF</strong>
+            <p style="font-size: 0.8rem; color: #94a3b8; margin: 5px 0 0 0;">Process executes completely offline inside your browser</p>
+            <input type="file" id="fileInput" hidden accept="application/pdf">
         </div>
 
         <div id="loader" class="loader">
-            <div id="progress">Processing... 0%</div>
-            <p id="status">Converting pages to compressed images...</p>
+            <div id="progress" style="font-size: 1.2rem; font-weight: 800; color: #1e293b; margin-bottom: 5px;">Processing... 0%</div>
+            <p id="status">Converting layout streams to compressed images...</p>
         </div>
     </div>
 
@@ -122,89 +124,77 @@
     const { jsPDF } = window.jspdf;
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
-    let selectedFile = null;
-
-    // Load templates elements safely into full-bleed viewports structures
+    // Load templates elements safely into full-bleed layout structures
     fetch('/components/header.html')
       .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
       .then(data => { document.getElementById('site-header').innerHTML = data; })
-      .catch(err => console.error('Header setup fault:', err));
+      .catch(err => console.error('Header load fault:', err));
 
     fetch('/components/footer.html')
       .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
-      .catch(err => console.error('Footer setup fault:', err));
+      .catch(err => console.error('Footer load fault:', err));
 
+    // Instant automatic trigger execution right upon file selection choice
     document.getElementById('fileInput').onchange = function(e) {
-        selectedFile = e.target.files[0];
+        const selectedFile = e.target.files[0];
         if (selectedFile) {
-            document.getElementById('controls').style.display = 'block';
+            startDirectCompressionPipeline(selectedFile);
         }
     };
 
-    async function startCompression() {
-        // Core Value read directly from the slider
-        const currentSliderValue = parseInt(document.getElementById('quality').value, 10);
-        
-        // ADAPTIVE STEPPING MATRIX CALIBRATION SYSTEM
-        let computedQualitySetting = 0.85;
-        let dynamicRenderingScale = 1.25;
-
-        if (currentSliderValue <= 25) {
-            // Target: 5% slider -> ~13MB out from 15MB file (Keep scale high, quality top clear)
-            let rawRatio = (30 - currentSliderValue) / 25; // Adaptive linear map
-            computedQualitySetting = Math.min(0.99, 0.94 + (rawRatio * 0.05));
-            dynamicRenderingScale = 2.0; 
-        } else if (currentSliderValue <= 55) {
-            // Target: 50% slider -> ~7MB out from 15MB file (Unaltered baseline balance)
-            computedQualitySetting = 0.88;
-            dynamicRenderingScale = 1.30;
-        } else {
-            // Target: 90% slider -> ~1.5MB out from 15MB file (Downscale canvas boundaries aggressively)
-            computedQualitySetting = 0.35;
-            dynamicRenderingScale = 0.75;
-        }
+    async function startDirectCompressionPipeline(fileTarget) {
+        // Balanced stable calibration metrics constants mapping (50% Medium Compression sweet-spot targets)
+        const computedQualitySetting = 0.88;
+        const dynamicRenderingScale = 1.25;
 
         const loader = document.getElementById('loader');
-        const controls = document.getElementById('controls');
+        const dropzone = document.querySelector('.dropzone');
         
         loader.style.display = 'block';
-        controls.style.display = 'none';
+        dropzone.style.pointerEvents = 'none';
+        dropzone.style.opacity = '0.5';
 
         const fileReader = new FileReader();
         fileReader.onload = async function() {
-            const typedarray = new Uint8Array(this.result);
-            const pdf = await pdfjsLib.getDocument(typedarray).promise;
-            const totalPages = pdf.numPages;
-            const newPdf = new jsPDF();
+            try {
+                const typedarray = new Uint8Array(this.result);
+                const pdf = await pdfjsLib.getDocument(typedarray).promise;
+                const totalPages = pdf.numPages;
+                const newPdf = new jsPDF();
 
-            for (let i = 1; i <= totalPages; i++) {
-                document.getElementById('progress').innerText = `Processing... ${Math.round((i/totalPages)*100)}%`;
-                
-                const page = await pdf.getPage(i);
-                
-                // Uses custom calibrated rendering scales to stabilize output sizes perfectly
-                const viewport = page.getViewport({ scale: dynamicRenderingScale }); 
-                const canvas = document.createElement('canvas');
-                const context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
+                for (let i = 1; i <= totalPages; i++) {
+                    document.getElementById('progress').innerText = `Processing... ${Math.round((i/totalPages)*100)}%`;
+                    
+                    const page = await pdf.getPage(i);
+                    const viewport = page.getViewport({ scale: dynamicRenderingScale }); 
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
 
-                await page.render({ canvasContext: context, viewport: viewport }).promise;
+                    await page.render({ canvasContext: context, viewport: viewport }).promise;
 
-                // Employs strict calibrated step boundaries values flawlessly
-                const imgData = canvas.toDataURL('image/jpeg', computedQualitySetting);
-                
-                if (i > 1) newPdf.addPage();
-                newPdf.addImage(imgData, 'JPEG', 0, 0, 210, 297); // Standard A4 size boundary box
+                    // Execute browser-native real image stream down-sampling processing pipeline
+                    const imgData = canvas.toDataURL('image/jpeg', computedQualitySetting);
+                    
+                    if (i > 1) newPdf.addPage();
+                    newPdf.addImage(imgData, 'JPEG', 0, 0, 210, 297); // Strict A4 dimension constraints parameters
+                }
+
+                newPdf.save(`compressed_document_${Date.now()}.pdf`);
+
+            } catch (err) {
+                console.error("Pipeline failure trace:", err);
+                alert("An error occurred during local document processing streams.");
+            } finally {
+                loader.style.display = 'none';
+                dropzone.style.pointerEvents = 'all';
+                dropzone.style.opacity = '1';
+                document.getElementById('fileInput').value = ""; // Clear file selector cache
             }
-
-            newPdf.save(`compressed_${Date.now()}.pdf`);
-            loader.style.display = 'none';
-            controls.style.display = 'block';
-            alert("Done! Check your downloads.");
         };
-        fileReader.readAsArrayBuffer(selectedFile);
+        fileReader.readAsArrayBuffer(fileTarget);
     }
 </script>
 
