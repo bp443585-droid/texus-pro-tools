@@ -6,7 +6,7 @@
   crossorigin="anonymous"></script>
 
   <meta charset="UTF-8">
-  <meta name="viewport" style="content-type: width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Rotate PDF Pages Online Free - Permanent Rotation System Model</title>
   <meta name="description" content="Rotate PDF pages online for free instantly. Rotate individual pages or whole documents 90, 180, or 270 degrees with a live layout preview matrix." />
   
@@ -112,7 +112,7 @@
         <span style="font-size: 2.8rem; display: block; margin-bottom: 12px; user-select: none;">📁</span>
         <strong style="font-size: 1.15rem; color: #1e293b;">Click to Upload PDF</strong>
         <p style="font-size: 0.85rem; color: #94a3b8; margin: 6px 0 0 0; font-weight: 500;">Process executes completely offline inside your browser sandboxed workspace</p>
-        <input type="file" id="fileInput" hidden accept="application/pdf" onchange="handleIncomingFileSelection()">
+        <input type="file" id="hiddenFileInputNode" hidden accept="application/pdf" onchange="handleIncomingFileSelection()">
       </div>
 
       <!-- BULK MODIFIER STRIP CONTROL BAR -->
@@ -244,7 +244,6 @@
             const loadedPdfTask = await pdfjsLib.getDocument({ data: castTypedArray }).promise;
             totalDocumentPagesCount = loadedPdfTask.numPages;
 
-            // TYPO FIXED: Crucial conditional variables synchronized properly
             for (let pageIdx = 1; pageIdx <= totalDocumentPagesCount; pageIdx++) {
                 pageRotationsStateMap[pageIdx] = 0;
 
