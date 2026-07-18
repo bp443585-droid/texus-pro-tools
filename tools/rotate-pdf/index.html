@@ -14,9 +14,9 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="https://www.texusprotools.com/tools/rotate-pdf/" />
 
-  <!-- PRODUCTION LIBRARIES INTEGRATION -->
+  <!-- PRODUCTION BOTH LIBRARIES RE-ENGAGED FOR POWERFUL THUMBNAILING AND BINARY ROTATION -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -196,23 +196,24 @@
 
   <div id="site-footer"></div>
 
-  <!-- NATIVE OPERATIONAL DATA FLOW PIPELINE LOGIC CONTROLS -->
+  <!-- FIXED STANDALONE INTERNAL THREAD EXECUTION SCRIPT -->
   <script type="text/javascript">
     window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
-    let uploadedOriginalBytesBuffer = null;
+    // FIX 3: Store immutable baseline payload as a direct safe cloned continuous byte array
+    let globalUploadedBytesArray = null;
     let totalDocumentPagesCount = 0;
     let pageRotationsStateMap = {}; 
 
     fetch('/components/header.html')
       .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
       .then(data => { document.getElementById('site-header').innerHTML = data; })
-      .catch(err => console.error('Header setup fault link trace:', err));
+      .catch(err => console.error('Header load fault:', err));
 
     fetch('/components/footer.html')
       .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
-      .catch(err => console.error('Footer setup fault link trace:', err));
+      .catch(err => console.error('Footer load fault:', err));
 
     function triggerHiddenFileInputClick() {
         document.getElementById('hiddenFileInputNode').click();
@@ -229,7 +230,8 @@
         const reader = new FileReader();
         reader.readAsArrayBuffer(targetFile);
         reader.onload = async function() {
-            uploadedOriginalBytesBuffer = this.result;
+            // FIX 1 & 3: Create a clean fresh deep slice copy allocation of the incoming buffer
+            globalUploadedBytesArray = new Uint8Array(this.result);
             await renderDocumentPagesPreviewGrid();
         };
     }
@@ -240,8 +242,9 @@
         matrixContainer.innerHTML = ""; 
         
         try {
-            const castTypedArray = new Uint8Array(uploadedOriginalBytesBuffer);
-            const loadedPdfTask = await pdfjsLib.getDocument({ data: castTypedArray }).promise;
+            // FIX 2: Use a sliced copy to prevent pdf.js from detaching the master array buffer memory
+            const documentTaskData = globalUploadedBytesArray.slice();
+            const loadedPdfTask = await pdfjsLib.getDocument({ data: documentTaskData }).promise;
             totalDocumentPagesCount = loadedPdfTask.numPages;
 
             for (let pageIdx = 1; pageIdx <= totalDocumentPagesCount; pageIdx++) {
@@ -326,73 +329,55 @@
         }
     }
 
-    // --- DEEP EXPLICIT DEBUGIN DIAGNOSTIC MATRIX STAGE CHANNEL ---
+    // --- HIGH-PERFORMANCE NATIVE METADATA ROTATION VIA PDF-LIB (NO QUALITY LOSS, NO DETACH CRASH) ---
     async function compileAndDownloadRotatedPdf() {
-        if(!uploadedOriginalBytesBuffer) return;
+        if(!globalUploadedBytesArray) return;
 
         document.getElementById('bulkControlsStrip').style.display = 'none';
         document.getElementById('loader').style.display = 'block';
+        document.getElementById('progress').innerText = "Modifying rotation metadata variables...";
         
         try {
-            const castTypedArray = new Uint8Array(uploadedOriginalBytesBuffer);
-            const loadedPdfTask = await pdfjsLib.getDocument({ data: castTypedArray }).promise;
+            // FIX 2 & 3: Use fresh sliced array buffer allocation to bypass internal browser detachment blocks
+            const freshArrayBufferCopy = globalUploadedBytesArray.slice().buffer;
             
-            // Safe window interface mapping check
-            const { jsPDF } = window.jspdf || window;
-            const finalPdfDocument = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
+            // Load file parameters directly into pdf-lib workspace context
+            const workingDocObject = await PDFLib.PDFDocument.load(freshArrayBufferCopy, { ignoreEncryption: true });
+            const pagesInstancesList = workingDocObject.getPages();
 
-            for (let idx = 1; idx <= totalDocumentPagesCount; idx++) {
-                document.getElementById('progress').innerText = `Saving Document... ${Math.round((idx / totalDocumentPagesCount) * 100)}%`;
-                
-                const pageInstance = await loadedPdfTask.getPage(idx);
-                const originalViewport = pageInstance.getViewport({ scale: 1.2 });
-                
-                const processingCanvas = document.createElement('canvas');
-                const canvasContext = processingCanvas.getContext('2d');
-                processingCanvas.height = originalViewport.height;
-                processingCanvas.width = originalViewport.width;
+            for (let idx = 0; idx < pagesInstancesList.length; idx++) {
+                let targetPageNumKey = idx + 1;
+                let scheduledDegreesDelta = pageRotationsStateMap[targetPageNumKey] || 0;
 
-                await pageInstance.render({ canvasContext: canvasContext, viewport: originalViewport }).promise;
-
-                let targetAngleDegrees = pageRotationsStateMap[idx] || 0;
-                let finalExportCanvas = processingCanvas;
-
-                if (targetAngleDegrees !== 0) {
-                    const rotationCanvas = document.createElement('canvas');
-                    const rotationContext = rotationCanvas.getContext('2d');
+                if (scheduledDegreesDelta !== 0) {
+                    let nativeCurrentAngleObj = pagesInstancesList[idx].getRotation();
+                    let absoluteFinalRotationTarget = (nativeCurrentAngleObj.angle + scheduledDegreesDelta) % 360;
                     
-                    if (targetAngleDegrees === 90 || targetAngleDegrees === 270) {
-                        rotationCanvas.width = processingCanvas.height;
-                        rotationCanvas.height = processingCanvas.width;
-                    } else {
-                        rotationCanvas.width = processingCanvas.width;
-                        rotationCanvas.height = processingCanvas.height;
-                    }
+                    if (absoluteFinalRotationTarget < 0) absoluteFinalRotationTarget += 360;
                     
-                    rotationContext.translate(rotationCanvas.width / 2, rotationCanvas.height / 2);
-                    rotationContext.rotate((targetAngleDegrees * Math.PI) / 180);
-                    rotationContext.drawImage(processingCanvas, -processingCanvas.width / 2, -processingCanvas.height / 2);
-                    finalExportCanvas = rotationCanvas;
+                    // Rewrite explicit geometric rotation markers directly in metadata tree
+                    pagesInstancesList[idx].setRotation(PDFLib.degrees(absoluteFinalRotationTarget));
                 }
-
-                const pageImageDataUrl = finalExportCanvas.toDataURL('image/jpeg', 0.70);
-                
-                if (idx > 1) finalPdfDocument.addPage();
-                finalPdfDocument.addImage(pageImageDataUrl, 'JPEG', 0, 0, 210, 297);
-                
-                processingCanvas.width = 0; 
-                processingCanvas.height = 0;
             }
 
-            finalPdfDocument.save(`rotated_document_${Date.now()}.pdf`);
+            // Save clean, un-tampered native vector array payload
+            const compiledBinaryStreamArray = await workingDocObject.save();
+            const outputBlobPayload = new Blob([compiledBinaryStreamArray], { type: 'application/pdf' });
+            const systemObjectBlobUrl = URL.createObjectURL(outputBlobPayload);
+
+            const invisibleAnchorNode = document.createElement('a');
+            invisibleAnchorNode.href = systemObjectBlobUrl;
+            invisibleAnchorNode.download = `rotated_document_${Date.now()}.pdf`;
+            
+            document.body.appendChild(invisibleAnchorNode);
+            invisibleAnchorNode.click();
+            
+            document.body.removeChild(invisibleAnchorNode);
+            URL.revokeObjectURL(systemObjectBlobUrl);
 
         } catch(error) {
-            // DIAGNOSTICS CRITICAL MAPS: Outputs literal raw system stack definitions straight to screen alert popups
             console.error("FULL SAVE COMPILATION FAULT DETECTED:", error);
-            console.error("Message:", error.message);
-            console.error("Stack Trace:", error.stack);
-            
-            alert(`DIAGNOSTIC ERROR ALARM:\n\nMessage: ${error.message}\n\nStack Location: ${error.stack.split('\n')[0]}`);
+            alert(`Compilation Error:\n\n${error.message}`);
         } finally {
             document.getElementById('loader').style.display = 'none';
             document.getElementById('bulkControlsStrip').style.display = 'flex';
