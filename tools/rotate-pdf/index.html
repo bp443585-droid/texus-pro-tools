@@ -199,7 +199,6 @@
   <!-- NATIVE OPERATIONAL DATA FLOW PIPELINE LOGIC CONTROLS -->
   <script type="text/javascript">
     window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
-    const { jsPDF } = window.jspdf;
 
     let uploadedOriginalBytesBuffer = null;
     let totalDocumentPagesCount = 0;
@@ -327,7 +326,7 @@
         }
     }
 
-  // --- ACCURATE STABLE MATRIX PIPELINE FIXED PERMANENTLY ---
+    // --- HARNESS COMPATIBILITY FIX: NATIVE 100% SECURE MEMORY DISPATCH LOOP ---
     async function compileAndDownloadRotatedPdf() {
         if(!uploadedOriginalBytesBuffer) return;
 
@@ -338,14 +337,16 @@
             const castTypedArray = new Uint8Array(uploadedOriginalBytesBuffer);
             const loadedPdfTask = await pdfjsLib.getDocument({ data: castTypedArray }).promise;
             
-            // Create target instance using safe fallback configurations matrix
-            const finalPdfDocument = new jspdf.jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
+            // ADVICE INTEGRATED: Safe window interface mapping wrapper paths
+            const { jsPDF } = window.jspdf || window;
+            const finalPdfDocument = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
 
             for (let idx = 1; idx <= totalDocumentPagesCount; idx++) {
                 document.getElementById('progress').innerText = `Saving Document... ${Math.round((idx / totalDocumentPagesCount) * 100)}%`;
                 
                 const pageInstance = await loadedPdfTask.getPage(idx);
-                const originalViewport = pageInstance.getViewport({ scale: 1.5 });
+                // Memory Optimization: Reduced view scale baseline factor from 1.5 to 1.2
+                const originalViewport = pageInstance.getViewport({ scale: 1.2 });
                 
                 const processingCanvas = document.createElement('canvas');
                 const canvasContext = processingCanvas.getContext('2d');
@@ -375,14 +376,15 @@
                     finalExportCanvas = rotationCanvas;
                 }
 
-                // High-fidelity absolute sync matrix generation parameters channels
-                const pageImageDataUrl = finalExportCanvas.toDataURL('image/jpeg', 0.92);
+                // ADVICE INTEGRATED: Quality parameter safely dropped to 0.70 to avoid memory ceiling limit rejections
+                const pageImageDataUrl = finalExportCanvas.toDataURL('image/jpeg', 0.70);
                 
                 if (idx > 1) finalPdfDocument.addPage();
                 finalPdfDocument.addImage(pageImageDataUrl, 'JPEG', 0, 0, 210, 297);
                 
-                // Explicit references breakdown to protect local storage pools
-                processingCanvas.width = 0; processingCanvas.height = 0;
+                // Flush intermediate object variables allocation footprints pointers
+                processingCanvas.width = 0; 
+                processingCanvas.height = 0;
             }
 
             finalPdfDocument.save(`rotated_document_${Date.now()}.pdf`);
