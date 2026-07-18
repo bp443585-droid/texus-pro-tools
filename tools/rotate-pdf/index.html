@@ -14,9 +14,9 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="https://www.texusprotools.com/tools/rotate-pdf/" />
 
-  <!-- PRODUCTION BOTH LIBRARIES RE-ENGAGED FOR POWERFUL THUMBNAILING AND BINARY ROTATION -->
+  <!-- PRODUCTION LIBRARIES INTEGRATION -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -199,6 +199,7 @@
   <!-- NATIVE OPERATIONAL DATA FLOW PIPELINE LOGIC CONTROLS -->
   <script type="text/javascript">
     window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+    const { jsPDF } = window.jspdf;
 
     let uploadedOriginalBytesBuffer = null;
     let totalDocumentPagesCount = 0;
@@ -326,48 +327,72 @@
         }
     }
 
+    // --- NEW HYBRID EXECUTABLE PIPELINE: DIRECT SEAMLESS SAVING VIA HIGH-STABILITY jspdf STREAM ---
     async function compileAndDownloadRotatedPdf() {
         if(!uploadedOriginalBytesBuffer) return;
 
         document.getElementById('bulkControlsStrip').style.display = 'none';
         document.getElementById('loader').style.display = 'block';
-        document.getElementById('progress').innerText = "Compiling document dictionary markers...";
-
+        
         try {
-            const workingDocObject = await window.PDFLib.PDFDocument.load(uploadedOriginalBytesBuffer, { ignoreEncryption: true });
-            const pagesInstancesList = workingDocObject.getPages();
+            const castTypedArray = new Uint8Array(uploadedOriginalBytesBuffer);
+            const loadedPdfTask = await pdfjsLib.getDocument({ data: castTypedArray }).promise;
+            
+            // Generate clean instance shell layout matrix
+            const finalPdfDocument = new jsPDF();
 
-            for (let idx = 0; idx < pagesInstancesList.length; idx++) {
-                let targetPageNumKey = idx + 1;
-                let scheduledDegreesDelta = pageRotationsStateMap[targetPageNumKey] || 0;
+            for (let idx = 1; idx <= totalDocumentPagesCount; idx++) {
+                document.getElementById('progress').innerText = `Saving Document... ${Math.round((idx / totalDocumentPagesCount) * 100)}%`;
+                
+                const pageInstance = await loadedPdfTask.getPage(idx);
+                
+                // Render at full scale high fidelity baseline density factor
+                const originalViewport = pageInstance.getViewport({ scale: 1.5 });
+                
+                const processingCanvas = document.createElement('canvas');
+                const canvasContext = processingCanvas.getContext('2d');
+                processingCanvas.height = originalViewport.height;
+                processingCanvas.width = originalViewport.width;
 
-                if (scheduledDegreesDelta !== 0) {
-                    let nativeCurrentAngleObj = pagesInstancesList[idx].getRotation();
-                    let absoluteFinalRotationTarget = (nativeCurrentAngleObj.angle + scheduledDegreesDelta) % 360;
+                await pageInstance.render({ canvasContext: canvasContext, viewport: originalViewport }).promise;
+
+                // Capture the exact angular state selected by user on UI
+                let targetAngleDegrees = pageRotationsStateMap[idx] || 0;
+
+                // Execute local canvas matrix translation manipulation if rotation occurs
+                let finalExportCanvas = processingCanvas;
+                if (targetAngleDegrees !== 0) {
+                    const rotationCanvas = document.createElement('canvas');
+                    const rotationContext = rotationCanvas.getContext('2d');
                     
-                    pagesInstancesList[idx].setRotation(window.PDFLib.degrees(absoluteFinalRotationTarget));
+                    if (targetAngleDegrees === 90 || targetAngleDegrees === 270) {
+                        rotationCanvas.width = processingCanvas.height;
+                        rotationCanvas.height = processingCanvas.width;
+                    } else {
+                        rotationCanvas.width = processingCanvas.width;
+                        rotationCanvas.height = processingCanvas.height;
+                    }
+                    
+                    rotationContext.translate(rotationCanvas.width / 2, rotationCanvas.height / 2);
+                    rotationContext.rotate((targetAngleDegrees * Math.PI) / 180);
+                    rotationContext.drawImage(processingCanvas, -processingCanvas.width / 2, -processingCanvas.height / 2);
+                    finalExportCanvas = rotationCanvas;
                 }
+
+                // Export rasterized stream data smoothly
+                const pageImageDataUrl = finalExportCanvas.toDataURL('image/jpeg', 0.95);
+                
+                if (idx > 1) finalPdfDocument.addPage();
+                
+                // Fit nicely inside standard A4 boundaries frameworks limits
+                finalPdfDocument.addImage(pageImageDataUrl, 'JPEG', 0, 0, 210, 297);
             }
 
-            const compiledBinaryStreamArray = await workingDocObject.save();
-            const outputBlobPayload = new Blob([compiledBinaryStreamArray], { type: 'application/pdf' });
-            const systemObjectBlobUrl = URL.createObjectURL(outputBlobPayload);
-
-            const invisibleAnchorNode = document.createElement('a');
-            invisibleAnchorNode.href = systemObjectBlobUrl;
-            invisibleAnchorNode.download = `rotated_document_${Date.now()}.pdf`;
-            
-            document.body.appendChild(invisibleAnchorNode);
-            invisibleAnchorNode.click();
-            
-            document.body.removeChild(invisibleAnchorNode);
-            URL.revokeObjectURL(systemObjectBlobUrl);
-
-            alert("Done! Modified document file saved successfully.");
+            finalPdfDocument.save(`rotated_document_${Date.now()}.pdf`);
 
         } catch(error) {
             console.error("Binary orientation re-serialization exception loop:", error);
-            alert("An allocation fault occurred during structural dictionary remapping.");
+            alert("An error occurred during local document processing streams.");
         } finally {
             document.getElementById('loader').style.display = 'none';
             document.getElementById('bulkControlsStrip').style.display = 'flex';
