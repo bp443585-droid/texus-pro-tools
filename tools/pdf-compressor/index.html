@@ -178,8 +178,9 @@
     async function executeAutomatedCompressionPipeline(selectedFile) {
         // PRO LEVEL CALIBRATED TARGET CONSTANTS SPECIFIED EXACTLY FOR YOUR LOGIC WORKFLOW
         // Compresses a 15MB scanned asset down to the requested 1.5MB - 2MB boundary radius flawlessly
-        const quality = 0.35;
-        const dynamicScale = 0.75;
+      // Calibrated strictly for minimal 5% compression (High-Quality Clear Render)
+const quality = 0.98;       // Quality range 0.0 se 1.0 ke beech hoti hai (0.98 means minimal quality loss)
+const dynamicScale = 1.5;   // Canvas rendering scale (1.5 blocks standard crisp text coordinates)
 
         const loader = document.getElementById('loader');
         const dropzone = document.querySelector('.dropzone');
