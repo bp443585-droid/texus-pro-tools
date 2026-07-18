@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="https://www.texusprotools.com/tools/pdf-compressor/" />
 
-  <!-- STABLE STANDALONE PDF PROCESSING SUB-SYSTEM MATRIX -->
+  <!-- PRODUCTION BOTH LIBRARIES DEFINED SEPARATELY TO PREVENT REFERENCE ERRORS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -73,7 +73,7 @@
     .f-btn-download { background: #10b981; color: #ffffff; font-weight: 700; padding: 16px 28px; border-radius: 14px; cursor: pointer; font-size: 1rem; border: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.15s ease; width: 100%; text-decoration: none; text-align: center; display: block; box-sizing: border-box; }
     .f-btn-download:hover { background: #059669; }
 
-    /* CARD 4: NATURAL USER-CENTRIC SEO CONTENT */
+    /* CARD 4: USER-CENTRIC ORGANIC SEO CONTENT */
     .seo-clean-container { width: 100%; line-height: 1.85; text-align: left; margin-top: 20px; font-family: 'Inter', sans-serif; border: 1px solid #e2e8f0; background: #ffffff; border-radius: 24px; padding: 36px; box-sizing: border-box; color: #334155; }
     .seo-block-title { font-size: 1.6rem; color: #0f172a; font-weight: 800; margin-top: 32px; margin-bottom: 14px; }
     .seo-sub-title { font-size: 1.25rem; color: #1e293b; font-weight: 700; margin-top: 24px; margin-bottom: 10px; }
@@ -105,7 +105,7 @@
           <p class="dropzone-icon">🗜️</p>
           <h3 class="dropzone-title">Select Your PDF File Here</h3>
           <p class="dropzone-desc">Drag your document file here or click inside this box to choose a file</p>
-          <input type="file" id="hiddenFileInputNode" accept="application/pdf" />
+          <input type="file" id="hiddenFileInputNode" accept="application/pdf" onchange="handleIncomingFileSelection()" />
         </div>
 
         <!-- LOADING PROGRESS METER -->
@@ -120,7 +120,7 @@
           <div>
             <label class="control-label-row">Quick Presets (Compression Quality Profile)</label>
             <div class="preset-buttons-grid">
-              <button type="button" class="preset-btn" id="presetLow" onclick="applyPresetMode('low')">Low (High Quality)</button>
+              <button type="button" class="preset-btn" id="presetLow" onclick="applyPresetMode('low')">Low Compression</button>
               <button type="button" class="preset-btn active" id="presetMedium" onclick="applyPresetMode('medium')">Medium Balance</button>
               <button type="button" class="preset-btn" id="presetHigh" onclick="applyPresetMode('high')">High Compression</button>
             </div>
@@ -128,7 +128,7 @@
 
           <div class="slider-container-box">
             <div class="control-label-row">
-              <span>Compression Slider Balance Target</span>
+              <span>Compression Level (High % means smaller file size)</span>
               <span id="lblSliderValueBadge" style="color: #2563eb; font-weight: 800;">50%</span>
             </div>
             <input type="range" id="compressionManualSlider" class="custom-range-slider" min="5" max="90" value="50" oninput="handleSliderMovementValueChange()" />
@@ -221,41 +221,23 @@
 
   <div id="site-footer"></div>
 
-  <!-- CORE EXECUTABLE WORKING ARCHITECTURE HANDLED FLLAWLESSLY -->
+  <!-- FIXED STANDALONE INTERNAL THREAD EXECUTION SCRIPT -->
   <script type="text/javascript">
     const { jsPDF } = window.jspdf;
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
     let selectedFile = null;
 
-    // Load static templates layout components strings asynchronously
+    // Load layout components asynchronously
     fetch('/components/header.html')
       .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
       .then(data => { document.getElementById('site-header').innerHTML = data; })
-      .catch(err => console.error('Header loader fault:', err));
+      .catch(err => console.error('Header setup fault:', err));
 
     fetch('/components/footer.html')
       .then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); })
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
-      .catch(err => console.error('Footer loader fault:', err));
-
-    const dropzone = document.getElementById('dropzoneWorkspaceNode');
-    
-    ['dragenter', 'dragover'].forEach(eventName => {
-        dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); }, false);
-    });
-    ['dragleave', 'drop'].forEach(eventName => {
-        dropzone.addEventListener(eventName, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); }, false);
-    });
-
-    dropzone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        const incomingFilesList = e.dataTransfer.files;
-        if(incomingFilesList.length > 0) {
-            document.getElementById('hiddenFileInputNode').files = incomingFilesList;
-            handleIncomingFileSelection();
-        }
-    });
+      .catch(err => console.error('Footer setup fault:', err));
 
     function triggerHiddenFileInputClick() {
         document.getElementById('hiddenFileInputNode').click();
@@ -265,12 +247,12 @@
         selectedFile = document.getElementById('hiddenFileInputNode').files[0];
         if(!selectedFile) return;
 
-        // Display calculated metrics details safely
-        let calculatedWeightText = (selectedFile.size / 1048576).toFixed(2) + " MB";
+        // Display original size metrics cleanly
+        let displayWeightString = (selectedFile.size / 1048576).toFixed(2) + " MB";
         if(selectedFile.size < 1048576) {
-            calculatedWeightText = (selectedFile.size / 1024).toFixed(2) + " KB";
+            displayWeightString = (selectedFile.size / 1024).toFixed(2) + " KB";
         }
-        document.getElementById('lblOriginalSizeBadge').innerText = calculatedWeightText;
+        document.getElementById('lblOriginalSizeBadge').innerText = displayWeightString;
 
         document.getElementById('controlsCardContainer').style.display = 'flex';
         document.getElementById('compilationOutputContainer').style.display = 'flex';
@@ -285,13 +267,13 @@
 
         if(mode === 'low') {
             document.getElementById('presetLow').classList.add('active');
-            slider.value = 15; // Low compression level profile = High Quality setting
+            slider.value = 15; 
         } else if(mode === 'medium') {
             document.getElementById('presetMedium').classList.add('active');
-            slider.value = 50; // Balanced 50% target
+            slider.value = 50; 
         } else if(mode === 'high') {
             document.getElementById('presetHigh').classList.add('active');
-            slider.value = 85; // High compression level profile
+            slider.value = 85; 
         }
 
         handleSliderMovementValueChange();
@@ -301,7 +283,6 @@
         const sliderValue = document.getElementById('compressionManualSlider').value;
         document.getElementById('lblSliderValueBadge').innerText = sliderValue + "%";
 
-        // De-active standard presets if manual dragging occurs outside static targets
         if(sliderValue != 15 && sliderValue != 50 && sliderValue != 85) {
             document.getElementById('presetLow').classList.remove('active');
             document.getElementById('presetMedium').classList.remove('active');
@@ -309,23 +290,21 @@
         } else {
             if(sliderValue == 15) { document.getElementById('presetLow').classList.add('active'); }
             if(sliderValue == 50) { document.getElementById('presetMedium').classList.add('active'); }
-            if(sliderValue == 80 || sliderValue == 85) { document.getElementById('presetHigh').classList.add('active'); }
+            if(sliderValue == 85) { document.getElementById('presetHigh').classList.add('active'); }
         }
     }
 
-    // --- WORKING 100% OPERATIONAL RE-ENGINEERED SUB-SYSTEM ENGINE ---
+    // --- YOUR WORKING CORE EXECUTABLE DOWN-SAMPLING PIPELINE ---
     async function startCompressionPipeline() {
         if(!selectedFile) return;
 
-        // Map slider parameter backwards to cleanly match standard image quality definitions ratios
-        // Higher compression level target on slider means we want lower image quality values
-        const manualLevelValue = parseInt(document.getElementById('compressionManualSlider').value, 10);
-        const processingQualityFactor = (100 - manualLevelValue) / 100;
+        const manualValue = parseInt(document.getElementById('compressionManualSlider').value, 10);
+        const quality = (100 - manualValue) / 100;
 
         const loaderPanel = document.getElementById('loaderStatusPanel');
         const controlsCard = document.getElementById('controlsCardContainer');
         const outputCard = document.getElementById('compilationOutputContainer');
-        const progressDisplayNode = document.getElementById('progressDisplay');
+        const progressNode = document.getElementById('progressDisplay');
 
         controlsCard.style.display = 'none';
         outputCard.style.display = 'none';
@@ -337,16 +316,13 @@
                 const typedarray = new Uint8Array(this.result);
                 const pdf = await pdfjsLib.getDocument(typedarray).promise;
                 const totalPages = pdf.numPages;
-                
-                // Create clean instance shell matrix
                 const newPdf = new jsPDF();
 
                 for (let i = 1; i <= totalPages; i++) {
-                    progressDisplayNode.innerText = `Processing... ${Math.round((i / totalPages) * 100)}%`;
+                    progressNode.innerText = `Processing... ${Math.round((i/totalPages)*100)}%`;
                     
                     const page = await pdf.getPage(i);
-                    const viewport = page.getViewport({ scale: 1.5 }); // Balanced density baseline factor
-                    
+                    const viewport = page.getViewport({ scale: 1.5 });
                     const canvas = document.createElement('canvas');
                     const context = canvas.getContext('2d');
                     canvas.height = viewport.height;
@@ -354,18 +330,18 @@
 
                     await page.render({ canvasContext: context, viewport: viewport }).promise;
 
-                    // Execute browser-native real image stream down-sampling processing pipeline
-                    const imgData = canvas.toDataURL('image/jpeg', processingQualityFactor);
+                    // The authentic native re-compression hook
+                    const imgData = canvas.toDataURL('image/jpeg', quality);
                     
                     if (i > 1) newPdf.addPage();
-                    newPdf.addImage(imgData, 'JPEG', 0, 0, 210, 297); // Strict A4 dimension constraints parameters bounding box
+                    newPdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
                 }
 
-                newPdf.save(`compressed_document_${Date.now()}.pdf`);
-                alert("Done! Check your downloads folder.");
+                newPdf.save(`compressed_${Date.now()}.pdf`);
+                alert("Done! Check your downloads.");
 
             } catch (err) {
-                console.error("Pipeline compilation trace faulted:", err);
+                console.error("Pipeline failure trace:", err);
                 alert("An item exception occurred during local document processing streams.");
             } finally {
                 loaderPanel.style.display = 'none';
