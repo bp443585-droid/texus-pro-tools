@@ -298,8 +298,8 @@
             document.getElementById('bulkControlsStrip').style.display = 'flex';
 
         } catch(error) {
-            console.error("Grid thumbnail indexing compilation crash:", error);
-            alert("Failed to render preview elements layout arrays. Document might be encrypted.");
+            console.error("FULL PREVIEW ERROR:", error);
+            alert("Preview Render Error: " + error.message);
             location.reload();
         }
     }
@@ -326,7 +326,7 @@
         }
     }
 
-    // --- HARNESS COMPATIBILITY FIX: NATIVE 100% SECURE MEMORY DISPATCH LOOP ---
+    // --- DEEP EXPLICIT DEBUGIN DIAGNOSTIC MATRIX STAGE CHANNEL ---
     async function compileAndDownloadRotatedPdf() {
         if(!uploadedOriginalBytesBuffer) return;
 
@@ -337,7 +337,7 @@
             const castTypedArray = new Uint8Array(uploadedOriginalBytesBuffer);
             const loadedPdfTask = await pdfjsLib.getDocument({ data: castTypedArray }).promise;
             
-            // ADVICE INTEGRATED: Safe window interface mapping wrapper paths
+            // Safe window interface mapping check
             const { jsPDF } = window.jspdf || window;
             const finalPdfDocument = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
 
@@ -345,7 +345,6 @@
                 document.getElementById('progress').innerText = `Saving Document... ${Math.round((idx / totalDocumentPagesCount) * 100)}%`;
                 
                 const pageInstance = await loadedPdfTask.getPage(idx);
-                // Memory Optimization: Reduced view scale baseline factor from 1.5 to 1.2
                 const originalViewport = pageInstance.getViewport({ scale: 1.2 });
                 
                 const processingCanvas = document.createElement('canvas');
@@ -376,13 +375,11 @@
                     finalExportCanvas = rotationCanvas;
                 }
 
-                // ADVICE INTEGRATED: Quality parameter safely dropped to 0.70 to avoid memory ceiling limit rejections
                 const pageImageDataUrl = finalExportCanvas.toDataURL('image/jpeg', 0.70);
                 
                 if (idx > 1) finalPdfDocument.addPage();
                 finalPdfDocument.addImage(pageImageDataUrl, 'JPEG', 0, 0, 210, 297);
                 
-                // Flush intermediate object variables allocation footprints pointers
                 processingCanvas.width = 0; 
                 processingCanvas.height = 0;
             }
@@ -390,8 +387,12 @@
             finalPdfDocument.save(`rotated_document_${Date.now()}.pdf`);
 
         } catch(error) {
-            console.error("Binary serialization fatal tracking log:", error);
-            alert("An error occurred during local document processing streams.");
+            // DIAGNOSTICS CRITICAL MAPS: Outputs literal raw system stack definitions straight to screen alert popups
+            console.error("FULL SAVE COMPILATION FAULT DETECTED:", error);
+            console.error("Message:", error.message);
+            console.error("Stack Trace:", error.stack);
+            
+            alert(`DIAGNOSTIC ERROR ALARM:\n\nMessage: ${error.message}\n\nStack Location: ${error.stack.split('\n')[0]}`);
         } finally {
             document.getElementById('loader').style.display = 'none';
             document.getElementById('bulkControlsStrip').style.display = 'flex';
