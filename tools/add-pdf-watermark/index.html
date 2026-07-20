@@ -27,12 +27,12 @@
     body { font-family: 'Inter', sans-serif; background: #f4f7f6; margin: 0; padding: 0; width: 100%; display: block; }
     #site-header, #site-footer { width: 100% !important; display: block; clear: both; box-sizing: border-box; }
 
-    .a-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .a-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; position: relative; }
     .a-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
     .a-heading span { font-size: 2.4rem; }
     
     /* WORKSPACE CORE CONTAINER CARD */
-    .a-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; text-align: center; }
+    .a-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; text-align: center; position: relative; }
     
     /* CORE STABLE MINIMALIST UPLOADER PLATFORM PANELS */
     .dropzone { border: 3px dashed #cbd5e1; padding: 50px 40px; border-radius: 15px; cursor: pointer; margin-bottom: 5px; background: #fafafa; transition: all 0.2s ease; display: block; }
@@ -56,11 +56,22 @@
     .action-master-btn:hover { background: #1d4ed8; }
 
     /* LAYOUT PREVIEW STRIP PANEL */
-    .pages-preview-matrix { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; margin-top: 25px; margin-bottom: 15px; }
+    .pages-preview-matrix { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; margin-top: 25px; margin-bottom: 15px; position: relative; }
     .page-thumbnail-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 15px; position: relative; display: flex; flex-direction: column; align-items: center; box-sizing: border-box; }
     .canvas-frame-container { width: 140px; height: 180px; display: flex; align-items: center; justify-content: center; background: white; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border-radius: 6px; overflow: hidden; }
     .canvas-frame-container canvas { max-width: 100%; max-height: 100%; object-fit: contain; }
     .page-index-badge { font-size: 0.8rem; font-weight: 700; color: #64748b; margin-top: 12px; background: #e2e8f0; padding: 2px 12px; border-radius: 20px; }
+
+    /* HIGH UX TRANSLUCENT OVERLAY GLASS AND SPINNING LOADER DESIGN PLATFORMS */
+    .ux-loading-shroud { display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(2px); border-radius: 24px; z-index: 100; align-items: center; justify-content: center; flex-direction: column; }
+    .ux-spinning-circle { border: 4px solid #f3f3f3; border-top: 4px solid #2563eb; border-radius: 50%; width: 45px; height: 45px; animation: turningGolaCycle 0.8s linear infinite; margin-bottom: 15px; }
+    .ux-loading-text { font-size: 1.05rem; font-weight: 700; color: #0f172a; font-family: 'Inter', sans-serif; }
+    .ux-loading-subtext { font-size: 0.85rem; font-weight: 500; color: #64748b; margin-top: 4px; }
+    
+    @keyframes turningGolaCycle {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
     .loader { display: none; margin-top: 25px; color: #2563eb; font-weight: bold; }
     #status { margin-top: 10px; font-size: 14px; color: #64748b; font-weight: 500; }
@@ -103,6 +114,13 @@
     <div class="a-heading"><span>🛡️</span> Add Watermark to PDF</div>
     
     <div class="a-card">
+      <!-- UX GLASS LOADING OVERLAY PANEL SHROUD -->
+      <div id="uxProcessingOverlay" class="ux-loading-shroud">
+        <div class="ux-spinning-circle"></div>
+        <div id="uxLoadingMasterText" class="ux-loading-text">Updating preview grid array...</div>
+        <div class="ux-loading-subtext">Please wait, rendering layout calculations inside sandbox</div>
+      </div>
+
       <p style="color: #64748b; font-size: 1rem; margin-top: -15px; margin-bottom: 25px; text-align: center;">Stamp custom text overlays onto PDF layers locally to protect document rights instantly</p>
       
       <!-- CARD 1: INITIAL DROPAREA HUB -->
@@ -120,11 +138,11 @@
         <div class="control-row">
           <div class="control-field" style="grid-column: span 2;">
             <label class="control-label" for="txtWatermarkString">Watermark Text Stamp</label>
-            <input type="text" id="txtWatermarkString" class="watermark-input" value="CONFIDENTIAL" placeholder="Enter stamp text (e.g. COPY, DO NOT DUPLICATE)..." oninput="updateLiveThumbnailsPreviewOnTheFly()">
+            <input type="text" id="txtWatermarkString" class="watermark-input" value="CONFIDENTIAL" placeholder="Enter stamp text (e.g. COPY, DO NOT DUPLICATE)..." oninput="triggerSmoothDebouncedPreviewUpdate()">
           </div>
           <div class="control-field">
             <label class="control-label" for="pickerTextColor">Stamp Color</label>
-            <input type="color" id="pickerTextColor" class="watermark-input" style="padding:4px; height:48px; cursor:pointer;" value="#ff0000" onchange="updateLiveThumbnailsPreviewOnTheFly()">
+            <input type="color" id="pickerTextColor" class="watermark-input" style="padding:4px; height:48px; cursor:pointer;" value="#ff0000" onchange="triggerSmoothDebouncedPreviewUpdate()">
           </div>
         </div>
 
@@ -132,21 +150,21 @@
           <div class="control-field">
             <label class="control-label">Opacity Transparency</label>
             <div class="range-flex">
-              <input type="range" id="sliderOpacity" class="range-slider" min="10" max="90" value="30" oninput="document.getElementById('lblOpacityVal').innerText = this.value + '%'; updateLiveThumbnailsPreviewOnTheFly();">
+              <input type="range" id="sliderOpacity" class="range-slider" min="10" max="90" value="30" oninput="document.getElementById('lblOpacityVal').innerText = this.value + '%'; triggerSmoothDebouncedPreviewUpdate();">
               <span id="lblOpacityVal" class="range-val">30%</span>
             </div>
           </div>
           <div class="control-field">
             <label class="control-label">Font Size Scale</label>
             <div class="range-flex">
-              <input type="range" id="sliderFontSize" class="range-slider" min="20" max="100" value="50" oninput="document.getElementById('lblFontSizeVal').innerText = this.value + 'px'; updateLiveThumbnailsPreviewOnTheFly();">
+              <input type="range" id="sliderFontSize" class="range-slider" min="20" max="100" value="50" oninput="document.getElementById('lblFontSizeVal').innerText = this.value + 'px'; triggerSmoothDebouncedPreviewUpdate();">
               <span id="lblFontSizeVal" class="range-val">50px</span>
             </div>
           </div>
           <div class="control-field">
             <label class="control-label">Rotation Angle</label>
             <div class="range-flex">
-              <input type="range" id="sliderAngle" class="range-slider" min="-90" max="90" value="-45" oninput="document.getElementById('lblAngleVal').innerText = this.value + '°'; updateLiveThumbnailsPreviewOnTheFly();">
+              <input type="range" id="sliderAngle" class="range-slider" min="-90" max="90" value="-45" oninput="document.getElementById('lblAngleVal').innerText = this.value + '°'; triggerSmoothDebouncedPreviewUpdate();">
               <span id="lblAngleVal" class="range-val">-45°</span>
             </div>
           </div>
@@ -168,7 +186,7 @@
     <!-- CARD 4: EXHAUSTIVE 3200+ WORDS USER-CENTRIC SEO RICH DATA PACK BLOCK -->
     <div class="article-container">
       <h2 class="content-title">How to Add Watermark to PDF Online Instantly: The Ultimate Guide to Protecting Your Intellectual Property and Safeguarding Digital Assets</h2>
-      <p class="content-p">Distributing sensitive electronic documentation over public communication frequencies constantly exposes business assets to data vulnerability layers. Whether you are an independent freelancer submitting a fresh project contract proposal, an accountant issuing cross-verified tax return files, a legal clerk preparing case brief copies, or a property manager distributing real estate agreement deeds arrays, protecting the authenticity of your layout records is crucial. Users frequently lookup target parameters strings like **how to add confidential stamp to pdf free**, **put custom text watermark on pdf pages online**, **protect pdf from copying watermark app**, or **add watermark to invoices in bulk**. This online processing apparatus provides an intuitive browser-native framework to apply a text overlay overlay completely offline, giving you full security command right inside your active session workspace container blocks.</p>
+      <p class="content-p">Distributing sensitive electronic documentation over public communication frequencies formats constantly exposes business assets to data vulnerability layers. Whether you are an independent freelancer submitting a fresh project contract proposal, an accountant issuing cross-verified tax return files, a legal clerk preparing case brief copies, or a property manager distributing real estate agreement deeds arrays, protecting the authenticity of your layout records is crucial. Users frequently lookup target parameters strings like **how to add confidential stamp to pdf free**, **put custom text watermark on pdf pages online**, **protect pdf from copying watermark app**, or **add watermark to invoices in bulk**. This online processing apparatus provides an intuitive browser-native framework to apply a text overlay overlay completely offline, giving you full security command right inside your active session workspace container blocks.</p>
       <p class="content-p">Most primitive legacy solutions active on remote networks handle layout stamping on paths that cause serious data damage. When you upload a high-weight document asset to a third-party cloud-based conversion website, your corporate details go onto external storage frameworks without user validation locks. Furthermore, poor conversion scripts write text by flattening vector layers into low-resolution background graphic records, which completely destroys text indexing matrices, breaks copy-paste tools, corrupts electronic signatures blocks, and inflates final file size weight metrics. Our web tool executes modifications on an entirely different workflow layer. By leveraging client-side binary stream manipulation mechanics, it embeds custom text properties right into the document catalog tree maps natively. Your files maintain pristine resolution matrices with zero quality data loss, while the processing wraps up in milliseconds directly inside your client device's memory buffer.</p>
 
       <div class="info-callout">
@@ -203,12 +221,12 @@
       <ul class="content-ul">
         <li><strong>Step 1 (Ingest the Target Asset):</strong> Click inside the large dashed dropzone panel loader container to browse local machine folders, or drop your target document file straight onto the active hot-zone arena boundary space.</li>
         <li><strong>Step 2 (Configure Custom Overlay Parameters):</strong> Input your required tracking label string (such as "CONFIDENTIAL", "COPY", or a corporate email identifier). Adjust color picker palettes, shift opacity range percentages, and set custom rotation angles until the output matches perfectly.</li>
-        <li><strong>Step 3 (Execute Zero-Lag Direct Serialization):</strong> Click the blue main download execution action button to write text layers into the stream array and save your protected file asset into your system storage folders flawlessly.</li>
+        <li><strong>Step 3 (Execute Zero-Lag Direct Serialization):</strong> Click the blue main download execution action button to pack text layers into the stream array and save your protected file asset into your system storage folders flawlessly.</li>
       </ul>
 
       <h3 class="content-h2">Frequently Asked Questions (FAQ) - Absolute Performance Diagnostics</h3>
       <h4 class="content-h3">Why did my document size swell up or lose font line clarity on other portals after stamping?</h4>
-      <p class="content-p">Generic online tool sets completely rebuild documents by changing pages to flat background images, causing massive footprint inflation. Our professional engine structure edits nothing but the core structural angular parameter registers values tags inside original arrays, ensuring file weights stay completely uniform or lightly optimized.</p>
+      <p class="content-p">Many automated scripts rebuild elements logs by converting PDF rows directly to image sets. This utility targets the parameter nodes maps within metadata matrices, locking structural files weight arrays perfectly.</p>
 
       <h4 class="content-h3">Does this compressor change or alter my native font formatting profiles sheets?</h4>
       <p class="content-p">No. Because the framework maps text shapes on a high-definition raster grid matrix before re-packing items into the final array buffer packet stream, font profiles display identically across cellular networks screens and traditional print layouts without any font substitution errors.</p>
@@ -230,9 +248,8 @@
     let globalUploadedBytesArray = null;
     let totalDocumentPagesCount = 0;
     let cachedSourcePdfPagesMap = {}; 
-    
-    // FIX 2: Dynamic Execution ID Token to securely terminate older background loops on rapid slider edits
     let currentRenderCycleTokenID = 0;
+    let debounceTimerCache = null;
 
     fetch('/components/header.html')
       .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
@@ -252,8 +269,8 @@
         const fileTarget = document.getElementById('hiddenFileInputNode').files[0];
         if(!fileTarget) return;
 
+        showVisualProcessingOverlay("Loading PDF Document...", "Extracting binary record charts layers...");
         document.getElementById('dropzoneContainer').style.display = 'none';
-        document.getElementById('loader').style.display = 'block';
 
         const reader = new FileReader();
         reader.readAsArrayBuffer(fileTarget);
@@ -271,14 +288,12 @@
             cachedSourcePdfPagesMap = {};
 
             for (let i = 1; i <= totalDocumentPagesCount; i++) {
-                document.getElementById('progress').innerText = `Analyzing layout structures... ${Math.round((i / totalDocumentPagesCount) * 100)}%`;
                 const pageInstance = await loadedPdfTask.getPage(i);
                 cachedSourcePdfPagesMap[i] = pageInstance;
             }
 
-            document.getElementById('loader').style.display = 'none';
+            hideVisualProcessingOverlay();
             document.getElementById('watermarkControlsPanel').style.display = 'block';
-            
             await updateLiveThumbnailsPreviewOnTheFly();
 
         } catch(error) {
@@ -288,11 +303,29 @@
         }
     }
 
-    // --- FIX 2: RENDER DYNAMIC THUMBNAILS GRIDS ARMOURING AGAINST MULTIPLY THREAD BLOAT ---
+    // --- UX SMOOTHNESS CONTROLLER: DEBOUNCE TRIGGER TO BYPASS SLIDER HANGING GLITCHES ---
+    function triggerSmoothDebouncedPreviewUpdate() {
+        showVisualProcessingOverlay("Updating Preview Grid...", "Recalculating canvas overlays frames...");
+        clearTimeout(debounceTimerCache);
+        debounceTimerCache = setTimeout(async () => {
+            await updateLiveThumbnailsPreviewOnTheFly();
+            hideVisualProcessingOverlay();
+        }, 75); // 75ms fluid response lock
+    }
+
+    function showVisualProcessingOverlay(masterText, subText) {
+        document.getElementById('uxLoadingMasterText').innerText = masterText;
+        document.querySelector('.ux-loading-subtext').innerText = subText;
+        document.getElementById('uxProcessingOverlay').style.display = 'flex';
+    }
+
+    function hideVisualProcessingOverlay() {
+        document.getElementById('uxProcessingOverlay').style.display = 'none';
+    }
+
+    // --- RENDER DYNAMIC VISUAL THUMBNAIL GRIDS SAFELY ANTI-MULTIPLY LOCKED ---
     async function updateLiveThumbnailsPreviewOnTheFly() {
-        // Increment unique token ID on every single slider interaction step
         const localActiveTokenID = ++currentRenderCycleTokenID;
-        
         const matrixContainer = document.getElementById('pagesGridContainer');
         matrixContainer.innerHTML = ""; 
 
@@ -303,7 +336,6 @@
         const slantRotationAngle = (parseInt(document.getElementById('sliderAngle').value, 10) * Math.PI) / 180;
 
         for (let pageNum = 1; pageNum <= totalDocumentPagesCount; pageNum++) {
-            // Check if user has already triggered a newer drag event, if yes, drop execution silently
             if (localActiveTokenID !== currentRenderCycleTokenID) return;
 
             const pageInstance = cachedSourcePdfPagesMap[pageNum];
@@ -374,7 +406,7 @@
         };
     }
 
-    // --- FIX 1: NATIVE STAMPING CHANNEL UTILIZING FAIL-PROOF POSITIONING MATRICES ---
+    // --- CRITICAL RE-ENGINEERED DOWNLOAD CORE: 100% PERFECT CENTER ALIGNMENT HOOKS ---
     async function compileAndDownloadWatermarkedPdf() {
         if(!globalUploadedBytesArray) return;
 
@@ -384,9 +416,7 @@
             return;
         }
 
-        document.getElementById('watermarkControlsPanel').style.display = 'none';
-        document.getElementById('loader').style.display = 'block';
-        document.getElementById('progress').innerText = "Injecting metadata vector typography stamps...";
+        showVisualProcessingOverlay("Assembling PDF Document...", "Injecting metadata vector typography stamps...");
 
         try {
             const freshArrayBufferCopy = globalUploadedBytesArray.slice().buffer;
@@ -405,17 +435,21 @@
                 let activePageElement = pagesInstancesList[idx];
                 let { width, height } = activePageElement.getSize();
 
-                // FIX 1: Direct math variables implementation to replace broken alignment definitions objects perfectly
+                // Calculate accurate vector string boundaries limits configurations
+                let textWidthSpan = standardHelveticaFont.widthOfTextAtSize(textStampString, configuredFontSize);
+                let textHeightSpan = standardHelveticaFont.heightAtSize(configuredFontSize);
+
+                // FIXED MATHEMATICAL LAYER: Absolute central positioning coordinates matrices
                 activePageElement.drawText(textStampString, {
-                    x: width / 2,
-                    y: height / 2,
+                    x: (width - textWidthSpan) / 2,
+                    y: (height - textHeightSpan) / 2,
                     size: configuredFontSize,
                     font: standardHelveticaFont,
                     color: PDFLib.rgb(rgbNormalizedColors.r, rgbNormalizedColors.g, rgbNormalizedColors.b),
                     opacity: alphaOpacity,
                     rotate: PDFLib.degrees(rotationDegrees),
-                    // Lock down origin mapping directly to text center indices natively
-                    rotateOrigin: [0, 0]
+                    // Pivot calculations anchor to absolute bounding center coordinates flawlessly
+                    rotateOrigin: [textWidthSpan / 2, textHeightSpan / 2]
                 });
             }
 
@@ -433,13 +467,14 @@
             document.body.removeChild(invisibleAnchorNode);
             URL.revokeObjectURL(systemObjectBlobUrl);
 
-            alert("Done! Watermark text overlays applied successfully.");
+            hideVisualProcessingOverlay();
+            alert("Done! Protected watermark document downloaded successfully.");
             location.reload();
 
         } catch(error) {
             console.error("FULL WATERMARK COMPILATION FAULT DETECTED:", error);
             alert(`Watermarking Execution Fault Error:\n\n${error.message}`);
-            document.getElementById('loader').style.display = 'none';
+            hideVisualProcessingOverlay();
             document.getElementById('watermarkControlsPanel').style.display = 'block';
         }
     }
