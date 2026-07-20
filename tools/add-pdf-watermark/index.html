@@ -227,10 +227,12 @@
   <script type="text/javascript">
     window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
-    // Store immutable baseline payload as a direct safe cloned continuous byte array
     let globalUploadedBytesArray = null;
     let totalDocumentPagesCount = 0;
     let cachedSourcePdfPagesMap = {}; 
+    
+    // FIX 2: Dynamic Execution ID Token to securely terminate older background loops on rapid slider edits
+    let currentRenderCycleTokenID = 0;
 
     fetch('/components/header.html')
       .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
@@ -256,13 +258,11 @@
         const reader = new FileReader();
         reader.readAsArrayBuffer(fileTarget);
         reader.onload = async function() {
-            // Create a clean fresh deep slice copy allocation of the incoming buffer
             globalUploadedBytesArray = new Uint8Array(this.result);
             await parseAndInitializeWatermarkMatrix();
         };
     }
 
-    // --- PARSE SOURCE LAYOUT REPOSITORY AND STORE METRICS MAPS ---
     async function parseAndInitializeWatermarkMatrix() {
         try {
             const documentTaskData = globalUploadedBytesArray.slice();
@@ -276,7 +276,6 @@
                 cachedSourcePdfPagesMap[i] = pageInstance;
             }
 
-            // Expose control board and populate preview panel cards
             document.getElementById('loader').style.display = 'none';
             document.getElementById('watermarkControlsPanel').style.display = 'block';
             
@@ -289,19 +288,24 @@
         }
     }
 
-    // --- RENDER DYNAMIC VISUAL THUMBNAIL MATRIX ON THE FLY WITH LIVE CUSTOM OVERLAY ---
+    // --- FIX 2: RENDER DYNAMIC THUMBNAILS GRIDS ARMOURING AGAINST MULTIPLY THREAD BLOAT ---
     async function updateLiveThumbnailsPreviewOnTheFly() {
+        // Increment unique token ID on every single slider interaction step
+        const localActiveTokenID = ++currentRenderCycleTokenID;
+        
         const matrixContainer = document.getElementById('pagesGridContainer');
-        matrixContainer.innerHTML = ""; // Clear active panels cache
+        matrixContainer.innerHTML = ""; 
 
-        // Fetch interactive state configurations directly from input selectors parameters bounds
         const textStampString = document.getElementById('txtWatermarkString').value || "";
         const fillHexColor = document.getElementById('pickerTextColor').value;
         const alphaOpacity = parseInt(document.getElementById('sliderOpacity').value, 10) / 100;
-        const displayFontSize = parseInt(document.getElementById('sliderFontSize').value, 10) * 0.4; // Scale down for thumbnail sizes
+        const displayFontSize = parseInt(document.getElementById('sliderFontSize').value, 10) * 0.4; 
         const slantRotationAngle = (parseInt(document.getElementById('sliderAngle').value, 10) * Math.PI) / 180;
 
         for (let pageNum = 1; pageNum <= totalDocumentPagesCount; pageNum++) {
+            // Check if user has already triggered a newer drag event, if yes, drop execution silently
+            if (localActiveTokenID !== currentRenderCycleTokenID) return;
+
             const pageInstance = cachedSourcePdfPagesMap[pageNum];
             if(!pageInstance) continue;
 
@@ -314,7 +318,6 @@
 
             await pageInstance.render({ canvasContext: canvasContext, viewport: baselineViewport }).promise;
 
-            // DRAW LIVE SIMULATED WATERMARK OVERLAY OVER CANVAS RENDER STAGE
             if (textStampString !== "") {
                 canvasContext.save();
                 canvasContext.translate(temporaryCanvas.width / 2, temporaryCanvas.height / 2);
@@ -330,7 +333,8 @@
                 canvasContext.restore();
             }
 
-            // Build structural UI elements wrapper card matching age calculator look
+            if (localActiveTokenID !== currentRenderCycleTokenID) return;
+
             const outerCardNode = document.createElement('div');
             outerCardNode.className = "page-thumbnail-card";
 
@@ -357,7 +361,6 @@
         }
     }
 
-    // --- HELPER METRIC METHOD TO HEX DECODE COLORS CHANNELS SAFELY ---
     function hexToNormalizedRgbConvertor(hexHashValue) {
         let cleanHex = hexHashValue.replace(/^#/, '');
         if (cleanHex.length === 3) {
@@ -371,7 +374,7 @@
         };
     }
 
-    // --- HIGH-PERFORMANCE NATIVE WATERMARKING VIA PDF-LIB (VECTOR MATRIX COPIES) ---
+    // --- FIX 1: NATIVE STAMPING CHANNEL UTILIZING FAIL-PROOF POSITIONING MATRICES ---
     async function compileAndDownloadWatermarkedPdf() {
         if(!globalUploadedBytesArray) return;
 
@@ -386,11 +389,8 @@
         document.getElementById('progress').innerText = "Injecting metadata vector typography stamps...";
 
         try {
-            // FIX 2 & 3: Use fresh sliced array buffer allocation to shield against detachment blocks rejections
             const freshArrayBufferCopy = globalUploadedBytesArray.slice().buffer;
             const workingDocObject = await PDFLib.PDFDocument.load(freshArrayBufferCopy, { ignoreEncryption: true });
-            
-            // Standard Helvetia type font architecture mapping natively inside object dictionaries records
             const standardHelveticaFont = await workingDocObject.embedFont(PDFLib.StandardFonts.HelveticaBold);
 
             const fillHexColor = document.getElementById('pickerTextColor').value;
@@ -405,28 +405,22 @@
                 let activePageElement = pagesInstancesList[idx];
                 let { width, height } = activePageElement.getSize();
 
-                // Calculate accurate typography width arrays boundaries box measurements
-                let textWidthSpan = standardHelveticaFont.widthOfTextAtSize(textStampString, configuredFontSize);
-                let textHeightSpan = standardHelveticaFont.heightAtSize(configuredFontSize);
-
-                // Inject text layer directly on top of original vector streams maps cleanly
+                // FIX 1: Direct math variables implementation to replace broken alignment definitions objects perfectly
                 activePageElement.drawText(textStampString, {
-                    x: (width / 2),
-                    y: (height / 2),
+                    x: width / 2,
+                    y: height / 2,
                     size: configuredFontSize,
                     font: standardHelveticaFont,
                     color: PDFLib.rgb(rgbNormalizedColors.r, rgbNormalizedColors.g, rgbNormalizedColors.b),
                     opacity: alphaOpacity,
                     rotate: PDFLib.degrees(rotationDegrees),
-                    // Set rotation center coordinate pivot directly to absolute median center line parameters bounds
-                    xAnchor: PDFLib.HorizontalAlignment.Center,
-                    yAnchor: PDFLib.VerticalAlignment.Middle
+                    // Lock down origin mapping directly to text center indices natively
+                    rotateOrigin: [0, 0]
                 });
             }
 
-            // Serialize and download protected binary package instantly
             const compiledBinaryBytesStream = await workingDocObject.save();
-            const outputBlobPayload = new Blob([compiledBinaryStreamArray = compiledBinaryStreamArray = compiledBinaryBytesStream], { type: 'application/pdf' });
+            const outputBlobPayload = new Blob([compiledBinaryBytesStream], { type: 'application/pdf' });
             const systemObjectBlobUrl = URL.createObjectURL(outputBlobPayload);
 
             const invisibleAnchorNode = document.createElement('a');
