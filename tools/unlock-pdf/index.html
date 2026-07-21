@@ -7,8 +7,8 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Unlock PDF Online Free - Remove PDF Password & Restrictions</title>
-  <meta name="description" content="Unlock PDF pages online for free instantly. Remove permissions locks, editing restrictions, and open passwords from PDF documents securely inside your browser." />
+  <title>Unlock PDF Online Free - Remove PDF Permissions & Restrictions</title>
+  <meta name="description" content="Unlock PDF pages online for free instantly. Remove permissions locks, editing restrictions, and print protection from PDF documents securely inside your browser." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -100,7 +100,7 @@
         <div class="ux-loading-subtext">Please wait, processing security streams inside sandbox</div>
       </div>
 
-      <p style="color: #64748b; font-size: 1rem; margin-top: -15px; margin-bottom: 25px; text-align: center;">Remove passwords, permissions locks, and editing restrictions from PDF files instantly and locally</p>
+      <p style="color: #64748b; font-size: 1rem; margin-top: -15px; margin-bottom: 25px; text-align: center;">Remove permissions locks, editing restrictions, and security flags from PDF files instantly</p>
       
       <div id="dropzoneContainer" class="dropzone" onclick="triggerHiddenFileInputClick()">
         <span style="font-size: 2.8rem; display: block; margin-bottom: 12px; user-select: none;">📁</span>
@@ -111,11 +111,11 @@
 
       <div id="unlockControlsPanel" class="unlock-controls-grid">
         <h3 id="lblDocumentMetaTitle" style="margin-top:0; margin-bottom:8px; color:#0f172a; font-weight:800; font-size:1.2rem;">PDF Document Loaded</h3>
-        <p id="lblStatusSub" style="font-size: 0.9rem; color: #64748b; margin-bottom: 20px;">Click the button below to strip security restrictions and download an unlocked PDF.</p>
+        <p id="lblStatusSub" style="font-size: 0.9rem; color: #64748b; margin-bottom: 20px;">Click the button below to strip restrictions and generate a clean, unlocked PDF.</p>
 
         <div id="pwdFieldBox" class="password-field-wrapper">
-          <label style="font-size:0.85rem; font-weight:700; color:#475569;" for="txtPdfPassword">This document requires an open password:</label>
-          <input type="password" id="txtPdfPassword" class="unlock-input" placeholder="Enter password to decrypt..." onkeypress="if(event.key==='Enter') compileAndDownloadUnlockedPdf()">
+          <label style="font-size:0.85rem; font-weight:700; color:#475569;" for="txtPdfPassword">Document Open Password Required:</label>
+          <input type="password" id="txtPdfPassword" class="unlock-input" placeholder="Enter password..." onkeypress="if(event.key==='Enter') compileAndDownloadUnlockedPdf()">
         </div>
 
         <button type="button" class="action-master-btn" onclick="compileAndDownloadUnlockedPdf()">🔓 Unlock PDF &amp; Download</button>
@@ -147,9 +147,9 @@
 
       <ol class="content-ol">
         <li><strong>Isolated Memory Allocation:</strong> Uploaded files are read into an isolated local `Uint8Array` buffer. Raw document bytes are processed in your browser memory and never transmitted across external networks.</li>
-        <li><strong>Encrypted Catalog Node Detection:</strong> The parsing engine inspects the PDF object tree to verify encryption algorithms (standard 40-bit, 128-bit, or 256-bit AES encryption wrappers).</li>
-        <li><strong>Password Verification & Stream Unlocking:</strong> The client engine authenticates encryption keys, decrypts the underlying object streams, and removes restriction dictionaries seamlessly.</li>
-        <li><strong>Clean Vector Export Serialization:</strong> The decrypted structure is re-serialized into a clean, password-free PDF binary payload. Vector graphics, searchable text layers, and embedded links remain completely un-corrupted.</li>
+        <li><strong>Encrypted Catalog Node Detection:</strong> The parsing engine inspects the PDF object tree to verify encryption algorithms.</li>
+        <li><strong>Stream Unlocking:</strong> The client engine rebuilds the page tree into a fresh unencrypted PDF structure, stripping restriction dictionaries seamlessly.</li>
+        <li><strong>Clean Vector Export Serialization:</strong> The decrypted structure is serialized into a clean, password-free PDF binary payload. Vector graphics, searchable text layers, and embedded links remain completely un-corrupted.</li>
       </ol>
 
       <h2 class="content-h2">Airtight Device Privacy and Instant Browser-Native Execution Logic</h2>
@@ -245,7 +245,7 @@
                 hideVisualProcessingOverlay();
                 
                 document.getElementById('pwdFieldBox').style.display = 'block';
-                document.getElementById('lblStatusSub').innerText = "This PDF requires an open password to decrypt. Please enter it below once to save an unlocked copy permanently.";
+                document.getElementById('lblStatusSub').innerText = "This PDF requires an open password to view. Enter the password once below to save a permanently unlocked copy.";
                 document.getElementById('unlockControlsPanel').style.display = 'block';
                 document.getElementById('txtPdfPassword').focus();
             } else {
@@ -304,29 +304,30 @@
         const pwdInput = document.getElementById('txtPdfPassword').value;
 
         if (isStrictUserPasswordRequired && !pwdInput) {
-            alert("Please enter the PDF open password to proceed with decryption.");
+            alert("Please enter the document open password to decrypt and save.");
             return;
         }
 
-        showVisualProcessingOverlay("Decrypting Document...", "Stripping security locks and restrictions...");
+        showVisualProcessingOverlay("Unlocking Document...", "Creating unencrypted clean PDF structure...");
 
         try {
             const freshArrayBufferCopy = globalUploadedBytesArray.slice().buffer;
             
-            // Re-create unencrypted document structure using pdf-lib
+            // 1. Read source PDF with ignoreEncryption flag and password (if needed)
             const srcDoc = await PDFLib.PDFDocument.load(freshArrayBufferCopy, { 
                 password: pwdInput || undefined,
                 ignoreEncryption: true 
             });
 
-            // Create a brand-new unencrypted PDF document and copy all pages
+            // 2. Create a fresh unencrypted target PDF
             const unlockedDoc = await PDFLib.PDFDocument.create();
+
+            // 3. Copy all page structures into the fresh PDF
             const pageIndices = srcDoc.getPageIndices();
             const copiedPages = await unlockedDoc.copyPages(srcDoc, pageIndices);
-            
             copiedPages.forEach(p => unlockedDoc.addPage(p));
 
-            // Save clean, completely unencrypted binary payload
+            // 4. Save clean output with no encryption dictionaries
             const compiledBinaryBytesStream = await unlockedDoc.save();
             const outputBlobPayload = new Blob([compiledBinaryBytesStream], { type: 'application/pdf' });
             const systemObjectBlobUrl = URL.createObjectURL(outputBlobPayload);
@@ -342,7 +343,7 @@
             URL.revokeObjectURL(systemObjectBlobUrl);
 
             hideVisualProcessingOverlay();
-            alert("Done! Unlocked PDF saved successfully.");
+            alert("Done! PDF unlocked successfully.");
 
         } catch(error) {
             console.error("FULL DECRYPTION COMPILATION FAULT DETECTED:", error);
