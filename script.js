@@ -47,9 +47,14 @@ searchInput.addEventListener("keyup", function () {
   let visibleCount = 0;
 
   cards.forEach(card => {
-    const text = card.innerText.toLowerCase();
+   const text = (
+  card.querySelector("h3").innerText + " " +
+  card.querySelector("p").innerText
+).toLowerCase();
 
-    if (text.includes(value)) {
+   const words = value.split(/\s+/).filter(Boolean);
+
+if (words.every(word => text.includes(word))) {
       card.style.display = "block";
       visibleCount++;
     } else {
