@@ -46,21 +46,23 @@ searchInput.addEventListener("keyup", function () {
   const notFoundCard = document.getElementById("notFoundCard");
   let visibleCount = 0;
 
-  cards.forEach(card => {
-   const text = (
-  card.querySelector("h3").innerText + " " +
-  card.querySelector("p").innerText
-).toLowerCase();
+ cards.forEach(card => {
+  const text = (
+    card.querySelector("h3").innerText + " " +
+    card.querySelector("p").innerText
+  ).toLowerCase();
 
-   const words = value.split(/\s+/).filter(Boolean);
+  const words = value.split(/\s+/).filter(Boolean);
 
-if (words.every(word => text.includes(word))) {
-      card.style.display = "block";
-      visibleCount++;
-    } else {
-      card.style.display = "none";
-    }
-  });
+  const matched = words.every(word => text.includes(word));
+
+  if (matched) {
+    card.style.display = "block";
+    visibleCount++;
+  } else {
+    card.style.display = "none";
+  }
+});
 
   // Toggle tool not found display state matrix
   if (visibleCount === 0 && value !== "") {
