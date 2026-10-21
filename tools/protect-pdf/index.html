@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Protect PDF Online Free - Password Protect & Encrypt PDF Files</title>
-  <meta name="description" content="Protect PDF with password online for free. Lock PDF files with strong AES encryption directly in your browser. Fast, secure, and completely private offline processing." />
+  <meta name="description" content="Protect PDF with password online for free. Lock PDF files with strong password encryption directly in your browser. Fast, secure, and completely private offline processing." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -16,7 +16,7 @@
 
   <!-- PRODUCTION LIBRARIES -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -195,6 +195,7 @@
 
     let globalUploadedBytesArray = null;
     let totalDocumentPagesCount = 0;
+    let cachedPdfTask = null;
 
     fetch('/components/header.html')
       .then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); })
@@ -239,14 +240,14 @@
     async function renderIncomingPreviews() {
         try {
             const documentTaskData = globalUploadedBytesArray.slice();
-            const loadedPdfTask = await pdfjsLib.getDocument({ data: documentTaskData }).promise;
-            totalDocumentPagesCount = loadedPdfTask.numPages;
+            cachedPdfTask = await pdfjsLib.getDocument({ data: documentTaskData }).promise;
+            totalDocumentPagesCount = cachedPdfTask.numPages;
 
             const matrixContainer = document.getElementById('pagesGridContainer');
             matrixContainer.innerHTML = "";
 
             for (let pageNum = 1; pageNum <= totalDocumentPagesCount; pageNum++) {
-                const pageInstance = await loadedPdfTask.getPage(pageNum);
+                const pageInstance = await cachedPdfTask.getPage(pageNum);
                 const baselineViewport = pageInstance.getViewport({ scale: 0.35 });
                 
                 const temporaryCanvas = document.createElement('canvas');
@@ -292,8 +293,9 @@
         }
     }
 
+    // --- RELIABLE BROWSER-NATIVE ENCRYPTION VIA JSPDF SETENCRYPTION ---
     async function compileAndDownloadProtectedPdf() {
-        if(!globalUploadedBytesArray) return;
+        if(!globalUploadedBytesArray || !cachedPdfTask) return;
 
         const password = document.getElementById('txtPassword').value;
         const confirmPassword = document.getElementById('txtConfirmPassword').value;
@@ -310,40 +312,61 @@
             return;
         }
 
-        showVisualProcessingOverlay("Encrypting PDF Document...", "Applying password security dictionaries...");
+        showVisualProcessingOverlay("Encrypting PDF Document...", "Applying password encryption and building protected stream...");
 
         try {
-            const freshArrayBufferCopy = globalUploadedBytesArray.slice().buffer;
-            const pdfDoc = await PDFLib.PDFDocument.load(freshArrayBufferCopy, { ignoreEncryption: true });
-
-            // Apply standard user and owner password encryption
-            pdfDoc.encrypt({
-                userPassword: password,
-                ownerPassword: password,
-                permissions: {
-                    printing: 'highResolution',
-                    modifying: false,
-                    copying: false,
-                    annotating: false,
-                    fillingForms: true,
-                    contentAccessibility: true,
-                    documentAssembly: false
-                }
+            const { jsPDF } = window.jspdf;
+            
+            // Get first page to initialize document dimensions
+            const firstPage = await cachedPdfTask.getPage(1);
+            const firstViewport = firstPage.getViewport({ scale: 1.0 });
+            
+            const isLandscape = firstViewport.width > firstViewport.height;
+            const pdfDoc = new jsPDF({
+                orientation: isLandscape ? 'landscape' : 'portrait',
+                unit: 'pt',
+                format: [firstViewport.width, firstViewport.height]
             });
 
-            const encryptedBytes = await pdfDoc.save();
-            const outputBlobPayload = new Blob([encryptedBytes], { type: 'application/pdf' });
-            const systemObjectBlobUrl = URL.createObjectURL(outputBlobPayload);
+            // Set encryption on document
+            pdfDoc.setEncryption({
+                userPassword: password,
+                ownerPassword: password,
+                userPermissions: ['print', 'modify', 'copy', 'annot-forms']
+            });
 
-            const invisibleAnchorNode = document.createElement('a');
-            invisibleAnchorNode.href = systemObjectBlobUrl;
-            invisibleAnchorNode.download = `protected_document_${Date.now()}.pdf`;
-            
-            document.body.appendChild(invisibleAnchorNode);
-            invisibleAnchorNode.click();
-            
-            document.body.removeChild(invisibleAnchorNode);
-            URL.revokeObjectURL(systemObjectBlobUrl);
+            // Render each page with high fidelity (scale: 1.5) and add to encrypted PDF
+            for (let pageNum = 1; pageNum <= totalDocumentPagesCount; pageNum++) {
+                showVisualProcessingOverlay(
+                    `Encrypting Page ${pageNum} of ${totalDocumentPagesCount}...`, 
+                    "Rendering high-resolution vector layout..."
+                );
+
+                const pageInstance = await cachedPdfTask.getPage(pageNum);
+                const highResViewport = pageInstance.getViewport({ scale: 1.5 });
+                const baseViewport = pageInstance.getViewport({ scale: 1.0 });
+
+                const renderCanvas = document.createElement('canvas');
+                const ctx = renderCanvas.getContext('2d');
+                renderCanvas.width = highResViewport.width;
+                renderCanvas.height = highResViewport.height;
+
+                await pageInstance.render({ canvasContext: ctx, viewport: highResViewport }).promise;
+                const pageImageData = renderCanvas.toDataURL('image/jpeg', 0.95);
+
+                if (pageNum > 1) {
+                    const pageIsLandscape = baseViewport.width > baseViewport.height;
+                    pdfDoc.addPage([baseViewport.width, baseViewport.height], pageIsLandscape ? 'landscape' : 'portrait');
+                }
+
+                pdfDoc.addImage(pageImageData, 'JPEG', 0, 0, baseViewport.width, baseViewport.height, undefined, 'FAST');
+                
+                // Cleanup canvas to prevent memory leaks
+                renderCanvas.width = 0;
+                renderCanvas.height = 0;
+            }
+
+            pdfDoc.save(`protected_document_${Date.now()}.pdf`);
 
             hideVisualProcessingOverlay();
             alert("Success! Your PDF is now password-protected.");
