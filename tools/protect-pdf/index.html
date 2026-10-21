@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- CRITICAL INITIALIZATION: Google AdSense Global Verification Script Block Embedded Physically -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
   crossorigin="anonymous"></script>
 
@@ -14,12 +13,12 @@
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="https://www.texusprotools.com/tools/protect-pdf/" />
 
-  <!-- PRODUCTION LIBRARIES -->
+  <!-- PRODUCTION LIBRARIES (PDF.js + Complete jsPDF with Standard Encryption Support) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
   <style>
@@ -293,7 +292,7 @@
         }
     }
 
-    // --- RELIABLE BROWSER-NATIVE ENCRYPTION VIA JSPDF SETENCRYPTION ---
+    // --- LOW-LEVEL SECURE ENCRYPTION WRAPPER (NO DEPENDENCY CRASH) ---
     async function compileAndDownloadProtectedPdf() {
         if(!globalUploadedBytesArray || !cachedPdfTask) return;
 
@@ -312,30 +311,38 @@
             return;
         }
 
-        showVisualProcessingOverlay("Encrypting PDF Document...", "Applying password encryption and building protected stream...");
+        showVisualProcessingOverlay("Encrypting PDF Document...", "Applying encryption and packaging output...");
 
         try {
             const { jsPDF } = window.jspdf;
             
-            // Get first page to initialize document dimensions
             const firstPage = await cachedPdfTask.getPage(1);
             const firstViewport = firstPage.getViewport({ scale: 1.0 });
             
             const isLandscape = firstViewport.width > firstViewport.height;
+
+            // Direct Constructor Encryption Options (Standard jsPDF Specification)
+            // Constructor level encryption options parameter pass karne se .setEncryption method missing issue bypass ho jata hai
             const pdfDoc = new jsPDF({
                 orientation: isLandscape ? 'landscape' : 'portrait',
                 unit: 'pt',
-                format: [firstViewport.width, firstViewport.height]
+                format: [firstViewport.width, firstViewport.height],
+                encryption: {
+                    userPassword: password,
+                    ownerPassword: password,
+                    userPermissions: ['print', 'modify', 'copy', 'annot-forms']
+                }
             });
 
-            // Set encryption on document
-            pdfDoc.setEncryption({
-                userPassword: password,
-                ownerPassword: password,
-                userPermissions: ['print', 'modify', 'copy', 'annot-forms']
-            });
+            // Agar constructor ne directly bind nahi kiya, safe fallback method check
+            if (typeof pdfDoc.setEncryption === 'function') {
+                pdfDoc.setEncryption({
+                    userPassword: password,
+                    ownerPassword: password,
+                    userPermissions: ['print', 'modify', 'copy', 'annot-forms']
+                });
+            }
 
-            // Render each page with high fidelity (scale: 1.5) and add to encrypted PDF
             for (let pageNum = 1; pageNum <= totalDocumentPagesCount; pageNum++) {
                 showVisualProcessingOverlay(
                     `Encrypting Page ${pageNum} of ${totalDocumentPagesCount}...`, 
@@ -361,7 +368,6 @@
 
                 pdfDoc.addImage(pageImageData, 'JPEG', 0, 0, baseViewport.width, baseViewport.height, undefined, 'FAST');
                 
-                // Cleanup canvas to prevent memory leaks
                 renderCanvas.width = 0;
                 renderCanvas.height = 0;
             }
