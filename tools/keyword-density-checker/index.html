@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Keyword Density Checker | Analyze SEO Content Instantly — Texus Pro Tools</title>
+    <meta name="description" content="Use our free Keyword Density Checker to analyze your text or webpage content for optimal word count, keyword frequency, and SEO performance without keyword stuffing.">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="https://www.texusprotools.com/tools/keyword-density-checker/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164" crossorigin="anonymous"></script>
+    <style>
+        .a-wrapper {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .a-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        .a-heading h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 12px;
+            letter-spacing: -0.025em;
+        }
+        .a-heading p {
+            font-size: 1.1rem;
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .a-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        .tool-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        @media (max-width: 900px) {
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .input-group label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1e293b;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        textarea {
+            width: 100%;
+            height: 250px;
+            padding: 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #334155;
+            resize: vertical;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: #f8fafc;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+            background: #ffffff;
+        }
+        .controls-row {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .control-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #475569;
+            font-weight: 500;
+        }
+        .control-item select, .control-item input[type="number"] {
+            padding: 6px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            background: #ffffff;
+            color: #1e293b;
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        .btn-secondary {
+            background-color: #f1f5f9;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            padding: 8px 16px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-secondary:hover {
+            background-color: #e2e8f0;
+            color: #1e293b;
+        }
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 14px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-box .val {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .stat-box .lbl {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            margin-top: 4px;
+        }
+        .results-container {
+            margin-top: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #ffffff;
+        }
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: #f1f5f9;
+            border-bottom: 1px solid #e2e8f0;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+        .table-responsive {
+            max-height: 350px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        th, td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+        }
+        th {
+            background: #fafafa;
+            font-weight: 600;
+            color: #475569;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        tr:hover td {
+            background: #f8fafc;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-low { background: #fef3c7; color: #d97706; }
+        .badge-good { background: #d1fae5; color: #059669; }
+        .badge-high { background: #fee2e2; color: #dc2626; }
+        
+        .article-container {
+            margin-top: 50px;
+            line-height: 1.8;
+            color: #334155;
+        }
+        .article-container h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .article-container h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 30px;
+            margin-bottom: 12px;
+        }
+        .article-container p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        .article-container ul, .article-container ol {
+            margin-bottom: 20px;
+            padding-left: 24px;
+        }
+        .article-container li {
+            margin-bottom: 8px;
+        }
+        .faq-box {
+            background: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+        .faq-box h4 {
+            margin-top: 0;
+            color: #0f172a;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="site-header"></div>
+
+    <main class="a-wrapper">
+        <div class="a-heading">
+            <h1>Keyword Density Checker</h1>
+            <p>Paste your article, blog post, or copywriting text below to analyze keyword frequencies, word counts, and phrase distributions for optimal SEO performance.</p>
+        </div>
+
+        <div class="a-card">
+            <div class="tool-grid">
+                <!-- Input Panel -->
+                <div class="input-group">
+                    <label for="sourceText">
+                        <span>Paste Your Content</span>
+                        <button class="btn-secondary" id="sampleBtn" type="button">Load Sample Text</button>
+                    </label>
+                    <textarea id="sourceText" placeholder="Paste your text here to begin analysis..."></textarea>
+                    
+                    <div class="controls-row">
+                        <div class="control-item">
+                            <label for="ngramSelect">Keyword Length:</label>
+                            <select id="ngramSelect">
+                                <option value="1">1 Word (Unigrams)</option>
+                                <option value="2" selected>2 Words (Bigrams)</option>
+                                <option value="3">3 Words (Trigrams)</option>
+                            </select>
+                        </div>
+                        <div class="control-item">
+                            <label for="minLenInput">Min Word Length:</label>
+                            <input type="number" id="minLenInput" value="3" min="1" max="10" style="width: 60px;">
+                        </div>
+                        <button class="btn-primary" id="analyzeBtn" type="button">
+                            Analyze Density
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Output Panel -->
+                <div class="input-group">
+                    <label>
+                        <span>Content Statistics</span>
+                        <button class="btn-secondary" id="clearBtn" type="button">Clear All</button>
+                    </label>
+                    
+                    <div class="stats-bar">
+                        <div class="stat-box">
+                            <div class="val" id="statWords">0</div>
+                            <div class="lbl">Words</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="val" id="statChars">0</div>
+                            <div class="lbl">Characters</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="val" id="statUnique">0</div>
+                            <div class="lbl">Unique Words</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="val" id="statReadTime">0s</div>
+                            <div class="lbl">Read Time</div>
+                        </div>
+                    </div>
+
+                    <div class="results-container">
+                        <div class="results-header">
+                            <span>Keyword / Phrase</span>
+                            <span>Count</span>
+                            <span>Density</span>
+                            <span>Status</span>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="resultsTable">
+                                <tbody id="resultsBody">
+                                    <tr>
+                                        <td colspan="4" style="text-align: center; color: #94a3b8; padding: 40px;">
+                                            No data to display. Enter text and click Analyze.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comprehensive Editorial Content / Documentation -->
+        <article class="article-container">
+            <h2>Mastering On-Page SEO with a Keyword Density Checker</h2>
+            <p>In the evolving landscape of search engine optimization (SEO), content remains the definitive king. However, simply writing hundreds or thousands of words is no longer enough to rank on the first page of Google, Bing, or other major search engines. Search algorithms have grown exceptionally sophisticated, transitioning from primitive string matching to advanced semantic understanding, natural language processing (NLP), and entity extraction.</p>
+            <p>Despite these monumental algorithmic shifts, <strong>keyword density</strong> remains a fundamental metric for content creators, copywriters, and technical SEO specialists. Understanding how frequently your target keywords appear relative to your overall word count ensures that your content strikes the perfect balance: clear enough for search crawlers to identify your core topic, yet natural enough to provide an exceptional user reading experience.</p>
+
+            <h3>What is Keyword Density and Why Does It Matter?</h3>
+            <p>Keyword density is defined as the percentage of times a specific keyword or phrase appears within a piece of text compared to the total number of words in that text. The standard formula used across the SEO industry is:</p>
+            <p style="text-align: center; font-weight: 600; font-size: 1.15rem; background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                Keyword Density (%) = (Number of Times Keyword Appears / Total Word Count) × 100
+            </p>
+            <p>For instance, if your article contains exactly 1,000 words and your target keyword phrase ("organic coffee beans") appears 10 times, your keyword density is exactly 1%. Historically, back in the early days of search engines, marketers attempted to manipulate rankings by stuffing their pages with hundreds of repetitions of target terms. Today, search engines penalize this practice severely under algorithms designed to combat web spam.</p>
+
+            <h3>The Danger of Keyword Stuffing vs. Optimal Density</h3>
+            <p><strong>Keyword stuffing</strong> occurs when web pages are loaded with keywords in an attempt to manipulate search engine rankings. Not only does this practice result in spammy, unreadable content that repels human visitors, but it also triggers automated penalties from search engines, effectively tanking your organic visibility.</p>
+            <p>Conversely, maintaining an optimal keyword density signals to search crawlers what your article is fundamentally about without compromising readability. While there is no universal "magic number" mandated by Google, most SEO professionals recommend adhering to the following benchmarks:</p>
+            <ul>
+                <li><strong>0.5% to 1.5%:</strong> The golden zone for primary keywords in long-form content (1,000+ words). Allows ample topic coverage without looking unnatural.</li>
+                <li><strong>1.0% to 2.0%:</strong> Acceptable for shorter landing pages or product descriptions where context is concise and focused.</li>
+                <li><strong>Above 2.5%:</strong> Danger zone. High risk of triggering keyword stuffing flags and degrading user engagement metrics (higher bounce rates).</li>
+            </ul>
+
+            <h3>Unigrams, Bigrams, and Trigrams: Beyond Single Words</h3>
+            <p>Modern search queries are rarely restricted to single words. Users increasingly type conversational queries, multi-word phrases, and long-tail keywords. That is why our advanced <strong>Keyword Density Checker</strong> allows you to analyze different n-gram sizes:</p>
+            <ul>
+                <li><strong>Unigrams (1-word):</strong> Great for identifying dominant single-word themes, nouns, and verbs in your copy.</li>
+                <li><strong>Bigrams (2-word phrases):</strong> Essential for locating concise semantic pairings (e.g., "digital marketing", "running shoes").</li>
+                <li><strong>Trigrams (3-word phrases):</strong> Crucial for long-tail keyword targeting and conversational voice search queries (e.g., "best coffee maker under", "how to bake bread").</li>
+            </ul>
+
+            <h3>How to Use Our Free Keyword Density Checker Tool</h3>
+            <p>Our tool is designed for maximum speed, privacy, and accuracy. All computations occur directly within your web browser client-side—meaning your content is never uploaded, stored, or shared. Follow these simple steps to analyze your content:</p>
+            <ol>
+                <li><strong>Paste Your Content:</strong> Copy the text from your word processor, content management system (CMS), or raw HTML and paste it directly into the input textarea. You can also click <em>Load Sample Text</em> to test the tool instantly.</li>
+                <li><strong>Select Keyword Length:</strong> Choose whether you want to evaluate single words (1-word), pairs (2-word bigrams), or triplets (3-word trigrams).</li>
+                <li><strong>Set Minimum Word Length:</strong> Filter out noise words by setting a minimum character threshold for individual words (excluding common stop words like "the", "and", "is").</li>
+                <li><strong>Analyze & Review:</strong> Click <strong>Analyze Density</strong> to generate instant word counts, character counts, unique word tallies, and a comprehensive frequency table equipped with color-coded density status badges.</li>
+            </ol>
+
+            <h3>Best Practices for Optimizing Content Keyword Distribution</h3>
+            <p>Once you run your content through our checker, interpret the results using these professional content optimization strategies:</p>
+            <ul>
+                <li><strong>Prioritize Prominence:</strong> Ensure your primary keyword appears early in your content—preferably within the first 100 to 150 words and inside your main heading (<mark>&lt;h1&gt;</mark>).</li>
+                <li><strong>Leverage LSI and Synonyms:</strong> Instead of repeating the exact same phrase dozen of times, use Latent Semantic Indexing (LSI) keywords and contextual synonyms to add depth and natural variance.</li>
+                <li><strong>Optimize Headings and Subheadings:</strong> Distribute your target keywords naturally across your subheadings (<mark>&lt;h2&gt;</mark>, <mark>&lt;h3&gt;</mark>) where search crawlers place higher emphasis.</li>
+                <li><strong>Write for Humans First:</strong> Always read your content aloud. If a sentence feels awkward, forced, or repetitive to your ear, reduce the keyword frequency or rephrase the sentence entirely.</li>
+            </ul>
+
+            <div class="faq-box">
+                <h4>Frequently Asked Questions (FAQ)</h4>
+                <p><strong>Q: Does Google have an official keyword density percentage requirement?</strong><br>
+                A: No. Google's Search Advocate John Mueller has stated multiple times that Google does not use a specific keyword density percentage to rank pages. Focus on comprehensive topic coverage and natural writing rather than chasing arbitrary numbers.</p>
+            </div>
+            <div class="faq-box">
+                <h4>Are common stop words included in the analysis?</h4>
+                <p><strong>A:</strong> Our tool automatically filters out common English stop words (such as "and", "the", "is", "at", "which", "on") when analyzing multi-word phrases and unigrams to ensure you receive clean, high-value keyword insights.</p>
+            </div>
+            <div class="faq-box">
+                <h4>Is my text secure and private?</h4>
+                <p><strong>A:</strong> Absolutely. All text processing is executed entirely client-side inside your browser JavaScript engine. Your text is never transmitted to external servers or logged in any database.</p>
+            </div>
+        </article>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script>
+        // Header & Footer injection
+        fetch('/components/header.html').then(res => { if(!res.ok) return fetch('../../components/header.html'); return res.text(); }).then(data => { document.getElementById('site-header').innerHTML = data; });
+        fetch('/components/footer.html').then(res => { if(!res.ok) return fetch('../../components/footer.html'); return res.text(); }).then(data => { document.getElementById('site-footer').innerHTML = data; });
+
+        // Stop words list for cleaning
+        const stopWords = new Set([
+            "a", "about", "above", "after", "again", "against", "all", "am", "an", "and", "any", "are", "aren't", "as", "at", "be", "because", "been", "before", "being", "below", "between", "both", "but", "by", "can't", "cannot", "could", "couldn't", "did", "didn't", "do", "does", "doesn't", "doing", "don't", "down", "during", "each", "few", "for", "from", "further", "had", "hadn't", "has", "hasn't", "have", "haven't", "having", "he", "he'd", "he'll", "he's", "her", "here", "here's", "hers", "herself", "him", "himself", "his", "how", "how's", "i", "i'd", "i'll", "i'm", "i've", "if", "in", "into", "is", "isn't", "it", "it's", "its", "itself", "let's", "me", "more", "most", "mustn't", "my", "myself", "no", "nor", "not", "of", "off", "on", "once", "only", "or", "other", "ought", "our", "ours", "ourselves", "out", "over", "own", "same", "shan't", "she", "she'd", "she'll", "she's", "should", "shouldn't", "so", "some", "such", "than", "that", "that's", "the", "their", "theirs", "them", "themselves", "then", "there", "there's", "these", "they", "they'd", "they'll", "they're", "they've", "this", "those", "through", "to", "too", "under", "until", "up", "very", "was", "wasn't", "we", "we'd", "we'll", "we're", "we've", "were", "weren't", "what", "what's", "when", "when's", "where", "where's", "which", "while", "who", "who's", "whom", "why", "why's", "with", "won't", "would", "wouldn't", "you", "you'd", "you'll", "you're", "you've", "your", "yours", "yourself", "yourselves"
+        ]);
+
+        const sampleText = `Search engine optimization (SEO) is the practice of increasing the quantity and quality of traffic to your website through organic search engine results. To succeed in SEO, content creators must master keyword research, on-page optimization, and semantic analysis. Keyword density plays a vital role in signaling your core topic to search engine crawlers without resorting to harmful keyword stuffing. By evaluating unigrams, bigrams, and trigrams, writers can ensure their content remains informative, readable, and highly optimized for competitive search queries.`;
+
+        document.getElementById('sampleBtn').addEventListener('click', () => {
+            document.getElementById('sourceText').value = sampleText;
+            analyzeKeywords();
+        });
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            document.getElementById('sourceText').value = '';
+            document.getElementById('statWords').textContent = '0';
+            document.getElementById('statChars').textContent = '0';
+            document.getElementById('statUnique').textContent = '0';
+            document.getElementById('statReadTime').textContent = '0s';
+            document.getElementById('resultsBody').innerHTML = `
+                <tr>
+                    <td colspan="4" style="text-align: center; color: #94a3b8; padding: 40px;">
+                        No data to display. Enter text and click Analyze.
+                    </td>
+                </tr>
+            `;
+        });
+
+        document.getElementById('analyzeBtn').addEventListener('click', analyzeKeywords);
+        document.getElementById('sourceText').addEventListener('input', debounce(analyzeKeywords, 400));
+        document.getElementById('ngramSelect').addEventListener('change', analyzeKeywords);
+        document.getElementById('minLenInput').addEventListener('input', analyzeKeywords);
+
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+
+        function analyzeKeywords() {
+            const rawText = document.getElementById('sourceText').value;
+            const ngramSize = parseInt(document.getElementById('ngramSelect').value);
+            const minLen = parseInt(document.getElementById('minLenInput').value) || 1;
+
+            if (!rawText.trim()) {
+                document.getElementById('statWords').textContent = '0';
+                document.getElementById('statChars').textContent = '0';
+                document.getElementById('statUnique').textContent = '0';
+                document.getElementById('statReadTime').textContent = '0s';
+                document.getElementById('resultsBody').innerHTML = `
+                    <tr>
+                        <td colspan="4" style="text-align: center; color: #94a3b8; padding: 40px;">
+                            No data to display. Enter text and click Analyze.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            // Character count
+            const charCount = rawText.length;
+
+            // Tokenize words
+            // Clean punctuation except internal hyphens if needed, split by whitespace/punctuation
+            const cleanedText = rawText.toLowerCase().replace(/[^\w\s'-]/g, ' ');
+            const rawTokens = cleanedText.split(/\s+/).filter(Boolean);
+
+            // Filter tokens for minimum length & stopwords (if unigram)
+            const filteredTokens = rawTokens.filter(token => {
+                if (token.length < minLen) return false;
+                if (ngramSize === 1 && stopWords.has(token)) return false;
+                return true;
+            });
+
+            const totalWords = rawTokens.length;
+            const uniqueWords = new Set(filteredTokens).size;
+            
+            // Estimated reading time (~200 words per minute)
+            const readSeconds = Math.round((totalWords / 200) * 60);
+            const readTimeStr = readSeconds < 60 ? `${readSeconds}s` : `${Math.floor(readSeconds/60)}m ${readSeconds%60}s`;
+
+            document.getElementById('statWords').textContent = totalWords.toLocaleString();
+            document.getElementById('statChars').textContent = charCount.toLocaleString();
+            document.getElementById('statUnique').textContent = uniqueWords.toLocaleString();
+            document.getElementById('statReadTime').textContent = readTimeStr;
+
+            // Build n-grams
+            const ngrams = [];
+            for (let i = 0; i <= filteredTokens.length - ngramSize; i++) {
+                const chunk = filteredTokens.slice(i, i + ngramSize);
+                // For bigrams/trigrams, skip if any token is a stopword or too short
+                let valid = true;
+                for (let word of chunk) {
+                    if (word.length < minLen || (ngramSize > 1 && stopWords.has(word) && chunk.length === 1)) {
+                        valid = false;
+                        break;
+                    }
+                }
+                if (valid) {
+                    ngrams.push(chunk.join(' '));
+                }
+            }
+
+            // Count frequencies
+            const freqMap = {};
+            ngrams.forEach(ng => {
+                freqMap[ng] = (freqMap[ng] || 0) + 1;
+            });
+
+            // Convert to array & sort descending by count
+            const sortedKeys = Object.keys(freqMap).map(key => ({
+                phrase: key,
+                count: freqMap[key],
+                density: ((freqMap[key] / (totalWords - (ngramSize - 1) * ngrams.length + ngrams.length)) * 100).toFixed(2)
+            })).sort((a, b) => b.count - a.count);
+
+            const tbody = document.getElementById('resultsBody');
+            if (sortedKeys.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="4" style="text-align: center; color: #94a3b8; padding: 40px;">
+                            No matching keywords found with current filter parameters.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            let html = '';
+            sortedKeys.forEach(item => {
+                const dens = parseFloat(item.density);
+                let badgeClass = 'badge-good';
+                let badgeText = 'Optimal';
+                
+                if (dens < 0.5) {
+                    badgeClass = 'badge-low';
+                    badgeText = 'Low';
+                } else if (dens > 2.5) {
+                    badgeClass = 'badge-high';
+                    badgeText = 'High (Risk)';
+                }
+
+                html += `
+                    <tr>
+                        <td style="font-weight: 500;">${escapeHtml(item.phrase)}</td>
+                        <td>${item.count}</td>
+                        <td>${item.density}%</td>
+                        <td><span class="badge ${badgeClass}">${badgeText}</span></td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+    </script>
+
+    <script src="/related-tools.js" defer></script>
+</body>
+</html>
