@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CSV to JSON Converter | Free Online Comma-Separated Values Parser</title>
+  <meta name="description" content="Convert CSV and TSV spreadsheets to clean JSON objects or arrays instantly with our free online parser. Customize delimiters, headers, and formatting securely." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/csv-to-json/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CSV to JSON Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced client-side parser utility to convert comma-separated and tabular datasets into structured JSON arrays instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 260px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 600; font-size: 0.95rem; color: #0f172a; background: #f1f5f9; }
+
+    /* TOOLBAR CONTROLS */
+    .f-controls-row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; align-items: center; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; }
+    .f-control-group { display: flex; align-items: center; gap: 8px; }
+    .f-control-group label { font-size: 0.85rem; font-weight: 700; color: #334155; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-select, .f-input-sm { padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; background: #ffffff; font-family: inherit; font-size: 0.9rem; color: #1e293b; outline: none; }
+    .f-select:focus, .f-input-sm:focus { border-color: #2563eb; }
+    .f-checkbox-label { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 600; color: #334155; cursor: pointer; user-select: none; }
+    .f-checkbox-label input { width: 16px; height: 16px; accent-color: #2563eb; cursor: pointer; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 180px; font-size: 1rem; }
+      .f-controls-row { flex-direction: column; align-items: stretch; gap: 12px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📊</span> CSV to JSON Converter</div>
+    
+    <div class="f-card">
+      <div class="f-controls-row">
+        <div class="f-control-group">
+          <label for="delimiterSelect">Delimiter:</label>
+          <select id="delimiterSelect" class="f-select" onchange="convertCsvToJson()">
+            <option value=",">Comma (,)</option>
+            <option value=";">Semicolon (;)</option>
+            <option value="\t">Tab (\t)</option>
+            <option value="|">Pipe (|)</option>
+          </select>
+        </div>
+
+        <div class="f-control-group">
+          <label class="f-checkbox-label">
+            <input type="checkbox" id="hasHeaderCheckbox" checked onchange="convertCsvToJson()"> First row as header
+          </label>
+        </div>
+
+        <div class="f-control-group">
+          <label class="f-checkbox-label">
+            <input type="checkbox" id="autoTypeCheckbox" checked onchange="convertCsvToJson()"> Auto-detect types (Numbers/Booleans)
+          </label>
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="csvInputConsole">Input CSV / TSV Data</label>
+          <textarea id="csvInputConsole" class="f-textarea-field" placeholder="Paste your CSV data here...
+Example:
+id,name,role,active
+1,Alice Johnson,Developer,true
+2,Bob Smith,Designer,false" oninput="convertCsvToJson()"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="jsonOutputConsole">Generated JSON Output</label>
+          <textarea id="jsonOutputConsole" class="f-textarea-field mono-font-panel" placeholder="JSON payload will appear here instantly..." readonly></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="convertCsvToJson()">Convert to JSON</button>
+        <button class="f-btn f-btn-copy" id="copyJsonBtn" onclick="copyResultToClipboard()">📋 Copy JSON Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearCsvWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Client-Side Secure Processing Guarantee:</span>
+        All parsing and transformation operations occur directly inside your browser sandbox. Your datasets and spreadsheets never leave your device memory.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Data Interoperability: The Architecture of CSV to JSON Transformation</h2>
+      <p class="seo-p">In modern software engineering, data interchange formats dictate how disparate systems communicate, store records, and execute analytical models. While Comma-Separated Values (CSV) files remain the universal standard for spreadsheet exports, legacy databases, and financial ledger backups, JavaScript Object Notation (JSON) has emerged as the definitive native language of web applications, RESTful APIs, and NoSQL document stores. Bridging these two distinct paradigms efficiently is a daily requirement for developers, data analysts, and systems administrators.</p>
+      <p class="seo-p">This comprehensive technical manual examines the inner workings of CSV parsing algorithms, addresses the nuances of RFC 4180 compliance, evaluates data type coercion challenges, and provides engineering insights into high-performance client-side data serialization workflows.</p>
+
+      <div class="seo-callout">
+        <strong>The Structural Shift:</strong> Converting a flat, two-dimensional matrix of delimited rows and columns into a structured, hierarchical tree of key-value object collections requires robust quotation handling, delimiter detection, and type inference logic.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Parsing Mechanics and RFC 4180 Compliance</h3>
+      <p class="seo-p">Converting raw CSV text into valid JSON is deceptively complex. A naive implementation that simply splits text by newlines and commas fails immediately when records contain embedded commas inside quoted strings (e.g., `"Johnson, Alice", "New York, NY"`). Professional parsers implement rigorous lexical state machines:</p>
+
+      <h4 class="seo-h3">1. Quotation Awareness and Escaped Delimiters</h4>
+      <p class="seo-p">RFC 4180 defines standard CSV formatting rules where fields containing line breaks, double quotes, and commas must be enclosed in double-quote characters. Advanced parsers track quotation states character-by-character, ensuring internal delimiters do not mistakenly trigger column breaks.</p>
+
+      <h4 class="seo-h3">2. Header Key Mapping</h4>
+      <p class="seo-p">When the "First row as header" option is enabled, the parser extracts the initial row token array and utilizes these string values as property keys for all subsequent row objects. If headers contain spaces or special characters, developers can rely on clean normalized property assignments.</p>
+
+      <h4 class="seo-h3">3. Intelligent Data Type Coercion</h4>
+      <p class="seo-p">Raw CSV data consists strictly of text strings. However, robust JSON converters analyze values during ingestion. When "Auto-detect types" is active, numeric strings (integers and floats) and boolean literals (`true`, `false`) are automatically cast to their proper primitive data types rather than remaining enclosed in quotes.</p>
+
+      <h3>The Structural Reference Matrix: CSV vs JSON Format Comparison</h3>
+      <p class="seo-p">Reviewing how flat spreadsheet tables map directly into structured object arrays helps clarify data modeling decisions across backend architectures:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Feature / Attribute</th>
+              <th>Comma-Separated Values (CSV)</th>
+              <th>JavaScript Object Notation (JSON)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Data Structure</td>
+              <td>Flat, two-dimensional tabular grid of rows and columns.</td>
+              <td>Hierarchical, nested tree of objects and arrays.</td>
+            </tr>
+            <tr>
+              <td>Primary Use Case</td>
+              <td>Spreadsheet software, database dumps, financial ledgers.</td>
+              <td>REST APIs, NoSQL document databases, frontend state.</td>
+            </tr>
+            <tr>
+              <td>Type Support</td>
+              <td>Strictly text strings (requires manual casting).</td>
+              <td>Rich primitives: Strings, Numbers, Booleans, Arrays, Null.</td>
+            </tr>
+            <tr>
+              <td>Human Readability</td>
+              <td>High for tabular datasets viewed in grid editors.</td>
+              <td>High for hierarchical data and nested object trees.</td>
+            </tr>
+            <tr>
+              <td>Schema Flexibility</td>
+              <td>Rigid column positions; difficult to nest attributes.</td>
+              <td>Highly flexible; supports nested objects and optional keys.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Diagnostic & Usage Guide</h3>
+
+      <h3>How does the parser handle commas inside quoted text fields?</h3>
+      <p class="seo-p">Our parser adheres strictly to standard quotation rules. If a field value is wrapped in double quotes (e.g., `"Smith, John"`), any internal commas or line breaks are treated as literal characters belonging to that specific cell rather than column or row separators.</p>
+
+      <h3>What happens if my CSV file does not include a header row?</h3>
+      <p class="seo-p">If your dataset lacks column titles, simply uncheck the "First row as header" option. The converter will automatically generate numeric index keys (`col_0`, `col_1`, `col_2`, etc.) or output the parsed records as a two-dimensional array depending on your configuration.</p>
+
+      <h3>Can I parse tab-separated values (TSV) or custom pipe-delimited files?</h3>
+      <p class="seo-p">Yes! Use the delimiter selection dropdown at the top of the workspace to switch between commas, semicolons, tabs, and custom pipe characters instantly before running the conversion.</p>
+
+      <h3>Is my sensitive spreadsheet data secure when using this tool?</h3>
+      <p class="seo-p">Absolutely. Texus Pro Tools executes all CSV parsing and JSON serialization entirely within your browser client environment. Your data never leaves your device or gets transmitted to external servers.</p>
+
+      <h3 class="seo-h2">Summary: Streamlining Modern Data Pipelines</h3>
+      <p class="seo-p">Transforming tabular spreadsheets into structured JSON documents is an essential workflow for modern web developers, data scientists, and systems integrators. By leveraging client-side execution, rigorous quote parsing, and intelligent type coercion, you can eliminate manual data formatting bottlenecks instantly.</p>
+      <p class="seo-p">Our Advanced CSV to JSON Converter delivers blazing-fast parsing performance across all devices, ensuring your data pipelines remain clean, secure, and fully interoperable.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // CSV TO JSON CONVERTER CORE LOGIC
+    function parseCSVLine(line, delimiter) {
+      const result = [];
+      let insideQuote = false;
+      let currentField = '';
+      
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        const nextChar = line[i + 1];
+        
+        if (char === '"') {
+          if (insideQuote && nextChar === '"') {
+            currentField += '"';
+            i++; // Skip escaped quote
+          } else {
+            insideQuote = !insideQuote;
+          }
+        } else if (char === delimiter && !insideQuote) {
+          result.push(currentField);
+          currentField = '';
+        } else {
+          currentField += char;
+        }
+      }
+      result.push(currentField);
+      return result;
+    }
+
+    function inferType(val) {
+      val = val.trim();
+      if (val === '') return null;
+      if (val.toLowerCase() === 'true') return true;
+      if (val.toLowerCase() === 'false') return false;
+      if (!isNaN(val) && val !== '') {
+        return Number(val);
+      }
+      return val;
+    }
+
+    function convertCsvToJson() {
+      const input = document.getElementById('csvInputConsole').value;
+      const outputConsole = document.getElementById('jsonOutputConsole');
+      const delimiter = document.getElementById('delimiterSelect').value === '\\t' ? '\t' : document.getElementById('delimiterSelect').value;
+      const hasHeader = document.getElementById('hasHeaderCheckbox').checked;
+      const autoType = document.getElementById('autoTypeCheckbox').checked;
+
+      if (!input.trim()) {
+        outputConsole.value = '';
+        return;
+      }
+
+      try {
+        // Normalize line breaks
+        const lines = input.replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n');
+        const rows = [];
+
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          if (line.trim() === '') continue; // Skip empty lines
+          const parsedRow = parseCSVLine(line, delimiter);
+          rows.push(parsedRow);
+        }
+
+        if (rows.length === 0) {
+          outputConsole.value = '[]';
+          return;
+        }
+
+        let jsonResult = [];
+
+        if (hasHeader && rows.length > 0) {
+          const headers = rows[0];
+          for (let i = 1; i < rows.length; i++) {
+            const row = rows[i];
+            const obj = {};
+            for (let j = 0; j < headers.length; j++) {
+              const headerKey = headers[j] ? headers[j].trim() : `col_${j}`;
+              let cellValue = row[j] !== undefined ? row[j] : '';
+              if (autoType) {
+                cellValue = inferType(cellValue);
+              }
+              obj[headerKey] = cellValue;
+            }
+            jsonResult.push(obj);
+          }
+        } else {
+          // No header: output array of arrays or objects with col_X keys
+          for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            const obj = {};
+            for (let j = 0; j < row.length; j++) {
+              let cellValue = row[j];
+              if (autoType) {
+                cellValue = inferType(cellValue);
+              }
+              obj[`col_${j}`] = cellValue;
+            }
+            jsonResult.push(obj);
+          }
+        }
+
+        outputConsole.value = JSON.stringify(jsonResult, null, 2);
+      } catch (err) {
+        outputConsole.value = 'Error parsing CSV data: ' + err.message;
+      }
+    }
+
+    function copyResultToClipboard() {
+      const outputConsole = document.getElementById('jsonOutputConsole');
+      const copyBtn = document.getElementById('copyJsonBtn');
+      
+      if (!outputConsole.value.trim()) return;
+
+      navigator.clipboard.writeText(outputConsole.value).then(() => {
+        const originalText = copyBtn.innerText;
+        copyBtn.innerText = '✅ Copied Successfully!';
+        copyBtn.style.background = '#dcfce7';
+        copyBtn.style.color = '#166534';
+        copyBtn.style.borderColor = '#bbf7d0';
+        
+        setTimeout(() => {
+          copyBtn.innerText = originalText;
+          copyBtn.style.background = '';
+          copyBtn.style.color = '';
+          copyBtn.style.borderColor = '';
+        }, 2000);
+      }).catch(err => {
+        alert('Failed to copy text: ' + err);
+      });
+    }
+
+    function clearCsvWorkspace() {
+      document.getElementById('csvInputConsole').value = '';
+      document.getElementById('jsonOutputConsole').value = '';
+      document.getElementById('csvInputConsole').focus();
+    }
+
+    // Run initial parse on page load if default text exists
+    window.addEventListener('DOMContentLoaded', () => {
+      convertCsvToJson();
+    });
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
