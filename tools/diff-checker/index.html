@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Online Diff Checker | Compare Text & Code Differences Instantly</title>
+  <meta name="description" content="Free online text and code diff checker. Compare two blocks of text side-by-side or unified view to spot additions, deletions, and modifications instantly." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/diff-checker/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Diff Checker Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced text comparison and differential analysis tool to compare text strings, source code files, and documents in real time.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 220px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1rem; font-family: 'Courier New', Courier, monospace; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* DIFF OUTPUT RESULTS CONTAINER */
+    .diff-output-container { margin-top: 30px; border-top: 2px solid #e2e8f0; padding-top: 25px; }
+    .diff-output-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .diff-output-title { font-size: 1.1rem; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; }
+    .diff-stats { font-size: 0.85rem; font-weight: 600; color: #64748b; background: #f1f5f9; padding: 6px 12px; border-radius: 8px; }
+    
+    .diff-view-box { width: 100%; min-height: 180px; max-height: 400px; overflow-y: auto; background: #0f172a; color: #f8fafc; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; padding: 16px; border-radius: 16px; box-sizing: border-box; line-height: 1.6; }
+    .diff-line { display: flex; width: 100%; white-space: pre-wrap; word-break: break-all; }
+    .diff-line-number { width: 40px; color: #64748b; text-align: right; padding-right: 15px; user-select: none; flex-shrink: 0; }
+    .diff-line-content { flex: 1; }
+    
+    .diff-added { background: rgba(22, 163, 74, 0.25); color: #4ade80; display: block; width: 100%; }
+    .diff-removed { background: rgba(220, 38, 38, 0.25); color: #f87171; display: block; width: 100%; }
+    .diff-equal { color: #cbd5e1; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 160px; font-size: 0.95rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🛠️</span> Online Diff Checker</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="originalText">Original Text (Left / Version A)</label>
+          <textarea id="originalText" class="f-textarea-field" placeholder="Paste original text or code here..."></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="modifiedText">Modified Text (Right / Version B)</label>
+          <textarea id="modifiedText" class="f-textarea-field" placeholder="Paste modified text or code here..."></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="runDiffCheck()">Compare Differences</button>
+        <button class="f-btn f-btn-copy" onclick="swapTexts()">⇄ Swap Inputs</button>
+        <button class="f-btn f-btn-clear" onclick="clearDiffWorkspace()">Clear</button>
+      </div>
+
+      <div class="diff-output-container">
+        <div class="diff-output-header">
+          <div class="diff-output-title">Differential Analysis Result</div>
+          <div id="diffStats" class="diff-stats">No comparison executed yet</div>
+        </div>
+        <div id="diffViewBox" class="diff-view-box">
+          <div style="color: #64748b; text-align: center; padding: 40px 0;">Enter text in both boxes above and click "Compare Differences" to analyze changes.</div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Client-Side Privacy Guarantee:</span>
+        All text diff calculations execute securely inside your browser's local sandbox memory. Your confidential source code or document revisions never leave your device.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Science of Text Comparison: Algorithms, Line-by-Line Diff Analysis, and Version Control Fundamentals</h2>
+      <p class="seo-p">In software engineering, technical writing, and collaborative document management, identifying exact modifications between two iterations of a file is a critical daily workflow. Whether auditing source code updates, reviewing legal contract revisions, or tracking database configuration edits, manual inspections are inefficient and prone to human error. A reliable online Diff Checker automates this verification process by comparing two distinct text blocks line-by-line and character-by-character, highlighting additions, deletions, and modifications instantly.</p>
+      <p class="seo-p">This comprehensive technical guide explores the algorithmic principles behind diff engines, evaluates Longest Common Subsequence (LCS) computations, examines the mechanics of unified and side-by-side comparison displays, and outlines best practices for integrating diff analysis into your daily development workflows.</p>
+
+      <div class="seo-callout">
+        <strong>The Differential Computation Core:</strong> Modern diff tools utilize graph theory and dynamic programming matrices to determine the minimum edit distance required to transform an original text sequence into a modified version.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Longest Common Subsequence and Edit Distance Algorithms</h3>
+      <p class="seo-p">When two text files pass through an automated comparison pipeline, the underlying script executes complex matching routines rather than simple string equality checks:</p>
+
+      <h4 class="seo-h3">1. Tokenization and Line Splitting</h4>
+      <p class="seo-p">The program first divides raw string inputs into discrete token arrays—typically separated by newline characters (`\n`). Each line is assigned an indexed reference pointer to track its exact position in the document tree.</p>
+
+      <h4 class="seo-h3">2. The Longest Common Subsequence (LCS) Problem</h4>
+      <p class="seo-p">To find matching blocks, diff engines solve the Longest Common Subsequence problem. By identifying the longest sequence of lines that appear in both the original and modified documents in the same relative order, the algorithm determines which elements are unmodified constants.</p>
+
+      <h4 class="seo-h3">3. Identifying Insertions and Deletions</h4>
+      <p class="seo-p">Lines present in Version A but absent from Version B are flagged as deletions (highlighted in soft red). Conversely, lines present in Version B but absent from Version A are categorized as additions (highlighted in soft green). Unchanged intersecting nodes remain neutral.</p>
+
+      <h3>The Statutory Reference Matrix: Differential Status Codes and Visual Indicators</h3>
+      <p class="seo-p">Understanding how various line modification statuses are categorized helps developers quickly isolate bugs and refactor code efficiently:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Status Category</th>
+              <th>Visual Marker</th>
+              <th>Highlight Color Code</th>
+              <th>System Interpretation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Unchanged Line</td>
+              <td><b>&nbsp; (Space)</b></td>
+              <td>Neutral Slate / Slate Gray</td>
+              <td>Exact match found in both text inputs without any character alterations.</td>
+            </tr>
+            <tr>
+              <td>Added Line</td>
+              <td><b>+ (Plus)</b></td>
+              <td>Soft Green (`rgba(22, 163, 74, 0.25)`)</td>
+              <td>New text block introduced exclusively in Version B (Right panel).</td>
+            </tr>
+            <tr>
+              <td>Removed Line</td>
+              <td><b>- (Minus)</b></td>
+              <td>Soft Red (`rgba(220, 38, 38, 0.25)`)</td>
+              <td>Original text block present in Version A but deleted in Version B.</td>
+            </tr>
+            <tr>
+              <td>Modified Block</td>
+              <td><b>~ (Tilde)</b></td>
+              <td>Amber / Yellow Tint</td>
+              <td>Indicates a block where internal parameters or characters were edited.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>How does the online Diff Checker handle large files and codebases?</h3>
+      <p class="seo-p">Our browser-based diff utility is optimized for high-performance text parsing. While ideal for comparing code snippets, configuration files, JSON objects, and article drafts up to several thousand lines, extremely massive files are best handled using native command-line utilities like `git diff` or dedicated IDE extensions.</p>
+
+      <h3>What is the difference between a side-by-side diff and a unified diff view?</h3>
+      <p class="seo-p">A side-by-side diff places the original text and modified text in parallel columns, allowing direct visual comparison across layout grids. A unified diff merges additions and deletions into a single continuous stream, which is the standard format used in patch files and Git commit logs.</p>
+
+      <h3>Is my proprietary source code secure when using this tool?</h3>
+      <p class="seo-p">Yes, absolutely. Texus Pro Tools processes all text comparison algorithms entirely within your web browser using client-side JavaScript. Your confidential source data, API credentials, and private documents never leave your local device.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Code and Document Auditing</h3>
+      <p class="seo-p">To streamline code reviews and documentation updates, always verify white space consistency before running diff checks, utilize side-by-side views for complex refactoring tasks, and rely on automated differential tools to catch unintended deletions before deployment.</p>
+      <p class="seo-p">Our Advanced Online Diff Checker suite provides instant, accurate differential analysis directly within your browser, ensuring absolute precision across all your development and publishing workflows.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function escapeHtml(text) {
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function runDiffCheck() {
+      const origText = document.getElementById('originalText').value;
+      const modText = document.getElementById('modifiedText').value;
+      const diffViewBox = document.getElementById('diffViewBox');
+      const diffStats = document.getElementById('diffStats');
+
+      if (!origText && !modText) {
+        diffViewBox.innerHTML = '<div style="color: #64748b; text-align: center; padding: 40px 0;">Please enter text in both input boxes to perform differential analysis.</div>';
+        diffStats.textContent = 'No data provided';
+        return;
+      }
+
+      const origLines = origText.split('\n');
+      const modLines = modText.split('\n');
+
+      let addedCount = 0;
+      let removedCount = 0;
+      let unchangedCount = 0;
+
+      // Simple line-by-line LCS / Myers-lite diff implementation for robust client-side rendering
+      // Using an optimized dynamic programming approach for line matching
+      const m = origLines.length;
+      const n = modLines.length;
+      
+      // DP table for LCS
+      let dp = Array(m + 1).fill(0).map(() => Array(n + 1).fill(0));
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          if (origLines[i - 1] === modLines[j - 1]) {
+            dp[i][j] = dp[i - 1][j - 1] + 1;
+          } else {
+            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+          }
+        }
+      }
+
+      // Backtrack to build diff sequence
+      let i = m, j = n;
+      let sequence = [];
+      while (i > 0 || j > 0) {
+        if (i > 0 && j > 0 && origLines[i - 1] === modLines[j - 1]) {
+          sequence.unshift({ type: 'equal', text: origLines[i - 1] });
+          i--; j--;
+        } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+          sequence.unshift({ type: 'added', text: modLines[j - 1] });
+          j--;
+        } else if (i > 0 && (j === 0 || dp[i][j - 1] < dp[i - 1][j])) {
+          sequence.unshift({ type: 'removed', text: origLines[i - 1] });
+          i--;
+        }
+      }
+
+      let htmlOutput = '';
+      sequence.forEach((item, index) => {
+        let lineClass = 'diff-equal';
+        let prefix = '  ';
+        if (item.type === 'added') {
+          lineClass = 'diff-added';
+          prefix = '+ ';
+          addedCount++;
+        } else if (item.type === 'removed') {
+          lineClass = 'diff-removed';
+          prefix = '- ';
+          removedCount++;
+        } else {
+          unchangedCount++;
+        }
+
+        htmlOutput += `<div class="diff-line ${lineClass}"><div class="diff-line-number">${index + 1}</div><div class="diff-line-content">${prefix}${escapeHtml(item.text)}</div></div>`;
+      });
+
+      diffViewBox.innerHTML = htmlOutput;
+      diffStats.textContent = `+${addedCount} additions, -${removedCount} deletions, ${unchangedCount} unchanged`;
+    }
+
+    function swapTexts() {
+      const origField = document.getElementById('originalText');
+      const modField = document.getElementById('modifiedText');
+      const temp = origField.value;
+      origField.value = modField.value;
+      modField.value = temp;
+      runDiffCheck();
+    }
+
+    function clearDiffWorkspace() {
+      document.getElementById('originalText').value = '';
+      document.getElementById('modifiedText').value = '';
+      document.getElementById('diffViewBox').innerHTML = '<div style="color: #64748b; text-align: center; padding: 40px 0;">Workspace cleared. Enter new text pairs to compare.</div>';
+      document.getElementById('diffStats').textContent = 'No comparison executed yet';
+    }
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
