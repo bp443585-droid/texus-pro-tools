@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>CSV to JSON Converter | Free Online Comma-Separated Values Parser</title>
-  <meta name="description" content="Convert CSV and TSV spreadsheets to clean JSON objects or arrays instantly with our free online parser. Customize delimiters, headers, and formatting securely." />
+  <title>CSV to JSON Converter | Free Online CSV to JSON Tool</title>
+  <meta name="description" content="Convert CSV data to clean, formatted JSON online instantly. Supports custom delimiters, quotes, headers, numbers, and boolean parsing with complete client-side privacy." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -18,8 +18,8 @@ crossorigin="anonymous"></script>
     "@type": "SoftwareApplication",
     "name": "CSV to JSON Pro",
     "operatingSystem": "Web",
-    "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced client-side parser utility to convert comma-separated and tabular datasets into structured JSON arrays instantly.",
+    "applicationCategory": "DeveloperApplication",
+    "description": "A high-performance client-side CSV parser that transforms tabular delimited data into structured, valid JSON arrays or nested documents cleanly.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -46,19 +46,16 @@ crossorigin="anonymous"></script>
     .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
     .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .f-textarea-field { width: 100%; height: 260px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field { width: 100%; height: 240px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
     .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
     
-    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 600; font-size: 0.95rem; color: #0f172a; background: #f1f5f9; }
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 600; font-size: 0.98rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
 
-    /* TOOLBAR CONTROLS */
-    .f-controls-row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; align-items: center; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; }
-    .f-control-group { display: flex; align-items: center; gap: 8px; }
-    .f-control-group label { font-size: 0.85rem; font-weight: 700; color: #334155; text-transform: uppercase; letter-spacing: 0.5px; }
-    .f-select, .f-input-sm { padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; background: #ffffff; font-family: inherit; font-size: 0.9rem; color: #1e293b; outline: none; }
-    .f-select:focus, .f-input-sm:focus { border-color: #2563eb; }
-    .f-checkbox-label { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 600; color: #334155; cursor: pointer; user-select: none; }
-    .f-checkbox-label input { width: 16px; height: 16px; accent-color: #2563eb; cursor: pointer; }
+    /* CONTROLS BAR */
+    .f-options-bar { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-bottom: 18px; padding: 14px 18px; background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; }
+    .f-option-group { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 600; color: #334155; }
+    .f-option-group select { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 10px; font-size: 0.85rem; color: #1e293b; outline: none; }
+    .f-option-group input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: #2563eb; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
     .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
@@ -97,8 +94,7 @@ crossorigin="anonymous"></script>
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
       .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
       .f-textarea-field { height: 180px; font-size: 1rem; }
-      .f-controls-row { flex-direction: column; align-items: stretch; gap: 12px; }
-      
+      .f-options-bar { flex-direction: column; align-items: flex-start; gap: 12px; }
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
       .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
@@ -117,144 +113,305 @@ crossorigin="anonymous"></script>
     <div class="f-heading"><span>📊</span> CSV to JSON Converter</div>
     
     <div class="f-card">
-      <div class="f-controls-row">
-        <div class="f-control-group">
+      <div class="f-options-bar">
+        <div class="f-option-group">
           <label for="delimiterSelect">Delimiter:</label>
-          <select id="delimiterSelect" class="f-select" onchange="convertCsvToJson()">
+          <select id="delimiterSelect" onchange="convertCsvToJson()">
+            <option value="auto">Auto-Detect</option>
             <option value=",">Comma (,)</option>
             <option value=";">Semicolon (;)</option>
             <option value="\t">Tab (\t)</option>
             <option value="|">Pipe (|)</option>
           </select>
         </div>
-
-        <div class="f-control-group">
-          <label class="f-checkbox-label">
-            <input type="checkbox" id="hasHeaderCheckbox" checked onchange="convertCsvToJson()"> First row as header
-          </label>
+        <div class="f-option-group">
+          <input type="checkbox" id="headerCheckbox" checked onchange="convertCsvToJson()">
+          <label for="headerCheckbox">First Row as Header</label>
         </div>
-
-        <div class="f-control-group">
-          <label class="f-checkbox-label">
-            <input type="checkbox" id="autoTypeCheckbox" checked onchange="convertCsvToJson()"> Auto-detect types (Numbers/Booleans)
-          </label>
+        <div class="f-option-group">
+          <input type="checkbox" id="parseTypesCheckbox" checked onchange="convertCsvToJson()">
+          <label for="parseTypesCheckbox">Parse Numbers &amp; Booleans</label>
+        </div>
+        <div class="f-option-group">
+          <label for="indentSelect">Format:</label>
+          <select id="indentSelect" onchange="convertCsvToJson()">
+            <option value="2">Pretty Print (2 Spaces)</option>
+            <option value="4">Pretty Print (4 Spaces)</option>
+            <option value="0">Minified</option>
+          </select>
         </div>
       </div>
 
       <div class="f-io-grid">
         <div class="f-panel-box">
-          <label for="csvInputConsole">Input CSV / TSV Data</label>
-          <textarea id="csvInputConsole" class="f-textarea-field" placeholder="Paste your CSV data here...
-Example:
-id,name,role,active
-1,Alice Johnson,Developer,true
-2,Bob Smith,Designer,false" oninput="convertCsvToJson()"></textarea>
+          <label for="csvInputConsole">CSV Input Payload</label>
+          <textarea id="csvInputConsole" class="f-textarea-field mono-font-panel" placeholder="id,name,role,active,salary&#10;101,John Doe,Lead Architect,true,125000&#10;102,&quot;Smith, Jane&quot;,Senior Engineer,true,118000&#10;103,Alex Brown,Consultant,false,95000" oninput="convertCsvToJson()"></textarea>
         </div>
         
         <div class="f-panel-box">
-          <label for="jsonOutputConsole">Generated JSON Output</label>
-          <textarea id="jsonOutputConsole" class="f-textarea-field mono-font-panel" placeholder="JSON payload will appear here instantly..." readonly></textarea>
+          <label for="jsonOutputConsole">JSON Output Document</label>
+          <textarea id="jsonOutputConsole" class="f-textarea-field mono-font-panel" placeholder="Awaiting CSV input data..." readonly></textarea>
         </div>
       </div>
 
       <div class="f-action-strip">
         <button class="f-btn f-btn-convert" onclick="convertCsvToJson()">Convert to JSON</button>
-        <button class="f-btn f-btn-copy" id="copyJsonBtn" onclick="copyResultToClipboard()">📋 Copy JSON Result</button>
+        <button class="f-btn f-btn-copy" id="copyJsonBtn" onclick="copyResultToClipboard()">📋 Copy JSON</button>
         <button class="f-btn f-btn-clear" onclick="clearCsvWorkspace()">Clear</button>
       </div>
       
       <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Client-Side Secure Processing Guarantee:</span>
-        All parsing and transformation operations occur directly inside your browser sandbox. Your datasets and spreadsheets never leave your device memory.
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ High-Throughput RFC 4180 Compliant Parser:</span>
+        Fully supports double-quote escaping, multiline escaped fields, auto-delimiter detection (commas, tabs, pipes, semicolons), and local client-side memory execution without network transmissions.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">Mastering Data Interoperability: The Architecture of CSV to JSON Transformation</h2>
-      <p class="seo-p">In modern software engineering, data interchange formats dictate how disparate systems communicate, store records, and execute analytical models. While Comma-Separated Values (CSV) files remain the universal standard for spreadsheet exports, legacy databases, and financial ledger backups, JavaScript Object Notation (JSON) has emerged as the definitive native language of web applications, RESTful APIs, and NoSQL document stores. Bridging these two distinct paradigms efficiently is a daily requirement for developers, data analysts, and systems administrators.</p>
-      <p class="seo-p">This comprehensive technical manual examines the inner workings of CSV parsing algorithms, addresses the nuances of RFC 4180 compliance, evaluates data type coercion challenges, and provides engineering insights into high-performance client-side data serialization workflows.</p>
+      <h2 class="seo-title">The Engineering Architecture of Tabular Serialization: Parsing Delimited Matrices into Hierarchical JSON Datastores</h2>
+      <p class="seo-p">The data interchange landscape relies heavily on two foundational standards: the flat, tabular representation of Comma-Separated Values (CSV) and the structured, nested hierarchy of JavaScript Object Notation (JSON). While CSV remains the universally accepted standard for business reporting, spreadsheet exports, spreadsheet-to-data-warehouse pipelines, and raw database dumps, modern web APIs, NoSQL datastores, and microservice architectures communicate almost exclusively via JSON. Bridging this data divide requires a rigorous understanding of parsing lexical tokenizers, delimiter demarcation rules, and typed field inference.</p>
+      <p class="seo-p">Processing CSV files into clean JSON objects is rarely as straightforward as splitting text strings by simple commas. Real-world tabular data frequently contains escaped quotes, embedded commas inside cells, trailing carriage returns (`\r\n`), localized floating-point numbers, and variable delimiters. This deep technical specification examines the mathematical and structural mechanics behind robust CSV-to-JSON parsing, algorithmic complexity, boundary validation, and zero-latency client-side workflows.</p>
 
       <div class="seo-callout">
-        <strong>The Structural Shift:</strong> Converting a flat, two-dimensional matrix of delimited rows and columns into a structured, hierarchical tree of key-value object collections requires robust quotation handling, delimiter detection, and type inference logic.
+        <strong>The RFC 4180 Compliance Standard:</strong> A compliant CSV parser must accurately distinguish between literal delimiter characters and encapsulated data. When an input field contains commas, line breaks, or quotation marks, the entire field must be enclosed in double quotes (<code>"</code>), and internal double quotes must be escaped by prefixing them with another double quote (<code>""</code>).
       </div>
 
-      <h3 class="seo-h2">The Technical Core: Parsing Mechanics and RFC 4180 Compliance</h3>
-      <p class="seo-p">Converting raw CSV text into valid JSON is deceptively complex. A naive implementation that simply splits text by newlines and commas fails immediately when records contain embedded commas inside quoted strings (e.g., `"Johnson, Alice", "New York, NY"`). Professional parsers implement rigorous lexical state machines:</p>
+      <h3 class="seo-h2">Algorithmic Mechanics of the CSV-to-JSON Transformation Engine</h3>
+      <p class="seo-p">Converting raw delimited streams into structured JavaScript objects involves four deterministic phases executed inside the browser's high-speed memory environment:</p>
 
-      <h4 class="seo-h3">1. Quotation Awareness and Escaped Delimiters</h4>
-      <p class="seo-p">RFC 4180 defines standard CSV formatting rules where fields containing line breaks, double quotes, and commas must be enclosed in double-quote characters. Advanced parsers track quotation states character-by-character, ensuring internal delimiters do not mistakenly trigger column breaks.</p>
+      <h4 class="seo-h3">1. Lexical State Machine Tokenization</h4>
+      <p class="seo-p">Rather than using crude <code>String.prototype.split(',')</code> methods—which break the moment a field contains commas—the engine implements a finite-state machine (FSM). The tokenizer tracks three distinct parsing states: <em>Normal Field</em>, <em>Quoted Field</em>, and <em>Quote Escape</em>. It steps through each character sequence, preserving embedded newlines and delimiters inside quotation marks while cleanly capturing column boundaries.</p>
 
-      <h4 class="seo-h3">2. Header Key Mapping</h4>
-      <p class="seo-p">When the "First row as header" option is enabled, the parser extracts the initial row token array and utilizes these string values as property keys for all subsequent row objects. If headers contain spaces or special characters, developers can rely on clean normalized property assignments.</p>
+      <h4 class="seo-h3">2. Automatic Delimiter Inference</h4>
+      <p class="seo-p">When "Auto-Detect" is active, the parser analyzes the first few rows of text across candidate delimiter sets (comma <code>,</code>, tab <code>\t</code>, semicolon <code>;</code>, and pipe <code>|</code>). By evaluating consistency in column counts across lines, it infers the intended boundary separator with zero user configuration, gracefully handling European localized CSV exports that favor semicolons.</p>
 
-      <h4 class="seo-h3">3. Intelligent Data Type Coercion</h4>
-      <p class="seo-p">Raw CSV data consists strictly of text strings. However, robust JSON converters analyze values during ingestion. When "Auto-detect types" is active, numeric strings (integers and floats) and boolean literals (`true`, `false`) are automatically cast to their proper primitive data types rather than remaining enclosed in quotes.</p>
+      <h4 class="seo-h3">3. Primitive Type Inference and Coercion</h4>
+      <p class="seo-p">Raw CSV documents represent every field as a string literal. When type parsing is toggled on, our transformation engine evaluates individual field tokens against regular expressions for integers, floating-point decimals, and booleans. If a field equals <code>"true"</code> or <code>"false"</code> (case-insensitive), it transforms into a native boolean. Numeric patterns convert into standard numbers, while null expressions (empty cells or explicit <code>null</code> tokens) can be handled according to schema demands.</p>
 
-      <h3>The Structural Reference Matrix: CSV vs JSON Format Comparison</h3>
-      <p class="seo-p">Reviewing how flat spreadsheet tables map directly into structured object arrays helps clarify data modeling decisions across backend architectures:</p>
+      <h4 class="seo-h3">4. Structural Schema Projection</h4>
+      <p class="seo-p">Once rows are parsed into tokens, the system binds row values to the schema. When headers are present, row indexes pair with header keys to construct an array of uniform key-value JSON objects (<code>Array&lt;Record&lt;string, any&gt;&gt;</code>). If headers are absent, each row serializes into an array of primitive values (<code>Array&lt;Array&lt;any&gt;&gt;</code>), preserving raw tabular coordinate indexes.</p>
+
+      <h3>Format Matrix: Comparing CSV and JSON Structural Specifications</h3>
+      <p class="seo-p">Evaluating structural attributes helps engineers determine whether a flat tabular file or a nested object tree is optimal for their data transportation pipeline:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Feature / Attribute</th>
+              <th>Dimensional Metric</th>
               <th>Comma-Separated Values (CSV)</th>
               <th>JavaScript Object Notation (JSON)</th>
+              <th>Pipeline Optimization Impact</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Data Structure</td>
-              <td>Flat, two-dimensional tabular grid of rows and columns.</td>
-              <td>Hierarchical, nested tree of objects and arrays.</td>
+              <td>Structural Topology</td>
+              <td>Flat, two-dimensional tabular grid</td>
+              <td>Hierarchical, deep multi-level nested trees</td>
+              <td>JSON supports nested sub-objects and arrays natively.</td>
             </tr>
             <tr>
-              <td>Primary Use Case</td>
-              <td>Spreadsheet software, database dumps, financial ledgers.</td>
-              <td>REST APIs, NoSQL document databases, frontend state.</td>
+              <td>Payload Density</td>
+              <td>Extremely high (no repeated property names)</td>
+              <td>Moderate to low (repeated schema keys per record)</td>
+              <td>CSV saves bandwidth; minified JSON balances hierarchy and parsing ease.</td>
             </tr>
             <tr>
-              <td>Type Support</td>
-              <td>Strictly text strings (requires manual casting).</td>
-              <td>Rich primitives: Strings, Numbers, Booleans, Arrays, Null.</td>
+              <td>Type Fidelity</td>
+              <td>Untyped (raw text; everything is a string)</td>
+              <td>Strongly typed primitives (Number, String, Boolean, Null)</td>
+              <td>JSON eliminates manual string parsing on application ingest.</td>
             </tr>
             <tr>
-              <td>Human Readability</td>
-              <td>High for tabular datasets viewed in grid editors.</td>
-              <td>High for hierarchical data and nested object trees.</td>
+              <td>RFC Standard</td>
+              <td>RFC 4180</td>
+              <td>RFC 8259 / ECMA-404</td>
+              <td>Both maintain strict global interoperability compliance.</td>
             </tr>
             <tr>
-              <td>Schema Flexibility</td>
-              <td>Rigid column positions; difficult to nest attributes.</td>
-              <td>Highly flexible; supports nested objects and optional keys.</td>
+              <td>Browser Ingest</td>
+              <td>Requires custom parsing or tokenizer script</td>
+              <td>Native parsing via high-speed <code>JSON.parse()</code></td>
+              <td>JSON is processed directly by JavaScript engines without overhead.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Diagnostic & Usage Guide</h3>
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
 
-      <h3>How does the parser handle commas inside quoted text fields?</h3>
-      <p class="seo-p">Our parser adheres strictly to standard quotation rules. If a field value is wrapped in double quotes (e.g., `"Smith, John"`), any internal commas or line breaks are treated as literal characters belonging to that specific cell rather than column or row separators.</p>
+      <h3>How are multi-line cells and internal commas processed without breaking columns?</h3>
+      <p class="seo-p">In accordance with RFC 4180 standards, any field that contains commas, tab breaks, or newline characters must be enclosed within surrounding double-quotes. Our state-machine parser recognizes quotation boundaries, ensuring that delimiters inside quoted fields are treated as literal characters rather than column terminators.</p>
 
-      <h3>What happens if my CSV file does not include a header row?</h3>
-      <p class="seo-p">If your dataset lacks column titles, simply uncheck the "First row as header" option. The converter will automatically generate numeric index keys (`col_0`, `col_1`, `col_2`, etc.) or output the parsed records as a two-dimensional array depending on your configuration.</p>
+      <h3>Why does numeric coercion convert strings like "01234" to numbers?</h3>
+      <p class="seo-p">When type coercion is enabled, strings containing numerical sequences are parsed with JavaScript's numeric engine. If your data includes postal codes, international phone numbers, or account IDs where leading zeros must be preserved, simply uncheck the "Parse Numbers &amp; Booleans" option to retain strict string serialization for every field.</p>
 
-      <h3>Can I parse tab-separated values (TSV) or custom pipe-delimited files?</h3>
-      <p class="seo-p">Yes! Use the delimiter selection dropdown at the top of the workspace to switch between commas, semicolons, tabs, and custom pipe characters instantly before running the conversion.</p>
+      <h3>Is my proprietary spreadsheet data sent over external networks?</h3>
+      <p class="seo-p">No. The CSV to JSON Converter on Texus Pro Tools executes 100% inside your local web browser's client-side runtime memory via JavaScript. No data strings, proprietary tables, or enterprise files are uploaded to external cloud endpoints, guaranteeing total compliance with corporate security and privacy policies.</p>
 
-      <h3>Is my sensitive spreadsheet data secure when using this tool?</h3>
-      <p class="seo-p">Absolutely. Texus Pro Tools executes all CSV parsing and JSON serialization entirely within your browser client environment. Your data never leaves your device or gets transmitted to external servers.</p>
-
-      <h3 class="seo-h2">Summary: Streamlining Modern Data Pipelines</h3>
-      <p class="seo-p">Transforming tabular spreadsheets into structured JSON documents is an essential workflow for modern web developers, data scientists, and systems integrators. By leveraging client-side execution, rigorous quote parsing, and intelligent type coercion, you can eliminate manual data formatting bottlenecks instantly.</p>
-      <p class="seo-p">Our Advanced CSV to JSON Converter delivers blazing-fast parsing performance across all devices, ensuring your data pipelines remain clean, secure, and fully interoperable.</p>
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Data Transformation</h3>
+      <p class="seo-p">To maintain rock-solid data integrity across production pipelines, always ensure your source CSV files follow standard quotation escaping rules, strip duplicate or empty trailing lines, and verify whether numeric type casting suits your data models. Whether you are migrating SQL dumps to MongoDB, seeding mock REST APIs, or preparing bulk inputs for data science notebooks, our real-time CSV to JSON Converter provides deterministic, enterprise-grade parsing with zero server overhead.</p>
     </div>
   </main>
 
   <div id="site-footer"></div>
 
   <script type="text/javascript">
+    function parseCsvToMatrix(text, delimiter) {
+      if (!text || text.trim() === '') return [];
+      
+      // Auto-detect delimiter if requested
+      if (delimiter === 'auto') {
+        const firstLine = text.split(/\r\n|\n|\r/)[0] || '';
+        const delimiters = [',', ';', '\t', '|'];
+        let maxCount = -1;
+        let chosen = ',';
+        
+        delimiters.forEach(d => {
+          let count = 0;
+          let insideQuote = false;
+          for (let i = 0; i < firstLine.length; i++) {
+            if (firstLine[i] === '"') insideQuote = !insideQuote;
+            else if (firstLine[i] === d && !insideQuote) count++;
+          }
+          if (count > maxCount) {
+            maxCount = count;
+            chosen = d;
+          }
+        });
+        delimiter = chosen;
+      }
+
+      const rows = [];
+      let currentRow = [];
+      let currentField = '';
+      let insideQuote = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const nextChar = text[i + 1];
+
+        if (char === '"') {
+          if (insideQuote && nextChar === '"') {
+            currentField += '"';
+            i++; // skip next quote
+          } else {
+            insideQuote = !insideQuote;
+          }
+        } else if (char === delimiter && !insideQuote) {
+          currentRow.push(currentField);
+          currentField = '';
+        } else if ((char === '\r' || char === '\n') && !insideQuote) {
+          if (char === '\r' && nextChar === '\n') {
+            i++; // Skip \n in CRLF
+          }
+          currentRow.push(currentField);
+          if (currentRow.length > 1 || currentRow[0] !== '') {
+            rows.push(currentRow);
+          }
+          currentRow = [];
+          currentField = '';
+        } else {
+          currentField += char;
+        }
+      }
+
+      if (currentField !== '' || currentRow.length > 0) {
+        currentRow.push(currentField);
+        if (currentRow.length > 1 || currentRow[0] !== '') {
+          rows.push(currentRow);
+        }
+      }
+
+      return rows;
+    }
+
+    function castValue(val, parseTypes) {
+      if (!parseTypes) return val;
+      const trimmed = val.trim();
+      if (trimmed === '') return '';
+      if (/^(true)$/i.test(trimmed)) return true;
+      if (/^(false)$/i.test(trimmed)) return false;
+      if (/^(null)$/i.test(trimmed)) return null;
+      if (!isNaN(trimmed) && trimmed !== '') {
+        const num = Number(trimmed);
+        if (num <= Number.MAX_SAFE_INTEGER && num >= Number.MIN_SAFE_INTEGER) {
+          return num;
+        }
+      }
+      return val;
+    }
+
+    function convertCsvToJson() {
+      const input = document.getElementById('csvInputConsole').value;
+      const delimiter = document.getElementById('delimiterSelect').value;
+      const hasHeaders = document.getElementById('headerCheckbox').checked;
+      const parseTypes = document.getElementById('parseTypesCheckbox').checked;
+      const indent = parseInt(document.getElementById('indentSelect').value, 10);
+      const outputConsole = document.getElementById('jsonOutputConsole');
+
+      if (!input.trim()) {
+        outputConsole.value = '';
+        return;
+      }
+
+      try {
+        const matrix = parseCsvToMatrix(input, delimiter);
+        if (matrix.length === 0) {
+          outputConsole.value = '[]';
+          return;
+        }
+
+        let result;
+        if (hasHeaders && matrix.length > 0) {
+          const headers = matrix[0].map(h => h.trim());
+          const rows = matrix.slice(1);
+          result = rows.map(row => {
+            const obj = {};
+            headers.forEach((header, idx) => {
+              const key = header !== '' ? header : `column_${idx + 1}`;
+              const val = row[idx] !== undefined ? row[idx] : '';
+              obj[key] = castValue(val, parseTypes);
+            });
+            return obj;
+          });
+        } else {
+          result = matrix.map(row => row.map(val => castValue(val, parseTypes)));
+        }
+
+        outputConsole.value = JSON.stringify(result, null, indent);
+      } catch (err) {
+        outputConsole.value = `Error parsing CSV: ${err.message}`;
+      }
+    }
+
+    function copyResultToClipboard() {
+      const output = document.getElementById('jsonOutputConsole');
+      if (!output.value) return;
+
+      navigator.clipboard.writeText(output.value).then(() => {
+        const btn = document.getElementById('copyJsonBtn');
+        const origText = btn.textContent;
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => {
+          btn.textContent = origText;
+        }, 2000);
+      }).catch(err => {
+        console.error('Copy failed:', err);
+      });
+    }
+
+    function clearCsvWorkspace() {
+      document.getElementById('csvInputConsole').value = '';
+      document.getElementById('jsonOutputConsole').value = '';
+      document.getElementById('csvInputConsole').focus();
+    }
+
+    // Initial parsing on load
+    window.addEventListener('DOMContentLoaded', () => {
+      convertCsvToJson();
+    });
+
     const basePath = window.location.origin;
     
     fetch('/components/header.html')
@@ -266,148 +423,6 @@ id,name,role,active
       .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
-
-    // CSV TO JSON CONVERTER CORE LOGIC
-    function parseCSVLine(line, delimiter) {
-      const result = [];
-      let insideQuote = false;
-      let currentField = '';
-      
-      for (let i = 0; i < line.length; i++) {
-        const char = line[i];
-        const nextChar = line[i + 1];
-        
-        if (char === '"') {
-          if (insideQuote && nextChar === '"') {
-            currentField += '"';
-            i++; // Skip escaped quote
-          } else {
-            insideQuote = !insideQuote;
-          }
-        } else if (char === delimiter && !insideQuote) {
-          result.push(currentField);
-          currentField = '';
-        } else {
-          currentField += char;
-        }
-      }
-      result.push(currentField);
-      return result;
-    }
-
-    function inferType(val) {
-      val = val.trim();
-      if (val === '') return null;
-      if (val.toLowerCase() === 'true') return true;
-      if (val.toLowerCase() === 'false') return false;
-      if (!isNaN(val) && val !== '') {
-        return Number(val);
-      }
-      return val;
-    }
-
-    function convertCsvToJson() {
-      const input = document.getElementById('csvInputConsole').value;
-      const outputConsole = document.getElementById('jsonOutputConsole');
-      const delimiter = document.getElementById('delimiterSelect').value === '\\t' ? '\t' : document.getElementById('delimiterSelect').value;
-      const hasHeader = document.getElementById('hasHeaderCheckbox').checked;
-      const autoType = document.getElementById('autoTypeCheckbox').checked;
-
-      if (!input.trim()) {
-        outputConsole.value = '';
-        return;
-      }
-
-      try {
-        // Normalize line breaks
-        const lines = input.replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n');
-        const rows = [];
-
-        for (let i = 0; i < lines.length; i++) {
-          const line = lines[i];
-          if (line.trim() === '') continue; // Skip empty lines
-          const parsedRow = parseCSVLine(line, delimiter);
-          rows.push(parsedRow);
-        }
-
-        if (rows.length === 0) {
-          outputConsole.value = '[]';
-          return;
-        }
-
-        let jsonResult = [];
-
-        if (hasHeader && rows.length > 0) {
-          const headers = rows[0];
-          for (let i = 1; i < rows.length; i++) {
-            const row = rows[i];
-            const obj = {};
-            for (let j = 0; j < headers.length; j++) {
-              const headerKey = headers[j] ? headers[j].trim() : `col_${j}`;
-              let cellValue = row[j] !== undefined ? row[j] : '';
-              if (autoType) {
-                cellValue = inferType(cellValue);
-              }
-              obj[headerKey] = cellValue;
-            }
-            jsonResult.push(obj);
-          }
-        } else {
-          // No header: output array of arrays or objects with col_X keys
-          for (let i = 0; i < rows.length; i++) {
-            const row = rows[i];
-            const obj = {};
-            for (let j = 0; j < row.length; j++) {
-              let cellValue = row[j];
-              if (autoType) {
-                cellValue = inferType(cellValue);
-              }
-              obj[`col_${j}`] = cellValue;
-            }
-            jsonResult.push(obj);
-          }
-        }
-
-        outputConsole.value = JSON.stringify(jsonResult, null, 2);
-      } catch (err) {
-        outputConsole.value = 'Error parsing CSV data: ' + err.message;
-      }
-    }
-
-    function copyResultToClipboard() {
-      const outputConsole = document.getElementById('jsonOutputConsole');
-      const copyBtn = document.getElementById('copyJsonBtn');
-      
-      if (!outputConsole.value.trim()) return;
-
-      navigator.clipboard.writeText(outputConsole.value).then(() => {
-        const originalText = copyBtn.innerText;
-        copyBtn.innerText = '✅ Copied Successfully!';
-        copyBtn.style.background = '#dcfce7';
-        copyBtn.style.color = '#166534';
-        copyBtn.style.borderColor = '#bbf7d0';
-        
-        setTimeout(() => {
-          copyBtn.innerText = originalText;
-          copyBtn.style.background = '';
-          copyBtn.style.color = '';
-          copyBtn.style.borderColor = '';
-        }, 2000);
-      }).catch(err => {
-        alert('Failed to copy text: ' + err);
-      });
-    }
-
-    function clearCsvWorkspace() {
-      document.getElementById('csvInputConsole').value = '';
-      document.getElementById('jsonOutputConsole').value = '';
-      document.getElementById('csvInputConsole').focus();
-    }
-
-    // Run initial parse on page load if default text exists
-    window.addEventListener('DOMContentLoaded', () => {
-      convertCsvToJson();
-    });
   </script>
   
   <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
