@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Instagram Engagement Calculator | Free ER Rate Analyzer</title>
-  <meta name="description" content="Calculate your Instagram engagement rate instantly with our free online tool. Analyze follower counts, likes, comments, and post performance with industry benchmarks." />
+  <title>Instagram Engagement Calculator | Free Engagement Rate Tool</title>
+  <meta name="description" content="Calculate your Instagram engagement rate instantly. Analyze follower count, likes, comments, and saves to benchmark performance and influencer sponsorship value." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -19,11 +19,11 @@ crossorigin="anonymous"></script>
     "name": "Instagram Engagement Calculator Pro",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced analytics tool to compute and evaluate Instagram creator and brand engagement metrics cleanly.",
+    "description": "Professional social analytics utility to compute Instagram engagement rate per post and follower ratio benchmarks with real-time tier classification.",
     "offers": {
       "@type": "Offer",
       "price": "0",
-      "priceCurrency": "INR"
+      "priceCurrency": "USD"
     }
   }
   </script>
@@ -41,19 +41,27 @@ crossorigin="anonymous"></script>
     /* WORKSPACE CORE CONTAINER CARD */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
     
-    /* INTERACTIVE GRID SYSTEM */
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
     .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
     .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
     .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
     .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
 
-    /* METRICS OUTPUT DISPLAY */
-    .f-metrics-display { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-sizing: border-box; }
-    .f-metric-val { font-size: 2.8rem; font-weight: 800; color: #2563eb; line-height: 1.1; margin-bottom: 6px; }
-    .f-metric-label { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; }
-    .f-metric-badge { display: inline-block; margin-top: 12px; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; background: #dbeafe; color: #1d4ed8; }
+    /* METRIC RESULT BOARD */
+    .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0 10px 0; }
+    .metric-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px 20px; text-align: left; }
+    .metric-card-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 6px; }
+    .metric-card-val { font-size: 1.85rem; font-weight: 800; color: #0f172a; line-height: 1.1; }
+    .metric-card-sub { font-size: 0.8rem; color: #64748b; margin-top: 5px; font-weight: 500; }
+
+    /* BENCHMARK STATUS BADGE */
+    .status-badge { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .badge-excellent { background: #dcfce7; color: #15803d; }
+    .badge-good { background: #e0f2fe; color: #0369a1; }
+    .badge-average { background: #fef9c3; color: #a16207; }
+    .badge-low { background: #fee2e2; color: #b91c1c; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
     .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
@@ -86,12 +94,12 @@ crossorigin="anonymous"></script>
       .f-wrapper { padding: 0 28px !important; }
       .seo-title { font-size: 1.8rem; }
       .seo-h2 { font-size: 1.35rem; }
+      .metric-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .f-card { padding: 25px 20px; border-radius: 20px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
-      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
-      .f-metric-val { font-size: 2.2rem; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 16px; }
       
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
@@ -112,232 +120,288 @@ crossorigin="anonymous"></script>
     
     <div class="f-card">
       <div class="f-io-grid">
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-          <div class="f-panel-box">
-            <label for="followerCount">Total Followers</label>
-            <input type="number" id="followerCount" class="f-input-field" placeholder="e.g., 25000" min="1" value="25000" oninput="calculateEngagement()">
-          </div>
-          
-          <div class="f-panel-box">
-            <label for="totalLikes">Total Likes (Recent Posts)</label>
-            <input type="number" id="totalLikes" class="f-input-field" placeholder="e.g., 1200" min="0" value="1250" oninput="calculateEngagement()">
-          </div>
-
-          <div class="f-panel-box">
-            <label for="totalComments">Total Comments (Recent Posts)</label>
-            <input type="number" id="totalComments" class="f-input-field" placeholder="e.g., 85" min="0" value="95" oninput="calculateEngagement()">
-          </div>
-
-          <div class="f-panel-box">
-            <label for="postCount">Number of Posts Analyzed</label>
-            <input type="number" id="postCount" class="f-input-field" placeholder="e.g., 10" min="1" value="10" oninput="calculateEngagement()">
-          </div>
+        <div class="f-panel-box">
+          <label for="numFollowers">Total Followers</label>
+          <input type="number" id="numFollowers" class="f-input-field" placeholder="e.g. 25000" min="1" oninput="calculateEngagement()">
         </div>
         
-        <div class="f-metrics-display">
-          <div class="f-metric-val" id="engagementRateResult">5.38%</div>
-          <div class="f-metric-label">Estimated Engagement Rate</div>
-          <div class="f-metric-badge" id="engagementTierBadge">🌟 High Engagement</div>
-          
-          <div style="margin-top: 24px; width: 100%; border-top: 1px solid #e2e8f0; padding-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; text-align: left;">
-            <div>
-              <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #64748b;">Avg Likes / Post</div>
-              <div id="avgLikesResult" style="font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-top: 2px;">125.0</div>
-            </div>
-            <div>
-              <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #64748b;">Avg Comments</div>
-              <div id="avgCommentsResult" style="font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-top: 2px;">9.5</div>
-            </div>
-          </div>
+        <div class="f-panel-box">
+          <label for="numPosts">Posts Analyzed (Sample Size)</label>
+          <input type="number" id="numPosts" class="f-input-field" placeholder="e.g. 10 (or 1 for single post)" min="1" value="10" oninput="calculateEngagement()">
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="numLikes">Total Likes Across Posts</label>
+          <input type="number" id="numLikes" class="f-input-field" placeholder="e.g. 12500" min="0" oninput="calculateEngagement()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="numComments">Total Comments Across Posts</label>
+          <input type="number" id="numComments" class="f-input-field" placeholder="e.g. 640" min="0" oninput="calculateEngagement()">
+        </div>
+      </div>
+
+      <div class="f-io-grid" style="margin-bottom: 10px;">
+        <div class="f-panel-box">
+          <label for="numSaves">Total Saves / Bookmarks (Optional)</label>
+          <input type="number" id="numSaves" class="f-input-field" placeholder="e.g. 320" min="0" oninput="calculateEngagement()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="numShares">Total Shares (Optional)</label>
+          <input type="number" id="numShares" class="f-input-field" placeholder="e.g. 180" min="0" oninput="calculateEngagement()">
+        </div>
+      </div>
+
+      <!-- RESULTS DISPLAY DASHBOARD -->
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="metric-card-label">Engagement Rate (by Followers)</div>
+          <div class="metric-card-val" id="resRate">0.00%</div>
+          <div class="metric-card-sub" id="resStatusBadge"><span class="status-badge badge-average">Awaiting Input</span></div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-card-label">Avg Interactions / Post</div>
+          <div class="metric-card-val" id="resAvgInteractions">0</div>
+          <div class="metric-card-sub" id="resBreakdown">0 likes · 0 comments</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-card-label">Influencer Creator Tier</div>
+          <div class="metric-card-val" id="resTier" style="font-size: 1.45rem;">—</div>
+          <div class="metric-card-sub" id="resEstValue">Estimated value: $0 / post</div>
         </div>
       </div>
 
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="calculateEngagement()">Calculate Rate</button>
-        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyEngagementResult()">📋 Copy Report</button>
+        <button class="f-btn f-btn-convert" onclick="calculateEngagement()">Recalculate Metrics</button>
+        <button class="f-btn f-btn-copy" id="copyMetricsBtn" onclick="copyMetricsSummary()">📋 Copy Report Summary</button>
         <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
       </div>
       
       <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Live Client-Side Computation Approved:</span>
-        All mathematical engagement formulas run instantly within your browser memory buffer. No profile credentials or personal API tokens are required or stored.
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Verified Algorithmic Formula:</span>
+        Average Engagement Rate = [((Total Likes + Comments + Saves + Shares) / Number of Posts) / Follower Count] × 100. Calculations execute securely in client-side runtime without data storage.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Complete Science of Instagram Engagement Rates: Benchmarks, Formulas, Brand Sponsorship Valuations, and Organic Growth Strategies</h2>
-      <p class="seo-p">In the contemporary digital creator economy, raw follower counts have taken a backseat to genuine community interaction metrics. Brands, marketing agencies, and influencer platforms look past vanity numbers to evaluate true audience resonance. The single most important performance indicator in this evaluation is the <b>Instagram Engagement Rate (ER)</b>. Knowing how to calculate, interpret, and optimize this percentage is essential for negotiating brand sponsorships, auditing competitor profiles, and fine-tuning social media publishing schedules.</p>
-      <p class="seo-p">This extensive computing and marketing reference guide explores the mathematical foundations of engagement analytics, details tier-based performance brackets across various account sizes, analyzes algorithmic impact factors, and outlines actionable steps to maximize audience interaction natively.</p>
+      <h2 class="seo-title">The Quantitative Science of Social Proof: Deconstructing Instagram Engagement Rates, Algorithmic Visibility, and Audience Monetization</h2>
+      <p class="seo-p">In modern social media marketing and brand partnerships, follower count has ceased to be the singular metric of digital influence. The contemporary Instagram feed ranking algorithm prioritizes genuine audience resonance over vanity metrics. A profile with 100,000 inactive followers frequently delivers worse organic reach and conversion performance than an authentic community of 8,000 engaged subscribers. Calculating your precise Instagram Engagement Rate (ER) is essential for content creators pitching brand sponsorships, performance marketers auditing influencer rosters, and business owners benchmarking organic community growth.</p>
+      <p class="seo-p">This comprehensive technical guide outlines the statistical models behind social interaction calculations, industry-standard engagement benchmarks across account tiers, the mechanics of Instagram's internal recommendation engine, and actionable strategies to optimize interaction rates sustainably.</p>
 
       <div class="seo-callout">
-        <strong>The Core Engagement Formula:</strong> Engagement rate is determined by dividing total interactions (likes plus comments) across a specific sample of posts by your overall follower count, dividing by the number of posts analyzed, and multiplying the result by 100 to yield a clean percentage.
+        <strong>The Industry Standard Formula:</strong> Engagement Rate by Followers (ERF) calculates the average volume of interactions generated per publication relative to total followers: 
+        <br><code>ER (%) = [((Likes + Comments + Saves + Shares) / Total Sampled Posts) / Total Followers] × 100</code>
       </div>
 
-      <h3 class="seo-h2">The Technical Core: Mathematical Derivation and Interaction Ratios</h3>
-      <p class="seo-p">When calculating engagement performance through quantitative analysis tools, standard algorithms utilize specific weighting models to ensure accurate benchmark comparisons:</p>
+      <h3 class="seo-h2">Understanding the 3 Primary Engagement Calculation Models</h3>
+      <p class="seo-p">Depending on account verification status and access to first-party Instagram Professional Dashboard telemetry, analysts utilize three distinct computational models to evaluate content efficacy:</p>
 
-      <h4 class="seo-h3">1. Sample Post Aggregation</h4>
-      <p class="seo-p">Rather than auditing an entire profile history—which can skew statistics due to viral outliers or inactive archival periods—industry standard practice recommends evaluating your 10 to 12 most recent non-sponsored feed posts.</p>
+      <h4 class="seo-h3">1. Engagement Rate by Followers (ERF)</h4>
+      <p class="seo-p">The public industry baseline used by advertising agencies and brand managers. Because follower counts and public interactions (likes, comments) are visible from external account inspection, ERF enables competitive benchmarking across third-party accounts without requiring private backend analytics credentials.</p>
 
-      <h4 class="seo-h3">2. Interaction Summation</h4>
-      <p class="seo-p">The program aggregates total likes and comments across the selected sample window. Advanced implementations may also incorporate saves and shares if API data is accessible, though standard public calculations rely primarily on likes and comments.</p>
+      <h4 class="seo-h3">2. Engagement Rate by Reach (ERR)</h4>
+      <p class="seo-p">Calculated as <code>(Total Engagements / Unique Accounts Reached) × 100</code>. Available exclusively through first-party Instagram Insights, ERR removes inactive or ghost followers from the denominator, providing a cleaner assessment of how compelling your media is to users who actually viewed it.</p>
 
-      <h4 class="seo-h3">3. Per-Post Averaging vs Cumulative Totals</h4>
-      <p class="seo-p">Dividing total interactions by the post count yields precise per-post averages. This figure is then measured against total follower count to establish an accurate percentage baseline that accounts for varying posting frequencies.</p>
+      <h4 class="seo-h3">3. Engagement Rate by Impressions (ERI)</h4>
+      <p class="seo-p">Calculated against the total cumulative view count, including repeated exposures. ERI serves as a standard key performance indicator (KPI) for paid ad campaigns, sponsored Reel placements, and viral video content where multiple re-watches skew raw reach figures.</p>
 
-      <h3>The Statutory Reference Matrix: Instagram Engagement Tier Benchmarks</h3>
-      <p class="seo-p">Engagement rates naturally fluctuate inversely with follower scale. A micro-influencer with 5,000 followers will typically command a much higher percentage rate than a mega-celebrity with 5,000,000 followers due to intimate community dynamics:</p>
+      <h3 class="seo-h2">Instagram Engagement Benchmarks by Account Size</h3>
+      <p class="seo-p">As an Instagram profile expands its follower base, mathematical engagement rates naturally compress. Micro-audiences exhibit tighter emotional alignment and higher comment densities, whereas broad mass-market followings disperse across diverse geographic zones and algorithmic sub-clusters. The table below delineates verified industry averages compiled across consumer, lifestyle, and B2B verticals:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Follower Tier Category</th>
-              <th>Poor Engagement Rate</th>
-              <th>Good / Average ER</th>
-              <th>High / Excellent ER</th>
-              <th>Viral / Elite ER</th>
+              <th>Influencer Category</th>
+              <th>Follower Range</th>
+              <th>Average ER (%)</th>
+              <th>High-Performance ER (%)</th>
+              <th>Typical Brand Deal Value (Per Post)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Nano-Influencers (1K - 10K)</td>
-              <td>&lt; 2.0%</td>
-              <td>3.5% - 6.0%</td>
-              <td>8.0% - 12.0%</td>
-              <td>&gt; 15.0%</td>
+              <td><b>Nano-Creator</b></td>
+              <td>1,000 – 10,000</td>
+              <td>4.00% – 7.50%</td>
+              <td>&gt; 8.00%</td>
+              <td>$50 – $250</td>
             </tr>
             <tr>
-              <td>Micro-Influencers (10K - 50K)</td>
-              <td>&lt; 1.5%</td>
-              <td>2.5% - 4.5%</td>
-              <td>6.0% - 9.0%</td>
-              <td>&gt; 10.0%</td>
+              <td><b>Micro-Influencer</b></td>
+              <td>10,000 – 50,000</td>
+              <td>2.20% – 3.80%</td>
+              <td>&gt; 4.50%</td>
+              <td>$200 – $750</td>
             </tr>
             <tr>
-              <td>Mid-Tier Creators (50K - 500K)</td>
-              <td>&lt; 1.0%</td>
-              <td>1.8% - 3.0%</td>
-              <td>4.5% - 7.0%</td>
-              <td>&gt; 8.5%</td>
+              <td><b>Mid-Tier Influencer</b></td>
+              <td>50,000 – 200,000</td>
+              <td>1.60% – 2.50%</td>
+              <td>&gt; 3.00%</td>
+              <td>$600 – $2,500</td>
             </tr>
             <tr>
-              <td>Macro-Influencers (500K - 1M)</td>
-              <td>&lt; 0.8%</td>
-              <td>1.2% - 2.2%</td>
-              <td>3.0% - 5.0%</td>
-              <td>&gt; 6.5%</td>
+              <td><b>Macro-Influencer</b></td>
+              <td>200,000 – 1,000,000</td>
+              <td>1.20% – 1.80%</td>
+              <td>&gt; 2.20%</td>
+              <td>$2,000 – $10,000</td>
             </tr>
             <tr>
-              <td>Mega-Influencers / Celebs (1M+)</td>
-              <td>&lt; 0.5%</td>
-              <td>0.8% - 1.5%</td>
-              <td>2.0% - 3.5%</td>
-              <td>&gt; 4.5%</td>
+              <td><b>Mega / Celebrity</b></td>
+              <td>1,000,000+</td>
+              <td>0.80% – 1.40%</td>
+              <td>&gt; 1.80%</td>
+              <td>$10,000+</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+      <h3 class="seo-h2">Algorithmic Weighting: How Instagram Evaluates Different Interactions</h3>
+      <p class="seo-p">The Instagram ranking architecture does not weight all interaction types equally. When determining whether to push a carousel, photo, or Reel to the Explore page or Recommended Feed, the neural ranking model scores actions based on the cognitive effort required by the user:</p>
 
-<h3>Why do follower counts negatively correlate with engagement percentage rates?</h3>
-      <p class="seo-p">As an account scales into hundreds of thousands or millions of followers, audience demographics diversify significantly. Passive followers, bot accounts, and dormant users accumulate over time, diluting the active interaction pool. Consequently, massive accounts experience lower baseline percentage rates despite generating tens of thousands of absolute likes.</p>
+      <ul class="seo-list">
+        <li><strong>Direct Message Shares (Highest Weight):</strong> Forwarding content via private message indicates strong interpersonal relevance and initiates retention loops within the Instagram platform.</li>
+        <li><strong>Saves &amp; Bookmarks (High Weight):</strong> Signals evergreen utility, reference value, and instructional quality. Saves strongly correlate with long-tail algorithmic recommendations.</li>
+        <li><strong>Long-Form Comments (Medium-High Weight):</strong> Genuine comments containing multiple words and substantive dialogue signal high engagement, whereas single-emoji replies receive lower ranking priority.</li>
+        <li><strong>Double-Tap Likes (Standard Weight):</strong> The most common and low-friction engagement action. While vital for initial velocity, likes alone rarely trigger sustained algorithmic distribution without accompanying saves or shares.</li>
+      </ul>
 
-<h3>How can creators artificially inflate engagement rates, and how do brands spot them?</h3>
-      <p class="seo-p">Unscrupulous creators sometimes utilize engagement pods, automated comment bots, or fake follower purchase services. Brands audit these practices by examining comment quality (e.g., generic one-word emojis vs contextual discussions), follower growth trajectory graphs, and audience geographic consistency.</p>
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ)</h3>
 
-<h3>Why is local browser calculation superior to external scraping tools?</h3>
-      <p class="seo-p">Texus Pro Tools values user privacy and operational speed. Our Instagram Engagement Calculator runs entirely in your local browser environment. No login credentials, session tokens, or API requests are required, ensuring zero risk of account flagging or data harvesting.</p>
+      <h4 class="seo-h3">What constitutes a "good" Instagram engagement rate?</h4>
+      <p class="seo-p">For accounts between 10,000 and 100,000 followers, an engagement rate between 2.0% and 3.5% is considered healthy and competitive. Rates above 4.0% represent superior audience loyalty, while engagement dropping below 1.2% suggests passive followers, legacy audience decay, or shadow-reach limitations.</p>
 
-      <h3 class="seo-h2">Summary: Strategic Best Practices for Social Media Growth</h3>
-      <p class="seo-p">To elevate your Instagram engagement metrics organically, prioritize high-retention formats like Reels and carousel info-posts, respond to comments within the first hour of publishing to stimulate algorithmic distribution, and use clear calls-to-action (CTAs) in your captions to encourage saves and shares.</p>
-      <p class="seo-p">Our Advanced Online Instagram Engagement Calculator automates all mathematical computations instantly, providing precise performance ratings across any desktop or mobile device with zero friction.</p>
+      <h4 class="seo-h3">How many posts should I include when computing the rate?</h4>
+      <p class="seo-p">For an accurate statistical sample, analyze your last 10 to 12 regular feed posts, excluding viral anomalies or heavily boosted paid advertisements. This mitigates single-post variance and reflects normal baseline content resonance.</p>
+
+      <h4 class="seo-h3">Why does my engagement rate drop when my follower count increases?</h4>
+      <p class="seo-p">This phenomenon is known as audience dilution. As followings scale, accounts attract casual observers, bot networks, and low-activity users who infrequently interact with their feeds. Algorithmic sorting also limits impression delivery across large pools unless early engagement velocity triggers broader distribution.</p>
+
+      <h4 class="seo-h3">Does this calculator store or transmit my profile data?</h4>
+      <p class="seo-p">No. All calculations are executed strictly within your client-side browser runtime. No profile handles, follower counts, or analytical figures are collected, logged, or transferred to external servers, ensuring complete operational privacy.</p>
+
+      <h3 class="seo-h2">Actionable Framework to Improve Instagram Engagement</h3>
+      <p class="seo-p">To lift lagging engagement numbers into top-quartile performance brackets, implement a disciplined optimization schedule: focus on educational carousels with strong bookmark triggers to elevate save counts; structure your captions around specific discussion prompts to stimulate meaningful comment threads; and post when your active followers are historically online according to your professional insights data.</p>
     </div>
   </main>
 
   <div id="site-footer"></div>
 
   <script type="text/javascript">
+    function getInfluencerTier(followers) {
+      if (followers < 1000) return { name: "Nano Creator", minEst: 10, maxEst: 50 };
+      if (followers < 10000) return { name: "Nano Influencer", minEst: 50, maxEst: 250 };
+      if (followers < 50000) return { name: "Micro Influencer", minEst: 200, maxEst: 750 };
+      if (followers < 200000) return { name: "Mid-Tier Influencer", minEst: 600, maxEst: 2500 };
+      if (followers < 1000000) return { name: "Macro Influencer", minEst: 2000, maxEst: 10000 };
+      return { name: "Mega / Celebrity", minEst: 10000, maxEst: 50000 };
+    }
+
     function calculateEngagement() {
-      const followers = parseFloat(document.getElementById('followerCount').value) || 0;
-      const likes = parseFloat(document.getElementById('totalLikes').value) || 0;
-      const comments = parseFloat(document.getElementById('totalComments').value) || 0;
-      const posts = parseFloat(document.getElementById('postCount').value) || 1;
+      const followers = parseFloat(document.getElementById('numFollowers').value) || 0;
+      const posts = parseFloat(document.getElementById('numPosts').value) || 1;
+      const likes = parseFloat(document.getElementById('numLikes').value) || 0;
+      const comments = parseFloat(document.getElementById('numComments').value) || 0;
+      const saves = parseFloat(document.getElementById('numSaves').value) || 0;
+      const shares = parseFloat(document.getElementById('numShares').value) || 0;
+
+      const resRate = document.getElementById('resRate');
+      const resStatusBadge = document.getElementById('resStatusBadge');
+      const resAvgInteractions = document.getElementById('resAvgInteractions');
+      const resBreakdown = document.getElementById('resBreakdown');
+      const resTier = document.getElementById('resTier');
+      const resEstValue = document.getElementById('resEstValue');
 
       if (followers <= 0 || posts <= 0) {
-        document.getElementById('engagementRateResult').innerText = '0.00%';
-        document.getElementById('engagementTierBadge').innerText = '⚠️ Invalid Input';
-        document.getElementById('avgLikesResult').innerText = '0';
-        document.getElementById('avgCommentsResult').innerText = '0';
+        resRate.innerText = '0.00%';
+        resStatusBadge.innerHTML = '<span class="status-badge badge-average">Awaiting Input</span>';
+        resAvgInteractions.innerText = '0';
+        resBreakdown.innerText = '0 likes · 0 comments';
+        resTier.innerText = '—';
+        resEstValue.innerText = 'Estimated value: $0 / post';
         return;
       }
 
-      const avgLikes = likes / posts;
-      const avgComments = comments / posts;
-      const totalInteractionsPerPost = avgLikes + avgComments;
-      const engagementRate = (totalInteractionsPerPost / followers) * 100;
+      const totalInteractions = likes + comments + saves + shares;
+      const avgInteractionsPerPost = totalInteractions / posts;
+      const engagementRate = (avgInteractionsPerPost / followers) * 100;
+      
+      const avgLikes = Math.round(likes / posts);
+      const avgComments = Math.round(comments / posts);
 
-      document.getElementById('engagementRateResult').innerText = engagementRate.toFixed(2) + '%';
-      document.getElementById('avgLikesResult').innerText = avgLikes.toFixed(1);
-      document.getElementById('avgCommentsResult').innerText = avgComments.toFixed(1);
+      resRate.innerText = engagementRate.toFixed(2) + '%';
+      resAvgInteractions.innerText = Math.round(avgInteractionsPerPost).toLocaleString();
+      resBreakdown.innerText = `${avgLikes.toLocaleString()} likes · ${avgComments.toLocaleString()} comments`;
 
-      let badgeText = '';
-      let badgeBg = '';
-      let badgeColor = '';
+      // Status classification based on follower size
+      let badgeClass = 'badge-average';
+      let statusText = 'Average';
 
-      if (engagementRate >= 6.0) {
-        badgeText = '🌟 Elite Engagement';
-        badgeBg = '#dcfce7';
-        badgeColor = '#15803d';
-      } else if (engagementRate >= 3.5) {
-        badgeText = '🚀 High Engagement';
-        badgeBg = '#dbeafe';
-        badgeColor = '#1d4ed8';
+      if (engagementRate >= 5.0) {
+        badgeClass = 'badge-excellent';
+        statusText = 'Viral / Excellent';
+      } else if (engagementRate >= 3.0) {
+        badgeClass = 'badge-good';
+        statusText = 'High Engagement';
       } else if (engagementRate >= 1.5) {
-        badgeText = '👍 Good / Average';
-        badgeBg = '#fef9c3';
-        badgeColor = '#a16207';
+        badgeClass = 'badge-average';
+        statusText = 'Average / Normal';
       } else {
-        badgeText = '⚠️ Low Engagement';
-        badgeBg = '#fee2e2';
-        badgeColor = '#b91c1c';
+        badgeClass = 'badge-low';
+        statusText = 'Below Average';
       }
 
-      const badge = document.getElementById('engagementTierBadge');
-      badge.innerText = badgeText;
-      badge.style.background = badgeBg;
-      badge.style.color = badgeColor;
-    }
+      resStatusBadge.innerHTML = `<span class="status-badge ${badgeClass}">${statusText}</span>`;
 
-    function copyEngagementResult() {
-      const rate = document.getElementById('engagementRateResult').innerText;
-      const avgLikes = document.getElementById('avgLikesResult').innerText;
-      const avgComments = document.getElementById('avgCommentsResult').innerText;
-      const tier = document.getElementById('engagementTierBadge').innerText;
-
-      const report = `Instagram Engagement Audit Report:\n- Engagement Rate: ${rate} (${tier})\n- Avg Likes/Post: ${avgLikes}\n- Avg Comments/Post: ${avgComments}\nGenerated via Texus Pro Tools`;
-
-      navigator.clipboard.writeText(report).then(() => {
-        const btn = document.getElementById('copyResultBtn');
-        const originalText = btn.innerText;
-        btn.innerText = '✅ Copied to Clipboard!';
-        setTimeout(() => { btn.innerText = originalText; }, 2000);
-      });
+      // Creator Tier & Monetization
+      const tierData = getInfluencerTier(followers);
+      resTier.innerText = tierData.name;
+      resEstValue.innerText = `Est. Value: $${tierData.minEst.toLocaleString()} – $${tierData.maxEst.toLocaleString()} / post`;
     }
 
     function clearCalculator() {
-      document.getElementById('followerCount').value = '';
-      document.getElementById('totalLikes').value = '';
-      document.getElementById('totalComments').value = '';
-      document.getElementById('postCount').value = '';
+      document.getElementById('numFollowers').value = '';
+      document.getElementById('numPosts').value = '10';
+      document.getElementById('numLikes').value = '';
+      document.getElementById('numComments').value = '';
+      document.getElementById('numSaves').value = '';
+      document.getElementById('numShares').value = '';
       calculateEngagement();
     }
 
-    // Initial calculation on load
-    window.addEventListener('DOMContentLoaded', () => {
-      calculateEngagement();
-    });
+    function copyMetricsSummary() {
+      const rate = document.getElementById('resRate').innerText;
+      const avg = document.getElementById('resAvgInteractions').innerText;
+      const breakdown = document.getElementById('resBreakdown').innerText;
+      const tier = document.getElementById('resTier').innerText;
+      const est = document.getElementById('resEstValue').innerText;
+      const followers = document.getElementById('numFollowers').value || '0';
+
+      const summary = `📊 Instagram Engagement Report\n` +
+                      `Followers: ${followers}\n` +
+                      `Engagement Rate: ${rate}\n` +
+                      `Avg Interactions / Post: ${avg} (${breakdown})\n` +
+                      `Influencer Tier: ${tier}\n` +
+                      `${est}\n\n` +
+                      `Calculated with texusprotools.com/tools/instagram-engagement-calculator/`;
+
+      navigator.clipboard.writeText(summary).then(() => {
+        const copyBtn = document.getElementById('copyMetricsBtn');
+        const origText = copyBtn.innerText;
+        copyBtn.innerText = '✅ Report Copied!';
+        setTimeout(() => { copyBtn.innerText = origText; }, 2000);
+      }).catch(err => {
+        alert('Could not copy report to clipboard.');
+      });
+    }
 
     const basePath = window.location.origin;
     
