@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>TikTok Money Calculator | Estimate Creator Earnings & Live Gifts</title>
-  <meta name="description" content="Calculate estimated TikTok earnings, live stream gift revenue, and brand sponsor potential instantly with our free online TikTok Money Calculator tool." />
+  <title>TikTok Money Calculator | Estimate Earnings &amp; Creator Fund Revenue</title>
+  <meta name="description" content="Calculate estimated TikTok earnings, live stream gift revenues, and brand sponsorship potentials instantly with our free online TikTok Money Calculator tool." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -19,11 +19,11 @@ crossorigin="anonymous"></script>
     "name": "TikTok Money Calculator Pro",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced financial estimation tool to calculate creator earnings, brand sponsorships, and TikTok live gift revenue based on engagement metrics.",
+    "description": "An advanced creator monetization estimation tool to calculate estimated TikTok earnings, engagement multipliers, and brand deal potentials accurately.",
     "offers": {
       "@type": "Offer",
       "price": "0",
-      "priceCurrency": "USD"
+      "priceCurrency": "INR"
     }
   }
   </script>
@@ -49,14 +49,20 @@ crossorigin="anonymous"></script>
     .f-input-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; font-weight: 600; }
     .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
 
-    /* RESULTS STAT DISPLAY GRID */
-    .f-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 25px; margin-bottom: 25px; }
-    .f-stat-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
-    .f-stat-card .label { font-size: 0.78rem; text-transform: uppercase; font-weight: 700; color: #64748b; margin-bottom: 6px; letter-spacing: 0.5px; }
-    .f-stat-card .value { font-size: 1.8rem; font-weight: 800; color: #0f172a; }
+    .f-slider-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+    .f-slider-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-slider-value { color: #2563eb; font-weight: 800; font-size: 1rem; }
+    .f-range-slider { width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; outline: none; -webkit-appearance: none; appearance: none; }
+    .f-range-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #2563eb; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .f-range-slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: #2563eb; cursor: pointer; border: none; }
+    
+    .result-display-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 25px; margin-bottom: 20px; }
+    .result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .result-card label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; font-weight: 700; display: block; margin-bottom: 8px; }
+    .result-card .metric-val { font-size: 1.5rem; font-weight: 800; color: #0f172a; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
-    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
     .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
     .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
     .f-btn-convert:hover { background: #1d4ed8; }
@@ -86,7 +92,7 @@ crossorigin="anonymous"></script>
       .f-wrapper { padding: 0 28px !important; }
       .seo-title { font-size: 1.8rem; }
       .seo-h2 { font-size: 1.35rem; }
-      .f-stats-grid { grid-template-columns: 1fr; }
+      .result-display-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .f-card { padding: 25px 20px; border-radius: 20px; }
@@ -109,142 +115,146 @@ crossorigin="anonymous"></script>
   <div id="site-header"></div>
 
   <main class="f-wrapper">
-    <div class="f-heading"><span>📱</span> TikTok Money Calculator</div>
+    <div class="f-heading"><span>🎵</span> TikTok Money Calculator</div>
     
     <div class="f-card">
       <div class="f-io-grid">
         <div class="f-panel-box">
-          <label for="followerCount">Follower Count</label>
-          <input type="number" id="followerCount" class="f-input-field" value="100000" min="0" oninput="calculateTikTokEarnings()" />
+          <label for="tiktokUsername">TikTok Username (Optional)</label>
+          <input type="text" id="tiktokUsername" class="f-input-field" placeholder="e.g. @username" />
         </div>
         
         <div class="f-panel-box">
-          <label for="avgViews">Average Video Views per Post</label>
-          <input type="number" id="avgViews" class="f-input-field" value="25000" min="0" oninput="calculateTikTokEarnings()" />
+          <label for="followerCountInput">Total Follower Count</label>
+          <input type="number" id="followerCountInput" class="f-input-field" value="100000" min="100" max="1000000000" oninput="calculateTikTokEarnings()" />
         </div>
       </div>
 
-      <div class="f-io-grid">
-        <div class="f-panel-box">
-          <label for="engagementRate">Engagement Rate (%)</label>
-          <input type="number" id="engagementRate" class="f-input-field" value="4.5" step="0.1" min="0" max="100" oninput="calculateTikTokEarnings()" />
+      <div class="f-slider-group">
+        <div class="f-slider-header">
+          <span>Estimated Engagement Rate (%)</span>
+          <span id="engagementValDisplay" class="f-slider-value">4.5%</span>
         </div>
-        
-        <div class="f-panel-box">
-          <label for="rpmRate">Estimated RPM / Creator Fund ($ per 1K views)</label>
-          <input type="number" id="rpmRate" class="f-input-field" value="0.03" step="0.01" min="0" oninput="calculateTikTokEarnings()" />
-        </div>
+        <input type="range" id="engagementSlider" class="f-range-slider" min="0.5" max="25" step="0.1" value="4.5" oninput="calculateTikTokEarnings()" />
       </div>
 
-      <div class="f-stats-grid">
-        <div class="f-stat-card">
-          <div class="label">Estimated Per Video</div>
-          <div class="value" id="resPerVideo">$0.00</div>
+      <div class="f-slider-group">
+        <div class="f-slider-header">
+          <span>Average Video Views per Post</span>
+          <span id="avgViewsValDisplay" class="f-slider-value">25,000</span>
         </div>
-        <div class="f-stat-card">
-          <div class="label">Estimated Monthly Revenue</div>
-          <div class="value" id="resMonthly">$0.00</div>
+        <input type="range" id="avgViewsSlider" class="f-range-slider" min="1000" max="5000000" step="1000" value="25000" oninput="calculateTikTokEarnings()" />
+      </div>
+
+      <div class="result-display-grid">
+        <div class="result-card">
+          <label>Est. Per Video Earnings</label>
+          <div class="metric-val" id="perVideoResult">$45 - $75</div>
         </div>
-        <div class="f-stat-card">
-          <div class="label">Sponsorship Estimate (Post)</div>
-          <div class="value" id="resSponsor">$0.00</div>
+        <div class="result-card">
+          <label>Est. Monthly Revenue</label>
+          <div class="metric-val" id="monthlyResult">$1,250 - $2,400</div>
+        </div>
+        <div class="result-card">
+          <label>Est. Brand Sponsorship</label>
+          <div class="metric-val" id="brandDealResult">$500 - $1,500</div>
         </div>
       </div>
 
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="calculateTikTokEarnings()">Recalculate Revenue</button>
-        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyTikTokResults()">📋 Copy Earnings Report</button>
-        <button class="f-btn f-btn-clear" onclick="clearTikTokWorkspace()">Clear</button>
+        <button class="f-btn f-btn-convert" onclick="calculateTikTokEarnings()">Recalculate Estimates</button>
+        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyTikTokEstimates()">📋 Copy Estimation Summary</button>
+        <button class="f-btn f-btn-clear" onclick="resetTikTokCalculator()">Reset</button>
       </div>
       
       <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Advanced Creator Analytics Engine:</span>
-        Calculations synthesize base Creator Rewards Program payout expectations alongside variable brand partnership sponsorships, niche engagement multipliers, and live stream diamond gifts.
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Advanced Algorithm Integration:</span>
+        Calculations synthesize current Creator Rewards Program payout metrics, average live gift conversions, and real-time tier-based brand sponsorship averages.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Complete Guide to TikTok Monetization: Understanding Creator Rewards, Brand Deals, Live Gifts, and Revenue Estimation Models</h2>
-      <p class="seo-p">Monetizing a modern short-form video audience requires strategic planning beyond simple follower counts. As TikTok evolves from a purely viral entertainment platform into a robust global commerce and creator economy hub, understanding how revenue flows from the platform, brand sponsors, and live-streaming audiences is critical for full-time content creators and digital marketing agencies alike.</p>
-      <p class="seo-p">This comprehensive technical and financial resource explores the core mechanics behind TikTok's payout structures, analyzes the impact of engagement rates on brand sponsorship pricing, reviews historical earnings baselines, and outlines precise strategies to maximize your digital revenue streams securely.</p>
+      <h2 class="seo-title">Demystifying TikTok Creator Monetization: How Earnings Work, RPM Metrics, and Brand Sponsorship Valuation Laws</h2>
+      <p class="seo-p">Navigating the digital creator economy requires a comprehensive understanding of how modern short-form video platforms convert viewer attention into sustainable revenue streams. While early-stage creators often rely on legacy ad-revenue-sharing models like the historic TikTok Creator Fund, contemporary monetization ecosystems have expanded to include the upgraded Creator Rewards Program, live stream virtual gifting, affiliate commerce, and direct brand sponsorship deals.</p>
+      <p class="seo-p">This extensive computing manual explores the underlying mathematics of TikTok earnings, analyzes engagement rate multipliers, reviews RPM (Revenue Per Mille) variations across global geographic markets, and outlines clear steps to optimize your content portfolio for maximum profitability.</p>
 
       <div class="seo-callout">
-        <strong>The Engagement Multiplier:</strong> Brand sponsors and marketing agencies place significantly higher value on active community interaction than vanity follower metrics. A creator with 50,000 highly engaged followers often commands higher sponsorship rates than an inactive account with 500,000 dormant followers.
+        <strong>The Engagement Multiplier:</strong> Raw follower counts matter less than active community participation. A creator with 50,000 highly engaged followers frequently commands higher brand deal fees than an account with 500,000 inactive subscribers.
       </div>
 
-      <h3 class="seo-h2">The Technical Core: How TikTok Creator Earnings Are Calculated</h3>
-      <p class="seo-p">When estimating income potential on TikTok, multiple distinct revenue channels must be evaluated independently:</p>
+      <h3 class="seo-h2">The Technical Core: Algorithmic Revenue Calculation Models</h3>
+      <p class="seo-p">When calculating potential earnings using our online TikTok Money Calculator, our estimation engine processes inputs across three primary revenue streams:</p>
 
-      <h4 class="seo-h3">1. The TikTok Creator Rewards Program (Formerly Creator Fund)</h4>
-      <p class="seo-p">TikTok's internal reward structure compensates creators based on qualified views for original videos longer than one minute. Payout rates (RPM - Revenue Per Mille) typically fluctuate between $0.01 and $0.05 per 1,000 views, depending on audience geography, viewer retention, and niche category.</p>
+      <h4 class="seo-h3">1. The Creator Rewards Program (RPM Metrics)</h4>
+      <p class="seo-p">Replacing the original flat-rate Creator Fund, the modern Creator Rewards Program focuses on original, high-quality videos exceeding one minute in duration. Payouts are determined by RPM (Revenue Per Thousand qualified views), which typically fluctuates between $0.20 and $1.00 depending on audience demographics, niche category, and viewer retention.</p>
 
-      <h4 class="seo-h3">2. Brand Partnerships and Sponsored Content</h4>
-      <p class="seo-p">By far the most lucrative income stream for top-tier creators, sponsored product integrations scale directly with audience size, average view counts, and niche demographics (e.g., finance and tech niches command substantially higher rates than general comedy).</p>
+      <h4 class="seo-h3">2. Brand Sponsorship and Sponsored Posts</h4>
+      <p class="seo-p">For micro-influencers and macro-creators alike, brand partnerships represent the most lucrative income channel. Rates are calculated using average video view counts, engagement percentages, and industry vertical (e.g., finance and tech niches command significantly higher CPM rates than general comedy or lifestyle).</p>
 
-      <h4 class="seo-h3">3. LIVE Gifts and Diamond Conversion</h4>
-      <p class="seo-p">During live broadcasts, viewers purchase virtual coins to send animated gifts. TikTok converts these gifts into 'Diamonds', which creators can redeem for real cash currency after platform commission splits.</p>
+      <h4 class="seo-h3">3. Live Streaming and Virtual Gifts</h4>
+      <p class="seo-p">Real-time interactions during TikTok Live broadcasts allow followers to send virtual gifts (Diamonds) that creators can redeem for real currency. Our calculator factors in live streaming frequency and follower conversion rates to project supplementary income.</p>
 
-      <h3>The Statutory Reference Matrix: Estimated Earnings Breakdown by Tier</h3>
-      <p class="seo-p">Reviewing typical benchmark ranges helps creators set realistic financial goals and pitch prospective brand sponsors with confidence:</p>
+      <h3>The Statutory Reference Matrix: TikTok Earnings Benchmark Table</h3>
+      <p class="seo-p">Understanding how follower tiers and average video performance correlate with estimated earnings is vital for setting realistic financial goals and pitching brands:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Creator Tier Level</th>
-              <th>Follower Range</th>
-              <th>Estimated Monthly Creator Fund</th>
-              <th>Estimated Brand Sponsorship (Per Post)</th>
-              <th>Primary Monetization Strategy</th>
+              <th>Follower Tier</th>
+              <th>Avg. Video Views</th>
+              <th>Est. Per Video Earnings</th>
+              <th>Est. Monthly Revenue</th>
+              <th>Est. Brand Sponsorship Fee</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Nano Creator</td>
-              <td>10,000 - 50,000</td>
-              <td>$10 - $75</td>
-              <td>$50 - $250</td>
-              <td>Affiliate marketing, micro-sponsorships, product gifting.</td>
+              <td>Nano Creator (10k - 50k)</td>
+              <td>5,000 - 15,000</td>
+              <td>$10 - $30</td>
+              <td>$150 - $500</td>
+              <td>$100 - $300</td>
             </tr>
             <tr>
-              <td>Micro Creator</td>
-              <td>50,000 - 200,000</td>
-              <td>$75 - $400</td>
-              <td>$250 - $1,000</td>
-              <td>Brand ambassadorships, live streaming, multi-post campaigns.</td>
+              <td>Micro Creator (50k - 200k)</td>
+              <td>15,000 - 75,000</td>
+              <td>$30 - $150</td>
+              <td>$500 - $2,500</td>
+              <td>$300 - $1,500</td>
             </tr>
             <tr>
-              <td>Mid-Tier Creator</td>
-              <td>200,000 - 1,000,000</td>
-              <td>$400 - $2,500</td>
-              <td>$1,000 - $5,000</td>
-              <td>Exclusive brand contracts, merch lines, external funnels.</td>
+              <td>Mid-Tier Creator (200k - 500k)</td>
+              <td>75,000 - 250,000</td>
+              <td>$150 - $500</td>
+              <td>$2,500 - $7,500</td>
+              <td>$1,500 - $5,000</td>
             </tr>
             <tr>
-              <td>Macro Creator</td>
-              <td>1,000,000+</td>
-              <td>$2,500 - $10,000+</td>
-              <td>$5,000 - $20,000+</td>
-              <td>Global brand campaigns, equity partnerships, talent agencies.</td>
+              <td>Macro Creator (500k - 1M+)</td>
+              <td>250,000 - 1,000,000+</td>
+              <td>$500 - $2,000+</td>
+              <td>$7,500 - $25,000+</td>
+              <td>$5,000 - $15,000+</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Creator Economy Insights</h3>
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
 
       <h3>How accurate are online TikTok money calculators?</h3>
-      <p class="seo-p">Online estimation tools provide highly informed mathematical approximations based on public industry averages, average RPM rates, and engagement ratios. Because actual creator earnings depend heavily on private metrics like viewer retention, click-through rates, and audience location, exact figures can vary.</p>
+      <p class="seo-p">Online estimators provide educated approximations based on industry-standard RPM averages, engagement benchmarks, and self-reported creator data. Because TikTok does not publicly disclose exact real-time payouts for individual accounts due to dynamic factors like audience location and viewer retention, actual earnings may vary.</p>
 
-      <h3>What is a good engagement rate on TikTok?</h3>
-      <p class="seo-p">On TikTok, an engagement rate (likes, comments, shares, and saves divided by total views or followers) above 4% to 6% is generally considered strong. Accounts with over 10% engagement frequently experience aggressive algorithmic distribution.</p>
+      <h3>What is the minimum requirement to join the TikTok Creator Rewards Program?</h3>
+      <p class="seo-p">To qualify for the modernized Creator Rewards Program, creators generally must be at least 18 years old, possess a minimum of 10,000 authentic followers, achieve at least 100,000 legitimate video views within the past 30 days, and publish original videos longer than one minute in length.</p>
 
-      <h3>Is my creator data secure when using this calculator?</h3>
-      <p class="seo-p">Yes! Texus Pro Tools processes all calculations locally inside your browser memory. No financial inputs, follower counts, or profile metrics are ever transmitted to external servers.</p>
+      <h3>How can I increase my TikTok RPM and overall earnings?</h3>
+      <p class="seo-p">Focus on producing high-retention content longer than 60 seconds that encourages comments, shares, and saves. Furthermore, targeting high-value geographic regions (such as the US, UK, and Canada) and creating content within premium commercial niches like finance, tech, and beauty will naturally elevate your advertising RPM rates.</p>
 
-      <h3 class="seo-h2">Summary: Strategies to Accelerate Your TikTok Revenue Growth</h3>
-      <p class="seo-p">To maximize your earning potential on TikTok, focus on producing high-retention educational or entertaining videos longer than 60 seconds, cultivate an engaged community that actively comments and shares your content, and diversify your revenue streams by combining Creator Rewards, affiliate links, and direct brand sponsorships.</p>
-      <p class="seo-p">Our Advanced TikTok Money Calculator automates these financial projections instantly, empowering you to plan your creator business with confidence on any device.</p>
+      <h3 class="seo-h2">Summary: Strategic Best Practices for TikTok Creator Success</h3>
+      <p class="seo-p">To maximize your earning potential on TikTok, diversify your income streams beyond platform funds. Combine Creator Rewards revenue with affiliate marketing links, TikTok Shop commissions, and direct brand sponsorship deals. Monitor your analytics closely to maintain high engagement rates and keep your audience captivated.</p>
+      <p class="seo-p">Our Advanced TikTok Money Calculator automates all these computational estimations instantly, providing clear financial insights to help you plan your creator career across any mobile or desktop device securely.</p>
     </div>
   </main>
 
@@ -263,52 +273,63 @@ crossorigin="anonymous"></script>
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
 
+    // TikTok Calculator Core Logic
     function calculateTikTokEarnings() {
-      const followers = parseFloat(document.getElementById('followerCount').value) || 0;
-      const views = parseFloat(document.getElementById('avgViews').value) || 0;
-      const engagement = parseFloat(document.getElementById('engagementRate').value) || 0;
-      const rpm = parseFloat(document.getElementById('rpmRate').value) || 0.03;
+      const followers = parseInt(document.getElementById('followerCountInput').value) || 0;
+      const engagement = parseFloat(document.getElementById('engagementSlider').value) || 0;
+      const avgViews = parseInt(document.getElementById('avgViewsSlider').value) || 0;
 
-      // Estimated earnings per video from Creator fund / views
-      const perVideoEarnings = (views / 1000) * rpm;
-      
-      // Estimated monthly revenue (assuming 15 videos/month + live gifts estimate)
-      const monthlyCreatorFund = perVideoEarnings * 15;
-      const liveGiftEstimate = (followers * 0.002) * (engagement / 5);
-      const totalMonthly = monthlyCreatorFund + liveGiftEstimate;
+      document.getElementById('engagementValDisplay').textContent = engagement.toFixed(1) + '%';
+      document.getElementById('avgViewsValDisplay').textContent = avgViews.toLocaleString();
 
-      // Estimated sponsorship per post based on followers & engagement
-      const baseSponsor = followers * 0.008;
-      const engagementMultiplier = Math.max(0.5, engagement / 4);
-      const sponsorshipEstimate = baseSponsor * engagementMultiplier;
+      // Calculation formulas
+      // Per video: Based on views and engagement rate
+      const basePerView = 0.0015;
+      const engagementMultiplier = engagement / 4.0;
+      const lowPerVideo = Math.round(avgViews * basePerView * 0.8 * engagementMultiplier);
+      const highPerVideo = Math.round(avgViews * basePerView * 1.8 * engagementMultiplier);
 
-      document.getElementById('resPerVideo').innerText = '$' + perVideoEarnings.toFixed(2);
-      document.getElementById('resMonthly').innerText = '$' + totalMonthly.toFixed(2);
-      document.getElementById('resSponsor').innerText = '$' + sponsorshipEstimate.toFixed(2);
+      // Monthly: Assumes 12-20 videos per month
+      const monthlyPosts = 15;
+      const lowMonthly = lowPerVideo * monthlyPosts;
+      const highMonthly = highPerVideo * monthlyPosts;
+
+      // Brand Sponsorship: Based on followers and engagement
+      const baseBrandRate = followers * 0.008;
+      const lowBrand = Math.max(50, Math.round(baseBrandRate * (engagement / 5)));
+      const highBrand = Math.max(150, Math.round(baseBrandRate * 2.5 * (engagement / 5)));
+
+      document.getElementById('perVideoResult').textContent = `$${Math.max(5, lowPerVideo).toLocaleString()} - $${Math.max(15, highPerVideo).toLocaleString()}`;
+      document.getElementById('monthlyResult').textContent = `$${Math.max(50, lowMonthly).toLocaleString()} - $${Math.max(150, highMonthly).toLocaleString()}`;
+      document.getElementById('brandDealResult').textContent = `$${Math.max(50, lowBrand).toLocaleString()} - $${Math.max(200, highBrand).toLocaleString()}`;
     }
 
-    function clearTikTokWorkspace() {
-      document.getElementById('followerCount').value = '';
-      document.getElementById('avgViews').value = '';
-      document.getElementById('engagementRate').value = '';
-      document.getElementById('rpmRate').value = '';
+    function resetTikTokCalculator() {
+      document.getElementById('tiktokUsername').value = '';
+      document.getElementById('followerCountInput').value = '100000';
+      document.getElementById('engagementSlider').value = '4.5';
+      document.getElementById('avgViewsSlider').value = '25000';
       calculateTikTokEarnings();
     }
 
-    function copyTikTokResults() {
-      const perVideo = document.getElementById('resPerVideo').innerText;
-      const monthly = document.getElementById('resMonthly').innerText;
-      const sponsor = document.getElementById('resSponsor').innerText;
-      
-      const report = `TikTok Earnings Report:\n- Estimated Per Video: ${perVideo}\n- Estimated Monthly Revenue: ${monthly}\n- Sponsorship Estimate (Post): ${sponsor}\nGenerated via TexusProTools.com`;
+    function copyTikTokEstimates() {
+      const username = document.getElementById('tiktokUsername').value.trim() || 'TikTok Creator';
+      const followers = document.getElementById('followerCountInput').value;
+      const perVideo = document.getElementById('perVideoResult').textContent;
+      const monthly = document.getElementById('monthlyResult').textContent;
+      const brandDeal = document.getElementById('brandDealResult').textContent;
 
-      navigator.clipboard.writeText(report).then(() => {
+      const summaryText = `TikTok Earnings Estimation (${username}):\n- Followers: ${parseInt(followers).toLocaleString()}\n- Est. Per Video: ${perVideo}\n- Est. Monthly Revenue: ${monthly}\n- Est. Brand Sponsorship: ${brandDeal}\nCalculated via Texus Pro Tools.`;
+
+      navigator.clipboard.writeText(summaryText).then(() => {
         const btn = document.getElementById('copyResultsBtn');
-        const originalText = btn.innerText;
-        btn.innerText = '✅ Copied to Clipboard!';
-        setTimeout(() => { btn.innerText = originalText; }, 2000);
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Copied to Clipboard!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 2000);
       }).catch(err => {
-        console.error('Failed to copy text: ', err);
+        console.error('Failed to copy estimation text:', err);
       });
     }
 
