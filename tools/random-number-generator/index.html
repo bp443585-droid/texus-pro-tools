@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Random Number Generator | True Cryptographic RNG Tool</title>
+  <meta name="description" content="Generate truly random numbers online with custom ranges, uniqueness controls, and cryptographic entropy. Free, secure, client-side random number generator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/random-number-generator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Random Number Generator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "A high-performance cryptographic client-side random number generator supporting custom numerical intervals, duplication suppression, and bulk array rendering.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CONFIGURATION SETTINGS GRID */
+    .rng-controls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; margin-bottom: 24px; }
+    .rng-input-group { display: flex; flex-direction: column; gap: 6px; }
+    .rng-input-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .rng-text-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .rng-text-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* TOGGLE AND PRESET BADGES */
+    .rng-options-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #f1f5f9; }
+    .rng-checkbox-label { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-weight: 600; color: #334155; cursor: pointer; user-select: none; }
+    .rng-checkbox-label input { width: 18px; height: 18px; accent-color: #2563eb; cursor: pointer; }
+    
+    .preset-pill-container { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; width: 100%; margin-top: 6px; }
+    .preset-label { font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 4px; }
+    .preset-btn { background: #f1f5f9; border: 1px solid #cbd5e1; color: #334155; padding: 6px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.15s ease; }
+    .preset-btn:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    /* SINGLE BIG DISPLAY VS MULTI-RESULT OUTPUT */
+    .single-hero-display { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 18px; padding: 30px 20px; text-align: center; margin-bottom: 24px; transition: all 0.2s ease; }
+    .single-hero-number { font-size: 4rem; font-weight: 800; color: #2563eb; letter-spacing: -1.5px; line-height: 1; word-break: break-all; }
+    .single-hero-meta { font-size: 0.85rem; color: #64748b; font-weight: 600; margin-top: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 160px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.6; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.15rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* METRICS BADGE STRIP */
+    .stats-summary-bar { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px; padding: 12px 18px; background: #f1f5f9; border-radius: 12px; font-size: 0.88rem; color: #334155; font-weight: 600; }
+    .stats-summary-bar span { color: #0f172a; font-weight: 700; }
+
+    /* ERROR NOTIFICATION */
+    .error-banner { display: none; background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; padding: 12px 16px; border-radius: 12px; font-size: 0.9rem; font-weight: 600; margin-bottom: 20px; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .rng-controls-grid { grid-template-columns: 1fr; gap: 14px; }
+      .single-hero-number { font-size: 3rem; }
+      .f-textarea-field { height: 130px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🎲</span> Random Number Generator</div>
+    
+    <div class="f-card">
+      <div id="rngErrorBanner" class="error-banner"></div>
+
+      <!-- INTERVAL & QUANTITY CONTROLS -->
+      <div class="rng-controls-grid">
+        <div class="rng-input-group">
+          <label for="minRangeInput">Minimum Bound (Min)</label>
+          <input type="number" id="minRangeInput" class="rng-text-field" value="1" step="1">
+        </div>
+        <div class="rng-input-group">
+          <label for="maxRangeInput">Maximum Bound (Max)</label>
+          <input type="number" id="maxRangeInput" class="rng-text-field" value="100" step="1">
+        </div>
+        <div class="rng-input-group">
+          <label for="countInput">Quantity to Draw</label>
+          <input type="number" id="countInput" class="rng-text-field" value="1" min="1" max="10000" step="1">
+        </div>
+        <div class="rng-input-group">
+          <label for="delimiterSelect">Output Delimiter</label>
+          <select id="delimiterSelect" class="rng-text-field">
+            <option value=", ">Comma separated (, )</option>
+            <option value="\n">New line (\n)</option>
+            <option value=" ">Space separated ( )</option>
+            <option value=" - ">Hyphen separated ( - )</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ADVANCED TOGGLES & PRESETS -->
+      <div class="rng-options-row">
+        <label class="rng-checkbox-label">
+          <input type="checkbox" id="uniqueNumbersCheckbox">
+          No Duplicates (Strictly Unique)
+        </label>
+        <label class="rng-checkbox-label">
+          <input type="checkbox" id="sortAscCheckbox">
+          Sort Ascending
+        </label>
+        <label class="rng-checkbox-label">
+          <input type="checkbox" id="cryptoModeCheckbox" checked>
+          Cryptographic Entropy (CSPRNG)
+        </label>
+      </div>
+
+      <div class="preset-pill-container">
+        <span class="preset-label">Quick Presets:</span>
+        <button class="preset-btn" onclick="applyPreset(1, 6, 1)">Dice (1-6)</button>
+        <button class="preset-btn" onclick="applyPreset(1, 2, 1)">Coin Flip (1-2)</button>
+        <button class="preset-btn" onclick="applyPreset(1, 10, 1)">1 - 10</button>
+        <button class="preset-btn" onclick="applyPreset(1, 100, 1)">1 - 100</button>
+        <button class="preset-btn" onclick="applyPreset(100000, 999999, 1)">6-Digit OTP</button>
+        <button class="preset-btn" onclick="applyPreset(1, 49, 6, true, true)">Lotto 6/49</button>
+      </div>
+
+      <!-- HERO DISPLAY FOR SINGLE DRAW -->
+      <div id="singleHeroWrapper" class="single-hero-display" style="margin-top: 24px;">
+        <div class="single-hero-number" id="heroResultNumber">42</div>
+        <div class="single-hero-meta" id="heroResultMeta">Uniform Integer • Discrete Boundary [1, 100]</div>
+      </div>
+
+      <!-- MULTI-VALUE DISPLAY PANEL -->
+      <div class="f-io-grid" id="multiResultWrapper" style="display: none;">
+        <div class="f-panel-box">
+          <label for="resultsTextArea">Generated Number Sequence Output</label>
+          <textarea id="resultsTextArea" class="f-textarea-field mono-font-panel" readonly placeholder="Output values will appear here..."></textarea>
+        </div>
+      </div>
+
+      <div class="stats-summary-bar" id="statsBar" style="display: none;">
+        <div>Drawn Count: <span id="statCount">0</span></div>
+        <div>Minimum Sample: <span id="statMin">0</span></div>
+        <div>Maximum Sample: <span id="statMax">0</span></div>
+        <div>Calculated Mean: <span id="statMean">0</span></div>
+        <div>Calculated Sum: <span id="statSum">0</span></div>
+      </div>
+
+      <div class="f-action-strip" style="margin-top: 20px;">
+        <button class="f-btn f-btn-convert" onclick="generateRandomNumbers()">🎲 Generate Numbers</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResults()">📋 Copy Result</button>
+        <button class="f-btn f-btn-clear" onclick="resetRngWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 18px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Hardware-Grade Cryptographic Randomness Enabled:</span>
+        By default, numerical sequences are synthesized using <code>window.crypto.getRandomValues</code>, harvesting kernel entropy to eliminate pseudo-random cycle periodicity and deterministic predictability.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Engineering of Uniform Random Number Generation: Entropy Harvesting, Discrete Uniform Distributions, and Deterministic PRNG vs. Cryptographic CSPRNG Architectures</h2>
+      <p class="seo-p">Random number generation constitutes one of the foundational primitives in computational science, distributed cryptography, numerical modeling, randomized algorithms, and security engineering. From simulating stochastic fluid flows in astrophysics via Monte Carlo iterations to issuing non-repeating cryptographic authentication nonces, modern computing demands precision mechanisms to produce uniformly distributed numerical sequences. A flawed understanding of entropy sourcing, modulo bias, and pseudo-random seed determinism can degrade systemic safety and invalidate scientific modeling outcomes.</p>
+      <p class="seo-p">This comprehensive engineering manual deconstructs the architectural dichotomy between standard linear congruential algorithms and hardware-backed cryptographically secure pseudo-random number generators (CSPRNGs). We review mathematical formulations of uniform sampling intervals, analyze zero-bias reject-sampling proofs, explain operating system entropy pool aggregation, and outline mission-critical implementation best practices for software professionals.</p>
+
+      <div class="seo-callout">
+        <strong>The Zero-Bias Principle:</strong> Direct usage of naive modulus operations—such as calculating <code>Math.floor(Math.random() * range)</code> or mapping 32-bit hardware integers via <code>rawInteger % intervalLength</code>—introduces mathematical modulo bias unless the maximum coordinate limit of the underlying bit source is an exact integer multiple of the designated interval. True uniform sampling mandates unbiased rejection algorithms.
+      </div>
+
+      <h3 class="seo-h2">1. The Architectural Divide: PRNG vs. Hardware-Seeded CSPRNG</h3>
+      <p class="seo-p">All computerized generators belong to distinct statistical families characterized by unpredictability, state reconstruction hardness, and computational throughput:</p>
+
+      <h4 class="seo-h3">Linear Congruential &amp; Permutation Generators (PRNGs)</h4>
+      <p class="seo-p">Standard library utilities, such as C's legacy <code>rand()</code> or JavaScript's historical <code>Math.random()</code> implementations (typically backed by <em>xorshift128+</em> or <em>PCG</em> variants), are fundamentally deterministic state machines. Given an initial numerical seed $S_0$, the subsequent outputs follow a strictly predictable recurrence relation:</p>
+      <p class="seo-p" style="text-align: center; font-family: monospace; font-weight: 700; color: #0f172a;">X_{n+1} = (a \cdot X_n + c) \pmod m</p>
+      <p class="seo-p">While these algorithms deliver extreme computational speed (producing hundreds of millions of integers per second), they are wholly unsuitable for security, lottery draws, and cryptographic nonces. Once an observer observes a small sequence of outputs, the internal shift registers and state matrices can be completely reconstructed using matrix inversions, enabling accurate prediction of all future values.</p>
+
+      <h4 class="seo-h3">Cryptographically Secure Pseudo-Random Number Generators (CSPRNGs)</h4>
+      <p class="seo-p">In contrast, CSPRNG systems (such as Linux's <code>/dev/urandom</code>, macOS <code>getentropy()</code>, and browser-native <code>window.crypto.getRandomValues</code>) feed external physical noise into cryptographic primitives like ChaCha20 or AES-CTR. Entropy sources include keyboard interrupt timings, drive seek jitters, thermal micro-variations, and hardware instructions (such as Intel RDRAND). Even if an adversary possesses infinite historical outputs, computing future states requires breaking symmetric cipher properties.</p>
+
+      <h3 class="seo-h2">2. The Modulo Bias Dilemma and Rejection Sampling</h3>
+      <p class="seo-p">A persistent defect in numerical generation engines is naive interval mapping. When drawing a 32-bit unsigned integer $R \in [0, 2^{32}-1]$ to populate an arbitrary human interval $[0, M-1]$, developers frequently invoke the modulo operator: $Y = R \pmod M$.</p>
+      <p class="seo-p">If $2^{32}$ is not evenly divisible by $M$, the remaining values at the lower boundary receive a disproportionate mathematical probability of being selected. This skews uniform distributions and compromises fair draws, gaming software, and token uniqueness.</p>
+      
+      <p class="seo-p">To achieve absolute mathematical uniformity across every single draw, our client-side utility implements <strong>Rejection Sampling (Debiasing)</strong>. Any integer drawn from the hardware entropy buffer falling within the remainder zone:</p>
+      <p class="seo-p" style="text-align: center; font-family: monospace; font-weight: 700; color: #0f172a;">R \ge 2^{32} - (2^{32} \pmod M)</p>
+      <p class="seo-p">is discarded, and a new entropy sample is immediately drawn. This ensures that every integer in the designated interval possesses an identical mathematical probability: $P(X = k) = \frac{1}{M}$.</p>
+
+      <h3 class="seo-h2">Algorithmic Matrix: Comparative Paradigm Evaluation</h3>
+      <p class="seo-p">Examine the foundational mechanical differences between computational generation frameworks before choosing a generator for statistical modeling or security implementations:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Evaluation Parameter</th>
+              <th>Deterministic PRNG (Math.random)</th>
+              <th>Hardware CSPRNG (Web Crypto API)</th>
+              <th>True Quantum RNG (Atmospheric Noise)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Entropy Foundation</td>
+              <td>Pre-set seed with arithmetic bit-shifts</td>
+              <td>OS Kernel interrupt entropy pool</td>
+              <td>Radioactive decay / Photonic beam splitters</td>
+            </tr>
+            <tr>
+              <td>Cryptographic Safety</td>
+              <td>None (State deducible from ~624 samples)</td>
+              <td>High (Passes Next-Bit Unpredictability)</td>
+              <td>Absolute physical indeterminacy</td>
+            </tr>
+            <tr>
+              <td>Cycle Periodicity</td>
+              <td>$2^{128}-1$ (Finite cyclic loops)</td>
+              <td>Practically infinite ($>2^{256}$)</td>
+              <td>Aperiodic (No cyclic repeat loops)</td>
+            </tr>
+            <tr>
+              <td>Execution Speed</td>
+              <td>Ultra-Fast (~100M samples/sec)</td>
+              <td>Fast (~10M samples/sec)</td>
+              <td>Restricted by sensor throughput</td>
+            </tr>
+            <tr>
+              <td>Audit &amp; Compliance</td>
+              <td>Fails NIST SP 800-22 standards</td>
+              <td>Complies with FIPS 140-2, PCI-DSS</td>
+              <td>Complies with EAL6+ Scientific Specs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">3. Primary Applications Across Professional Domains</h3>
+      <p class="seo-p">Understanding where and how random integer streams are applied ensures optimal parameter configuration:</p>
+      <ul class="seo-list">
+        <li><strong>Cybersecurity &amp; Authentication:</strong> Generating cryptographically insulated one-time passwords (OTPs), initialization vectors (IVs), password reset tokens, salting vectors, and session identifiers.</li>
+        <li><strong>Scientific Simulations (Monte Carlo Method):</strong> Approximating non-linear multidimensional integrals, simulating thermodynamic molecular mechanics, calculating financial derivatives risk exposure, and optimizing machine learning neural hyper-parameters.</li>
+        <li><strong>Impartial Sampling &amp; Auditing:</strong> Selecting unbiased participant panels for randomized clinical trials (RCTs), executing statutory compliance audits, and sampling transactional accounting entries without systemic human bias.</li>
+        <li><strong>Gaming &amp; Fair Contests:</strong> Powering transparent digital lotteries, board game dice mechanics, virtual card shuffling (via the Fisher-Yates shuffle algorithm), and verifiable competitive giveaways.</li>
+      </ul>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ)</h3>
+
+      <h3>What is the difference between pseudo-random and true random numbers?</h3>
+      <p class="seo-p">Pseudo-random numbers are generated by mathematical equations that begin with a numerical seed. If the seed and formula are known, the exact number sequence can be replicated identically. True random numbers rely on physical, unpredictable phenomena—such as thermal resistance noise, atmospheric disturbances, or quantum particle behaviors—that carry no underlying repetitive patterns.</p>
+
+      <h3>How does the 'No Duplicates' feature work mathematically?</h3>
+      <p class="seo-p">When selecting the unique values mode, the generator enforces sampling without replacement. If the user requests $N$ numbers from an interval with span $S = (\text{Max} - \text{Min} + 1)$, the engine validates that $N \le S$. It maintains an internal hash set or employs a partial modern Fisher-Yates array swap directly in memory, ensuring duplicate-free guarantees in $O(N)$ algorithmic complexity.</p>
+
+      <h3>Is this online generator secure for password generation and cryptography?</h3>
+      <p class="seo-p">Yes. When the Cryptographic Entropy option is selected (the default setting), our tool uses the modern browser Web Cryptography API (`crypto.getRandomValues`). The calculations occur locally inside your browser sandbox using hardware-seeded entropy, ensuring your generated numbers never travel across internet cables or third-party servers.</p>
+
+      <h3>What happens if the minimum boundary is higher than the maximum?</h3>
+      <p class="seo-p">The program incorporates built-in boundary validation. If the entered minimum bound equals or exceeds the maximum bound, an immediate diagnostic warning appears, prompting you to correct the range before generation proceeds.</p>
+
+      <h3 class="seo-h2">Summary: Professional Protocol for Randomness Validation</h3>
+      <p class="seo-p">When deploying random sequences in production workflows, never rely on unseeded standard math utilities for cryptographic keys or financial audits. Always verify that intervals are protected against modulo bias, ensure duplicate suppression algorithms match the sample space capacity, and use high-entropy OS-level random routines.</p>
+      <p class="seo-p">The Texus Pro Tools Random Number Generator combines mathematical zero-bias rejection sampling, client-side memory safety, and instantaneous multi-variable rendering for fast, dependable calculations on desktop and mobile platforms alike.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // CORE RANDOM NUMBER GENERATION ENGINE
+    let currentResultsCache = [];
+
+    function getCrypto
