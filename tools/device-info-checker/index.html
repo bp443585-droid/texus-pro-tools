@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Device Info Checker | Free Online Hardware & Browser Diagnostic Tool</title>
+  <meta name="description" content="Inspect your device hardware, browser specs, screen resolution, connection speed, touch support, and IP details instantly with our free online Device Info Checker." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/device-info-checker/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Device Info Checker Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced hardware and browser diagnostic suite to analyze system specs, screen geometry, platform properties, and network telemetry cleanly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DEVICE INFO GRID SYSTEM */
+    .device-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
+    .device-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px; box-sizing: border-box; display: flex; flex-direction: column; gap: 6px; }
+    .device-item-label { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .device-item-value { font-size: 1.05rem; color: #0f172a; font-weight: 700; font-family: 'Courier New', Courier, monospace; word-break: break-all; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .device-grid { grid-template-columns: 1fr; gap: 12px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>💻</span> Device Info Checker</div>
+    
+    <div class="f-card">
+      <div class="device-grid" id="deviceInfoGrid">
+        <!-- Dynamic Device Telemetry Cards -->
+        <div class="device-item">
+          <span class="device-item-label">Operating System</span>
+          <span class="device-item-value" id="osVal">Detecting...</span>
+        </div>
+        <div class="device-item">
+          <span class="device-item-label">Browser Engine & Version</span>
+          <span class="device-item-value" id="browserVal">Detecting...</span>
+        </div>
+        <div class="device-item">
+          <span class="device-item-label">Screen Resolution</span>
+          <span class="device-item-value" id="screenVal">Detecting...</span>
+        </div>
+        <div class="device-item">
+          <span class="device-item-label">Viewport Size</span>
+          <span class="device-item-value" id="viewportVal">Detecting...</span>
+        </div>
+        <div class="device-item">
+          <span class="device-item-label">Color Depth & Pixel Ratio</span>
+          <span class="device-item-value" id="colorVal">Detecting...</span>
+        </div>
+        <div class="device-item">
+          <span class="device-item-label">Hardware Concurrency (CPU Cores)</span>
+          <span class="device-item-value" id="cpuVal">Detecting...</span>
+        </div>
+        <div class="device-item">
+          <span class="device-item-label">Device Memory (RAM Estimate)</span>
+          <span class="device-item-value" id="ramVal">Detecting...</span>
+        </div>
+        <div class="device-item">
+          <span class="device-item-label">Touch Support & Points</span>
+          <span class="device-item-value" id="touchVal">Detecting...</span>
+        </div>
+        <div class="device-item">
+          <span class="device-item-label">Network Connection Type</span>
+          <span class="device-item-value" id="networkVal">Detecting...</span>
+        </div>
+        <div class="device-item">
+          <span class="device-item-label">Online Status</span>
+          <span class="device-item-value" id="onlineVal">Detecting...</span>
+        </div>
+        <div class="device-item">
+          <span class="device-item-label">User Agent String</span>
+          <span class="device-item-value" id="uaVal" style="font-size: 0.85rem;">Detecting...</span>
+        </div>
+        <div class="device-item">
+          <span class="device-item-label">Platform Architecture</span>
+          <span class="device-item-value" id="platformVal">Detecting...</span>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="refreshDeviceInfo()">🔄 Refresh Telemetry</button>
+        <button class="f-btn f-btn-copy" id="copyDeviceBtn" onclick="copyDeviceSpecs()">📋 Copy Full Diagnostic Report</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Client-Side Sandbox Guarantee:</span>
+        All hardware properties, memory estimates, and browser dimensions are queried locally through standard ECMAScript APIs. No personal telemetry is transmitted externally.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Understanding Client-Side Hardware Telemetry: Browser APIs, Screen Geometries, and Performance Auditing</h2>
+      <p class="seo-p">Modern web applications demand an extraordinary level of client awareness to deliver fluid user experiences. Whether you are optimizing responsive CSS breakpoints, testing cross-browser compatibility, diagnosing graphic rendering bottlenecks, or verifying mobile touch support, having immediate access to your device's core system parameters is essential. The Device Info Checker utility queries standard browser APIs in real-time, aggregating hardware architecture stats, window dimensions, and network parameters into a single, clean dashboard.</p>
+      <p class="seo-p">This extensive computing guide explores the underlying mechanics of browser-based hardware detection, examines how JavaScript reads memory and CPU parameters, reviews screen pixel density mathematics, and outlines robust practices for utilizing client telemetry in modern frontend engineering.</p>
+
+      <div class="seo-callout">
+        <strong>The Telemetry Principle:</strong> Client-side diagnostic tools rely entirely on native ECMAScript and HTML5 DOM interfaces (such as <code>navigator</code>, <code>screen</code>, and <code>window</code>) to extract hardware capabilities without installing third-party browser extensions or executing unsafe native binaries.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Extracting System Metrics via Modern Web APIs</h3>
+      <p class="seo-p">When you load our diagnostic utility, a comprehensive script scans multiple browser namespaces to assemble a precise profile of your hardware configuration:</p>
+
+      <h4 class="seo-h3">1. Navigator Interface and Operating System Classification</h4>
+      <p class="seo-p">The <code>navigator.userAgentData</code> and traditional <code>navigator.userAgent</code> strings provide deep insights into the underlying host operating system, CPU architecture, and browser engine version. By evaluating platform tokens, developers can instantly distinguish between macOS, Windows, Linux, iOS, and Android environments.</p>
+
+      <h4 class="seo-h3">2. Hardware Concurrency and RAM Estimation</h4>
+      <p class="seo-p">Performance-critical applications—such as client-side video editors, 3D WebGL games, and code compilers—query <code>navigator.hardwareConcurrency</code> to determine available CPU logical cores, and <code>navigator.deviceMemory</code> to estimate installed RAM capacity, allowing apps to scale their workload dynamically.</p>
+
+      <h4 class="seo-h3">3. Screen Geometry and High-DPI Pixel Ratios</h4>
+      <p class="seo-p">Display fidelity relies heavily on screen dimensions and device pixel ratios (DPR). By analyzing <code>window.screen.width</code>, <code>window.innerHeight</code>, and <code>window.devicePixelRatio</code>, developers can detect retina displays, ultra-wide monitors, and mobile viewports with absolute precision.</p>
+
+      <h3>The Statutory Reference Matrix: Core Device Diagnostic Parameters</h3>
+      <p class="seo-p">Reviewing standard diagnostic metrics helps developers understand how browser APIs categorize hardware capabilities across different platforms:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Diagnostic Category</th>
+              <th>DOM / API Source Property</th>
+              <th>Typical Output Example</th>
+              <th>Engineering and Debugging Utility</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Operating System</td>
+              <td><code>navigator.platform / userAgent</code></td>
+              <td>Win32 / MacIntel / Linux x86_64</td>
+              <td>Identifies host operating environment and system architecture.</td>
+            </tr>
+            <tr>
+              <td>Browser Engine</td>
+              <td><code>navigator.userAgent</code></td>
+              <td>Chrome 125.0 / Safari 17.2 / Firefox 126</td>
+              <td>Assists in tracking rendering engine bugs and CSS feature support.</td>
+            </tr>
+            <tr>
+              <td>Screen Resolution</td>
+              <td><code>window.screen.width / height</code></td>
+              <td>1920 × 1080 px (Desktop Full HD)</td>
+              <td>Determines physical monitor dimensions and maximum canvas size.</td>
+            </tr>
+            <tr>
+              <td>Device Pixel Ratio</td>
+              <td><code>window.devicePixelRatio</code></td>
+              <td>1.0 (Standard) to 3.0 (Retina Display)</td>
+              <td>Critical for serving crisp vector graphics and high-res images.</td>
+            </tr>
+            <tr>
+              <td>CPU Cores</td>
+              <td><code>navigator.hardwareConcurrency</code></td>
+              <td>8 Logical Cores / Threads</td>
+              <td>Guides multi-threaded Web Worker task distribution and rendering loads.</td>
+            </tr>
+            <tr>
+              <td>Network Status</td>
+              <td><code>navigator.connection / onLine</code></td>
+              <td>4G Effective / Online (True)</td>
+              <td>Enables adaptive media streaming and offline caching strategies.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why do some browsers report approximate RAM or CPU core counts?</h3>
+      <p class="seo-p">Modern web browsers implement privacy restrictions (such as fingerprinting mitigations) that occasionally round or cap reported hardware concurrency and device memory values. This prevents malicious scripts from uniquely identifying individual users across different web sessions.</p>
+
+      <h3>How does screen resolution differ from active viewport size?</h3>
+      <p class="seo-p">Screen resolution refers to the total physical or configured pixel dimensions of your monitor or display panel. Viewport size refers exclusively to the inner dimensions of the browser window area available for rendering web content, excluding browser toolbars, tabs, and operating system taskbars.</p>
+
+      <h3>Is my diagnostic telemetry data stored or shared on external servers?</h3>
+      <p class="seo-p">Absolutely not. Texus Pro Tools values your data privacy above all else. The Device Info Checker executes 100% client-side within your browser's local memory. No system specs, IP addresses, or user agent strings are ever transmitted or stored on external servers.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Hardware Debugging</h3>
+      <p class="seo-p">To build robust, high-performance web applications, developers must continuously test user interfaces across diverse hardware profiles. Leveraging real-time telemetry checkers helps verify responsive design layouts, debug rendering anomalies, and optimize resource-heavy web scripts effectively.</p>
+      <p class="seo-p">Our Advanced Device Info Checker utility automates these diagnostic routines instantly, providing clear, structured visibility into your system configuration across any mobile, tablet, or desktop device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // Device Info Checker Core Logic
+    function refreshDeviceInfo() {
+      // OS Detection
+      let os = "Unknown OS";
+      const ua = navigator.userAgent;
+      const platform = navigator.platform || "Unknown";
+      
+      if (/windows/i.test(ua)) os = "Windows";
+      else if (/macintosh|mac os x/i.test(ua)) os = "macOS";
+      else if (/android/i.test(ua)) os = "Android";
+      else if (/iphone|ipad|ipod/i.test(ua)) os = "iOS";
+      else if (/linux/i.test(ua)) os = "Linux";
+
+      document.getElementById('osVal').textContent = `${os} (${platform})`;
+
+      // Browser Detection
+      let browser = "Unknown Browser";
+      if (/chrome|crios/i.test(ua) && !/edge|opr/i.test(ua)) browser = "Google Chrome";
+      else if (/safari/i.test(ua) && !/chrome|crios/i.test(ua)) browser = "Apple Safari";
+      else if (/firefox|fxios/i.test(ua)) browser = "Mozilla Firefox";
+      else if (/edg/i.test(ua)) browser = "Microsoft Edge";
+      else if (/opr|opera/i.test(ua)) browser = "Opera";
+
+      const match = ua.match(/(chrome|safari|firefox|edg|opr)\/([\d.]+)/i);
+      const version = match ? match[2] : "Unknown";
+      document.getElementById('browserVal').textContent = `${browser} v${version}`;
+
+      // Screen Resolution
+      const screenRes = `${window.screen.width} × ${window.screen.height} px`;
+      document.getElementById('screenVal').textContent = screenRes;
+
+      // Viewport Size
+      const viewportSize = `${window.innerWidth} × ${window.innerHeight} px`;
+      document.getElementById('viewportVal').textContent = viewportSize;
+
+      // Color Depth & Pixel Ratio
+      const colorDepth = `${window.screen.colorDepth}-bit`;
+      const pixelRatio = window.devicePixelRatio || 1;
+      document.getElementById('colorVal').textContent = `${colorDepth} color, ${pixelRatio}x DPR`;
+
+      // CPU Cores
+      const cpuCores = navigator.hardwareConcurrency ? `${navigator.hardwareConcurrency} Logical Cores` : "Not Available";
+      document.getElementById('cpuVal').textContent = cpuCores;
+
+      // RAM Estimate
+      const ram = navigator.deviceMemory ? `~${navigator.deviceMemory} GB RAM` : "Not Available (Privacy Protected)";
+      document.getElementById('ramVal').textContent = ram;
+
+      // Touch Support
+      const touchPoints = navigator.maxTouchPoints || 0;
+      const touchSupport = touchPoints > 0 ? `Yes (${touchPoints} max touch points)` : "No Touch Support";
+      document.getElementById('touchVal').textContent = touchSupport;
+
+      // Network Connection
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      let netInfo = "Standard Connection";
+      if (connection) {
+        netInfo = `${connection.effectiveType ? connection.effectiveType.toUpperCase() : 'Unknown'} (${connection.downlink ? connection.downlink + ' Mbps' : 'Speed unmeasured'})`;
+      }
+      document.getElementById('networkVal').textContent = netInfo;
+
+      // Online Status
+      const isOnline = navigator.onLine ? "Online (Connected)" : "Offline (Disconnected)";
+      document.getElementById('onlineVal').textContent = isOnline;
+
+      // User Agent
+      document.getElementById('uaVal').textContent = ua;
+
+      // Platform
+      document.getElementById('platformVal').textContent = platform;
+    }
+
+    function copyDeviceSpecs() {
+      const report = `=== TEXUS PRO TOOLS - DEVICE INFO REPORT ===
+Operating System: ${document.getElementById('osVal').textContent}
+Browser: ${document.getElementById('browserVal').textContent}
+Screen Resolution: ${document.getElementById('screenVal').textContent}
+Viewport Size: ${document.getElementById('viewportVal').textContent}
+Color & Pixel Ratio: ${document.getElementById('colorVal').textContent}
+CPU Cores: ${document.getElementById('cpuVal').textContent}
+RAM Estimate: ${document.getElementById('ramVal').textContent}
+Touch Support: ${document.getElementById('touchVal').textContent}
+Network: ${document.getElementById('networkVal').textContent}
+Online Status: ${document.getElementById('onlineVal').textContent}
+Platform: ${document.getElementById('platformVal').textContent}
+User Agent: ${document.getElementById('uaVal').textContent}
+============================================`;
+
+      navigator.clipboard.writeText(report).then(() => {
+        const btn = document.getElementById('copyDeviceBtn');
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Report Copied Successfully!';
+        setTimeout(() => { btn.textContent = originalText; }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy report:', err);
+      });
+    }
+
+    // Run on load
+    window.addEventListener('DOMContentLoaded', refreshDeviceInfo);
+    window.addEventListener('resize', () => {
+      document.getElementById('viewportVal').textContent = `${window.innerWidth} × ${window.innerHeight} px`;
+    });
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
