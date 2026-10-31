@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Online Ping Test | Real-Time Network Latency & Jitter Monitor</title>
+  <meta name="description" content="Test your network latency, packet stability, and round-trip time (RTT) instantly with our free online ping test tool. Measure jitter, packet loss, and server response times." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/ping-test/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Online Ping Test Utility",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "High-precision web network latency analyzer to calculate real-time round trip time (RTT), jitter, and packet delivery stability across global edge endpoints.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 48px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-select-field { width: 100%; height: 48px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* DASHBOARD TELEMETRY METRIC CARDS */
+    .telemetry-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
+    .telemetry-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px 16px; text-align: center; }
+    .telemetry-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .telemetry-value { font-size: 1.6rem; font-weight: 800; color: #0f172a; line-height: 1.1; }
+    .telemetry-unit { font-size: 0.85rem; font-weight: 600; color: #64748b; margin-left: 2px; }
+
+    /* REAL-TIME TERMINAL CONSOLE */
+    .f-terminal-console { width: 100%; height: 230px; background: #0b1120; border: 2px solid #1e293b; border-radius: 16px; padding: 16px; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; color: #38bdf8; outline: none; box-sizing: border-box; overflow-y: auto; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 15px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-start { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-start:hover { background: #1d4ed8; }
+    .f-btn-stop { background: #ef4444; color: #ffffff; border-color: #ef4444; }
+    .f-btn-stop:hover { background: #dc2626; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* STATUS PILL INDICATOR */
+    .status-pill-container { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 0.85rem; font-weight: 600; color: #475569; }
+    .status-dot { width: 10px; height: 10px; border-radius: 50%; background: #94a3b8; display: inline-block; }
+    .status-dot.active { background: #10b981; box-shadow: 0 0 10px #10b981; animation: pulse 1.5s infinite; }
+    .status-dot.stopped { background: #ef4444; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .telemetry-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 16px; }
+      .telemetry-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .telemetry-card { padding: 12px 10px; }
+      .telemetry-value { font-size: 1.3rem; }
+      .f-terminal-console { height: 180px; font-size: 0.82rem; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⚡</span> Ping Test & Latency Monitor</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="pingTargetPreset">Select Edge Target / CDN Node</label>
+          <select id="pingTargetPreset" class="f-select-field" onchange="handleTargetSelection()">
+            <option value="https://cdnjs.cloudflare.com/favicon.ico">Cloudflare Edge CDN (Global Anycast)</option>
+            <option value="https://www.google.com/favicon.ico">Google Services (Global Edge)</option>
+            <option value="https://aws.amazon.com/favicon.ico">Amazon Web Services (AWS CloudFront)</option>
+            <option value="https://en.wikipedia.org/favicon.ico">Wikimedia Foundation (Fastly CDN)</option>
+            <option value="https://api.github.com">GitHub Infrastructure (Microsoft Azure/Fastly)</option>
+            <option value="custom">-- Custom HTTPS Target URL --</option>
+          </select>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="customTargetUrl">Custom HTTPS Target Endpoint</label>
+          <input type="url" id="customTargetUrl" class="f-input-field" placeholder="https://example.com/favicon.ico" disabled />
+        </div>
+      </div>
+
+      <div class="f-io-grid" style="margin-bottom: 10px;">
+        <div class="f-panel-box">
+          <label for="pingBurstCount">Test Packet Burst Size</label>
+          <select id="pingBurstCount" class="f-select-field">
+            <option value="5">5 Packets (Quick Health Check)</option>
+            <option value="10" selected>10 Packets (Standard Benchmark)</option>
+            <option value="20">20 Packets (High-Accuracy Jitter Analysis)</option>
+            <option value="0">Continuous (Stream Monitoring)</option>
+          </select>
+        </div>
+
+        <div class="f-panel-box">
+          <label for="pingInterval">Packet Dispatch Interval</label>
+          <select id="pingInterval" class="f-select-field">
+            <option value="500">500 ms (Rapid Fire)</option>
+            <option value="1000" selected>1000 ms (1.0 Second Standard)</option>
+            <option value="2000">2000 ms (2.0 Seconds Relaxed)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- TELEMETRY METRICS DISPLAY -->
+      <div class="telemetry-grid">
+        <div class="telemetry-card">
+          <div class="telemetry-title">Latest RTT</div>
+          <div class="telemetry-value"><span id="statLatest">--</span><span class="telemetry-unit">ms</span></div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-title">Average RTT</div>
+          <div class="telemetry-value"><span id="statAvg">--</span><span class="telemetry-unit">ms</span></div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-title">Min / Max RTT</div>
+          <div class="telemetry-value" style="font-size: 1.25rem; margin-top: 4px;"><span id="statMin">--</span> / <span id="statMax">--</span><span class="telemetry-unit">ms</span></div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-title">Jitter / Loss</div>
+          <div class="telemetry-value" style="font-size: 1.25rem; margin-top: 4px;"><span id="statJitter">--</span><span class="telemetry-unit">ms</span> | <span id="statLoss">0%</span></div>
+        </div>
+      </div>
+
+      <!-- STREAMING LATENCY TERMINAL -->
+      <div class="f-panel-box">
+        <label for="pingConsole">Real-Time Diagnostic Console Log</label>
+        <div id="pingConsole" class="f-terminal-console">TEXUS PRO NETWORK ANALYZER v2.4 initialized.
+Select an edge target above and click [START PING TEST] to measure round-trip times.</div>
+      </div>
+
+      <div class="status-pill-container">
+        <span id="statusIndicator" class="status-dot"></span>
+        <span id="statusText">System status: Idle (Awaiting telemetry run)</span>
+      </div>
+
+      <div class="f-action-strip">
+        <button id="startPingBtn" class="f-btn f-btn-start" onclick="togglePingEngine()">Start Ping Test</button>
+        <button class="f-btn f-btn-copy" onclick="copyConsoleOutput()">📋 Copy Diagnostics</button>
+        <button class="f-btn f-btn-clear" onclick="resetPingDiagnostics()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ High-Precision Performance API Engine:</span>
+        Browser-based latency probes bypass local HTTP caching mechanisms using distinct nanosecond time-stamps. RTT evaluates complete transport layers, socket negotiation handshakes, and application layer edge responses.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Engineering Dynamics of Network Latency: ICMP Protocol Mechanics, Round-Trip Times, Jitter Quantification, and Packet Health</h2>
+      <p class="seo-p">Network latency represents the foundational benchmark of modern digital telecommunications. Whether you are managing distributed cloud enterprise microservices, playing competitive online multiplayer games, sustaining real-time financial trading algorithms, or facilitating high-definition video teleconferencing, the efficiency of your network connection is defined by its responsiveness. While connection bandwidth dictates the raw volume of data packets transmitted per second, ping dictates how swiftly an individual telemetry probe executes an entire transmission loop from source to destination and back.</p>
+      <p class="seo-p">The Texus Pro Tools Ping Test suite provides system administrators, software developers, and remote knowledge workers with a comprehensive, browser-based diagnostic cockpit. By benchmarking millisecond-accurate packet timings against world-class content distribution networks and custom endpoints, users can isolate local Wi-Fi congestion, internet service provider (ISP) throttling, bufferbloat symptoms, and severe routing deviations in real time.</p>
+
+      <div class="seo-callout">
+        <strong>The Round-Trip Time (RTT) Principle:</strong> Ping measures the total elapsed duration (in milliseconds) required for an exploratory data packet to travel from a client interface, navigate through intermediate autonomous systems (ASNs), arrive at a target host, and deliver an acknowledgement packet back to the original caller.
+      </div>
+
+      <h3 class="seo-h2">Anatomy of a Ping Probe: ICMP vs. Transport-Layer Web Pings</h3>
+      <p class="seo-p">Traditional terminal-level ping utilities (available natively in Linux, Unix, macOS, and Microsoft Windows command prompts) operate within the Internet Layer of the Internet Protocol suite, utilizing the Internet Control Message Protocol (ICMP) under RFC 792. These raw systems transmit an <code>ECHO_REQUEST</code> datagram directly to an IP destination, awaiting an <code>ECHO_REPLY</code> packet.</p>
+      <p class="seo-p">However, modern client web applications run inside sandboxed browser environments where raw Layer 3 socket creation is restricted by operating system security policies. High-precision web latency diagnostics utilize cross-origin HTTP/HTTPS timing probes executed against Anycast CDN edge gateways. This evaluates the complete, real-world transport stack—encompassing DNS lookups, TCP handshakes, TLS session negotiation, and edge server acknowledgment cycles. As a result, web pings provide a much more realistic measurement of your practical web browsing, SaaS, and API responsiveness than raw ICMP ping packets alone.</p>
+
+      <h3 class="seo-h2">Quantifying Key Diagnostic Metrics: RTT, Jitter, and Packet Loss</h3>
+      <p class="seo-p">Accurate telecommunication diagnostics require examining multiple mathematical telemetry metrics simultaneously rather than relying solely on a single isolated minimum ping number:</p>
+
+      <h4 class="seo-h3">1. Average Round-Trip Time (RTT)</h4>
+      <p class="seo-p">The arithmetic mean of all successfully returned probe cycles over a defined sampling burst. A stable average latency confirms whether your physical connection link (fiber optic, coaxial cable, copper DSL, or satellite) operates within healthy operational limits for its transmission medium.</p>
+
+      <h4 class="seo-h3">2. Jitter (Packet Delay Variation)</h4>
+      <p class="seo-p">Jitter quantifies the variance and instability in latency across consecutive packets. Computed as the mean absolute deviation between sequential response intervals, elevated jitter (anything exceeding 15 to 20 milliseconds) degrades real-time applications such as VoIP telephony, Discord voice communications, and competitive gaming, manifesting as audio stuttering, robotic voice synthesis, and visual rubber-banding.</p>
+
+      <h4 class="seo-h3">3. Bufferbloat &amp; Latency Spikes</h4>
+      <p class="seo-p">Bufferbloat emerges when network equipment (such as home wireless routers or ISP node switches) buffers excessive packets during bandwidth-heavy tasks (like 4K video streaming or torrent downloads). This artificially inflates round-trip times by hundreds of milliseconds, turning a crisp 15ms fiber line into an unresponsive 350ms channel under load.</p>
+
+      <h4 class="seo-h3">4. Packet Loss Percentage</h4>
+      <p class="seo-p">The mathematical ratio of unacknowledged or dropped probe requests relative to the total number of dispatched packets. While file transfers utilizing TCP will retransmit missing data chunks automatically, dropped packets force immediate re-transmission renegotiations, crushing streaming quality and causing connection timeouts.</p>
+
+      <h3 class="seo-h2">Network Topology Comparison: Physical Media Latency Matrix</h3>
+      <p class="seo-p">Different physical transmission technologies impose concrete physical boundaries on theoretical minimum latency speeds. The following matrix illustrates baseline performance targets across prevalent connection categories:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Physical Connection Technology</th>
+              <th>Ideal RTT Range (Edge)</th>
+              <th>Typical Jitter Variance</th>
+              <th>Packet Loss Tolerance</th>
+              <th>Optimal Production Use Cases</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fiber Optic (FTTH / Direct GPoN)</td>
+              <td>2 ms – 15 ms</td>
+              <td>&lt; 2 ms</td>
+              <td>0.0%</td>
+              <td>High-frequency trading, esports tournaments, low-latency live streaming.</td>
+            </tr>
+            <tr>
+              <td>DOCSIS 3.1 Coaxial Cable</td>
+              <td>12 ms – 35 ms</td>
+              <td>3 ms – 8 ms</td>
+              <td>&lt; 0.5%</td>
+              <td>Ultra HD multi-stream 4K home streaming, corporate VPN sessions.</td>
+            </tr>
+            <tr>
+              <td>5G Cellular (Sub-6 GHz / mmWave)</td>
+              <td>18 ms – 45 ms</td>
+              <td>5 ms – 15 ms</td>
+              <td>&lt; 1.0%</td>
+              <td>Mobile productivity, edge computing devices, telemetry backhauling.</td>
+            </tr>
+            <tr>
+              <td>4G LTE Advanced Cellular</td>
+              <td>35 ms – 75 ms</td>
+              <td>10 ms – 25 ms</td>
+              <td>&lt; 2.0%</td>
+              <td>General mobile web browsing, casual video on demand, social media.</td>
+            </tr>
+            <tr>
+              <td>LEO Satellite (Starlink Constellation)</td>
+              <td>28 ms – 55 ms</td>
+              <td>8 ms – 20 ms</td>
+              <td>&lt; 1.5%</td>
+              <td>Remote field offices, rural enterprise links, marine exploration.</td>
+            </tr>
+            <tr>
+              <td>Geostationary Satellite (Legacy Viasat/HughesNet)</td>
+              <td>550 ms – 750 ms</td>
+              <td>40 ms – 120 ms</td>
+              <td>&gt; 3.0%</td>
+              <td>Emergency fallback communication, static asynchronous file retrieval.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">How to Troubleshoot High Latency and Network Spikes</h3>
+      <p class="seo-p">If your ping tests reflect abnormally elevated response times or erratic jitter bursts, follow this systematic network triage protocol:</p>
+
+      <ol class="seo-list">
+        <li><strong>Bypass Local Wireless Interference:</strong> Wi-Fi signals suffer from channel contention, physical wall attenuation, and electromagnetic interference from appliances. Connect an Ethernet cable directly from your device to the local router. If your ping stabilizes instantly, your issue is localized to wireless propagation rather than your ISP.</li>
+        <li><strong>Audit Background Uplink Bandwidth:</strong> Cloud backups (such as Google Drive, OneDrive, or iCloud), operating system updates, or peer-to-peer applications frequently saturate home upload bandwidth. Because upstream ACK packets get queue-choked, downstream latency skyrockets.</li>
+        <li><strong>Restart the CPE Modem/ONT Unit:</strong> Consumer gateway modems maintain memory-mapped routing tables that become fragmented or thermally throttled over months of continuous uptime. A systematic 60-second power cycle resets physical signal line equalization with the ISP headend.</li>
+        <li><strong>Inspect DNS Server Resolution Speeds:</strong> While DNS does not alter the latency of established TCP tunnels, poorly configured or overloaded default ISP resolver nodes delay initial address translations by 100ms or more. Switch to reliable Anycast public resolvers such as Cloudflare (1.1.1.1) or Google Public DNS (8.8.8.8).</li>
+      </ol>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ)</h3>
+
+      <h4 class="seo-h3">Why does a browser ping test show slightly higher latency than my system command prompt?
