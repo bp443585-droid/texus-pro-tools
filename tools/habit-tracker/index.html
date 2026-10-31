@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Habit Tracker | Daily Streak & Goal Achievement App</title>
+  <meta name="description" content="Build lasting habits and achieve your goals with our free online Habit Tracker. Monitor streaks, log daily progress, and stay motivated securely in your browser." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/habit-tracker/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Habit Tracker Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "ProductivityApplication",
+    "description": "An advanced daily habit monitoring and streak tracking tool to build consistency and achieve long-term goals.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* HABIT TRACKER SPECIFIC LAYOUT */
+    .habit-header-controls { display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
+    .habit-input { flex: 1; min-width: 240px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; }
+    .habit-input:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .habit-stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 30px; }
+    .stat-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .stat-card h4 { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 8px 0; font-weight: 700; }
+    .stat-card .stat-value { font-size: 1.8rem; color: #0f172a; font-weight: 800; margin: 0; }
+
+    .habit-list { display: flex; flex-direction: column; gap: 16px; }
+    .habit-item { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px; transition: all 0.2s; }
+    .habit-item:hover { border-color: #cbd5e1; }
+    
+    .habit-top-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .habit-info h3 { font-size: 1.15rem; color: #0f172a; font-weight: 700; margin: 0 0 4px 0; }
+    .habit-info p { font-size: 0.85rem; color: #64748b; margin: 0; font-weight: 500; }
+    
+    .habit-days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+    .day-box { background: #f1f5f9; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 10px 4px; text-align: center; cursor: pointer; user-select: none; transition: all 0.15s ease; }
+    .day-box .day-name { font-size: 0.7rem; color: #64748b; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 4px; }
+    .day-box .day-check { font-size: 1rem; color: #cbd5e1; font-weight: 800; display: block; }
+    
+    .day-box.completed { background: #dcfce7; border-color: #86efac; }
+    .day-box.completed .day-name { color: #166534; }
+    .day-box.completed .day-check { color: #22c55e; }
+    .day-box:hover { border-color: #2563eb; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 25px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 160px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    .empty-habits { text-align: center; padding: 40px 20px; color: #64748b; font-size: 0.95rem; font-weight: 500; background: #f8fafc; border-radius: 16px; border: 2px dashed #cbd5e1; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .habit-days-grid { gap: 4px; }
+      .day-box { padding: 8px 2px; }
+      .day-box .day-name { font-size: 0.6rem; }
+      .day-box .day-check { font-size: 0.85rem; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🎯</span> Habit Tracker</div>
+    
+    <div class="f-card">
+      <div class="habit-stats-bar">
+        <div class="stat-card">
+          <h4>Active Habits</h4>
+          <p id="totalHabitsStat" class="stat-value">0</p>
+        </div>
+        <div class="stat-card">
+          <h4>Weekly Completion</h4>
+          <p id="weeklyCompletionStat" class="stat-value">0%</p>
+        </div>
+        <div class="stat-card">
+          <h4>Current Streak</h4>
+          <p id="currentStreakStat" class="stat-value">0 Days</p>
+        </div>
+      </div>
+
+      <div class="habit-header-controls">
+        <input type="text" id="habitInput" class="habit-input" placeholder="Enter a new daily habit (e.g., Read 20 pages, Morning Run)..." onkeydown="if(event.key === 'Enter') addHabit()" />
+        <button class="f-btn f-btn-convert" onclick="addHabit()" style="flex: 0 0 160px; margin: 0;">Add Habit</button>
+      </div>
+
+      <div id="habitsContainer" class="habit-list">
+        <!-- Dynamic Habit Cards Render Here -->
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-clear" onclick="resetAllHabits()">Reset All Progress</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Private Local Storage Persistence:</span>
+        Your daily routine data is securely saved directly in your browser's local memory. No external servers track your personal goals, ensuring complete privacy.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Science of Habit Formation: Neuroplasticity, Cue-Routine-Reward Loops, and Compound Personal Growth</h2>
+      <p class="seo-p">Mastering personal productivity, maintaining long-term health regimens, or accelerating professional skill development depends entirely on an empirical understanding of habit loops, neural pathway reinforcement, and daily consistency. Behavioral psychologists have long established that human routines operate on automated neurological loops consisting of a trigger cue, an execution routine, and a rewarding feedback signal. Without structured monitoring and measurable accountability, motivation frequently collapses under cognitive fatigue.</p>
+      <p class="seo-p">This extensive manual explores the neurological mechanics behind habit formation, examines the compounding mathematical impact of small daily actions, analyzes tracking methodologies, and outlines actionable steps to build resilient daily routines using digital tools.</p>
+
+      <div class="seo-callout">
+        <strong>The Compound Consistency Rule:</strong> Improving by just 1 percent every single day results in a staggering 37-fold improvement over the course of a single year, proving that tiny incremental habits compound into massive achievements.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Psychological Triggers and Atomic Habit Architecture</h3>
+      <p class="seo-p">When building lasting life transformations, relying on raw willpower is a failing strategy because willpower is a finite cognitive resource. Instead, high-achievers construct automated systems using structured behavioral frameworks:</p>
+
+      <h4 class="seo-h3">1. Cue Identification and Environmental Design</h4>
+      <p class="seo-p">Habits are initiated by contextual triggers—a specific time of day, a location, or an emotional state. Making cues obvious in your immediate environment drastically reduces the friction required to initiate positive routines.</p>
+
+      <h4 class="seo-h3">2. Friction Reduction and Habit Stacking</h4>
+      <p class="seo-p">By pairing an unfamiliar new habit with an established daily routine (such as meditating immediately after brewing morning coffee), your brain leverages existing neural pathways to accelerate behavioral adoption.</p>
+
+      <h4 class="seo-h3">3. Immediate Visual Feedback Loops</h4>
+      <p class="seo-p">Human brains are hardwired for immediate gratification. Long-term goals often fail because the rewards are too distant. Visual streak trackers provide instant dopamine hits by letting you check off completed boxes, reinforcing the neural feedback loop.</p>
+
+      <h3>The Statutory Reference Matrix: Habit Lifecycle and Optimization Framework</h3>
+      <p class="seo-p">Understanding how behavioral pillars interact across your weekly planning cycle is vital for sustaining long-term consistency and avoiding burnout:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Behavioral Stage</th>
+              <th>Psychological Principle</th>
+              <th>Actionable Implementation</th>
+              <th>Long-Term Productivity Target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cue (The Trigger)</td>
+              <td>Environmental Salience</td>
+              <td>Place visual reminders and gear in plain sight.</td>
+              <td>Eliminate decision fatigue before starting tasks.</td>
+            </tr>
+            <tr>
+              <td>Craving (The Motivation)</td>
+              <td>Anticipatory Dopamine</td>
+              <td>Pair hard tasks with enjoyable immediate rewards.</td>
+              <td>Transform required chores into anticipated rituals.</td>
+            </tr>
+            <tr>
+              <td>Response (The Action)</td>
+              <td>Friction Minimization</td>
+              <td>Reduce habit starting requirements to under 2 minutes.</td>
+              <td>Ensure execution happens effortlessly every day.</td>
+            </tr>
+            <tr>
+              <td>Reward (The Feedback)</td>
+              <td>Neurological Reinforcement</td>
+              <td>Check off daily habit grids and track active streaks.</td>
+              <td>Solidify neural pathways for permanent automation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the ideal number of daily habits to track simultaneously?</h3>
+      <p class="seo-p">Behavioral experts recommend starting with no more than 3 to 5 core habits at a time. Overloading your daily schedule with dozens of new routines leads to cognitive overload and increases the likelihood of complete habit abandonment within the first two weeks.</p>
+
+      <h3>What should I do if I miss a day on my habit streak?</h3>
+      <p class="seo-p">Never miss twice. Missing a single day happens to everyone due to unforeseen circumstances or fatigue. The danger lies in letting a single slip turn into a total abandonment of the routine. Acknowledge the gap and resume your streak immediately.</p>
+
+      <h3>How does local device storage ensure my personal goal security?</h3>
+      <p class="seo-p">Texus Pro Tools prioritizes your absolute privacy. Your habit names and weekly check-in statuses are stored securely inside your browser's local storage engine. No personal goal data is ever sent to external servers, guaranteeing complete confidentiality.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Goal Achievement</h3>
+      <p class="seo-p">To maximize your personal productivity, keep your daily habit list concise, focus on identity-based mindset shifts, use interactive visual trackers to maintain momentum, and review your weekly completion rates regularly to identify areas for refinement.</p>
+      <p class="seo-p">Our Advanced Online Habit Tracker suite automates your weekly streak monitoring instantly, providing clear visibility into your personal growth across any mobile or desktop device securely.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // HABIT TRACKER APP LOGIC
+    let habits = JSON.parse(localStorage.getItem('texus_habits')) || [
+      { id: 1, name: 'Morning Exercise (30m)', days: [false, false, false, false, false, false, false] },
+      { id: 2, name: 'Read 20 Pages', days: [false, false, false, false, false, false, false] },
+      { id: 3, name: 'Drink 2L Water', days: [false, false, false, false, false, false, false] }
+    ];
+
+    const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+    function saveHabits() {
+      localStorage.setItem('texus_habits', JSON.stringify(habits));
+      renderHabits();
+    }
+
+    function addHabit() {
+      const input = document.getElementById('habitInput');
+      const name = input.value.trim();
+      if (!name) return;
+
+      habits.push({
+        id: Date.now(),
+        name: name,
+        days: [false, false, false, false, false, false, false]
+      });
+
+      input.value = '';
+      saveHabits();
+    }
+
+    function deleteHabit(id) {
+      habits = habits.filter(h => h.id !== id);
+      saveHabits();
+    }
+
+    function toggleDay(habitId, dayIndex) {
+      const habit = habits.find(h => h.id === habitId);
+      if (habit) {
+        habit.days[dayIndex] = !habit.days[dayIndex];
+        saveHabits();
+      }
+    }
+
+    function resetAllHabits() {
+      if (confirm('Are you sure you want to reset all habit progress for this week?')) {
+        habits.forEach(h => h.days = [false, false, false, false, false, false, false]);
+        saveHabits();
+      }
+    }
+
+    function renderHabits() {
+      const container = document.getElementById('habitsContainer');
+      
+      if (habits.length === 0) {
+        container.innerHTML = `<div class="empty-habits">No habits added yet. Type your first daily goal above and click "Add Habit"!</div>`;
+        document.getElementById('totalHabitsStat').innerText = '0';
+        document.getElementById('weeklyCompletionStat').innerText = '0%';
+        document.getElementById('currentStreakStat').innerText = '0 Days';
+        return;
+      }
+
+      let html = '';
+      let totalBoxes = habits.length * 7;
+      let completedBoxes = 0;
+      let maxStreak = 0;
+      let currentActiveStreak = 0;
+
+      habits.forEach(habit => {
+        let habitCompletedCount = habit.days.filter(Boolean).length;
+        completedBoxes += habitModelCount(habit.days);
+
+        html += `
+          <div class="habit-item">
+            <div class="habit-top-row">
+              <div class="habit-info">
+                <h3>${escapeHtml(habit.name)}</h3>
+                <p>${habitCompletedCount} / 7 days completed this week</p>
+              </div>
+              <button onclick="deleteHabit(${habit.id})" style="background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.1rem; padding: 4px;" title="Delete Habit">🗑️</button>
+            </div>
+            <div class="habit-days-grid">
+        `;
+
+        habit.days.forEach((completed, idx) => {
+          html += `
+            <div class="day-box ${completed ? 'completed' : ''}" onclick="toggleDay(${habit.id}, ${idx})">
+              <span class="day-name">${dayNames[idx]}</span>
+              <span class="day-check">${completed ? '✓' : '•'}</span>
+            </div>
+          `;
+        });
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+
+      // Update Stats
+      document.getElementById('totalHabitsStat').innerText = habits.length;
+      let completionRate = totalBoxes > 0 ? Math.round((completedBoxes / totalBoxes) * 100) : 0;
+      document.getElementById('weeklyCompletionStat').innerText = completionRate + '%';
+      
+      // Calculate overall streak estimate
+      let consecutiveDays = 0;
+      for (let i = 6; i >= 0; i--) {
+        let allDoneToday = habits.length > 0 && habits.every(h => h.days[i]);
+        if (allDoneToday) {
+          consecutiveDays++;
+        } else {
+          break;
+        }
+      }
+      document.getElementById('currentStreakStat').innerText = consecutiveDays + ' Days';
+    }
+
+    function habitModelCount(daysArray) {
+      return daysArray.filter(Boolean).length;
+    }
+
+    function escapeHtml(text) {
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    }
+
+    // Initial render call on load
+    renderHabits();
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
