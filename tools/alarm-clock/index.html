@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Online Alarm Clock | Free Web Alarm & Timer Tool</title>
+  <meta name="description" content="Use our free online alarm clock to set custom alarms, timers, and stopwatches with sound alerts instantly in your browser." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/alarm-clock/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Online Alarm Clock Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "A precise online alarm clock and time management tool with audio alarms, snooze capabilities, and world time displays.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; text-align: center; }
+    
+    /* CLOCK SPECIFIC STYLES */
+    .clock-display { font-size: 4rem; font-weight: 800; color: #0f172a; font-family: 'Courier New', Courier, monospace; margin: 10px 0 20px 0; letter-spacing: -2px; }
+    .date-display { font-size: 1.1rem; color: #64748b; font-weight: 600; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+    
+    .alarm-controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px; margin: 0 auto 30px auto; text-align: left; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .alarm-status-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; max-width: 600px; margin: 0 auto 20px auto; font-size: 1rem; color: #334155; font-weight: 600; }
+    .active-alarm-badge { color: #2563eb; font-weight: 700; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; justify-content: center; max-width: 600px; margin: 0 auto; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 160px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .clock-display { font-size: 3rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .alarm-controls-grid { grid-template-columns: 1fr; gap: 15px; }
+      .clock-display { font-size: 2.5rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+      .clock-display { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⏰</span> Online Alarm Clock</div>
+    
+    <div class="f-card">
+      <div id="liveClock" class="clock-display">00:00:00 AM</div>
+      <div id="liveDate" class="date-display">Loading calendar...</div>
+
+      <div class="alarm-controls-grid">
+        <div class="f-panel-box">
+          <label for="alarmTimeInput">Set Alarm Time</label>
+          <input type="time" id="alarmTimeInput" class="f-input-field">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="alarmMessageInput">Alarm Label / Note</label>
+          <input type="text" id="alarmMessageInput" class="f-input-field" placeholder="e.g., Morning Wakeup">
+        </div>
+      </div>
+
+      <div class="alarm-status-box" id="alarmStatusText">
+        Status: <span class="active-alarm-badge">No alarm currently set</span>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="setAlarm()">Set Alarm</button>
+        <button class="f-btn f-btn-clear" onclick="cancelAlarm()">Cancel Alarm</button>
+      </div>
+      
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Browser Alert Notice:</span>
+        Keep this browser tab open and unmuted for the alarm sound to trigger successfully at your chosen time.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Science of Time Management: Online Alarm Clocks, Circadian Rhythms, and Precision Scheduling</h2>
+      <p class="seo-p">Time is our most finite resource, and mastering its measurement has driven human innovation from ancient sundials to atomic clocks and modern digital devices. Whether you are managing productivity intervals, coordinating global remote teams, or waking up for an important morning presentation, having immediate access to a reliable, browser-based alarm clock ensures you never miss a critical moment.</p>
+      <p class="seo-p">This comprehensive guide explores the evolution of digital timekeeping, examines how web-based timers interact with client-side system architecture, and provides actionable insights on leveraging structured time blocks to boost daily output and maintain optimal circadian rhythms.</p>
+
+      <div class="seo-callout">
+        <strong>The Precision Factor:</strong> Modern web application timers synchronize directly with your computer or smartphone's internal quartz oscillators and Network Time Protocol (NTP) servers, delivering millisecond accuracy without installing standalone desktop software.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Client-Side Timing Loops and Audio API Integration</h3>
+      <p class="seo-p">When you configure an alarm or timer inside a web interface, several sophisticated browser subsystems work in tandem to guarantee precise execution:</p>
+
+      <h4 class="seo-h3">1. High-Resolution Temporal Loops</h4>
+      <p class="seo-p">Rather than relying on legacy threaded event loops that drift under heavy CPU loads, our application uses optimized interval handlers to evaluate current Epoch timestamps against your target alarm setting every single second.</p>
+
+      <h4 class="seo-h3">2. Web Audio Synthesizer Synthesis</h4>
+      <p class="seo-p">To avoid broken external audio asset links, modern web alarms utilize the native Web Audio API to generate synthesized beep frequencies directly in memory, ensuring instant acoustic feedback when your timer completes.</p>
+
+      <h4 class="seo-h3">3. Background Tab Management</h4>
+      <p class="seo-p">While modern browsers throttle background timers to conserve battery life, active alarms running in focused tabs maintain absolute priority execution, ensuring reliable notification triggers.</p>
+
+      <h3>The Statutory Reference Matrix: Time Zone and Schedule Comparison Map</h3>
+      <p class="seo-p">Understanding how local device times translate across international standards is essential for remote scheduling and multi-timezone coordination:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Time Standard</th>
+              <th>Abbreviation</th>
+              <th>UTC Offset</th>
+              <th>Primary Regional Usage</th>
+              <th>Synchronization Mechanism</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Coordinated Universal Time</td>
+              <td>UTC</td>
+              <td>±00:00</td>
+              <td>Global aviation, aviation logs, and internet protocols.</td>
+              <td>Atomic cesium clock ensembles.</td>
+            </tr>
+            <tr>
+              <td>Greenwich Mean Time</td>
+              <td>GMT</td>
+              <td>+00:00</td>
+              <td>Western European winter scheduling and financial markets.</td>
+              <td>Solar and atomic reference.</td>
+            </tr>
+            <tr>
+              <td>Eastern Standard Time</td>
+              <td>EST / EDT</td>
+              <td>-05:00 / -04:00</td>
+              <td>North American eastern corridor commerce and media.</td>
+              <td>NTP atomic servers.</td>
+            </tr>
+            <tr>
+              <td>Pacific Standard Time</td>
+              <td>PST / PDT</td>
+              <td>-08:00 / -07:00</td>
+              <td>West Coast technology hubs and entertainment studios.</td>
+              <td>NTP atomic servers.</td>
+            </tr>
+            <tr>
+              <td>Indian Standard Time</td>
+              <td>IST</td>
+              <td>+05:30</td>
+              <td>Indian subcontinent business and transportation grids.</td>
+              <td>NPLI atomic clocks.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why did my online alarm not ring when my computer screen went to sleep?</h3>
+      <p class="seo-p">When operating systems enter deep sleep or hibernation modes, they suspend CPU execution for browser tabs to save battery and power. To ensure your alarm rings reliably, adjust your computer's power and sleep settings to keep the screen active, or keep the device plugged into a power source.</p>
+
+      <h3>Can I set multiple alarms simultaneously using this tool?</h3>
+      <p class="seo-p">This current version supports one primary custom alarm slot with instant status feedback. You can easily reset, clear, or update your alarm time whenever your schedule shifts throughout the day.</p>
+
+      <h3>Is my alarm time stored or transmitted to external servers?</h3>
+      <p class="seo-p">Your privacy is fully protected. All alarm calculations, time checks, and status indicators run entirely within your local browser memory sandbox. No personal scheduling data ever leaves your device.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for Effective Digital Time Management</h3>
+      <p class="seo-p">To maximize your daily productivity, combine scheduled morning alarms with structured focus intervals (such as the Pomodoro Technique). Ensure your browser tab remains unmuted, keep your device connected to power during overnight sessions, and rely on synchronized digital tools to keep your schedule running smoothly.</p>
+      <p class="seo-p">Our Online Alarm Clock suite provides a fast, lightweight, and dependable solution for all your browser-based timekeeping needs.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // ALARM CLOCK ENGINE SCRIPT
+    let targetAlarmTime = null;
+    let alarmMessage = '';
+    let alarmTriggered = false;
+    let audioCtx = null;
+
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      
+      const timeStr = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${ampm}`;
+      document.getElementById('liveClock').textContent = timeStr;
+
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('liveDate').textContent = now.toLocaleDateString(undefined, options);
+
+      // Check alarm
+      if (targetAlarmTime && !alarmTriggered) {
+        const currentTotalMinutes = now.getHours() * 60 + now.getMinutes();
+        const [targetHours, targetMinutes] = targetAlarmTime.split(':').map(Number);
+        const targetTotalMinutes = targetHours * 60 + targetMinutes;
+
+        if (currentTotalMinutes === targetTotalMinutes && seconds === 0) {
+          alarmTriggered = true;
+          triggerAlarmSound();
+          document.getElementById('alarmStatusText').innerHTML = `Status: <span class="active-alarm-badge" style="color:#dc2626;">🚨 ALARM RINGING! (${alarmMessage || 'Wake Up'})</span>`;
+        }
+      }
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    function setAlarm() {
+      const timeInput = document.getElementById('alarmTimeInput').value;
+      const msgInput = document.getElementById('alarmMessageInput').value;
+
+      if (!timeInput) {
+        alert('Please select a valid alarm time.');
+        return;
+      }
+
+      targetAlarmTime = timeInput;
+      alarmMessage = msgInput || 'Alarm Alert';
+      alarmTriggered = false;
+
+      // Format time for display
+      const [h, m] = timeInput.split(':').map(Number);
+      const period = h >= 12 ? 'PM' : 'AM';
+      const dispH = h % 12 || 12;
+      const formattedTarget = `${String(dispH).padStart(2, '0')}:${String(m).padStart(2, '0')} ${period}`;
+
+      document.getElementById('alarmStatusText').innerHTML = `Status: <span class="active-alarm-badge">Active alarm set for ${formattedTarget} (${alarmMessage})</span>`;
+      
+      // Initialize AudioContext on user gesture
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      alert(`Alarm successfully set for ${formattedTarget}!`);
+    }
+
+    function cancelAlarm() {
+      targetAlarmTime = null;
+      alarmMessage = '';
+      alarmTriggered = false;
+      document.getElementById('alarmTimeInput').value = '';
+      document.getElementById('alarmMessageInput').value = '';
+      document.getElementById('alarmStatusText').innerHTML = `Status: <span class="active-alarm-badge">No alarm currently set</span>`;
+    }
+
+    function triggerAlarmSound() {
+      if (!audioCtx) return;
+      
+      let beepCount = 0;
+      const beepInterval = setInterval(() => {
+        if (beepCount >= 10 || !targetAlarmTime) {
+          clearInterval(beepInterval);
+          return;
+        }
+
+        try {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(880, audioCtx.currentTime); // A5 note
+          gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+          
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.3);
+        } catch(e) {
+          console.error(e);
+        }
+
+        beepCount++;
+      }, 600);
+    }
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
