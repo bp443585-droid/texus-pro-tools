@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CPS Test Online | Free Clicks Per Second Speed Test</title>
+  <meta name="description" content="Test your clicking speed with our accurate, free online CPS Test. Measure your clicks per second across 1s, 5s, 10s, 15s, 30s, and 60s modes with real-time analytics." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/cps-test/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CPS Test Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "A precision clicks-per-second performance benchmarking suite offering multi-duration latency testing, click physics analytics, and technique evaluations.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CPS DURATION SELECTOR BAR */
+    .cps-timer-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; align-items: center; }
+    .cps-timer-label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 8px; }
+    .cps-time-btn { background: #f8fafc; border: 1px solid #cbd5e1; color: #334155; padding: 8px 16px; border-radius: 10px; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: all 0.15s ease; outline: none; }
+    .cps-time-btn:hover { background: #e2e8f0; color: #0f172a; }
+    .cps-time-btn.active { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    /* REAL-TIME SCORE METRIC STRIP */
+    .cps-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    .cps-stat-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; text-align: center; }
+    .cps-stat-label { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .cps-stat-value { font-size: 2.2rem; font-weight: 800; color: #0f172a; line-height: 1.1; font-family: 'Inter', monospace; }
+    .cps-stat-value.highlight { color: #2563eb; }
+
+    /* INTERACTIVE CLICK PAD CANVAS */
+    .cps-click-pad {
+      width: 100%;
+      height: 280px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 3px dashed #cbd5e1;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      touch-action: manipulation;
+      transition: background 0.1s ease, border-color 0.1s ease, transform 0.05s ease;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+    .cps-click-pad:active {
+      background: #eff6ff;
+      border-color: #2563eb;
+      transform: scale(0.995);
+    }
+    .cps-click-pad.running {
+      border-style: solid;
+      border-color: #3b82f6;
+      background: #ffffff;
+    }
+    .cps-pad-title { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin-bottom: 8px; pointer-events: none; }
+    .cps-pad-subtitle { font-size: 0.95rem; font-weight: 500; color: #64748b; pointer-events: none; }
+    .cps-ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.25);
+      transform: scale(0);
+      animation: rippleEffect 0.5s ease-out;
+      pointer-events: none;
+    }
+    @keyframes rippleEffect {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* RESULT MODAL / OVERLAY PANEL */
+    .cps-result-panel {
+      margin-top: 24px;
+      display: none;
+      background: #f8fafc;
+      border: 2px solid #2563eb;
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      animation: fadeIn 0.25s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .cps-result-heading { font-size: 1.35rem; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+    .cps-rank-badge {
+      display: inline-block;
+      background: #2563eb;
+      color: #ffffff;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .cps-result-summary { font-size: 1.05rem; color: #475569; margin-bottom: 18px; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 140px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .cps-stats-grid { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+      .cps-stat-card { padding: 12px 8px; }
+      .cps-stat-value { font-size: 1.5rem; }
+      .cps-click-pad { height: 220px; }
+      .cps-pad-title { font-size: 1.2rem; }
+      .cps-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 20px !important; }
+      .cps-stats-grid { grid-template-columns: 1fr; gap: 8px; }
+      .cps-timer-nav { justify-content: center; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⚡</span> CPS Test</div>
+    
+    <div class="f-card">
+      <!-- TIME FRAME SELECTOR -->
+      <div class="cps-timer-nav">
+        <span class="cps-timer-label">Duration:</span>
+        <button class="cps-time-btn" data-time="1" onclick="setCpsDuration(1)">1s</button>
+        <button class="cps-time-btn" data-time="3" onclick="setCpsDuration(3)">3s</button>
+        <button class="cps-time-btn active" data-time="5" onclick="setCpsDuration(5)">5s</button>
+        <button class="cps-time-btn" data-time="10" onclick="setCpsDuration(10)">10s</button>
+        <button class="cps-time-btn" data-time="15" onclick="setCpsDuration(15)">15s</button>
+        <button class="cps-time-btn" data-time="30" onclick="setCpsDuration(30)">30s</button>
+        <button class="cps-time-btn" data-time="60" onclick="setCpsDuration(60)">60s</button>
+      </div>
+
+      <!-- METRICS CONSOLE -->
+      <div class="cps-stats-grid">
+        <div class="cps-stat-card">
+          <div class="cps-stat-label">Remaining Time</div>
+          <div class="cps-stat-value" id="cpsTimerDisplay">5.00s</div>
+        </div>
+        <div class="cps-stat-card">
+          <div class="cps-stat-label">Total Clicks</div>
+          <div class="cps-stat-value highlight" id="cpsClickCounter">0</div>
+        </div>
+        <div class="cps-stat-card">
+          <div class="cps-stat-label">Current CPS</div>
+          <div class="cps-stat-value" id="cpsRateDisplay">0.00</div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE CLICKING SURFACE -->
+      <div class="cps-click-pad" id="cpsPad" onpointerdown="handlePadInteraction(event)">
+        <div class="cps-pad-title" id="padTitle">Click Here to Begin</div>
+        <div class="cps-pad-subtitle" id="padSubtitle">The countdown timer initiates on your first tap</div>
+      </div>
+
+      <!-- DYNAMIC RESULT SUMMARY MODAL -->
+      <div class="cps-result-panel" id="cpsResultBox">
+        <div class="cps-result-heading">Challenge Complete!</div>
+        <div class="cps-rank-badge" id="cpsRankBadge">Cheetah Tier</div>
+        <div class="cps-result-summary" id="cpsResultText">You scored 42 clicks in 5 seconds (8.40 CPS).</div>
+        <div class="f-action-strip" style="margin-top: 0; justify-content: center;">
+          <button class="f-btn f-btn-convert" onclick="resetCpsEngine()">Try Again</button>
+          <button class="f-btn f-btn-copy" id="shareScoreBtn" onclick="copyScoreClipboard()">📋 Copy Score</button>
+        </div>
+      </div>
+
+      <!-- WORKSPACE CONTROLS STRIP -->
+      <div class="f-action-strip" id="cpsControlStrip">
+        <button class="f-btn f-btn-copy" onclick="resetCpsEngine()">Restart Test</button>
+        <button class="f-btn f-btn-clear" onclick="clearCpsStats()">Reset All</button>
+      </div>
+
+      <div style="margin-top: 18px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ High-Precision Hardware Register Active:</span>
+        Pointer events are sampled directly via native high-resolution timers (`performance.now()`), neutralizing browser synthetic double-tap delay and OS event latency.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Biomechanics of Clicking Velocity: Measuring Clicks Per Second (CPS), Mechanical Switch Actuation, and Motor Reflex Benchmarking</h2>
+      <p class="seo-p">Clicks Per Second (CPS) is the universal digital metric that measures how many single input clicks an individual can register within a one-second window. In competitive multiplayer gaming, competitive Minecraft player-versus-player (PvP) environments, first-person shooters, real-time strategy (RTS) titles, and fast-paced user experience workflows, high CPS rates directly dictate tactical advantage, combat resolution speed, and target tracking consistency.</p>
+      <p class="seo-p">Beyond gaming supremacy, measuring clicking rate serves as a key scientific assessment of muscular endurance, neuromuscular synchronization, peripheral motor latency, and human-computer input efficiency. This technical handbook explores the biomechanical mechanisms behind different clicking styles, examines mechanical switch debounce intervals, provides a technical comparison matrix of advanced competitive techniques, and details strategies to boost your speed without risking repetitive strain injuries (RSI).</p>
+
+      <div class="seo-callout">
+        <strong>The Latency and Actuation Principle:</strong> A raw mouse click involves three key phases: the neuromuscular trigger impulse, the physical key travel to the switch actuation point (typically 1.2mm–2.0mm), and the switch controller debounce protocol (1ms–16ms). Minimizing physical travel distance and using optical microswitches yields immediate, verifiable gains in maximum attainable CPS.
+      </div>
+
+      <h3 class="seo-h2">Anatomy of Modern Clicking Techniques: Biomechanical Analysis</h3>
+      <p class="seo-p">Competitive players and high-speed typists rarely rely solely on basic index finger clicking. Over years of competition, the community has engineered four distinct biomechanical styles to maximize actuation frequency:</p>
+
+      <h4 class="seo-h3">1. Regular (Standard) Clicking</h4>
+      <p class="seo-p">The user rests their hand naturally over the mouse chassis in a palm or claw grip, actuating the primary mouse button using the isolated flexor digitorum superficialis muscle of the index finger. While this approach offers peak cursor aiming accuracy and minimal physical fatigue, the natural physical limit for standard clicking ranges between 6.0 and 9.5 CPS.</p>
+
+      <h4 class="seo-h3">2. Jitter Clicking</h4>
+      <p class="seo-p">Jitter clicking channels controlled muscular spasms originating from the forearm's pronator teres and wrist muscles down through the rigid fingertip. By tensing the arm until it vibrates against the switch chassis, players regularly break 11.0 to 14.5 CPS. However, jitter clicking causes severe muscle fatigue, introduces involuntary cross-axis cursor jitter that hurts aiming accuracy, and carries a higher risk of carpal strain if practiced without adequate rest.</p>
+
+      <h4 class="seo-h3">3. Butterfly Clicking</h4>
+      <p class="seo-p">In butterfly clicking, both the index and middle fingers alternate hits on the primary mouse switch in rapid succession, doubling the input frequency. Paired with modern gaming mice featuring adjustable debounce times (such as low debounce software profiles), butterfly clicking allows fingers to trigger secondary actuation bounces, pushing speeds between 14.0 and 22.0 CPS while keeping cursor control steady.</p>
+
+      <h4 class="seo-h3">4. Drag Clicking</h4>
+      <p class="seo-p">Drag clicking takes advantage of surface friction. By lightly dragging a textured finger or matte grip tape across the switch surface, the friction between skin and plastic produces a rapid series of microscopic bouncing impacts. Each skip trips the microswitch repeatedly, generating staggering bursts of 25.0 to 35.0+ CPS within half-second intervals. While dominant for Minecraft bridge construction techniques (Godbridging, Breezily), drag clicking is ineffective for sustained firefights or accurate dynamic tracking.</p>
+
+      <h3 class="seo-h2">Official CPS Tier Reference Architecture</h3>
+      <p class="seo-p">Use this comparative matrix to benchmark your speed against thousands of verified participants across varied duration profiles:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Performance Classification Tier</th>
+              <th>Average CPS Range</th>
+              <th>Primary Clicking Method</th>
+              <th>Tactical Applicability & Gaming Effectiveness</th>
+              <th>Neuromuscular Demand</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Turtle / Novice</strong></td>
+              <td>0.0 - 5.0 CPS</td>
+              <td>Relaxed Casual Clicking</td>
+              <td>General office browsing, basic desktop tasks, turn-based titles.</td>
+              <td>Negligible</td>
+            </tr>
+            <tr>
+              <td><strong>Standard Gamer</strong></td>
+              <td>5.1 - 7.5 CPS</td>
+              <td>Standard Ergonomic Claw/Palm</td>
+              <td>Reliable performance in FPS titles (CS2, Valorant, Apex Legends).</td>
+              <td>Low - Sustainable indefinitely</td>
+            </tr>
+            <tr>
+              <td><strong>Cheetah / Fast</strong></td>
+              <td>7.6 - 10.5 CPS</td>
+              <td>High-cadence Standard / Light Jitter</td>
+              <td>Competitive RTS build queues, MOBA target casting, Minecraft 1.8 PvP.</td>
+              <td>Moderate forearm loading</td>
+            </tr>
+            <tr>
+              <td><strong>Butterfly Specialist</strong></td>
+              <td>10.6 - 15.0 CPS</td>
+              <td>Controlled Butterfly Alternation</td>
+              <td>Top-tier PvP knockback reduction, aggressive combo tracking.</td>
+              <td>High fine-motor coordination</td>
+            </tr>
+            <tr>
+              <td><strong>Godspeed / Superhuman</strong></td>
+              <td>15.1+ CPS</td>
+              <td>Optimized Jitter / Drag Friction</td>
+              <td>Record-breaking bridging, specialized competitive Minecraft circuits.</td>
+              <td>Extreme; requires routine resting intervals</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Hardware Parameters Influencing CPS Integrity</h3>
+      <p class="seo-p">Your ceiling speed isn't dictated by muscle memory alone—hardware mechanics set your physical boundaries:</p>
+
+      <ul class="seo-list">
+        <li><strong>Microswitch Debounce Time:</strong> Traditional mechanical switches use metal leaf springs that physically bounce upon impact. Microcontrollers introduce a artificial firmware delay (debounce) ranging between 4ms and 20ms to prevent double-clicks. Gaming mice that allow configuring debounce times down to 0ms–2ms unlock double-actuations crucial for peak butterfly clicking scores.</li>
+        <li><strong>Optical vs. Mechanical Switches:</strong> Optical mouse switches register inputs using an infrared light beam rather than metal-on-metal contacts. This eliminates debounce delay entirely while preventing accidental wear-induced double clicks, giving you consistent, ultra-low-latency input registration.</li>
+        <li><strong>Switch Travel & Reset Points:</strong> Switches built with shallow pre-travel distances and snappy reset points (such as Omron 50M, Kailh GM 8.0, or Huano Blue Shell Pink Dots) require less muscular force to cycle, keeping your fingers fresh during extended 30-second and 60-second endurance benchmarks.</li>
+      </ul>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ)</h3>
+
+      <h3 class="seo-h3">What is the global average CPS for an adult?</h3>
+      <p class="seo-p">Extensive empirical testing indicates that the average human clicks between 6.0 and 6.8 CPS using a standard mouse and conventional clicking technique over a 5-second trial. With minimal technique training, most individuals can reach 8.0 to 9.0 CPS comfortably.</p>
+
+      <h3 class="seo-h3">Does clicking duration affect average CPS output?</h3>
+      <p class="seo-p">Yes, significantly. In a 1-second sprint test, burst motor recruitment allows users to achieve 12 to 16 CPS. Over 30-second and 60-second endurance tests, lactic acid buildup in the forearm typically causes average rates to decline by 20% to 35% compared to initial burst speeds.</p>
+
+      <h3 class="seo-h3">Can high-speed clicking cause RSI or Carpal Tunnel Syndrome?</h3>
+      <p class="seo-p">Intense techniques—especially sustained jitter clicking—place substantial strain on wrist tendons, the carpal tunnel sheath, and forearm extensor muscles. Always warm up your hands, avoid playing through wrist soreness, keep your wrist elevated off hard desk edges, and take regular breaks during high-intensity training sessions.</p>
+
+      <h3 class="seo-h3">Is the Texus Pro Tools CPS Test completely client-side?</h3>
+      <p class="seo-p">Yes. Our benchmark runs entirely inside your browser's local sandbox memory using high-resolution hardware timers (`performance.now()`). No mouse click events or hardware data are transmitted across external network channels, guaranteeing zero packet latency and complete privacy.</p>
+
+      <h3 class="seo-h2">Summary: Strategies to Boost Your Clicking Speed</h3>
+      <p class="seo-p">To build clicking speed safely and systematically, focus on ergonomics, consistent pacing, and disciplined mechanics. Select an ergonomic mouse that matches your hand size and grip style, use low-friction mouse skates to keep your aim smooth, and practice consistently across 5-second and 10-second intervals to develop muscular control before trying out high-strain methods like jitter clicking.</p>
+      <p class="seo-p">Use our real-time CPS test to track your progress, identify your peak clicking cadence, and push your reaction times to competitive esports standards.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    /* CPS BENCHMARK ENGINE CORE CONTROLLER */
+    let selectedDuration = 5;
+    let timerRunning = false;
+    let clickCount = 0;
+    let startTime = null;
+    let timerInterval = null;
+    let testCompleted = false;
+
+    const timerDisplay = document.getElementById('cpsTimerDisplay');
+    const clickCounter = document.getElementById('cpsClickCounter');
+    const rateDisplay = document.getElementById('cpsRateDisplay');
+    const pad = document.getElementById('cpsPad');
+    const padTitle = document.getElementById('padTitle');
+    const padSubtitle = document.getElementById('padSubtitle');
+    const resultBox = document.getElementById('cpsResultBox');
+    const resultText = document.getElementById('cpsResultText');
+    const rankBadge = document.getElementById('cpsRankBadge');
+    const shareBtn = document.getElementById('shareScoreBtn');
+
+    function setCpsDuration(seconds) {
+      if (timerRunning) return;
+      selectedDuration = parseInt(seconds, 10);
+      document.querySelectorAll('.cps-time-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.getAttribute('data-time'), 10) === selectedDuration);
+      });
+      resetCpsEngine();
+    }
+
+    function handlePadInteraction(e) {
+      e.preventDefault();
+      if (testCompleted) return;
+
+      // Visual touch/click ripple
+      createRipple(e);
+
+      if (!timerRunning) {
+        startCpsEngine();
+      }
+
+      clickCount++;
+      clickCounter.textContent = clickCount;
+
+      // Update instantaneous live CPS
+      const elapsed = Math.max((performance.now() - startTime) / 1000, 0.05);
+      const liveCps = (clickCount / elapsed).toFixed(2);
+      rateDisplay.textContent = liveCps;
