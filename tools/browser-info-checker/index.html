@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Browser Info Checker | Client Environment & System Diagnostics</title>
+  <meta name="description" content="Instantly detect and inspect your web browser details, operating system, screen resolution, viewport dimensions, GPU renderer, and hardware capabilities online." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/browser-info-checker/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Browser Info Checker Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An automated client-side diagnostic utility to inspect user-agent parameters, hardware capabilities, display geometry, and security signals.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 140px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 600; font-size: 0.92rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* DIAGNOSTIC PARAMETER DATA GRID */
+    .diag-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .diag-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 4px; transition: all 0.2s ease; }
+    .diag-card:hover { border-color: #cbd5e1; background: #f1f5f9; }
+    .diag-label { font-size: 0.76rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+    .diag-value { font-size: 1.12rem; font-weight: 800; color: #0f172a; word-break: break-word; line-height: 1.3; }
+    .diag-sub { font-size: 0.78rem; color: #2563eb; font-weight: 600; margin-top: 2px; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 140px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .diag-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .f-textarea-field { height: 120px; font-size: 0.9rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .diag-grid { grid-template-columns: 1fr; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>💻</span> Browser Info Checker</div>
+    
+    <div class="f-card">
+      <!-- High Priority Quick Metrics -->
+      <div class="diag-grid">
+        <div class="diag-card">
+          <span class="diag-label">Web Browser</span>
+          <span class="diag-value" id="valBrowser">Scanning...</span>
+          <span class="diag-sub" id="valBrowserVer">-</span>
+        </div>
+        <div class="diag-card">
+          <span class="diag-label">Operating System</span>
+          <span class="diag-value" id="valOS">Scanning...</span>
+          <span class="diag-sub" id="valPlatform">-</span>
+        </div>
+        <div class="diag-card">
+          <span class="diag-label">Active Viewport</span>
+          <span class="diag-value" id="valViewport">Scanning...</span>
+          <span class="diag-sub" id="valDPR">Pixel Ratio: -</span>
+        </div>
+        <div class="diag-card">
+          <span class="diag-label">Screen Resolution</span>
+          <span class="diag-value" id="valScreen">Scanning...</span>
+          <span class="diag-sub" id="valColorDepth">Color Depth: -</span>
+        </div>
+        <div class="diag-card">
+          <span class="diag-label">Language & Locale</span>
+          <span class="diag-value" id="valLang">Scanning...</span>
+          <span class="diag-sub" id="valTimezone">Timezone: -</span>
+        </div>
+        <div class="diag-card">
+          <span class="diag-label">Hardware Profile</span>
+          <span class="diag-value" id="valCores">Cores: -</span>
+          <span class="diag-sub" id="valMemory">RAM: -</span>
+        </div>
+        <div class="diag-card">
+          <span class="diag-label">Storage Capabilities</span>
+          <span class="diag-value" id="valCookies">Cookies: -</span>
+          <span class="diag-sub" id="valStorage">Storage: -</span>
+        </div>
+        <div class="diag-card">
+          <span class="diag-label">Graphics (WebGL)</span>
+          <span class="diag-value" id="valGpu">Checking GPU...</span>
+          <span class="diag-sub" id="valGpuVendor">-</span>
+        </div>
+      </div>
+
+      <!-- Raw User Agent and JSON Inspection Inputs -->
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="uaConsole">Raw User-Agent Header</label>
+          <textarea id="uaConsole" class="f-textarea-field mono-font-panel" readonly placeholder="Extracting navigator.userAgent string..."></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="diagReportConsole">Diagnostic JSON Export Payload</label>
+          <textarea id="diagReportConsole" class="f-textarea-field mono-font-panel" readonly placeholder="Generating local environment diagnostic schema..."></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="runDiagnostics()">🔄 Re-Scan Environment</button>
+        <button class="f-btn f-btn-copy" id="copyUaBtn" onclick="copyUserAgent()">📋 Copy User-Agent</button>
+        <button class="f-btn f-btn-copy" id="copyReportBtn" onclick="copyJsonReport()">📋 Copy Full JSON</button>
+        <button class="f-btn f-btn-clear" onclick="resetDiagnostics()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">🔒 100% Private Client-Side Telemetry:</span>
+        All diagnostic scanning executes exclusively in local browser RAM using client-side JavaScript APIs. No personal data, hardware signatures, or browser fingerprints are transmitted to any remote servers.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Architecture of Client-Side Web Telemetry: Browser User-Agents, Viewport Geometry, and Hardware Forensics Explained</h2>
+      <p class="seo-p">Navigating modern web applications requires an intricate handshake between client devices and host servers. Web developers, security researchers, and quality assurance engineers routinely query client hardware and software configurations to ensure responsive design compatibility, detect rendering anomalies, and troubleshoot software-level regressions. When an endpoint connects to an internet resource, the local browser exposes dozens of discrete system properties through the Document Object Model (DOM) and the W3C Navigator interface.</p>
+      <p class="seo-p">This extensive technical manual explores the mechanics of browser identification, unravels the history and gradual deprecation of the traditional User-Agent string, examines client display geometries, details hardware fingerprinting vectors such as WebGL GPU probing, and outlines best practices for privacy-respecting client capability detection.</p>
+
+      <div class="seo-callout">
+        <strong>The Paradigm Shift: User-Agent Deprecation vs. Client Hints:</strong> Modern chromium-based browsers are actively freezing legacy `navigator.userAgent` strings to thwart passive device tracking. They are migrating to structured User-Agent Client Hints (UA-CH) via the `navigator.userAgentData` API, granting developers high-entropy hardware data only upon explicit, granular request.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Key Vectors in Browser Environment Detection</h3>
+      <p class="seo-p">A web browser acts as an insulated sandbox. However, to execute CSS stylesheets, run WebAssembly modules, and render complex 3D visual scenes, it exposes controlled access to the host machine's foundational capabilities:</p>
+
+      <h4 class="seo-h3">1. User-Agent String Parsing and Browser Engine Identification</h4>
+      <p class="seo-p">The legacy `navigator.userAgent` token is historically bloated with compatibility flags. For instance, almost all modern browsers contain substrings like `Mozilla/5.0`, `AppleWebKit/537.36`, and `KHTML, like Gecko` due to decades-old backward-compatibility concessions dating back to Netscape and Internet Explorer rivalries. Identifying whether an engine is Blink (Google Chrome, Microsoft Edge, Brave, Opera), Gecko (Mozilla Firefox), or WebKit (Apple Safari) requires parsing specific token orders, exclusion flags, or querying modern feature APIs such as `window.chrome` or `navigator.userAgentData`.</p>
+
+      <h4 class="seo-h3">2. Screen Resolution, Viewport Dimensions, and Device Pixel Ratio (DPR)</h4>
+      <p class="seo-p">Modern high-density displays (such as Apple Retina displays, OLED mobile panels, and 4K desktop monitors) decouple hardware physical pixels from software CSS layout pixels. This conversion is governed by the Device Pixel Ratio (`window.devicePixelRatio`). Our diagnostic utility inspects both the hardware boundary (`screen.width` &times; `screen.height`) and the active layout boundary (`window.innerWidth` &times; `window.innerHeight`). This diagnostic distinction is fundamental when debugging responsive breakpoint collapses and CSS media query execution.</p>
+
+      <h4 class="seo-h3">3. Hardware Concurrency and Device Memory Profiles</h4>
+      <p class="seo-p">Client execution performance depends directly on CPU thread availability and physical memory. Through `navigator.hardwareConcurrency`, JavaScript applications query the number of logical processor cores available to run multi-threaded Web Workers. Concurrently, `navigator.deviceMemory` provides an approximate estimate of host RAM in gigabytes (clamped to power-of-two values such as 0.25, 0.5, 1, 2, 4, or 8 to protect user anonymity).</p>
+
+      <h4 class="seo-h3">4. Graphics Processing Unit (GPU) Fingerprinting via WebGL Contexts</h4>
+      <p class="seo-p">Browsers utilizing hardware acceleration expose access to graphics card pipelines through HTML5 `<canvas>` elements and WebGL rendering contexts. By instantiating a lightweight, unrendered WebGL instance and requesting the `WEBGL_debug_renderer_info` extension, utilities extract the unmasked GPU vendor (e.g., NVIDIA Corporation, AMD, Apple Inc.) and renderer chip model. This metric is critical for debugging WebGL canvas performance bottlenecks and diagnosing shader compilation errors.</p>
+
+      <h3 class="seo-h2">The Statutory Diagnostic Matrix: Browser APIs & Properties</h3>
+      <p class="seo-p">The following reference table outlines the standard client properties inspected during a full browser diagnostic cycle, detailing the underlying JavaScript API and its real-world development impact:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Diagnostic Metric</th>
+              <th>W3C JavaScript API Property</th>
+              <th>Sample Expected Value</th>
+              <th>Engineering & Diagnostic Significance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Browser Family</td>
+              <td>`navigator.userAgent` / `userAgentData`</td>
+              <td>Chrome, Firefox, Safari, Edge</td>
+              <td>Determines rendering engine support and CSS layout engine compliance.</td>
+            </tr>
+            <tr>
+              <td>Host Operating System</td>
+              <td>`navigator.userAgent` / `navigator.platform`</td>
+              <td>Windows 10/11, macOS, Android, iOS</td>
+              <td>Informs platform-specific font rendering, scrollbar styling, and keybindings.</td>
+            </tr>
+            <tr>
+              <td>Display Geometry</td>
+              <td>`screen.width` &times; `screen.height`</td>
+              <td>1920 &times; 1080, 2560 &times; 1440</td>
+              <td>Indicates the total physical display area of the active monitor or device.</td>
+            </tr>
+            <tr>
+              <td>Layout Viewport</td>
+              <td>`window.innerWidth` &times; `innerHeight`</td>
+              <td>1440 &times; 789</td>
+              <td>Represents the true CSS rendering plane accounting for browser chrome and sidebars.</td>
+            </tr>
+            <tr>
+              <td>Pixel Density Ratio</td>
+              <td>`window.devicePixelRatio`</td>
+              <td>1.0, 1.25, 2.0 (HiDPI / Retina)</td>
+              <td>Governs the sharp rendering of SVG assets, `<canvas>` scaling, and `@media (-webkit-min-device-pixel-ratio)` rules.</td>
+            </tr>
+            <tr>
+              <td>Logical CPU Cores</td>
+              <td>`navigator.hardwareConcurrency`</td>
+              <td>4, 8, 16</td>
+              <td>Calculates optimal thread pool allocation for background Web Worker workloads.</td>
+            </tr>
+            <tr>
+              <td>Device RAM Capacity</td>
+              <td>`navigator.deviceMemory`</td>
+              <td>4, 8 (GB)</td>
+              <td>Enables adaptive asset loading (serving lightweight imagery to low-memory nodes).</td>
+            </tr>
+            <tr>
+              <td>GPU Unmasked Renderer</td>
+              <td>`gl.getParameter(UNMASKED_RENDERER_WEBGL)`</td>
+              <td>Apple M2, NVIDIA GeForce RTX 3080</td>
+              <td>Verifies GPU hardware acceleration state and identifies driver-level rendering defects.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h4 class="seo-h3">Why does my User-Agent string list multiple conflicting browsers?</h4>
+      <p class="seo-p">Legacy User-Agent strings contain historical tokens for compatibility. For instance, Google Chrome includes both `Safari/537.36` and `AppleWebKit/537.36` because WebKit originally powered Chrome, and early web servers blocked browsers that did not advertise Safari compatibility. Specialized regex parsing extracts the true browser engine from this composite string.</p>
+
+      <h4 class="seo-h3">What is the functional difference between Screen Resolution and Viewport Size?</h4>
+      <p class="seo-p">Screen resolution indicates the total hardware pixel dimensions of your physical display monitor. The viewport size reflects only the usable, visible canvas inside the browser window where web content is rendered, excluding browser URL address bars, tabs, bookmarks strips, and operating system taskbars.</p>
+
+      <h4 class="seo-h3">Why does the detected GPU vendor say "Google Inc. (Apple)" or "Mesa"?</h4>
+      <p class="seo-p">Many modern operating systems and privacy-focused browsers (such as Firefox ResistFingerprinting or the Tor Browser) mask or sanitize WebGL renderer parameters to prevent invasive browser fingerprinting. In other cases, Chrome's internal graphics abstraction layer (ANGLE) wraps the native graphics driver, reporting the translation engine instead of raw hardware silicon.</p>
+
+      <h4 class="seo-h3">Does running this browser diagnostic tool store or share my personal data?</h4>
+      <p class="seo-p">No. This tool operates 100% locally within your client browser session. No telemetry packets, network logging payloads, or diagnostic metrics are transmitted to any remote database. Refreshing or closing this tab completely clears all gathered environment metrics from active memory.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Client Telemetry</h3>
+      <p class="seo-p">Modern web development favors feature detection (such as `if ('serviceWorker' in navigator)` or CSS `@supports` declarations) over fragile User-Agent sniffing. However, evaluating raw browser data, active viewport dimensions, and hardware limits remains an essential diagnostic step when resolving layout bugs, validating high-DPI graphics rendering, and auditing client-side web application performance.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let diagnosticData = {};
+
+    function getBrowserAndOS() {
+      const ua = navigator.userAgent;
+      let browser = "Unknown Browser";
+      let version = "Unknown Version";
+      let os = "Unknown OS";
+
+      // Detect OS
+      if (/Windows NT 10.0/i.test(ua)) os = "Windows 10/11";
+      else if (/Windows NT 6.3/i.test(ua)) os = "Windows 8.1";
+      else if (/Windows NT 6.1/i.test(ua)) os = "Windows 7";
+      else if (/Mac OS X/i.test(ua)) {
+        const macMatch = ua.match(/Mac OS X ([0-9_]+)/);
+        os = macMatch ? "macOS " + macMatch[1].replace(/_/g, '.') : "macOS";
+      } else if (/Android/i.test(ua)) {
