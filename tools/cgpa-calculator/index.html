@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CGPA Calculator | Free Online Grade Point Average Calculator</title>
+  <meta name="description" content="Calculate your semester CGPA, SGPA, and aggregate academic percentage accurately with our free online CGPA Calculator. Supports 4.0, 5.0, and 10.0 grading scales." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/cgpa-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CGPA Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "EducationalApplication",
+    "description": "An interactive, accurate Cumulative Grade Point Average (CGPA) calculator supporting multi-semester credit weighting and grading scales.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CONFIGURATION & MODE BAR */
+    .calc-mode-bar { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; background: #f8fafc; padding: 16px 20px; border-radius: 16px; border: 1px solid #e2e8f0; align-items: center; justify-content: space-between; }
+    .calc-mode-item { display: flex; align-items: center; gap: 10px; }
+    .calc-mode-item label { font-size: 0.88rem; font-weight: 700; color: #334155; }
+    .calc-select { background: #ffffff; border: 2px solid #cbd5e1; border-radius: 10px; padding: 8px 14px; font-size: 0.95rem; font-family: inherit; font-weight: 600; color: #0f172a; outline: none; transition: border-color 0.2s; cursor: pointer; }
+    .calc-select:focus { border-color: #2563eb; }
+
+    /* DYNAMIC DATA ENTRY TABLE GRID */
+    .calc-table-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 20px; }
+    .calc-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+    .calc-table th { background: #f1f5f9; color: #475569; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 12px 14px; text-align: left; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+    .calc-table th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
+    .calc-table th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
+    .calc-table td { padding: 10px 8px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+    .calc-input { width: 100%; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 10px 12px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .calc-input:focus { border-color: #2563eb; background: #ffffff; }
+    .calc-del-btn { background: #fef2f2; border: 1px solid #fecaca; color: #ef4444; width: 36px; height: 36px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: background 0.15s; }
+    .calc-del-btn:hover { background: #fee2e2; }
+
+    /* SUMMARY DISPLAY PANEL */
+    .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 25px 0 15px 0; }
+    .summary-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px 20px; text-align: center; }
+    .summary-card-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .summary-card-val { font-size: 2rem; font-weight: 800; color: #0f172a; line-height: 1.1; }
+    .summary-card-val.highlight { color: #2563eb; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .summary-grid { grid-template-columns: 1fr; gap: 12px; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.45rem; margin-bottom: 22px; }
+      .calc-mode-bar { flex-direction: column; align-items: stretch; gap: 12px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🎓</span> CGPA Calculator</div>
+    
+    <div class="f-card">
+      <div class="calc-mode-bar">
+        <div class="calc-mode-item">
+          <label for="calcScaleSelect">Grading Scale:</label>
+          <select id="calcScaleSelect" class="calc-select" onchange="handleScaleChange()">
+            <option value="10" selected>10.0 Scale (India, International)</option>
+            <option value="4">4.0 Scale (US, Canada, Europe)</option>
+            <option value="5">5.0 Scale (Nigeria, Germany, SG)</option>
+          </select>
+        </div>
+        <div class="calc-mode-item">
+          <label for="percentageFormulaSelect">Percentage Formula:</label>
+          <select id="percentageFormulaSelect" class="calc-select" onchange="computeAcademicMetrics()">
+            <option value="cbse">CGPA × 9.5 (CBSE / AICTE standard)</option>
+            <option value="direct">CGPA × 10 (Direct Metric)</option>
+            <option value="mumbai">(CGPA × 7.25) + 11 (Mumbai Univ)</option>
+            <option value="us4">(CGPA / 4.0) × 100</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-table-wrapper">
+        <table class="calc-table" id="academicRecordsTable">
+          <thead>
+            <tr>
+              <th style="width: 38%;">Semester / Course Title</th>
+              <th style="width: 28%;">Grade Points / GPA</th>
+              <th style="width: 24%;">Credits / Weight</th>
+              <th style="width: 10%; text-align: center;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="recordsTableBody">
+            <!-- Dynamic rows generated via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <button type="button" class="f-btn f-btn-copy" style="max-width: 220px;" onclick="appendRecordRow()">+ Add Semester / Course</button>
+      </div>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="summary-card-title">Cumulative GPA (CGPA)</div>
+          <div class="summary-card-val highlight" id="computedCgpaVal">0.00</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-title">Equivalent Percentage</div>
+          <div class="summary-card-val" id="computedPercentageVal">0.00%</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-title">Total Earned Credits</div>
+          <div class="summary-card-val" id="computedCreditsVal">0</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="computeAcademicMetrics()">Recalculate Results</button>
+        <button class="f-btn f-btn-copy" id="copyMetricsBtn" onclick="copyCgpaSummary()">📋 Copy Summary</button>
+        <button class="f-btn f-btn-clear" onclick="resetAcademicWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 18px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Credit-Weighted Calculation Pipeline:</span>
+        All evaluations compute strictly using weighted geometric sums: <code>Σ (Grade Points × Credits) ÷ Σ Total Credits</code>. Changes to grade points or credit weights update outputs instantaneously in memory without data transmission.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Quantitative Mechanics of Academic Evaluation: Weighted Credit Structures, Cumulative Grade Point Averages, and Conversion Matrices</h2>
+      <p class="seo-p">Higher education grading infrastructures rely heavily on standardized metrics to evaluate academic diligence, intellectual rigor, and cumulative progress across multi-year degree curricula. Foremost among these appraisal standards is the Cumulative Grade Point Average (CGPA), a normalized statistical metric that consolidates an undergraduate or postgraduate student's performance across individual courses, semesters, and tri-semesters into a single quantitative figure.</p>
+      <p class="seo-p">Despite its ubiquity across universal academic registries, computing CGPA accurately requires a strict understanding of institutional grading scales, credit allocation hierarchies, semester-level grade point averages (SGPA), and regional conversion formulas. A naive simple average of semester figures frequently produces invalid results whenever course credit weights differ. This comprehensive educational guide breaks down the underlying mathematics, comparative international grading benchmarks, and reliable algorithms utilized by contemporary academic accreditation bodies.</p>
+
+      <div class="seo-callout">
+        <strong>The Fundamental Rule of Credit Weighting:</strong> A 4-credit advanced engineering or organic chemistry lecture carries twice the statistical weight of a 2-credit departmental lab. Calculating CGPA by taking a simple arithmetic mean of your semester GPAs is mathematically invalid unless all semesters have identical credit sums. Always apply weighted summation.
+      </div>
+
+      <h3 class="seo-h2">Mathematical Foundation: Demystifying SGPA vs. CGPA</h3>
+      <p class="seo-p">Academic registries utilize two distinct stages of grade aggregation: Semester Grade Point Average (SGPA) and Cumulative Grade Point Average (CGPA). Understanding their individual mechanics ensures your manual transcripts match official university credentials.</p>
+
+      <h4 class="seo-h3">1. Semester Grade Point Average (SGPA) Calculation</h4>
+      <p class="seo-p">SGPA evaluates academic achievement within a single dedicated term. In any given semester, a student enrolls in multiple modules, each assigned a specific credit value ($C_i$) reflecting class contact hours, and attains a corresponding numerical grade point ($G_i$). The formula for SGPA is represented as:</p>
+      
+      <p class="seo-p" style="text-align: center; font-weight: 700; background: #f8fafc; padding: 14px; border-radius: 10px; border: 1px solid #e2e8f0;">
+        $$\text{SGPA} = \frac{\sum_{i=1}^{n} (C_i \times G_i)}{\sum_{i=1}^{n} C_i}$$
+      </p>
+
+      <h4 class="seo-h3">2. Cumulative Grade Point Average (CGPA) Formulation</h4>
+      <p class="seo-p">CGPA is the consolidated weighted average of all semesters completed to date. Rather than simply averaging term SGPAs, the registrar sums the product of each semester's SGPA ($S_j$) and its respective total registered credit weight ($W_j$), divided by the cumulative credits completed throughout the academic degree program:</p>
+
+      <p class="seo-p" style="text-align: center; font-weight: 700; background: #f8fafc; padding: 14px; border-radius: 10px; border: 1px solid #e2e8f0;">
+        $$\text{CGPA} = \frac{\sum_{j=1}^{m} (W_j \times S_j)}{\sum_{j=1}^{m} W_j}$$
+      </p>
+
+      <h3 class="seo-h2">Universal Grading Scale Conversions (10.0 vs. 4.0 vs. 5.0)</h3>
+      <p class="seo-p">Global mobility for international careers and graduate admissions necessitates cross-translating grade point scales. Different regions configure their benchmark limits according to statutory higher education charters:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Letter Grade</th>
+              <th>10.0 Scale (India, AICTE/UGC)</th>
+              <th>4.0 Scale (US / Canada / WES)</th>
+              <th>5.0 Scale (Nigeria / Singapore)</th>
+              <th>Typical Performance Descriptor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>O / A+</b></td>
+              <td>10.0</td>
+              <td>4.0</td>
+              <td>5.0</td>
+              <td>Outstanding / First Class Exemplary</td>
+            </tr>
+            <tr>
+              <td><b>A</b></td>
+              <td>9.0</td>
+              <td>3.7 – 3.9</td>
+              <td>4.5 – 4.9</td>
+              <td>Excellent / High Distinction</td>
+            </tr>
+            <tr>
+              <td><b>B+</b></td>
+              <td>8.0</td>
+              <td>3.3 – 3.6</td>
+              <td>4.0 – 4.4</td>
+              <td>Very Good / Distinction</td>
+            </tr>
+            <tr>
+              <td><b>B</b></td>
+              <td>7.0</td>
+              <td>2.7 – 3.2</td>
+              <td>3.5 – 3.9</td>
+              <td>Good / First Class Division</td>
+            </tr>
+            <tr>
+              <td><b>C</b></td>
+              <td>6.0</td>
+              <td>2.0 – 2.6</td>
+              <td>3.0 – 3.4</td>
+              <td>Above Average / Second Class Upper</td>
+            </tr>
+            <tr>
+              <td><b>P / D</b></td>
+              <td>4.0 – 5.0</td>
+              <td>1.0 – 1.9</td>
+              <td>2.0 – 2.9</td>
+              <td>Pass / Marginal Competence</td>
+            </tr>
+            <tr>
+              <td><b>F</b></td>
+              <td>0.0</td>
+              <td>0.0</td>
+              <td>0.0</td>
+              <td>Fail / Incomplete / Unsatisfactory</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Converting CGPA to Equivalent Percentage</h3>
+      <p class="seo-p">Many multinational employers, government public service commissions, and scholarship committees require applicants to declare an equivalent percentage score. Because letter marks are categorized within bands, individual academic boards prescribe specific conversion formulas rather than uniform arithmetic:</p>
+
+      <ul class="seo-list">
+        <li><strong>CBSE and AICTE Standard Formula:</strong> $\text{Percentage (\%)} = \text{CGPA} \times 9.5$. Established through sample distributions where an average CGPA of 10 correlates historically with 95% marks due to non-standardized grading ceilings.</li>
+        <li><strong>Direct Proportional Scaling:</strong> $\text{Percentage (\%)} = \text{CGPA} \times 10$. Commonly deployed by technological institutes and state universities using absolute numerical evaluation baselines.</li>
+        <li><strong>Mumbai University Model:</strong> $\text{Percentage (\%)} = (\text{CGPA} \times 7.25) + 11$ (for CGPA ranging between 7.00 and 10.00). Accommodates rigid regional scaling offsets.</li>
+        <li><strong>US 4.0 Scale Standard:</strong> $\text{Percentage (\%)} = (\text{CGPA} \div 4.0) \times 100$. Employed primarily to approximate relative percentiles for graduate admissions portfolios.</li>
+      </ul>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ)</h3>
+
+      <h3>Can I calculate my final CGPA by simply adding all semester SGPAs and dividing by the number of semesters?</h3>
+      <p class="seo-p">You can only use a simple arithmetic average if every single semester had the exact same number of credit points. In almost all university programs, thesis semesters, internship intervals, or foundational years carry variable credit distributions. Performing a simple average creates statistical bias. You must multiply each semester's SGPA by its registered credits, sum those values, and divide by total completed credits.</p>
+
+      <h3>How do non-credit audit courses or backlogs impact CGPA calculation?</h3>
+      <p class="seo-p">Audit courses or pass/fail zero-credit seminars carry zero credit weighting and are excluded from CGPA divisor denominators. Conversely, when a student receives an 'F' grade in a graded subject, that subject's credits remain in the divisor, lowering the overall CGPA until the backlog is cleared and the replacement grade is factored in.</p>
+
+      <h3>Is this online CGPA calculation tool secure for confidential transcripts?</h3>
+      <p class="seo-p">Yes, entirely. The processing engine operates strictly client-side via JavaScript inside your local browser memory space. None of your course names, grades, or personal institutional academic records are ever transmitted over the network or saved to remote cloud servers.</p>
+
+      <h3 class="seo-h2">Summary: Strategies for Long-Term Grade Optimization</h3>
+      <p class="seo-p">Maximizing your cumulative academic profile requires deliberate tactical preparation. Prioritize courses carrying four or more credit units early in the semester, as they exercise disproportionately high leverage on both term SGPA and multi-year CGPA metrics. Regularly audit your university transcript against weighted computation algorithms to detect recording inconsistencies prior to final degree conferral.</p>
+      <p class="seo-p">Use our dynamic CGPA Calculator Pro above to model hypothetical scenarios, estimate requirements for academic honors, and translate transcripts reliably across international grading jurisdictions.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+
+  <script>
+    // CORE DYNAMIC CGPA COMPUTATIONAL ENGINE
+    let rowSequence = 0;
+
+    const defaultDataset = [
+      { name: "Semester 1", gpa: 8.5, credits: 20 },
+      { name: "Semester 2", gpa: 8.8, credits: 22 },
+      { name: "Semester 3", gpa: 8.2, credits: 21 },
+      { name: "Semester 4", gpa: 9.1, credits: 23 }
+    ];
+
+    function appendRecordRow(name = '', gpa = '', credits = '') {
+      rowSequence++;
+      const tbody = document.getElementById('recordsTableBody');
+      const tr = document.createElement('tr');
+      tr.id = `calc-row-${rowSequence}`;
+
+      const defaultLabel = name || `Semester ${tbody.children.length + 1}`;
+      const defaultGpa = gpa !== '' ? gpa : '';
+      const defaultCredits = credits !== '' ? credits : 20;
+
+      tr.innerHTML = `
+        <td>
+          <input type="text" class="calc-input course-title" value="${defaultLabel}" placeholder="e.g. Semester 1 or Course Name" oninput="computeAcademicMetrics()">
+        </td>
+        <td>
+          <input type="number" step="0.01" min="0" class="calc-input course-gpa" value="${defaultGpa}" placeholder="Grade / GPA" oninput="computeAcademicMetrics()">
+        </td>
+        <td>
+          <input type="number" step="0.5" min="0" class="calc-input course-credits" value="${defaultCredits}" placeholder="Credits" oninput="computeAcademicMetrics()">
+        </td>
+        <td style="text-align: center;">
+          <button type="button" class="calc-del-btn" title="Remove Row" onclick="removeRecordRow(${rowSequence})">✕</button>
+        </td>
+      `;
+
+      tbody.appendChild(tr);
+      computeAcademicMetrics();
+    }
+
+    function removeRecordRow(id) {
+      const tbody = document.getElementById('recordsTableBody');
+      if (tbody.children.length <= 1) {
+        alert("At least one entry row must remain in the calculation matrix.");
+        return;
+      }
+      const target = document.getElementById(`calc-row-${id}`);
+      if (target) {
+        target.remove();
+        computeAcademicMetrics();
+      }
+    }
+
+    function handleScaleChange() {
+      const scale = parseFloat(document.getElementById('calcScaleSelect').value);
+      const formulaSelect = document.getElementById('percentageFormulaSelect');
+
+      if (scale === 4) {
+        formulaSelect.value = "us4";
+      } else if (scale === 10) {
+        formulaSelect.value = "cbse";
+      } else {
+        formulaSelect.value = "direct";
+      }
+
+      computeAcademicMetrics();
+    }
+
+    function computeAcademicMetrics() {
+      const rows = document.querySelectorAll('#recordsTableBody tr');
+      const scale = parseFloat(document.getElementById('calcScaleSelect').value) || 10;
+      const formula = document.getElementById('percentageFormulaSelect').value;
+
+      let totalWeightedSum = 0;
+      let totalCreditSum = 0;
+
+      rows.forEach(row => {
+        const gpaInput = row.querySelector('.course-gpa');
+        const creditsInput = row.querySelector('.course-credits');
+
+        const gpa = parseFloat(gpaInput.value);
+        const credits = parseFloat(creditsInput.value);
+
+        if (!isNaN(gpa) && !isNaN(credits) && credits > 0) {
+          // Normalize gpa cap if user accidentally entered value greater than scale
+          const validGpa = Math.min(Math.max(gpa, 0), scale);
+          totalWeightedSum += (validGpa * credits);
+          totalCreditSum += credits;
+        }
+      });
+
+      let cgpa = 0;
+      if (totalCreditSum > 0) {
+        cgpa = totalWeightedSum / totalCreditSum;
+      }
+
+      let percentage = 0;
+      if (formula === 'cbse') {
+        percentage = cgpa * 9.5;
+      } else if (formula === 'direct') {
+        percentage = (cgpa
