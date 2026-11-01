@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Word Frequency Counter | Online Text Analytics & Keyword Density Tool</title>
+  <meta name="description" content="Analyze word frequency, keyword density, and text statistics instantly with our free online Word Frequency Counter. Perfect for SEO audits and content writing." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/word-frequency-counter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Word Frequency Counter Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced text analytics and lexical frequency parsing utility to calculate keyword density and term occurrences instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 200px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 600; font-size: 0.95rem; color: #0f172a; background: #f1f5f9; }
+
+    /* METRICS DASHBOARD ROW */
+    .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+    .metric-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px; text-align: center; }
+    .metric-card .m-label { font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #64748b; margin-bottom: 4px; }
+    .metric-card .m-value { font-size: 1.35rem; font-weight: 800; color: #0f172a; }
+
+    /* CONTROLS & SETTINGS BAR */
+    .settings-bar { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-bottom: 20px; padding: 14px 18px; background: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; font-size: 0.9rem; color: #334155; }
+    .settings-bar label { display: flex; align-items: center; gap: 6px; font-weight: 600; cursor: pointer; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 150px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+      .metrics-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📊</span> Word Frequency Counter</div>
+    
+    <div class="f-card">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="m-label">Total Words</div>
+          <div class="m-value" id="statWords">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="m-label">Unique Words</div>
+          <div class="m-value" id="statUnique">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="m-label">Characters</div>
+          <div class="m-value" id="statChars">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="m-label">Reading Time</div>
+          <div class="m-value" id="statReadTime">0s</div>
+        </div>
+      </div>
+
+      <div class="settings-bar">
+        <label><input type="checkbox" id="chkCase" checked onchange="runWordAnalysis()"> Case Insensitive</label>
+        <label><input type="checkbox" id="chkStopWords" checked onchange="runWordAnalysis()"> Filter Stop Words</label>
+        <label>Sort By: 
+          <select id="sortOrder" onchange="runWordAnalysis()" style="padding: 4px 8px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit;">
+            <option value="freq-desc">Frequency (High to Low)</option>
+            <option value="freq-asc">Frequency (Low to High)</option>
+            <option value="alpha-asc">Alphabetical (A-Z)</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="sourceTextInput">Source Text Input</label>
+          <textarea id="sourceTextInput" class="f-textarea-field" placeholder="Paste your article, essay, or raw text here to analyze keyword density and word frequencies..." oninput="runWordAnalysis()"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="frequencyOutputBox">Frequency Analysis Results (Word : Count [Density %])</label>
+          <textarea id="frequencyOutputBox" class="f-textarea-field mono-font-panel" readonly placeholder="Frequency table will populate here instantly as you type..."></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="runWordAnalysis()">Analyze Text</button>
+        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyFrequencyResults()">📋 Copy Frequency Table</button>
+        <button class="f-btn f-btn-clear" onclick="clearWordWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Client-Side Lexical Engine:</span>
+        Computes word counts, character totals, reading time estimates, and keyword percentages locally in real-time with zero server latency.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Science of Lexical Analysis: Understanding Word Frequency, Keyword Density, and Semantic Content Metrics</h2>
+      <p class="seo-p">Producing high-ranking search engine optimization (SEO) content, academic dissertations, or professional copywriting requires strict precision regarding word choice, keyword distribution, and text density. Overusing specific terms can trigger keyword stuffing penalties from search engine crawlers, while under-optimizing core topics can leave articles devoid of essential semantic signals. A reliable Word Frequency Counter acts as an indispensable diagnostic tool, giving writers complete transparency into the structural vocabulary of their drafts.</p>
+      <p class="seo-p">This comprehensive technical guide explores the mechanics of tokenization, keyword density calculations, natural language processing stop word filters, and best practices for balancing term distributions across digital publishing platforms.</p>
+
+      <div class="seo-callout">
+        <strong>The Keyword Density Principle:</strong> Keyword density represents the percentage of times a specific word or phrase appears compared to the total word count in a text document. Maintaining optimal density ensures topical relevance without triggering spam filters.
+      </div>
+
+      <h3 class="seo-h2">Core Computational Mechanics: How Text Tokenization and Counting Works</h3>
+      <p class="seo-p">When raw text strings pass through a high-performance JavaScript analysis pipeline, the engine executes several precise algorithmic steps to generate accurate metrics:</p>
+
+      <h4 class="seo-h3">1. Lexical Tokenization and Delimiter Splitting</h4>
+      <p class="seo-p">The raw string is scanned and split into individual token nodes using whitespace and punctuation boundaries. Special characters, symbols, and formatting marks are stripped out to isolate pure alphabetical strings.</p>
+
+      <h4 class="seo-h3">2. Case Normalization and Standardization</h4>
+      <p class="seo-p">When case-insensitivity is enabled, all characters are converted to lowercase. This ensures that "SEO", "Seo", and "seo" are correctly aggregated under a single frequency key rather than treated as distinct terms.</p>
+
+      <h4 class="seo-h3">3. English Stop Word Filtration</h4>
+      <p class="seo-p">Common structural words such as "the", "and", "is", "at", and "in" appear frequently in all English texts but carry minimal thematic weight. Filtering out these stop words allows content auditors to focus exclusively on meaningful substantive keywords.</p>
+
+      <h4 class="seo-h3">4. Density Computation and Sorting</h4>
+      <p class="seo-p">Each unique word's occurrence count is divided by the total valid word count, multiplying by 100 to yield an exact percentage density. Results are then sorted according to user preferences (frequency descending, ascending, or alphabetical).</p>
+
+      <h3>Standard Stop Words and Lexical Frequency Reference Matrix</h3>
+      <p class="seo-p">Reviewing how common grammatical particles compare to primary content keywords helps clarify why stop-word filtering is essential for professional SEO audits:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Token Category</th>
+              <th>Example Terms</th>
+              <th>Grammatical Function</th>
+              <th>Filtered by Default?</th>
+              <th>Impact on SEO Analysis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Definite / Indefinite Articles</td>
+              <td>the, a, an</td>
+              <td>Specify grammatical definiteness of nouns.</td>
+              <td>Yes</td>
+              <td>Removes high-frequency noise words that dominate raw word counts.</td>
+            </tr>
+            <tr>
+              <td>Coordinating Conjunctions</td>
+              <td>and, but, or, so</td>
+              <td>Connect clauses, phrases, and words together.</td>
+              <td>Yes</td>
+              <td>Eliminates structural glue words to highlight core subject nouns and verbs.</td>
+            </tr>
+            <tr>
+              <td>Prepositions</td>
+              <td>in, on, at, by, with</td>
+              <td>Indicate directional or spatial relationships.</td>
+              <td>Yes</td>
+              <td>Clears out grammatical connectors for precise keyword density metrics.</td>
+            </tr>
+            <tr>
+              <td>Primary Substantive Keywords</td>
+              <td>seo, marketing, content, tool</td>
+              <td>Core topical nouns representing document subject matter.</td>
+              <td>No</td>
+              <td>Preserved to evaluate topic concentration and keyword placement strategies.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is considered an ideal keyword density for SEO content?</h3>
+      <p class="seo-p">Most modern SEO guidelines recommend maintaining a keyword density between 1% and 2.5% for primary target terms. Anything significantly higher risks triggering search engine penalties for keyword stuffing, while percentages below 0.5% may fail to establish sufficient topical relevance.</p>
+
+      <h3>How does the reading time calculator estimate completion duration?</h3>
+      <p class="seo-p">The reading time metric is computed based on the scientific average adult reading speed of approximately 200 to 250 words per minute. For technical documents with dense terminology, actual reading times may be slightly longer.</p>
+
+      <h3>Is my text data stored or transmitted to external servers?</h3>
+      <p class="seo-p">Zero data transmission occurs. All calculations, tokenizations, and frequency listings execute entirely within your browser's local memory sandbox, ensuring absolute privacy for sensitive copywriting and unpublished drafts.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for Content Optimization and Keyword Analysis</h3>
+      <p class="seo-p">To maximize the impact of your written content, routinely audit your drafts using our Word Frequency Counter. Verify that your core keyword density stays within natural semantic boundaries, filter out stop words to review true subject nouns, and ensure your vocabulary remains engaging and diverse for your audience.</p>
+      <p class="seo-p">Our Advanced Word Frequency Counter suite automates all computational parsing instantly, providing clean, professional insights across any desktop or mobile device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // STOP WORDS LIST
+    const stopWords = new Set([
+      "a", "about", "above", "after", "again", "against", "all", "am", "an", "and", "any", "are", "aren't", "as", "at", 
+      "be", "because", "been", "before", "being", "below", "between", "both", "but", "by", "can't", "cannot", "could", 
+      "couldn't", "did", "didn't", "do", "does", "doesn't", "doing", "don't", "down", "during", "each", "few", "for", 
+      "from", "further", "had", "hadn't", "has", "hasn't", "have", "haven't", "having", "he", "he'd", "he'll", "he's", 
+      "her", "here", "here's", "hers", "herself", "him", "himself", "his", "how", "how's", "i", "i'd", "i'll", "i'm", 
+      "i've", "if", "in", "into", "is", "isn't", "it", "it's", "its", "itself", "let's", "me", "more", "most", "mustn't", 
+      "my", "myself", "no", "nor", "not", "of", "off", "on", "once", "only", "or", "other", "ought", "our", "ours", 
+      "ourselves", "out", "over", "own", "same", "shan't", "she", "she'd", "she'll", "she's", "should", "shouldn't", 
+      "so", "some", "such", "than", "that", "that's", "the", "their", "theirs", "them", "themselves", "then", "there", 
+      "there's", "these", "they", "they'd", "they'll", "they're", "they've", "this", "those", "through", "to", "too", 
+      "under", "until", "up", "very", "was", "wasn't", "we", "we'd", "we'll", "we're", "we've", "were", "weren't", 
+      "what", "what's", "when", "when's", "where", "where's", "which", "while", "who", "who's", "whom", "why", "why's", 
+      "with", "won't", "would", "wouldn't", "you", "you'd", "you'll", "you're", "you've", "your", "yours", "yourself", "yourselves"
+    ]);
+
+    function runWordAnalysis() {
+      const text = document.getElementById('sourceTextInput').value;
+      const caseInsensitive = document.getElementById('chkCase').checked;
+      const filterStop = document.getElementById('chkStopWords').checked;
+      const sortOrder = document.getElementById('sortOrder').value;
+
+      // Character count
+      const charCount = text.length;
+
+      // Extract words
+      let cleanText = caseInsensitive ? text.toLowerCase() : text;
+      // Match words (unicode supported letters)
+      const rawWords = cleanText.match(/[\p{L}\p{N}]+/gu) || [];
+      const totalWords = rawWords.length;
+
+      // Filter stop words and compute frequencies
+      const freqMap = {};
+      let validWordCount = 0;
+
+      rawWords.forEach(word => {
+        if (filterStop && stopWords.has(word)) return;
+        freqMap[word] = (freqMap[word] || 0) + 1;
+        validWordCount++;
+      });
+
+      const uniqueWords = Object.keys(freqMap).length;
+
+      // Reading time (approx 225 words per minute)
+      const seconds = Math.ceil((totalWords / 225) * 60);
+      let readTimeString = seconds < 60 ? `${seconds}s` : `${Math.ceil(seconds / 60)} min`;
+      if (totalWords === 0) readTimeString = '0s';
+
+      // Update stat cards
+      document.getElementById('statWords').textContent = totalWords;
+      document.getElementById('statUnique').textContent = uniqueWords;
+      document.getElementById('statChars').textContent = charCount;
+      document.getElementById('statReadTime').textContent = readTimeString;
+
+      // Sort entries
+      let entries = Object.entries(freqMap);
+      entries.sort((a, b) => {
+        if (sortOrder === 'freq-desc') {
+          return b[1] - a[1] || a[0].localeCompare(b[0]);
+        } else if (sortOrder === 'freq-asc') {
+          return a[1] - b[1] || a[0].localeCompare(b[0]);
+        } else if (sortOrder === 'alpha-asc') {
+          return a[0].localeCompare(b[0]) || b[1] - a[1];
+        }
+      });
+
+      // Format output text
+      let outputLines = [];
+      entries.forEach(([word, count]) => {
+        const density = validWordCount > 0 ? ((count / validWordCount) * 100).toFixed(2) : '0.00';
+        outputLines.push(`${word} : ${count} [${density}%]`);
+      });
+
+      document.getElementById('frequencyOutputBox').value = outputLines.join('\n');
+    }
+
+    function copyFrequencyResults() {
+      const box = document.getElementById('frequencyOutputBox');
+      if (!box.value) return;
+      box.select();
+      navigator.clipboard.writeText(box.value).then(() => {
+        const btn = document.getElementById('copyResultsBtn');
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Copied Successfully!';
+        btn.style.background = '#22c55e';
+        btn.style.color = '#ffffff';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 2000);
+      });
+    }
+
+    function clearWordWorkspace() {
+      document.getElementById('sourceTextInput').value = '';
+      document.getElementById('frequencyOutputBox').value = '';
+      runWordAnalysis();
+    }
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
