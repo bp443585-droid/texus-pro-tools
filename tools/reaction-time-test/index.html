@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Reaction Time Test | Free Online Reflex & Speed Tester</title>
-  <meta name="description" content="Test your reflexes instantly with our free online Reaction Time Test. Measure your visual reaction speed in milliseconds and track your average performance." />
+  <title>Reaction Time Test | Free Online Reflex & Speed Checker</title>
+  <meta name="description" content="Test and measure your visual reflex speed instantly with our free online Reaction Time Test. Get accurate millisecond feedback and track your average reflex score." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -19,7 +19,7 @@ crossorigin="anonymous"></script>
     "name": "Reaction Time Test Pro",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
-    "description": "An interactive online utility to measure human visual reflex response speeds in milliseconds accurately.",
+    "description": "An interactive precision reflex testing utility to measure millisecond response speed and evaluate visual stimuli synchronization.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -33,7 +33,7 @@ crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
   <style>
-    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with style.css) */
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
     .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
     .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
     .f-heading span { font-size: 2.4rem; }
@@ -41,28 +41,27 @@ crossorigin="anonymous"></script>
     /* WORKSPACE CORE CONTAINER CARD */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
     
-    /* REACTION TEST INTERACTIVE ARENA */
-    .reaction-arena { width: 100%; height: 320px; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; cursor: pointer; user-select: none; transition: background 0.1s ease; background: #2563eb; color: #ffffff; padding: 20px; box-sizing: border-box; position: relative; overflow: hidden; }
-    .reaction-arena.waiting { background: #dc2626; }
-    .reaction-arena.ready { background: #16a34a; }
-    .reaction-arena.result { background: #0f172a; }
-    .reaction-arena.early { background: #ca8a04; }
+    /* REACTION TEST CONSOLE STYLING */
+    .reaction-screen { width: 100%; height: 360px; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; cursor: pointer; user-select: none; transition: background 0.15s ease; padding: 20px; box-sizing: border-box; position: relative; overflow: hidden; }
+    .state-waiting { background: #2563eb; color: #ffffff; }
+    .state-ready { background: #dc2626; color: #ffffff; }
+    .state-click { background: #16a34a; color: #ffffff; }
+    .state-early { background: #475569; color: #ffffff; }
 
-    .reaction-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; }
-    .reaction-subtitle { font-size: 1.1rem; opacity: 0.9; max-width: 500px; line-height: 1.4; }
+    .reaction-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+    .reaction-subtitle { font-size: 1.1rem; opacity: 0.9; max-width: 500px; line-height: 1.5; font-weight: 500; }
 
-    /* STATS GRID */
-    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
-    .stat-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px; text-align: center; }
-    .stat-label { font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-    .stat-value { font-size: 1.5rem; font-weight: 800; color: #0f172a; }
+    .reaction-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+    .stat-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px; text-align: center; }
+    .stat-label { font-size: 0.78rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .stat-value { font-size: 1.5rem; font-weight: 800; color: #0f172a; font-family: 'Courier New', Courier, monospace; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
     .f-action-strip { display: flex; gap: 12px; margin-top: 24px; }
     .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
     .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
     .f-btn-convert:hover { background: #1d4ed8; }
-    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 160px; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 140px; }
     .f-btn-clear:hover { background: #fee2e2; }
 
     /* PREMIUM EDITORIAL CONTENT STYLING GRID */
@@ -86,13 +85,13 @@ crossorigin="anonymous"></script>
       .f-wrapper { padding: 0 28px !important; }
       .seo-title { font-size: 1.8rem; }
       .seo-h2 { font-size: 1.35rem; }
+      .reaction-stats-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .f-card { padding: 25px 20px; border-radius: 20px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
-      .reaction-arena { height: 260px; }
-      .reaction-title { font-size: 1.7rem; }
-      .stats-row { grid-template-columns: 1fr; gap: 10px; }
+      .reaction-screen { height: 280px; }
+      .reaction-title { font-size: 1.6rem; }
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
       .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
@@ -111,101 +110,95 @@ crossorigin="anonymous"></script>
     <div class="f-heading"><span>⚡</span> Reaction Time Test</div>
     
     <div class="f-card">
-      <div id="reactionArena" class="reaction-arena" onclick="handleArenaClick()">
+      <div id="reactionBox" class="reaction-screen state-waiting" onclick="handleReactionClick()">
         <div id="reactionTitle" class="reaction-title">Click to Start</div>
-        <div id="reactionSubtitle" class="reaction-subtitle">Test your visual reflex speed. Measure how fast you can respond when the screen turns green.</div>
+        <div id="reactionSubtitle" class="reaction-subtitle">When the red box turns green, click as fast as you can!</div>
       </div>
 
-      <div class="stats-row">
+      <div class="reaction-stats-grid">
         <div class="stat-box">
-          <div class="stat-label">Last Score</div>
-          <div id="lastScore" class="stat-value">-- ms</div>
+          <div class="stat-label">Last Attempt</div>
+          <div id="statLast" class="stat-value">0 ms</div>
         </div>
         <div class="stat-box">
-          <div class="stat-label">Best Score</div>
-          <div id="bestScore" class="stat-value">-- ms</div>
+          <div class="stat-label">Fastest Score</div>
+          <div id="statBest" class="stat-value">0 ms</div>
         </div>
         <div class="stat-box">
           <div class="stat-label">Average (5 Tries)</div>
-          <div id="avgScore" class="stat-value">-- ms</div>
+          <div id="statAvg" class="stat-value">0 ms</div>
         </div>
       </div>
 
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="startTest()">Start New Test</button>
-        <button class="f-btn f-btn-clear" onclick="resetStats()">Reset Stats</button>
+        <button class="f-btn f-btn-convert" onclick="startReactionTest()">Start New Test</button>
+        <button class="f-btn f-btn-clear" onclick="resetReactionScores()">Reset Stats</button>
       </div>
       
       <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ High-Precision Millisecond Timing:</span>
-        This test uses high-resolution browser performance timestamps to calculate your exact reflex duration. Avoid clicking prematurely when the box is red!
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Precision Millisecond Evaluation Protocol:</span>
+        Measures your visual stimulus-to-motor reflex latency. Avoid premature clicks to ensure accurate statistical averages.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Neurology of Human Reflexes: Understanding Visual Reaction Times, Millisecond Measurement, and Cognitive Speed</h2>
-      <p class="seo-p">Human reaction time is the elapsed interval between the presentation of a sensory stimulus and the subsequent behavioral response. Whether you are gaming competitively, driving on a busy highway, or responding to fast-moving workplace hazards, your central nervous system's ability to process visual signals and trigger motor outputs dictates your physical safety and performance efficiency. Although lightning-fast responses often seem instinctual, they are the result of complex electrochemical cascades traveling from the eyes along neural pathways to the brain and down to muscular skeletal effectors.</p>
-      <p class="seo-p">This comprehensive guide explores the neurological mechanisms behind human reaction speeds, examines factors that influence reflex performance, reviews historical benchmarks across age groups, and outlines practical strategies to sharpen your mental agility and cognitive alertness.</p>
+      <h2 class="seo-title">The Science of Human Reflexes: Measuring Visual Reaction Times, Neurological Pathways, and Motor Speed Benchmarks</h2>
+      <p class="seo-p">Human reaction time is the elapsed interval between the presentation of a sensory stimulus and the subsequent behavioral motor response. In digital environments, visual reaction tests measure how quickly the human eye perceives a color transition on a screen and transmits that signal through the optic nerve to the visual cortex, motor cortex, and finally down the spinal cord to press a mouse button or tap a mobile screen. Understanding your baseline reflex speed is essential for competitive gaming, high-speed sports performance analysis, and cognitive health tracking.</p>
+      <p class="seo-p">This extensive computing and physiological manual explores the neurological components of simple reaction times, analyzes hardware latency variables, reviews age-related performance curves, and outlines best practices for optimizing your hand-eye coordination.</p>
 
       <div class="seo-callout">
-        <strong>The Neural Pathway Transmission:</strong> When a visual stimulus appears on your screen, photons hit your retinal photoreceptors, transmitting electrochemical signals through the optic nerve to the visual cortex before motor commands travel down the spinal cord to press your input device.
+        <strong>The Neural Transmission Factor:</strong> While electrical nerve impulses travel at incredible speeds up to 120 meters per second, synaptic junctions and cognitive processing add measurable milliseconds, resulting in typical human visual reaction times between 150ms and 300ms.
       </div>
 
-      <h3 class="seo-h2">The Biological Anatomy of a Visual Reflex</h3>
-      <p class="seo-p">Measuring human response times requires understanding the physiological stages that occur within milliseconds of an event:</p>
+      <h3 class="seo-h2">The Physiological Pipeline: From Photons to Motor Output</h3>
+      <p class="seo-p">When you participate in a digital reaction time assessment, your central nervous system executes a rapid multi-stage neurological relay:</p>
 
-      <h4 class="seo-h3">1. Sensory Reception & Photoreception</h4>
-      <p class="seo-p">Light reflecting from the computer display hits the rods and cones in your retina. This chemical transformation converts photonic energy into neural electrical impulses.</p>
+      <h4 class="seo-h3">1. Photoreceptor Activation (Retina)</h4>
+      <p class="seo-p">Photons emitted by your display strike the rod and cone cells in your retina, converting light energy into electrochemical signals.</p>
 
-      <h4 class="seo-h3">2. Central Neural Processing</h4>
-      <p class="seo-p">Signals travel along the optic nerve through the lateral geniculate nucleus to the primary visual cortex in the occipital lobe, where your brain recognizes the color shift from red to green.</p>
+      <h4 class="seo-h3">2. Cortical Processing (Occipital Lobe)</h4>
+      <p class="seo-p">Signals travel along the optic nerve past the optic chiasm into the visual cortex in the occipital lobe, where the brain identifies the color change from red to green.</p>
 
-      <h4 class="seo-h3">3. Motor Execution & Muscular Feedback</h4>
-      <p class="seo-p">Once interpreted, motor commands travel from the motor cortex down the spinal cord to your finger muscles, resulting in a click. This entire arc typically takes between 150 to 300 milliseconds in healthy adults.</p>
+      <h4 class="seo-h3">3. Motor Planning and Execution (Motor Cortex)</h4>
+      <p class="seo-p">The prefrontal and motor cortices formulate a muscular contraction command, transmitting electrical signals down the spinal cord and peripheral nerves to flex your finger.</p>
 
-      <h3>The Statutory Benchmark Reference Matrix: Reaction Time Performance Tiers</h3>
-      <p class="seo-p">Evaluating where your reflex scores land compared to global averages can help you gauge your cognitive alertness and fatigue levels:</p>
+      <h3>The Statutory Reference Matrix: Human Reaction Time Benchmarks</h3>
+      <p class="seo-p">Comparing your personal reflex scores against established neurological benchmarks helps contextualize your cognitive processing speed and physical responsiveness:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Performance Tier</th>
-              <th>Response Duration Range</th>
-              <th>Physiological Classification</th>
-              <th>Typical Context and Activity Profile</th>
+              <th>Performance Category</th>
+              <th>Millisecond Range (ms)</th>
+              <th>Physiological Profile & Typical Context</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Elite Esports Athlete</td>
-              <td><b>&lt; 160 ms</b></td>
-              <td>Exceptional Neural Efficiency</td>
-              <td>Professional gamers, racing drivers, and fighter pilots with hyper-optimized motor pathways.</td>
+              <td>Elite Athlete / Esports Pro</td>
+              <td><b>120ms - 170ms</b></td>
+              <td>Exceptional neural synchronization, common among professional racing drivers and competitive gamers.</td>
             </tr>
             <tr>
-              <td>Above Average Adult</td>
-              <td><b>160 ms – 200 ms</b></td>
-              <td>High Alertness State</td>
-              <td>Regular gamers and athletes with well-conditioned hand-eye coordination and focus.</td>
+              <td>Above Average Reflex</td>
+              <td><b>171ms - 220ms</b></td>
+              <td>Highly responsive nervous system with well-trained hand-eye coordination pathways.</td>
             </tr>
             <tr>
-              <td>Standard Population Mean</td>
-              <td><b>200 ms – 250 ms</b></td>
-              <td>Normal Human Baseline</td>
-              <td>Typical healthy adults under normal resting conditions and stable circadian rhythms.</td>
+              <td>Average Human Baseline</td>
+              <td><b>221ms - 280ms</b></td>
+              <td>Standard healthy adult visual reaction time under normal rested conditions.</td>
             </tr>
             <tr>
-              <td>Fatigued / Distracted</td>
-              <td><b>250 ms – 350 ms</b></td>
-              <td>Delayed Processing State</td>
-              <td>Individuals experiencing sleep deprivation, high stress, or minor cognitive fatigue.</td>
+              <td>Below Average / Fatigued</td>
+              <td><b>281ms - 350ms</b></td>
+              <td>Slower response rates often caused by sleep deprivation, distraction, or sluggish displays.</td>
             </tr>
             <tr>
-              <td>Impaired Response</td>
-              <td><b>&gt; 350 ms</b></td>
-              <td>Slowed Neuromuscular Feedback</td>
-              <td>Deep exhaustion, alcohol influence, or significant neurological distraction.</td>
+              <td>Impaired / Delayed</td>
+              <td><b>351ms+</b></td>
+              <td>Significant latency resulting from extreme fatigue, chemical impairment, or severe hardware input lag.</td>
             </tr>
           </tbody>
         </table>
@@ -213,103 +206,23 @@ crossorigin="anonymous"></script>
 
       <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
 
-      <h3>What is considered a "normal" reaction time on this test?</h3>
-      <p class="seo-p">The average human reaction time to a visual stimulus is roughly 200 to 250 milliseconds (0.2 to 0.25 seconds). If you practice regularly or maintain high physical fitness, you can often push your average down toward 170 to 190 milliseconds.</p>
+      <h3>What is considered a good score on a reaction time test?</h3>
+      <p class="seo-p">The average human reaction time to a visual stimulus is roughly 250 milliseconds (0.25 seconds). If you score under 200 milliseconds, your reflexes are faster than average. Professional gamers and athletes frequently average between 150ms and 180ms.</p>
 
-      <h3>Why do my reaction times fluctuate between attempts?</h3>
-      <p class="seo-p">Reflex speeds are influenced by moment-to-moment micro-fluctuations in attention, breathing rhythm, finger placement on your mouse or trackpad, and screen display latency. Minimizing distractions and maintaining steady focus will yield more consistent scores.</p>
+      <h3>How does hardware input lag affect reaction time scores?</h3>
+      <p class="seo-p">Hardware display latency, Bluetooth mouse polling rates, and browser rendering delays can add 15ms to 50ms of artificial lag to your score. Using a wired gaming mouse and a high-refresh-rate monitor ensures the most accurate measurement of your true biological reflex speed.</p>
 
-      <h3>Does hardware latency affect my test results?</h3>
-      <p class="seo-p">Yes! Standard LCD/LED monitors have input lag and pixel response times ranging from 1ms to 20ms. Furthermore, Bluetooth mice and wireless keyboards can introduce an extra 10ms to 30ms of transmission delay compared to wired peripherals.</p>
+      <h3>Does fatigue or caffeine influence reaction speed?</h3>
+      <p class="seo-p">Yes! Sleep deprivation significantly degrades cognitive processing and lengthens reaction times. Conversely, moderate doses of caffeine can temporarily sharpen neural alertness, though excessive stimulants may introduce jitter and premature clicks.</p>
 
-      <h3 class="seo-h2">Summary: Tips to Improve Your Reflex Speed and Focus</h3>
-      <p class="seo-p">To optimize your reaction times, ensure you are well-rested, minimize background noise, use a wired mouse with a high polling rate, and practice regular hand-eye coordination exercises. Our online Reaction Time Test provides a fast, free, and reliable way to measure your mental sharpness anytime.</p>
+      <h3 class="seo-h2">Summary: Optimizing Reflex Training and Cognitive Agility</h3>
+      <p class="seo-p">To achieve your peak performance, take tests in a well-lit environment free from distractions, ensure your hardware is configured for minimal input latency, and take regular breaks to avoid mental exhaustion. Our online Reaction Time Test suite provides precise millisecond metrics, allowing you to track your progress over time securely and efficiently.</p>
     </div>
   </main>
 
   <div id="site-footer"></div>
 
   <script type="text/javascript">
-    let gameState = 'idle'; // 'idle', 'waiting', 'ready', 'result', 'early'
-    let startTime = 0;
-    let timeoutId = null;
-    let scores = [];
-
-    const arena = document.getElementById('reactionArena');
-    const title = document.getElementById('reactionTitle');
-    const subtitle = document.getElementById('reactionSubtitle');
-    const lastScoreEl = document.getElementById('lastScore');
-    const bestScoreEl = document.getElementById('bestScore');
-    const avgScoreEl = document.getElementById('avgScore');
-
-    function startTest() {
-      if (gameState === 'waiting') return;
-      clearTimeout(timeoutId);
-      
-      arena.className = 'reaction-arena waiting';
-      title.textContent = 'Wait for green...';
-      subtitle.textContent = 'Keep your finger ready. Do not click yet!';
-      gameState = 'waiting';
-
-      const randomDelay = Math.floor(Math.random() * 2000) + 2000; // 2 to 4 seconds
-      timeoutId = setTimeout(() => {
-        arena.className = 'reaction-arena ready';
-        title.textContent = 'CLICK NOW!';
-        subtitle.textContent = 'Click as fast as you can!';
-        gameState = 'ready';
-        startTime = performance.now();
-      }, randomDelay);
-    }
-
-    function handleArenaClick() {
-      if (gameState === 'idle') {
-        startTest();
-      } else if (gameState === 'waiting') {
-        clearTimeout(timeoutId);
-        arena.className = 'reaction-arena early';
-        title.textContent = 'Too Soon!';
-        subtitle.textContent = 'You clicked before the screen turned green. Click anywhere to try again.';
-        gameState = 'idle';
-      } else if (gameState === 'ready') {
-        const endTime = performance.now();
-        const reactionTime = Math.round(endTime - startTime);
-        
-        scores.push(reactionTime);
-        if (scores.length > 5) scores.shift();
-
-        updateStats(reactionTime);
-
-        arena.className = 'reaction-arena result';
-        title.textContent = `${reactionTime} ms`;
-        subtitle.textContent = 'Great job! Click anywhere to test your reflexes again.';
-        gameState = 'idle';
-      } else if (gameState === 'early' || gameState === 'result') {
-        startTest();
-      }
-    }
-
-    function updateStats(latest) {
-      lastScoreEl.textContent = `${latest} ms`;
-      
-      const best = Math.min(...scores);
-      bestScoreEl.textContent = `${best} ms`;
-
-      const sum = scores.reduce((a, b) => a + b, 0);
-      const avg = Math.round(sum / scores.length);
-      avgScoreEl.textContent = `${avg} ms`;
-    }
-
-    function resetStats() {
-      scores = [];
-      lastScoreEl.textContent = '-- ms';
-      bestScoreEl.textContent = '-- ms';
-      avgScoreEl.textContent = '-- ms';
-      arena.className = 'reaction-arena';
-      title.textContent = 'Click to Start';
-      subtitle.textContent = 'Test your visual reflex speed. Measure how fast you can respond when the screen turns green.';
-      gameState = 'idle';
-    }
-
     const basePath = window.location.origin;
     
     fetch('/components/header.html')
@@ -321,6 +234,84 @@ crossorigin="anonymous"></script>
       .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
+
+    // Reaction Time Test Core Logic
+    let gameState = 'IDLE'; // IDLE, WAITING, READY, RESULT, EARLY
+    let startTime = 0;
+    let timeoutId = null;
+    let scores = [];
+
+    const box = document.getElementById('reactionBox');
+    const title = document.getElementById('reactionTitle');
+    const subtitle = document.getElementById('reactionSubtitle');
+    const statLast = document.getElementById('statLast');
+    const statBest = document.getElementById('statBest');
+    const statAvg = document.getElementById('statAvg');
+
+    function startReactionTest() {
+      if (timeoutId) clearTimeout(timeoutId);
+      gameState = 'WAITING';
+      box.className = 'reaction-screen state-ready';
+      title.textContent = 'Wait for Green...';
+      subtitle.textContent = 'Keep your finger ready. Do not click yet!';
+      
+      const randomDelay = Math.floor(Math.random() * 2000) + 1500; // 1.5s to 3.5s
+      timeoutId = setTimeout(() => {
+        if (gameState === 'WAITING') {
+          gameState = 'READY';
+          box.className = 'reaction-screen state-click';
+          title.textContent = 'CLICK NOW!';
+          subtitle.textContent = 'Click as fast as you can!';
+          startTime = performance.now();
+        }
+      }, randomDelay);
+    }
+
+    function handleReactionClick() {
+      if (gameState === 'IDLE') {
+        startReactionTest();
+      } else if (gameState === 'WAITING') {
+        if (timeoutId) clearTimeout(timeoutId);
+        gameState = 'EARLY';
+        box.className = 'reaction-screen state-early';
+        title.textContent = 'Too Soon!';
+        subtitle.textContent = 'You clicked before the box turned green. Click here to try again.';
+      } else if (gameState === 'READY') {
+        const endTime = performance.now();
+        const reactionTime = Math.round(endTime - startTime);
+        scores.push(reactionTime);
+        
+        gameState = 'RESULT';
+        box.className = 'reaction-screen state-waiting';
+        title.textContent = `${reactionTime} ms`;
+        subtitle.textContent = 'Great reflex! Click anywhere to play again.';
+        
+        updateStats(reactionTime);
+      } else if (gameState === 'EARLY' || gameState === 'RESULT') {
+        startReactionTest();
+      }
+    }
+
+    function updateStats(last) {
+      statLast.textContent = last + ' ms';
+      const best = Math.min(...scores);
+      statBest.textContent = best + ' ms';
+      const recent5 = scores.slice(-5);
+      const avg = Math.round(recent5.reduce((a, b) => a + b, 0) / recent5.length);
+      statAvg.textContent = avg + ' ms';
+    }
+
+    function resetReactionScores() {
+      if (timeoutId) clearTimeout(timeoutId);
+      scores = [];
+      gameState = 'IDLE';
+      box.className = 'reaction-screen state-waiting';
+      title.textContent = 'Click to Start';
+      subtitle.textContent = 'When the red box turns green, click as fast as you can!';
+      statLast.textContent = '0 ms';
+      statBest.textContent = '0 ms';
+      statAvg.textContent = '0 ms';
+    }
   </script>
   
   <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
