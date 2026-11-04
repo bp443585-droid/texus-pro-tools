@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Signature Generator to PNG | Create & Download Digital Signatures</title>
+  <meta name="description" content="Create professional electronic signatures online with our free Signature Generator to PNG tool. Draw or type, customize pens & backgrounds, and download instantly." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/signature-generator-to-png/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Signature Generator to PNG Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced online utility to draw or type custom electronic signatures, customize styling, and export high-resolution transparent PNG files instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Great+Vibes&family=Pacifico&family=Sacramento&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TABS & CONTROLS */
+    .sig-tabs { display: flex; gap: 10px; margin-bottom: 24px; border-bottom: 2px solid #f1f5f9; padding-bottom: 12px; }
+    .sig-tab-btn { background: #f8fafc; border: 1px solid #cbd5e1; color: #475569; padding: 10px 20px; border-radius: 10px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 0.95rem; }
+    .sig-tab-btn.active { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    .sig-controls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; background: #f8fafc; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0; }
+    .sig-control-group { display: flex; flex-direction: column; gap: 6px; }
+    .sig-control-group label { font-size: 0.82rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sig-control-group input[type="text"], .sig-control-group select { width: 100%; padding: 10px 14px; border: 2px solid #cbd5e1; border-radius: 10px; font-size: 1rem; outline: none; background: #ffffff; transition: border-color 0.2s; font-family: inherit; }
+    .sig-control-group input[type="text"]:focus, .sig-control-group select:focus { border-color: #2563eb; }
+    .sig-color-picker-wrapper { display: flex; align-items: center; gap: 10px; }
+    .sig-control-group input[type="color"] { -webkit-appearance: none; border: none; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; background: none; }
+    .sig-control-group input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+    .sig-control-group input[type="color"]::-webkit-color-swatch { border: 2px solid #cbd5e1; border-radius: 8px; }
+
+    /* CANVAS & PREVIEW AREA */
+    .sig-canvas-container { position: relative; width: 100%; height: 260px; background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 16px; overflow: hidden; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; }
+    canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
+    .sig-type-preview { font-size: 3.5rem; text-align: center; padding: 20px; word-break: break-all; max-width: 100%; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 140px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .sig-controls-grid { grid-template-columns: 1fr; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>✍️</span> Signature Generator to PNG</div>
+    
+    <div class="f-card">
+      <div class="sig-tabs">
+        <button class="sig-tab-btn active" id="tabDrawBtn" onclick="switchMode('draw')">Draw Signature</button>
+        <button class="sig-tab-btn" id="tabTypeBtn" onclick="switchMode('type')">Type Signature</button>
+      </div>
+
+      <div class="sig-controls-grid">
+        <div class="sig-control-group" id="typeInputGroup" style="display: none;">
+          <label for="sigTextInput">Your Full Name / Initials</label>
+          <input type="text" id="sigTextInput" value="John Doe" placeholder="Type your name..." oninput="updateTypePreview()">
+        </div>
+
+        <div class="sig-control-group" id="fontSelectGroup" style="display: none;">
+          <label for="sigFontSelect">Signature Font Style</label>
+          <select id="sigFontSelect" onchange="updateTypePreview()">
+            <option value="'Great Vibes', cursive">Great Vibes</option>
+            <option value="'Caveat', cursive">Caveat</option>
+            <option value="'Dancing Script', cursive">Dancing Script</option>
+            <option value="'Pacifico', cursive">Pacifico</option>
+            <option value="'Sacramento', cursive">Sacramento</option>
+          </select>
+        </div>
+
+        <div class="sig-control-group" id="strokeWidthGroup">
+          <label for="strokeWidthRange">Pen Thickness: <span id="strokeWidthVal">3</span>px</label>
+          <input type="range" id="strokeWidthRange" min="1" max="10" value="3" oninput="document.getElementById('strokeWidthVal').innerText=this.value; setPenStyle();">
+        </div>
+
+        <div class="sig-control-group">
+          <label>Pen Ink Color</label>
+          <div class="sig-color-picker-wrapper">
+            <input type="color" id="penColorPicker" value="#0f172a" onchange="setPenStyle()">
+            <span id="colorHexText" style="font-family: monospace; font-weight: 700; color: #475569;">#0F172A</span>
+          </div>
+        </div>
+
+        <div class="sig-control-group">
+          <label for="bgStyleSelect">Background Canvas</label>
+          <select id="bgStyleSelect" onchange="redrawCanvasBackground()">
+            <option value="transparent">Transparent (PNG)</option>
+            <option value="white">Solid White</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="sig-canvas-container" id="canvasContainer">
+        <canvas id="signatureCanvas"></canvas>
+        <div id="typePreviewContainer" class="sig-type-preview" style="display: none; font-family: 'Great Vibes', cursive; color: #0f172a;">John Doe</div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="downloadSignaturePNG()">📥 Download High-Res PNG</button>
+        <button class="f-btn f-btn-copy" onclick="copySignatureToClipboard()">📋 Copy to Clipboard</button>
+        <button class="f-btn f-btn-clear" onclick="clearSignatureWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Privacy & Alpha Channel Guarantee:</span>
+        Generated signatures are rendered directly in your browser canvas. Transparent PNG exports ensure seamless integration into PDF contracts, email footers, and office documents without intrusive white rectangular backdrops.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Art and Technology of Digital Signatures: Creating Transparent PNG Signatures for Secure Electronic Documents</h2>
+      <p class="seo-p">In an era defined by remote collaboration, digital document execution, and cloud-based business workflows, physical ink signatures have largely transitioned into electronic assets. Whether signing executive agreements via PDF readers, branding corporate emails, or verifying digital invoices, possessing a clean, high-resolution signature graphic is essential for modern professionals. However, capturing a crisp signature that integrates seamlessly into varying document backgrounds without an awkward white box requires robust image processing and proper alpha channel management.</p>
+      <p class="seo-p">This extensive computing manual explores the technical underpinnings of digital signature generation, examines the differences between vector rasterization and HTML5 canvas tracking, reviews best practices for securing legal compliance, and outlines step-by-step procedures to deploy standalone signature generators securely within your browser memory.</p>
+
+      <div class="seo-callout">
+        <strong>The Transparent PNG Advantage:</strong> Standard JPEG image exports append opaque white backdrops behind handwritten strokes. By utilizing Portable Network Graphics (PNG) with 32-bit RGBA color channels, your digital signature retains absolute transparency, floating naturally over colored stationery, complex PDF forms, and corporate branding headers.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: HTML5 Canvas Rendering vs. Styled Typography Engines</h3>
+      <p class="seo-p">When building a robust client-side signature application, developers must balance two distinct creation paradigms to accommodate both mouse/touch drawing and rapid professional text generation:</p>
+
+      <h4 class="seo-h3">1. Freehand Coordinate Tracking &amp; Bezier Smoothing</h4>
+      <p class="seo-p">The drawing mode listens to continuous pointer events (`pointerdown`, `pointermove`, `pointerup`) across high-density touch and mouse interfaces. As the user drags across the matrix, the application records Cartesian coordinate points `(x, y)` and draws smooth vector lines using HTML5 2D rendering contexts. Adjusting line cap curves (`lineCap = 'round'`, `lineJoin = 'round'`) eliminates jagged edges, mimicking real fountain pen ink flow.</p>
+
+      <h4 class="seo-h3">2. Web Font Typographic Rasterization</h4>
+      <p class="seo-p">For users seeking flawless professional typography without manual stylus sketching, the typing mode applies curated cursive script fonts (such as Great Vibes, Caveat, or Dancing Script). The rendering engine dynamically measures string bounds and draws the text string onto an off-screen canvas buffer, converting font vectors into pristine pixel arrays.</p>
+
+      <h4 class="seo-h3">3. Alpha Channel Encoding &amp; Blob Generation</h4>
+      <p class="seo-p">Once finalized, the application extracts pixel data via `canvas.toDataURL('image/png')` or `canvas.toBlob()`. If the transparent background option is active, pixels lacking ink strokes retain zero opacity (alpha = 0), guaranteeing zero visual artifacting upon export.</p>
+
+      <h3>The Statutory Reference Matrix: Signature Format and Export Specifications</h3>
+      <p class="seo-p">Evaluating technical parameters when exporting electronic signature assets ensures optimal compatibility across document suites and professional platforms:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Export Property Class</th>
+              <th>Transparent PNG Standard</th>
+              <th>Solid White JPEG Alternative</th>
+              <th>System Impact and Best Practice Recommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alpha Channel Support</td>
+              <td>Full 8-bit transparency support</td>
+              <td>None (Forced opaque background)</td>
+              <td>PNG is mandatory for overlaying signatures onto colored PDFs and letterheads.</td>
+            </tr>
+            <tr>
+              <td>Compression Algorithm</td>
+              <td>Lossless DEFLATE compression</td>
+              <td>Lossy DCT frequency compression</td>
+              <td>Lossless compression prevents pixel blur around fine pen strokes and text edges.</td>
+            </tr>
+            <tr>
+              <td>Average File Footprint</td>
+              <td>Compact (~5 KB to 15 KB)</td>
+              <td>Small (~3 KB to 10 KB)</td>
+              <td>Both formats load instantly, but PNG preserves critical edge sharpness.</td>
+            </tr>
+            <tr>
+              <td>Cross-Platform Compatibility</td>
+              <td>Universal web &amp; desktop support</td>
+              <td>Universal web &amp; desktop support</td>
+              <td>PNG is supported natively by all modern document management systems and email clients.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Are signatures generated online legally binding?</h3>
+      <p class="seo-p">Electronic signatures created for personal or business agreements are widely recognized under major legal frameworks like the US ESIGN Act and European eIDAS regulation, provided both parties consent to electronic execution. However, high-value corporate contracts may require certified digital certificates or public-key infrastructure (PKI) timestamps.</p>
+
+      <h3>How can I remove the white background from an existing signature image?</h3>
+      <p class="seo-p">If you have a scanned photo of your signature on paper, standard background removers can extract the ink. However, creating a signature directly using our online Signature Generator to PNG tool lets you export a pristine transparent image instantly without scanning or editing.</p>
+
+      <h3>Is my drawn signature data sent to external servers?</h3>
+      <p class="seo-p">Texus Pro Tools values your privacy above everything else. All signature drawing and image encoding operations execute entirely within your browser's local memory. No image files or personal identification variables ever traverse external server networks.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Electronic Signature Management</h3>
+      <p class="seo-p">To maintain professional standards in business correspondence, use consistent pen colors (such as deep navy blue or obsidian black), keep stroke widths clean and legible, and always export in transparent PNG format for flexible document placement.</p>
+      <p class="seo-p">Our Advanced Signature Generator to PNG suite automates all these rendering routines instantly, providing high-resolution image downloads across any mobile or desktop device cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+
+  <script>
+    // SIGNATURE GENERATOR CORE APP SCRIPT
+    let currentMode = 'draw';
+    const canvas = document.getElementById('signatureCanvas');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    function initCanvas() {
+      const container = document.getElementById('canvasContainer');
+      canvas.width = container.clientWidth * window.devicePixelRatio;
+      canvas.height = container.clientHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      setPenStyle();
+      redrawCanvasBackground();
+    }
+
+    window.addEventListener('resize', () => {
+      // Preserve drawing if resizing or re-init
+      initCanvas();
+    });
+
+    function setPenStyle() {
+      const color = document.getElementById('penColorPicker').value;
+      const width = document.getElementById('strokeWidthRange').value;
+      document.getElementById('colorHexText').innerText = color.toUpperCase();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+    }
+
+    function redrawCanvasBackground() {
+      if (currentMode !== 'draw') return;
+      const bgStyle = document.getElementById('bgStyleSelect').value;
+      const width = canvas.width / window.devicePixelRatio;
+      const height = canvas.height / window.devicePixelRatio;
+      
+      if (bgStyle === 'white') {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, width, height);
+      } else {
+        // Clear for transparent
+        ctx.clearRect(0, 0, width, height);
+      }
+    }
+
+    function switchMode(mode) {
+      currentMode = mode;
+      const tabDrawBtn = document.getElementById('tabDrawBtn');
+      const tabTypeBtn = document.getElementById('tabTypeBtn');
+      const typeInputGroup = document.getElementById('typeInputGroup');
+      const fontSelectGroup = document.getElementById('fontSelectGroup');
+      const strokeWidthGroup = document.getElementById('strokeWidthGroup');
+      const signatureCanvas = document.getElementById('signatureCanvas');
+      const typePreviewContainer = document.getElementById('typePreviewContainer');
+
+      if (mode === 'draw') {
+        tabDrawBtn.classList.add('active');
+        tabTypeBtn.classList.remove('active');
+        typeInputGroup.style.display = 'none';
+        fontSelectGroup.style.display = 'none';
+        strokeWidthGroup.style.display = 'flex';
+        signatureCanvas.style.display = 'block';
+        typePreviewContainer.style.display = 'none';
+        initCanvas();
+      } else {
+        tabTypeBtn.classList.add('active');
+        tabDrawBtn.classList.remove('active');
+        typeInputGroup.style.display = 'flex';
+        fontSelectGroup.style.display = 'flex';
+        strokeWidthGroup.style.display = 'none';
+        signatureCanvas.style.display = 'none';
+        typePreviewContainer.style.display = 'flex';
+        updateTypePreview();
+      }
+    }
+
+    function updateTypePreview() {
+      const text = document.getElementById('sigTextInput').value || 'John Doe';
+      const font = document.getElementById('sigFontSelect').value;
+      const color = document.getElementById('penColorPicker').value;
+      const preview = document.getElementById('typePreviewContainer');
+      preview.innerText = text;
+      preview.style.fontFamily = font;
+      preview.style.color = color;
+      document.getElementById('colorHexText').innerText = color.toUpperCase();
+    }
+
+    // Pointer events for smooth drawing across touch & mouse
+    canvas.addEventListener('pointerdown', (e) => {
+      isDrawing = true;
+      const rect = canvas.getBoundingClientRect();
+      lastX = e.clientX - rect.left;
+      lastY = e.clientY - rect.top;
+    });
+
+    canvas.addEventListener('pointermove', (e) => {
+      if (!isDrawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const currentX = e.clientX - rect.left;
+      const currentY = e.clientY - rect.top;
+
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(currentX, currentY);
+      ctx.stroke();
+
+      lastX = currentX;
+      lastY = currentY;
+    });
+
+    canvas.addEventListener('pointerup', () => isDrawing = false);
+    canvas.addEventListener('pointerout', () => isDrawing = false);
+
+    function clearSignatureWorkspace() {
+      if (currentMode === 'draw') {
+        const width = canvas.width / window.devicePixelRatio;
+        const height = canvas.height / window.devicePixelRatio;
+        ctx.clearRect(0, 0, width, height);
+        redrawCanvasBackground();
+      } else {
+        document.getElementById('sigTextInput').value = '';
+        updateTypePreview();
+      }
+    }
+
+    function getExportCanvas() {
+      if (currentMode === 'draw') {
+        return canvas;
+      } else {
+        // Render typed signature onto an offscreen canvas for export
+        const text = document.getElementById('sigTextInput').value || 'John Doe';
+        const font = document.getElementById('sigFontSelect').value;
+        const color = document.getElementById('penColorPicker').value;
+        const bgStyle = document.getElementById('bgStyleSelect').value;
+
+        const offCanvas = document.createElement('canvas');
+        offCanvas.width = 800;
+        offCanvas.height = 300;
+        const offCtx = offCanvas.getContext('2d');
+
+        if (bgStyle === 'white') {
+          offCtx.fillStyle = '#ffffff';
+          offCtx.fillRect(0, 0, offCanvas.width, offCanvas.height);
+        }
+
+        offCtx.font = `80px ${font}`;
+        offCtx.fillStyle = color;
+        offCtx.textBaseline = 'middle';
+        offCtx.textAlign = 'center';
+        offCtx.fillText(text, offCanvas.width / 2, offCanvas.height / 2);
+        return offCanvas;
+      }
+    }
+
+    function downloadSignaturePNG() {
+      const exportCanvas = getExportCanvas();
+      const link = document.createElement('a');
+      link.download = 'my-signature.png';
+      link.href = exportCanvas.toDataURL('image/png');
+      link.click();
+    }
+
+    async function copySignatureToClipboard() {
+      try {
+        const exportCanvas = getExportCanvas();
+        exportCanvas.toBlob(async (blob) => {
+          const item = new ClipboardItem({ 'image/png': blob });
+          await navigator.clipboard.write([item]);
+          alert('Signature copied to clipboard successfully!');
+        });
+      } catch (err) {
+        alert('Clipboard API not supported in this browser context. Please use the Download button instead.');
+      }
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      initCanvas();
+    });
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
