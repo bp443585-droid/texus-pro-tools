@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SVG Path Visualizer | Online Vector D Command Inspector</title>
+  <meta name="description" content="Inspect, parse, and visualize SVG path data (d attribute) instantly with our free online interactive SVG Path Visualizer tool." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/svg-path-visualizer/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SVG Path Visualizer Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced vector path inspection tool to parse, render, and debug SVG path commands cleanly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 260px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 600; font-size: 0.95rem; color: #0f172a; background: #f1f5f9; }
+
+    /* SVG RENDER PREVIEW STAGE */
+    .svg-preview-stage { width: 100%; height: 260px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; box-sizing: border-box; background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 20px 20px; }
+    .svg-preview-stage svg { width: 100%; height: 100%; }
+
+    /* CONTROLS OVERLAY ON PREVIEW */
+    .svg-controls-overlay { position: absolute; bottom: 12px; right: 12px; display: flex; gap: 8px; background: rgba(255,255,255,0.9); padding: 6px 10px; border-radius: 8px; border: 1px solid #e2e8f0; backdrop-filter: blur(4px); }
+    .svg-ctrl-btn { background: none; border: none; font-size: 0.8rem; font-weight: 700; cursor: pointer; color: #475569; padding: 2px 6px; border-radius: 4px; }
+    .svg-ctrl-btn:hover { background: #e2e8f0; color: #0f172a; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field, .svg-preview-stage { height: 200px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>✏️</span> SVG Path Visualizer</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="svgPathConsole">SVG Path `d` Attribute Data</label>
+          <textarea id="svgPathConsole" class="f-textarea-field mono-font-panel" placeholder="Paste SVG path commands here (e.g., M 10 10 L 90 90 H 10 Z)..." oninput="renderSvgPath()"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Live Vector Preview Stage</label>
+          <div class="svg-preview-stage" id="svgStageContainer">
+            <svg id="liveSvgCanvas" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+              <path id="previewPathElement" d="M 10 10 L 90 90 H 10 Z" fill="#2563eb" fill-opacity="0.2" stroke="#2563eb" stroke-width="3" />
+            </svg>
+            <div class="svg-controls-overlay">
+              <button class="svg-ctrl-btn" onclick="toggleSvgFill()" title="Toggle Fill">Fill</button>
+              <button class="svg-ctrl-btn" onclick="resetSvgView()" title="Reset View">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="renderSvgPath()">Render Path</button>
+        <button class="f-btn f-btn-copy" id="copySvgPathBtn" onclick="copyResultToClipboard()">📋 Copy Path String</button>
+        <button class="f-btn f-btn-clear" onclick="clearSvgWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Interactive Vector Inspector Enabled:</span>
+        Paste any valid SVG `d` attribute string into the left editor to instantly render, inspect, and analyze path geometry vectors in real time.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Geometry of Scalable Vector Graphics: Understanding SVG Path Commands, Vector Coordinates, and Rendering Engines</h2>
+      <p class="seo-p">Scalable Vector Graphics (SVG) represent the absolute gold standard for modern web design, responsive icons, and complex data visualizations. Unlike raster images (such as PNGs or JPEGs) that rely on fixed grids of colored pixels, SVG elements are defined mathematically using XML-based text structures. At the very heart of this vector architecture lies the `&lt;path&gt;` element and its powerful `d` (data) attribute—a concise mini-language of commands and coordinates that instructs web browsers how to draw lines, curves, arcs, and complex filled shapes.</p>
+      <p class="seo-p">This comprehensive technical manual explores the anatomy of SVG path commands, examines absolute versus relative coordinate systems, analyzes Cubic and Quadratic Bézier curves, and demonstrates how real-time visualizers streamline front-end debugging workflows.</p>
+
+      <div class="seo-callout">
+        <strong>The Vector Translation Principle:</strong> SVG path data commands operate like a pen plotting on a Cartesian coordinate plane. Capital letters dictate absolute positioning coordinates, whereas lowercase letters specify relative offsets from the current pen position.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Anatomy of Path Commands and Parsing Mechanics</h3>
+      <p class="seo-p">When a browser parses an SVG path string, it executes a sequence of drawing commands stored in a single string variable. Mastering these instructions is essential for hand-coding icons or building custom graphic generation pipelines:</p>
+
+      <h4 class="seo-h3">1. Move To (M / m)</h4>
+      <p class="seo-p">Every path must begin with a Move command. It picks up the virtual pen and places it at specific coordinates `(x, y)` without drawing a line. Subsequent coordinate pairs are automatically treated as implicit Line To commands.</p>
+
+      <h4 class="seo-h3>2. Line To (L / l, H / h, V / v)</h4>
+      <p class="seo-p">Line commands draw straight strokes from the current pen position to target coordinates. Specialized shorthand variants—Horizontal (`H`) and Vertical (`V`)—accept only a single coordinate value to accelerate layout drafting.</p>
+
+      <h4 class="seo-h3">3. Bézier Curves (C / c, S / s, Q / q, T / t)</h4>
+      <p class="seo-p">Smooth vector curves are generated using control points. Cubic Bézier curves (`C`) utilize two control points to define complex curvature tangents, while Quadratic curves (`Q`) rely on a single control point for balanced parabolic arcs.</p>
+
+      <h3>The Statutory Reference Matrix: Comprehensive SVG Path Command Dictionary</h3>
+      <p class="seo-p">Reviewing standard path commands and their functional behaviors is critical for auditing vector assets and writing clean, optimized UI code:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Command Name</th>
+              <th>Absolute Syntax</th>
+              <th>Relative Syntax</th>
+              <th>Parameter Arguments</th>
+              <th>Functional Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Move To</td>
+              <td>`M x y`</td>
+              <td>`m dx dy`</td>
+              <td>`(x, y)`</td>
+              <td>Relocates the virtual drawing pen to specified coordinates without rendering a stroke.</td>
+            </tr>
+            <tr>
+              <td>Line To</td>
+              <td>`L x y`</td>
+              <td>`l dx dy`</td>
+              <td>`(x, y)`</td>
+              <td>Draws a straight line from current point to absolute or relative coordinate targets.</td>
+            </tr>
+            <tr>
+              <td>Horizontal Line</td>
+              <td>`H x`</td>
+              <td>`h dx`</td>
+              <td>`x`</td>
+              <td>Draws a purely horizontal line to target horizontal coordinate value.</td>
+            </tr>
+            <tr>
+              <td>Vertical Line</td>
+              <td>`V y`</td>
+              <td>`v dy`</td>
+              <td>`y`</td>
+              <td>Draws a purely vertical line to target vertical coordinate value.</td>
+            </tr>
+            <tr>
+              <td>Cubic Bézier</td>
+              <td>`C x1 y1, x2 y2, x y`</td>
+              <td>`c dx1 dy1, dx2 dy2, dx dy`</td>
+              <td>`6 values`</td>
+              <td>Creates smooth cubic curves using start and end tangent control points.</td>
+            </tr>
+            <tr>
+              <td>Close Path</td>
+              <td>`Z`</td>
+              <td>`z`</td>
+              <td>None</td>
+              <td>Automatically draws a straight line back to the starting `M` coordinate of the path.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why is my SVG path rendering outside the visible viewport box?</h3>
+      <p class="seo-p">Viewports and bounding boxes dictate where SVG graphics appear. If your path coordinates (e.g., `M 500 500`) exceed the dimensions defined in the SVG `viewBox` attribute (e.g., `viewBox="0 0 100 100"`), the path will render outside the canvas. Adjusting your path coordinates or expanding the viewBox resolves this clipping issue.</p>
+
+      <h3>What is the performance difference between absolute and relative path coordinates?</h3>
+      <p class="seo-p">Render performance in modern browsers is virtually identical between absolute and relative coordinates. However, relative coordinates (`lowercase`) make vector graphics significantly easier to translate programmatically across dynamic layouts.</p>
+
+      <h3>How does client-side visualization ensure robust data privacy?</h3>
+      <p class="seo-p">Texus Pro Tools values your data privacy above all else. All SVG path parsing and rendering operations execute entirely within your browser's local JavaScript environment. No vector strings or design files are ever transmitted to external servers.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for SVG Optimization</h3>
+      <p class="seo-p">To maintain lean and performant web applications, developers should minimize unnecessary precision decimals in path data strings, leverage shorthand line commands whenever possible, and use interactive visualizers to debug geometry errors instantly across devices.</p>
+      <p class="seo-p">Our Advanced SVG Path Visualizer suite automates vector inspection and rendering processes instantly, providing clear visibility into complex coordinate arrays across any mobile or desktop screen.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // SVG Path Visualizer Tool Logic
+    let isFilled = true;
+
+    function renderSvgPath() {
+      const pathInput = document.getElementById('svgPathConsole').value.trim();
+      const pathElement = document.getElementById('previewPathElement');
+      const svgCanvas = document.getElementById('liveSvgCanvas');
+
+      if (!pathInput) {
+        pathElement.setAttribute('d', 'M 0 0');
+        return;
+      }
+
+      pathElement.setAttribute('d', pathInput);
+
+      // Try to calculate bounding box and adjust viewBox for optimal framing
+      try {
+        const bbox = pathElement.getBBox();
+        if (bbox.width > 0 && bbox.height > 0) {
+          const padding = Math.max(bbox.width, bbox.height) * 0.15;
+          const minX = bbox.x - padding;
+          const minY = bbox.y - padding;
+          const w = bbox.width + (padding * 2);
+          const h = bbox.height + (padding * 2);
+          svgCanvas.setAttribute('viewBox', `${minX} ${minY} ${w} ${h}`);
+        }
+      } catch (e) {
+        // Fallback if getBBox fails on incomplete path strings
+      }
+    }
+
+    function toggleSvgFill() {
+      isFilled = !isFilled;
+      const pathElement = document.getElementById('previewPathElement');
+      if (isFilled) {
+        pathElement.setAttribute('fill', '#2563eb');
+        pathElement.setAttribute('fill-opacity', '0.2');
+      } else {
+        pathElement.setAttribute('fill', 'none');
+      }
+    }
+
+    function resetSvgView() {
+      const svgCanvas = document.getElementById('liveSvgCanvas');
+      svgCanvas.setAttribute('viewBox', '0 0 100 100');
+      const pathElement = document.getElementById('previewPathElement');
+      pathElement.setAttribute('d', 'M 10 10 L 90 90 H 10 Z');
+      document.getElementById('svgPathConsole').value = 'M 10 10 L 90 90 H 10 Z';
+      isFilled = true;
+      pathElement.setAttribute('fill', '#2563eb');
+      pathElement.setAttribute('fill-opacity', '0.2');
+    }
+
+    function clearSvgWorkspace() {
+      document.getElementById('svgPathConsole').value = '';
+      document.getElementById('previewPathElement').setAttribute('d', 'M 0 0');
+      document.getElementById('liveSvgCanvas').setAttribute('viewBox', '0 0 100 100');
+      document.getElementById('svgPathConsole').focus();
+    }
+
+    function copyResultToClipboard() {
+      const pathInput = document.getElementById('svgPathConsole');
+      pathInput.select();
+      pathInput.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(pathInput.value).then(() => {
+        const btn = document.getElementById('copySvgPathBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '✓ Copied Successfully!';
+        btn.style.background = '#dcfce7';
+        btn.style.color = '#166534';
+        btn.style.borderColor = '#bbf7d0';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+          btn.style.borderColor = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text:', err);
+      });
+    }
+
+    // Initialize default value on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const consoleEl = document.getElementById('svgPathConsole');
+      if (consoleEl && !consoleEl.value) {
+        consoleEl.value = 'M 10 10 L 90 90 H 10 Z';
+        renderSvgPath();
+      }
+    });
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
