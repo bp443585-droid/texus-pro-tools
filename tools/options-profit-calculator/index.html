@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Options Profit Calculator | Free Stock Options Payoff & ROI Tool</title>
+  <meta name="description" content="Calculate potential profit, loss, and ROI for single stock options strategies including Long Calls, Long Puts, Covered Calls, and Cash-Secured Puts instantly online." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/options-profit-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Options Profit Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "FinanceApplication",
+    "description": "An advanced financial payoff modeling tool to calculate potential profit, loss, breakeven points, and return on investment for standard stock options trading strategies.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-select-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .results-display-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+    .result-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; }
+    .result-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .result-label { font-size: 0.9rem; font-weight: 600; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-value { font-size: 1.25rem; font-weight: 800; color: #0f172a; }
+    .text-profit { color: #16a34a !important; }
+    .text-loss { color: #dc2626 !important; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { height: 46px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📈</span> Options Profit Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box" style="gap: 16px;">
+          <div class="f-panel-box">
+            <label for="strategySelect">Trading Strategy</label>
+            <select id="strategySelect" class="f-select-field" onchange="calculateOptionsProfit()">
+              <option value="long_call">Long Call (Buy Call)</option>
+              <option value="long_put">Long Put (Buy Put)</option>
+              <option value="covered_call">Covered Call (Buy Stock + Sell Call)</option>
+              <option value="cash_put">Cash-Secured Put (Sell Put)</option>
+            </select>
+          </div>
+
+          <div class="f-panel-box">
+            <label for="strikePrice">Strike Price ($)</label>
+            <input type="number" id="strikePrice" class="f-input-field" value="100" step="0.5" oninput="calculateOptionsProfit()" />
+          </div>
+
+          <div class="f-panel-box">
+            <label for="premiumPaid">Option Premium Paid / Received ($)</label>
+            <input type="number" id="premiumPaid" class="f-input-field" value="5.00" step="0.1" oninput="calculateOptionsProfit()" />
+          </div>
+
+          <div class="f-panel-box" id="stockPriceBox" style="display: none;">
+            <label for="stockCost">Stock Purchase Price ($)</label>
+            <input type="number" id="stockCost" class="f-input-field" value="100" step="0.5" oninput="calculateOptionsProfit()" />
+          </div>
+
+          <div class="f-panel-box">
+            <label for="targetPrice">Target Stock Price at Expiration ($)</label>
+            <input type="number" id="targetPrice" class="f-input-field" value="115" step="0.5" oninput="calculateOptionsProfit()" />
+          </div>
+
+          <div class="f-panel-box">
+            <label for="contractsCount">Number of Contracts (100 shares/contract)</label>
+            <input type="number" id="contractsCount" class="f-input-field" value="1" min="1" step="1" oninput="calculateOptionsProfit()" />
+          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Payoff & ROI Analytics</label>
+          <div class="results-display-box">
+            <div class="result-row">
+              <span class="result-label">Net Profit / Loss</span>
+              <span id="resNetProfit" class="result-value text-profit">+$1,000.00</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Return on Investment</span>
+              <span id="resRoi" class="result-value text-profit">+200.00%</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Breakeven Price</span>
+              <span id="resBreakeven" class="result-value">$105.00</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Max Potential Profit</span>
+              <span id="resMaxProfit" class="result-value text-profit">Unlimited</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Max Potential Loss</span>
+              <span id="resMaxLoss" class="result-value text-loss">-$500.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateOptionsProfit()">Recalculate Payoff</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyOptionsSummary()">📋 Copy Summary</button>
+        <button class="f-btn f-btn-clear" onclick="clearOptionsWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Options Modeling Enabled:</span>
+        Calculations automatically scale based on standard contract multipliers (100 underlying shares per single options contract). Adjust target prices to stress-test your risk profile.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Options Trading: Comprehensive Payoff Calculations, Risk Management, and Return Optimization</h2>
+      <p class="seo-p">Options trading offers market participants immense leverage, income generation potential, and flexible hedging mechanisms that simple stock ownership cannot match. However, navigating options contracts requires a rigorous understanding of asymmetric risk curves, time decay (theta), volatility skews, and expiration breakeven points. Whether you are speculating on explosive growth with long calls, hedging an existing equity portfolio with protective puts, or generating recurring income through covered calls and cash-secured puts, calculating exact potential payoffs before risking capital is vital for long-term trading success.</p>
+      <p class="seo-p">This extensive analytical guide explores the mechanics of primary options strategies, analyzes risk-to-reward ratios, breaks down critical mathematical formulas governing contract pricing, and explains how to utilize our high-performance Options Profit Calculator to stress-test your portfolio scenarios instantly.</p>
+
+      <div class="seo-callout">
+        <strong>The Multiplier Rule:</strong> Because each standard options contract controls exactly 100 shares of the underlying security, every dollar of premium paid or received must be multiplied by 100 to determine the actual total capital outlay or credit generated.
+      </div>
+
+      <h3 class="seo-h2">Core Options Strategies: Mechanics, Payoffs, and Risk Profiles</h3>
+      <p class="seo-p">To construct profitable trades, traders must choose strategies that align with their market outlook and risk tolerance. Below is a detailed breakdown of the four foundational strategies supported by our calculator:</p>
+
+      <h4 class="seo-h3">1. Long Call (Bullish Directional Speculation)</h4>
+      <p class="seo-p">Purchasing a call option grants you the right—but not the obligation—to buy 100 shares of a stock at a predetermined strike price before the expiration date. Long calls offer limited downside risk (strictly capped at the premium paid) and theoretically unlimited upside profit potential if the underlying asset surges.</p>
+
+      <h4 class="seo-h3">2. Long Put (Bearish Directional Speculation)</h4>
+      <p class="seo-p">Buying a put option gives you the right to sell 100 shares at a set strike price. Traders use long puts to profit from downward price movements in a stock or to hedge existing long equity positions against sharp market corrections.</p>
+
+      <h4 class="seo-h3">3. Covered Call (Income Generation & Mild Hedging)</h4>
+      <p class="seo-p">A covered call involves holding 100 shares of an underlying stock while simultaneously selling one out-of-the-money call option against those shares. This collects immediate premium income, buffers minor downward price moves, but caps upside equity gains if the stock rallies past the short strike.</p>
+
+      <h4 class="seo-h3">4. Cash-Secured Put (Targeted Equity Acquisition)</h4>
+      <p class="seo-p">Selling a cash-secured put requires holding sufficient cash in your brokerage account to purchase 100 shares of the stock if assigned. Traders collect the option premium upfront, effectively lowering their cost basis if they are forced to buy the stock at expiration.</p>
+
+      <h3>Strategic Reference Matrix: Comparing Popular Options Structures</h3>
+      <p class="seo-p">Review the summary table below to evaluate how different strategies compare across risk profiles, profit potential, and ideal market conditions:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Strategy Classification</th>
+              <th>Market Outlook</th>
+              <th>Maximum Risk / Loss</th>
+              <th>Maximum Profit Potential</th>
+              <th>Breakeven Calculation Formula</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Long Call</b></td>
+              <td>Bullish</td>
+              <td>Limited (Premium Paid)</td>
+              <td>Unlimited</td>
+              <td>Strike Price + Premium Paid</td>
+            </tr>
+            <tr>
+              <td><b>Long Put</b></td>
+              <td>Bearish</td>
+              <td>Limited (Premium Paid)</td>
+              <td>Strike Price - Premium (Stock goes to $0)</td>
+              <td>Strike Price - Premium Paid</td>
+            </tr>
+            <tr>
+              <td><b>Covered Call</b></td>
+              <td>Neutral to Mildly Bullish</td>
+              <td>Substantial (Stock Price - Premium)</td>
+              <td>(Strike - Stock Cost) + Premium Received</td>
+              <td>Stock Purchase Price - Premium Received</td>
+            </tr>
+            <tr>
+              <td><b>Cash-Secured Put</b></td>
+              <td>Neutral to Bullish</td>
+              <td>Substantial (Strike - Premium Received)</td>
+              <td>Limited (Premium Received)</td>
+              <td>Strike Price - Premium Received</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Options Trading Guidance</h3>
+
+      <h3>What happens to my options contract if it expires out-of-the-money?</h3>
+      <p class="seo-p">If an option expires out-of-the-money (the stock price is below the strike for a call, or above the strike for a put), the contract expires completely worthless. The buyer loses 100% of the premium paid, while the seller retains the entire premium collected free of further obligation.</p>
+
+      <h3>How does implied volatility (IV) impact my option's value before expiration?</h3>
+      <p class="seo-p">Implied volatility reflects the market's expectation of future price swings. When IV rises, option premiums increase due to higher probability of large moves (vega expansion). Conversely, when IV drops—often immediately after an earnings announcement ("IV crush")—option prices decline rapidly, even if the underlying stock price remains stable.</p>
+
+      <h3>Is trader data secure when using online financial calculation tools?</h3>
+      <p class="seo-p">Yes. All calculations performed on Texus Pro Tools run locally within your browser's execution engine. No financial parameters, stock tickers, or personal inputs are ever transmitted to external servers, guaranteeing complete privacy.</p>
+
+      <h3 class="seo-h2">Summary: Key Rules for Successful Options Execution</h3>
+      <p class="seo-p">Successful options trading demands discipline, strict risk management, and precise mathematical modeling. Never risk capital without knowing your exact breakeven threshold and maximum potential loss. Use our free Options Profit Calculator to simulate target prices and optimize your trades instantly across any mobile or desktop device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // Options Profit Calculator Core Logic
+    function calculateOptionsProfit() {
+      const strategy = document.getElementById('strategySelect').value;
+      const strike = parseFloat(document.getElementById('strikePrice').value) || 0;
+      const premium = parseFloat(document.getElementById('premiumPaid').value) || 0;
+      const stockCost = parseFloat(document.getElementById('stockCost').value) || 0;
+      const target = parseFloat(document.getElementById('targetPrice').value) || 0;
+      const contracts = parseInt(document.getElementById('contractsCount').value) || 1;
+      
+      const stockPriceBox = document.getElementById('stockPriceBox');
+      if (strategy === 'covered_call') {
+        stockPriceBox.style.display = 'flex';
+      } else {
+        stockPriceBox.style.display = 'none';
+      }
+
+      let netProfit = 0;
+      let roi = 0;
+      let breakeven = 0;
+      let maxProfit = '';
+      let maxLoss = '';
+      let capitalAtRisk = 0;
+
+      if (strategy === 'long_call') {
+        breakeven = strike + premium;
+        const payoffPerShare = Math.max(0, target - strike) - premium;
+        netProfit = payoffPerShare * 100 * contracts;
+        capitalAtRisk = premium * 100 * contracts;
+        roi = capitalAtRisk > 0 ? (netProfit / capitalAtRisk) * 100 : 0;
+        maxProfit = 'Unlimited';
+        maxLoss = -capitalAtRisk;
+      } else if (strategy === 'long_put') {
+        breakeven = strike - premium;
+        const payoffPerShare = Math.max(0, strike - target) - premium;
+        netProfit = payoffPerShare * 100 * contracts;
+        capitalAtRisk = premium * 100 * contracts;
+        roi = capitalAtRisk > 0 ? (netProfit / capitalAtRisk) * 100 : 0;
+        maxProfit = (strike - premium) * 100 * contracts;
+        maxLoss = -capitalAtRisk;
+      } else if (strategy === 'covered_call') {
+        breakeven = stockCost - premium;
+        const stockGain = target - stockCost;
+        const optionPayoff = target > strike ? -(target - strike) : 0;
+        const netPerShare = stockGain + optionPayoff + premium;
+        netProfit = netPerShare * 100 * contracts;
+        capitalAtRisk = (stockCost - premium) * 100 * contracts;
+        roi = capitalAtRisk > 0 ? (netProfit / capitalAtRisk) * 100 : 0;
+        maxProfit = ((strike - stockCost) + premium) * 100 * contracts;
+        maxLoss = -((stockCost - premium) * 100 * contracts);
+      } else if (strategy === 'cash_put') {
+        breakeven = strike - premium;
+        const optionLiability = target < strike ? strike - target : 0;
+        const netPerShare = premium - optionLiability;
+        netProfit = netPerShare * 100 * contracts;
+        capitalAtRisk = (strike - premium) * 100 * contracts;
+        roi = capitalAtRisk > 0 ? (netProfit / capitalAtRisk) * 100 : 0;
+        maxProfit = premium * 100 * contracts;
+        maxLoss = -capitalAtRisk;
+      }
+
+      const fmtProfit = (netProfit >= 0 ? "+$" : "-$") + Math.abs(netProfit).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      const fmtRoi = (roi >= 0 ? "+" : "") + roi.toFixed(2) + "%";
+      const fmtBreakeven = "$" + breakeven.toFixed(2);
+      const fmtMaxProfit = typeof maxProfit === 'number' ? ("+$" + Math.abs(maxProfit).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})) : maxProfit;
+      const fmtMaxLoss = typeof maxLoss === 'number' ? ("-$" + Math.abs(maxLoss).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})) : maxLoss;
+
+      const elNet = document.getElementById('resNetProfit');
+      const elRoi = document.getElementById('resRoi');
+      const elBreakeven = document.getElementById('resBreakeven');
+      const elMaxProfit = document.getElementById('resMaxProfit');
+      const elMaxLoss = document.getElementById('resMaxLoss');
+
+      elNet.innerText = fmtProfit;
+      elNet.className = "result-value " + (netProfit >= 0 ? "text-profit" : "text-loss");
+
+      elRoi.innerText = fmtRoi;
+      elRoi.className = "result-value " + (roi >= 0 ? "text-profit" : "text-loss");
+
+      elBreakeven.innerText = fmtBreakeven;
+      
+      elMaxProfit.innerText = fmtMaxProfit;
+      elMaxProfit.className = "result-value text-profit";
+
+      elMaxLoss.innerText = fmtMaxLoss;
+      elMaxLoss.className = "result-value text-loss";
+    }
+
+    function clearOptionsWorkspace() {
+      document.getElementById('strategySelect').value = 'long_call';
+      document.getElementById('strikePrice').value = '100';
+      document.getElementById('premiumPaid').value = '5.00';
+      document.getElementById('stockCost').value = '100';
+      document.getElementById('targetPrice').value = '115';
+      document.getElementById('contractsCount').value = '1';
+      calculateOptionsProfit();
+    }
+
+    function copyOptionsSummary() {
+      const netProfit = document.getElementById('resNetProfit').innerText;
+      const roi = document.getElementById('resRoi').innerText;
+      const breakeven = document.getElementById('resBreakeven').innerText;
+      const strategy = document.getElementById('strategySelect').options[document.getElementById('strategySelect').selectedIndex].text;
+      
+      const summaryText = `Options Strategy: ${strategy}\nNet Profit/Loss: ${netProfit}\nROI: ${roi}\nBreakeven: ${breakeven}\nCalculated via Texus Pro Tools`;
+      
+      navigator.clipboard.writeText(summaryText).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.innerText = '✓ Copied to Clipboard!';
+        setTimeout(() => { btn.innerText = '📋 Copy Summary'; }, 2000);
+      });
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', calculateOptionsProfit);
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
