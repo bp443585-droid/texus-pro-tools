@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Stock Profit Loss Calculator | Free Investment Return Analyzer</title>
+  <meta name="description" content="Calculate stock trading profit, loss, return on investment (ROI), and break-even targets instantly with our free online Stock Profit Loss Calculator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/stock-profit-loss-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Stock Profit Loss Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "FinanceApplication",
+    "description": "An advanced financial analyzer tool to compute stock trading returns, percentage gains, loss exposures, and brokerage impacts cleanly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* STOCK CALCULATOR GRID LAYOUT */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS DASHBOARD CARDS */
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+    .result-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .result-box.profit-theme { background: #f0fdf4; border-color: #bbf7d0; }
+    .result-box.loss-theme { background: #fef2f2; border-color: #fecaca; }
+    .result-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 6px; }
+    .result-value { font-size: 1.5rem; font-weight: 800; color: #0f172a; }
+    .result-value.profit { color: #16a34a; }
+    .result-value.loss { color: #dc2626; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .results-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field { font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📈</span> Stock Profit Loss Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="buyPrice">Buy Price per Share ($)</label>
+          <input type="number" id="buyPrice" class="f-input-field" value="100.00" step="0.01" min="0" oninput="calculateStockReturns()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="sellPrice">Sell Price per Share ($)</label>
+          <input type="number" id="sellPrice" class="f-input-field" value="125.00" step="0.01" min="0" oninput="calculateStockReturns()">
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="quantity">Number of Shares</label>
+          <input type="number" id="quantity" class="f-input-field" value="100" step="1" min="1" oninput="calculateStockReturns()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="brokerage">Total Brokerage / Commission Fees ($)</label>
+          <input type="number" id="brokerage" class="f-input-field" value="10.00" step="0.01" min="0" oninput="calculateStockReturns()">
+        </div>
+      </div>
+
+      <div class="results-grid" id="resultsCardWrapper">
+        <div class="result-box" id="netResultBox">
+          <div class="result-label">Net Profit / Loss</div>
+          <div class="result-value" id="netAmount">$2,490.00</div>
+        </div>
+        <div class="result-box">
+          <div class="result-label">Return on Investment (ROI)</div>
+          <div class="result-value" id="roiPercent">24.90%</div>
+        </div>
+        <div class="result-box">
+          <div class="result-label">Total Investment Value</div>
+          <div class="result-value" id="totalInvested">$10,000.00</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateStockReturns()">Calculate Returns</button>
+        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyStockResults()">📋 Copy Summary Report</button>
+        <button class="f-btn f-btn-clear" onclick="clearStockCalculator()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Dynamic Brokerage Deduction Engine Active:</span>
+        Net calculations automatically factor in buy/sell commissions and transaction charges to reveal your true net equity returns instantly.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Mathematics of Equity Investing: Calculating Returns, Managing Risk, and Maximizing Net Profitability</h2>
+      <p class="seo-p">Successful stock market participation demands absolute precision when computing transaction returns. Whether executing day-trading orders, swing strategies, or long-term value accumulation, understanding your exact net profit, loss exposure, and fee drag is vital for long-term portfolio growth. If investors rely solely on gross price differences without factoring in brokerage commissions, exchange fees, and holding costs, their perceived returns quickly erode.</p>
+      <p class="seo-p">This extensive financial reference guide examines the foundational formulas behind equity return calculations, explores the impact of transaction costs on high-frequency trades, analyzes risk-reward ratios, and demonstrates how to evaluate portfolio performance cleanly using our advanced browser-based utility.</p>
+
+      <div class="seo-callout">
+        <strong>The Net Profit Principle:</strong> True stock trading success is never defined by raw price appreciation alone; it is measured by the remaining capital after all brokerage commissions and regulatory fees are subtracted from gross gains.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Formulas and Return Computation Metrics</h3>
+      <p class="seo-p">When financial data passes through our client-side calculation pipeline, the script executes robust mathematical formulas instantly:</p>
+
+      <h4 class="seo-h3">1. Gross Investment Valuation</h4>
+      <p class="seo-p">The initial capital deployed (Total Investment) equals the purchase price per share multiplied by the total number of shares acquired. Similarly, the gross exit value equals the selling price multiplied by the share quantity.</p>
+
+      <h4 class="seo-h3">2. Fee Deduction &amp; Brokerage Adjustments</h4>
+      <p class="seo-p">Modern brokerages charge commissions upon entry and exit. Net profit is calculated by taking the gross sale proceeds, subtracting the total purchase cost, and further deducting all accumulated transaction fees.</p>
+
+      <h4 class="seo-h3">3. Return on Investment (ROI) Percentages</h4>
+      <p class="seo-p">The percentage gain or loss represents the net financial return relative to the initial capital deployed, expressed as a standard financial ratio.</p>
+
+      <h3>The Statutory Reference Matrix: Core Stock Trading Formula Comparison</h3>
+      <p class="seo-p">Reviewing standard trading formulas helps investors audit their brokerage statements and verify portfolio performance across different asset classes:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Financial Metric Class</th>
+              <th>Mathematical Equation</th>
+              <th>Example Input Scenario</th>
+              <th>Calculated Output Result</th>
+              <th>Strategic Portfolio Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Total Capital Invested</td>
+              <td>`Buy Price × Quantity`</td>
+              <td>`$100 × 100 Shares`</td>
+              <td>`$10,000.00`</td>
+              <td>Establishes baseline exposure and portfolio weight allocation limits.</td>
+            </tr>
+            <tr>
+              <td>Gross Profit / Loss</td>
+              <td>`(Sell - Buy) × Shares`</td>
+              <td>`($125 - $100) × 100`</td>
+              <td>`+$2,500.00`</td>
+              <td>Measures raw market price movement prior to transaction expenses.</td>
+            </tr>
+            <tr>
+              <td>Net Profit / Loss</td>
+              <td>`Gross Profit - Fees`</td>
+              <td>`$2,500 - $10.00 Fees`</td>
+              <td>`+$2,490.00`</td>
+              <td>Reflects actual cash added to trading account balance after all costs.</td>
+            </tr>
+            <tr>
+              <td>Return on Investment (ROI)</td>
+              <td>`(Net Profit / Invested) × 100`</td>
+              <td>`($2,490 / $10,000) × 100`</td>
+              <td>`24.90%`</td>
+              <td>Standardizes performance comparison across diverse stock positions.</td>
+            </tr>
+            <tr>
+              <td>Break-Even Exit Price</td>
+              <td>`Buy + (Total Fees / Shares)`</td>
+              <td>`$100 + ($10 / 100)`</td>
+              <td>`$100.10`</td>
+              <td>Determines exact minimum sell price required to cover all trade costs.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>How do brokerage commissions impact short-term day trading returns?</h3>
+      <p class="seo-p">In high-frequency day trading, brokerage commissions represent a significant percentage of total capital. Because short-term price fluctuations are often modest, high per-trade fees can quickly turn winning trades into net losses. Calculating net returns before entering orders is essential for profitability.</p>
+
+      <h3>What is the difference between ROI and annualized return?</h3>
+      <p class="seo-p">Return on Investment (ROI) measures total percentage gain across the entire holding period, regardless of duration. Annualized return scales that gain to a yearly rate, allowing investors to fairly compare a 3-month trade against a 5-year investment.</p>
+
+      <h3>How does local device script compilation ensure business security benchmarks?</h3>
+      <p class="seo-p">Texus Pro Tools values your financial privacy above everything else. All profit and loss calculations execute entirely inside your device's local browser memory. No trade sizes, account balances, or financial variables ever traverse external server networks—establishing a private sandbox environment for your business planning.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Equity Portfolio Management</h3>
+      <p class="seo-p">To optimize trading performance, always calculate net figures including commissions, monitor risk-to-reward ratios before placing buy orders, and track your overall portfolio ROI consistently across all market cycles.</p>
+      <p class="seo-p">Our Advanced Stock Profit Loss Calculator automates all these computational extraction routines instantly, providing clear visibility into your investment metrics across any mobile or desktop device cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function calculateStockReturns() {
+      const buyPrice = parseFloat(document.getElementById('buyPrice').value) || 0;
+      const sellPrice = parseFloat(document.getElementById('sellPrice').value) || 0;
+      const quantity = parseFloat(document.getElementById('quantity').value) || 0;
+      const brokerage = parseFloat(document.getElementById('brokerage').value) || 0;
+
+      const totalInvested = buyPrice * quantity;
+      const grossRevenue = sellPrice * quantity;
+      const grossProfit = grossRevenue - totalInvested;
+      const netProfit = grossProfit - brokerage;
+      
+      let roi = 0;
+      if (totalInvested > 0) {
+        roi = (netProfit / totalInvested) * 100;
+      }
+
+      const netAmountEl = document.getElementById('netAmount');
+      const roiPercentEl = document.getElementById('roiPercent');
+      const totalInvestedEl = document.getElementById('totalInvested');
+      const netResultBox = document.getElementById('netResultBox');
+
+      netAmountEl.textContent = (netProfit >= 0 ? "+$" : "-$") + Math.abs(netProfit).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      roiPercentEl.textContent = (roi >= 0 ? "+" : "") + roi.toFixed(2) + "%";
+      totalInvestedEl.textContent = "$" + totalInvested.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+      netResultBox.className = "result-box " + (netProfit >= 0 ? "profit-theme" : "loss-theme");
+      netAmountEl.className = "result-value " + (netProfit >= 0 ? "profit" : "loss");
+      roiPercentEl.className = "result-value " + (roi >= 0 ? "profit" : "loss");
+    }
+
+    function copyStockResults() {
+      const net = document.getElementById('netAmount').textContent;
+      const roi = document.getElementById('roiPercent').textContent;
+      const invested = document.getElementById('totalInvested').textContent;
+      
+      const summaryText = `Stock Trade Summary Report:\n- Total Invested: ${invested}\n- Net Profit/Loss: ${net}\n- ROI: ${roi}\nGenerated via Texus Pro Tools.`;
+      
+      navigator.clipboard.writeText(summaryText).then(() => {
+        const btn = document.getElementById('copyResultsBtn');
+        const originalText = btn.textContent;
+        btn.textContent = "✅ Copied to Clipboard!";
+        setTimeout(() => { btn.textContent = originalText; }, 2000);
+      });
+    }
+
+    function clearStockCalculator() {
+      document.getElementById('buyPrice').value = '';
+      document.getElementById('sellPrice').value = '';
+      document.getElementById('quantity').value = '';
+      document.getElementById('brokerage').value = '';
+      calculateStockReturns();
+    }
+
+    // Initial calculation trigger
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateStockReturns();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
