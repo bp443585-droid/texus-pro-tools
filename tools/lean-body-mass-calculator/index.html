@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Lean Body Mass Calculator | Free LBM & Body Fat Analyzer</title>
+  <meta name="description" content="Calculate your lean body mass (LBM), fat mass, and body fat percentage instantly using the Boer and James formulas. Free, accurate, and easy to use." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/lean-body-mass-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Lean Body Mass Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "HealthApplication",
+    "description": "An advanced health and fitness utility to compute lean body mass, fat mass, and body composition metrics precisely.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* FORM CONTROLS & GRID */
+    .f-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-field-group { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-field-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* UNIT TOGGLE ROW */
+    .unit-toggle-row { display: flex; gap: 10px; margin-bottom: 24px; background: #f1f5f9; padding: 6px; border-radius: 14px; width: fit-content; }
+    .unit-btn { background: transparent; border: none; padding: 10px 20px; font-weight: 700; font-size: 0.9rem; color: #64748b; border-radius: 10px; cursor: pointer; transition: all 0.2s; }
+    .unit-btn.active { background: #ffffff; color: #0f172a; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+
+    /* RESULTS DASHBOARD */
+    .f-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; margin-bottom: 20px; }
+    .f-result-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .f-result-box label { font-size: 0.78rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px; }
+    .f-result-value { font-size: 1.8rem; font-weight: 800; color: #0f172a; font-family: 'Inter', sans-serif; }
+    .f-result-unit { font-size: 0.9rem; font-weight: 600; color: #2563eb; margin-left: 4px; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 25px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px skin #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; border-bottom: 1px solid #e2e8f0; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .f-results-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-form-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>💪</span> Lean Body Mass Calculator</div>
+    
+    <div class="f-card">
+      <div class="unit-toggle-row">
+        <button type="button" class="unit-btn active" id="metricToggleBtn" onclick="setUnits('metric')">Metric (kg / cm)</button>
+        <button type="button" class="unit-btn" id="imperialToggleBtn" onclick="setUnits('imperial')">Imperial (lbs / in)</button>
+      </div>
+
+      <div class="f-form-grid">
+        <div class="f-field-group">
+          <label for="genderSelect">Biological Gender</label>
+          <select id="genderSelect" class="f-select-field" onchange="calculateLBM()">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        
+        <div class="f-field-group">
+          <label for="weightInput" id="weightLabel">Total Weight (kg)</label>
+          <input type="number" id="weightInput" class="f-input-field" placeholder="e.g. 75" value="75" min="1" step="0.1" oninput="calculateLBM()">
+        </div>
+      </div>
+
+      <div class="f-form-grid">
+        <div class="f-field-group">
+          <label for="heightInput" id="heightLabel">Height (cm)</label>
+          <input type="number" id="heightInput" class="f-input-field" placeholder="e.g. 178" value="178" min="1" step="0.1" oninput="calculateLBM()">
+        </div>
+
+        <div class="f-field-group">
+          <label for="bodyFatInput">Body Fat % (Optional)</label>
+          <input type="number" id="bodyFatInput" class="f-input-field" placeholder="e.g. 18 (Leave blank for formula estimate)" min="1" max="60" step="0.1" oninput="calculateLBM()">
+        </div>
+      </div>
+
+      <div class="f-results-grid">
+        <div class="f-result-box">
+          <label>Lean Body Mass (LBM)</label>
+          <div class="f-result-value" id="lbmResult">--</div>
+        </div>
+        <div class="f-result-box">
+          <label>Body Fat Mass</label>
+          <div class="f-result-value" id="fatMassResult">--</div>
+        </div>
+        <div class="f-result-box">
+          <label>Estimated Body Fat %</label>
+          <div class="f-result-value" id="bodyFatResult">--</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateLBM()">Recalculate Metrics</button>
+        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyResultsToClipboard()">📋 Copy Results</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Scientific Formulas Integrated:</span>
+        Calculations utilize the Boer formula, James formula, and direct skinfold/percentage derivation to maximize precision across varied athletic body compositions.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Understanding Lean Body Mass (LBM): The Ultimate Guide to Body Composition, Clinical Metrics, and Athletic Performance</h2>
+      <p class="seo-p">When tracking physical fitness, metabolic health, or nutritional requirements, total body weight alone provides an incomplete and often misleading picture. Two individuals can weigh precisely 80 kilograms while possessing radically different body compositions—one carrying high visceral and subcutaneous adipose tissue, and the other displaying a highly athletic physique dominated by skeletal muscle, bone density, and vital organ mass. This critical distinction is measured by Lean Body Mass (LBM).</p>
+      <p class="seo-p">This comprehensive technical and health guide explores the physiological definition of lean body mass, reviews the peer-reviewed mathematical models used to estimate it, examines its role in calculating daily energy expenditure, and highlights best practices for optimizing your overall physical fitness.</p>
+
+      <div class="seo-callout">
+        <strong>The Lean Mass Equation:</strong> Lean Body Mass represents everything in your body except stored fat. It is calculated by subtracting your total body fat mass from your overall body weight: <b>LBM = Total Weight - Fat Mass</b>.
+      </div>
+
+      <h3 class="seo-h2">The Scientific Models: Boer, James, and Direct Fat Percentage Calculations</h3>
+      <p class="seo-p">Because direct measurement of lean tissue requires advanced clinical equipment like DEXA scans or underwater weighing, sports scientists developed robust mathematical formulas that estimate LBM with remarkable accuracy using simple anthropometric inputs:</p>
+
+      <h4 class="seo-h3">1. The Boer Formula</h4>
+      <p class="seo-p">Developed by Dutch researcher P. Boer in 1984, this widely accepted regression equation calculates lean body mass based on total body weight and height for both men and women:</p>
+      <ul class="seo-list">
+        <li><b>Men:</b> LBM = (0.407 × Weight in kg) + (0.267 × Height in cm) - 19.2</li>
+        <li><b>Women:</b> LBM = (0.252 × Weight in kg) + (0.473 × Height in cm) - 48.3</li>
+      </ul>
+
+      <h4 class="seo-h3">2. The James Formula</h4>
+      <p class="seo-p">Formulated by W.P. James in 1976, this model is frequently utilized in clinical pharmacology and athletic conditioning to determine ideal dosing guidelines and lean tissue baselines:</p>
+      <ul class="seo-list">
+        <li><b>Men:</b> LBM = 1.10 × Weight in kg - 12.8 × (Weight² / Height²)</li>
+        <li><b>Women:</b> LBM = 1.07 × Weight in kg - 14.8 × (Weight² / Height²)</li>
+      </ul>
+
+      <h4 class="seo-h3">3. Direct Body Fat Percentage Integration</h4>
+      <p class="seo-p">If you input a known body fat percentage (obtained via skinfold calipers, bioelectrical impedance, or visual estimation), our calculator bypasses generalized regression models and computes your exact lean mass and fat mass directly, providing maximum personalized precision.</p>
+
+      <h3>The Sovereign Reference Matrix: Lean Mass and Fitness Benchmark Standards</h3>
+      <p class="seo-p">Reviewing standard body fat percentage ranges and corresponding lean mass ratios helps contextualize your calculator results:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Fitness Category</th>
+              <th>Men Body Fat % Range</th>
+              <th>Women Body Fat % Range</th>
+              <th>Physiological Characteristics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Essential Fat</td>
+              <td>2% – 5%</td>
+              <td>10% – 13%</td>
+              <td>Minimum necessary for basic physiological and hormonal survival.</td>
+            </tr>
+            <tr>
+              <td>Athletic / Fitness</td>
+              <td>6% – 13%</td>
+              <td>14% – 20%</td>
+              <td>High lean muscle mass, defined muscular striations, optimal metabolic rate.</td>
+            </tr>
+            <tr>
+              <td>Acceptable / Average</td>
+              <td>14% – 17%</td>
+              <td>21% – 24%</td>
+              <td>Standard healthy range for non-competitive adults.</td>
+            </tr>
+            <tr>
+              <td>Overweight</td>
+              <td>18% – 24%</td>
+              <td>25% – 31%</td>
+              <td>Elevated adipose tissue; potential risk for cardiovascular sluggishness.</td>
+            </tr>
+            <tr>
+              <td>Obese</td>
+              <td>25% +</td>
+              <td>32% +</td>
+              <td>High proportion of fat mass relative to skeletal lean tissue.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why is Lean Body Mass more important than Body Mass Index (BMI)?</h3>
+      <p class="seo-p">BMI relies solely on height and weight, frequently misclassifying muscular athletes, bodybuilders, and fitness enthusiasts as overweight or obese. Lean Body Mass isolates your functional tissue from fat mass, giving you a true reflection of your muscular development and metabolic health.</p>
+
+      <h3>How does Lean Body Mass affect my daily calorie needs (TDEE)?</h3>
+      <p class="seo-p">Muscle tissue is metabolically active and requires significantly more energy to maintain at rest than adipose tissue. Knowing your LBM allows advanced equations like the Katch-McArdle formula to estimate your Basal Metabolic Rate (BMR) with much greater accuracy than weight-only formulas.</p>
+
+      <h3>Is it possible to increase Lean Body Mass while losing body fat?</h3>
+      <p class="seo-p">Yes, especially for beginners, individuals returning from a training hiatus, or those with higher initial body fat percentages. This process, known as body recomposition, requires progressive resistance training, adequate protein intake, and a moderate caloric deficit or maintenance level.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Fitness Tracking</h3>
+      <p class="seo-p">Monitoring your lean body mass over time provides an objective metric for evaluating your training and nutrition regimens. Whether your goal is muscle hypertrophy, fat loss, or athletic conditioning, keeping consistent tabs on your body composition ensures your efforts yield sustainable, health-promoting results.</p>
+      <p class="seo-p">Our Advanced Lean Body Mass Calculator automates complex clinical formulas instantly, giving you clear insights directly in your browser without requiring external data uploads or compromising your privacy.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let currentUnit = 'metric';
+
+    function setUnits(unit) {
+      currentUnit = unit;
+      const metricBtn = document.getElementById('metricToggleBtn');
+      const imperialBtn = document.getElementById('imperialToggleBtn');
+      const weightLabel = document.getElementById('weightLabel');
+      const heightLabel = document.getElementById('heightLabel');
+      const weightInput = document.getElementById('weightInput');
+      const heightInput = document.getElementById('heightInput');
+
+      if (unit === 'metric') {
+        metricBtn.classList.add('active');
+        imperialBtn.classList.remove('active');
+        weightLabel.textContent = 'Total Weight (kg)';
+        heightLabel.textContent = 'Height (cm)';
+        if (weightInput.value && weightInput.value > 0) {
+          weightInput.value = (parseFloat(weightInput.value) / 2.20462).toFixed(1);
+        } else {
+          weightInput.value = '75';
+        }
+        if (heightInput.value && heightInput.value > 0) {
+          heightInput.value = (parseFloat(heightInput.value) * 2.54).toFixed(1);
+        } else {
+          heightInput.value = '178';
+        }
+      } else {
+        imperialBtn.classList.add('active');
+        metricBtn.classList.remove('active');
+        weightLabel.textContent = 'Total Weight (lbs)';
+        heightLabel.textContent = 'Height (inches)';
+        if (weightInput.value && weightInput.value > 0) {
+          weightInput.value = (parseFloat(weightInput.value) * 2.20462).toFixed(1);
+        } else {
+          weightInput.value = '165';
+        }
+        if (heightInput.value && heightInput.value > 0) {
+          heightInput.value = (parseFloat(heightInput.value) / 2.54).toFixed(1);
+        } else {
+          heightInput.value = '70';
+        }
+      }
+      calculateLBM();
+    }
+
+    function calculateLBM() {
+      const gender = document.getElementById('genderSelect').value;
+      let weight = parseFloat(document.getElementById('weightInput').value);
+      let height = parseFloat(document.getElementById('heightInput').value);
+      const bodyFatInput = document.getElementById('bodyFatInput').value;
+
+      if (!weight || !height || weight <= 0 || height <= 0) {
+        document.getElementById('lbmResult').innerHTML = '--';
+        document.getElementById('fatMassResult').innerHTML = '--';
+        document.getElementById('bodyFatResult').innerHTML = '--';
+        return;
+      }
+
+      let weightKg = currentUnit === 'imperial' ? weight / 2.20462 : weight;
+      let heightCm = currentUnit === 'imperial' ? height * 2.54 : height;
+
+      let lbm = 0;
+      let fatMass = 0;
+      let bodyFatPct = 0;
+
+      if (bodyFatInput !== '' && !isNaN(bodyFatInput)) {
+        bodyFatPct = parseFloat(bodyFatInput);
+        fatMass = weightKg * (bodyFatPct / 100);
+        lbm = weightKg - fatMass;
+      } else {
+        // Boer Formula
+        if (gender === 'male') {
+          lbm = (0.407 * weightKg) + (0.267 * heightCm) - 19.2;
+        } else {
+          lbm = (0.252 * weightKg) + (0.473 * heightCm) - 48.3;
+        }
+        if (lbm < 0) lbm = 0;
+        fatMass = weightKg - lbm;
+        if (fatMass < 0) fatMass = 0;
+        bodyFatPct = (fatMass / weightKg) * 100;
+      }
+
+      let displayLbm = currentUnit === 'imperial' ? lbm * 2.20462 : lbm;
+      let displayFat = currentUnit === 'imperial' ? fatMass * 2.20462 : fatMass;
+      let unitLabel = currentUnit === 'imperial' ? 'lbs' : 'kg';
+
+      document.getElementById('lbmResult').innerHTML = `${displayLbm.toFixed(1)} <span class="f-result-unit">${unitLabel}</span>`;
+      document.getElementById('fatMassResult').innerHTML = `${displayFat.toFixed(1)} <span class="f-result-unit">${unitLabel}</span>`;
+      document.getElementById('bodyFatResult').innerHTML = `${bodyFatPct.toFixed(1)} <span class="f-result-unit">%</span>`;
+    }
+
+    function clearCalculator() {
+      document.getElementById('weightInput').value = '';
+      document.getElementById('heightInput').value = '';
+      document.getElementById('bodyFatInput').value = '';
+      document.getElementById('lbmResult').innerHTML = '--';
+      document.getElementById('fatMassResult').innerHTML = '--';
+      document.getElementById('bodyFatResult').innerHTML = '--';
+    }
+
+    function copyResultsToClipboard() {
+      const lbm = document.getElementById('lbmResult').innerText;
+      const fat = document.getElementById('fatMassResult').innerText;
+      const bf = document.getElementById('bodyFatResult').innerText;
+
+      if (lbm === '--') {
+        alert('Please calculate your metrics first.');
+        return;
+      }
+
+      const text = `Lean Body Mass Calculator Results:\n- Lean Body Mass (LBM): ${lbm}\n- Fat Mass: ${fat}\n- Estimated Body Fat: ${bf}`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyResultsBtn');
+        btn.textContent = '✓ Copied Successfully!';
+        setTimeout(() => { btn.textContent = '📋 Copy Results'; }, 2000);
+      });
+    }
+
+    // Run initial calculation on load
+    window.onload = function() {
+      calculateLBM();
+    };
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
