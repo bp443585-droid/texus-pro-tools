@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Car Lease vs Buy Calculator | Compare Lease & Loan Payments Instantly</title>
+  <meta name="description" content="Use our free Car Lease vs Buy Calculator to compare monthly payments, total costs, equity buildup, and determine whether financing or leasing saves you more money." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/car-lease-vs-buy-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Car Lease vs Buy Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "FinanceApplication",
+    "description": "An advanced financial analysis tool to compare vehicle leasing and purchasing costs, monthly obligations, depreciation, and equity retention.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CALCULATOR SPECIFIC GRID SYSTEM */
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+    .calc-column { display: flex; flex-direction: column; gap: 16px; }
+    .calc-section-title { font-size: 1.1rem; font-weight: 800; color: #1e293b; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; margin-top: 5px; display: flex; align-items: center; gap: 8px; }
+    
+    .f-input-group { display: flex; flex-direction: column; gap: 6px; }
+    .f-input-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS DISPLAY POD */
+    .results-pod { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 25px; margin-top: 10px; }
+    .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .result-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.01); }
+    .result-box.highlight { border-color: #2563eb; background: #eff6ff; }
+    .result-title { font-size: 0.85rem; text-transform: uppercase; font-weight: 700; color: #64748b; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .result-value { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+    .result-sub { font-size: 0.85rem; color: #475569; font-weight: 500; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 25px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .calc-grid { grid-template-columns: 1fr; gap: 20px; }
+      .results-grid { grid-template-columns: 1fr; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🚗</span> Car Lease vs Buy Calculator</div>
+    
+    <div class="f-card">
+      <div class="calc-grid">
+        <!-- Vehicle & Loan Inputs -->
+        <div class="calc-column">
+          <div class="calc-section-title"><span>🏷️</span> Vehicle & Loan Parameters</div>
+          
+          <div class="f-input-group">
+            <label for="carPrice">Vehicle Price ($)</label>
+            <input type="number" id="carPrice" class="f-input-field" value="35000" min="1000" max="500000" oninput="calculateLeaseVsBuy()">
+          </div>
+
+          <div class="f-input-group">
+            <label for="downPayment">Down Payment ($)</label>
+            <input type="number" id="downPayment" class="f-input-field" value="3500" min="0" max="200000" oninput="calculateLeaseVsBuy()">
+          </div>
+
+          <div class="f-input-group">
+            <label for="salesTaxRate">Sales Tax Rate (%)</label>
+            <input type="number" id="salesTaxRate" class="f-input-field" value="7.0" step="0.1" min="0" max="20" oninput="calculateLeaseVsBuy()">
+          </div>
+
+          <div class="f-input-group">
+            <label for="loanTerm">Loan Term (Months)</label>
+            <input type="number" id="loanTerm" class="f-input-field" value="60" min="12" max="84" oninput="calculateLeaseVsBuy()">
+          </div>
+
+          <div class="f-input-group">
+            <label for="loanInterestRate">Loan Interest Rate (%)</label>
+            <input type="number" id="loanInterestRate" class="f-input-field" value="5.5" step="0.1" min="0" max="25" oninput="calculateLeaseVsBuy()">
+          </div>
+        </div>
+
+        <!-- Lease Inputs & Horizon -->
+        <div class="calc-column">
+          <div class="calc-section-title"><span>📝</span> Lease Parameters</div>
+
+          <div class="f-input-group">
+            <label for="leaseTerm">Lease Term (Months)</label>
+            <input type="number" id="leaseTerm" class="f-input-field" value="36" min="12" max="60" oninput="calculateLeaseVsBuy()">
+          </div>
+
+          <div class="f-input-group">
+            <label for="residualValuePercent">Residual Value (%)</label>
+            <input type="number" id="residualValuePercent" class="f-input-field" value="55" min="10" max="90" oninput="calculateLeaseVsBuy()">
+          </div>
+
+          <div class="f-input-group">
+            <label for="moneyFactor">Money Factor (e.g. 0.0025)</label>
+            <input type="number" id="moneyFactor" class="f-input-field" value="0.0025" step="0.0001" min="0" max="0.01" oninput="calculateLeaseVsBuy()">
+          </div>
+
+          <div class="calc-section-title" style="margin-top: 10px;"><span>⏱️</span> Comparison Horizon</div>
+
+          <div class="f-input-group">
+            <label for="ownershipHorizon">Holding Period (Years)</label>
+            <input type="number" id="ownershipHorizon" class="f-input-field" value="3" min="1" max="10" oninput="calculateLeaseVsBuy()">
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Display Pod -->
+      <div class="results-pod">
+        <div class="results-grid">
+          <div class="result-box highlight">
+            <div class="result-title">Lease Monthly Payment</div>
+            <div class="result-value" id="leaseMonthlyOutput">$482</div>
+            <div class="result-sub" id="leaseTotalOutput">Total Lease Cost: $17,352</div>
+          </div>
+          
+          <div class="result-box">
+            <div class="result-title">Buy Monthly Loan Payment</div>
+            <div class="result-value" id="buyMonthlyOutput">$628</div>
+            <div class="result-sub" id="buyEquityOutput">Estimated Equity at Term: $14,200</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateLeaseVsBuy()">Calculate Analysis</button>
+        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyResultsToClipboard()">📋 Copy Financial Summary</button>
+        <button class="f-btn f-btn-clear" onclick="resetCalculatorDefaults()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Interactive Financial Modeling Notice:</span>
+        Calculations account for capitalized cost reductions, monthly interest amortization, estimated vehicle depreciation curves, and residual equity retention over your specified holding horizon.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Economics of Vehicle Acquisition: Comprehensive Analysis of Leasing versus Financing</h2>
+      <p class="seo-p">Choosing whether to lease or finance a new or certified pre-owned vehicle is one of the most significant recurring financial decisions consumers face. While car ownership represents building long-term equity and driving without mileage restrictions, leasing offers lower monthly payments, access to brand-new technology every few years, and freedom from major out-of-warranty repair liabilities. To make an informed decision, you must evaluate total cost of ownership, annual mileage habits, and capital opportunity costs.</p>
+      <p class="seo-p">This extensive guide breaks down the mathematical mechanics of automotive leases and auto loans, analyzes depreciation schedules, examines the impact of money factors and interest rates, and provides a clear framework to help you determine which strategy optimizes your personal or business budget.</p>
+
+      <div class="seo-callout">
+        <strong>The Fundamental Trade-Off:</strong> Leasing pays strictly for the vehicle's depreciation during your term plus a financing fee, leaving you with no equity when it ends. Buying finances the entire vehicle cost, resulting in higher monthly payments but leaving you with a valuable asset once the loan is fully satisfied.
+      </div>
+
+      <h3 class="seo-h2">The Financial Mechanics: How Car Leases Are Calculated</h3>
+      <p class="seo-p">Automotive leases operate on precise mathematical formulas designed to predict the vehicle's value at the end of the contract term. Understanding these variables empowers you to negotiate better terms at the dealership:</p>
+
+      <h4 class="seo-h3">1. Capitalized Cost (Cap Cost)</h4>
+      <p class="seo-p">The capitalized cost is the negotiated selling price of the car. Just like buying a car, lowering the purchase price through negotiation directly reduces your monthly lease payments.</p>
+
+      <h4 class="seo-h3">2. Residual Value</h4>
+      <p class="seo-p">The residual value is the estimated wholesale worth of the vehicle at the end of the lease term, expressed as a percentage of the MSRP. Higher residual values are advantageous because you pay for a smaller depreciation gap between the initial price and the ending value.</p>
+
+      <h4 class="seo-h3">3. Money Factor and Depreciation Charge</h4>
+      <p class="seo-p">The money factor represents the interest rate charged on a lease. To convert a money factor into an approximate annual percentage rate (APR), multiply it by 2,400. Your monthly payment combines the depreciation charge (Cap Cost minus Residual Value divided by lease term) plus the finance charge (Cap Cost plus Residual Value multiplied by the money factor).</p>
+
+      <h3>Comparative Analysis: Lease vs. Buy Structural Breakdown</h3>
+      <p class="seo-p">Reviewing the key operational differences between both acquisition paths helps clarify which model suits your lifestyle and financial goals:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Evaluation Factor</th>
+              <th>Vehicle Leasing (Lease)</th>
+              <th>Vehicle Financing (Buy)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monthly Payment Amount</td>
+              <td>Typically 20% to 40% lower for the same vehicle class.</td>
+              <td>Higher monthly obligations due to amortizing total vehicle cost.</td>
+            </tr>
+            <tr>
+              <td>End of Term Outcome</td>
+              <td>Return vehicle, purchase for residual price, or start a new lease.</td>
+              <td>Vehicle is fully owned free and clear with zero monthly payments.</td>
+            </tr>
+            <tr>
+              <td>Mileage Restrictions</td>
+              <td>Strict annual limits (typically 10,000 to 15,000 miles); overage fees apply.</td>
+              <td>Unlimited mileage; drive as much as you want without financial penalty.</td>
+            </tr>
+            <tr>
+              <td>Customization & Wear</td>
+              <td>Wear-and-tear inspection at return; modifications must be reversible.</td>
+              <td>Complete freedom to customize, modify, or tolerate cosmetic wear.</td>
+            </tr>
+            <tr>
+              <td>Maintenance Costs</td>
+              <td>Usually covered under factory warranty for the duration of the lease.</td>
+              <td>Owner is responsible for all mechanical maintenance after warranty expires.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Expert Financial Insights</h3>
+
+      <h3>Is it true that leasing a car is always more expensive in the long run?</h3>
+      <p class="seo-p">Not necessarily. While leasing continuously without ever owning an asset means you always have a car payment, buying a car and trading it in every three years also exposes you to heavy initial depreciation hits. If you prefer driving a new car every 36 months under factory warranty, leasing can sometimes prove economically comparable to frequent trade-in cycles.</p>
+
+      <h3>What happens if I exceed the mileage limit on my car lease?</h3>
+      <p class="seo-p">Exceeding your contracted annual mileage incurs excess mileage fees, typically ranging from 15 to 30 cents per mile. If you anticipate high annual mileage (over 15,000 miles per year), financing or purchasing a pre-owned vehicle is almost always the more cost-effective choice.</p>
+
+      <h3>How does putting money down on a lease differ from a loan down payment?</h3>
+      <p class="seo-p">On a loan, a down payment reduces your financed principal and builds immediate equity. On a lease, putting a large cash down payment (often called a capitalized cost reduction) simply prepays a portion of your monthly payments. If your leased vehicle is totaled or stolen early in the term, insurance payouts cover the vehicle's market value, and your upfront cash down payment is typically lost—making zero-down leasing a safer strategy.</p>
+
+      <h3 class="seo-h2">Summary: Making the Right Choice for Your Driving Profile</h3>
+      <p class="seo-p">Deciding between leasing and buying depends on your driving habits, cash flow preferences, and how long you plan to keep your vehicle. If you drive moderate annual mileage, appreciate driving reliable vehicles under warranty, and prefer lower monthly commitments, leasing is an attractive option. If you keep cars for 6 to 10 years, drive high annual mileage, and want the freedom of zero payments once your loan is paid off, purchasing is the superior financial path.</p>
+      <p class="seo-p">Our Advanced Car Lease vs Buy Calculator instantly models your precise financial scenarios, providing crystal-clear monthly and total cost projections across any desktop or mobile device securely.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function calculateLeaseVsBuy() {
+      // Fetch inputs
+      const carPrice = parseFloat(document.getElementById('carPrice').value) || 0;
+      const downPayment = parseFloat(document.getElementById('downPayment').value) || 0;
+      const salesTaxRate = (parseFloat(document.getElementById('salesTaxRate').value) || 0) / 100;
+      const loanTerm = parseInt(document.getElementById('loanTerm').value) || 60;
+      const loanInterestRate = (parseFloat(document.getElementById('loanInterestRate').value) || 0) / 100;
+
+      const leaseTerm = parseInt(document.getElementById('leaseTerm').value) || 36;
+      const residualPercent = (parseFloat(document.getElementById('residualValuePercent').value) || 55) / 100;
+      const moneyFactor = parseFloat(document.getElementById('moneyFactor').value) || 0.0025;
+      const horizonYears = parseInt(document.getElementById('ownershipHorizon').value) || 3;
+      const horizonMonths = horizonYears * 12;
+
+      // --- BUY / LOAN CALCULATIONS ---
+      const loanPrincipal = Math.max(0, carPrice - downPayment);
+      const monthlyInterestRate = loanInterestRate / 12;
+      
+      let buyMonthlyPayment = 0;
+      if (monthlyInterestRate > 0) {
+        buyMonthlyPayment = loanPrincipal * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loanTerm)) / (Math.pow(1 + monthlyInterestRate, loanTerm) - 1);
+      } else {
+        buyMonthlyPayment = loanPrincipal / loanTerm;
+      }
+      
+      const totalBuyPaymentsOverHorizon = buyMonthlyPayment * Math.min(horizonMonths, loanTerm);
+      const totalBuyCashOutflow = downPayment + totalBuyPaymentsOverHorizon;
+
+      // Approximate depreciation over horizon for equity estimate (rule of thumb: 15% first year, 10% after)
+      let estimatedCarValue = carPrice;
+      for (let y = 1; y <= horizonYears; y++) {
+        let depRate = (y === 1) ? 0.15 : 0.10;
+        estimatedCarValue *= (1 - depRate);
+      }
+
+      // Remaining loan balance after horizon months
+      let remainingLoanBalance = 0;
+      if (horizonMonths < loanTerm) {
+        if (monthlyInterestRate > 0) {
+          remainingLoanBalance = loanPrincipal * (Math.pow(1 + monthlyInterestRate, loanTerm) - Math.pow(1 + monthlyInterestRate, horizonMonths)) / (Math.pow(1 + monthlyInterestRate, loanTerm) - 1);
+        } else {
+          remainingLoanBalance = loanPrincipal * (1 - horizonMonths / loanTerm);
+        }
+      }
+      const estimatedEquity = Math.max(0, estimatedCarValue - remainingLoanBalance);
+
+      // --- LEASE CALCULATIONS ---
+      const residualValue = carPrice * residualPercent;
+      const adjustedCapCost = Math.max(0, carPrice - downPayment);
+      const monthlyDepreciation = (adjustedCapCost - residualValue) / leaseTerm;
+      const monthlyFinanceCharge = (adjustedCapCost + residualValue) * moneyFactor;
+      const baseLeaseMonthly = monthlyDepreciation + monthlyFinanceCharge;
+      const leaseMonthlyWithTax = baseLeaseMonthly * (1 + salesTaxRate);
+
+      const leaseMonthsActive = Math.min(horizonMonths, leaseTerm);
+      const totalLeaseCost = downPayment + (leaseMonthlyWithTax * leaseMonthsActive);
+
+      // --- RENDER RESULTS ---
+      document.getElementById('leaseMonthlyOutput').textContent = '$' + leaseMonthlyWithTax.toFixed(2);
+      document.getElementById('leaseTotalOutput').textContent = `Total Lease Cost (${leaseMonthsActive} mo): $${totalLeaseCost.toFixed(0)}`;
+
+      document.getElementById('buyMonthlyOutput').textContent = '$' + buyMonthlyPayment.toFixed(2);
+      document.getElementById('buyEquityOutput').textContent = `Est. Equity at Year ${horizonYears}: $${estimatedEquity.toFixed(0)}`;
+    }
+
+    function copyResultsToClipboard() {
+      const leaseMonthly = document.getElementById('leaseMonthlyOutput').textContent;
+      const leaseTotal = document.getElementById('leaseTotalOutput').textContent;
+      const buyMonthly = document.getElementById('buyMonthlyOutput').textContent;
+      const buyEquity = document.getElementById('buyEquityOutput').textContent;
+
+      const summaryText = `Car Lease vs Buy Financial Summary:\n- ${leaseMonthly} (${leaseTotal})\n- Buy Loan: ${buyMonthly} (${buyEquity})`;
+      
+      navigator.clipboard.writeText(summaryText).then(() => {
+        const btn = document.getElementById('copyResultsBtn');
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Copied to Clipboard!';
+        setTimeout(() => { btn.textContent = originalText; }, 2000);
+      }).catch(err => {
+        console.error('Copy failed:', err);
+      });
+    }
+
+    function resetCalculatorDefaults() {
+      document.getElementById('carPrice').value = '35000';
+      document.getElementById('downPayment').value = '3500';
+      document.getElementById('salesTaxRate').value = '7.0';
+      document.getElementById('loanTerm').value = '60';
+      document.getElementById('loanInterestRate').value = '5.5';
+      document.getElementById('leaseTerm').value = '36';
+      document.getElementById('residualValuePercent').value = '55';
+      document.getElementById('moneyFactor').value = '0.0025';
+      document.getElementById('ownershipHorizon').value = '3';
+      calculateLeaseVsBuy();
+    }
+
+    // Initialize calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateLeaseVsBuy();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
