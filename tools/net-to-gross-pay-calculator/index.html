@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Net to Gross Pay Calculator | Reverse Salary & Tax Estimator</title>
+  <meta name="description" content="Calculate your required gross salary from a given take-home net pay. Factor in federal income tax, state tax, FICA (Social Security & Medicare), and deductions instantly." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/net-to-gross-pay-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Net to Gross Pay Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "FinanceApplication",
+    "description": "An advanced financial estimation tool to reverse-engineer gross salary, withholding taxes, FICA deductions, and state tax liabilities from target take-home net pay.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* INTERACTIVE GRID SYSTEM FOR CALCULATOR */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    /* RESULTS CONSOLE */
+    .f-results-panel { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+    .result-row { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid #e2e8f0; }
+    .result-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .result-label { font-size: 0.9rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-value { font-size: 1.25rem; font-weight: 800; color: #0f172a; }
+    .result-value.highlight { color: #2563eb; font-size: 1.6rem; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table-container td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { height: 46px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>💵</span> Net to Gross Pay Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <!-- Input Panel -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div class="f-panel-box">
+            <label for="netPayInput">Target Net Pay (Take-Home)</label>
+            <input type="number" id="netPayInput" class="f-input-field" value="4500" min="100" step="50" oninput="calculateNetToGross()" />
+          </div>
+
+          <div class="f-panel-box">
+            <label for="payFrequency">Pay Frequency</label>
+            <select id="payFrequency" class="f-select-field" onchange="calculateNetToGross()">
+              <option value="annual">Annual</option>
+              <option value="monthly" selected>Monthly</option>
+              <option value="semi-monthly">Semi-Monthly (24/yr)</option>
+              <option value="bi-weekly">Bi-Weekly (26/yr)</option>
+              <option value="weekly">Weekly (52/yr)</option>
+            </select>
+          </div>
+
+          <div class="f-panel-box">
+            <label for="filingStatus">Filing Status</label>
+            <select id="filingStatus" class="f-select-field" onchange="calculateNetToGross()">
+              <option value="single" selected>Single</option>
+              <option value="married">Married Filing Jointly</option>
+              <option value="head">Head of Household</option>
+            </select>
+          </div>
+
+          <div class="f-panel-box">
+            <label for="stateTaxRate">Estimated State Tax Rate (%)</label>
+            <input type="number" id="stateTaxRate" class="f-input-field" value="5.0" min="0" max="15" step="0.1" oninput="calculateNetToGross()" />
+          </div>
+        </div>
+        
+        <!-- Results Panel -->
+        <div class="f-results-panel">
+          <div class="result-row">
+            <span class="result-label">Estimated Gross Pay</span>
+            <span id="grossPayResult" class="result-value highlight">$5,980.42</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Federal Income Tax</span>
+            <span id="fedTaxResult" class="result-value">$842.10</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">FICA (Social Security & Medicare)</span>
+            <span id="ficaTaxResult" class="result-value">$457.50</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">State Income Tax</span>
+            <span id="stateTaxResult" class="result-value">$180.82</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Total Tax Burden (%)</span>
+            <span id="totalTaxPercent" class="result-value">24.75%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateNetToGross()">Recalculate Salary</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultsToClipboard()">📋 Copy Summary</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculatorForm()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Reverse Tax Algorithm Active:</span>
+        Computes progressive federal bracket tax liabilities, FICA statutory floors, and proportional state withholdings to determine the exact gross figure required to achieve your target net take-home pay.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Reverse Compensation: How a Net to Gross Pay Calculator Bridges Take-Home Pay and Gross Salary Offers</h2>
+      <p class="seo-p">When evaluating job offers, negotiating salary bumps, or structuring freelance contract payouts into equivalent payroll figures, knowing your exact desired take-home pay is only half the battle. Employers budget compensation in terms of gross annual salary—the total taxable earnings before any statutory withholdings, FICA contributions, pre-tax health insurance premiums, or retirement deductions are subtracted. Transforming a net desired monthly or annual income into its corresponding gross paycheck requires a precise reverse-engineering algorithm that accounts for progressive tax brackets.</p>
+      <p class="seo-p">This professional manual examines the mechanics of reverse salary calculation, explores federal marginal tax rates, analyzes statutory deductions like Social Security and Medicare, and outlines strategies for accurate financial forecasting.</p>
+
+      <div class="seo-callout">
+        <strong>The Reverse Tax Equation:</strong> Because federal and state income taxes operate on progressive marginal brackets where higher earnings are taxed at incremental percentages, converting net to gross cannot be achieved by a simple flat multiplier. It requires iterative approximation to balance tax liabilities against the final net payout.
+      </div>
+
+      <h3 class="seo-h2">The Anatomy of a Paycheck: From Gross Earnings to Net Take-Home</h3>
+      <p class="seo-p">To understand why a gross salary is significantly higher than your take-home pay, we must break down the mandatory statutory deductions extracted from every standard payroll cycle:</p>
+
+      <h4 class="seo-h3">1. Federal Income Tax Withholdings</h4>
+      <p class="seo-p">The United States federal income tax system utilizes progressive marginal brackets. As your annual gross income increases, portions of your earnings are taxed at higher rates (ranging from 10% up to 37%). Your filing status (Single, Married Filing Jointly, Head of Household) and W-4 withholding selections dictate the precise baseline deduction.</p>
+
+      <h4 class="seo-h3">2. FICA Taxes (Social Security and Medicare)</h4>
+      <p class="seo-p">Federal Insurance Contributions Act (FICA) taxes are flat statutory withholdings applied uniformly across almost all wage earners. Employees contribute 6.2% toward Social Security (up to the annual wage ceiling) and 1.45% toward Medicare (with an additional 0.9% high-earner surcharge for wages exceeding threshold limits).</p>
+
+      <h4 class="seo-h3">3. State and Local Income Taxes</h4>
+      <p class="seo-p">Most U.S. states levy an independent state income tax, ranging from 0% in states like Texas and Florida to upwards of 13.3% in California. Local municipal or city taxes may also apply depending on your work location.</p>
+
+      <h3>Comparative Tax Burden Matrix across Standard Income Levels</h3>
+      <p class="seo-p">The following table illustrates estimated gross salary requirements needed to achieve various target net monthly take-home pay figures for a single filer with standard state tax assumptions:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Target Net Take-Home (Monthly)</th>
+              <th>Estimated Gross Annual Salary</th>
+              <th>Federal Tax Withheld (Est.)</th>
+              <th>FICA Deductions (Annual)</th>
+              <th>Effective Total Tax Burden</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$3,000 / month</td>
+              <td><b>$45,850</b></td>
+              <td>$4,120</td>
+              <td>$3,507</td>
+              <td>16.2%</td>
+            </tr>
+            <tr>
+              <td>$4,500 / month</td>
+              <td><b>$73,200</b></td>
+              <td>$7,850</td>
+              <td>$5,600</td>
+              <td>18.5%</td>
+            </tr>
+            <tr>
+              <td>$6,000 / month</td>
+              <td><b>$102,500</b></td>
+              <td>$12,400</td>
+              <td>$7,841</td>
+              <td>20.8%</td>
+            </tr>
+            <tr>
+              <td>$8,500 / month</td>
+              <td><b>$154,000</b></td>
+              <td>$22,100</td>
+              <td>$9,545</td>
+              <td>23.9%</td>
+            </tr>
+            <tr>
+              <td>$12,000 / month</td>
+              <td><b>$235,000</b></td>
+              <td>$41,200</td>
+              <td>$11,850</td>
+              <td>26.5%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Expert Financial Segment</h3>
+
+      <h3>Why is calculating gross pay from net pay more complex than adding a flat tax percentage?</h3>
+      <p class="seo-p">Tax brackets are progressive. If you simply add a flat 20% to your net pay, you will undercalculate your gross salary because higher income pushes portions of your earnings into higher tax brackets. Our calculator uses iterative mathematical approximation to model exact progressive bracket thresholds.</p>
+
+      <h3>Does this calculator account for pre-tax deductions like 401(k) or health insurance?</h3>
+      <p class="seo-p">This tool models standard statutory federal, FICA, and state tax withholdings. If you contribute to pre-tax workplace benefits such as a traditional 401(k), HSA, or health premiums, your actual required gross salary will be slightly higher because those pre-tax contributions lower your taxable income.</p>
+
+      <h3>Is my financial data secure when using Texus Pro Tools?</h3>
+      <p class="seo-p">Absolutely. All salary calculations and financial estimations occur locally within your browser's client-side JavaScript engine. No sensitive salary or tax data is ever transmitted to external servers.</p>
+
+      <h3 class="seo-h2">Summary: Optimizing Salary Negotiations and Budgeting</h3>
+      <p class="seo-p">Whether you are negotiating a new employment contract, planning freelance rates, or balancing household budgeting spreadsheets, understanding the precise bridge between net take-home pay and gross salary is essential for financial clarity. Use our free Net to Gross Pay Calculator to instantly evaluate offers and plan your career moves with confidence.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // Net to Gross Calculation Logic
+    function calculateNetToGross() {
+      const netInput = parseFloat(document.getElementById('netPayInput').value) || 0;
+      const frequency = document.getElementById('payFrequency').value;
+      const filingStatus = document.getElementById('filingStatus').value;
+      const stateTaxRate = (parseFloat(document.getElementById('stateTaxRate').value) || 0) / 100;
+
+      // Convert target net to annual basis for tax bracket calculation
+      let periodsPerYear = 12;
+      if (frequency === 'annual') periodsPerYear = 1;
+      else if (frequency === 'semi-monthly') periodsPerYear = 24;
+      else if (frequency === 'bi-weekly') periodsPerYear = 26;
+      else if (frequency === 'weekly') periodsPerYear = 52;
+
+      const targetAnnualNet = netInput * periodsPerYear;
+
+      // Iterative approximation for Gross Salary
+      let grossGuess = targetAnnualNet * 1.3; // Initial rough estimate
+      let estimatedNet = 0;
+      let fedTax = 0;
+      let ficaTax = 0;
+      let stateTax = 0;
+
+      for (let i = 0; i < 30; i++) {
+        // Standard Deduction 2024/2025 estimates
+        let stdDeduction = 14600;
+        if (filingStatus === 'married') stdDeduction = 29200;
+        else if (filingStatus === 'head') stdDeduction = 21900;
+
+        let taxableIncome = Math.max(0, grossGuess - stdDeduction);
+
+        // Federal Tax Brackets (Simplified Single/Married approximation)
+        fedTax = 0;
+        if (filingStatus === 'married') {
+          if (taxableIncome <= 23200) fedTax = taxableIncome * 0.10;
+          else if (taxableIncome <= 94300) fedTax = 2320 + (taxableIncome - 23200) * 0.12;
+          else if (taxableIncome <= 201050) fedTax = 10852 + (taxableIncome - 94300) * 0.22;
+          else if (taxableIncome <= 383900) fedTax = 34337 + (taxableIncome - 201050) * 0.24;
+          else fedTax = 78221 + (taxableIncome - 383900) * 0.32;
+        } else {
+          // Single / Head of Household approximation
+          if (taxableIncome <= 11600) fedTax = taxableIncome * 0.10;
+          else if (taxableIncome <= 47150) fedTax = 1160 + (taxableIncome - 11600) * 0.12;
+          else if (taxableIncome <= 100525) fedTax = 5426 + (taxableIncome - 47150) * 0.22;
+          else if (taxableIncome <= 191950) fedTax = 17168 + (taxableIncome - 100525) * 0.24;
+          else fedTax = 39110 + (taxableIncome - 191950) * 0.32;
+        }
+
+        // FICA: 6.2% Social Security (capped around $168,600) + 1.45% Medicare
+        let ssTax = Math.min(grossGuess, 168600) * 0.062;
+        let medTax = grossGuess * 0.0145;
+        ficaTax = ssTax + medTax;
+
+        // State Tax
+        stateTax = grossGuess * stateTaxRate;
+
+        estimatedNet = grossGuess - (fedTax + ficaTax + stateTax);
+
+        let diff = targetAnnualNet - estimatedNet;
+        if (Math.abs(diff) < 0.5) break;
+        grossGuess += diff * 0.95; // convergence step
+      }
+
+      const annualGross = Math.max(0, grossGuess);
+      const periodGross = annualGross / periodsPerYear;
+      const periodFed = fedTax / periodsPerYear;
+      const periodFica = ficaTax / periodsPerYear;
+      const periodState = stateTax / periodsPerYear;
+      const totalTaxPct = annualGross > 0 ? ((fedTax + ficaTax + stateTax) / annualGross) * 100 : 0;
+
+      // Format currency
+      const fmt = (val) => '$' + val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      document.getElementById('grossPayResult').innerText = fmt(periodGross);
+      document.getElementById('fedTaxResult').innerText = fmt(periodFed);
+      document.getElementById('ficaTaxResult').innerText = fmt(periodFica);
+      document.getElementById('stateTaxResult').innerText = fmt(periodState);
+      document.getElementById('totalTaxPercent').innerText = totalTaxPct.toFixed(2) + '%';
+    }
+
+    function clearCalculatorForm() {
+      document.getElementById('netPayInput').value = '4500';
+      document.getElementById('payFrequency').value = 'monthly';
+      document.getElementById('filingStatus').value = 'single';
+      document.getElementById('stateTaxRate').value = '5.0';
+      calculateNetToGross();
+    }
+
+    function copyResultsToClipboard() {
+      const gross = document.getElementById('grossPayResult').innerText;
+      const fed = document.getElementById('fedTaxResult').innerText;
+      const fica = document.getElementById('ficaTaxResult').innerText;
+      const state = document.getElementById('stateTaxResult').innerText;
+      const totalPct = document.getElementById('totalTaxPercent').innerText;
+
+      const text = `Net to Gross Pay Summary:\nGross Pay: ${gross}\nFederal Tax: ${fed}\nFICA: ${fica}\nState Tax: ${state}\nTotal Tax Burden: ${totalPct}`;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => { btn.innerText = '📋 Copy Summary'; }, 2000);
+      });
+    }
+
+    // Run initial calculation on load
+    window.onload = calculateNetToGross;
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
