@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Day of the Week Finder | Free Online Date to Day Calculator</title>
+  <meta name="description" content="Find the exact day of the week for any past, present, or future date instantly. Accurate day calculator featuring leap year metrics, ISO week numbers, and historical date tracking." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/day-of-the-week-finder/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Day of the Week Finder Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An interactive chronological calculation utility to determine the day of the week, ISO calendar week, day-of-year index, and relative distance for any Gregorian calendar date.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 10px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* DATE COMPONENT ROW */
+    .date-split-row { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 10px; }
+    .select-dropdown { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 12px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; cursor: pointer; transition: all 0.2s; }
+    .select-dropdown:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* QUICK PRESET PILLS */
+    .preset-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .preset-btn { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 20px; padding: 6px 14px; font-size: 0.82rem; font-weight: 600; color: #334155; cursor: pointer; transition: all 0.15s; }
+    .preset-btn:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    /* RESULT DISPLAY BOX */
+    .result-display-panel { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; height: 100%; min-height: 230px; box-sizing: border-box; }
+    .result-day-hero { font-size: 2.4rem; font-weight: 800; color: #2563eb; letter-spacing: -0.5px; line-height: 1.1; margin: 4px 0 10px 0; }
+    .result-full-date { font-size: 1.05rem; font-weight: 600; color: #1e293b; margin-bottom: 16px; }
+    
+    .stats-micro-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: auto; }
+    .stat-micro-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; }
+    .stat-micro-title { font-size: 0.72rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.4px; }
+    .stat-micro-value { font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-top: 2px; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .date-split-row { grid-template-columns: 1fr; }
+      .result-day-hero { font-size: 1.9rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+      .stats-micro-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📅</span> Day of the Week Finder</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <!-- INPUT CONTROLS -->
+        <div class="f-panel-box">
+          <label for="pickerDate">Select Target Date (Calendar Picker)</label>
+          <input type="date" id="pickerDate" class="f-input-field" onchange="syncFromPicker()">
+
+          <label style="margin-top: 6px;">Or Enter Custom Date Manually</label>
+          <div class="date-split-row">
+            <div>
+              <select id="inputMonth" class="select-dropdown" onchange="syncFromManualInputs()">
+                <option value="0">January</option>
+                <option value="1">February</option>
+                <option value="2">March</option>
+                <option value="3">April</option>
+                <option value="4">May</option>
+                <option value="5">June</option>
+                <option value="6">July</option>
+                <option value="7">August</option>
+                <option value="8">September</option>
+                <option value="9">October</option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+              </select>
+            </div>
+            <div>
+              <input type="number" id="inputDay" class="f-input-field" placeholder="Day (1-31)" min="1" max="31" oninput="syncFromManualInputs()">
+            </div>
+            <div>
+              <input type="number" id="inputYear" class="f-input-field" placeholder="Year (e.g. 1995)" min="1" max="9999" oninput="syncFromManualInputs()">
+            </div>
+          </div>
+
+          <label style="margin-top: 6px;">Instant Shortcuts</label>
+          <div class="preset-pills">
+            <button type="button" class="preset-btn" onclick="applyPreset('today')">Today</button>
+            <button type="button" class="preset-btn" onclick="applyPreset('yesterday')">Yesterday</button>
+            <button type="button" class="preset-btn" onclick="applyPreset('tomorrow')">Tomorrow</button>
+            <button type="button" class="preset-btn" onclick="applyPreset('new_year')">New Year's Day</button>
+            <button type="button" class="preset-btn" onclick="applyPreset('millennium')">Jan 1, 2000</button>
+          </div>
+        </div>
+        
+        <!-- OUTPUT PANEL -->
+        <div class="f-panel-box">
+          <label>Identified Day & Calendar Metrics</label>
+          <div class="result-display-panel">
+            <div>
+              <div class="result-day-hero" id="heroDay">Select a Date</div>
+              <div class="result-full-date" id="heroFullDate">Provide a valid calendar entry on the left</div>
+            </div>
+
+            <div class="stats-micro-grid">
+              <div class="stat-micro-card">
+                <div class="stat-micro-title">Day of the Year</div>
+                <div class="stat-micro-value" id="valDayOfYear">—</div>
+              </div>
+              <div class="stat-micro-card">
+                <div class="stat-micro-title">ISO 8601 Week</div>
+                <div class="stat-micro-value" id="valIsoWeek">—</div>
+              </div>
+              <div class="stat-micro-card">
+                <div class="stat-micro-title">Relative Timeline</div>
+                <div class="stat-micro-value" id="valRelative">—</div>
+              </div>
+              <div class="stat-micro-card">
+                <div class="stat-micro-title">Leap Year Status</div>
+                <div class="stat-micro-value" id="valLeapYear">—</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateDayOfWeek()">Recalculate</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResults()">📋 Copy Date Summary</button>
+        <button class="f-btn f-btn-clear" onclick="resetWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Proleptic Gregorian Calendar Precision:</span>
+        All date computations use standard Gregorian timekeeping conventions. The calculator accounts for quadrennial leap days, non-leap secular century boundaries, and ISO 8601 seven-day cycles natively in your browser.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Mechanics of Gregorian Chronology: Mathematical Day-of-the-Week Determination, Calendar Algorithms, and Leap Cycle Logic</h2>
+      <p class="seo-p">Determining which day of the week a given date fell on in the distant past—or will arrive at decades from now—is a fundamental requirement across software development, historical research, genealogical analysis, legal contract auditing, and logistics scheduling. Whether verifying the day of the week on which an ancestor was born, reconciling historical records, or projecting future deadlines, chronological calculations rely on strict periodic modulo arithmetic governed by the international Gregorian calendar standard.</p>
+      <p class="seo-p">Human calendars represent human constructs designed to synchronize an uninterrupted seven-day planetary week with astronomical solar cycles. Because a tropical solar year lasts roughly 365.2422 days—an irregular number not neatly divisible by seven or thirty—civilizations developed sophisticated intercalary adjustment rules to prevent seasonal drift. This reference guide examines the algorithmic foundations used to determine the day of the week, unpacks the mathematics behind Zeller's Congruence and Conway's Doomsday Rule, examines historical calendar reforms, and presents a complete reference framework.</p>
+
+      <div class="seo-callout">
+        <strong>The 7-Day Cycle Invariance:</strong> Unlike calendar months and years, which vary in duration and leap intercalations, the seven-day weekly cycle has remained completely unbroken since antiquity. Even when Pope Gregory XIII omitted ten calendar days in October 1582 to correct equinox alignment, Thursday, October 4, was followed directly by Friday, October 15, preserving the continuous weekly progression.
+      </div>
+
+      <h3 class="seo-h2">Algorithmic Foundations: Computing Days from Calendar Coordinates</h3>
+      <p class="seo-p">Every day-of-the-week computation rests on modular arithmetic modulo 7, where each day from Sunday to Saturday maps onto a distinct remainder integer between 0 and 6. Several analytical formulas allow human mental calculation and computer execution without scanning every day linearly:</p>
+
+      <h4 class="seo-h3">1. Zeller's Congruence</h4>
+      <p class="seo-p">Formulated by German mathematician Christian Zeller in 1882, Zeller's Congruence computes the day of the week for any Gregorian calendar date using a closed-form equation. In Zeller's system, January and February are counted as months 13 and 14 of the preceding year (e.g., February 2024 is treated as month 14 of 2023) so that the leap day falls at the absolute end of the computational period:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f1f5f9; padding: 12px; border-radius: 8px; font-weight: 600;">h = (q + floor((13*(m + 1))/5) + K + floor(K/4) + floor(J/4) - 2*J) mod 7</p>
+      <p class="seo-p">Where <code>q</code> represents the day of the month, <code>m</code> is the month index (3=March, ..., 14=February), <code>K</code> is the year of the century (year mod 100), and <code>J</code> is the zero-based century index (floor(year/100)). The resulting integer <code>h</code> directly yields the day of the week, with 0 corresponding to Saturday, 1 to Sunday, through 6 for Friday.</p>
+
+      <h4 class="seo-h3">2. Conway's Doomsday Rule</h4>
+      <p class="seo-p">Created by Princeton mathematician John Horton Conway in 1973, the Doomsday algorithm simplifies mental arithmetic by leveraging anchor dates that share the exact same day of the week in any given year. Conway termed this shared day the "Doomsday." Notable memorable dates that always occur on the year's Doomsday include 4/4, 6/6, 8/8, 10/10, 12/12, the last day of February (Feb 28 or Feb 29), and July 11 (7/11). By memorizing the anchor day for each century, an operator can identify the day of the week for any date within seconds.</p>
+
+      <h4 class="seo-h3">3. Sakamoto's Compact Formulation</h4>
+      <p class="seo-p">In computational environments and microcontrollers where memory and cycle counts are constrained, Tomohiko Sakamoto's algorithm (published in 1993) provides an efficient approach using an array of twelve precalculated month offset values, requiring minimal arithmetic operations without floating-point division.</p>
+
+      <h3 class="seo-h2">Leap Year Mechanics: The Quadrennial and Centurial Balancing Rules</h3>
+      <p class="seo-p">A common year has 365 days. Because 365 mod 7 equals 1 (365 = 52 × 7 + 1), any calendar date usually advances by exactly one day of the week in the subsequent year. For instance, if July 4 falls on a Tuesday in a non-leap year, it will arrive on a Wednesday the following year.</p>
+      <p class="seo-p">However, a leap year introduces 366 days (366 mod 7 = 2), causing dates occurring after February 29 to leap forward by two days of the week. Under the Gregorian calendar standard, a year is a leap year if and only if:</p>
+      <ul class="seo-list">
+        <li>The year number is evenly divisible by 4;</li>
+        <li><strong>Except</strong> when the year is evenly divisible by 100, in which case it is a standard 365-day year;</li>
+        <li><strong>Unless</strong> the year is also evenly divisible by 400, restoring its leap year status.</li>
+      </ul>
+      <p class="seo-p">This tri-part rule ensures that the year 1900 was a common year (divisible by 100, not 400), the year 2000 was a leap year (divisible by 400), and the year 2100 will be a common year. Over an entire 400-year Gregorian cycle, there are exactly 146,097 days, which equates to exactly 20,871 weeks with zero remainder. Consequently, the calendar repeats its exact day-of-the-week pattern every 400 years.</p>
+
+      <h3 class="seo-h2">Comprehensive Chronological Method Comparison</h3>
+      <p class="seo-p">The following matrix compares common algorithmic and reference methodologies used to determine day-of-the-week allocations across history:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Methodology / Standard</th>
+              <th>Primary Author / Origin</th>
+              <th>Computational Approach</th>
+              <th>Optimal Use Case</th>
+              <th>Calendar Scope</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Zeller's Congruence</strong></td>
+              <td>Christian Zeller (1882)</td>
+              <td>Mathematical modulo 7 formula with floor offsets</td>
+              <td>Automated software routines & algebraic proofs</td>
+              <td>Julian and Gregorian calendars</td>
+            </tr>
+            <tr>
+              <td><strong>Doomsday Rule</strong></td>
+              <td>John Horton Conway (1973)</td>
+              <td>Anchor day offsets and mnemonic date anchors</td>
+              <td>Fast mental math and arithmetic training</td>
+              <td>Gregorian calendar (adaptable to Julian)</td>
+            </tr>
+            <tr>
+              <td><strong>Sakamoto's Method</strong></td>
+              <td>Tomohiko Sakamoto (1993)</td>
+              <td>Month-offset lookup vector with year shift</td>
+              <td>Embedded systems, C-language micro-routines</td>
+              <td>Standard Gregorian range (post-1752)</td>
+            </tr>
+            <tr>
+              <td><strong>ISO 8601 Standard</strong></td>
+              <td>ISO Technical Committee (1988)</td>
+              <td>Week 1 defined by first Thursday of January</td>
+              <td>International enterprise payroll and industrial planning</td>
+              <td>Modern proleptic civil calendar</td>
+            </tr>
+            <tr>
+              <td><strong>Linear Scan / Epoch Math</strong></td>
+              <td>Unix Timestamp (POSIX 1970)</td>
+              <td>Integer seconds divided by 86,400 modulo 7</td>
+              <td>Server infrastructure, database timestamps</td>
+              <td>Jan 1, 1970 00:00:00 UTC onward</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ)</h3>
+
+      <h3 class="seo-h3">What day of the week began the third millennium (January 1, 2000)?</h3>
+      <p class="seo-p">January 1, 2000, fell on a <strong>Saturday</strong>. While technically the third millennium and 21st century commenced on January 1, 2001 (which fell on a Monday), worldwide cultural and civil celebrations observed the milestone at the turn of the digits on Saturday, January 1, 2000.</p>
+
+      <h3 class="seo-h3">Why does my birthday shift by one day each year, and two days after a leap year?</h3>
+      <p class="seo-p">Because a common solar year consists of 365 days, dividing by 7 yields 52 full weeks plus 1 remainder day. This single leftover day forces the calendar date forward by one weekday annually. When a leap year adds February 29, the year contains 366 days (52 weeks plus 2 days), causing your birthday to skip an extra weekday if your birthday falls after February 29.</p>
+
+      <h3 class="seo-h3">What is the "Missing 11 Days" historical anomaly?</h3>
+      <p class="seo-p">When Great Britain and its American colonies transitioned from the Julian calendar to the Gregorian calendar in September 1752, they had to correct an 11-day accumulation of astronomical error. As established by the British Calendar (New Style) Act 1750, Wednesday, September 2, 1752, was followed immediately by Thursday, September 14, 1752. The intervening eleven dates never existed in British and colonial history.</p>
+
+      <h3 class="seo-h3">How does the ISO 8601 week number calculation work?</h3>
+      <p class="seo-p">Under ISO 8601, weeks begin on Monday and are numbered from 01 to 52 or 53. Week 01 of any calendar year is officially defined as the week containing the first Thursday of January, or equivalently, the week that contains January 4th. This ensures that the majority of days in Week 01 always reside within the new year.</p>
+
+      <h3 class="seo-h2">Summary: Reliable Chronological Tracking for Practical Applications</h3>
+      <p class="seo-p">Understanding date
