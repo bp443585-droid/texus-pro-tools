@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Unix Permissions Chmod Calculator | Online Octal & Symbolic Converter</title>
+  <meta name="description" content="Calculate Linux and Unix file permissions instantly. Convert between octal (chmod 755), symbolic (rwxr-xr-x), and checkbox settings for files and directories." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/unix-permissions-chmod-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Unix Permissions Chmod Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced Unix file permission converter to calculate octal values, symbolic strings, and access control settings cleanly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* PERMISSION CALCULATOR SPECIFIC UI STYLES */
+    .chmod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 30px; }
+    .chmod-col { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .chmod-col h3 { font-size: 1rem; color: #1e293b; margin-top: 0; margin-bottom: 15px; font-weight: 700; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+    
+    .chmod-checkbox-group { display: flex; flex-direction: column; gap: 12px; text-align: left; margin-bottom: 15px; }
+    .chmod-checkbox-label { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #475569; font-weight: 500; cursor: pointer; user-select: none; }
+    .chmod-checkbox-label input { width: 18px; height: 18px; accent-color: #2563eb; cursor: pointer; }
+    
+    .chmod-col-input { width: 100%; background: #ffffff; border: 2px solid #cbd5e1; border-radius: 10px; padding: 8px; font-size: 1.1rem; font-weight: 700; text-align: center; color: #0f172a; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .chmod-col-input:focus { border-color: #2563eb; }
+
+    .chmod-results-panel { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 16px; padding: 24px; margin-bottom: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .chmod-result-item label { font-size: 0.8rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 6px; }
+    .chmod-result-val { font-family: 'Courier New', Courier, monospace; font-size: 1.5rem; font-weight: 800; color: #0f172a; background: #ffffff; border: 1px solid #e2e8f0; padding: 12px 16px; border-radius: 10px; word-break: break-all; }
+
+    .chmod-quick-presets { margin-bottom: 25px; }
+    .chmod-quick-presets label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 10px; }
+    .preset-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+    .preset-btn { background: #f8fafc; border: 1px solid #cbd5e1; color: #334155; padding: 8px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+    .preset-btn:hover { background: #e2e8f0; color: #0f172a; border-color: #94a3b8; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 900px) {
+      .chmod-grid { grid-template-columns: repeat(2, 1fr); }
+      .chmod-results-panel { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .chmod-grid { grid-template-columns: 1fr; gap: 14px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🛠️</span> Unix Permissions Chmod Calculator</div>
+    
+    <div class="f-card">
+      
+      <div class="chmod-quick-presets">
+        <label>Common Permission Presets:</label>
+        <div class="preset-buttons">
+          <button class="preset-btn" onclick="applyPreset('755')">755 (Standard Dir)</button>
+          <button class="preset-btn" onclick="applyPreset('644')">644 (Standard File)</button>
+          <button class="preset-btn" onclick="applyPreset('777')">777 (Full Public)</button>
+          <button class="preset-btn" onclick="applyPreset('600')">600 (Private File)</button>
+          <button class="preset-btn" onclick="applyPreset('700')">700 (Private Dir)</button>
+          <button class="preset-btn" onclick="applyPreset('750')">750 (Secure Dir)</button>
+        </div>
+      </div>
+
+      <div class="chmod-grid">
+        <!-- Special Modes -->
+        <div class="chmod-col">
+          <h3>Special</h3>
+          <div class="chmod-checkbox-group">
+            <label class="chmod-checkbox-label">
+              <input type="checkbox" id="suid" onchange="calculateFromCheckboxes()"> SetUID (4)
+            </label>
+            <label class="chmod-checkbox-label">
+              <input type="checkbox" id="sgid" onchange="calculateFromCheckboxes()"> SetGID (2)
+            </label>
+            <label class="chmod-checkbox-label">
+              <input type="checkbox" id="sticky" onchange="calculateFromCheckboxes()"> Sticky (1)
+            </label>
+          </div>
+          <div style="margin-top: 15px;">
+            <label style="font-size:0.75rem; font-weight:700; color:#475569; display:block; margin-bottom:4px;">DIGIT</label>
+            <input type="number" id="specDigit" class="chmod-col-input" min="0" max="7" value="0" oninput="calculateFromDigit()">
+          </div>
+        </div>
+
+        <!-- Owner Modes -->
+        <div class="chmod-col">
+          <h3>Owner</h3>
+          <div class="chmod-checkbox-group">
+            <label class="chmod-checkbox-label">
+              <input type="checkbox" id="ownerRead" onchange="calculateFromCheckboxes()"> Read (4)
+            </label>
+            <label class="chmod-checkbox-label">
+              <input type="checkbox" id="ownerWrite" onchange="calculateFromCheckboxes()"> Write (2)
+            </label>
+            <label class="chmod-checkbox-label">
+              <input type="checkbox" id="ownerExecute" onchange="calculateFromCheckboxes()"> Execute (1)
+            </label>
+          </div>
+          <div style="margin-top: 15px;">
+            <label style="font-size:0.75rem; font-weight:700; color:#475569; display:block; margin-bottom:4px;">DIGIT</label>
+            <input type="number" id="ownerDigit" class="chmod-col-input" min="0" max="7" value="7" oninput="calculateFromDigit()">
+          </div>
+        </div>
+
+        <!-- Group Modes -->
+        <div class="chmod-col">
+          <h3>Group</h3>
+          <div class="chmod-checkbox-group">
+            <label class="chmod-checkbox-label">
+              <input type="checkbox" id="groupRead" onchange="calculateFromCheckboxes()"> Read (4)
+            </label>
+            <label class="chmod-checkbox-label">
+              <input type="checkbox" id="groupWrite" onchange="calculateFromCheckboxes()"> Write (2)
+            </label>
+            <label class="chmod-checkbox-label">
+              <input type="checkbox" id="groupExecute" onchange="calculateFromCheckboxes()"> Execute (1)
+            </label>
+          </div>
+          <div style="margin-top: 15px;">
+            <label style="font-size:0.75rem; font-weight:700; color:#475569; display:block; margin-bottom:4px;">DIGIT</label>
+            <input type="number" id="groupDigit" class="chmod-col-input" min="0" max="7" value="5" oninput="calculateFromDigit()">
+          </div>
+        </div>
+
+        <!-- Public Modes -->
+        <div class="chmod-col">
+          <h3>Public</h3>
+          <div class="chmod-checkbox-group">
+            <label class="chmod-checkbox-label">
+              <input type="checkbox" id="publicRead" onchange="calculateFromCheckboxes()"> Read (4)
+            </label>
+            <label class="chmod-checkbox-label">
+              <input type="checkbox" id="publicWrite" onchange="calculateFromCheckboxes()"> Write (2)
+            </label>
+            <label class="chmod-checkbox-label">
+              <input type="checkbox" id="publicExecute" onchange="calculateFromCheckboxes()"> Execute (1)
+            </label>
+          </div>
+          <div style="margin-top: 15px;">
+            <label style="font-size:0.75rem; font-weight:700; color:#475569; display:block; margin-bottom:4px;">DIGIT</label>
+            <input type="number" id="publicDigit" class="chmod-col-input" min="0" max="7" value="5" oninput="calculateFromDigit()">
+          </div>
+        </div>
+      </div>
+
+      <div class="chmod-results-panel">
+        <div class="chmod-result-item">
+          <label for="octalResult">Octal Notation Command</label>
+          <div id="octalResult" class="chmod-result-val">chmod 755 filename</div>
+        </div>
+        <div class="chmod-result-item">
+          <label for="symbolicResult">Symbolic Permission String</label>
+          <div id="symbolicResult" class="chmod-result-val">-rwxr-xr-x</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateFromCheckboxes()">Refresh Layout</button>
+        <button class="f-btn f-btn-copy" id="copyChmodBtn" onclick="copyChmodResult()">📋 Copy Command</button>
+        <button class="f-btn f-btn-clear" onclick="clearChmodWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Interactive Permission Engine Approved:</span>
+        Checking permission boxes or updating octal digit inputs instantly recalculates corresponding Linux shell commands and symbolic file attribute strings in real time.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Unix and Linux File Permissions: The Complete Guide to Chmod Octal Notations, Symbolic Strings, and Security Access Control</h2>
+      <p class="seo-p">Managing file systems on Unix, Linux, macOS, and BSD servers requires a firm grasp of access control lists and permission matrices. The `chmod` (change mode) command is the primary utility administrators use to regulate read, write, and execute capabilities across system users, groups, and global visitors. Incorrect configurations can expose sensitive database credentials, enable unauthorized script execution, or break critical web server deployment pipelines.</p>
+      <p class="seo-p">This extensive computing manual explores the theoretical foundations of Unix permissions, reviews octal mathematics versus symbolic syntax structures, breaks down special execution flags like SetUID and Sticky Bits, and provides secure baseline configurations for modern web hosting and containerized environments.</p>
+
+      <div class="seo-callout">
+        <strong>The Octal Summation Rule:</strong> Permissions are calculated by adding numerical weights for each access type: Read equals <b>4</b>, Write equals <b>2</b>, and Execute equals <b>1</b>. Summing these values gives you single-digit octal codes for owner, group, and public scopes.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Octal Mathematics and Symbolic Parsing</h3>
+      <p class="seo-p">When an operating system kernel evaluates whether a process can access an inode, it parses binary permission bits divided into distinct security categories:</p>
+
+      <h4 class="seo-h3">1. The Three Primary Security Classes</h4>
+      <p class="seo-p">Every file and directory in a Unix environment associates access rules with three distinct entities: the file <b>Owner</b> (u), assigned <b>Group</b> members (g), and <b>Others/Public</b> users (o).</p>
+
+      <h4 class="seo-h3">2. Octal vs Symbolic Syntax</h4>
+      <p class="seo-p">Administrators can modify permissions using two main syntactical forms. Octal notation uses three or four digits (e.g., `chmod 755 script.sh`), while symbolic notation uses shorthand flags (e.g., `chmod u+rwx,go+rx script.sh`).</p>
+
+      <h4 class="seo-h3">3. Special Permission Bits (SUID, SGID, Sticky Bit)</h4>
+      <p class="seo-p">Leading fourth digits handle elevated privilege tasks. SetUID (4) allows executables to run with the file owner's permissions, SetGID (2) inherits directory group ownership for newly created subfiles, and the Sticky Bit (1) restricts file deletion in shared public directories like `/tmp` solely to the file creator or root user.</p>
+
+      <h3>The Statutory Reference Matrix: Sovereign Permission Translation Map</h3>
+      <p class="seo-p">Understanding how octal digits translate into human-readable symbolic permissions and descriptive use cases is vital for system administrators and DevOps engineers:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Octal Digit</th>
+              <th>Binary Bit</th>
+              <th>Symbolic Representation</th>
+              <th>Allowed Actions</th>
+              <th>Common System Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>0</b></td>
+              <td>000</td>
+              <td>`---`</td>
+              <td>No permissions whatsoever</td>
+              <td>Completely restricted files or hidden private directories.</td>
+            </tr>
+            <tr>
+              <td><b>1</b></td>
+              <td>001</td>
+              <td>`--x`</td>
+              <td>Execute only</td>
+              <td>Run-only utility scripts or specialized binary execution hooks.</td>
+            </tr>
+            <tr>
+              <td><b>2</b></td>
+              <td>010</td>
+              <td>`-w-`</td>
+              <td>Write only</td>
+              <td>Rare write-only drop boxes or append-only log endpoints.</td>
+            </tr>
+            <tr>
+              <td><b>4</b></td>
+              <td>100</td>
+              <td>`r--`</td>
+              <td>Read only</td>
+              <td>Static configuration files, readme documents, and read-only assets.</td>
+            </tr>
+            <tr>
+              <td><b>5</b></td>
+              <td>101</td>
+              <td>`r-x`</td>
+              <td>Read &amp; Execute</td>
+              <td>Publicly accessible directory traversal or compiled executable programs.</td>
+            </tr>
+            <tr>
+              <td><b>6</b></td>
+              <td>110</td>
+              <td>`rw-`</td>
+              <td>Read &amp; Write</td>
+              <td>Standard application data files, database stores, and user documents.</td>
+            </tr>
+            <tr>
+              <td><b>7</b></td>
+              <td>111</td>
+              <td>`rwx`</td>
+              <td>Read, Write &amp; Execute</td>
+              <td>Full access directories, temporary scratchpads, and execution workspaces.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the difference between file permissions 755 and 644?</h3>
+      <p class="seo-p">Permission `755` grants the owner full read, write, and execute privileges while allowing group members and the public to read and execute the file. This is the standard setting for directories and executable scripts. Permission `644` grants the owner read and write access, while group members and public users have read-only access. This is the ideal secure baseline for static files, source code, and web documents.</p>
+
+      <h3>Why is setting 777 permissions considered a major security risk?</h3>
+      <p class="seo-p">Using `chmod 777` grants read, write, and execute permissions to everyone on the server, including unauthenticated web visitors and potential attackers. If a web application contains an arbitrary file upload vulnerability, malicious actors can upload and execute arbitrary web shells or scripts, compromising the entire server infrastructure.</p>
+
+      <h3>How does local device script calculation ensure enterprise compliance?</h3>
+      <p class="seo-p">Texus Pro Tools values your workflow privacy and data security. Our permission calculation engine executes entirely within your browser client memory. No server requests or infrastructure topology data ever traverse external networks—providing a private, lightning-fast calculation sandbox for your team.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Linux Access Control</h3>
+      <p class="seo-p">To maintain robust server security, follow the Principle of Least Privilege (PoLP)—granting users and processes only the absolute minimum access required to function. Use `644` for standard files, `755` for directories, secure private files with `600`, and audit your server inodes regularly using recursive `chmod` checks where necessary.</p>
+      <p class="seo-p">Our Unix Permissions Chmod Calculator automates all these computational conversions instantly, providing clear octal commands and symbolic strings across any desktop or mobile device cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // CHMOD CALCULATOR CORE JAVASCRIPT LOGIC
+    function calculateFromCheckboxes() {
+      const suid = document.getElementById('suid').checked ? 4 : 0;
+      const sgid = document.getElementById('sgid').checked ? 2 : 0;
+      const sticky = document.getElementById('sticky').checked ? 1 : 0;
+      const specSum = suid + sgid + sticky;
+
+      const oR = document.getElementById('ownerRead').checked ? 4 : 0;
+      const oW = document.getElementById('ownerWrite').checked ? 2 : 0;
+      const oE = document.getElementById('ownerExecute').checked ? 1 : 0;
+      const ownerSum = oR + oW + oE;
+
+      const gR = document.getElementById('groupRead').checked ? 4 : 0;
+      const gW = document.getElementById('groupWrite').checked ? 2 : 0;
+      const gE = document.getElementById('groupExecute').checked ? 1 : 0;
+      const groupSum = gR + gW + gE;
+
+      const pR = document.getElementById('publicRead').checked ? 4 : 0;
+      const pW = document.getElementById('publicWrite').checked ? 2 : 0;
+      const pE = document.getElementById('publicExecute').checked ? 1 : 0;
+      const publicSum = pR + pW + pE;
+
+      document.getElementById('specDigit').value = specSum;
+      document.getElementById('ownerDigit').value = ownerSum;
+      document.getElementById('groupDigit').value = groupSum;
+      document.getElementById('publicDigit').value = publicSum;
+
+      updateDisplayOutputs(specSum, ownerSum, groupSum, publicSum);
+    }
+
+    function calculateFromDigit() {
+      let spec = parseInt(document.getElementById('specDigit').value) || 0;
+      let owner = parseInt(document.getElementById('ownerDigit').value) || 0;
+      let group = parseInt(document.getElementById('groupDigit').value) || 0;
+      let pub = parseInt(document.getElementById('publicDigit').value) || 0;
+
+      spec = Math.max(0, Math.min(7, spec));
+      owner = Math.max(0, Math.min(7, owner));
+      group = Math.max(0, Math.min(7, group));
+      pub = Math.max(0, Math.min(7, pub));
+
+      document.getElementById('suid').checked = (spec & 4) !== 0;
+      document.getElementById('sgid').checked = (spec & 2) !== 0;
+      document.getElementById('sticky').checked = (spec & 1) !== 0;
+
+      document.getElementById('ownerRead').checked = (owner & 4) !== 0;
+      document.getElementById('ownerWrite').checked = (owner & 2) !== 0;
+      document.getElementById('ownerExecute').checked = (owner & 1) !== 0;
+
+      document.getElementById('groupRead').checked = (group & 4) !== 0;
+      document.getElementById('groupWrite').checked = (group & 2) !== 0;
+      document.getElementById('groupExecute').checked = (group & 1) !== 0;
+
+      document.getElementById('publicRead').checked = (pub & 4) !== 0;
+      document.getElementById('publicWrite').checked = (pub & 2) !== 0;
+      document.getElementById('publicExecute').checked = (pub & 1) !== 0;
+
+      updateDisplayOutputs(spec, owner, group, pub);
+    }
+
+    function updateDisplayOutputs(spec, owner, group, pub) {
+      let octalStr = spec > 0 ? `${spec}${owner}${group}${pub}` : `${owner}${group}${pub}`;
+      document.getElementById('octalResult').innerText = `chmod ${octalStr} filename`;
+
+      // Symbolic String Construction
+      let sym = "-";
+      
+      // Owner
+      let oR = (owner & 4) ? "r" : "-";
+      let oW = (owner & 2) ? "w" : "-";
+      let oE = (owner & 1) ? ((spec & 4) ? "s" : "x") : ((spec & 4) ? "S" : "-");
+      sym += oR + oW + oE;
+
+      // Group
+      let gR = (group & 4) ? "r" : "-";
+      let gW = (group & 2) ? "w" : "-";
+      let gE = (group & 1) ? ((spec & 2) ? "s" : "x") : ((spec & 2) ? "S" : "-");
+      sym += gR + gW + gE;
+
+      // Public
+      let pR = (pub & 4) ? "r" : "-";
+      let pW = (pub & 2) ? "w" : "-";
+      let pE = (pub & 1) ? ((spec & 1) ? "t" : "x") : ((spec & 1) ? "T" : "-");
+      sym += pR + pW + pE;
+
+      document.getElementById('symbolicResult').innerText = sym;
+    }
+
+    function applyPreset(code) {
+      if (code.length === 3) {
+        document.getElementById('specDigit').value = 0;
+        document.getElementById('ownerDigit').value = code[0];
+        document.getElementById('groupDigit').value = code[1];
+        document.getElementById('publicDigit').value = code[2];
+      } else if (code.length === 4) {
+        document.getElementById('specDigit').
