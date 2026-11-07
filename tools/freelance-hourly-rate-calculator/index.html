@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Freelance Hourly Rate Calculator | Calculate Your Profitable Rate</title>
+  <meta name="description" content="Calculate your ideal freelance hourly rate instantly. Factor in desired annual income, operating expenses, taxes, and billable hours to price your services profitably." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/freelance-hourly-rate-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Freelance Hourly Rate Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "BusinessApplication",
+    "description": "An advanced financial planning tool for independent contractors and freelancers to compute sustainable hourly, daily, and project rate benchmarks.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CALCULATOR SPECIFIC GRID */
+    .calc-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px; }
+    .calc-inputs-section { display: flex; flex-direction: column; gap: 20px; }
+    .calc-outputs-section { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
+    
+    .input-group { display: flex; flex-direction: column; gap: 8px; }
+    .input-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
+    .input-group label span.hint { font-size: 0.75rem; color: #94a3b8; font-weight: 400; text-transform: none; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; font-weight: 600; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS DISPLAY MODULES */
+    .result-card-main { background: #2563eb; color: #ffffff; padding: 24px; border-radius: 16px; text-align: center; margin-bottom: 20px; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2); }
+    .result-card-main h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px 0; color: #bfdbfe; font-weight: 700; }
+    .result-card-main .rate-display { font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; margin: 0; }
+    
+    .breakdown-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+    .breakdown-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+    .breakdown-row span:first-child { color: #64748b; font-weight: 500; }
+    .breakdown-row span:last-child { color: #0f172a; font-weight: 700; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .calc-grid { grid-template-columns: 1fr; gap: 24px; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+      .result-card-main .rate-display { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>💼</span> Freelance Hourly Rate Calculator</div>
+    
+    <div class="f-card">
+      <div class="calc-grid">
+        <!-- INPUTS COLUMN -->
+        <div class="calc-inputs-section">
+          <div class="input-group">
+            <label for="desiredSalary">Target Annual Take-Home Salary <span class="hint">What you want to earn</span></label>
+            <input type="number" id="desiredSalary" class="f-input-field" value="75000" min="0" step="1000" oninput="calculateRate()">
+          </div>
+
+          <div class="input-group">
+            <label for="businessExpenses">Annual Business Expenses <span class="hint">Software, hardware, insurance, subscriptions</span></label>
+            <input type="number" id="businessExpenses" class="f-input-field" value="12000" min="0" step="500" oninput="calculateRate()">
+          </div>
+
+          <div class="input-group">
+            <label for="taxRate">Estimated Self-Employment / Income Tax <span class="hint">Percentage (%)</span></label>
+            <input type="number" id="taxRate" class="f-input-field" value="25" min="0" max="60" step="1" oninput="calculateRate()">
+          </div>
+
+          <div class="input-group">
+            <label for="billableHoursPerWeek">Billable Hours Per Week <span class="hint">Actual client work (not admin time)</span></label>
+            <input type="number" id="billableHoursPerWeek" class="f-input-field" value="25" min="1" max="60" step="1" oninput="calculateRate()">
+          </div>
+
+          <div class="input-group">
+            <label for="weeksOffPerYear">Vacation &amp; Sick Weeks Per Year <span class="hint">Time off without billing</span></label>
+            <input type="number" id="weeksOffPerYear" class="f-input-field" value="4" min="0" max="20" step="1" oninput="calculateRate()">
+          </div>
+        </div>
+
+        <!-- OUTPUTS COLUMN -->
+        <div class="calc-outputs-section">
+          <div>
+            <div class="result-card-main">
+              <h4>Recommended Hourly Rate</h4>
+              <p class="rate-display" id="finalHourlyRate">$0.00</p>
+            </div>
+
+            <div class="breakdown-list">
+              <div class="breakdown-row">
+                <span>Gross Target Revenue:</span>
+                <span id="resGrossRevenue">$0</span>
+              </div>
+              <div class="breakdown-row">
+                <span>Estimated Tax Burden:</span>
+                <span id="resTaxes">$0</span>
+              </div>
+              <div class="breakdown-row">
+                <span>Annual Operating Costs:</span>
+                <span id="resExpenses">$0</span>
+              </div>
+              <div class="breakdown-row">
+                <span>Total Billable Hours/Year:</span>
+                <span id="resTotalHours">0 hrs</span>
+              </div>
+              <div class="breakdown-row">
+                <span>Suggested Daily Rate (8h):</span>
+                <span id="resDailyRate">$0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="f-action-strip">
+            <button class="f-btn f-btn-convert" onclick="calculateRate()">Recalculate</button>
+            <button class="f-btn f-btn-copy" id="copyRateBtn" onclick="copyResultToClipboard()">📋 Copy Rate</button>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 25px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 12px 16px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Comprehensive Financial Modeling Formula:</span>
+        Your rate factors in gross revenue needed to cover desired net income after taxes, plus all overhead business expenses, divided by your true productive billable capacity per year (total available work weeks minus vacation time).
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Economics of Independent Consulting: How to Price Your Services, Manage Overhead, and Maximize Sustainable Freelance Profitability</h2>
+      <p class="seo-p">Transitioning from traditional employment to independent contracting or freelancing offers unprecedented career freedom, creative autonomy, and schedule flexibility. However, it also introduces complex financial responsibilities that catch many first-time entrepreneurs off guard. Unlike full-time corporate roles where employers cover health insurance, paid time off, workspace overhead, and payroll taxes, independent professionals must fund every facet of their operation entirely out of their own billable hours.</p>
+      <p class="seo-p">A common trap among novice freelancers is simply dividing their old corporate annual salary by 2,080 hours (the standard 40-hour work year) and concluding that their old hourly wage is sufficient. This calculation fails to account for unpaid administrative tasks, software subscriptions, equipment depreciation, self-employment taxes, and unbillable downtime. This comprehensive guide explores the mathematics of freelance pricing, examines key cost factors, and provides actionable strategies to establish a profitable hourly rate.</p>
+
+      <div class="seo-callout">
+        <strong>The Billable Reality Check:</strong> Most full-time freelancers can realistically sustain only 20 to 30 billable hours per week. The remaining hours are consumed by marketing, invoicing, client acquisition, bookkeeping, and professional development.
+      </div>
+
+      <h3 class="seo-h2">The Core Formula: Decoding Gross Income vs. Net Take-Home Pay</h3>
+      <p class="seo-p">To arrive at a bulletproof hourly rate, you must reverse-engineer your financial requirements starting from your personal living expenses and savings goals. The computation follows four distinct stages:</p>
+
+      <h4 class="seo-h3">1. Establishing Net Personal Take-Home Income</h4>
+      <p class="seo-p">Begin by calculating your desired annual personal salary. This is the net amount you need in your personal bank account to cover rent or mortgage, groceries, healthcare, retirement contributions, emergency savings, and leisure activities.</p>
+
+      <h4 class="seo-h3">2. Factoring in Self-Employment and Income Taxes</h4>
+      <p class="seo-p">As an independent contractor, you are typically responsible for both the employee and employer portions of social security and Medicare taxes, in addition to federal, state, and local income taxes. Depending on your jurisdiction, tax liabilities frequently consume 20% to 40% of gross earnings. Therefore, your business must generate enough gross revenue to cover both your net take-home salary and your tax burden.</p>
+
+      <h4 class="seo-h3">3. Incorporating Operating Expenses (Overhead)</h4>
+      <p class="seo-p">Every independent business incurs operational costs. Itemize your annual overhead, including high-speed internet, domain hosting, accounting software, graphic design suites, project management tools, laptop depreciation, professional liability insurance, and coworking space fees.</p>
+
+      <h4 class="seo-h3">4. Calculating True Annual Billable Capacity</h4>
+      <p class="seo-p">Take 52 weeks and subtract your planned vacation, statutory holidays, and sick leave weeks (e.g., 4 weeks off leaves 48 working weeks). Multiply those working weeks by your realistic weekly billable hours (e.g., 25 hours/week × 48 weeks = 1,200 billable hours per year). Dividing total required gross revenue by 1,200 yields your true minimum sustainable hourly rate.</p>
+
+      <h3>The Statutory Financial Benchmark Matrix: Comparing Rate Tiers</h3>
+      <p class="seo-p">Reviewing standard professional rate brackets helps calibrate your pricing against industry benchmarks and experience levels:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Experience Tier</th>
+              <th>Target Net Salary</th>
+              <th>Operating Expenses</th>
+              <th>Weekly Billable Hours</th>
+              <th>Calculated Hourly Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Junior / Entry-Level Specialist</td>
+              <td>$45,000</td>
+              <td>$5,000</td>
+              <td>30 hrs/wk</td>
+              <td><b>$35.00 / hr</b></td>
+            </tr>
+            <tr>
+              <td>Mid-Level Professional</td>
+              <td>$75,000</td>
+              <td>$10,000</td>
+              <td>25 hrs/wk</td>
+              <td><b>$65.00 / hr</b></td>
+            </tr>
+            <tr>
+              <td>Senior Consultant / Expert</td>
+              <td>$120,000</td>
+              <td>$15,000</td>
+              <td>20 hrs/wk</td>
+              <td><b>$110.00 / hr</b></td>
+            </tr>
+            <tr>
+              <td>Agency / Principal Architect</td>
+              <td>$180,000</td>
+              <td>$25,000</td>
+              <td>20 hrs/wk</td>
+              <td><b>$165.00 / hr</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Freelance Financial Planning</h3>
+
+      <h3>Why should I charge hourly instead of quoting fixed project prices?</h3>
+      <p class="seo-p">While fixed-project pricing is often preferred by clients who want budget certainty, calculating your underlying hourly rate is a mandatory prerequisite for accurate fixed-bid estimates. Without knowing your baseline hourly cost, you risk underpricing projects and working for pennies per hour when scope creep occurs.</p>
+
+      <h3>How do I handle clients who push back against higher hourly rates?</h3>
+      <p class="seo-p">Clients often push back when they view freelancers as a commodity rather than a strategic investment. Focus your proposals on business outcomes, ROI, and specialized expertise rather than time spent. Positioning yourself as a problem-solver who generates revenue or saves operational costs justifies premium rate structures.</p>
+
+      <h3>Is my data secure when using this online calculator?</h3>
+      <p class="seo-p">Yes. All financial calculations run entirely within your browser's local JavaScript execution engine. No salary figures, expense totals, or tax inputs are transmitted to external servers, ensuring absolute privacy for your personal business planning.</p>
+
+      <h3 class="seo-h2">Summary: Actionable Steps to Scale Your Freelance Earnings</h3>
+      <p class="seo-p">Pricing your freelance services is not a one-time event; it is an iterative business process. As your portfolio grows, your expertise deepens, and demand for your time increases, you should regularly revisit your hourly rate calculations. Increasing your rates by 10% to 15% annually for new clients helps combat inflation and aligns your pricing with your evolving market value.</p>
+      <p class="seo-p">Our Freelance Hourly Rate Calculator automates the complex tax and overhead math instantly, empowering you to negotiate with confidence and build a highly profitable, sustainable independent business.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function calculateRate() {
+      const desiredSalary = parseFloat(document.getElementById('desiredSalary').value) || 0;
+      const businessExpenses = parseFloat(document.getElementById('businessExpenses').value) || 0;
+      const taxRatePct = parseFloat(document.getElementById('taxRate').value) || 0;
+      const billableHoursPerWeek = parseFloat(document.getElementById('billableHoursPerWeek').value) || 25;
+      const weeksOffPerYear = parseFloat(document.getElementById('weeksOffPerYear').value) || 4;
+
+      // Active working weeks per year
+      const workingWeeks = Math.max(1, 52 - weeksOffPerYear);
+      const totalBillableHours = billableHoursPerWeek * workingWeeks;
+
+      // Gross revenue needed: Net Salary + Expenses, adjusted for taxes
+      // formula: (Salary + Expenses) / (1 - taxRate)
+      const taxMultiplier = Math.max(0.01, 1 - (taxRatePct / 100));
+      const totalGrossRevenue = (desiredSalary + businessExpenses) / taxMultiplier;
+      
+      const estimatedTaxes = totalGrossRevenue * (taxRatePct / 100);
+      const hourlyRate = totalBillableHours > 0 ? totalGrossRevenue / totalBillableHours : 0;
+      const dailyRate = hourlyRate * 8;
+
+      // Update DOM elements
+      document.getElementById('finalHourlyRate').textContent = '$' + hourlyRate.toFixed(2);
+      document.getElementById('resGrossRevenue').textContent = '$' + Math.round(totalGrossRevenue).toLocaleString();
+      document.getElementById('resTaxes').textContent = '$' + Math.round(estimatedTaxes).toLocaleString();
+      document.getElementById('resExpenses').textContent = '$' + Math.round(businessExpenses).toLocaleString();
+      document.getElementById('resTotalHours').textContent = Math.round(totalBillableHours) + ' hrs';
+      document.getElementById('resDailyRate').textContent = '$' + Math.round(dailyRate).toLocaleString();
+    }
+
+    function copyResultToClipboard() {
+      const rateText = document.getElementById('finalHourlyRate').textContent;
+      const copyBtn = document.getElementById('copyRateBtn');
+      
+      navigator.clipboard.writeText(rateText).then(() => {
+        const originalText = copyBtn.textContent;
+        copyBtn.textContent = '✅ Rate Copied!';
+        copyBtn.style.background = '#dcfce7';
+        copyBtn.style.color = '#166534';
+        setTimeout(() => {
+          copyBtn.textContent = originalText;
+          copyBtn.style.background = '';
+          copyBtn.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        alert('Failed to copy rate to clipboard.');
+      });
+    }
+
+    // Initialize calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateRate();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
