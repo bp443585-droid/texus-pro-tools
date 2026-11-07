@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Cron Expression Explainer | Free Online Cron Schedule Parser</title>
+  <meta name="description" content="Decode and explain standard 5-part cron expressions instantly with our free online cron parser. Understand job schedules, next run dates, and frequency rules." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/cron-expression-explainer/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cron Expression Explainer Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced developer utility tool to parse, decode, and validate standard cron schedule expressions in real time.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; margin-bottom: 24px; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.25rem; font-family: 'Courier New', Courier, monospace; font-weight: 700; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* PRESET BADGES */
+    .cron-presets { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; margin-bottom: 24px; }
+    .preset-chip { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; color: #475569; cursor: pointer; transition: all 0.15s; font-family: 'Courier New', Courier, monospace; }
+    .preset-chip:hover { background: #e2e8f0; color: #0f172a; border-color: #cbd5e1; }
+
+    /* CRON PARTS BREAKDOWN GRID */
+    .cron-parts-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 24px; }
+    @media (max-width: 850px) { .cron-parts-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 550px) { .cron-parts-grid { grid-template-columns: 1fr; } }
+    
+    .cron-part-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px; text-align: center; }
+    .cron-part-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #64748b; margin-bottom: 4px; }
+    .cron-part-val { font-family: 'Courier New', Courier, monospace; font-size: 1.1rem; font-weight: 700; color: #2563eb; margin-bottom: 4px; }
+    .cron-part-desc { font-size: 0.8rem; color: #334155; line-height: 1.3; }
+
+    /* EXPLANATION & RUNTIMES OUTPUT BOX */
+    .cron-output-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; margin-bottom: 24px; }
+    .cron-output-title { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: #475569; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .cron-main-desc { font-size: 1.2rem; font-weight: 700; color: #0f172a; margin-bottom: 16px; line-height: 1.5; }
+    .runtime-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+    .runtime-item { font-family: 'Courier New', Courier, monospace; font-size: 0.95px; font-weight: 600; color: #047857; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 8px 12px; border-radius: 8px; display: inline-block; width: fit-content; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-input-field { font-size: 1.1rem; padding: 12px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⏱️</span> Cron Expression Explainer</div>
+    
+    <div class="f-card">
+      <div class="f-panel-box">
+        <label for="cronInput">Cron Expression (Minute Hour Day Month Weekday)</label>
+        <input type="text" id="cronInput" class="f-input-field" value="*/15 * * * *" placeholder="e.g. 0 12 * * 1-5" oninput="parseCronExpression()" />
+      </div>
+
+      <div class="cron-presets">
+        <span style="font-size: 0.8rem; font-weight: 700; color: #64748b; align-self: center; text-transform: uppercase;">Presets:</span>
+        <button class="preset-chip" onclick="setPreset('*/15 * * * *')">Every 15 min</button>
+        <button class="preset-chip" onclick="setPreset('0 * * * *')">Hourly</button>
+        <button class="preset-chip" onclick="setPreset('0 0 * * *')">Daily (Midnight)</button>
+        <button class="preset-chip" onclick="setPreset('0 0 * * 0')">Weekly (Sun)</button>
+        <button class="preset-chip" onclick="setPreset('0 0 1 * *')">Monthly</button>
+        <button class="preset-chip" onclick="setPreset('0 9-17 * * 1-5')">Work Hours</button>
+      </div>
+
+      <div class="cron-parts-grid">
+        <div class="cron-part-card">
+          <div class="cron-part-title">Minute</div>
+          <div id="partMin" class="cron-part-val">*/15</div>
+          <div id="descMin" class="cron-part-desc">Every 15 minutes</div>
+        </div>
+        <div class="cron-part-card">
+          <div class="cron-part-title">Hour</div>
+          <div id="partHour" class="cron-part-val">*</div>
+          <div id="descHour" class="cron-part-desc">Every hour</div>
+        </div>
+        <div class="cron-part-card">
+          <div class="cron-part-title">Day (Month)</div>
+          <div id="partDay" class="cron-part-val">*</div>
+          <div id="descDay" class="cron-part-desc">Every day</div>
+        </div>
+        <div class="cron-part-card">
+          <div class="cron-part-title">Month</div>
+          <div id="partMonth" class="cron-part-val">*</div>
+          <div id="descMonth" class="cron-part-desc">Every month</div>
+        </div>
+        <div class="cron-part-card">
+          <div class="cron-part-title">Day (Week)</div>
+          <div id="partWeek" class="cron-part-val">*</div>
+          <div id="descWeek" class="cron-part-desc">Every day of week</div>
+        </div>
+      </div>
+
+      <div class="cron-output-box">
+        <div class="cron-output-title">Human-Readable Translation</div>
+        <div id="mainExplanation" class="cron-main-desc">At every 15th minute of every hour.</div>
+        
+        <div class="cron-output-title" style="margin-top: 16px;">Next 5 Upcoming Execution Times</div>
+        <ul id="runtimeList" class="runtime-list">
+          <!-- Populated dynamically -->
+        </ul>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="parseCronExpression()">Re-Parse Expression</button>
+        <button class="f-btn f-btn-copy" id="copyCronBtn" onclick="copyCronResult()">📋 Copy Expression</button>
+        <button class="f-btn f-btn-clear" onclick="clearCronWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Live Cron Parser Engine:</span>
+        Supports standard 5-field cron syntax (Minute, Hour, Day of Month, Month, Day of Week) along with wildcard selectors (*), step values (*/n), ranges (x-y), and specific comma-separated lists.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Cron Expressions: The Definitive Guide to Linux Task Scheduling, Timezone Mechanics, and Automated Background Jobs</h2>
+      <p class="seo-p">Automating system administration tasks, database backups, recurring API polling cycles, and log rotations in Unix-like environments relies heavily on the cron daemon (`crond`) and precise cron schedule strings. A cron expression is a compact string of five (or sometimes six) whitespace-separated fields representing a time schedule. While compact and extremely powerful, writing and deciphering cron syntax can often lead to costly configuration errors if parameters are miscalculated.</p>
+      <p class="seo-p">This extensive computing manual explores the lexical structure of cron expressions, reviews field boundaries, analyzes special wildcard operators, and provides clear methodologies for debugging automated jobs inside production backend servers.</p>
+
+      <div class="seo-callout">
+        <strong>The 5-Field Anatomy:</strong> Standard POSIX cron expressions consist of five positional tokens: <b>Minute</b> (0-59), <b>Hour</b> (0-23), <b>Day of Month</b> (1-31), <b>Month</b> (1-12), and <b>Day of Week</b> (0-6, where 0 is Sunday).
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Syntax Breakdown and Operator Mechanics</h3>
+      <p class="seo-p">When a cron schedule passes through a job scheduler, each field is evaluated against the system clock using specialized mathematical operators and range definitions:</p>
+
+      <h4 class="seo-h3">1. The Asterisk (*) Wildcard</h4>
+      <p class="seo-p">The asterisk represents all possible values for a given field. If placed in the hour column, it matches every single hour of the day.</p>
+
+      <h4 class="seo-h3">2. Step Values (/)</h4>
+      <p class="seo-p">Step operators allow you to skip intervals. For instance, `*/15` in the minute field instructs the scheduler to fire at minute 0, 15, 30, and 45 of the specified hours.</p>
+
+      <h4 class="seo-h3">3. Ranges (-) and Lists (,)</h4>
+      <p class="seo-p">Hyphens define inclusive numerical ranges (e.g., `9-17` for standard business hours), while commas allow discrete combinations of individual values (e.g., `1,15,30` for specific minutes).</p>
+
+      <h3>The Statutory Reference Matrix: Standard Cron Field Specifications</h3>
+      <p class="seo-p">Reviewing allowable value ranges and naming conventions prevents unexpected job failures:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Field Name</th>
+              <th>Allowed Values</th>
+              <th>Special Characters</th>
+              <th>Description and Operational Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Minute</td>
+              <td>0 to 59</td>
+              <td>`* , - /`</td>
+              <td>Controls the precise minute within each hour when the command executes.</td>
+            </tr>
+            <tr>
+              <td>Hour</td>
+              <td>0 to 23</td>
+              <td>`* , - /`</td>
+              <td>Specifies the 24-hour clock hour during which execution is triggered.</td>
+            </tr>
+            <tr>
+              <td>Day of Month</td>
+              <td>1 to 31</td>
+              <td>`* , - / ? L W`</td>
+              <td>Determines the specific calendar day of the month for execution.</td>
+            </tr>
+            <tr>
+              <td>Month</td>
+              <td>1 to 12 (or JAN-DEC)</td>
+              <td>`* , - /`</td>
+              <td>Restricts task execution to designated calendar months.</td>
+            </tr>
+            <tr>
+              <td>Day of Week</td>
+              <td>0 to 6 (Sun-Sat)</td>
+              <td>`* , - / ? L #`</td>
+              <td>Defines allowable weekdays, where both 0 and 7 typically represent Sunday.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the difference between Day of Month and Day of Week fields?</h3>
+      <p class="seo-p">In standard cron syntax, if both Day of Month and Day of Week are restricted (i.e., not set to `*`), most cron daemons will trigger the job when <i>either</i> condition is met. Keep one of these fields as `*` if you want strict conjunction.</p>
+
+      <h3>How do server timezones affect cron job execution?</h3>
+      <p class="seo-p">Cron daemons execute jobs based on the local system time of the host server. When deploying applications across distributed cloud clusters, always ensure your server or container environment is synchronized to UTC or your target operational timezone.</p>
+
+      <h3>Is my cron expression data secure when using online tools?</h3>
+      <p class="seo-p">Yes. Texus Pro Tools processes all cron parsing and date generation entirely inside your browser's local JavaScript engine. No schedule expressions or server variables ever leave your device.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for Robust Task Scheduling</h3>
+      <p class="seo-p">Writing clean cron expressions is essential for reliable backend automation. Always test complex recurrence rules with dedicated parsers before deploying them to production crontab files, log job outputs to dedicated files for auditing, and avoid scheduling resource-intensive tasks simultaneously.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // CRON PARSER LOGIC
+    function setPreset(expr) {
+      document.getElementById('cronInput').value = expr;
+      parseCronExpression();
+    }
+
+    function clearCronWorkspace() {
+      document.getElementById('cronInput').value = '* * * * *';
+      parseCronExpression();
+    }
+
+    function copyCronResult() {
+      const input = document.getElementById('cronInput');
+      input.select();
+      navigator.clipboard.writeText(input.value).then(() => {
+        const btn = document.getElementById('copyCronBtn');
+        const oldText = btn.innerText;
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => btn.innerText = oldText, 2000);
+      });
+    }
+
+    function explainPart(val, type) {
+      if (val === '*') return 'Every ' + type;
+      if (val.startsWith('*/')) return 'Every ' + val.substring(2) + ' ' + type + 's';
+      if (val.includes('-')) return 'Between ' + val.replace('-', ' and ') + ' ' + type + 's';
+      if (val.includes(',')) return 'At ' + type + 's: ' + val;
+      return 'At ' + type + ' ' + val;
+    }
+
+    function parseCronExpression() {
+      const raw = document.getElementById('cronInput').value.trim();
+      const parts = raw.split(/\s+/);
+
+      if (parts.length < 5) {
+        document.getElementById('mainExplanation').innerText = '⚠️ Invalid Cron Expression: Please provide at least 5 fields (Minute Hour Day Month Weekday).';
+        document.getElementById('runtimeList').innerHTML = '<li class="runtime-item" style="color:#dc2626;background:#fef2f2;border-color:#fecaca;">Awaiting valid cron expression...</li>';
+        return;
+      }
+
+      const [min, hour, day, month, week] = parts;
+
+      document.getElementById('partMin').innerText = min;
+      document.getElementById('descMin').innerText = explainPart(min, 'minute');
+
+      document.getElementById('partHour').innerText = hour;
+      document.getElementById('descHour').innerText = explainPart(hour, 'hour');
+
+      document.getElementById('partDay').innerText = day;
+      document.getElementById('descDay').innerText = explainPart(day, 'day');
+
+      document.getElementById('partMonth').innerText = month;
+      document.getElementById('descMonth').innerText = explainPart(month, 'month');
+
+      document.getElementById('partWeek').innerText = week;
+      document.getElementById('descWeek').innerText = explainPart(week, 'weekday');
+
+      // Generate human readable sentence
+      let sentence = `Runs `;
+      if (min === '*' && hour === '*') sentence += 'every minute';
+      else if (min.startsWith('*/') && hour === '*') sentence += `every ${min.substring(2)} minutes`;
+      else if (min === '0' && hour.startsWith('*/')) sentence += `every ${hour.substring(2)} hours on the hour`;
+      else if (min === '0' && hour === '0') sentence += 'every day at midnight (00:00)';
+      else sentence += `at minute ${min}, hour ${hour}, on day ${day} of month ${month}, weekday ${week}`;
+
+      document.getElementById('mainExplanation').innerText = sentence;
+
+      // Simulate next 5 runtimes
+      generateNextRuntimes(min, hour, day, month, week);
+    }
+
+    function generateNextRuntimes(minStr, hourStr, dayStr, monthStr, weekStr) {
+      const listEl = document.getElementById('runtimeList');
+      listEl.innerHTML = '';
+
+      let now = new Date();
+      let count = 0;
+      let safety = 0;
+      let runtimes = [];
+
+      // Simple mock incrementer for demonstration
+      while (count < 5 && safety < 1000) {
+        now.setMinutes(now.getMinutes() + 1);
+        safety++;
+
+        let m = now.getMinutes();
+        let h = now.getHours();
+        let d = now.getDate();
+        let mo = now.getMonth() + 1;
+        let w = now.getDay();
+
+        if (matchField(m, minStr, 0, 59) &&
+            matchField(h, hourStr, 0, 23) &&
+            matchField(d, dayStr, 1, 31) &&
+            matchField(mo, monthStr, 1, 12) &&
+            matchField(w, weekStr, 0, 6)) {
+          runtimes.push(new Date(now).toLocaleString());
+          count++;
+        }
+      }
+
+      if (runtimes.length === 0) {
+        listEl.innerHTML = '<li class="runtime-item" style="color:#b45309;background:#fffbeb;border-color:#fde68a;">No upcoming execution times found within immediate window.</li>';
+      } else {
+        runtimes.forEach(rt => {
+          const li = document.createElement('li');
+          li.className = 'runtime-item';
+          li.innerText = '🕒 ' + rt;
+          listEl.appendChild(li);
+        });
+      }
+    }
+
+    function matchField(val, expr, minLimit, maxLimit) {
+      if (expr === '*') return true;
+      if (expr.startsWith('*/')) {
+        let step = parseInt(expr.substring(2), 10);
+        return val % step === 0;
+      }
+      if (expr.includes(',')) {
+        let parts = expr.split(',');
+        return parts.some(p => parseInt(p, 10) === val);
+      }
+      if (expr.includes('-')) {
+        let [start, end] = expr.split('-').map(Number);
+        return val >= start && val <= end;
+      }
+      return parseInt(expr, 10) === val;
+    }
+
+    // Initial parse on load
+    window.onload = parseCronExpression;
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
