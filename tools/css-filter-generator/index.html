@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CSS Filter Generator | Visual CSS Image Effects Tool</title>
+  <meta name="description" content="Generate custom CSS image filters instantly. Adjust blur, brightness, contrast, drop shadow, grayscale, hue-rotate, invert, opacity, saturate, and sepia with live preview." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/css-filter-generator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CSS Filter Generator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced visual CSS image filter generator tool to build, customize, and export CSS image manipulation rules cleanly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TOOL SPECIFIC LAYOUT */
+    .filter-workspace { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 25px; }
+    .controls-panel { display: flex; flex-direction: column; gap: 16px; max-height: 520px; overflow-y: auto; padding-right: 8px; }
+    .preview-panel { display: flex; flex-direction: column; gap: 16px; align-items: center; justify-content: center; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 20px; padding: 24px; box-sizing: border-box; }
+
+    .control-group { background: #ffffff; border: 1px solid #e2e8f0; padding: 12px 16px; border-radius: 12px; display: flex; flex-direction: column; gap: 6px; }
+    .control-group-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; }
+    .control-group-header span.val-display { color: #2563eb; font-family: monospace; font-size: 0.95rem; }
+    
+    .filter-slider { width: 100%; accent-color: #2563eb; cursor: pointer; height: 6px; }
+
+    .preview-image-container { width: 100%; height: 300px; display: flex; align-items: center; justify-content: center; background: #e2e8f0; border-radius: 12px; overflow: hidden; position: relative; }
+    .preview-image-container img { width: 100%; height: 100%; object-fit: cover; transition: filter 0.1s ease; }
+    
+    .presets-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .preset-btn { background: #f1f5f9; border: 1px solid #cbd5e1; color: #334155; padding: 8px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+    .preset-btn:hover { background: #e2e8f0; color: #0f172a; }
+
+    .f-textarea-field { width: 100%; height: 100px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1rem; color: #0f172a; background: #f1f5f9; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .filter-workspace { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-textarea-field { height: 90px; font-size: 0.95rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🎨</span> CSS Filter Generator</div>
+    
+    <div class="f-card">
+      <div style="margin-bottom: 15px;">
+        <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px;">Quick Visual Presets</label>
+        <div class="presets-row">
+          <button class="preset-btn" onclick="applyPreset('normal')">Normal</button>
+          <button class="preset-btn" onclick="applyPreset('vintage')">Vintage Sepia</button>
+          <button class="preset-btn" onclick="applyPreset('noir')">Dark Noir</button>
+          <button class="preset-btn" onclick="applyPreset('cyberpunk')">Cyberpunk</button>
+          <button class="preset-btn" onclick="applyPreset('frosted')">Frosted Glass</button>
+          <button class="preset-btn" onclick="applyPreset('highcontrast')">High Contrast</button>
+        </div>
+      </div>
+
+      <div class="filter-workspace">
+        <!-- CONTROLS PANEL -->
+        <div class="controls-panel">
+          <div class="control-group">
+            <div class="control-group-header">
+              <label for="blurRange">Blur</label>
+              <span id="blurVal" class="val-display">0px</span>
+            </div>
+            <input type="range" id="blurRange" class="filter-slider" min="0" max="30" value="0" step="1" oninput="updateFilters()">
+          </div>
+
+          <div class="control-group">
+            <div class="control-group-header">
+              <label for="brightnessRange">Brightness</label>
+              <span id="brightnessVal" class="val-display">100%</span>
+            </div>
+            <input type="range" id="brightnessRange" class="filter-slider" min="0" max="300" value="100" step="1" oninput="updateFilters()">
+          </div>
+
+          <div class="control-group">
+            <div class="control-group-header">
+              <label for="contrastRange">Contrast</label>
+              <span id="contrastVal" class="val-display">100%</span>
+            </div>
+            <input type="range" id="contrastRange" class="filter-slider" min="0" max="300" value="100" step="1" oninput="updateFilters()">
+          </div>
+
+          <div class="control-group">
+            <div class="control-group-header">
+              <label for="grayscaleRange">Grayscale</label>
+              <span id="grayscaleVal" class="val-display">0%</span>
+            </div>
+            <input type="range" id="grayscaleRange" class="filter-slider" min="0" max="100" value="0" step="1" oninput="updateFilters()">
+          </div>
+
+          <div class="control-group">
+            <div class="control-group-header">
+              <label for="hueRange">Hue Rotate</label>
+              <span id="hueVal" class="val-display">0deg</span>
+            </div>
+            <input type="range" id="hueRange" class="filter-slider" min="0" max="360" value="0" step="1" oninput="updateFilters()">
+          </div>
+
+          <div class="control-group">
+            <div class="control-group-header">
+              <label for="invertRange">Invert</label>
+              <span id="invertVal" class="val-display">0%</span>
+            </div>
+            <input type="range" id="invertRange" class="filter-slider" min="0" max="100" value="0" step="1" oninput="updateFilters()">
+          </div>
+
+          <div class="control-group">
+            <div class="control-group-header">
+              <label for="opacityRange">Opacity</label>
+              <span id="opacityVal" class="val-display">100%</span>
+            </div>
+            <input type="range" id="opacityRange" class="filter-slider" min="0" max="100" value="100" step="1" oninput="updateFilters()">
+          </div>
+
+          <div class="control-group">
+            <div class="control-group-header">
+              <label for="saturateRange">Saturate</label>
+              <span id="saturateVal" class="val-display">100%</span>
+            </div>
+            <input type="range" id="saturateRange" class="filter-slider" min="0" max="300" value="100" step="1" oninput="updateFilters()">
+          </div>
+
+          <div class="control-group">
+            <div class="control-group-header">
+              <label for="sepiaRange">Sepia</label>
+              <span id="sepiaVal" class="val-display">0%</span>
+            </div>
+            <input type="range" id="sepiaRange" class="filter-slider" min="0" max="100" value="0" step="1" oninput="updateFilters()">
+          </div>
+        </div>
+
+        <!-- PREVIEW PANEL -->
+        <div class="preview-panel">
+          <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; align-self: flex-start;">Live Sample Preview</label>
+          <div class="preview-image-container">
+            <img id="previewImage" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="CSS Filter Preview Sample">
+          </div>
+          <div style="width: 100%; display: flex; gap: 8px;">
+            <input type="text" id="customImageUrl" class="f-textarea-field" style="height: 42px; font-size: 0.9rem;" placeholder="Paste image URL here..." value="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" oninput="updatePreviewImage()">
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 15px;">
+        <label for="cssOutputConsole" style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px;">Generated CSS Code Rule</label>
+        <textarea id="cssOutputConsole" class="f-textarea-field mono-font-panel" readonly placeholder="Filter CSS rules will appear here..."></textarea>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="resetFilters()">Reset All</button>
+        <button class="f-btn f-btn-copy" id="copyCssBtn" onclick="copyResultToClipboard()">📋 Copy CSS Rule</button>
+        <button class="f-btn f-btn-clear" onclick="clearFilters()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Hardware Accelerated Rendering Enabled:</span>
+        All generated filter rules leverage native CSS3 compositing layers for buttery smooth hardware-accelerated image manipulation across modern web browsers without heavy raster graphics dependencies.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Master Guide to CSS Image Filters: Advanced Visual Manipulation, Browser Rendering Performance, and Modern Graphical Styling</h2>
+      <p class="seo-p">Building high-performance, visually engaging modern web interfaces requires precise control over image assets, background backdrops, and media components. Traditionally, developers relied heavily on raster image editing suites like Adobe Photoshop or Figma to export pre-filtered graphics for every unique state. Today, the native CSS3 Filter specification revolutionizes responsive web design by allowing developers to apply GPU-accelerated graphic effects directly to HTML elements in real time.</p>
+      <p class="seo-p">This extensive computing manual explores the mechanics of CSS visual filters, analyzes performance implications under various browser layout engines, compares individual filter functions, and details how our standalone generator simplifies stylesheet production.</p>
+
+      <div class="seo-callout">
+        <strong>The GPU Compositing Factor:</strong> When you apply filters such as `blur()`, `drop-shadow()`, or `brightness()` via CSS, modern browsers offload rendering calculations directly to the user's graphics processing unit (GPU), ensuring zero layout reflow overhead and maximum animation frame rates.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Filter Function Syntax and Parameter Ranges</h3>
+      <p class="seo-p">CSS filters operate through a sequence of functional transformation tokens assigned to the `filter` property. Multiple filters can be chained together in a single declaration:</p>
+
+      <h4 class="seo-h3">1. Geometric and Spatial Effects (Blur &amp; Shadow)</h4>
+      <p class="seo-p">The `blur()` function takes a Gaussian radius in pixels, spreading pixel values evenly across neighboring coordinates. Unlike static image rasterization, dynamic CSS blur scales seamlessly across responsive viewports.</p>
+
+      <h4 class="seo-h3">2. Tonal Adjustments (Brightness, Contrast &amp; Saturation)</h4>
+      <p class="seo-p">Multiplicative percentage parameters allow precise control over luminance and chroma channels. Values below 100% dampen intensity, while values exceeding 100% amplify contrast and color vibrancy.</p>
+
+      <h4 class="seo-h3">3. Color Space Shifting (Hue-Rotate, Sepia &amp; Invert)</h4>
+      <p class="seo-p">Angle measurements (`deg`) shift color circles dynamically through the spectrum, while inversion and sepia filters create striking artistic duotone states instantly.</p>
+
+      <h3>The Statutory Reference Matrix: Comprehensive CSS Filter Property Guide</h3>
+      <p class="seo-p">Understanding each individual CSS filter function and its acceptable range ensures robust cross-browser design implementation:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Filter Function Name</th>
+              <th>Parameter Type &amp; Units</th>
+              <th>Default Value</th>
+              <th>Maximum / Range</th>
+              <th>Functional Visual Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>`blur()`</td>
+              <td>Pixel Length (`px`)</td>
+              <td>`0px`</td>
+              <td>`0px` to `100px+`</td>
+              <td>Applies a Gaussian blur to create depth-of-field or frosted glass backdrops.</td>
+            </tr>
+            <tr>
+              <td>`brightness()`</td>
+              <td>Percentage (`%`)</td>
+              <td>`100%`</td>
+              <td>`0%` (Pitch Black) to `500%`</td>
+              <td>Adjusts image luminance levels, brightening or darkening visual outputs.</td>
+            </tr>
+            <tr>
+              <td>`contrast()`</td>
+              <td>Percentage (`%`)</td>
+              <td>`100%`</td>
+              <td>`0%` (Gray) to `500%`</td>
+              <td>Increases or decreases the tonal range between shadows and highlights.</td>
+            </tr>
+            <tr>
+              <td>`grayscale()`</td>
+              <td>Percentage (`%`)</td>
+              <td>`0%`</td>
+              <td>`0%` to `100%` (Monochrome)</td>
+              <td>Converts color imagery into sophisticated shades of gray.</td>
+            </tr>
+            <tr>
+              <td>`hue-rotate()`</td>
+              <td>Angle Degrees (`deg`)</td>
+              <td>`0deg`</td>
+              <td>`0deg` to `360deg`</td>
+              <td>Rotates all hues around the CSS color wheel for psychedelic or brand tint effects.</td>
+            </tr>
+            <tr>
+              <td>`invert()`</td>
+              <td>Percentage (`%`)</td>
+              <td>`0%`</td>
+              <td>`0%` to `100%` (Full Inversion)</td>
+              <td>Inverts all color channels, turning dark elements light and vice versa.</td>
+            </tr>
+            <tr>
+              <td>`saturate()`</td>
+              <td>Percentage (`%`)</td>
+              <td>`100%`</td>
+              <td>`0%` (Desaturated) to `500%`</td>
+              <td>Supercharges or mutes the intensity of image color channels.</td>
+            </tr>
+            <tr>
+              <td>`sepia()`</td>
+              <td>Percentage (`%`)</td>
+              <td>`0%`</td>
+              <td>`0%` to `100%` (Full Sepia)</td>
+              <td>Applies a warm, vintage brown monochromatic tint.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the performance difference between CSS filters and SVG filters?</h3>
+      <p class="seo-p">CSS filters are ideal for standard brightness, contrast, blur, and color adjustments due to native GPU acceleration in modern browsers. However, SVG filters (`url(#filter-id)`) support complex displacement maps, lighting effects, and multi-channel matrix convolutions that go far beyond standard CSS capabilities.</p>
+
+      <h3>How do CSS filters impact mobile battery consumption and scrolling frame rates?</h3>
+      <p class="seo-p">Because CSS filters are hardware-accelerated, moderate use has negligible impact. However, combining heavy real-time `blur()` filters on large scrolling background layers can force mobile GPUs to recalculate raster layers continuously, occasionally reducing frame rates on lower-end hardware.</p>
+
+      <h3>Can CSS filters be animated using CSS transitions and keyframes?</h3>
+      <p class="seo-p">Yes! One of the most powerful features of CSS filters is their full animatability. You can transition hover states from `grayscale(100%)` to `grayscale(0%)` smoothly with simple `transition: filter 0.3s ease;` declarations.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for CSS Graphical Styling</h3>
+      <p class="seo-p">To maintain pristine web performance and stunning aesthetic standards, combine CSS filters with responsive image loading strategies, leverage hardware acceleration wisely, and use modular utility generators to copy-paste exact syntax rules instantly.</p>
+      <p class="seo-p">Our Advanced CSS Filter Generator suite streamlines your styling workflow, letting you tweak sliders visually and copy production-ready CSS code in seconds across any desktop or mobile viewport.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function updateFilters() {
+      const blur = document.getElementById('blurRange').value;
+      const brightness = document.getElementById('brightnessRange').value;
+      const contrast = document.getElementById('contrastRange').value;
+      const grayscale = document.getElementById('grayscaleRange').value;
+      const hue = document.getElementById('hueRange').value;
+      const invert = document.getElementById('invertRange').value;
+      const opacity = document.getElementById('opacityRange').value;
+      const saturate = document.getElementById('saturateRange').value;
+      const sepia = document.getElementById('sepiaRange').value;
+
+      document.getElementById('blurVal').textContent = blur + 'px';
+      document.getElementById('brightnessVal').textContent = brightness + '%';
+      document.getElementById('contrastVal').textContent = contrast + '%';
+      document.getElementById('grayscaleVal').textContent = grayscale + '%';
+      document.getElementById('hueVal').textContent = hue + 'deg';
+      document.getElementById('invertVal').textContent = invert + '%';
+      document.getElementById('opacityVal').textContent = opacity + '%';
+      document.getElementById('saturateVal').textContent = saturate + '%';
+      document.getElementById('sepiaVal').textContent = sepia + '%';
+
+      let filterString = '';
+      if (blur > 0) filterString += `blur(${blur}px) `;
+      if (brightness != 100) filterString += `brightness(${brightness}%) `;
+      if (contrast != 100) filterString += `contrast(${contrast}%) `;
+      if (grayscale > 0) filterString += `grayscale(${grayscale}%) `;
+      if (hue > 0) filterString += `hue-rotate(${hue}deg) `;
+      if (invert > 0) filterString += `invert(${invert}%) `;
+      if (opacity < 100) filterString += `opacity(${opacity}%) `;
+      if (saturate != 100) filterString += `saturate(${saturate}%) `;
+      if (sepia > 0) filterString += `sepia(${sepia}%) `;
+
+      filterString = filterString.trim() || 'none';
+
+      const previewImg = document.getElementById('previewImage');
+      previewImg.style.filter = filterString;
+
+      const cssOutput = `filter: ${filterString};
+-webkit-filter: ${filterString};`;
+      document.getElementById('cssOutputConsole').value = cssOutput;
+    }
+
+    function updatePreviewImage() {
+      const url = document.getElementById('customImageUrl').value.trim();
+      if (url) {
+        document.getElementById('previewImage').src = url;
+      }
+    }
+
+    function resetFilters() {
+      document.getElementById('blurRange').value = 0;
+      document.getElementById('brightnessRange').value = 100;
+      document.getElementById('contrastRange').value = 100;
+      document.getElementById('grayscaleRange').value = 0;
+      document.getElementById('hueRange').value = 0;
+      document.getElementById('invertRange').value = 0;
+      document.getElementById('opacityRange').value = 100;
+      document.getElementById('saturateRange').value = 100;
+      document.getElementById('sepiaRange').value = 0;
+      updateFilters();
+    }
+
+    function clearFilters() {
+      resetFilters();
+      document.getElementById('cssOutputConsole').value = '';
+    }
+
+    function applyPreset(presetName) {
+      resetFilters();
+      if (presetName === 'vintage') {
+        document.getElementById('sepiaRange').value = 80;
+        document.getElementById('contrastRange').value = 120;
+        document.getElementById('brightnessRange').value = 90;
+      } else if (presetName === 'noir') {
+        document.getElementById('grayscaleRange').value = 100;
+        document.getElementById('contrastRange').value = 150;
+        document.getElementById('brightnessRange').value = 80;
+      } else if (presetName === 'cyberpunk') {
+        document.getElementById('hueRange').value = 310;
+        document.getElementById('saturateRange').value = 200;
+        document.getElementById('contrastRange').value = 130;
+      } else if (presetName === 'frosted') {
+        document.getElementById('blurRange').value = 12;
+        document.getElementById('brightnessRange').value = 110;
+      } else if (presetName === 'highcontrast') {
+        document.getElementById('contrastRange').value = 220;
+        document.getElementById('brightnessRange').value = 110;
+      }
+      updateFilters();
+    }
+
+    function copyResultToClipboard() {
+      const textarea = document.getElementById('cssOutputConsole');
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(textarea.value).then(() => {
+        const btn = document.getElementById('copyCssBtn');
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Copied to Clipboard!';
+        btn.style.background = '#dcfce7';
+        btn.style.color = '#166534';
+        btn.style.borderColor = '#bbf7d0';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+          btn.style.borderColor = '';
+        }, 2000);
+      });
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      updateFilters();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
