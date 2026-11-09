@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Heart Rate Zone Calculator | Calculate Target Training HR Zones</title>
+  <meta name="description" content="Calculate your precise heart rate training zones instantly. Optimize your cardio workouts, fat burning, and endurance training using Karvonen and maximum heart rate formulas." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/heart-rate-zone-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Heart Rate Zone Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "HealthApplication",
+    "description": "An advanced physiological fitness metric tool to calculate aerobic and anaerobic heart rate training zones accurately.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS STYLING */
+    .f-results-container { margin-top: 25px; border-top: 2px solid #f1f5f9; padding-top: 25px; }
+    .f-metric-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
+    .f-metric-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .f-metric-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; font-weight: 700; margin-bottom: 6px; }
+    .f-metric-value { font-size: 1.8rem; font-weight: 800; color: #0f172a; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 15px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-metric-grid { grid-template-columns: 1fr; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>❤️</span> Heart Rate Zone Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="ageInput">Your Age (Years)</label>
+          <input type="number" id="ageInput" class="f-input-field" value="30" min="10" max="120" oninput="calculateHeartRateZones()" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="restingHrInput">Resting Heart Rate (BPM)</label>
+          <input type="number" id="restingHrInput" class="f-input-field" value="60" min="30" max="120" oninput="calculateHeartRateZones()" />
+        </div>
+      </div>
+
+      <div class="f-io-grid" style="margin-top: 15px;">
+        <div class="f-panel-box">
+          <label for="formulaSelect">Calculation Formula</label>
+          <select id="formulaSelect" class="f-select-field" onchange="calculateHeartRateZones()">
+            <option value="karvonen">Karvonen Method (HRR - Recommended)</option>
+            <option value="standard">Maximum Heart Rate (220 - Age)</option>
+            <option value="tanaka">Tanaka Formula (208 - 0.7 × Age)</option>
+          </select>
+        </div>
+
+        <div class="f-panel-box">
+          <label for="maxHrCustom">Max Heart Rate Override (Optional)</label>
+          <input type="number" id="maxHrCustom" class="f-input-field" placeholder="Auto-calculated if blank" min="100" max="230" oninput="calculateHeartRateZones()" />
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateHeartRateZones()">Calculate Zones</button>
+        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyResultsToClipboard()">📋 Copy Results</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Reset</button>
+      </div>
+
+      <div class="f-results-container">
+        <div class="f-metric-grid">
+          <div class="f-metric-card">
+            <div class="f-metric-label">Estimated Max Heart Rate</div>
+            <div class="f-metric-value" id="maxHrDisplay">190 BPM</div>
+          </div>
+          <div class="f-metric-card">
+            <div class="f-metric-label">Heart Rate Reserve (HRR)</div>
+            <div class="f-metric-value" id="hrrDisplay">130 BPM</div>
+          </div>
+        </div>
+
+        <div class="seo-table-container" style="margin-top: 20px;">
+          <table class="seo-table" id="zonesTable">
+            <thead>
+              <tr>
+                <th>Training Zone</th>
+                <th>Intensity Range</th>
+                <th>BPM Range</th>
+                <th>Physiological Benefit & Focus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dynamic JS rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Physiological Accuracy Note:</span>
+        Using the Karvonen method incorporates your resting heart rate to determine your Heart Rate Reserve (HRR), yielding significantly more personalized target workout metrics than simple age-subtracted equations.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Science of Cardiovascular Training: Heart Rate Zones, Metabolic Thresholds, and Physiological Adaptation Laws</h2>
+      <p class="seo-p">Optimizing cardiovascular endurance, accelerating fat metabolization, and protecting muscle tissue during intense training cycles requires a precise engineering approach to heart rate target calculation. When athletes exercise within specific percentage bands of their maximum heart rate capacity, the body recruits distinct energy pathways—shifting smoothly from aerobic fat oxidation in lower zones to anaerobic glycolysis and lactate accumulation in elite zones.</p>
+      <p class="seo-p">This comprehensive clinical manual explores the physiological mechanics of heart rate training, compares traditional maximum heart rate equations with advanced reserve calculations, analyzes metabolic energy systems, and outlines structured regimens to elevate aerobic capacity safely.</p>
+
+      <div class="seo-callout">
+        <strong>The Karvonen Advantage:</strong> Traditional formulas only subtract your age from 220. The Karvonen formula accounts for individual fitness levels by factoring in your resting heart rate, creating a customized Heart Rate Reserve (HRR) scale that correlates directly with actual oxygen consumption (VO2).
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Mathematical Formulas and Metabolic Thresholds</h3>
+      <p class="seo-p">When your physiological parameters pass through our high-performance calculation pipeline, the script executes verified medical algorithms:</p>
+
+      <h4 class="seo-h3">1. Maximum Heart Rate ($HR_{max}$) Estimation Models</h4>
+      <p class="seo-p">The calculator supports multiple industry-standard estimation formulas: Fox and Haskell's classic `220 - Age`, Tanaka's refined `208 - (0.7 × Age)`, or your own direct laboratory testing override.</p>
+
+      <h4 class="seo-h3">2. Heart Rate Reserve ($HRR$) Computation</h4>
+      <p class="seo-p">Under the Karvonen model, reserve heart rate is calculated as: $HRR = HR_{max} - HR_{rest}$. Target training ranges are subsequently determined using the formula: $Target HR = [(HR_{max} - HR_{rest}) \times \% Intensity] + HR_{rest}$.</p>
+
+      <h4 class="seo-h3">3. Five-Tiered Intensity Stratification</h4>
+      <p class="seo-p">The resulting beats-per-minute spectrum is partitioned into five distinct physiological bands, ranging from active recovery (Zone 1) to maximum neuromuscular exertion (Zone 5).</p>
+
+      <h3>The Statutory Reference Matrix: Comprehensive Training Zone Breakdown</h3>
+      <p class="seo-p">Understanding how each percentage tier impacts athletic performance is essential for planning sustainable weekly training schedules:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Zone Classification</th>
+              <th>Intensity Percentage</th>
+              <th>Primary Physiological Adaptations</th>
+              <th>Recommended Activity Types</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Zone 1: Active Recovery</b></td>
+              <td>50% – 60% HRR</td>
+              <td>Improves overall blood circulation, flushes metabolic waste, aids rapid post-workout recovery.</td>
+              <td>Light walking, gentle stretching, active cool-downs.</td>
+            </tr>
+            <tr>
+              <td><b>Zone 2: Endurance / Fat Burn</b></td>
+              <td>60% – 70% HRR</td>
+              <td>Maximizes fat oxidation, increases mitochondrial density, builds baseline aerobic endurance.</td>
+              <td>Long steady-state jogs, conversational cycling, base building.</td>
+            </tr>
+            <tr>
+              <td><b>Zone 3: Aerobic / Tempo</b></td>
+              <td>70% – 80% HRR</td>
+              <td>Enhances cardiovascular efficiency, improves lung capacity, boosts lactate tolerance.</td>
+              <td>Tempo runs, moderate tri-pace training, steady aerobic swims.</td>
+            </tr>
+            <tr>
+              <td><b>Zone 4: Anaerobic Threshold</b></td>
+              <td>80% – 90% HRR</td>
+              <td>Increases anaerobic threshold speed, improves glycogen storage and utilization efficiency.</td>
+              <td>Threshold intervals, fast hill repeats, competitive racing pace.</td>
+            </tr>
+            <tr>
+              <td><b>Zone 5: Maximum Exertion</b></td>
+              <td>90% – 100% HRR</td>
+              <td>Maximizes peak power output, trains fast-twitch muscle fibers, develops high-speed velocity.</td>
+              <td>All-out sprints, short explosive intervals, VO2 max tests.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Clinical & Athletic Insights</h3>
+
+<h3>Why does resting heart rate matter so much when calculating training zones?</h3>
+      <p class="seo-p">Your resting heart rate reflects your cardiovascular conditioning. A well-trained endurance athlete with a resting heart rate of 45 BPM has a much wider operational heart rate reserve than an untrained individual at 75 BPM, even if both share the exact same maximum heart rate. Factoring in resting heart rate ensures your target zones match your actual fitness level.</p>
+
+      <h3>How frequently should I recalculate my heart rate training zones?</h3>
+      <p class="seo-p">As your cardiovascular fitness improves through consistent aerobic training, your resting heart rate will typically decrease and your maximum heart rate capacity will stabilize. It is recommended to update your metrics every 3 to 6 months or after completing a structured training block.</p>
+
+      <h3>Is heart rate zone training safe for individuals with underlying medical conditions?</h3>
+      <p class="seo-p">While zone-based cardiovascular exercise is widely beneficial, anyone with pre-existing cardiovascular conditions, hypertension, or those recovering from illness should consult a qualified physician or cardiologist before engaging in high-intensity Zone 4 and Zone 5 workouts.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Endurance Conditioning</h3>
+      <p class="seo-p">To maximize the effectiveness of your training sessions, avoid spending all your workout time in moderate "gray zones." Structure your weekly mileage so that 80% of your training occurs in Zones 1 and 2 (building deep aerobic foundations), while reserving high-intensity efforts in Zones 4 and 5 for specific speedwork and threshold days.</p>
+      <p class="seo-p">Our Advanced Heart Rate Zone Calculator automates these precise physiological computations instantly, providing clear target metrics across any desktop or mobile device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function calculateHeartRateZones() {
+      const age = parseInt(document.getElementById('ageInput').value) || 30;
+      const restingHr = parseInt(document.getElementById('restingHrInput').value) || 60;
+      const formula = document.getElementById('formulaSelect').value;
+      const customMax = parseInt(document.getElementById('maxHrCustom').value);
+
+      let maxHr = 220 - age;
+      if (formula === 'tanaka') {
+        maxHr = Math.round(208 - (0.7 * age));
+      }
+      if (!isNaN(customMax) && customMax > 50) {
+        maxHr = customMax;
+      }
+
+      const hrr = maxHr - restingHr;
+
+      document.getElementById('maxHrDisplay').innerText = maxHr + ' BPM';
+      document.getElementById('hrrDisplay').innerText = (hrr > 0 ? hrr : 0) + ' BPM';
+
+      const zones = [
+        { name: 'Zone 1: Active Recovery', minPct: 0.50, maxPct: 0.60, desc: 'Improves blood circulation and flushes metabolic waste.' },
+        { name: 'Zone 2: Endurance (Fat Burn)', minPct: 0.60, maxPct: 0.70, desc: 'Maximizes fat oxidation and builds baseline aerobic endurance.' },
+        { name: 'Zone 3: Aerobic (Tempo)', minPct: 0.70, maxPct: 0.80, desc: 'Enhances cardiovascular efficiency and lung capacity.' },
+        { name: 'Zone 4: Anaerobic Threshold', minPct: 0.80, maxPct: 0.90, desc: 'Increases anaerobic threshold speed and lactate tolerance.' },
+        { name: 'Zone 5: Maximum Exertion', minPct: 0.90, maxPct: 1.00, desc: 'Maximizes peak power output and trains fast-twitch fibers.' }
+      ];
+
+      const tbody = document.querySelector('#zonesTable tbody');
+      tbody.innerHTML = '';
+
+      zones.forEach(z => {
+        let minBpm, maxBpm;
+        if (formula === 'karvonen' && hrr > 0) {
+          minBpm = Math.round((hrr * z.minPct) + restingHr);
+          maxBpm = Math.round((hrr * z.maxPct) + restingHr);
+        } else {
+          minBpm = Math.round(maxHr * z.minPct);
+          maxBpm = Math.round(maxHr * z.maxPct);
+        }
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><b>${z.name}</b></td>
+          <td>${(z.minPct * 100)}% – ${(z.maxPct * 100)}%</td>
+          <td><b>${minBpm} – ${maxBpm} BPM</b></td>
+          <td>${z.desc}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function copyResultsToClipboard() {
+      const maxHr = document.getElementById('maxHrDisplay').innerText;
+      const hrr = document.getElementById('hrrDisplay').innerText;
+      let text = `Heart Rate Training Zones\nMax HR: ${maxHr} | HRR: ${hrr}\n\n`;
+      
+      const rows = document.querySelectorAll('#zonesTable tbody tr');
+      rows.forEach(r => {
+        const cols = r.querySelectorAll('td');
+        text += `${cols[0].innerText}: ${cols[1].innerText} (${cols[2].innerText})\n`;
+      });
+
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyResultsBtn');
+        btn.innerText = '✓ Copied!';
+        setTimeout(() => { btn.innerText = '📋 Copy Results'; }, 2000);
+      });
+    }
+
+    function clearCalculator() {
+      document.getElementById('ageInput').value = 30;
+      document.getElementById('restingHrInput').value = 60;
+      document.getElementById('formulaSelect').value = 'karvonen';
+      document.getElementById('maxHrCustom').value = '';
+      calculateHeartRateZones();
+    }
+
+    // Initial calculation on load
+    window.addEventListener('DOMContentLoaded', calculateHeartRateZones);
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
