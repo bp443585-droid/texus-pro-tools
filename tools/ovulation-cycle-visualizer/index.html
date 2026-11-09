@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Ovulation Cycle Visualizer | Free Period &amp; Fertility Calculator</title>
+  <meta name="description" content="Calculate your fertile window, ovulation date, and next period with our free online Ovulation Cycle Visualizer. Get clear visual timelines instantly." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/ovulation-cycle-visualizer/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Ovulation Cycle Visualizer Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "HealthApplication",
+    "description": "An advanced fertility tracking and ovulation cycle visualization tool designed to estimate fertile windows and period schedules cleanly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .f-results-panel { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px; }
+    .result-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+    .result-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .result-label { font-size: 0.9rem; font-weight: 600; color: #475569; }
+    .result-value { font-size: 1rem; font-weight: 700; color: #0f172a; text-align: right; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* VISUAL TIMELINE GRID */
+    .timeline-container { margin-top: 25px; border-top: 2px solid #e2e8f0; padding-top: 25px; }
+    .timeline-title { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+    .timeline-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(42px, 1fr)); gap: 8px; }
+    .timeline-day { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 10px; padding: 8px 4px; text-align: center; font-size: 0.8rem; font-weight: 600; color: #334155; display: flex; flex-direction: column; gap: 4px; }
+    .timeline-day .day-num { font-size: 0.95rem; font-weight: 800; color: #0f172a; }
+    
+    /* TIMELINE LEGEND & STATUS COLORS */
+    .day-period { background: #fee2e2 !important; border-color: #fca5a5 !important; color: #991b1b !important; }
+    .day-ovulation { background: #dbeafe !important; border-color: #93c5fd !important; color: #1e40af !important; }
+    .day-fertile { background: #d1fae5 !important; border-color: #6ee7b7 !important; color: #065f46 !important; }
+
+    .legend-box { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 15px; font-size: 0.85rem; color: #475569; font-weight: 600; }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-dot { width: 14px; height: 14px; border-radius: 4px; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field { font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🌸</span> Ovulation Cycle Visualizer</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="lastPeriodDate">First Day of Last Period</label>
+          <input type="date" id="lastPeriodDate" class="f-input-field" onchange="calculateCycle()" />
+
+          <label for="cycleLength" style="margin-top: 12px;">Average Cycle Length (Days)</label>
+          <input type="number" id="cycleLength" class="f-input-field" value="28" min="21" max="45" oninput="calculateCycle()" />
+
+          <label for="periodLength" style="margin-top: 12px;">Period Duration (Days)</label>
+          <input type="number" id="periodLength" class="f-input-field" value="5" min="2" max="10" oninput="calculateCycle()" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Cycle Summary &amp; Projections</label>
+          <div class="f-results-panel">
+            <div class="result-item">
+              <span class="result-label">Estimated Ovulation:</span>
+              <span class="result-value" id="resOvulation">--</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Fertile Window:</span>
+              <span class="result-value" id="resFertileWindow">--</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Next Period Due:</span>
+              <span class="result-value" id="resNextPeriod">--</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Next Safe Window:</span>
+              <span class="result-value" id="resSafeWindow">--</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateCycle()">Update Visualizer</button>
+        <button class="f-btn f-btn-copy" id="copyCycleBtn" onclick="copyCycleSummary()">📋 Copy Summary</button>
+        <button class="f-btn f-btn-clear" onclick="clearCycleWorkspace()">Reset</button>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-title">📅 Current Cycle Day-by-Day Visualizer</div>
+        <div class="timeline-grid" id="timelineGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+        <div class="legend-box">
+          <div class="legend-item"><div class="legend-dot" style="background:#fee2e2; border:1px solid #fca5a5;"></div> Period Days</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#d1fae5; border:1px solid #6ee7b7;"></div> Fertile Window</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#dbeafe; border:1px solid #93c5fd;"></div> Ovulation Day</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#f1f5f9; border:1px solid #cbd5e1;"></div> Regular Day</div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Private &amp; Secure Health Calculation:</span>
+        All timeline projections execute instantly in your browser's local memory. No personal health data or dates are ever stored or transmitted.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Your Reproductive Health: Understanding Ovulation Cycles, Fertile Windows, and Biological Rhythm Tracking</h2>
+      <p class="seo-p">Navigating family planning, tracking hormonal fluctuations, or maintaining personal wellness records requires a clear, mathematical understanding of the menstrual cycle. While traditional calendar methods offer rough estimates, modern interactive visualizers help individuals map out specific hormonal milestones like follicular development, luteinizing hormone surges, ovulation peaks, and luteal phases with high precision.</p>
+      <p class="seo-p">This extensive guide explores the physiological phases of the menstrual cycle, analyzes how cycle variations impact fertility windows, reviews hormonal changes, and outlines best practices for using digital health calculators safely.</p>
+
+      <div class="seo-callout">
+        <strong>The Luteal Phase Constant:</strong> In most standard 28-day to 35-day cycles, ovulation typically occurs approximately 14 days before the start of the next expected menstrual period, regardless of overall cycle length variability.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Biological Phases of the Menstrual Cycle</h3>
+      <p class="seo-p">When calculating reproductive timelines, medical algorithms break the standard female hormonal cycle down into four distinct physiological phases:</p>
+
+      <h4 class="seo-h3">1. Menstrual Phase (Days 1 to 5)</h4>
+      <p class="seo-p">Marking the official beginning of the cycle (Day 1), this phase involves the shedding of the uterine lining when pregnancy has not occurred. Hormone levels of estrogen and progesterone drop significantly.</p>
+
+      <h4 class="seo-h3">2. Follicular Phase (Day 1 until Ovulation)</h4>
+      <p class="seo-p">Running concurrently with menstruation, the pituitary gland releases follicle-stimulating hormone (FSH), stimulating ovaries to produce multiple follicles containing immature eggs. One dominant follicle matures while thickening the uterine lining.</p>
+
+      <h4 class="seo-h3">3. Ovulation Phase (Mid-Cycle Spike)</h4>
+      <p class="seo-p">Triggered by a sharp surge in luteinizing hormone (LH), the dominant follicle ruptures and releases a mature egg into the fallopian tube. This window represents peak fertility lasting between 12 to 24 hours.</p>
+
+      <h4 class="seo-h3">4. Luteal Phase (Post-Ovulation to Next Period)</h4>
+      <p class="seo-p">The ruptured follicle transforms into the corpus luteum, secreting progesterone to prepare the uterus for potential implantation. If fertilization does not occur, hormone levels decline, initiating the next cycle.</p>
+
+      <h3>The Statutory Reference Matrix: Standard Menstrual Cycle Breakdown</h3>
+      <p class="seo-p">Reviewing standard cycle durations and phase lengths helps individuals interpret visualizer timelines and assess individual hormonal patterns accurately:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Cycle Component</th>
+              <th>Typical 28-Day Duration</th>
+              <th>Variable Range (21–35 Days)</th>
+              <th>Physiological Function &amp; Significance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Menstruation</td>
+              <td>5 Days</td>
+              <td>3 to 7 Days</td>
+              <td>Shedding of unneeded endometrial lining and unfertilized tissue.</td>
+            </tr>
+            <tr>
+              <td>Follicular Growth</td>
+              <td>9 Days</td>
+              <td>7 to 21 Days</td>
+              <td>Estrogen rise stimulating egg maturation and uterine wall repair.</td>
+            </tr>
+            <tr>
+              <td>Ovulation Window</td>
+              <td>24 Hours</td>
+              <td>12 to 36 Hours</td>
+              <td>Release of mature egg into fallopian tubes ready for fertilization.</td>
+            </tr>
+            <tr>
+              <td>Fertile Span</td>
+              <td>6 Days</td>
+              <td>5 to 7 Days</td>
+              <td>Includes 5 days prior to ovulation plus ovulation day itself.</td>
+            </tr>
+            <tr>
+              <td>Luteal Phase</td>
+              <td>14 Days</td>
+              <td>12 to 16 Days</td>
+              <td>Progesterone production maintaining uterine lining integrity.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Clinical &amp; Technical Segment</h3>
+
+      <h3>How accurate are digital ovulation cycle visualizers?</h3>
+      <p class="seo-p">Digital visualizers provide solid mathematical estimates based on statistical averages (such as a standard 14-day luteal phase). However, natural stress, illness, travel, or hormonal conditions like PCOS can cause ovulation dates to shift. For precise family planning, combine visualizer timelines with basal body temperature (BBT) charting or LH test kits.</p>
+
+      <h3>Why is the fertile window considered longer than ovulation day?</h3>
+      <p class="seo-p">While an egg only survives for up to 24 hours after release, sperm can survive inside the female reproductive tract for up to 5 days under favorable cervical mucus conditions. Consequently, intercourse occurring up to five days before ovulation can still lead to successful fertilization.</p>
+
+      <h3>Is my personal health data kept private on Texus Pro Tools?</h3>
+      <p class="seo-p">Yes, absolutely. All calculations occur locally inside your browser's JavaScript environment. No dates, cycle lengths, or personal inputs are transmitted to external servers, ensuring absolute data privacy.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for Effective Cycle Tracking</h3>
+      <p class="seo-p">To get the most accurate results from your cycle visualizer, log your period start dates consistently every month. If your cycle length fluctuates significantly, use your shortest and longest cycle numbers over the past six months to establish a reliable average.</p>
+      <p class="seo-p">Our Ovulation Cycle Visualizer streamlines this tracking process instantly, offering clear day-by-day color-coded grids across any mobile or desktop screen.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // Initialize default date to today minus 14 days
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date();
+      today.setDate(today.getDate() - 14);
+      document.getElementById('lastPeriodDate').valueAsDate = today;
+      calculateCycle();
+    });
+
+    function calculateCycle() {
+      const lastPeriodInput = document.getElementById('lastPeriodDate').value;
+      const cycleLength = parseInt(document.getElementById('cycleLength').value) || 28;
+      const periodLength = parseInt(document.getElementById('periodLength').value) || 5;
+
+      if (!lastPeriodInput) return;
+
+      const lastPeriod = new Date(lastPeriodInput);
+      
+      // Ovulation is typically 14 days before the next period
+      const ovulationDate = new Date(lastPeriod);
+      ovulationDate.setDate(lastPeriod.getDate() + (cycleLength - 14));
+
+      // Fertile window: 5 days before ovulation + ovulation day
+      const fertileStart = new Date(ovulationDate);
+      fertileStart.setDate(ovulationDate.getDate() - 5);
+
+      const fertileEnd = new Date(ovulationDate);
+
+      // Next period start
+      const nextPeriod = new Date(lastPeriod);
+      nextPeriod.setDate(lastPeriod.getDate() + cycleLength);
+
+      // Safe window (approximate post-ovulation until next period)
+      const safeStart = new Date(ovulationDate);
+      safeStart.setDate(ovulationDate.getDate() + 2);
+
+      // Format outputs
+      const options = { month: 'short', day: 'numeric', year: 'numeric' };
+      document.getElementById('resOvulation').innerText = ovulationDate.toLocaleDateString('en-US', options);
+      document.getElementById('resFertileWindow').innerText = `${fertileStart.toLocaleDateString('en-US', {month:'short', day:'numeric'})} – ${fertileEnd.toLocaleDateString('en-US', options)}`;
+      document.getElementById('resNextPeriod').innerText = nextPeriod.toLocaleDateString('en-US', options);
+      document.getElementById('resSafeWindow').innerText = `${safeStart.toLocaleDateString('en-US', {month:'short', day:'numeric'})} – ${nextPeriod.toLocaleDateString('en-US', options)}`;
+
+      // Render Timeline Grid
+      renderTimeline(lastPeriod, cycleLength, periodLength, fertileStart, ovulationDate);
+    }
+
+    function renderTimeline(startDate, cycleLength, periodLength, fertileStart, ovulationDate) {
+      const grid = document.getElementById('timelineGrid');
+      grid.innerHTML = '';
+
+      for (let i = 0; i < cycleLength; i++) {
+        const currentDate = new Date(startDate);
+        currentDate.setDate(startDate.getDate() + i);
+        const dayNum = i + 1;
+
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'timeline-day';
+        
+        // Determine category
+        if (i < periodLength) {
+          dayDiv.classList.add('day-period');
+        } else if (currentDate.getTime() === ovulationDate.getTime()) {
+          dayDiv.classList.add('day-ovulation');
+        } else if (currentDate >= fertileStart && currentDate <= ovulationDate) {
+          dayDiv.classList.add('day-fertile');
+        }
+
+        dayDiv.innerHTML = `<span class="day-num">${dayNum}</span><span>${currentDate.toLocaleDateString('en-US', {month:'numeric', day:'numeric'})}</span>`;
+        grid.appendChild(dayDiv);
+      }
+    }
+
+    function copyCycleSummary() {
+      const ovulation = document.getElementById('resOvulation').innerText;
+      const fertile = document.getElementById('resFertileWindow').innerText;
+      const nextPeriod = document.getElementById('resNextPeriod').innerText;
+
+      const summary = `Ovulation Cycle Summary:\n- Ovulation Date: ${ovulation}\n- Fertile Window: ${fertile}\n- Next Period Due: ${nextPeriod}`;
+      
+      navigator.clipboard.writeText(summary).then(() => {
+        const btn = document.getElementById('copyCycleBtn');
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => { btn.innerText = '📋 Copy Summary'; }, 2000);
+      });
+    }
+
+    function clearCycleWorkspace() {
+      const today = new Date();
+      today.setDate(today.getDate() - 14);
+      document.getElementById('lastPeriodDate').valueAsDate = today;
+      document.getElementById('cycleLength').value = 28;
+      document.getElementById('periodLength').value = 5;
+      calculateCycle();
+    }
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
