@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Body Surface Area (BSA) Calculator | Mostosteller, Du Bois & Haycock Formulas</title>
+  <meta name="description" content="Calculate Body Surface Area (BSA) instantly using Mosteller, Du Bois, Haycock, Boyd, and Gehan-George formulas. Essential clinical tool for medical dosage and cardiac index calculations." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/body-surface-area-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Body Surface Area Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "MedicalApplication",
+    "description": "An advanced clinical utility to compute patient body surface area using Mosteller, Du Bois, Haycock, Boyd, and Gehan-George formulas accurately.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CALCULATOR SPECIFIC STYLING */
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .calc-group { display: flex; flex-direction: column; gap: 8px; }
+    .calc-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .calc-input, .calc-select { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .calc-input:focus, .calc-select:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .unit-toggle-row { display: flex; gap: 10px; margin-bottom: 24px; background: #f1f5f9; padding: 6px; border-radius: 14px; }
+    .unit-btn { flex: 1; padding: 10px; border-radius: 10px; border: none; font-weight: 700; font-size: 0.9rem; cursor: pointer; background: transparent; color: #64748b; transition: all 0.2s; }
+    .unit-btn.active { background: #ffffff; color: #2563eb; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+
+    .result-display-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 18px; padding: 24px; margin-top: 24px; text-align: center; }
+    .result-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; font-weight: 700; margin-bottom: 8px; }
+    .result-value { font-size: 2.8rem; font-weight: 800; color: #0f172a; letter-spacing: -1px; margin-bottom: 15px; }
+    .result-subgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 20px; text-align: left; }
+    .sub-result-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 14px; border-radius: 12px; }
+    .sub-result-card span { display: block; font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+    .sub-result-card strong { font-size: 1.15rem; color: #1e293b; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 24px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .calc-grid { grid-template-columns: 1fr; gap: 16px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+      .result-value { font-size: 2.2rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🫀</span> Body Surface Area Calculator</div>
+    
+    <div class="f-card">
+      <div class="unit-toggle-row">
+        <button type="button" class="unit-btn active" id="metricBtn" onclick="setUnitSystem('metric')">Metric (cm / kg)</button>
+        <button type="button" class="unit-btn" id="imperialBtn" onclick="setUnitSystem('imperial')">Imperial (in / lbs)</button>
+      </div>
+
+      <div class="calc-grid">
+        <div class="calc-group">
+          <label id="heightLabel" for="heightInput">Height (cm)</label>
+          <input type="number" id="heightInput" class="calc-input" placeholder="e.g. 175" value="175" step="0.1" oninput="calculateBSA()" />
+        </div>
+        
+        <div class="calc-group">
+          <label id="weightLabel" for="weightInput">Weight (kg)</label>
+          <input type="number" id="weightInput" class="calc-input" placeholder="e.g. 70" value="70" step="0.1" oninput="calculateBSA()" />
+        </div>
+      </div>
+
+      <div class="calc-grid">
+        <div class="calc-group" style="grid-column: 1 / -1;">
+          <label for="formulaSelect">Primary Clinical Formula</label>
+          <select id="formulaSelect" class="calc-select" onchange="calculateBSA()">
+            <option value="mosteller">Mosteller Formula (Most Popular & Simplest)</option>
+            <option value="dubois">Du Bois & Du Bois (Classic Standard)</option>
+            <option value="haycock">Haycock Formula (Widely used in Pediatrics)</option>
+            <option value="boyd">Boyd Formula (Comprehensive Regression)</option>
+            <option value="gehan">Gehan & George Formula</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="result-display-box">
+        <div class="result-label" id="primaryFormulaLabel">Mosteller Body Surface Area</div>
+        <div class="result-value" id="mainBsaResult">1.86 m²</div>
+        
+        <div class="result-subgrid">
+          <div class="sub-result-card">
+            <span>Mosteller</span>
+            <strong id="resMosteller">1.86 m²</strong>
+          </div>
+          <div class="sub-result-card">
+            <span>Du Bois</span>
+            <strong id="resDuBois">1.87 m²</strong>
+          </div>
+          <div class="sub-result-card">
+            <span>Haycock</span>
+            <strong id="resHaycock">1.84 m²</strong>
+          </div>
+          <div class="sub-result-card">
+            <span>Boyd</span>
+            <strong id="resBoyd">1.88 m²</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateBSA()">Calculate BSA</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyBsaResult()">📋 Copy Results</button>
+        <button class="f-btn f-btn-clear" onclick="clearBsaCalculator()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Clinical Calculation Notice:</span>
+        Body Surface Area (BSA) is primarily utilized in medical oncology for chemotherapy dosage calculations, cardiac index determinations, and pediatric fluid management. Always verify calculations with institutional protocols.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Clinical Science of Body Surface Area (BSA): Mathematical Formulas, Physiological Significance, and Medical Applications</h2>
+      <p class="seo-p">Body Surface Area (BSA) represents the total surface area of the human body and is expressed in square meters ($\text{m}^2$). In clinical medicine, physiology, and pharmacology, BSA is considered a superior metric compared to total body weight alone when scaling physiological parameters—such as cardiac output, glomerular filtration rate (GFR), and chemotherapeutic drug dosages—because it correlates more closely with metabolic mass and basal metabolic rate.</p>
+      <p class="seo-p">Because measuring actual surface area directly is clinically impractical, various mathematical estimation formulas have been developed over the past century using height and weight variables. This comprehensive guide reviews the foundational formulas, compares their mathematical mechanics, explores critical medical applications, and outlines best practices for safe clinical dosing.</p>
+
+      <div class="seo-callout">
+        <strong>The Physiological Rationale:</strong> While body weight can be heavily skewed by adipose tissue or acute fluid retention, metabolic processes scale more proportionally with surface area and lean tissue mass, making BSA an essential normalization parameter in critical care.
+      </div>
+
+      <h3 class="seo-h2">Mathematical Anatomy of Recognized BSA Estimation Formulas</h3>
+      <p class="seo-p">Over the decades, several researchers formulated regression models and geometric equations to approximate human surface area. Understanding their differences helps clinicians choose the most appropriate algorithm for specific patient demographics.</p>
+
+      <h4 class="seo-h3">1. The Mosteller Formula (1987)</h4>
+      <p class="seo-p">Introduced by Dr. William S. Mosteller, this formula is favored globally in emergency medicine, pediatrics, and oncology for its exceptional mathematical simplicity. It requires no logarithms or complex exponents:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">$\text{BSA} (\text{m}^2) = \sqrt{\frac{\text{Height (cm)} \times \text{Weight (kg)}}{3600}}$</p>
+
+      <h4 class="seo-h3">2. The Du Bois & Du Bois Formula (1916)</h4>
+      <p class="seo-p">Developed by D. Du Bois and E.F. Du Bois, this remains the historical gold standard against which newer models are validated. Although derived from a tiny sample of only nine subjects, its logarithmic structure has stood the test of time:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">$\text{BSA} (\text{m}^2) = 0.007184 \times \text{Height (cm)}^{0.725} \times \text{Weight (kg)}^{0.425}$</p>
+
+      <h4 class="seo-h3">3. The Haycock Formula (1978)</h4>
+      <p class="seo-p">Specifically derived to improve accuracy across pediatric populations, including newborns and premature infants, the Haycock formula adjusts exponent weights to account for infant body proportions:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">$\text{BSA} (\text{m}^2) = 0.024265 \times \text{Height (cm)}^{0.3964} \times \text{Weight (kg)}^{0.5378}$</p>
+
+      <h3>Clinical Reference Comparison: BSA Across Standard Demographics</h3>
+      <p class="seo-p">The following table compares BSA outputs generated by the Mosteller and Du Bois formulas across various standard adult height and weight configurations:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Patient Profile</th>
+              <th>Height</th>
+              <th>Weight</th>
+              <th>Mosteller BSA</th>
+              <th>Du Bois BSA</th>
+              <th>Primary Clinical Utility</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard Adult Female</td>
+              <td>160 cm (5'3")</td>
+              <td>55 kg (121 lbs)</td>
+              <td><b>1.56 m²</b></td>
+              <td>1.57 m²</td>
+              <td>General pharmacological dosing & GFR estimation.</td>
+            </tr>
+            <tr>
+              <td>Standard Adult Male</td>
+              <td>175 cm (5'9")</td>
+              <td>70 kg (154 lbs)</td>
+              <td><b>1.86 m²</b></td>
+              <td>1.87 m²</td>
+              <td>Baseline cardiac index and hemodynamic calculations.</td>
+            </tr>
+            <tr>
+              <td>Athletic Adult Male</td>
+              <td>185 cm (6'1")</td>
+              <td>90 kg (198 lbs)</td>
+              <td><b>2.15 m²</b></td>
+              <td>2.16 m²</td>
+              <td>Oncology chemotherapy dosing adjustments.</td>
+            </tr>
+            <tr>
+              <td>Bariatric Patient</td>
+              <td>170 cm (5'7")</td>
+              <td>115 kg (253 lbs)</td>
+              <td><b>2.33 m²</b></td>
+              <td>2.29 m²</td>
+              <td>Critical care fluid resuscitation scaling.</td>
+            </tr>
+            <tr>
+              <td>Pediatric Child (approx. 8 yrs)</td>
+              <td>125 cm (4'1")</td>
+              <td>25 kg (55 lbs)</td>
+              <td><b>0.93 m²</b></td>
+              <td>0.94 m²</td>
+              <td>Pediatric fluid maintenance and drug titrations.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Clinical & Technical Guidance</h3>
+
+      <h3>Why are there multiple BSA formulas, and which one should I use?</h3>
+      <p class="seo-p">Different formulas were created using distinct patient cohorts ranging from infants to adults. While Du Bois is the historical standard, the Mosteller formula is widely adopted in emergency and oncology settings because it yields near-identical results without requiring complex exponents. For neonatal and pediatric patients, the Haycock formula is frequently preferred.</p>
+
+      <h3>How does Body Surface Area impact chemotherapy dosing?</h3>
+      <p class="seo-p">Many cytotoxic chemotherapy drugs have a very narrow therapeutic index—meaning the difference between therapeutic efficacy and severe toxicity is minimal. Dosing drugs in milligrams per square meter ($\text{mg/m}^2$) standardizes drug exposure across patients of varying heights and weights, reducing the risk of dangerous overdosing or underdosing.</p>
+
+      <h3>Can BSA calculations be used for obese or bariatric patients?</h3>
+      <p class="seo-p">In patients with severe obesity, standard BSA formulas can sometimes overestimate active metabolic mass due to excess adipose tissue. In specific specialized protocols, clinicians may use adjusted body weight or lean body weight estimators alongside BSA to optimize drug clearance calculations.</p>
+
+      <h3>Is my patient data secure when using this calculator?</h3>
+      <p class="seo-p">Yes. All calculations on Texus Pro Tools run entirely client-side within your browser JavaScript engine. No medical data or patient measurements are ever transmitted to external servers, ensuring strict privacy compliance.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for Medical BSA Calculations</h3>
+      <p class="seo-p">Accurate Body Surface Area determination is essential in modern clinical practice. By understanding the underlying mechanics of Mosteller, Du Bois, Haycock, and Boyd algorithms, healthcare professionals can ensure precise pharmacological dosing and physiological assessment.</p>
+      <p class="seo-p">Our Advanced Body Surface Area Calculator automates these complex computations instantly across metric and imperial units, providing reliable multi-formula results for any clinical workflow.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let currentUnitSystem = 'metric';
+
+    function setUnitSystem(system) {
+      currentUnitSystem = system;
+      const metricBtn = document.getElementById('metricBtn');
+      const imperialBtn = document.getElementById('imperialBtn');
+      const heightLabel = document.getElementById('heightLabel');
+      const weightLabel = document.getElementById('weightLabel');
+      const heightInput = document.getElementById('heightInput');
+      const weightInput = document.getElementById('weightInput');
+
+      if (system === 'metric') {
+        metricBtn.classList.add('active');
+        imperialBtn.classList.remove('active');
+        heightLabel.textContent = 'Height (cm)';
+        weightLabel.textContent = 'Weight (kg)';
+        heightInput.value = heightInput.value ? (parseFloat(heightInput.value) * 2.54).toFixed(1) : 175;
+        weightInput.value = weightInput.value ? (parseFloat(weightInput.value) / 2.20462).toFixed(1) : 70;
+      } else {
+        imperialBtn.classList.add('active');
+        metricBtn.classList.remove('active');
+        heightLabel.textContent = 'Height (in)';
+        weightLabel.textContent = 'Weight (lbs)';
+        heightInput.value = heightInput.value ? (parseFloat(heightInput.value) / 2.54).toFixed(1) : 69;
+        weightInput.value = weightInput.value ? (parseFloat(weightInput.value) * 2.20462).toFixed(1) : 154;
+      }
+      calculateBSA();
+    }
+
+    function calculateBSA() {
+      let hVal = parseFloat(document.getElementById('heightInput').value);
+      let wVal = parseFloat(document.getElementById('weightInput').value);
+      const formula = document.getElementById('formulaSelect').value;
+
+      if (isNaN(hVal) || isNaN(wVal) || hVal <= 0 || wVal <= 0) {
+        document.getElementById('mainBsaResult').textContent = '0.00 m²';
+        document.getElementById('resMosteller').textContent = '0.00 m²';
+        document.getElementById('resDuBois').textContent = '0.00 m²';
+        document.getElementById('resHaycock').textContent = '0.00 m²';
+        document.getElementById('resBoyd').textContent = '0.00 m²';
+        return;
+      }
+
+      // Convert to metric (cm and kg) for standard formulas
+      let heightCm = currentUnitSystem === 'imperial' ? hVal * 2.54 : hVal;
+      let weightKg = currentUnitSystem === 'imperial' ? wVal / 2.20462 : wVal;
+
+      // 1. Mosteller: sqrt(height(cm) * weight(kg) / 3600)
+      const mosteller = Math.sqrt((heightCm * weightKg) / 3600);
+
+      // 2. Du Bois: 0.007184 * height(cm)^0.725 * weight(kg)^0.425
+      const dubois = 0.007184 * Math.pow(heightCm, 0.725) * Math.pow(weightKg, 0.425);
+
+      // 3. Haycock: 0.024265 * height(cm)^0.3964 * weight(kg)^0.5378
+      const haycock = 0.024265 * Math.pow(heightCm, 0.3964) * Math.pow(weightKg, 0.5378);
+
+      // 4. Boyd: 0.0003207 * height(cm)^0.3 * weight(grams)^(0.7285 - (0.0188 * log10(weight(grams))))
+      const weightGrams = weightKg * 1000;
+      const boyd = 0.0003207 * Math.pow(heightCm, 0.3) * Math.pow(weightGrams, 0.7285 - (0.0188 * Math.log10(weightGrams)));
+
+      // Update UI cards
+      document.getElementById('resMosteller').textContent = mosteller.toFixed(2) + ' m²';
+      document.getElementById('resDuBois').textContent = dubois.toFixed(2) + ' m²';
+      document.getElementById('resHaycock').textContent = haycock.toFixed(2) + ' m²';
+      document.getElementById('resBoyd').textContent = boyd.toFixed(2) + ' m²';
+
+      let primaryVal = mosteller;
+      let formulaName = 'Mosteller Body Surface Area';
+
+      if (formula === 'dubois') { primaryVal = dubois; formulaName = 'Du Bois & Du Bois Body Surface Area'; }
+      else if (formula === 'haycock') { primaryVal = haycock; formulaName = 'Haycock Body Surface Area'; }
+      else if (formula === 'boyd') { primaryVal = boyd; formulaName = 'Boyd Body Surface Area'; }
+      else if (formula === 'gehan') { 
+        // Gehan & George: 0.0235 * height(cm)^0.42246 * weight(kg)^0.51456
+        const gehan = 0.0235 * Math.pow(heightCm, 0.42246) * Math.pow(weightKg, 0.51456);
+        primaryVal = gehan; 
+        formulaName = 'Gehan & George Body Surface Area'; 
+      }
+
+      document.getElementById('mainBsaResult').textContent = primaryVal.toFixed(2) + ' m²';
+      document.getElementById('primaryFormulaLabel').textContent = formulaName;
+    }
+
+    function copyBsaResult() {
+      const mainResult = document.getElementById('mainBsaResult').textContent;
+      const formulaLabel = document.getElementById('primaryFormulaLabel').textContent;
+      const most = document.getElementById('resMosteller').textContent;
+      const dub = document.getElementById('resDuBois').textContent;
+      const hay = document.getElementById('resHaycock').textContent;
+      const boy = document.getElementById('resBoyd').textContent;
+
+      const textToCopy = `${formulaLabel}: ${mainResult}\n- Mosteller: ${most}\n- Du Bois: ${dub}\n- Haycock: ${hay}\n- Boyd: ${boy}`;
+
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.textContent = '✅ Copied to Clipboard';
+        setTimeout(() => { btn.textContent = '📋 Copy Results'; }, 2000);
+      });
+    }
+
+    function clearBsaCalculator() {
+      if(currentUnitSystem === 'metric') {
+        document.getElementById('heightInput').value = '175';
+        document.getElementById('weightInput').value = '70';
+      } else {
+        document.getElementById('heightInput').value = '69';
+        document.getElementById('weightInput').value = '154';
+      }
+      document.getElementById('formulaSelect').value = 'mosteller';
+      calculateBSA();
+    }
+
+    // Initial calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateBSA();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
