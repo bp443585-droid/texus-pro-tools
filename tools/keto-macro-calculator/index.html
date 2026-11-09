@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Keto Macro Calculator | Free Online Ketogenic Diet &amp; Calorie Planner</title>
+  <meta name="description" content="Calculate your optimal keto macros instantly. Determine daily calories, fat, protein, and net carb targets for rapid fat loss and muscle preservation on the ketogenic diet." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/keto-macro-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Keto Macro Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "HealthApplication",
+    "description": "An advanced health utility to compute personalized daily ketogenic macronutrient breakdowns, energy expenditures, and caloric deficits.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CALCULATOR FORM & GRID SYSTEM */
+    .keto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .keto-input, .keto-select { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .keto-input:focus, .keto-select:focus { border-color: #2563eb; background: #ffffff; }
+
+    .gender-toggle-group { display: flex; gap: 12px; }
+    .gender-btn { flex: 1; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; font-weight: 700; color: #475569; cursor: pointer; transition: all 0.2s; text-transform: uppercase; font-size: 0.9rem; }
+    .gender-btn.active { background: #eff6ff; border-color: #2563eb; color: #2563eb; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 15px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* RESULTS DISPLAY PANEL */
+    .results-container { margin-top: 35px; border-top: 2px solid #f1f5f9; padding-top: 30px; display: none; }
+    .results-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    .result-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .result-box.highlight { background: #eff6ff; border-color: #bfdbfe; }
+    .result-label { font-size: 0.8rem; font-weight: 700; color: #475569; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .result-value { font-size: 1.6rem; font-weight: 800; color: #0f172a; }
+    .result-unit { font-size: 0.85rem; font-weight: 600; color: #64748b; margin-top: 2px; }
+
+    .macro-bar-container { width: 100%; height: 16px; background: #e2e8f0; border-radius: 8px; overflow: hidden; display: flex; margin-top: 20px; }
+    .macro-bar-carb { background: #ef4444; height: 100%; transition: width 0.4s ease; }
+    .macro-bar-protein { background: #3b82f6; height: 100%; transition: width 0.4s ease; }
+    .macro-bar-fat { background: #10b981; height: 100%; transition: width 0.4s ease; }
+
+    .macro-legend { display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.85rem; font-weight: 700; color: #475569; flex-wrap: wrap; gap: 10px; }
+    .legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 900px) {
+      .results-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .keto-grid { grid-template-columns: 1fr; gap: 16px; }
+      .results-grid { grid-template-columns: 1fr; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🥑</span> Keto Macro Calculator</div>
+    
+    <div class="f-card">
+      <div class="keto-grid">
+        <div class="f-panel-box">
+          <label>Gender</label>
+          <div class="gender-toggle-group">
+            <button type="button" class="gender-btn active" id="genderMale" onclick="setGender('male')">Male</button>
+            <button type="button" class="gender-btn" id="genderFemale" onclick="setGender('female')">Female</button>
+          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="ageInput">Age (Years)</label>
+          <input type="number" id="ageInput" class="keto-input" value="30" min="15" max="100" />
+        </div>
+      </div>
+
+      <div class="keto-grid">
+        <div class="f-panel-box">
+          <label for="weightInput">Weight (kg)</label>
+          <input type="number" id="weightInput" class="keto-input" value="75" min="30" max="300" step="0.5" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="heightInput">Height (cm)</label>
+          <input type="number" id="heightInput" class="keto-input" value="175" min="100" max="230" />
+        </div>
+      </div>
+
+      <div class="keto-grid">
+        <div class="f-panel-box">
+          <label for="bodyFatInput">Body Fat Percentage (Estimated %)</label>
+          <input type="number" id="bodyFatInput" class="keto-input" value="20" min="5" max="60" step="0.5" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="activitySelect">Activity Level</label>
+          <select id="activitySelect" class="keto-select">
+            <option value="1.2">Sedentary (Little or no exercise)</option>
+            <option value="1.375">Lightly Active (Exercise 1-3 days/week)</option>
+            <option value="1.55" selected>Moderately Active (Exercise 3-5 days/week)</option>
+            <option value="1.725">Very Active (Exercise 6-7 days/week)</option>
+            <option value="1.9">Extremely Active (Hard exercise &amp; physical job)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="keto-grid">
+        <div class="f-panel-box">
+          <label for="goalSelect">Primary Goal</label>
+          <select id="goalSelect" class="keto-select">
+            <option value="-0.2">Extreme Fat Loss (20% Deficit)</option>
+            <option value="-0.15" selected>Standard Fat Loss (15% Deficit)</option>
+            <option value="0">Maintain Weight (0% Deficit)</option>
+            <option value="0.1">Lean Muscle Gain (10% Surplus)</option>
+          </select>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="carbTargetSelect">Daily Net Carb Limit</label>
+          <select id="carbTargetSelect" class="keto-select">
+            <option value="20" selected>Strict Keto (20g Net Carbs)</option>
+            <option value="30">Moderate Keto (30g Net Carbs)</option>
+            <option value="50">Lazy / High-Performance Keto (50g Net Carbs)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateKetoMacros()">Calculate My Macros</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyKetoResults()" style="display:none;">📋 Copy Results</button>
+        <button class="f-btn f-btn-clear" onclick="clearKetoCalculator()">Reset</button>
+      </div>
+
+      <div id="resultsContainer" class="results-container">
+        <div class="results-grid">
+          <div class="result-box highlight">
+            <div class="result-label">Daily Calories</div>
+            <div class="result-value" id="resCalories">0</div>
+            <div class="result-unit">kcal / day</div>
+          </div>
+          <div class="result-box">
+            <div class="result-label">Net Carbs</div>
+            <div class="result-value" id="resCarbs">0</div>
+            <div class="result-unit">grams (5%)</div>
+          </div>
+          <div class="result-box">
+            <div class="result-label">Protein</div>
+            <div class="result-value" id="resProtein">0</div>
+            <div class="result-unit">grams (25%)</div>
+          </div>
+          <div class="result-box">
+            <div class="result-label">Fat</div>
+            <div class="result-value" id="resFat">0</div>
+            <div class="result-unit">grams (70%)</div>
+          </div>
+        </div>
+
+        <div style="font-size: 0.85rem; font-weight: 700; color: #475569; margin-bottom: 6px;">Macronutrient Energy Distribution Ratio:</div>
+        <div class="macro-bar-container">
+          <div id="barCarb" class="macro-bar-carb" style="width: 5%;"></div>
+          <div id="barProtein" class="macro-bar-protein" style="width: 25%;"></div>
+          <div id="barFat" class="macro-bar-fat" style="width: 70%;"></div>
+        </div>
+        <div class="macro-legend">
+          <div><span class="legend-dot" style="background:#ef4444;"></span>Carbohydrates (<span id="pctCarb">5</span>%)</div>
+          <div><span class="legend-dot" style="background:#3b82f6;"></span>Protein (<span id="pctProtein">25</span>%)</div>
+          <div><span class="legend-dot" style="background:#10b981;"></span>Fat (<span id="pctFat">70</span>%)</div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Precision Katch-McArdle &amp; Mifflin-St Jeor Engine:</span>
+        Calculations incorporate lean body mass adjustments and physical activity multipliers to guarantee optimal fat oxidation without sacrificing metabolic rate.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering the Ketogenic Diet: The Science of Macronutrient Ratios, Metabolic Adaptation, and Fat Oxidation</h2>
+      <p class="seo-p">The ketogenic diet is a high-fat, moderate-protein, and very-low-carbohydrate nutritional framework designed to shift human cellular metabolism away from glucose dependency and toward ketone body utilization. When dietary carbohydrate intake drops below critical physiological thresholds (typically under 30 to 50 grams per day), hepatic glycogen stores become depleted. In response, the liver converts stored body fat and dietary lipids into ketone bodies—specifically beta-hydroxybutyrate, acetoacetate, and acetone—which serve as an exceptionally clean, stable energy source for the brain, heart, and skeletal muscles.</p>
+      <p class="seo-p">Successfully navigating nutritional ketosis requires more than eliminating bread and pasta; it demands precision math. Consuming too much protein can trigger gluconeogenesis (where amino acids are converted into glucose), while inadequate fat intake stalls energy production and hormone synthesis. This comprehensive technical guide explains how basal metabolic rate equations, lean body mass metrics, and customized macro targets work together to accelerate weight loss and preserve lean muscle tissue.</p>
+
+      <div class="seo-callout">
+        <strong>The Golden Ketogenic Formula:</strong> Standard therapeutic and weight-loss keto protocols generally adhere to a macro distribution of <b>70% to 75% fat</b>, <b>20% to 25% protein</b>, and <b>5% net carbohydrates</b>. Calculating your unique caloric expenditure prevents both starvation mode and stall plateaus.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: BMR Calculations, TEE, and Lean Mass Formulas</h3>
+      <p class="seo-p">When our advanced client-side calculator processes your physical parameters, it executes a rigorous dual-stage computational pipeline to determine your exact energy needs:</p>
+
+      <h4 class="seo-h3">1. Basal Metabolic Rate (BMR) Estimation</h4>
+      <p class="seo-p">The calculator evaluates resting energy expenditure using established scientific formulas. If an accurate body fat percentage is provided, it deploys the Katch-McArdle equation, which calculates BMR directly from your lean body mass (LBM). Otherwise, it applies the Mifflin-St Jeor equation factoring in age, height, and biological sex.</p>
+
+      <h4 class="seo-h3">2. Total Daily Energy Expenditure (TDEE) Multiplier</h4>
+      <p class="seo-p">Your BMR is multiplied by a validated physical activity factor ranging from 1.2 (sedentary office lifestyle) to 1.9 (professional athletes and heavy laborers) to determine total daily caloric burn.</p>
+
+      <h4 class="seo-h3">3. Caloric Deficit / Surplus Adjustments</h4>
+      <p class="seo-p">To achieve fat loss, a strategic percentage deficit (15% to 20%) is subtracted from your TDEE. Conversely, lean muscle building applies a minor caloric surplus.</p>
+
+      <h4 class="seo-h3">4. Gram Conversion and Energy Density Matrix</h4>
+      <p class="seo-p">Calories are translated into grams using the physiological fuel values of macronutrients: <b>4 calories per gram</b> for protein and carbohydrates, and <b>9 calories per gram</b> for dietary fats.</p>
+
+      <h3>The Statutory Reference Matrix: Ketogenic Macro Breakdown Reference Table</h3>
+      <p class="seo-p">Reviewing standard nutritional allocations across different fitness goals provides a clear roadmap for planning your daily meal prep and tracking macros:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Nutritional Goal Profile</th>
+              <th>Caloric Adjustment Target</th>
+              <th>Net Carb Limit</th>
+              <th>Protein Allocation</th>
+              <th>Fat Energy Proportion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Rapid Fat Loss</td>
+              <td>20% Deficit below TDEE</td>
+              <td>20g / day (Strict)</td>
+              <td>1.8g – 2.2g per kg of LBM</td>
+              <td>Remaining calories (~70-75%)</td>
+            </tr>
+            <tr>
+              <td>Sustainable Fat Loss</td>
+              <td>15% Deficit below TDEE</td>
+              <td>20g – 30g / day</td>
+              <td>1.6g – 2.0g per kg of LBM</td>
+              <td>Remaining calories (~70%)</td>
+            </tr>
+            <tr>
+              <td>Weight Maintenance</td>
+              <td>0% Deficit (Iso-caloric)</td>
+              <td>30g – 50g / day</td>
+              <td>1.5g – 1.8g per kg of LBM</td>
+              <td>Remaining calories (~70%)</td>
+            </tr>
+            <tr>
+              <td>Lean Muscle Gain</td>
+              <td>10% Surplus above TDEE</td>
+              <td>30g – 50g / day</td>
+              <td>2.0g – 2.4g per kg of LBM</td>
+              <td>Remaining calories (~65-70%)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Keto Nutrition &amp; Macro Planning</h3>
+
+      <h3>What is the exact definition of 'Net Carbs' on a ketogenic diet?</h3>
+      <p class="seo-p">Net carbs represent the digestible carbohydrates that directly impact blood glucose and insulin levels. The formula is simple: <b>Total Carbohydrates minus Dietary Fiber minus Sugar Alcohols (excluding maltitol)</b>. Fiber is subtracted because human digestive enzymes cannot break it down into glucose.</p>
+
+      <h3>Will eating too much protein kick me out of ketosis via gluconeogenesis?</h3>
+      <p class="seo-p">Gluconeogenesis is a demand-driven metabolic process, not a supply-driven one. Your liver only manufactures as much glucose as your body strictly requires. Moderate protein intakes prescribed by our calculator support muscle retention without spiking blood sugar or disrupting ketosis.</p>
+
+      <h3>How does local client-side calculation protect my private health data?</h3>
+      <p class="seo-p">Texus Pro Tools values your personal privacy above all else. All fitness calculations execute directly inside your browser's local memory. No weight, height, or body fat metrics are ever transmitted to external servers—guaranteeing 100% data confidentiality.</p>
+
+      <h3 class="seo-h2">Summary: Actionable Strategies for Keto Success</h3>
+      <p class="seo-p">Achieving lasting success on the ketogenic diet requires consistency, adequate hydration, electrolyte replenishment (sodium, potassium, and magnesium), and regular recalculation of your macros as your body weight drops.</p>
+      <p class="seo-p">Our Advanced Keto Macro Calculator automates these complex formulas instantly, providing precise gram targets so you can focus entirely on enjoying delicious, nutrient-dense whole foods.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let selectedGender = 'male';
+
+    function setGender(gender) {
+      selectedGender = gender;
+      document.getElementById('genderMale').classList.toggle('active', gender === 'male');
+      document.getElementById('genderFemale').classList.toggle('active', gender === 'female');
+    }
+
+    function calculateKetoMacros() {
+      const age = parseFloat(document.getElementById('ageInput').value) || 30;
+      const weight = parseFloat(document.getElementById('weightInput').value) || 75;
+      const height = parseFloat(document.getElementById('heightInput').value) || 175;
+      const bodyFat = parseFloat(document.getElementById('bodyFatInput').value) || 20;
+      const activity = parseFloat(document.getElementById('activitySelect').value) || 1.55;
+      const goalModifier = parseFloat(document.getElementById('goalSelect').value) || -0.15;
+      const netCarbs = parseFloat(document.getElementById('carbTargetSelect').value) || 20;
+
+      // Calculate BMR using Katch-McArdle Formula (more accurate when body fat % is known)
+      const leanMass = weight * (1 - (bodyFat / 100));
+      let bmr = 370 + (21.6 * leanMass);
+
+      // If body fat seems unrealistic or user wants Mifflin backup
+      if (!bodyFat || bodyFat <= 5 || bodyFat >= 60) {
+        if (selectedGender === 'male') {
+          bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+        } else {
+          bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+        }
+      }
+
+      // TDEE & Calorie Goal
+      const tdee = bmr * activity;
+      const targetCalories = Math.round(tdee * (1 + goalModifier));
+
+      // Macros breakdown
+      // Carbs calories (1g net carb = 4 kcal)
+      const carbCalories = netCarbs * 4;
+
+      // Protein calories (approx 2.0g per kg of lean mass or ~25% of target calories)
+      let proteinGrams = Math.round(leanMass * 2.2);
+      let proteinCalories = proteinGrams * 4;
+
+      // Ensure protein doesn't exceed safe bounds
+      if (proteinCalories > targetCalories * 0.4) {
+        proteinCalories = Math.round(targetCalories * 0.3);
+        proteinGrams = Math.round(proteinCalories / 4);
+      }
+
+      // Remaining calories go to Fat (1g fat = 9 kcal)
+      let fatCalories = targetCalories - carbCalories - proteinCalories;
+      if (fatCalories < 0) fatCalories = 0;
+      const fatGrams = Math.round(fatCalories / 9);
+
+      // Recalculate actual percentages
+      const actualTotal = carbCalories + proteinCalories + fatCalories;
+      const pctCarb = Math.round((carbCalories / actualTotal) * 100);
+      const pctProtein = Math.round((proteinCalories / actualTotal) * 100);
+      const pctFat = 100 - pctCarb - pctProtein;
+
+      // Render results
+      document.getElementById('resCalories').innerText = targetCalories.toLocaleString();
+      document.getElementById('resCarbs').innerText = netCarbs;
+      document.getElementById('resProtein').innerText = proteinGrams;
+      document.getElementById('resFat').innerText = fatGrams;
+
+      document.getElementById('barCarb').style.width = pctCarb + '%';
+      document.getElementById('barProtein').style.width = pctProtein + '%';
+      document.getElementById('barFat').style.width = pctFat + '%';
+
+      document.getElementById('pctCarb').innerText = pctCarb;
+      document.getElementById('pctProtein').innerText = pctProtein;
+      document.getElementById('pctFat').innerText = pctFat;
+
+      document.getElementById('resultsContainer').style.display = 'block';
+      document.getElementById('copyResultBtn').style.display = 'block';
+      document.getElementById('resultsContainer').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function copyKetoResults() {
+      const c = document.getElementById('resCalories').innerText;
+      const cb = document.getElementById('resCarbs').innerText;
+      const p = document.getElementById('resProtein').innerText;
+      const f = document.getElementById('resFat').innerText;
+
+      const text = `My Keto Macro Targets:\n- Daily Calories: ${c} kcal\n- Net Carbs: ${cb}g\n- Protein: ${p}g\n- Fat: ${f}g\nCalculated via Texus Pro Tools Keto Macro Calculator`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.innerText = '✅ Copied to Clipboard!';
+        setTimeout(() => { btn.innerText = '📋 Copy Results'; }, 2000);
+      });
+    }
+
+    function clearKetoCalculator() {
+      document.getElementById('ageInput').value = '30';
+      document.getElementById('weightInput').value = '75';
+      document.getElementById('heightInput').value = '175';
+      document.getElementById('bodyFatInput').value = '20';
+      document.getElementById('activitySelect').value = '1.55';
+      document.getElementById('goalSelect').value = '-0.15';
+      document.getElementById('carbTargetSelect').value = '20';
+      setGender('male');
+      document.getElementById('resultsContainer').style.display = 'none';
+      document.getElementById('copyResultBtn').style.display = 'none';
+    }
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch
