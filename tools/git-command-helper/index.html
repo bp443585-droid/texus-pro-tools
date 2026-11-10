@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Git Command Helper | Online Git Command Builder & Generator</title>
+  <meta name="description" content="Generate complex Git commands instantly with our free online Git Command Helper. Build commands for branching, merging, rebasing, logs, stash, and undo operations." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/git-command-helper/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Git Command Helper Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "DeveloperApplication",
+    "description": "An advanced interactive Git command builder and generator utility for developers to construct, copy, and understand complex Git version control operations instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* GIT HELPER CUSTOM UI STYLES */
+    .git-categories { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid #f1f5f9; padding-bottom: 16px; }
+    .git-tab-btn { background: #f8fafc; border: 1px solid #cbd5e1; color: #475569; padding: 8px 16px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.15s ease; }
+    .git-tab-btn:hover { background: #e2e8f0; color: #0f172a; }
+    .git-tab-btn.active { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    .git-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+    .git-field { display: flex; flex-direction: column; gap: 8px; }
+    .git-field.full-width { grid-column: span 2; }
+    .git-field label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .git-input, .git-select { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .git-input:focus, .git-select:focus { border-color: #2563eb; background: #ffffff; }
+
+    .git-checkboxes { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 4px; }
+    .git-checkbox-label { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; color: #334155; font-weight: 500; cursor: pointer; user-select: none; }
+    .git-checkbox-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: #2563eb; cursor: pointer; }
+
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; margin-top: 20px; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 110px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 15px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .git-form-grid { grid-template-columns: 1fr; gap: 16px; }
+      .git-field.full-width { grid-column: span 1; }
+      .f-textarea-field { height: 100px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🛠️</span> Git Command Helper</div>
+    
+    <div class="f-card">
+      <div class="git-categories" id="gitCategories">
+        <button class="git-tab-btn active" onclick="switchGitCategory('commit')">Commit & Stage</button>
+        <button class="git-tab-btn" onclick="switchGitCategory('branch')">Branches</button>
+        <button class="git-tab-btn" onclick="switchGitCategory('merge')">Merge & Rebase</button>
+        <button class="git-tab-btn" onclick="switchGitCategory('log')">Logs & Diff</button>
+        <button class="git-tab-btn" onclick="switchGitCategory('stash')">Stash</button>
+        <button class="git-tab-btn" onclick="switchGitCategory('undo')">Undo & Reset</button>
+      </div>
+
+      <div id="gitFormContainer">
+        <!-- Dynamic Form Fields Generated Here -->
+      </div>
+
+      <div class="f-panel-box">
+        <label for="gitCommandOutput">Generated Git Command</label>
+        <textarea id="gitCommandOutput" class="f-textarea-field mono-font-panel" readonly placeholder="Configure options above to generate Git command..."></textarea>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="generateGitCommand()">Generate Command</button>
+        <button class="f-btn f-btn-copy" id="copyGitBtn" onclick="copyGitCommand()">📋 Copy Command</button>
+        <button class="f-btn f-btn-clear" onclick="resetGitForm()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Interactive Git Builder Active:</span>
+        Select a category tab above, customize parameters and flags in real time, and instantly copy the production-ready terminal command to your clipboard.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Version Control: Comprehensive Git Command Builder, Workflow Automation, and Repository Management Strategies</h2>
+      <p class="seo-p">Git has established itself as the undisputed standard for modern software version control, empowering engineering teams to collaborate across distributed codebases with absolute precision and data integrity. However, due to Git's vast feature set and hundreds of specialized command-line flags, even experienced developers occasionally find themselves double-checking syntax for complex rebasing sequences, detached HEAD restorations, interactive stashing, and multi-branch merging workflows.</p>
+      <p class="seo-p">This extensive technical guide explores core version control paradigms, breaks down essential command architectures, reviews best practices for team collaboration, and provides deep architectural insights into how Git manages history trees under the hood.</p>
+
+      <div class="seo-callout">
+        <strong>The Directed Acyclic Graph (DAG) Engine:</strong> Unlike legacy centralized version control systems, Git stores project history as a cryptographic directed acyclic graph of commits, where every node references its parent state securely via SHA-1 or SHA-256 hashes.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Anatomy of Git Subcommands and Flag Combinations</h3>
+      <p class="seo-p">Constructing reliable shell scripts and maintaining clean repository histories requires mastering the precise order of arguments passed to the `git` binary executable:</p>
+
+      <h4 class="seo-h3">1. Staging and Commit Architecture</h4>
+      <p class="seo-p">Before recording snapshots, changes reside in the working directory before moving to the staging area (index) via `git add`. Combining flags such as `-A` (all changes) or `-p` (patch-by-patch interactive staging) allows fine-grained control over what enters the next commit object.</p>
+
+      <h4 class="seo-h3">2. Branching and Pointer Management</h4>
+      <p class="seo-p">Branches in Git are lightweight, movable pointers to specific commits. Creating a branch with `git checkout -b` or `git switch -c` instantiates a new pointer and immediately updates the `HEAD` reference to track the new line of development seamlessly.</p>
+
+      <h4 class="seo-h3">3. Integration Strategies: Merge vs. Rebase</h4>
+      <p class="seo-p">Integrating work from separate branches can be accomplished through merging (which preserves historical non-linear merge commits) or rebasing (which rewrites local commit history onto a new base tip to maintain a clean, linear history).</p>
+
+      <h3>The Statutory Reference Matrix: Essential Git Command Reference Map</h3>
+      <p class="seo-p">Reviewing standard command templates and their primary operational targets helps streamline daily development workflows and minimize terminal errors:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Operation Category</th>
+              <th>Common Command Syntax</th>
+              <th>Primary Flags & Options</th>
+              <th>System Execution Target & Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Staging & Commits</td>
+              <td>`git commit -m "msg"`</td>
+              <td>`-a`, `--amend`, `-n`</td>
+              <td>Records staged snapshot changes into the local repository history tree.</td>
+            </tr>
+            <tr>
+              <td>Branch Management</td>
+              <td>`git checkout -b <name>`</td>
+              <td>`-d`, `-D`, `--track`</td>
+              <td>Creates and immediately switches to a new local development branch.</td>
+            </tr>
+            <tr>
+              <td>Merging & Integration</td>
+              <td>`git merge <branch>`</td>
+              <td>`--no-ff`, `--squash`, `--abort`</td>
+              <td>Combines independent branch histories into the current active HEAD.</td>
+            </tr>
+            <tr>
+              <td>History Inspection</td>
+              <td>`git log --oneline`</td>
+              <td>`-p`, `--graph`, `--stat`</td>
+              <td>Displays commit logs with custom graph structures and diff statistics.</td>
+            </tr>
+            <tr>
+              <td>Temporary Storage</td>
+              <td>`git stash push -m "msg"`</td>
+              <td>`-u`, `--include-untracked`, `--pop`</td>
+              <td>Temporarily shelves uncommitted changes to switch context cleanly.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the difference between `git reset --soft`, `--mixed`, and `--hard`?</h3>
+      <p class="seo-p">The `--soft` reset moves the `HEAD` pointer while leaving both your staging area and working directory completely untouched. The default `--mixed` reset updates `HEAD` and resets the staging area but leaves your working files modified. The destructive `--hard` reset resets `HEAD`, the staging index, and completely wipes all uncommitted changes in your working directory. Use `--hard` with extreme caution.</p>
+
+      <h3>How can I safely recover a commit after performing an accidental hard reset?</h3>
+      <p class="seo-p">Git rarely loses data immediately. You can inspect your local repository's action logs using `git reflog`. This command lists every movement of the `HEAD` pointer. Once you identify the SHA-1 hash of the state right before your reset, you can restore it instantly using `git checkout -b recovery-branch <hash>`.</p>
+
+      <h3>Does the Git Command Helper require server-side compilation?</h3>
+      <p class="seo-p">No. All command generation logic executes entirely within your browser's local JavaScript environment. Your repository parameters and custom commit messages never leave your machine, ensuring 100% privacy and lightning-fast responsiveness.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Version Control Excellence</h3>
+      <p class="seo-p">To maintain healthy codebases, write descriptive commit messages, use feature branches for all new developments, rebase local branches before opening pull requests to avoid merge conflicts, and regularly clean up stale local and remote branch pointers.</p>
+      <p class="seo-p">Our Git Command Helper suite streamlines your daily terminal workflow, eliminating syntax guesswork and letting you focus entirely on building great software.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // GIT COMMAND HELPER INTERACTIVE LOGIC
+    let currentCategory = 'commit';
+
+    const gitSchemas = {
+      commit: {
+        title: 'Commit & Stage Options',
+        fields: [
+          { id: 'subAction', label: 'Action Type', type: 'select', options: [{val: 'commit', label: 'git commit'}, {val: 'add', label: 'git add'}, {val: 'commit-all', label: 'git commit -am'}] },
+          { id: 'msg', label: 'Commit Message', type: 'input', placeholder: 'e.g., fix: resolve authentication header bug' },
+          { id: 'flags', label: 'Additional Flags', type: 'checkboxes', options: [
+            { id: 'amend', label: '--amend (Modify previous commit)' },
+            { id: 'noVerify', label: '--no-verify (Skip pre-commit hooks)' },
+            { id: 'allFiles', label: '-A (Stage all modifications)' }
+          ]}
+        ]
+      },
+      branch: {
+        title: 'Branch Management Options',
+        fields: [
+          { id: 'subAction', label: 'Action Type', type: 'select', options: [{val: 'create-switch', label: 'Create & Switch (-b)'}, {val: 'list', label: 'List Branches (-a)'}, {val: 'delete', label: 'Delete Branch (-d)'}, {val: 'rename', label: 'Rename Current Branch (-m)'}] },
+          { id: 'branchName', label: 'Branch Name', type: 'input', placeholder: 'e.g., feature/user-dashboard' },
+          { id: 'flags', label: 'Additional Flags', type: 'checkboxes', options: [
+            { id: 'forceDelete', label: '-D (Force delete unmerged branch)' },
+            { id: 'setUpstream', label: '-u / --set-upstream (Track remote)' }
+          ]}
+        ]
+      },
+      merge: {
+        title: 'Merge & Rebase Options',
+        fields: [
+          { id: 'subAction', label: 'Action Type', type: 'select', options: [{val: 'merge', label: 'git merge'}, {val: 'rebase', label: 'git rebase'}, {val: 'cherry-pick', label: 'git cherry-pick'}] },
+          { id: 'targetRef', label: 'Source Branch / Commit Hash', type: 'input', placeholder: 'e.g., main or abc1234' },
+          { id: 'flags', label: 'Additional Flags', type: 'checkboxes', options: [
+            { id: 'noFf', label: '--no-ff (Create merge commit)' },
+            { id: 'squash', label: '--squash (Squash commits into single)' },
+            { id: 'continue', label: '--continue (Resume after conflict)' }
+          ]}
+        ]
+      },
+      log: {
+        title: 'Logs & Diff Options',
+        fields: [
+          { id: 'subAction', label: 'Action Type', type: 'select', options: [{val: 'log', label: 'git log'}, {val: 'diff', label: 'git diff'}, {val: 'status', label: 'git status'}] },
+          { id: 'targetRef', label: 'File or Branch (Optional)', type: 'input', placeholder: 'e.g., src/app.js or main' },
+          { id: 'flags', label: 'Additional Flags', type: 'checkboxes', options: [
+            { id: 'oneline', label: '--oneline (Compact summary view)' },
+            { id: 'graph', label: '--graph (ASCII branch topology)' },
+            { id: 'stat', label: '--stat (Show file change stats)' },
+            { id: 'cached', label: '--cached (Show staged diffs)' }
+          ]}
+        ]
+      },
+      stash: {
+        title: 'Stash Operations',
+        fields: [
+          { id: 'subAction', label: 'Action Type', type: 'select', options: [{val: 'push', label: 'git stash push'}, {val: 'pop', label: 'git stash pop'}, {val: 'list', label: 'git stash list'}, {val: 'clear', label: 'git stash clear'}] },
+          { id: 'msg', label: 'Stash Message (Optional)', type: 'input', placeholder: 'e.g., work in progress on header' },
+          { id: 'flags', label: 'Additional Flags', type: 'checkboxes', options: [
+            { id: 'includeUntracked', label: '-u / --include-untracked (Include new files)' },
+            { id: 'keepIndex', label: '--keep-index (Keep staged changes)' }
+          ]}
+        ]
+      },
+      undo: {
+        title: 'Undo & Reset Options',
+        fields: [
+          { id: 'subAction', label: 'Action Type', type: 'select', options: [{val: 'reset', label: 'git reset'}, {val: 'checkout', label: 'git checkout (Discard file changes)'}, {val: 'revert', label: 'git revert'}, {val: 'reflog', label: 'git reflog'}] },
+          { id: 'targetRef', label: 'Commit Hash / Target Reference', type: 'input', placeholder: 'e.g., HEAD~1 or abc1234' },
+          { id: 'flags', label: 'Additional Flags', type: 'checkboxes', options: [
+            { id: 'hard', label: '--hard (Discard all working directory changes)' },
+            { id: 'soft', label: '--soft (Keep changes staged)' },
+            { id: 'noCommit', label: '--no-commit (Revert without committing)' }
+          ]}
+        ]
+      }
+    };
+
+    function switchGitCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.git-tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      renderGitForm();
+      generateGitCommand();
+    }
+
+    function renderGitForm() {
+      const schema = gitSchemas[currentCategory];
+      let html = `<h3 style="font-size:1.1rem; color:#0f172a; margin-top:0; margin-bottom:16px; font-weight:700;">${schema.title}</h3>`;
+      html += `<div class="git-form-grid">`;
+
+      schema.fields.forEach(field => {
+        if (field.type === 'select') {
+          html += `
+            <div class="git-field">
+              <label for="${field.id}">${field.label}</label>
+              <select id="${field.id}" class="git-select" onchange="generateGitCommand()">
+                ${field.options.map(opt => `<option value="${opt.val}">${opt.label}</option>`).join('')}
+              </select>
+            </div>
+          `;
+        } else if (field.type === 'input') {
+          html += `
+            <div class="git-field">
+              <label for="${field.id}">${field.label}</label>
+              <input type="text" id="${field.id}" class="git-input" placeholder="${field.placeholder || ''}" oninput="generateGitCommand()">
+            </div>
+          `;
+        } else if (field.type === 'checkboxes') {
+          html += `
+            <div class="git-field full-width">
+              <label>${field.label}</label>
+              <div class="git-checkboxes">
+                ${field.options.map(chk => `
+                  <label class="git-checkbox-label">
+                    <input type="checkbox" id="${chk.id}" onchange="generateGitCommand()"> ${chk.label}
+                  </label>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+      });
+
+      html += `</div>`;
+      document.getElementById('gitFormContainer').innerHTML = html;
+    }
+
+    function generateGitCommand() {
+      let cmd = 'git';
+      const subActionEl = document.getElementById('subAction');
+      if (!subActionEl) return;
+      const subAction = subActionEl.value;
+
+      if (currentCategory === 'commit') {
+        if (subAction === 'commit') {
+          cmd += ' commit';
+          const msg = document.getElementById('msg').value.trim();
+          if (msg) cmd += ` -m "${msg}"`;
+          if (document.getElementById('amend')?.checked) cmd += ' --amend';
+          if (document.getElementById('noVerify')?.checked) cmd += ' --no-verify';
+          if (document.getElementById('allFiles')?.checked) cmd += ' -A';
+        } else if (subAction === 'add') {
+          cmd += ' add';
+          if (document.getElementById('allFiles')?.checked) cmd += ' -A';
+          const msg = document.getElementById('msg').value.trim();
+          if (msg) cmd += ` ${msg}`;
+          else if (!document.getElementById('allFiles')?.checked) cmd += ' .';
+        } else if (subAction === 'commit-all') {
+          cmd += ' commit -am';
+          const msg = document.getElementById('msg').value.trim();
+          if (msg) cmd += ` "${msg}"`;
+          else cmd += ' "update files"';
+        }
+      } else if (currentCategory === 'branch') {
+        const bName = document.getElementById('branchName').value.trim() || 'feature-branch';
+        if (subAction === 'create-switch') {
+          cmd += ` checkout -b ${bName}`;
+          if (document.getElementById('setUpstream')?.checked) cmd += ' --set-upstream origin ' + bName;
+        } else if (subAction === 'list') {
+          cmd += ' branch -a';
+        } else if (subAction === 'delete') {
+          const delFlag = document.getElementById('forceDelete')?.checked ? '-D' : '-d';
+          cmd += ` branch ${delFlag} ${bName}`;
+        } else if (subAction === 'rename') {
+          cmd += ` branch -m ${bName}`;
+        }
+      } else if (currentCategory === 'merge') {
+        const target = document.getElementById('targetRef').value.trim() || 'main';
+        if (subAction === 'merge') {
+          cmd += ` merge ${target}`;
+          if (document.getElementById('noFf')?.checked) cmd += ' --no-ff';
+          if (document.getElementById('squash')?.checked) cmd += ' --squash';
+          if (document.getElementById('continue')?.checked) cmd += ' --continue';
+        } else if (subAction === 'rebase') {
+          cmd += ` rebase ${target}`;
+          if (document.getElementById('continue')?.checked) cmd += ' --continue';
+        } else if (subAction === 'cherry-pick') {
+          cmd += ` cherry-pick ${target}`;
+        }
+      } else if (currentCategory === 'log') {
+        const target = document.getElementById('targetRef').value.trim();
+        if (subAction === 'log') {
+          cmd += ' log';
+          if (document.getElementById('oneline')?.checked) cmd += ' --oneline';
+          if (document.getElementById('graph')?.checked) cmd += ' --graph';
+          if (document.getElementById('stat')?.checked) cmd += ' --stat';
+          if (target) cmd += ` ${target}`;
+        } else if (subAction === 'diff') {
+          cmd += ' diff';
