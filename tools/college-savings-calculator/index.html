@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>College Savings Calculator | Free 529 & Tuition Plan Estimator</title>
+  <meta name="description" content="Calculate your future college costs, 529 plan growth, and required monthly savings with our free online College Savings Calculator. Plan ahead for your child's education." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/college-savings-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "College Savings Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "FinanceApplication",
+    "description": "An advanced financial planning tool to forecast higher education inflation, investment growth, and required monthly contributions for college savings funds.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CALCULATOR INTERACTIVE GRID SYSTEM */
+    .calc-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: start; }
+    .inputs-stack { display: flex; flex-direction: column; gap: 20px; }
+    .input-group { display: flex; flex-direction: column; gap: 8px; }
+    .input-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS DISPLAY PANEL */
+    .results-panel { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box; }
+    .result-item { display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid #e2e8f0; padding-bottom: 14px; }
+    .result-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .result-label { font-size: 0.85rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-value { font-size: 1.75rem; font-weight: 800; color: #0f172a; }
+    .result-value.highlight { color: #2563eb; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 25px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-input-field { font-size: 1rem; padding: 12px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🎓</span> College Savings Calculator</div>
+    
+    <div class="f-card">
+      <div class="calc-grid">
+        <div class="inputs-stack">
+          <div class="input-group">
+            <label for="currentAge">Current Age of Child</label>
+            <input type="number" id="currentAge" class="f-input-field" value="5" min="0" max="18" oninput="calculateCollegeSavings()">
+          </div>
+          
+          <div class="input-group">
+            <label for="collegeAge">Age Starting College</label>
+            <input type="number" id="collegeAge" class="f-input-field" value="18" min="15" max="25" oninput="calculateCollegeSavings()">
+          </div>
+
+          <div class="input-group">
+            <label for="currentCost">Current Annual Tuition & Expenses ($)</label>
+            <input type="number" id="currentCost" class="f-input-field" value="25000" step="1000" min="0" oninput="calculateCollegeSavings()">
+          </div>
+
+          <div class="input-group">
+            <label for="currentSavings">Current College Savings Fund ($)</label>
+            <input type="number" id="currentSavings" class="f-input-field" value="5000" step="500" min="0" oninput="calculateCollegeSavings()">
+          </div>
+
+          <div class="input-group">
+            <label for="annualReturn">Expected Annual Investment Return (%)</label>
+            <input type="number" id="annualReturn" class="f-input-field" value="7.0" step="0.1" min="0" max="20" oninput="calculateCollegeSavings()">
+          </div>
+
+          <div class="input-group">
+            <label for="inflationRate">Expected College Inflation Rate (%)</label>
+            <input type="number" id="inflationRate" class="f-input-field" value="5.0" step="0.1" min="0" max="15" oninput="calculateCollegeSavings()">
+          </div>
+
+          <div class="input-group">
+            <label for="yearsInCollege">Duration of College Program (Years)</label>
+            <input type="number" id="yearsInCollege" class="f-input-field" value="4" min="1" max="8" oninput="calculateCollegeSavings()">
+          </div>
+        </div>
+        
+        <div class="results-panel">
+          <div class="result-item">
+            <span class="result-label">Years Until College</span>
+            <span class="result-value" id="yearsUntilCollege">13 Years</span>
+          </div>
+          
+          <div class="result-item">
+            <span class="result-label">Total Projected College Cost</span>
+            <span class="result-value" id="totalProjectedCost">$162,840</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Future Value of Current Savings</span>
+            <span class="result-value" id="futureCurrentSavings">$12,228</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Remaining Target Amount</span>
+            <span class="result-value" id="remainingTarget">$150,612</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Required Monthly Savings</span>
+            <span class="result-value highlight" id="requiredMonthlySavings">$618 /mo</span>
+          </div>
+
+          <div class="f-action-strip" style="margin-top: 10px;">
+            <button class="f-btn f-btn-convert" onclick="calculateCollegeSavings()">Recalculate</button>
+            <button class="f-btn f-btn-copy" onclick="copyResultsSummary()">📋 Copy Summary</button>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 12px 16px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">💡 Comprehensive Financial Insight:</span>
+        Calculations factor in compound interest on existing portfolios and compound inflation on future tuition expenses across all active undergraduate years.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Economics of Higher Education Funding: Mastering 529 Plans, Tuition Inflation Rates, and Long-Term Investment Strategies</h2>
+      <p class="seo-p">Planning for a child's higher education is one of the most significant financial commitments a family will undertake. With average college tuition, room, board, and textbook expenses rising significantly faster than general consumer price inflation, relying on last-minute student loans or out-of-pocket cash flow is no longer a viable strategy. Building a dedicated college fund requires disciplined compounding, clear estimation models, and early portfolio allocation.</p>
+      <p class="seo-p">This extensive financial guide examines the mechanics of college cost inflation, details the tax advantages of 529 savings plans and Coverdell ESAs, analyzes investment horizons, and provides actionable formulas to determine your exact monthly savings targets.</p>
+
+      <div class="seo-callout">
+        <strong>The Tuition Inflation Factor:</strong> While general inflation often hovers around 2% to 3%, historical higher education costs have consistently escalated at 4% to 6% annually. Factoring this compounding rate into your projections is essential to avoid funding shortfalls.
+      </div>
+
+      <h3 class="seo-h2">The Mathematics of College Cost Projections and Savings Growth</h3>
+      <p class="seo-p">To accurately calculate how much money you need to put aside each month, our tool runs two parallel financial equations: projecting future tuition inflation and modeling investment portfolio compounding.</p>
+
+      <h4 class="seo-h3">1. Calculating Future College Expenses</h4>
+      <p class="seo-p">The calculator first determines the number of years until your child turns college age ($N = \text{College Age} - \text{Current Age}$). It then applies the annual tuition inflation rate ($i$) to your current annual cost ($C$) across all active years in college ($Y$) using the compound future value formula:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">$\text{Future Annual Cost} = C \times (1 + i)^N$</p>
+
+      <h4 class="seo-h3">2. Growing Existing Savings Portfolios</h4>
+      <p class="seo-p">If you already have money set aside in a 529 plan, custodial account (UTMA/UGMA), or dedicated savings vehicle, that principal will grow based on your expected annual investment return ($r$) over the remaining years until college:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">$\text{Future Value of Existing Savings} = \text{Current Savings} \times (1 + r)^N$</p>
+
+      <h4 class="seo-h3">3. Determining Required Monthly Contributions</h4>
+      <p class="seo-p">Subtracting the future value of your current savings from the total projected cost gives your remaining deficit. The calculator then uses an ordinary annuity formula to solve for the exact monthly contribution ($PMT$) required to bridge that gap by the time your child enters school.</p>
+
+      <h3>Comparative Vehicle Analysis: 529 Plans vs. Traditional Savings Accounts</h3>
+      <p class="seo-p">Choosing where to park your education savings impacts your net returns through tax incentives and fee structures. Review the comparison below to select the right vehicle for your family:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Account Type</th>
+              <th>Tax Benefits</th>
+              <th>Typical Investment Options</th>
+              <th>Withdrawal Rules</th>
+              <th>Financial Aid Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>529 College Savings Plan</b></td>
+              <td>Tax-free growth and tax-free withdrawals for qualified education expenses. State tax deductions often apply.</td>
+              <td>Age-based portfolios, mutual funds, index funds, and ETFs.</td>
+              <td>Must be used for tuition, fees, books, and room/board. Non-qualified withdrawals incur income tax + 10% penalty.</td>
+              <td>Owned by parent/account holder; has minimal impact on FAFSA calculations (treated as parent asset).</td>
+            </tr>
+            <tr>
+              <td><b>Coverdell ESA</b></td>
+              <td>Tax-free growth and withdrawals. Contribution limit is lower ($2,000/year per beneficiary).</td>
+              <td>Self-directed stocks, bonds, mutual funds, and certificates of deposit.</td>
+              <td>Can be used for K-12 tuition in addition to higher education. Must be depleted by age 30.</td>
+              <td>Counted as parent or student asset depending on ownership structure.</td>
+            </tr>
+            <tr>
+              <td><b>Custodial Account (UTMA/UGMA)</b></td>
+              <td>Earnings are taxed at the child's lower tax rate up to annual unearned income thresholds.</td>
+              <td>Full brokerage flexibility: individual stocks, bonds, real estate, and funds.</td>
+              <td>Funds legally become the child's property at age 18 or 21 and can be spent on anything.</td>
+              <td>Heavy impact on FAFSA; treated as student asset where 20% must go toward college costs.</td>
+            </tr>
+            <tr>
+              <td><b>Standard Savings Account</b></td>
+              <td>None. Interest earned is fully taxable at ordinary income rates annually.</td>
+              <td>Cash deposits insured by FDIC up to statutory limits.</td>
+              <td>Complete liquidity with zero restrictions or penalties for any purpose.</td>
+              <td>Treated as parent or student liquid asset depending on account titling.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Financial Planning Segment</h3>
+
+      <h3>What constitutes a "qualified education expense" in a 529 plan?</h3>
+      <p class="seo-p">Qualified higher education expenses include tuition, mandatory fees, books, supplies, equipment required for enrollment (such as laptops), and room and board for students enrolled at least half-time. Recent legislative changes also allow up to $10,000 per year in student loan repayments and qualified K-12 tuition expenses.</p>
+
+      <h3>How does inflation specifically impact college tuition projections?</h3>
+      <p class="seo-p">College inflation historically outpaces general consumer price inflation due to rising administrative costs, faculty salaries, campus facility expansions, and fluctuations in state university funding subsidies. Factoring in a 5% to 6% annual inflation rate ensures your savings target remains realistic.</p>
+
+      <h3>What happens to surplus 529 plan funds if my child receives a scholarship?</h3>
+      <p class="seo-p">If your child receives a scholarship, you can withdraw an amount equal to the scholarship tax-free (though ordinary income tax applies to the earnings portion of the withdrawal, the 10% penalty is waived). Alternatively, you can change the beneficiary to another eligible family member or roll up to $35,000 lifetime into a Roth IRA for the original beneficiary under recent SECURE 2.0 rules.</p>
+
+      <h3 class="seo-h2">Summary: Actionable Strategies to Jumpstart Your College Fund</h3>
+      <p class="seo-p">Starting early is the single most powerful lever in college financial planning. By harnessing compound interest and setting up automated monthly contributions into tax-advantaged accounts like 529 plans, families can significantly reduce the burden of student loan debt.</p>
+      <p class="seo-p">Our Advanced College Savings Calculator runs instantly in your browser without storing any personal financial data, empowering you to test different scenarios and secure your child's educational future today.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function calculateCollegeSavings() {
+      const currentAge = parseFloat(document.getElementById('currentAge').value) || 0;
+      const collegeAge = parseFloat(document.getElementById('collegeAge').value) || 18;
+      const currentCost = parseFloat(document.getElementById('currentCost').value) || 0;
+      const currentSavings = parseFloat(document.getElementById('currentSavings').value) || 0;
+      const annualReturn = (parseFloat(document.getElementById('annualReturn').value) || 0) / 100;
+      const inflationRate = (parseFloat(document.getElementById('inflationRate').value) || 0) / 100;
+      const yearsInCollege = parseFloat(document.getElementById('yearsInCollege').value) || 4;
+
+      const yearsUntilCollege = Math.max(0, collegeAge - currentAge);
+      document.getElementById('yearsUntilCollege').innerText = yearsUntilCollege + (yearsUntilCollege === 1 ? ' Year' : ' Years');
+
+      // Calculate total projected cost considering inflation during college years
+      let totalProjectedCost = 0;
+      for (let i = 0; i < yearsInCollege; i++) {
+        let yearCost = currentCost * Math.pow(1 + inflationRate, yearsUntilCollege + i);
+        totalProjectedCost += yearCost;
+      }
+
+      // Future value of current savings
+      const futureCurrentSavings = currentSavings * Math.pow(1 + annualReturn, yearsUntilCollege);
+
+      // Remaining target
+      const remainingTarget = Math.max(0, totalProjectedCost - futureCurrentSavings);
+
+      // Required monthly savings using ordinary annuity formula
+      let requiredMonthlySavings = 0;
+      if (yearsUntilCollege > 0) {
+        const monthlyRate = annualReturn / 12;
+        const totalMonths = yearsUntilCollege * 12;
+        if (monthlyRate === 0) {
+          requiredMonthlySavings = remainingTarget / totalMonths;
+        } else {
+          requiredMonthlySavings = remainingTarget * (monthlyRate / (Math.pow(1 + monthlyRate, totalMonths) - 1));
+        }
+      } else {
+        requiredMonthlySavings = remainingTarget / (yearsInCollege * 12);
+      }
+
+      document.getElementById('totalProjectedCost').innerText = '$' + Math.round(totalProjectedCost).toLocaleString();
+      document.getElementById('futureCurrentSavings').innerText = '$' + Math.round(futureCurrentSavings).toLocaleString();
+      document.getElementById('remainingTarget').innerText = '$' + Math.round(remainingTarget).toLocaleString();
+      document.getElementById('requiredMonthlySavings').innerText = '$' + Math.round(requiredMonthlySavings).toLocaleString() + ' /mo';
+    }
+
+    function copyResultsSummary() {
+      const years = document.getElementById('yearsUntilCollege').innerText;
+      const totalCost = document.getElementById('totalProjectedCost').innerText;
+      const existing = document.getElementById('futureCurrentSavings').innerText;
+      const remaining = document.getElementById('remainingTarget').innerText;
+      const monthly = document.getElementById('requiredMonthlySavings').innerText;
+
+      const text = `College Savings Summary:\n- Years Until College: ${years}\n- Total Projected Cost: ${totalCost}\n- Future Value of Current Savings: ${existing}\n- Remaining Target: ${remaining}\n- Required Monthly Savings: ${monthly}`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.f-btn-copy');
+        const originalText = btn.innerText;
+        btn.innerText = '✅ Copied to Clipboard';
+        setTimeout(() => { btn.innerText = originalText; }, 2000);
+      });
+    }
+
+    // Run initial calculation on load
+    window.addEventListener('DOMContentLoaded', calculateCollegeSavings);
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
