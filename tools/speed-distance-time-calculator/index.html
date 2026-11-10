@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Speed Distance Time Calculator | Online Physics & Travel Calculator</title>
+  <meta name="description" content="Calculate speed, distance, or time instantly with our free online calculator. Supports multiple units including mph, km/h, meters, miles, hours, and minutes." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/speed-distance-time-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Speed Distance Time Calculator",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced physics and travel calculator to compute speed, distance, or time values with customizable metric and imperial unit conversions.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CALCULATOR SPECIFIC UI STYLES */
+    .mode-selector { display: flex; gap: 10px; margin-bottom: 30px; background: #f8fafc; padding: 6px; border-radius: 16px; border: 1px solid #e2e8f0; }
+    .mode-btn { flex: 1; padding: 12px 16px; border: none; background: transparent; font-weight: 700; font-size: 0.95rem; color: #64748b; border-radius: 12px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; letter-spacing: 0.5px; }
+    .mode-btn.active { background: #2563eb; color: #ffffff; box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2); }
+
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .input-group { display: flex; gap: 10px; }
+    .f-input-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 0 16px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; font-weight: 600; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .f-select-field { height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 0 14px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; font-weight: 600; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .result-display-box { background: #f8fafc; border: 2px solid #cbd5e1; border-radius: 16px; padding: 24px; margin-top: 20px; text-align: left; }
+    .result-label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .result-value { font-size: 2rem; color: #0f172a; font-weight: 800; font-family: 'Courier New', Courier, monospace; word-break: break-all; }
+    .result-breakdown { font-size: 0.95rem; color: #334155; margin-top: 10px; font-weight: 500; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 25px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .input-group { flex-direction: column; }
+      .f-select-field { width: 100%; }
+      .mode-selector { flex-direction: column; gap: 6px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🏎️</span> Speed Distance Time Calculator</div>
+    
+    <div class="f-card">
+      <!-- Calculation Mode Selector -->
+      <div class="mode-selector">
+        <button class="mode-btn active" id="modeSpeedBtn" onclick="setCalculationMode('speed')">Calculate Speed</button>
+        <button class="mode-btn" id="modeDistanceBtn" onclick="setCalculationMode('distance')">Calculate Distance</button>
+        <button class="mode-btn" id="modeTimeBtn" onclick="setCalculationMode('time')">Calculate Time</button>
+      </div>
+
+      <!-- Input Grid -->
+      <div class="f-io-grid" id="inputContainer">
+        <!-- Input 1 -->
+        <div class="f-panel-box" id="field1Box">
+          <label id="label1" for="input1">Distance</label>
+          <div class="input-group">
+            <input type="number" id="input1" class="f-input-field" placeholder="Enter distance..." value="100" oninput="calculateResult()">
+            <select id="unit1" class="f-select-field" onchange="calculateResult()">
+              <option value="miles">Miles (mi)</option>
+              <option value="km" selected>Kilometers (km)</option>
+              <option value="meters">Meters (m)</option>
+              <option value="feet">Feet (ft)</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Input 2 -->
+        <div class="f-panel-box" id="field2Box">
+          <label id="label2" for="input2">Time</label>
+          <div class="input-group">
+            <input type="number" id="input2" class="f-input-field" placeholder="Enter time..." value="1.5" oninput="calculateResult()">
+            <select id="unit2" class="f-select-field" onchange="calculateResult()">
+              <option value="hours" selected>Hours (h)</option>
+              <option value="minutes">Minutes (m)</option>
+              <option value="seconds">Seconds (s)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Display Box -->
+      <div class="result-display-box">
+        <div class="result-label" id="resultTitle">Calculated Speed</div>
+        <div class="result-value" id="resultValue">66.67 km/h</div>
+        <div class="result-breakdown" id="resultBreakdown">Formula: Speed = Distance ÷ Time (100 km ÷ 1.5 h)</div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateResult()">Recalculate</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Dynamic Unit Conversion Engine Enabled:</span>
+        Instantly computes physical velocity, spatial coverage, and temporal duration across metric and imperial unit matrices seamlessly.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Mechanics of Kinematics: Understanding Speed, Distance, and Time Calculations</h2>
+      <p class="seo-p">In classical mechanics and everyday travel planning, the relationship between speed, distance, and time forms the foundational pillar of motion analysis. Whether you are calculating fuel efficiency on a cross-country road trip, timing a track sprint, or solving complex physics kinematic equations, knowing how these three variables interact is essential. At its core, speed measures how fast an object moves, distance measures the total ground covered between two points, and time tracks the duration required to complete the movement.</p>
+      <p class="seo-p">This extensive computing and educational manual explores the mathematical formulas behind motion, analyzes unit conversion complexities across metric and imperial standards, and provides practical insights into applying kinematic formulas accurately in professional engineering and everyday navigation.</p>
+
+      <div class="seo-callout">
+        <strong>The Fundamental Motion Triangle:</strong> The golden rule of kinematics states that Speed ($v$) equals Distance ($d$) divided by Time ($t$). Rearranging this formula allows you to solve for any unknown variable instantly when the other two are known.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Mathematical Formulas and Variable Relationships</h3>
+      <p class="seo-p">Depending on which parameter you need to determine, our high-performance client-side calculation engine utilizes three precise mathematical equations:</p>
+
+      <h4 class="seo-h3">1. Calculating Speed ($v = \frac{d}{t}$)</h4>
+      <p class="seo-p">To find the speed of a moving body, divide the total distance traveled by the time elapsed. Common units include kilometers per hour (km/h), miles per hour (mph), and meters per second (m/s).</p>
+
+      <h4 class="seo-h3">2. Calculating Distance ($d = v \times t$)</h4>
+      <p class="seo-p">To determine how far an object has traveled, multiply its constant speed by the total duration of travel. Units are typically expressed in kilometers (km), miles (mi), meters (m), or feet (ft).</p>
+
+      <h4 class="seo-h3">3. Calculating Time ($t = \frac{d}{v}$)</h4>
+      <p class="seo-p">To calculate how long a journey will take, divide the total distance by the average speed. Results can be converted seamlessly into hours, minutes, and seconds.</p>
+
+      <h3>The Statutory Reference Matrix: Universal Unit Conversion Standards</h3>
+      <p class="seo-p">Navigating between metric and imperial measurement systems requires precise conversion factors to ensure mathematical integrity across engineering and navigation tasks:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Conversion Type</th>
+              <th>Base Unit</th>
+              <th>Target Unit</th>
+              <th>Mathematical Multiplier Factor</th>
+              <th>Practical Application Domain</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Distance Conversion</td>
+              <td>1 Mile (mi)</td>
+              <td>Kilometers (km)</td>
+              <td>1.609344</td>
+              <td>Converting US highway mileage into international metric distance measurements.</td>
+            </tr>
+            <tr>
+              <td>Distance Conversion</td>
+              <td>1 Kilometer (km)</td>
+              <td>Meters (m)</td>
+              <td>1,000</td>
+              <td>Scaling macro regional travel distances into granular indoor tracking data.</td>
+            </tr>
+            <tr>
+              <td>Speed Conversion</td>
+              <td>1 Mile per Hour (mph)</td>
+              <td>Kilometers per Hour (km/h)</td>
+              <td>1.609344</td>
+              <td>Translating US vehicle speed limits into European highway standards.</td>
+            </tr>
+            <tr>
+              <td>Time Conversion</td>
+              <td>1 Hour (h)</td>
+              <td>Seconds (s)</td>
+              <td>3,600</td>
+              <td>Computing physics acceleration and momentum equations per second.</td>
+            </tr>
+            <tr>
+              <td>Time Conversion</td>
+              <td>1 Minute (m)</td>
+              <td>Seconds (s)</td>
+              <td>60</td>
+              <td>Refining athletic split times and track running interval markers.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>How do I convert meters per second (m/s) into kilometers per hour (km/h)?</h3>
+      <p class="seo-p">To convert meters per second into kilometers per hour, multiply the speed value by 3.6. For example, traveling at 10 m/s is equivalent to moving at 36 km/h. Conversely, divide km/h by 3.6 to obtain m/s.</p>
+
+      <h3>What is the difference between average speed and instantaneous speed?</h3>
+      <p class="seo-p">Instantaneous speed measures how fast an object is moving at one precise, exact moment in time (such as looking at a car's speedometer). Average speed measures the total distance traveled divided by the total time taken for the entire trip, accounting for stops, traffic slowdowns, and acceleration variations.</p>
+
+      <h3>How does local device script compilation ensure user privacy?</h3>
+      <p class="seo-p">Texus Pro Tools values your data privacy. All mathematical computations and unit conversions execute directly inside your browser's local memory engine. No personal travel data, calculation figures, or IP records ever leave your device.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Kinematic Calculations</h3>
+      <p class="seo-p">To ensure flawless calculations, always verify that your input units match before computing results. Utilizing automated calculation suites like our Speed Distance Time Calculator prevents manual arithmetic errors and streamlines travel planning or physics problem-solving.</p>
+      <p class="seo-p">Our Advanced Speed Distance Time Calculator automates all unit conversions instantly across desktop and mobile devices, providing accurate results with clear formula breakdowns.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // Calculator Logic
+    let currentMode = 'speed'; // 'speed', 'distance', 'time'
+
+    function setCalculationMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+      
+      const field1Box = document.getElementById('field1Box');
+      const field2Box = document.getElementById('field2Box');
+      const label1 = document.getElementById('label1');
+      const label2 = document.getElementById('label2');
+      const resultTitle = document.getElementById('resultTitle');
+
+      if (mode === 'speed') {
+        document.getElementById('modeSpeedBtn').classList.add('active');
+        resultTitle.textContent = 'Calculated Speed';
+        label1.textContent = 'Distance';
+        label2.textContent = 'Time';
+        
+        // Setup distance units
+        document.getElementById('unit1').innerHTML = `
+          <option value="miles">Miles (mi)</option>
+          <option value="km" selected>Kilometers (km)</option>
+          <option value="meters">Meters (m)</option>
+          <option value="feet">Feet (ft)</option>
+        `;
+        // Setup time units
+        document.getElementById('unit2').innerHTML = `
+          <option value="hours" selected>Hours (h)</option>
+          <option value="minutes">Minutes (m)</option>
+          <option value="seconds">Seconds (s)</option>
+        `;
+        document.getElementById('input1').value = '100';
+        document.getElementById('input2').value = '1.5';
+      } else if (mode === 'distance') {
+        document.getElementById('modeDistanceBtn').classList.add('active');
+        resultTitle.textContent = 'Calculated Distance';
+        label1.textContent = 'Speed';
+        label2.textContent = 'Time';
+        
+        // Setup speed units
+        document.getElementById('unit1').innerHTML = `
+          <option value="mph" selected>Miles/Hour (mph)</option>
+          <option value="kmh">Km/Hour (km/h)</option>
+          <option value="ms">Meters/sec (m/s)</option>
+        `;
+        // Setup time units
+        document.getElementById('unit2').innerHTML = `
+          <option value="hours" selected>Hours (h)</option>
+          <option value="minutes">Minutes (m)</option>
+          <option value="seconds">Seconds (s)</option>
+        `;
+        document.getElementById('input1').value = '60';
+        document.getElementById('input2').value = '2';
+      } else if (mode === 'time') {
+        document.getElementById('modeTimeBtn').classList.add('active');
+        resultTitle.textContent = 'Calculated Time';
+        label1.textContent = 'Distance';
+        label2.textContent = 'Speed';
+        
+        // Setup distance units
+        document.getElementById('unit1').innerHTML = `
+          <option value="miles">Miles (mi)</option>
+          <option value="km" selected>Kilometers (km)</option>
+          <option value="meters">Meters (m)</option>
+        `;
+        // Setup speed units
+        document.getElementById('unit2').innerHTML = `
+          <option value="mph">Miles/Hour (mph)</option>
+          <option value="kmh" selected>Km/Hour (km/h)</option>
+          <option value="ms">Meters/sec (m/s)</option>
+        `;
+        document.getElementById('input1').value = '150';
+        document.getElementById('input2').value = '75';
+      }
+      calculateResult();
+    }
+
+    function calculateResult() {
+      const val1 = parseFloat(document.getElementById('input1').value);
+      const val2 = parseFloat(document.getElementById('input2').value);
+      const unit1 = document.getElementById('unit1').value;
+      const unit2 = document.getElementById('unit2').value;
+      const resValElem = document.getElementById('resultValue');
+      const resBreakdownElem = document.getElementById('resultBreakdown');
+
+      if (isNaN(val1) || isNaN(val2) || val1 <= 0 || val2 <= 0) {
+        resValElem.textContent = 'Invalid Input';
+        resBreakdownElem.textContent = 'Please enter positive numbers for both fields.';
+        return;
+      }
+
+      if (currentMode === 'speed') {
+        // Distance in km
+        let distanceKm = 0;
+        if (unit1 === 'miles') distanceKm = val1 * 1.609344;
+        else if (unit1 === 'km') distanceKm = val1;
+        else if (unit1 === 'meters') distanceKm = val1 / 1000;
+        else if (unit1 === 'feet') distanceKm = val1 / 3280.84;
+
+        // Time in hours
+        let timeHours = 0;
+        if (unit2 === 'hours') timeHours = val2;
+        else if (unit2 === 'minutes') timeHours = val2 / 60;
+        else if (unit2 === 'seconds') timeHours = val2 / 3600;
+
+        const speedKmh = distanceKm / timeHours;
+        const speedMph = speedKmh / 1.609344;
+        const speedMs = speedKmh / 3.6;
+
+        resValElem.textContent = `${speedKmh.toFixed(2)} km/h`;
+        resBreakdownElem.innerHTML = `Alternative Units: <b>${speedMph.toFixed(2)} mph</b> | <b>${speedMs.toFixed(2)} m/s</b><br>Formula: Speed = Distance ÷ Time`;
+
+      } else if (currentMode === 'distance') {
+        // Speed in km/h
+        let speedKmh = 0;
+        if (unit1 === 'mph') speedKmh = val1 * 1.609344;
+        else if (unit1 === 'kmh') speedKmh = val1;
+        else if (unit1 === 'ms') speedKmh = val1 * 3.6;
+
+        // Time in hours
+        let timeHours = 0;
+        if (unit2 === 'hours') timeHours = val2;
+        else if (unit2 === 'minutes') timeHours = val2 / 60;
+        else if (unit2 === 'seconds') timeHours = val2 / 3600;
+
+        const distanceKm = speedKmh * timeHours;
+        const distanceMiles = distanceKm / 1.609344;
+        const distanceMeters = distanceKm * 1000;
+
+        resValElem.textContent = `${distanceKm.toFixed(2)} km`;
+        resBreakdownElem.innerHTML = `Alternative Units: <b>${distanceMiles.toFixed(2)} miles</b> | <b>${distanceMeters.toFixed(1)} meters</b><br>Formula: Distance = Speed × Time`;
+
+      } else if (currentMode === 'time') {
+        // Distance in km
+        let distanceKm = 0;
+        if (unit1 === 'miles') distanceKm = val1 * 1.609344;
+        else if (unit1 === 'km') distanceKm = val1;
+        else if (unit1 === 'meters') distanceKm = val1 / 1000;
+
+        // Speed in km/h
+        let speedKmh = 0;
+        if (unit2 === 'mph') speedKmh = val2 * 1.609344;
+        else if (unit2 === 'kmh') speedKmh = val2;
+        else if (unit2 === 'ms') speedKmh = val2 * 3.6;
+
+        const timeHours = distanceKm / speedKmh;
+        const totalMinutes = timeHours * 60;
+        const totalSeconds = timeHours * 3600;
+        
+        const hrs = Math.floor(timeHours);
+        const mins = Math.floor((timeHours - hrs) * 60);
+        const secs = Math.round(((timeHours - hrs) * 60 - mins) * 60);
+
+        resValElem.textContent = `${hrs}h ${mins}m ${secs}s`;
+        resBreakdownElem.innerHTML = `Decimal: <b>${timeHours.toFixed(2)} hours</b> (${totalMinutes.toFixed(1)} minutes)<br>Formula: Time = Distance ÷ Speed`;
+      }
+    }
+
+    function clearCalculator() {
+      document.getElementById('input1').value = '';
+      document.getElementById('input2').value = '';
+      document.getElementById('resultValue').textContent = '0.00';
+      document.getElementById('resultBreakdown').textContent = 'Awaiting numeric inputs...';
+    }
+
+    function copyResultToClipboard() {
+      const resText = document.getElementById('resultValue').textContent;
+      const breakdownText = document.getElementById('resultBreakdown').textContent;
+      const fullText = `Result: ${resText} | ${breakdownText}`;
+      
+      navigator.clipboard.writeText(fullText).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => { btn.textContent = '📋 Copy Result'; }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text:', err);
+      });
+    }
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
