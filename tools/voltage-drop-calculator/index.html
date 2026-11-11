@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Voltage Drop Calculator | Free Online Electrical Wire &amp; Cable Sizing Utility</title>
+  <meta name="description" content="Calculate electrical voltage drop, percentage loss, and total resistance instantly with our free online Voltage Drop Calculator based on NEC guidelines." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/voltage-drop-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Voltage Drop Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced electrical engineering utility to compute circuit voltage drop, wire size requirements, and power loss percentages instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* INTERACTIVE GRID SYSTEM FOR CALCULATOR */
+    .f-calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS DISPLAY PANEL */
+    .f-results-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 20px; padding: 24px; margin-top: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .f-result-item { display: flex; flex-direction: column; gap: 4px; text-align: center; background: #ffffff; padding: 16px; border-radius: 14px; border: 1px solid #e2e8f0; }
+    .f-result-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; }
+    .f-result-value { font-size: 1.5rem; font-weight: 800; color: #0f172a; font-family: 'Courier New', Courier, monospace; }
+    .f-result-status { font-size: 0.85rem; font-weight: 700; margin-top: 4px; }
+    .status-pass { color: #16a34a; }
+    .status-warn { color: #d97706; }
+    .status-fail { color: #dc2626; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 24px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-calc-grid { grid-template-columns: 1fr; gap: 16px; }
+      .f-results-box { grid-template-columns: 1fr; gap: 12px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⚡</span> Voltage Drop Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-calc-grid">
+        <div class="f-panel-box">
+          <label for="systemVoltage">System Voltage (Volts)</label>
+          <input type="number" id="systemVoltage" class="f-input-field" value="120" min="1" step="1" oninput="calculateVoltageDrop()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="currentAmps">Current Load (Amperes)</label>
+          <input type="number" id="currentAmps" class="f-input-field" value="20" min="0.1" step="0.1" oninput="calculateVoltageDrop()">
+        </div>
+
+        <div class="f-panel-box">
+          <label for="circuitLength">One-Way Circuit Length</label>
+          <input type="number" id="circuitLength" class="f-input-field" value="100" min="1" step="1" oninput="calculateVoltageDrop()">
+        </div>
+
+        <div class="f-panel-box">
+          <label for="lengthUnit">Distance Unit</label>
+          <select id="lengthUnit" class="f-select-field" onchange="calculateVoltageDrop()">
+            <option value="feet" selected>Feet (ft)</option>
+            <option value="meters">Meters (m)</option>
+          </select>
+        </div>
+
+        <div class="f-panel-box">
+          <label for="wireSize">Conductor Wire Size (AWG / kcmil)</label>
+          <select id="wireSize" class="f-select-field" onchange="calculateVoltageDrop()">
+            <option value="14">14 AWG (2.08 mm²)</option>
+            <option value="12" selected>12 AWG (3.31 mm²)</option>
+            <option value="10">10 AWG (5.26 mm²)</option>
+            <option value="8">8 AWG (8.37 mm²)</option>
+            <option value="6">6 AWG (13.3 mm²)</option>
+            <option value="4">4 AWG (21.2 mm²)</option>
+            <option value="2">2 AWG (33.6 mm²)</option>
+            <option value="1">1 AWG (42.4 mm²)</option>
+            <option value="1/0">1/0 AWG (53.5 mm²)</option>
+            <option value="2/0">2/0 AWG (67.4 mm²)</option>
+            <option value="3/0">3/0 AWG (85.0 mm²)</option>
+            <option value="4/0">4/0 AWG (107.0 mm²)</option>
+          </select>
+        </div>
+
+        <div class="f-panel-box">
+          <label for="conductorMaterial">Conductor Material</label>
+          <select id="conductorMaterial" class="f-select-field" onchange="calculateVoltageDrop()">
+            <option value="copper" selected>Copper (Cu)</option>
+            <option value="aluminum">Aluminum (Al)</option>
+          </select>
+        </div>
+
+        <div class="f-panel-box">
+          <label for="phaseType">Circuit Phase System</label>
+          <select id="phaseType" class="f-select-field" onchange="calculateVoltageDrop()">
+            <option value="dc">Direct Current (DC)</option>
+            <option value="ac1" selected>Single Phase AC (1-Phase)</option>
+            <option value="ac3">Three Phase AC (3-Phase)</option>
+          </select>
+        </div>
+
+        <div class="f-panel-box">
+          <label for="powerFactor">Power Factor (AC Only)</label>
+          <input type="number" id="powerFactor" class="f-input-field" value="0.85" min="0.5" max="1.0" step="0.01" oninput="calculateVoltageDrop()">
+        </div>
+      </div>
+
+      <div class="f-results-box">
+        <div class="f-result-item">
+          <span class="f-result-label">Voltage Drop</span>
+          <span id="resVoltageDrop" class="f-result-value">0.00 V</span>
+          <span id="resDropStatus" class="f-result-status status-pass">Within Limit</span>
+        </div>
+        <div class="f-result-item">
+          <span class="f-result-label">Percentage Drop</span>
+          <span id="resPercentDrop" class="f-result-value">0.00%</span>
+          <span id="resTargetVoltage" class="f-result-label" style="margin-top:4px;">Load V: 120.0V</span>
+        </div>
+        <div class="f-result-item">
+          <span class="f-result-label">Total Resistance</span>
+          <span id="resResistance" class="f-result-value">0.00 Ω</span>
+          <span id="resCMils" class="f-result-label" style="margin-top:4px;">Area: 6,530 CM</span>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateVoltageDrop()">Recalculate Metrics</button>
+        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyResultsToClipboard()">📋 Copy Report Summary</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculatorWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ NEC Standard Compliance Rule:</span>
+        National Electrical Code (NEC) recommendations advise keeping branch circuit and feeder voltage drop combined under 5% max, with a maximum of 3% drop on branch circuits alone for optimal equipment efficiency.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Engineering Physics of Electrical Voltage Drop: Wire Resistance, Circuit Impedance, and NEC Compliance Mandates</h2>
+      <p class="seo-p">Designing robust electrical power distribution systems requires strict adherence to conductor sizing rules, ambient temperature ratings, and maximum allowable voltage drops. When electric current travels through a metallic conductor like copper or aluminum, opposition to electron flow—known as electrical resistance—causes a portion of the source potential to dissipate as thermal energy. This loss of electrical pressure between the source panel and the terminal load is known as voltage drop.</p>
+      <p class="seo-p">If system conductors are undersized for the connected load or run over excessive distances, the resulting voltage drop can cause connected motors to overheat, sensitive electronic controllers to malfunction, and heating elements to operate at reduced capacity. This comprehensive technical guide covers the fundamental formulas, conductor characteristics, phase calculations, and practical design protocols required for professional electrical installations.</p>
+
+      <div class="seo-callout">
+        <strong>The Fundamental Ohm's Law Principle:</strong> Voltage drop ($V_d$) is directly proportional to the total circuit current ($I$), total conductor resistance ($R$), and one-way distance ($L$). The governing equation for single-phase systems is expressed as $V_d = \frac{2 \times K \times I \times L}{CM}$, where $K$ is the specific resistivity constant of the conductor material.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Mathematical Derivation and Conductor Properties</h3>
+      <p class="seo-p">Computing exact circuit performance requires evaluating specific physical constants and mathematical relationships established by electrical engineering standards:</p>
+
+      <h4 class="seo-h3">1. Conductor Material Resistivity ($K$)</h4>
+      <p class="seo-p">Different metals exhibit varying atomic resistance to current flow. Hard-drawn copper has a resistivity constant ($K$) of approximately 12.9 ohms-circular mil per foot at 75°C, whereas electrical-grade aluminum features a higher resistivity constant of roughly 21.2 ohms-circular mil per foot due to its lighter atomic density.</p>
+
+      <h4 class="seo-h3">2. American Wire Gauge (AWG) Circular Mil Areas</h4>
+      <p class="seo-p">Conductor cross-sectional area is measured in circular mils (CM). For instance, standard 12 AWG solid copper wire has a cross-sectional area of 6,530 circular mils, while heavy-duty 4/0 AWG feeder cable boasts 211,600 circular mils (or 211 kcmil), drastically lowering internal electrical resistance over long runs.</p>
+
+      <h4 class="seo-h3">3. AC Impedance and Power Factor Adjustments</h4>
+      <p class="seo-p">In alternating current (AC) circuits, inductive reactance interacts with pure ohmic resistance, especially in steel conduit or larger feeder runs. While direct current (DC) calculations rely purely on DC resistance, AC calculations incorporate the load's power factor ($PF$) to calculate effective real power losses accurately.</p>
+
+      <h3>The Statutory Reference Matrix: Standard Conductor Properties and Resistance Chart</h3>
+      <p class="seo-p">Reviewing standard wire sizes, circular mil areas, and direct current resistance values helps electrical contractors select correct conduit fill and wire gauges:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Wire Size (AWG / kcmil)</th>
+              <th>Cross-Sectional Area (Circular Mils)</th>
+              <th>Copper Resistance ($R$ per 1,000 ft)</th>
+              <th>Aluminum Resistance ($R$ per 1,000 ft)</th>
+              <th>Typical Ampacity Rating (75°C Copper)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>14 AWG</td>
+              <td>4,110 CM</td>
+              <td>3.07 Ω</td>
+              <td>5.04 Ω</td>
+              <td>25 Amps</td>
+            </tr>
+            <tr>
+              <td>12 AWG</td>
+              <td>6,530 CM</td>
+              <td>1.93 Ω</td>
+              <td>3.17 Ω</td>
+              <td>30 Amps</td>
+            </tr>
+            <tr>
+              <td>10 AWG</td>
+              <td>10,380 CM</td>
+              <td>1.21 Ω</td>
+              <td>1.99 Ω</td>
+              <td>40 Amps</td>
+            </tr>
+            <tr>
+              <td>8 AWG</td>
+              <td>16,510 CM</td>
+              <td>0.764 Ω</td>
+              <td>1.25 Ω</td>
+              <td>50 Amps</td>
+            </tr>
+            <tr>
+              <td>6 AWG</td>
+              <td>26,240 CM</td>
+              <td>0.482 Ω</td>
+              <td>0.791 Ω</td>
+              <td>65 Amps</td>
+            </tr>
+            <tr>
+              <td>4 AWG</td>
+              <td>41,740 CM</td>
+              <td>0.303 Ω</td>
+              <td>0.498 Ω</td>
+              <td>85 Amps</td>
+            </tr>
+            <tr>
+              <td>2 AWG</td>
+              <td>66,360 CM</td>
+              <td>0.191 Ω</td>
+              <td>0.313 Ω</td>
+              <td>115 Amps</td>
+            </tr>
+            <tr>
+              <td>1/0 AWG</td>
+              <td>105,600 CM</td>
+              <td>0.120 Ω</td>
+              <td>0.197 Ω</td>
+              <td>150 Amps</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Electrical Diagnostic Segment</h3>
+
+      <h3>What is the maximum allowable voltage drop recommended by the National Electrical Code?</h3>
+      <p class="seo-p">While the NEC includes informational notes (such as NEC 210.19(A) and 215.2(A)) suggesting that combined branch circuits and feeders should not exceed a 5% total voltage drop (with a maximum of 3% on the branch circuit alone), adhering to these limits ensures efficient equipment operation and prevents thermal overload hazards.</p>
+
+      <h3>How does circuit distance affect overall voltage drop?</h3>
+      <p class="seo-p">Voltage drop is directly proportional to circuit length. If you double the physical distance between the electrical service panel and the load while maintaining the same wire gauge and current draw, the total voltage drop will also double because electrical resistance scales linearly with conductor length.</p>
+
+      <h3>Should I select copper or aluminum conductors for my feeder run?</h3>
+      <p class="seo-p">Copper is the industry standard for residential and commercial branch circuits because of its superior conductivity, flexibility, and lower electrical resistance. Aluminum is frequently selected for large commercial service entrances and long utility runs due to its lighter weight and lower material cost, though it requires larger wire gauges and specialized anti-oxidant joint compounds.</p>
+
+      <h3>How does local device script execution ensure project data privacy?</h3>
+      <p class="seo-p">Texus Pro Tools values your engineering workflow above everything else. All calculations execute instantly inside your browser's local memory sandbox. No proprietary circuit parameters, load profiles, or architectural blueprints ever traverse external servers—guaranteeing 100% confidential calculations.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Electrical System Design</h3>
+      <p class="seo-p">To optimize electrical installations, always factor in maximum ambient operating temperatures, conduit fill derating factors, and anticipated future load growth when sizing branch circuit conductors. Selecting the correct wire gauge prevents premature equipment failure, minimizes energy waste, and ensures full compliance with local electrical safety inspection codes.</p>
+      <p class="seo-p">Our Advanced Online Voltage Drop Calculator automates all complex impedance equations instantly, providing precise engineering metrics across any mobile, tablet, or desktop device securely.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // Wire properties database (Circular Mils & Standard Resistance per 1000 ft at 75°C)
+    const wireData = {
+      "14": { cm: 4110, cuRes: 3.07, alRes: 5.04 },
+      "12": { cm: 6530, cuRes: 1.93, alRes: 3.17 },
+      "10": { cm: 10380, cuRes: 1.21, alRes: 1.99 },
+      "8": { cm: 16510, cuRes: 0.764, alRes: 1.25 },
+      "6": { cm: 26240, cuRes: 0.482, alRes: 0.791 },
+      "4": { cm: 41740, cuRes: 0.303, alRes: 0.498 },
+      "2": { cm: 66360, cuRes: 0.191, alRes: 0.313 },
+      "1": { cm: 83690, cuRes: 0.151, alRes: 0.248 },
+      "1/0": { cm: 105600, cuRes: 0.120, alRes: 0.197 },
+      "2/0": { cm: 133100, cuRes: 0.0952, alRes: 0.156 },
+      "3/0": { cm: 167800, cuRes: 0.0754, alRes: 0.124 },
+      "4/0": { cm: 211600, cuRes: 0.0598, alRes: 0.0982 }
+    };
+
+    function calculateVoltageDrop() {
+      const voltage = parseFloat(document.getElementById('systemVoltage').value) || 0;
+      const current = parseFloat(document.getElementById('currentAmps').value) || 0;
+      let length = parseFloat(document.getElementById('circuitLength').value) || 0;
+      const lengthUnit = document.getElementById('lengthUnit').value;
+      const wireKey = document.getElementById('wireSize').value;
+      const material = document.getElementById('conductorMaterial').value;
+      const phase = document.getElementById('phaseType').value;
+      const pf = parseFloat(document.getElementById('powerFactor').value) || 1.0;
+
+      // Convert meters to feet if necessary (1 meter = 3.28084 feet)
+      if (lengthUnit === 'meters') {
+        length = length * 3.28084;
+      }
+
+      const wire = wireData[wireKey] || wireData["12"];
+      const rPer1000ft = (material === 'copper') ? wire.cuRes : wire.alRes;
+
+      // Calculate total resistance (R = (Resistance per 1000 ft * 2 * Length) / 1000)
+      // For 3-phase, multiplier factor is sqrt(3) ~= 1.732 instead of 2
+      let totalResistance = (rPer1000ft * 2 * length) / 1000;
+      let voltageDrop = 0;
+
+      if (phase === 'dc') {
+        voltageDrop = current * totalResistance;
+      } else if (phase === 'ac1') {
+        voltageDrop = current * totalResistance * pf;
+      } else if (phase === 'ac3') {
+        // 3-phase AC voltage drop = sqrt(3) * I * R_per_phase * L
+        // Single conductor resistance per phase = (rPer1000ft * length) / 1000
+        const rPhase = (rPer1000ft * length) / 1000;
+        voltageDrop = Math.sqrt(3) * current * rPhase * pf;
+      }
+
+      const percentDrop = voltage > 0 ? (voltageDrop / voltage) * 100 : 0;
+      const loadVoltage = voltage - voltageDrop;
+
+      // Update UI results
+      document.getElementById('resVoltageDrop').innerText = voltageDrop.toFixed(2) + ' V';
+      document.getElementById('resPercentDrop').innerText = percentDrop.toFixed(2) + '%';
+      document.getElementById('resResistance').innerText = totalResistance.toFixed(4) + ' Ω';
+      document.getElementById('resTargetVoltage').innerText = `Load V: ${loadVoltage.toFixed(1)}V`;
+      document.getElementById('resCMils').innerText = `Area: ${wire.cm.toLocaleString()} CM`;
+
+      // Status compliance check (NEC 3% branch / 5% total recommendation)
+      const statusEl = document.getElementById('resDropStatus');
+      if (percentDrop <= 3.0) {
+        statusEl.className = 'f-result-status status-pass';
+        statusEl.innerText = 'Optimal (≤ 3%)';
+      } else if (percentDrop <= 5.0) {
+        statusEl.className = 'f-result-status status-warn';
+        statusEl.innerText = 'Acceptable (≤ 5%)';
+      } else {
+        statusEl.className = 'f-result-status status-fail';
+        statusEl.innerText = 'High Drop (> 5%)';
+      }
+    }
+
+    function clearCalculatorWorkspace() {
+      document.getElementById('systemVoltage').value = '120';
+      document.getElementById('currentAmps').value = '20';
+      document.getElementById('circuitLength').value = '100';
+      document.getElementById('lengthUnit').value = 'feet';
+      document.getElementById('wireSize').value = '12';
+      document.getElementById('conductorMaterial').value = 'copper';
+      document.getElementById('phaseType').value = 'ac1';
+      document.getElementById('powerFactor').value = '0.85';
+      calculateVoltageDrop();
+    }
+
+    function copyResultsToClipboard() {
+      const vDrop = document.getElementById('resVoltageDrop').innerText;
+      const pDrop = document.getElementById('resPercentDrop').innerText;
+      const resistance = document.getElementById('resResistance').innerText;
+      const targetV = document.getElementById('resTargetVoltage').innerText;
+      
+      const summary = `=== VOLTAGE DROP CALCULATION REPORT ===\nVoltage Drop: ${vDrop} (${pDrop})\nTotal Resistance: ${resistance}\n${targetV}\nGenerated by Texus Pro Tools`;
+
+      navigator.clipboard.writeText(summary).then(() => {
+        const btn = document.getElementById('copyResultsBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '✓ Report Copied Successfully!';
+        btn.style.background = '#16a34a';
+        btn.style.color = '#ffffff';
+        setTimeout(() => {
+          btn.
