@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>dBm to Watts Converter | RF Power Calculator</title>
+  <meta name="description" content="Convert dBm to Watts instantly with our free online RF power calculator. Easily calculate power conversions for wireless, telecom, and RF engineering." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/dbm-to-watts-converter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "dBm to Watts Converter Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced RF engineering calculation utility to convert between decibel-milliwatts (dBm), Watts, milliwatts, and dBW seamlessly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 56px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 0 16px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; font-weight: 600; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.15rem; color: #0f172a; background: #f1f5f9; display: flex; align-items: center; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* EXTRA METRICS RESULTS GRID */
+    .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+    .metric-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; text-align: center; }
+    .metric-card span { display: block; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #64748b; margin-bottom: 6px; }
+    .metric-card strong { font-size: 1.1rem; color: #0f172a; font-family: 'Courier New', Courier, monospace; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .metrics-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field { height: 48px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📡</span> dBm to Watts Converter</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="dbmInput">Power in Decibel-milliwatts (dBm)</label>
+          <input type="number" id="dbmInput" class="f-input-field" placeholder="e.g., 30" value="30" step="any" oninput="convertFromDbm()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="wattsInput">Power in Watts (W)</label>
+          <input type="number" id="wattsInput" class="f-input-field" placeholder="e.g., 1" value="1" step="any" oninput="convertFromWatts()">
+        </div>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span>Millivatts (mW)</span>
+          <strong id="mwResult">1000.0 mW</strong>
+        </div>
+        <div class="metric-card">
+          <span>Decibel-Watts (dBW)</span>
+          <strong id="dbwResult">0.0 dBW</strong>
+        </div>
+        <div class="metric-card">
+          <span>RF Category</span>
+          <strong id="rfCategory">Standard RF</strong>
+        </div>
+      </div>
+
+      <div class="f-action-strip" style="margin-top: 24px;">
+        <button class="f-btn f-btn-convert" onclick="convertFromDbm()">Calculate RF Power</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyConversionResult()">📋 Copy Results</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Bidirectional RF Conversion Engine Active:</span>
+        Enter values in either dBm or Watts to instantly calculate equivalent values across milliwatts (mW), Decibel-Watts (dBW), and power classifications in real time.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Engineering Mathematics of RF Power Conversion: Understanding dBm, Watts, dBW, and Decibel Scales in Wireless Systems</h2>
+      <p class="seo-p">Radio Frequency (RF) engineering, telecommunications network design, and wireless hardware deployment require absolute precision when evaluating signal strengths, transmitter outputs, and receiver sensitivities. Power measurements in RF systems span an enormous dynamic range—from sub-picowatt thermal noise floors up to multikilowatt broadcast transmitters. Because manipulating raw linear watt values across twelve orders of magnitude is cumbersome, engineers rely on logarithmic decibel scales, specifically the decibel-milliwatt (dBm).</p>
+      <p class="seo-p">This extensive technical reference guide explores the mathematical foundations of dBm and Watt conversions, examines how logarithmic scales simplify link budget calculations, outlines standard RF power tiers, and provides practical formulas for wireless system designers.</p>
+
+      <div class="seo-callout">
+        <strong>The Fundamental Definition:</strong> 1 dBm is defined as a power ratio relative to 1 milliwatt (mW). Mathematically, power in dBm is calculated as $10 \log_{10}(P / 1\text{ mW})$, where $P$ is power measured in watts or milliwatts.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Formulas and Bidirectional Conversion Logic</h3>
+      <p class="seo-p">Converting between absolute linear power units (Watts) and relative logarithmic units (dBm) relies on base-10 logarithmic equations. Understanding these underlying formulas ensures accurate system modeling:</p>
+
+      <h4 class="seo-h3">1. Converting Watts to dBm</h4>
+      <p class="seo-p">To convert linear power $P$ (in Watts) to decibel-milliwatts ($P_{\text{dBm}}$), first convert Watts to milliwatts by multiplying by 1,000, then apply the logarithmic formula:</p>
+      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">$P_{\text{dBm}} = 10 \cdot \log_{10}(P_{\text{Watts}} \times 1000)$</p>
+
+      <h4 class="seo-h3">2. Converting dBm to Watts</h4>
+      <p class="seo-p">To reverse the calculation and determine linear power in Watts from a given dBm value ($P_{\text{dBm}}$), use the exponential inverse formula:</p>
+      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">$P_{\text{Watts}} = \frac{10^{(P_{\text{dBm}} / 10)}}{1000}$</p>
+
+      <h4 class="seo-h3">3. Relationship Between dBm and dBW</h4>
+      <p class="seo-p">Decibel-Watts (dBW) use 1 Watt as the reference level instead of 1 milliwatt. Since 1 Watt equals 1,000 mW (or +30 dB), converting between dBm and dBW is a simple arithmetic subtraction or addition:</p>
+      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">$\text{dBW} = \text{dBm} - 30 \quad \text{and} \quad \text{dBm} = \text{dBW} + 30$</p>
+
+      <h3>The Statutory Reference Matrix: Standard RF Power Benchmarks</h3>
+      <p class="seo-p">Familiarity with common benchmark values helps engineers quickly estimate link budgets and equipment capabilities without relying on calculators for every baseline check:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Power in dBm</th>
+              <th>Power in Watts (W)</th>
+              <th>Power in Milliwatts (mW)</th>
+              <th>Power in dBW</th>
+              <th>Typical RF Application &amp; Equipment Class</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>+60 dBm</td>
+              <td>1,000 W (1 kW)</td>
+              <td>1,000,000 mW</td>
+              <td>+30 dBW</td>
+              <td>High-power radar transmitters, TV broadcast antennas, and industrial RF heating.</td>
+            </tr>
+            <tr>
+              <td>+50 dBm</td>
+              <td>100 W</td>
+              <td>100,000 mW</td>
+              <td>+20 dBW</td>
+              <td>High-power amateur radio (HAM) amplifiers and cellular macro base stations.</td>
+            </tr>
+            <tr>
+              <td>+40 dBm</td>
+              <td>10 W</td>
+              <td>10,000 mW</td>
+              <td>+10 dBW</td>
+              <td>Standard cellular tower remote radio units (RRUs) and commercial repeaters.</td>
+            </tr>
+            <tr>
+              <td>+30 dBm</td>
+              <td>1 W</td>
+              <td>1,000 mW</td>
+              <td>0 dBW</td>
+              <td>Maximum legal power for standard Wi-Fi routers (FCC Part 15) and ISM band devices.</td>
+            </tr>
+            <tr>
+              <td>+20 dBm</td>
+              <td>0.1 W (100 mW)</td>
+              <td>100 mW</td>
+              <td>-10 dBW</td>
+              <td>Standard Bluetooth transmitters, Zigbee modules, and low-power IoT radios.</td>
+            </tr>
+            <tr>
+              <td>+10 dBm</td>
+              <td>0.01 W (10 mW)</td>
+              <td>10 mW</td>
+              <td>-20 dBW</td>
+              <td>Short-range medical telemetry and low-power sensor networks.</td>
+            </tr>
+            <tr>
+              <td>0 dBm</td>
+              <td>0.001 W (1 mW)</td>
+              <td>1 mW</td>
+              <td>-30 dBW</td>
+              <td>Baseline RF reference standard for signal generators and spectrum analyzers.</td>
+            </tr>
+            <tr>
+              <td>-30 dBm</td>
+              <td>0.000001 W (1 µW)</td>
+              <td>0.001 mW</td>
+              <td>-60 dBW</td>
+              <td>Typical indoor Wi-Fi receiver sensitivity threshold for stable data connections.</td>
+            </tr>
+            <tr>
+              <td>-90 dBm</td>
+              <td>0.000000000001 W</td>
+              <td>0.000001 mW</td>
+              <td>-120 dBW</td>
+              <td>Faint cellular signal edge-of-coverage threshold and GPS satellite reception.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why do we use logarithmic scales like dBm instead of Watts in RF engineering?</h3>
+      <p class="seo-p">Radio frequency signals experience massive amplification and attenuation as they travel through cables, splitters, amplifiers, and free space. In a linear Watt system, calculating end-to-end link budgets requires multiplying and dividing enormous fractional numbers (e.g., $0.000000001 \times 1,000,000$). Using logarithmic dBm units transforms multiplication and division into simple addition and subtraction ($P_{\text{total}} = P_{\text{tx}} + G_{\text{antenna}} - L_{\text{path}}$), dramatically simplifying engineering analysis.</p>
+
+      <h3>What is the difference between dBm and dB?</h3>
+      <p class="seo-p"><b>dBm</b> is an *absolute* power measurement unit referenced to 1 milliwatt. In contrast, <b>dB</b> (decibel) is a *relative* unit used to express the ratio between two power levels, such as antenna gain, cable loss, or amplifier boost. You cannot add absolute dBm to absolute dBm directly without proper conversion, but you can add relative dB gains or losses to an absolute dBm power level.</p>
+
+      <h3>Is this dBm to Watts conversion tool secure for enterprise engineering calculations?</h3>
+      <p class="seo-p">Yes. All calculations are executed entirely within your web browser using client-side JavaScript. No sensitive transmitter data, proprietary link budgets, or calculation parameters are transmitted to external servers—ensuring absolute data privacy and immediate offline functionality.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for RF Power Calculations</h3>
+      <p class="seo-p">Mastering power conversions between dBm and Watts is essential for ensuring regulatory compliance (such as FCC EIRP limits), optimizing receiver sensitivity, and designing robust wireless networks. Always double-check your cable insertion losses and antenna gains when computing total Effective Isotropic Radiated Power (EIRP).</p>
+      <p class="seo-p">Our Advanced dBm to Watts Converter automates these complex exponential and logarithmic calculations instantly, providing precise metrics across milliWatts, Watts, and dBW for any desktop or mobile device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // Interactive RF Converter Logic
+    function convertFromDbm() {
+      const dbmVal = parseFloat(document.getElementById('dbmInput').value);
+      const wattsField = document.getElementById('wattsInput');
+      const mwResult = document.getElementById('mwResult');
+      const dbwResult = document.getElementById('dbwResult');
+      const rfCategory = document.getElementById('rfCategory');
+
+      if (isNaN(dbmVal)) {
+        wattsField.value = '';
+        mwResult.textContent = '--- mW';
+        dbwResult.textContent = '--- dBW';
+        rfCategory.textContent = 'Invalid Input';
+        return;
+      }
+
+      // Calculations
+      const mw = Math.pow(10, dbmVal / 10);
+      const watts = mw / 1000;
+      const dbw = dbmVal - 30;
+
+      wattsField.value = watts < 0.000001 || watts > 1000000 ? watts.toExponential(4) : parseFloat(watts.toPrecision(6));
+      mwResult.textContent = mw < 0.001 || mw > 1000000 ? mw.toExponential(4) + ' mW' : parseFloat(mw.toPrecision(6)) + ' mW';
+      dbwResult.textContent = parseFloat(dbw.toFixed(2)) + ' dBW';
+
+      // Category detection
+      if (dbmVal <= -80) rfCategory.textContent = 'Edge / Noise Floor';
+      else if (dbmVal <= -50) rfCategory.textContent = 'Weak Signal';
+      else if (dbmVal <= 0) rfCategory.textContent = 'Low Power / IoT';
+      else if (dbmVal <= 30) rfCategory.textContent = 'Standard Wi-Fi / ISM';
+      else if (dbmVal <= 50) rfCategory.textContent = 'High Power Cellular';
+      else rfCategory.textContent = 'Broadcast / Radar';
+    }
+
+    function convertFromWatts() {
+      const wattsVal = parseFloat(document.getElementById('wattsInput').value);
+      const dbmField = document.getElementById('dbmInput');
+      const mwResult = document.getElementById('mwResult');
+      const dbwResult = document.getElementById('dbwResult');
+      const rfCategory = document.getElementById('rfCategory');
+
+      if (isNaN(wattsVal) || wattsVal <= 0) {
+        dbmField.value = '';
+        mwResult.textContent = '--- mW';
+        dbwResult.textContent = '--- dBW';
+        rfCategory.textContent = 'Invalid Input';
+        return;
+      }
+
+      const mw = wattsVal * 1000;
+      const dbm = 10 * Math.log10(mw);
+      const dbw = dbm - 30;
+
+      dbmField.value = parseFloat(dbm.toFixed(2));
+      mwResult.textContent = mw < 0.001 || mw > 1000000 ? mw.toExponential(4) + ' mW' : parseFloat(mw.toPrecision(6)) + ' mW';
+      dbwResult.textContent = parseFloat(dbw.toFixed(2)) + ' dBW';
+
+      // Category detection
+      if (dbm <= -80) rfCategory.textContent = 'Edge / Noise Floor';
+      else if (dbm <= -50) rfCategory.textContent = 'Weak Signal';
+      else if (dbm <= 0) rfCategory.textContent = 'Low Power / IoT';
+      else if (dbm <= 30) rfCategory.textContent = 'Standard Wi-Fi / ISM';
+      else if (dbm <= 50) rfCategory.textContent = 'High Power Cellular';
+      else rfCategory.textContent = 'Broadcast / Radar';
+    }
+
+    function clearCalculator() {
+      document.getElementById('dbmInput').value = '';
+      document.getElementById('wattsInput').value = '';
+      document.getElementById('mwResult').textContent = '0.0 mW';
+      document.getElementById('dbwResult').textContent = '0.0 dBW';
+      document.getElementById('rfCategory').textContent = 'Awaiting Input';
+    }
+
+    function copyConversionResult() {
+      const dbm = document.getElementById('dbmInput').value;
+      const watts = document.getElementById('wattsInput').value;
+      const mw = document.getElementById('mwResult').textContent;
+      const dbw = document.getElementById('dbwResult').textContent;
+      
+      if (!dbm && !watts) {
+        alert('Please enter a valid power value to copy.');
+        return;
+      }
+
+      const payload = `RF Power Conversion Results:\ndBm: ${dbm} dBm\nWatts: ${watts} W\nMillivatts: ${mw}\nDecibel-Watts: ${dbw}`;
+      
+      navigator.clipboard.writeText(payload).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Copied Successfully!';
+        setTimeout(() => { btn.textContent = originalText; }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text:', err);
+      });
+    }
+
+    // Initialize default calculation on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      convertFromDbm();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
