@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Coffee Brewing Ratio Calculator | Perfect Pour-Over, French Press & Espresso</title>
+  <meta name="description" content="Calculate the exact coffee-to-water ratio for pour-over, French press, espresso, and drip coffee instantly with our free online brewing calculator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/coffee-brewing-ratio-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Coffee Brewing Ratio Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced precision utility to compute optimal coffee beans weight against water volume across multiple specialty extraction ratios.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .ratio-display-box { background: #f1f5f9; border: 2px solid #cbd5e1; border-radius: 16px; padding: 20px; text-align: center; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+    .ratio-big-val { font-size: 2rem; font-weight: 800; color: #0f172a; font-family: 'Courier New', Courier, monospace; }
+    .ratio-sub-text { font-size: 0.9rem; color: #475569; font-weight: 600; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>☕</span> Coffee Brewing Ratio Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="calcMode">Calculation Target</label>
+          <select id="calcMode" class="f-select-field" onchange="toggleCalcMode()">
+            <option value="waterFromCoffee">I have Coffee Beans (Calculate Water)</option>
+            <option value="coffeeFromWater">I have Water Volume (Calculate Coffee)</option>
+          </select>
+
+          <div id="inputGroupMain" style="margin-top: 15px;">
+            <label id="mainInputLabel" for="mainInputValue">Coffee Beans Weight (grams)</label>
+            <input type="number" id="mainInputValue" class="f-input-field" value="20" min="1" step="0.5" oninput="calculateCoffeeRatio()" />
+          </div>
+
+          <div style="margin-top: 15px;">
+            <label for="brewMethodPreset">Brewing Method Preset</label>
+            <select id="brewMethodPreset" class="f-select-field" onchange="applyPreset()">
+              <option value="15">Standard Pour Over (1:15)</option>
+              <option value="16" selected>Golden Cup Standard Drip (1:16)</option>
+              <option value="12">French Press / Full Immersion (1:12)</option>
+              <option value="17">Mild / Delicate Pour Over (1:17)</option>
+              <option value="2">Espresso (1:2)</option>
+              <option value="custom">Custom Ratio</option>
+            </select>
+          </div>
+
+          <div id="customRatioBox" style="margin-top: 15px; display: none;">
+            <label for="customRatioVal">Custom Ratio (1 part coffee to X parts water)</label>
+            <input type="number" id="customRatioVal" class="f-input-field" value="16" min="1" step="0.1" oninput="calculateCoffeeRatio()" />
+          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Brewing Calculation Output</label>
+          <div class="ratio-display-box">
+            <span class="ratio-sub-text" id="outputSubtitle">Required Water Volume</span>
+            <div class="ratio-big-val" id="primaryResultDisplay">320 g / ml</div>
+            <span class="ratio-sub-text" id="secondaryResultDisplay">Ratio: 1 : 16 | Coffee: 20g</span>
+          </div>
+
+          <div style="margin-top: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px;">
+            <div style="font-size: 0.82rem; font-weight: 700; color: #475569; text-transform: uppercase; margin-bottom: 6px;">Quick Metric Summary</div>
+            <div id="metricSummaryText" style="font-size: 0.92rem; color: #1e293b; line-height: 1.5;">
+              Use <b>20.0 grams</b> of medium-coarse coffee grounds with <b>320.0 grams</b> of hot water at 93°C (200°F) for optimal extraction balance.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateCoffeeRatio()">Recalculate Output</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyBrewingResults()">📋 Copy Brew Recipe</button>
+        <button class="f-btn f-btn-clear" onclick="resetBrewCalculator()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Precision Extraction Algorithm:</span>
+        Calculations utilize standard gram weight metrics where 1 milliliter of water equals exactly 1 gram, ensuring absolute accuracy across digital kitchen scales.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Science of Extraction: Mastering Coffee-to-Water Ratios for Pour-Over, French Press, and Espresso</h2>
+      <p class="seo-p">Achieving cafe-quality specialty coffee at home is not a matter of guesswork or random scoop measurements. It is a precise culinary science governed by the ratio of dry coffee grounds to brewing water. Whether you are brewing a delicate Ethiopian single-origin via a V60 pour-over cone, steeping a bold dark roast in a French press, or pulling a high-pressure shot of espresso, understanding extraction percentages and brewing ratios is the single most important skill a coffee enthusiast can cultivate.</p>
+      <p class="seo-p">This comprehensive technical guide explores the mathematics behind solvent-to-solute extraction, examines how different ratios alter flavor profiles, body, and strength, and outlines professional methodologies to elevate your daily coffee ritual effortlessly.</p>
+
+      <div class="seo-callout">
+        <strong>The Golden Cup Standard:</strong> Established by specialty coffee authorities, the universally recognized baseline ratio for filter coffee is <b>1:16</b> (one part coffee to sixteen parts water by weight), which consistently yields a well-balanced extraction between 18% and 22%.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Solutes, Solvents, and Extraction Physics</h3>
+      <p class="seo-p">When hot water comes into contact with roasted and ground coffee beans, it acts as a chemical solvent. It dissolves soluble compounds trapped inside the cellular matrix of the bean structure, including organic acids, aromatic oils, caffeine, and complex sugars.</p>
+
+      <h4 class="seo-h3">1. Under-Extraction vs Over-Extraction</h4>
+      <p class="seo-p">If too little water is used (a tight ratio like 1:10) or brew time is too short, the water fails to dissolve desirable sweet and balanced compounds, leaving the cup tasting sour, salty, and grassy (under-extraction). Conversely, if too much water passes through or contact time is excessive, undesirable bitter compounds like tannins and heavy plant fibers are extracted, resulting in an astringent, dry cup (over-extraction).</p>
+
+      <h4 class="seo-h3">2. Gravimetric Measurement vs Volume Scoops</h4>
+      <p class="seo-p">Volume measurements (such as tablespoons or cups) fail because different roast profiles (light vs dark roast) and bean densities vary wildly in weight. A tablespoon of dense light-roast beans can weigh 30% more than a tablespoon of porous dark-roast beans. Utilizing a digital scale and gram measurements ensures repeatable, flawless results every single time.</p>
+
+      <h4 class="seo-h3">3. Temperature and Agitation Dynamics</h4>
+      <p class="seo-p">Water temperature directly dictates the rate of solubility. Ideal brewing temperatures range between 90°C and 94°C (195°F to 202°F). Boiling water (100°C) risks scalding delicate solubles and producing burnt notes, while water below 88°C fails to extract adequate sweetness.</p>
+
+      <h3>The Statutory Reference Matrix: Standard Brewing Ratios Across Methods</h3>
+      <p class="seo-p">Different extraction devices require tailored ratios to account for filter paper retention, immersion time, and pressure dynamics:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Brewing Apparatus</th>
+              <th>Optimal Ratio</th>
+              <th>Grind Size Profile</th>
+              <th>Water Temp</th>
+              <th>Extraction Characteristics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>V60 / Chemex (Pour Over)</td>
+              <td><b>1:15 to 1:17</b></td>
+              <td>Medium-Fine to Medium</td>
+              <td>91°C - 94°C</td>
+              <td>Highlights floral aromatics, bright acidity, and clean flavor clarity.</td>
+            </tr>
+            <tr>
+              <td>French Press (Full Immersion)</td>
+              <td><b>1:12 to 1:15</b></td>
+              <td>Coarse</td>
+              <td>93°C - 95°C</td>
+              <td>Produces heavy body, rich mouthfeel, and robust oils.</td>
+            </tr>
+            <tr>
+              <td>Espresso Machine</td>
+              <td><b>1:1.5 to 1:2.5</b></td>
+              <td>Ultra-Fine</td>
+              <td>90°C - 93°C</td>
+              <td>Concentrated, syrupy shot with dense crema and intense flavor concentration.</td>
+            </tr>
+            <tr>
+              <td>AeroPress</td>
+              <td><b>1:14 to 1:16</b></td>
+              <td>Medium-Fine</td>
+              <td>85°C - 92°C</td>
+              <td>Versatile hybrid extraction offering clean cups with moderate body.</td>
+            </tr>
+            <tr>
+              <td>Batch Drip Machine</td>
+              <td><b>1:16</b></td>
+              <td>Medium</td>
+              <td>92°C - 96°C</td>
+              <td>Standard balanced daily cup optimized for automated consistency.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why do coffee professionals measure water in grams instead of milliliters?</h3>
+      <p class="seo-p">While 1 milliliter of pure water weighs precisely 1 gram at standard atmospheric pressure, measuring by weight (grams) on a digital kitchen scale allows brewers to account for water absorbed by the coffee grounds (which retain roughly twice their dry weight in water) and provides superior precision.</p>
+
+      <h3>How does roast level affect my ideal brewing ratio?</h3>
+      <p class="seo-p">Light roasts are denser and harder to extract, often benefiting from slightly higher ratios (1:16 or 1:17) and hotter water to pull out subtle fruit notes. Dark roasts are more porous and soluble, meaning tighter ratios (1:14 or 1:15) prevent harsh bitterness.</p>
+
+      <h3>How does local device script compilation ensure business security benchmarks?</h3>
+      <p class="seo-p">Texus Pro Tools values your privacy above everything else. All calculations execute entirely inside your device's local browser memory. No data strings or brewing parameters ever traverse external server networks—establishing a private utility environment.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Coffee Extraction Management</h3>
+      <p class="seo-p">To optimize your daily coffee routine, always weigh your whole coffee beans before grinding, use filtered water with balanced mineral content, maintain consistent water temperatures, and use our real-time Coffee Brewing Ratio Calculator to dial in exact formulas across all your favorite brewing devices instantly.</p>
+      <p class="seo-p">Our Advanced Online Coffee Brewing Ratio Calculator suite automates all these computational extraction routines instantly, providing clear visibility into your recipe parameters across any mobile or desktop device cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function toggleCalcMode() {
+      const mode = document.getElementById('calcMode').value;
+      const mainInputLabel = document.getElementById('mainInputLabel');
+      const mainInputValue = document.getElementById('mainInputValue');
+      const outputSubtitle = document.getElementById('outputSubtitle');
+
+      if (mode === 'waterFromCoffee') {
+        mainInputLabel.textContent = 'Coffee Beans Weight (grams)';
+        mainInputValue.value = '20';
+        outputSubtitle.textContent = 'Required Water Volume';
+      } else {
+        mainInputLabel.textContent = 'Water Volume (grams / ml)';
+        mainInputValue.value = '320';
+        outputSubtitle.textContent = 'Required Coffee Beans';
+      }
+      calculateCoffeeRatio();
+    }
+
+    function applyPreset() {
+      const preset = document.getElementById('brewMethodPreset').value;
+      const customRatioBox = document.getElementById('customRatioBox');
+      const customRatioVal = document.getElementById('customRatioVal');
+
+      if (preset === 'custom') {
+        customRatioBox.style.display = 'block';
+      } else {
+        customRatioBox.style.display = 'none';
+        customRatioVal.value = preset;
+      }
+      calculateCoffeeRatio();
+    }
+
+    function calculateCoffeeRatio() {
+      const mode = document.getElementById('calcMode').value;
+      const inputValue = parseFloat(document.getElementById('mainInputValue').value) || 0;
+      const preset = document.getElementById('brewMethodPreset').value;
+      
+      let ratio = 16;
+      if (preset === 'custom') {
+        ratio = parseFloat(document.getElementById('customRatioVal').value) || 16;
+      } else {
+        ratio = parseFloat(preset) || 16;
+      }
+
+      const primaryDisplay = document.getElementById('primaryResultDisplay');
+      const secondaryDisplay = document.getElementById('secondaryResultDisplay');
+      const summaryText = document.getElementById('metricSummaryText');
+
+      let coffeeGrams = 0;
+      let waterGrams = 0;
+
+      if (mode === 'waterFromCoffee') {
+        coffeeGrams = inputValue;
+        waterGrams = inputValue * ratio;
+        primaryDisplay.textContent = waterGrams.toFixed(1) + ' g / ml';
+        secondaryDisplay.textContent = `Ratio: 1 : ${ratio} | Coffee: ${coffeeGrams}g`;
+        summaryText.innerHTML = `Use <b>${coffeeGrams.toFixed(1)} grams</b> of coffee grounds with <b>${waterGrams.toFixed(1)} grams</b> of hot water at 93°C for optimal extraction balance.`;
+      } else {
+        waterGrams = inputValue;
+        coffeeGrams = ratio > 0 ? waterGrams / ratio : 0;
+        primaryDisplay.textContent = coffeeGrams.toFixed(1) + ' grams';
+        secondaryDisplay.textContent = `Ratio: 1 : ${ratio} | Water: ${waterGrams}g`;
+        summaryText.innerHTML = `For <b>${waterGrams.toFixed(1)} grams</b> of water, weigh out exactly <b>${coffeeGrams.toFixed(1)} grams</b> of coffee grounds using a digital scale.`;
+      }
+    }
+
+    function copyBrewingResults() {
+      const primary = document.getElementById('primaryResultDisplay').textContent;
+      const secondary = document.getElementById('secondaryResultDisplay').textContent;
+      const summary = document.getElementById('metricSummaryText').innerText;
+      const payload = `☕ Coffee Brewing Recipe\n--------------------------\n${secondary}\nResult: ${primary}\nSummary: ${summary}`;
+
+      navigator.clipboard.writeText(payload).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Copied Recipe!';
+        btn.style.background = '#dcfce7';
+        btn.style.color = '#166534';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        alert('Failed to copy to clipboard.');
+      });
+    }
+
+    function resetBrewCalculator() {
+      document.getElementById('calcMode').value = 'waterFromCoffee';
+      document.getElementById('mainInputValue').value = '20';
+      document.getElementById('brewMethodPreset').value = '16';
+      document.getElementById('customRatioBox').style.display = 'none';
+      document.getElementById('mainInputLabel').textContent = 'Coffee Beans Weight (grams)';
+      document.getElementById('outputSubtitle').textContent = 'Required Water Volume';
+      calculateCoffeeRatio();
+    }
+
+    // Run initial calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateCoffeeRatio();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
