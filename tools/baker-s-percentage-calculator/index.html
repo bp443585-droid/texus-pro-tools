@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Baker's Percentage Calculator | Professional Dough Formula Calculator</title>
+  <meta name="description" content="Calculate professional baker's percentages, flour weights, hydration, salt, and yeast ratios instantly with our free online Baker's Percentage Calculator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/baker-s-percentage-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Baker's Percentage Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced formulation tool for artisan bakers to calculate ingredient ratios, hydration levels, and scaled dough batch weights based on flour weight standards.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* BAKER'S CALCULATOR CUSTOM GRID SYSTEM */
+    .baker-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .ingredients-table-wrap { width: 100%; overflow-x: auto; margin-top: 20px; border: 1px solid #e2e8f0; border-radius: 16px; background: #ffffff; }
+    .ingredients-table { width: 100%; min-width: 600px; border-collapse: collapse; text-align: left; }
+    .ingredients-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 12px 16px; font-weight: 700; color: #0f172a; font-size: 0.85rem; text-transform: uppercase; }
+    .ingredients-table td { border-bottom: 1px solid #e2e8f0; padding: 12px 16px; color: #475569; font-size: 0.95vn; }
+    .ingredients-table tr:last-child td { border-bottom: none; }
+    .ingredients-table input { width: 100%; padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; font-family: inherit; background: #f8fafc; }
+    .ingredients-table input:focus { border-color: #2563eb; background: #fff; outline: none; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 140px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* SUMMARY STATS STRIP */
+    .summary-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 25px; }
+    .summary-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .summary-card .val { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin-top: 4px; }
+    .summary-card .lbl { font-size: 0.78rem; text-transform: uppercase; color: #64748b; font-weight: 700; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .summary-strip { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .baker-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🥖</span> Baker's Percentage Calculator</div>
+    
+    <div class="f-card">
+      <div class="baker-grid">
+        <div class="f-panel-box">
+          <label for="totalFlourWeight">Total Flour Weight (grams / oz)</label>
+          <input type="number" id="totalFlourWeight" class="f-input-field" value="1000" min="1" step="any" oninput="calculateBakersPercentage()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="unitSelect">Measurement Unit Label</label>
+          <select id="unitSelect" class="f-input-field" onchange="calculateBakersPercentage()">
+            <option value="g">Grams (g)</option>
+            <option value="kg">Kilograms (kg)</option>
+            <option value="oz">Ounces (oz)</option>
+            <option value="lbs">Pounds (lbs)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-panel-box" style="margin-top: 20px;">
+        <label>Dough Ingredients Breakdown (Flour is always 100%)</label>
+        <div class="ingredients-table-wrap">
+          <table class="ingredients-table" id="ingredientsTable">
+            <thead>
+              <tr>
+                <th>Ingredient Name</th>
+                <th>Baker's %</th>
+                <th id="weightHeader">Weight (g)</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="ingredientsBody">
+              <!-- Dynamically populated or static rows -->
+              <tr>
+                <td><input type="text" value="Bread Flour" class="ing-name"></td>
+                <td><input type="number" value="100" class="ing-pct" readonly style="background:#f1f5f9; font-weight:700;"></td>
+                <td><input type="number" value="1000" class="ing-weight" oninput="recalcFromWeight(this)"></td>
+                <td><button type="button" onclick="removeRow(this)" style="background:#fee2e2; color:#dc2626; border:none; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:700;" disabled>Lock</button></td>
+              </tr>
+              <tr>
+                <td><input type="text" value="Water (Hydration)" class="ing-name"></td>
+                <td><input type="number" value="70" class="ing-pct" step="0.1" oninput="calculateBakersPercentage()"></td>
+                <td><input type="number" value="700" class="ing-weight" oninput="recalcFromWeight(this)"></td>
+                <td><button type="button" onclick="removeRow(this)" style="background:#fee2e2; color:#dc2626; border:none; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:700;">Remove</button></td>
+              </tr>
+              <tr>
+                <td><input type="text" value="Salt" class="ing-name"></td>
+                <td><input type="number" value="2.0" class="ing-pct" step="0.1" oninput="calculateBakersPercentage()"></td>
+                <td><input type="number" value="20" class="ing-weight" oninput="recalcFromWeight(this)"></td>
+                <td><button type="button" onclick="removeRow(this)" style="background:#fee2e2; color:#dc2626; border:none; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:700;">Remove</button></td>
+              </tr>
+              <tr>
+                <td><input type="text" value="Instant Yeast" class="ing-name"></td>
+                <td><input type="number" value="1.0" class="ing-pct" step="0.1" oninput="calculateBakersPercentage()"></td>
+                <td><input type="number" value="10" class="ing-weight" oninput="recalcFromWeight(this)"></td>
+                <td><button type="button" onclick="removeRow(this)" style="background:#fee2e2; color:#dc2626; border:none; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:700;">Remove</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="margin-top: 15px;">
+        <button type="button" class="f-btn" onclick="addIngredientRow()" style="background:#f1f5f9; border:1px solid #cbd5e1; color:#0f172a;">+ Add Ingredient</button>
+      </div>
+
+      <div class="summary-strip">
+        <div class="summary-card">
+          <div class="lbl">Total Dough Weight</div>
+          <div class="val" id="sumTotalWeight">1730 g</div>
+        </div>
+        <div class="summary-card">
+          <div class="lbl">Total Hydration</div>
+          <div class="val" id="sumHydration">70.0%</div>
+        </div>
+        <div class="summary-card">
+          <div class="lbl">Total Ingredients</div>
+          <div class="val" id="sumCount">4</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateBakersPercentage()">Recalculate Formula</button>
+        <button class="f-btn f-btn-copy" id="copyFormulaBtn" onclick="copyFormulaToClipboard()">📋 Copy Formula Text</button>
+        <button class="f-btn f-btn-clear" onclick="resetBakersCalculator()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Professional Baking Standard:</span>
+        In baker's math, flour is always established as exactly 100%. All other ingredients (water, salt, yeast, oil, sugar) are expressed as a direct percentage relative to the total weight of flour.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Art and Science of Baker's Percentages: Mastering Artisan Dough Formulas, Hydration Math, and Scaling Precision</h2>
+      <p class="seo-p">Whether you are managing a high-volume commercial hearth bakery, operating a neighborhood pizzeria, or experimenting with sourdough loaves in your home kitchen, mastering **baker's percentage** (also known as baker's math) is the single most important skill for achieving consistent baking results. Unlike standard culinary recipes that measure ingredients in confusing cups and teaspoons, professional bakers rely on ratios relative to flour.</p>
+      <p class="seo-p">This comprehensive technical guide explores the mathematics behind baking formulas, explains how to calculate hydration percentages, reviews standard ratios for various bread styles, and provides step-by-step guidance on scaling dough batches up or down without altering crumb structure or fermentation timelines.</p>
+
+      <div class="seo-callout">
+        <strong>The Golden Rule of Baker's Math:</strong> Flour is always anchored at 100%. Every other ingredient—water, salt, yeast, butter, sourdough starter, and sugar—is weighed and calculated as a direct percentage of that total flour weight.
+      </div>
+
+      <h3 class="seo-h2">The Core Mechanics: Why Professional Bakers Abandon Volume Measurements</h3>
+      <p class="seo-p">Measuring flour by volume (cups) is notoriously inaccurate. Depending on how densely the flour is packed into a measuring cup or how humid the atmosphere is, a cup of flour can weigh anywhere from 120 grams to 150 grams. In baking, water absorption and gluten development depend entirely on precise mass ratios.</p>
+
+      <h4 class="seo-h3">1. Absolute Consistency Across Batch Sizes</h4>
+      <p class="seo-p">When your recipe is expressed in percentages, scaling from 3 loaves to 300 loaves is instantaneous. If you need to produce 50kg of dough, you simply set your total flour weight to 50,000g and multiply by each ingredient's percentage.</p>
+
+      <h4 class="seo-h3">2. Universal Recipe Sharing</h4>
+      <p class="seo-p">Baker's percentages allow bakers around the world to analyze and compare formulas at a glance. If a baker says their rustic levain has 78% hydration and 2.2% salt, you instantly understand the dough's behavior regardless of whether they are baking 1 loaf or 1,000.</p>
+
+      <h4 class="seo-h3">3. Precise Hydration Control</h4>
+      <p class="seo-p">Hydration—the ratio of total water to total flour—dictates crumb openness, crust blistering, and ease of dough handling. Calculating hydration accurately prevents dense, gummy centers or unworkable liquid puddles.</p>
+
+      <h3>The Standard Reference Matrix: Common Bread Styles and Their Baker's Ratios</h3>
+      <p class="seo-p">Different styles of bread require vastly different ingredient percentages to achieve their characteristic textures and crusts. Review this standard benchmark table for recipe formulation:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Bread Style Category</th>
+              <th>Flour %</th>
+              <th>Water (Hydration %)</th>
+              <th>Salt %</th>
+              <th>Yeast / Levain %</th>
+              <th>Typical Characteristics &amp; Handling</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard Artisan Sourdough</td>
+              <td>100%</td>
+              <td>72% - 78%</td>
+              <td>2.0% - 2.2%</td>
+              <td>20% - 30% (Starter)</td>
+              <td>Open crumb structure, blistered crust, sticky wet dough requiring stretch-and-fold techniques.</td>
+            </tr>
+            <tr>
+              <td>Neapolitan Pizza Dough</td>
+              <td>100%</td>
+              <td>58% - 62%</td>
+              <td>2.5% - 3.0%</td>
+              <td>0.2% - 0.5% (Instant Yeast)</td>
+              <td>Extensible, high-temperature baking capability, leopard-spotted cornicione.</td>
+            </tr>
+            <tr>
+              <td>Classic Sandwich Bread (Pan Bread)</td>
+              <td>100%</td>
+              <td>60% - 65%</td>
+              <td>1.8% - 2.0%</td>
+              <td>1.0% - 1.5% (Active Dry/Instant)</td>
+              <td>Soft tender crumb, uniform sliceability, enriched often with 2-5% butter and sugar.</td>
+            </tr>
+            <tr>
+              <td>Bagels (New York Style)</td>
+              <td>100%</td>
+              <td>50% - 53%</td>
+              <td>2.0%</td>
+              <td>0.7% - 1.0%</td>
+              <td>Stiff, dense dough requiring vigorous mixing and a boiling water bath prior to baking.</td>
+            </tr>
+            <tr>
+              <td>Brioche (Enriched Dough)</td>
+              <td>100%</td>
+              <td>40% - 50% (plus eggs)</td>
+              <td>1.8%</td>
+              <td>2.0% - 3.0%</td>
+              <td>Extremely rich texture loaded with 50-80% butter and 30-50% whole eggs.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Baking Formula Segment</h3>
+
+      <h3>How do I calculate baker's percentage when using multiple types of flour?</h3>
+      <p class="seo-p">When blending flours (e.g., 80% bread flour and 20% whole wheat flour), the combined weight of all flours equals 100%. For example, if you use 800g of bread flour and 200g of whole wheat flour, your total flour weight is 1,000g, which serves as your 100% baseline.</p>
+
+      <h3>How do I account for water contained inside sourdough starter?</h3>
+      <p class="seo-p">A 100% hydration sourdough starter is made with equal parts flour and water by weight. If your formula calls for 200g of sourdough starter (fed 1:1), half of that weight (100g) is flour and the other half (100g) is water. You must subtract those amounts from your total flour and total water additions to keep your hydration mathematically exact.</p>
+
+      <h3>Can I use this calculator for imperial units like ounces and pounds?</h3>
+      <p class="seo-p">Yes! While metric grams offer the highest precision, our calculator supports pounds, kilograms, and ounces seamlessly. Just ensure all your input weights use the same unit system for accurate math.</p>
+
+      <h3 class="seo-h2">Summary: Streamlining Your Baking Workflow</h3>
+      <p class="seo-p">Using our advanced Baker's Percentage Calculator eliminates guesswork, saves costly ingredients from scaling errors, and guarantees consistent results every single time you bake. Bookmark this tool, customize your ingredient ratios, and elevate your baking craft today!</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // BAKER'S PERCENTAGE CALCULATOR LOGIC
+    function calculateBakersPercentage() {
+      const flourWeightInput = document.getElementById('totalFlourWeight');
+      const unit = document.getElementById('unitSelect').value;
+      const totalFlour = parseFloat(flourWeightInput.value) || 0;
+      
+      document.getElementById('weightHeader').innerText = `Weight (${unit})`;
+
+      const rows = document.querySelectorAll('#ingredientsBody tr');
+      let totalWeight = totalFlour;
+      let totalHydrationPct = 0;
+      let ingredientCount = rows.length;
+
+      rows.forEach((row, index) => {
+        const pctInput = row.querySelector('.ing-pct');
+        const weightInput = row.querySelector('.ing-weight');
+        const nameInput = row.querySelector('.ing-name');
+
+        if (index === 0) {
+          // First row is always Flour (100%)
+          pctInput.value = 100;
+          weightInput.value = totalFlour.toFixed(1).replace(/\.0$/, '');
+        } else {
+          const pct = parseFloat(pctInput.value) || 0;
+          const calculatedWeight = (totalFlour * pct) / 100;
+          weightInput.value = calculatedWeight.toFixed(1).replace(/\.0$/, '');
+          totalWeight += calculatedWeight;
+
+          // Check if ingredient name implies water / hydration
+          const name = nameInput.value.toLowerCase();
+          if (name.includes('water') || name.includes('hydration') || name.includes('liquid') || name.includes('milk')) {
+            totalHydrationPct += pct;
+          }
+        }
+      });
+
+      document.getElementById('sumTotalWeight').innerText = `${totalWeight.toFixed(1).replace(/\.0$/, '')} ${unit}`;
+      document.getElementById('sumHydration').innerText = `${totalHydrationPct.toFixed(1)}%`;
+      document.getElementById('sumCount').innerText = ingredientCount;
+    }
+
+    function recalcFromWeight(weightInput) {
+      const row = weightInput.closest('tr');
+      const pctInput = row.querySelector('.ing-pct');
+      const totalFlour = parseFloat(document.getElementById('totalFlourWeight').value) || 0;
+      const currentWeight = parseFloat(weightInput.value) || 0;
+
+      if (totalFlour > 0) {
+        const calculatedPct = (currentWeight / totalFlour) * 100;
+        pctInput.value = calculatedPct.toFixed(2).replace(/\.?0+$/, '');
+      }
+
+      // Update summary stats
+      const rows = document.querySelectorAll('#ingredientsBody tr');
+      let totalWeight = 0;
+      let totalHydrationPct = 0;
+
+      rows.forEach((r, idx) => {
+        const w = parseFloat(r.querySelector('.ing-weight').value) || 0;
+        const p = parseFloat(r.querySelector('.ing-pct').value) || 0;
+        const name = r.querySelector('.ing-name').value.toLowerCase();
+        totalWeight += w;
+        if (idx > 0 && (name.includes('water') || name.includes('hydration') || name.includes('liquid') || name.includes('milk'))) {
+          totalHydrationPct += p;
+        }
+      });
+
+      const unit = document.getElementById('unitSelect').value;
+      document.getElementById('sumTotalWeight').innerText = `${totalWeight.toFixed(1).replace(/\.0$/, '')} ${unit}`;
+      document.getElementById('sumHydration').innerText = `${totalHydrationPct.toFixed(1)}%`;
+    }
+
+    function addIngredientRow() {
+      const tbody = document.getElementById('ingredientsBody');
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><input type="text" value="New Ingredient" class="ing-name"></td>
+        <td><input type="number" value="5.0" class="ing-pct" step="0.1" oninput="calculateBakersPercentage()"></td>
+        <td><input type="number" value="0" class="ing-weight" oninput="recalcFromWeight(this)"></td>
+        <td><button type="button" onclick="removeRow(this)" style="background:#fee2e2; color:#dc2626; border:none; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:700;">Remove</button></td>
+      `;
+      tbody.appendChild(tr);
+      calculateBakersPercentage();
+    }
+
+    function removeRow(btn) {
+      const row = btn.closest('tr');
+      row.remove();
+      calculateBakersPercentage();
+    }
+
+    function resetBakersCalculator() {
+      document.getElementById('totalFlourWeight').value = 1000;
+      document.getElementById('unitSelect').value = 'g';
+      const tbody = document.getElementById('ingredientsBody');
+      tbody.innerHTML = `
+        <tr>
+          <td><input type="text" value="Bread Flour" class="ing-name"></td>
+          <td><input type="number" value="100" class="ing-pct" readonly style="background:#f1f5f9; font-weight:700;"></td>
+          <td><input type="number" value="1000" class="ing-weight" oninput="recalcFromWeight(this)"></td>
+          <td><button type="button" onclick="removeRow(this)" style="background:#fee2e2; color:#dc2626; border:none; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:700;" disabled>Lock</button></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="Water (Hydration)" class="ing-name"></td>
+          <td><input type="number" value="70" class="ing-pct" step="0.1" oninput="calculateBakersPercentage()"></td>
+          <td><input type="number" value="700" class="ing-weight" oninput="recalcFromWeight(this)"></td>
+          <td><button type="button" onclick="removeRow(this)" style="background:#fee2e2; color:#dc2626; border:none; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:700;">Remove</button></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="Salt" class="ing-name"></td>
+          <td><input type="number" value="2.0" class="ing-pct" step="0.1" oninput="calculateBakersPercentage()"></td>
+          <td><input type="number" value="20" class="ing-weight" oninput="recalcFromWeight(this)"></td>
+          <td><button type="button" onclick="removeRow(this)" style="background:#fee2e2; color:#dc2626; border:none; padding:6px 12px
