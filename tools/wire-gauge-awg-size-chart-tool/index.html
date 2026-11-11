@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Wire Gauge AWG Size Chart Tool | Free American Wire Gauge Calculator &amp; Reference</title>
+  <meta name="description" content="Calculate electrical wire resistance, current capacity (ampacity), and diameter with our interactive Wire Gauge AWG Size Chart Tool. Free online reference guide for electrical engineering." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/wire-gauge-awg-size-chart-tool/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Wire Gauge AWG Size Chart Tool Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced engineering calculator and comprehensive reference chart for American Wire Gauge (AWG) standards, resistance values, and ampacity ratings.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TOOL SPECIFIC INTERACTIVE GRID SYSTEM */
+    .awg-calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-select-field, .f-input-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-select-field:focus, .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS DISPLAY CARDS */
+    .awg-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+    .awg-result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: left; }
+    .awg-result-card .res-label { font-size: 0.78rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .awg-result-card .res-value { font-size: 1.35rem; color: #0f172a; font-weight: 800; font-family: 'Courier New', Courier, monospace; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .awg-results-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .awg-calc-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⚡</span> Wire Gauge AWG Size Chart Tool</div>
+    
+    <div class="f-card">
+      <div class="awg-calc-grid">
+        <div class="f-panel-box">
+          <label for="awgSelect">Select Wire Gauge (AWG)</label>
+          <select id="awgSelect" class="f-select-field" onchange="calculateAwgData()">
+            <option value="0000">4/0 AWG (0000)</option>
+            <option value="000">3/0 AWG (000)</option>
+            <option value="00">2/0 AWG (00)</option>
+            <option value="0">1/0 AWG (0)</option>
+            <option value="1">1 AWG</option>
+            <option value="2">2 AWG</option>
+            <option value="4" selected>4 AWG</option>
+            <option value="6">6 AWG</option>
+            <option value="8">8 AWG</option>
+            <option value="10">10 AWG</option>
+            <option value="12">12 AWG</option>
+            <option value="14">14 AWG</option>
+            <option value="16">16 AWG</option>
+            <option value="18">18 AWG</option>
+            <option value="20">20 AWG</option>
+            <option value="22">22 AWG</option>
+            <option value="24">24 AWG</option>
+          </select>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="wireLength">Wire Length (Feet - One Way)</label>
+          <input type="number" id="wireLength" class="f-input-field" value="50" min="1" max="1000" oninput="calculateAwgData()" />
+        </div>
+      </div>
+
+      <div class="awg-results-grid">
+        <div class="awg-result-card">
+          <div class="res-label">Diameter (mm / inch)</div>
+          <div class="res-value" id="resDiameter">5.19 mm</div>
+        </div>
+        <div class="awg-result-card">
+          <div class="res-label">Cross Section Area</div>
+          <div class="res-value" id="resArea">21.2 mm²</div>
+        </div>
+        <div class="awg-result-card">
+          <div class="res-label">Max Ampacity (Power Transmission)</div>
+          <div class="res-value" id="resAmpacity">85 A</div>
+        </div>
+        <div class="awg-result-card">
+          <div class="res-label">DC Resistance (Ω per 1000 ft)</div>
+          <div class="res-value" id="resResistance">0.248 Ω</div>
+        </div>
+        <div class="awg-result-card">
+          <div class="res-label">Total Loop Resistance</div>
+          <div class="res-value" id="resLoopRes">0.0248 Ω</div>
+        </div>
+        <div class="awg-result-card">
+          <div class="res-label">Standard Conductor Type</div>
+          <div class="res-value" id="resType">Copper (Soft)</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateAwgData()">Recalculate Specs</button>
+        <button class="f-btn f-btn-copy" id="copyAwgBtn" onclick="copyAwgResult()">📋 Copy Specifications Summary</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Engineering Calculation Parameters Notice:</span>
+        Calculations assume annealed copper conductors at 25°C ambient temperature. Always refer to local National Electrical Code (NEC) standards for permanent commercial installations.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Complete Engineer's Guide to American Wire Gauge (AWG): Dimensions, Ampacity Limits, and Voltage Drop Mathematics</h2>
+      <p class="seo-p">Navigating electrical circuit design, residential wiring, automotive custom harnesses, and industrial power distribution requires absolute precision when selecting conductor diameters. The American Wire Gauge (AWG) standard governs the sizing of round, solid, nonferrous, electrically conducting wire. Understanding how gauge numbers correlate with cross-sectional area, electrical resistance, and maximum safe current carrying capacity (ampacity) prevents thermal overloads, equipment failure, and electrical fires.</p>
+      <p class="seo-p">This extensive reference and calculation manual explores the mathematical foundations of the AWG system, analyzes current density limitations across diverse operating temperatures, and provides complete conversion datasets for professional electricians and hobbyists alike.</p>
+
+      <div class="seo-callout">
+        <strong>The Inverse Geometric Principle:</strong> Unlike metric wire sizing where larger numbers designate larger cross-sectional diameters, the AWG system operates inversely: <b>as the gauge number increases, the physical wire diameter and cross-sectional area decrease</b> exponentially.
+      </div>
+
+      <h3 class="seo-h2">The Mathematical Mechanics of AWG Standards</h3>
+      <p class="seo-p">Established in 1857, the AWG system is formally defined by a geometric sequence of 39 steps between the diameter of 0.4600 inches (4/0 gauge) and 0.0050 inches (36 gauge). Sizes smaller than 36 up to 44 gauge continue this progression.</p>
+
+      <h4 class="seo-h3">1. Diameter Formula Derivation</h4>
+      <p class="seo-p">The diameter $d_n$ of a wire with gauge $n$ is calculated precisely using the formula:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px;">$d_n = 0.127 \times 92^{\frac{36-n}{39}} \text{ mm}$ (or $0.005 \times 92^{\frac{36-n}{39}} \text{ inches}$)</p>
+      <p class="seo-p">For larger structural sizes denoted with multiple zeros (such as 2/0 or 4/0), gauge values are expressed mathematically as negative integers (-1 for 1/0, -3 for 3/0, etc.).</p>
+
+      <h4 class="seo-h3">2. Cross-Sectional Area and Circular Mills</h4>
+      <p class="seo-p">Electrical engineers frequently quantify conductor cross-sections in circular mils (CM), where 1 circular mil equals the area of a circle with a diameter of 1 mil (0.001 inch). In metric environments, square millimeters ($mm^2$) serve as the primary unit for determining total conduit fill and resistance calculations.</p>
+
+      <h4 class="seo-h3">3. Ampacity and Thermal Thresholds</h4>
+      <p class="seo-p">Ampacity refers to the maximum current in amperes that a conductor can carry continuously under the conditions of use without exceeding its temperature rating. Insulation type (such as THHN, THWN, or XHHW) heavily dictates ampacity limits due to varying thermal degradation points (60°C, 75°C, and 90°C).</p>
+
+      <h3>Comprehensive AWG Conductor Reference Matrix</h3>
+      <p class="seo-p">The following engineering table outlines standard physical and electrical characteristics for copper conductors across common wire gauges:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>AWG Size</th>
+              <th>Diameter (mm)</th>
+              <th>Area (mm²)</th>
+              <th>Resistance (Ω/1000ft)</th>
+              <th>Max Ampacity (75°C Copper)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>4/0 (0000)</b></td>
+              <td>11.68 mm</td>
+              <td>107.2 mm²</td>
+              <td>0.0500 Ω</td>
+              <td>230 A</td>
+            </tr>
+            <tr>
+              <td><b>2/0 (00)</b></td>
+              <td>9.27 mm</td>
+              <td>67.4 mm²</td>
+              <td>0.0795 Ω</td>
+              <td>175 A</td>
+            </tr>
+            <tr>
+              <td><b>1 AWG</b></td>
+              <td>7.35 mm</td>
+              <td>42.4 mm²</td>
+              <td>0.1260 Ω</td>
+              <td>130 A</td>
+            </tr>
+            <tr>
+              <td><b>4 AWG</b></td>
+              <td>5.19 mm</td>
+              <td>21.2 mm²</td>
+              <td>0.2480 Ω</td>
+              <td>85 A</td>
+            </tr>
+            <tr>
+              <td><b>8 AWG</b></td>
+              <td>3.26 mm</td>
+              <td>8.37 mm²</td>
+              <td>0.6280 Ω</td>
+              <td>50 A</td>
+            </tr>
+            <tr>
+              <td><b>10 AWG</b></td>
+              <td>2.59 mm</td>
+              <td>5.26 mm²</td>
+              <td>0.9990 Ω</td>
+              <td>35 A</td>
+            </tr>
+            <tr>
+              <td><b>12 AWG</b></td>
+              <td>2.05 mm</td>
+              <td>3.31 mm²</td>
+              <td>1.5880 Ω</td>
+              <td>25 A</td>
+            </tr>
+            <tr>
+              <td><b>14 AWG</b></td>
+              <td>1.63 mm</td>
+              <td>2.08 mm²</td>
+              <td>2.5250 Ω</td>
+              <td>20 A</td>
+            </tr>
+            <tr>
+              <td><b>16 AWG</b></td>
+              <td>1.29 mm</td>
+              <td>1.31 mm²</td>
+              <td>4.0160 Ω</td>
+              <td>15 A</td>
+            </tr>
+            <tr>
+              <td><b>18 AWG</b></td>
+              <td>1.02 mm</td>
+              <td>0.823 mm²</td>
+              <td>6.3850 Ω</td>
+              <td>10 A</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Technical Engineering Segment</h3>
+
+      <h3>What happens if I use a wire gauge that is too small for my electrical load?</h3>
+      <p class="seo-p">Using an undersized wire (higher AWG number than required) increases electrical resistance. According to Joule's law ($P = I^2R$), higher resistance generates excessive thermal energy under load. This causes the insulation to melt, risking short circuits, voltage drops at the load end, and potentially catastrophic electrical fires.</p>
+
+      <h3>How does wire length affect voltage drop in residential and industrial circuits?</h3>
+      <p class="seo-p">Current flowing through copper wire encounters resistance proportional to its total length. Voltage drop ($V_{drop} = 2 \times L \times I \times R / 1000$) increases over long distances. Electrical code standards generally recommend keeping total circuit voltage drop under 3% for branch circuits to ensure connected equipment receives proper operating voltage.</p>
+
+      <h3>Is aluminum wire interchangeable with copper wire of the same AWG size?</h3>
+      <p class="seo-p">No. Aluminum has higher electrical resistivity than copper. To carry equivalent current safely, aluminum conductors require a larger cross-sectional area—typically stepping up two AWG sizes (e.g., using 2 AWG aluminum where 4 AWG copper is specified).</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for Conductor Sizing and Safety</h3>
+      <p class="seo-p">Accurate electrical planning requires careful calculation of load currents, ambient temperatures, conduit fill factors, and maximum allowable voltage drops. Always verify your wiring designs against official National Electrical Code (NEC) tables before undertaking structural installations.</p>
+      <p class="seo-p">Our Wire Gauge AWG Size Chart Tool instantly computes exact physical dimensions, resistances, and ampacities right in your browser window, ensuring rapid, reliable data lookup for all your electrical engineering projects.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // AWG Engineering Database
+    const awgDatabase = {
+      "0000": { diaMm: 11.68, areaMm2: 107.2, resPer1kFt: 0.0500, ampacity: 230 },
+      "000":  { diaMm: 10.40, areaMm2: 85.0,  resPer1kFt: 0.0630, ampacity: 200 },
+      "00":   { diaMm: 9.27,  areaMm2: 67.4,  resPer1kFt: 0.0795, ampacity: 175 },
+      "0":    { diaMm: 8.25,  areaMm2: 53.5,  resPer1kFt: 0.1000, ampacity: 150 },
+      "1":    { diaMm: 7.35,  areaMm2: 42.4,  resPer1kFt: 0.1260, ampacity: 130 },
+      "2":    { diaMm: 6.54,  areaMm2: 33.6,  resPer1kFt: 0.1590, ampacity: 115 },
+      "4":    { diaMm: 5.19,  areaMm2: 21.2,  resPer1kFt: 0.2480, ampacity: 85 },
+      "6":    { diaMm: 4.11,  areaMm2: 13.3,  resPer1kFt: 0.3950, ampacity: 65 },
+      "8":    { diaMm: 3.26,  areaMm2: 8.37,  resPer1kFt: 0.6280, ampacity: 50 },
+      "10":   { diaMm: 2.59,  areaMm2: 5.26,  resPer1kFt: 0.9990, ampacity: 35 },
+      "12":   { diaMm: 2.05,  areaMm2: 3.31,  resPer1kFt: 1.5880, ampacity: 25 },
+      "14":   { diaMm: 1.63,  areaMm2: 2.08,  resPer1kFt: 2.5250, ampacity: 20 },
+      "16":   { diaMm: 1.29,  areaMm2: 1.31,  resPer1kFt: 4.0160, ampacity: 15 },
+      "18":   { diaMm: 1.02,  areaMm2: 0.823, resPer1kFt: 6.3850, ampacity: 10 },
+      "20":   { diaMm: 0.812, areaMm2: 0.518, resPer1kFt: 10.150, ampacity: 7 },
+      "22":   { diaMm: 0.644, areaMm2: 0.326, resPer1kFt: 16.140, ampacity: 5 },
+      "24":   { diaMm: 0.511, areaMm2: 0.205, resPer1kFt: 25.670, ampacity: 3.5 }
+    };
+
+    function calculateAwgData() {
+      const selectedGauge = document.getElementById('awgSelect').value;
+      const wireLength = parseFloat(document.getElementById('wireLength').value) || 50;
+      const data = awgDatabase[selectedGauge] || awgDatabase["4"];
+
+      const diaInch = (data.diaMm / 25.4).toFixed(4);
+      const totalLoopRes = ((data.resPer1kFt / 1000) * (wireLength * 2)).toFixed(4);
+
+      document.getElementById('resDiameter').innerText = `${data.diaMm} mm (${diaInch}")`;
+      document.getElementById('resArea').innerText = `${data.areaMm2} mm²`;
+      document.getElementById('resAmpacity').innerText = `${data.ampacity} A`;
+      document.getElementById('resResistance').innerText = `${data.resPer1kFt.toFixed(4)} Ω`;
+      document.getElementById('resLoopRes').innerText = `${totalLoopRes} Ω`;
+      document.getElementById('resType').innerText = 'Copper (Annealed)';
+    }
+
+    function copyAwgResult() {
+      const gauge = document.getElementById('awgSelect').options[document.getElementById('awgSelect').selectedIndex].text;
+      const length = document.getElementById('wireLength').value;
+      const dia = document.getElementById('resDiameter').innerText;
+      const area = document.getElementById('resArea').innerText;
+      const amp = document.getElementById('resAmpacity').innerText;
+      const res = document.getElementById('resResistance').innerText;
+      const loopRes = document.getElementById('resLoopRes').innerText;
+
+      const summary = `--- AWG Wire Specification Summary ---
+Gauge: ${gauge}
+Length (One-Way): ${length} ft
+Diameter: ${dia}
+Cross-Section Area: ${area}
+Max Ampacity: ${amp}
+DC Resistance: ${res} per 1000ft
+Total Loop Resistance (${length}ft): ${loopRes}
+Generated via Texus Pro Tools`;
+
+      navigator.clipboard.writeText(summary).then(() => {
+        const btn = document.getElementById('copyAwgBtn');
+        const origText = btn.innerText;
+        btn.innerText = '✓ Copied to Clipboard!';
+        btn.style.background = '#dcfce7';
+        btn.style.color = '#166534';
+        setTimeout(() => {
+          btn.innerText = origText;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 2000);
+      });
+    }
+
+    // Initialize calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateAwgData();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
