@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Meat Cooking Temperature Guide | USDA Safe Internal Temps Calculator</title>
+  <meta name="description" content="Accurate, fast, and free online Meat Cooking Temperature Guide. Check USDA safe internal cooking temperatures for beef, pork, poultry, fish, and wild game instantly." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/meat-cooking-temperature-guide/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Meat Cooking Temperature Guide Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced culinary safety and internal temperature calculator providing USDA-compliant cooking guidelines for beef, poultry, pork, lamb, seafood, and wild game.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TOOL SPECIFIC INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-select-field, .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-select-field:focus, .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .temp-display-card { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 24px; text-align: left; display: flex; flex-direction: column; justify-content: center; gap: 12px; box-sizing: border-box; }
+    .temp-large-val { font-size: 2.5rem; font-weight: 800; color: #1e293b; line-height: 1; }
+    .temp-sub-val { font-size: 1rem; color: #64748b; font-weight: 600; }
+    
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🥩</span> Meat Cooking Temperature Guide</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="meatCategory">Select Meat Category</label>
+          <select id="meatCategory" class="f-select-field" onchange="updateMeatCuts()">
+            <option value="beef">Beef, Veal &amp; Lamb (Steaks, Roasts, Chops)</option>
+            <option value="poultry">Poultry (Chicken, Turkey, Duck, Goose)</option>
+            <option value="pork">Pork &amp; Ham</option>
+            <option value="ground">Ground Meats (Beef, Pork, Lamb, Mixed)</option>
+            <option value="seafood">Fish &amp; Shellfish</option>
+            <option value="wild">Wild Game &amp; Exotic Meats</option>
+          </select>
+
+          <label for="meatCut" style="margin-top: 12px;">Select Specific Cut / Doneness</label>
+          <select id="meatCut" class="f-select-field" onchange="calculateTemp()">
+            <!-- Populated dynamically via JS -->
+          </select>
+        </div>
+        
+        <div class="panel-output-wrap">
+          <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px;">Target Internal Temperature</label>
+          <div class="temp-display-card">
+            <div id="tempResultF" class="temp-large-val">145°F (63°C)</div>
+            <div id="tempResultC" class="temp-sub-val">Celsius: 63°C</div>
+            <div id="restTimeResult" style="font-size: 0.9rem; color: #2563eb; font-weight: 700; margin-top: 4px;">Recommended Rest Time: 3 Minutes</div>
+            <div id="safetyNotes" style="font-size: 0.885rem; color: #475569; line-height: 1.4;">Insert digital meat thermometer into the thickest part of the meat away from bone or fat.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateTemp()">Refresh Guidelines</button>
+        <button class="f-btn f-btn-copy" id="copyTempBtn" onclick="copyTempDetails()">📋 Copy Guidelines</button>
+        <button class="f-btn f-btn-clear" onclick="resetTempTool()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">🔥 Culinary Accuracy Guarantee:</span>
+        All internal cooking temperatures adhere strictly to United States Department of Agriculture (USDA) food safety standards and professional culinary best practices.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Science of Culinary Precision: USDA Internal Temperatures, Thermometer Placement, and Meat Rest Mechanics</h2>
+      <p class="seo-p">Achieving perfection in the kitchen or at the backyard smoker requires more than just guesswork—it demands absolute mastery over internal meat temperatures. Whether you are searing a prime ribeye steak, roasting a holiday whole turkey, smoking pork ribs for 12 hours, or grilling delicate salmon fillets, monitoring internal thermal thresholds is the single most important factor separating culinary triumph from dry, rubbery, or unsafe food.</p>
+      <p class="seo-p">This extensive guide explores USDA-approved safe minimum internal temperatures, breaks down the physics of thermal carryover cooking, explains proper digital probe placement, and provides a comprehensive reference matrix for every major protein category.</p>
+
+      <div class="seo-callout">
+        <strong>The Golden Rule of Doneness:</strong> Never rely on external cooking time or visual appearance (such as meat color or juices) to determine safety or doneness. Myoglobin proteins and natural oxidation can cause beef and pork to remain pink even after reaching fully sterilized internal thresholds. Always use an instant-read digital meat thermometer.
+      </div>
+
+      <h3 class="seo-h2">The Core Mechanics: Why Internal Temperature Dictates Food Safety</h3>
+      <p class="seo-p">Pathogenic bacteria such as *Salmonella*, *Escherichia coli (E. coli)*, *Listeria monocytogenes*, and *Staphylococcus aureus* thrive in the "Danger Zone" between 40°F (4°C) and 140°F (60°C). When cooking whole muscle cuts or ground meats, applying sustained thermal energy denatures bacterial cell walls and neutralizes microbial threats.</p>
+
+      <h4 class="seo-h3">1. Whole Muscle vs. Ground Meats</h4>
+      <p class="seo-p">Whole muscle cuts like steaks, roasts, and pork chops are sterile on the interior; bacteria only live on external surfaces. That is why a steak can safely be cooked to rare (125°F-130°F) because the searing process kills surface pathogens. Ground meats, however, mix exterior surfaces throughout the entire batch during grinding, distributing bacteria evenly. Consequently, ground beef, pork, and lamb must always be cooked to a uniform minimum internal temperature of 160°F (71°C).</p>
+
+      <h4 class="seo-h3">2. Thermal Carryover and Resting</h4>
+      <p class="seo-p">When meat cooks in a hot oven or smoker, heat travels from the exterior surface toward the geometric center. When you remove meat from the heat source, thermal energy continues to migrate inward. This phenomenon—known as carryover cooking—causes the internal temperature to rise by 5°F to 15°F during the resting phase. Resting meat also allows muscle fibers to relax and reabsorb flavorful juices that would otherwise spill out onto the cutting board.</p>
+
+      <h4 class="seo-h3">3. Proper Probe Placement Protocols</h4>
+      <p class="seo-p">Insert your instant-read digital thermometer into the thickest portion of the cut. Ensure the metal sensor tip does not touch bone, gristle, or pockets of pure fat, as bone conducts heat rapidly and fat insulates, leading to false high or low temperature readings.</p>
+
+      <h3>The Statutory Reference Matrix: Comprehensive Meat Temperature Chart</h3>
+      <p class="seo-p">Review the complete USDA-compliant internal cooking temperature and resting time guidelines across all popular protein categories:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Meat Category</th>
+              <th>Specific Cut / Doneness</th>
+              <th>Target Internal Temp (°F)</th>
+              <th>Target Internal Temp (°C)</th>
+              <th>Recommended Rest Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Beef, Veal &amp; Lamb</td>
+              <td>Rare (Steaks &amp; Chops)</td>
+              <td>120°F - 125°F</td>
+              <td>49°C - 52°C</td>
+              <td>3 Minutes</td>
+            </tr>
+            <tr>
+              <td>Beef, Veal &amp; Lamb</td>
+              <td>Medium Rare (Recommended)</td>
+              <td>130°F - 135°F</td>
+              <td>54°C - 57°C</td>
+              <td>3 Minutes</td>
+            </tr>
+            <tr>
+              <td>Beef, Veal &amp; Lamb</td>
+              <td>Medium</td>
+              <td>140°F - 145°F</td>
+              <td>60°C - 63°C</td>
+              <td>3 Minutes</td>
+            </tr>
+            <tr>
+              <td>Beef, Veal &amp; Lamb</td>
+              <td>Medium Well / Well Done</td>
+              <td>150°F - 160°F+</td>
+              <td>66°C - 71°C+</td>
+              <td>3 Minutes</td>
+            </tr>
+            <tr>
+              <td>Beef, Veal &amp; Lamb</td>
+              <td>Roasts (Prime Rib, Tenderloin)</td>
+              <td>135°F (Med-Rare)</td>
+              <td>57°C</td>
+              <td>15-20 Minutes</td>
+            </tr>
+            <tr>
+              <td>Poultry</td>
+              <td>Whole Chicken or Turkey</td>
+              <td>165°F</td>
+              <td>74°C</td>
+              <td>20 Minutes</td>
+            </tr>
+            <tr>
+              <td>Poultry</td>
+              <td>Chicken &amp; Turkey Breasts</td>
+              <td>165°F</td>
+              <td>74°C</td>
+              <td>3 Minutes</td>
+            </tr>
+            <tr>
+              <td>Poultry</td>
+              <td>Chicken &amp; Turkey Thighs / Wings</td>
+              <td>175°F - 180°F</td>
+              <td>79°C - 82°C</td>
+              <td>5 Minutes</td>
+            </tr>
+            <tr>
+              <td>Pork</td>
+              <td>Pork Chops &amp; Loin Roasts</td>
+              <td>145°F</td>
+              <td>63°C</td>
+              <td>3 Minutes</td>
+            </tr>
+            <tr>
+              <td>Pork</td>
+              <td>Pork Shoulder / Butt (Pulled Pork)</td>
+              <td>203°F - 205°F</td>
+              <td>95°C - 96°C</td>
+              <td>30 - 60 Minutes</td>
+            </tr>
+            <tr>
+              <td>Ground Meats</td>
+              <td>Ground Beef, Pork, Veal, Lamb</td>
+              <td>160°F</td>
+              <td>71°C</td>
+              <td>None Required</td>
+            </tr>
+            <tr>
+              <td>Ground Meats</td>
+              <td>Ground Turkey &amp; Chicken</td>
+              <td>165°F</td>
+              <td>74°C</td>
+              <td>None Required</td>
+            </tr>
+            <tr>
+              <td>Seafood</td>
+              <td>Fin Fish (Salmon, Halibut, Cod)</td>
+              <td>140°F - 145°F</td>
+              <td>60°C - 63°C</td>
+              <td>None Required</td>
+            </tr>
+            <tr>
+              <td>Seafood</td>
+              <td>Shrimp, Lobster, Scallops</td>
+              <td>Opaque &amp; Firm</td>
+              <td>Opaque &amp; Firm</td>
+              <td>None Required</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Culinary Safety &amp; Technique</h3>
+
+      <h3>Why is pulled pork cooked to such a high temperature (203°F) when pork loin is safe at 145°F?</h3>
+      <p class="seo-p">Pork shoulder (Boston butt) contains massive amounts of tough connective tissue called collagen. Collagen does not melt at 145°F. It requires sustained internal temperatures between 195°F and 205°F to break down completely into gelatin, resulting in tender, melt-in-your-mouth pulled pork.</p>
+
+      <h3>Should I remove meat from the heat before it reaches the target temperature?</h3>
+      <p class="seo-p">Yes! Because of carryover cooking, you should pull large roasts and turkeys from the oven or smoker when they are about 5°F below your target internal temperature. Smaller cuts like steaks and chops will rise about 3°F to 5°F while resting.</p>
+
+      <h3>How often should I calibrate my digital meat thermometer?</h3>
+      <p class="seo-p">You should test your instant-read thermometer periodically using the ice-water test. Fill a glass with crushed ice and top it with cold water. Insert the probe into the center without touching the glass. The reading should stabilize precisely at 32°F (0°C). If it is off by more than 2 degrees, adjust or replace the unit.</p>
+
+      <h3 class="seo-h2">Summary: Mastering Professional Kitchen Standards</h3>
+      <p class="seo-p">Mastering meat cooking temperatures eliminates culinary anxiety and ensures absolute food safety for your family and guests. By combining accurate digital thermometers, understanding thermal carryover, and adhering to USDA guidelines, you will consistently produce restaurant-quality meals.</p>
+      <p class="seo-p">Our Advanced Meat Cooking Temperature Guide calculator instantly retrieves exact Fahrenheit and Celsius thresholds, rest times, and safety protocols for every cut of meat, empowering you to cook with confidence every single time.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const meatData = {
+      beef: [
+        { name: "Rare (Steaks & Chops)", f: "120°F - 125°F", c: "49°C - 52°C", rest: "3 Minutes", notes: "Bright red center, very tender and juicy." },
+        { name: "Medium Rare (Recommended)", f: "130°F - 135°F", c: "54°C - 57°C", rest: "3 Minutes", notes: "Warm red center, optimal tenderness and flavor." },
+        { name: "Medium (Steaks & Chops)", f: "140°F - 145°F", c: "60°C - 63°C", rest: "3 Minutes", notes: "Warm pink center, slightly firmer texture." },
+        { name: "Medium Well", f: "150°F - 155°F", c: "66°C - 68°C", rest: "3 Minutes", notes: "Slight hint of pink in the center." },
+        { name: "Well Done", f: "160°F+", c: "71°C+", rest: "3 Minutes", notes: "Fully cooked throughout with no pink." },
+        { name: "Prime Rib / Beef Roast", f: "135°F (Medium-Rare)", c: "57°C", rest: "15-20 Minutes", notes: "Pull 5°F early to allow carryover cooking." },
+        { name: "Brisket (Low & Slow BBQ)", f: "203°F - 205°F", c: "95°C - 96°C", rest: "1 Hour (Insulated)", notes: "Tender enough to pass the probe-tender test." }
+      ],
+      poultry: [
+        { name: "Whole Chicken or Turkey", f: "165°F", c: "74°C", rest: "20 Minutes", notes: "Measured in the thickest part of the breast and inner thigh." },
+        { name: "Chicken & Turkey Breasts", f: "165°F", c: "74°C", rest: "3 Minutes", notes: "Prevent drying out by removing immediately at 165°F." },
+        { name: "Chicken & Turkey Thighs / Wings", f: "175°F - 180°F", c: "79°C - 82°C", rest: "5 Minutes", notes: "Dark meat benefits from slightly higher temp to render connective tissue." },
+        { name: "Duck & Goose Whole", f: "165°F (Breast) / 180°F (Thigh)", c: "74°C / 82°C", rest: "15 Minutes", notes: "Prick skin beforehand to render fat effectively." }
+      ],
+      pork: [
+        { name: "Pork Chops & Loin Roasts", f: "145°F", c: "63°C", rest: "3 Minutes", notes: "USDA safe standard; yields juicy, slightly pink meat." },
+        { name: "Pork Tenderloin", f: "145°F", c: "63°C", rest: "5 Minutes", notes: "Lean cut; do not overcook to maintain tenderness." },
+        { name: "Pork Shoulder / Butt (Pulled Pork)", f: "203°F - 205°F", c: "95°C - 96°C", rest: "30 - 60 Minutes", notes: "High temp melts collagen into succulent gelatin." },
+        { name: "Ham, Fresh (Raw)", f: "145°F", c: "63°C", rest: "3 Minutes", notes: "Allow adequate resting time before carving." },
+        { name: "Ham, Cured (Pre-cooked / Reheat)", f: "140°F", c: "60°C", rest: "None Required", notes: "Reheat sealed or spiral-cut hams gently." }
+      ],
+      ground: [
+        { name: "Ground Beef, Pork, Veal & Lamb", f: "160°F", c: "71°C", rest: "None Required", notes: "Uniform pinkness is eliminated; bacteria killed throughout." },
+        { name: "Ground Turkey & Chicken", f: "165°F", c: "74°C", rest: "None Required", notes: "Poultry mince requires higher thermal threshold for safety." },
+        { name: "Meatloaf & Meatballs", f: "160°F (Beef/Pork) / 165°F (Poultry)", c: "71°C / 74°C", rest: "5 Minutes", notes: "Check center of loaf with digital thermometer." }
+      ],
+      seafood: [
+        { name: "Fin Fish (Salmon, Halibut, Cod, Tuna)", f: "140°F - 145°F", c: "60°C - 63°C", rest: "None Required", notes: "Fish is done when flesh flakes easily with a fork and is opaque." },
+        { name: "Shrimp, Prawns & Lobster", f: "Opaque & Firm", c: "Opaque & Firm", rest: "None Required", notes: "Turns pink and opaque throughout when fully cooked." },
+        { name: "Scallops", f: "Milky White & Firm", c: "Milky White & Firm", rest: "None Required", notes: "Cook quickly over high heat; avoid rubbery overcooking." }
+      ],
+      wild: [
+        { name: "Venison Steaks & Chops", f: "130°F - 135°F", c: "54°C - 57°C", rest: "3 Minutes", notes: "Very lean game meat dries out quickly if overcooked." },
+        { name: "Venison Roast", f: "135°F", c: "57°C", rest: "15 Minutes", notes: "Slice thin across the grain for maximum tenderness." },
+        { name: "Wild Boar", f: "145°F", c: "63°C", rest: "3 Minutes", notes: "Treat similarly to domestic pork cuts." },
+        { name: "Duck, Wild / Goose", f: "165°F", c: "74°C", rest: "10 Minutes", notes: "Wild fowl can carry higher bacterial loads; cook thoroughly." }
+      ]
+    };
+
+    function updateMeatCuts() {
+      const categorySelect = document.getElementById('meatCategory');
+      const cutSelect = document.getElementById('meatCut');
+      const selectedCategory = categorySelect.value;
+      
+      cutSelect.innerHTML = '';
+      
+      const cuts = meatData[selectedCategory] || [];
+      cuts.forEach((cut, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = cut.name;
+        cutSelect.appendChild(option);
+      });
+      
+      calculateTemp();
+    }
+
+    function calculateTemp() {
+      const categorySelect = document.getElementById('meatCategory');
+      const cutSelect = document.getElementById('meatCut');
+      
+      const category = categorySelect.value;
+      const cutIndex = cutSelect.value;
+      
+      if (cutIndex === "" || !meatData[category] || !meatData[category][cutIndex]) return;
+      
+      const selectedData = meatData[category][cutIndex];
+      
+      document.getElementById('tempResultF').textContent = selectedData.f;
+      document.getElementById('tempResultC').textContent = "Celsius Equivalent: " + selectedData.c;
+      document.getElementById('restTimeResult').textContent = "Recommended Rest Time: " + selectedData.rest;
+      document.getElementById('safetyNotes').textContent = selectedData.notes;
+    }
+
+    function copyTempDetails() {
+      const categorySelect = document.getElementById('meatCategory');
+      const cutSelect = document.getElementById('meatCut');
+      const categoryText = categorySelect.options[categorySelect.selectedIndex].text;
+      const cutText = cutSelect.options[cutSelect.selectedIndex].text;
+      
+      const tempF = document.getElementById('tempResultF').textContent;
+      const tempC = document.getElementById('tempResultC').textContent;
+      const rest = document.getElementById('restTimeResult').textContent;
+      const notes = document.getElementById('safetyNotes').textContent;
+      
+      const textToCopy = `Meat Cooking Temperature Guide:\nCategory: ${categoryText}\nCut/Doneness: ${cutText}\nTarget Temp: ${tempF} (${tempC})\n${rest}\nNotes: ${notes}`;
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const btn = document.getElementById('copyTempBtn');
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Copied to Clipboard!';
+        setTimeout(() => { btn.textContent = originalText; }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+
+    function resetTempTool() {
+      document.getElementById('meatCategory').selectedIndex = 0;
+      updateMeatCuts();
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      updateMeatCuts();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror
