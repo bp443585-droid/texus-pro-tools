@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>LED Series Resistor Calculator | Free Online Resistor Value & Power Tool</title>
+  <meta name="description" content="Calculate the exact series resistor value and power rating needed for your LED circuits instantly. Free, accurate, and easy-to-use electrical utility." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/led-series-resistor-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "LED Series Resistor Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Calculate exact series resistor values and power dissipation ratings for single or multi-LED circuits securely and instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* INPUT GRID & CONTROLS */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-select-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; }
+
+    /* RESULTS DASHBOARD */
+    .results-display-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+    .result-card { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .result-card h4 { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 8px 0; font-weight: 700; }
+    .result-card .res-value { font-size: 1.6rem; font-weight: 800; color: #0f172a; font-family: 'Courier New', Courier, monospace; margin: 0; }
+    .result-card .res-sub { font-size: 0.8rem; color: #2563eb; font-weight: 600; margin-top: 4px; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .results-display-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>💡</span> LED Series Resistor Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="supplyVoltage">Source Voltage ($V_{in}$) [Volts]</label>
+          <input type="number" id="supplyVoltage" class="f-input-field" value="12" step="0.1" min="0.1" oninput="calculateLedResistor()" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="ledPreset">LED Preset / Color Type</label>
+          <select id="ledPreset" class="f-select-field" onchange="applyLedPreset(); calculateLedResistor();">
+            <option value="custom">Custom LED Parameters</option>
+            <option value="red" selected>Red LED (1.8V, 20mA)</option>
+            <option value="green">Green LED (2.1V, 20mA)</option>
+            <option value="blue">Blue LED (3.2V, 20mA)</option>
+            <option value="white">White LED (3.3V, 20mA)</option>
+            <option value="amber">Amber / Yellow LED (2.0V, 20mA)</option>
+            <option value="infrared">Infrared LED (1.4V, 50mA)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="forwardVoltage">LED Forward Voltage ($V_{f}$) [Volts]</label>
+          <input type="number" id="forwardVoltage" class="f-input-field" value="1.8" step="0.1" min="0.1" oninput="calculateLedResistor()" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="forwardCurrent">LED Forward Current ($I_{f}$) [Milliamps]</label>
+          <input type="number" id="forwardCurrent" class="f-input-field" value="20" step="1" min="1" oninput="calculateLedResistor()" />
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="ledCount">Number of LEDs in Series</label>
+          <input type="number" id="ledCount" class="f-input-field" value="1" step="1" min="1" oninput="calculateLedResistor()" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="safetyMargin">Safety Margin (Current Drop %)</label>
+          <select id="safetyMargin" class="f-select-field" onchange="calculateLedResistor()">
+            <option value="0">0% (Exact Calculation)</option>
+            <option value="5" selected>5% (Recommended Standard)</option>
+            <option value="10">10% (High Reliability)</option>
+            <option value="15">15% (Extended Component Life)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="results-display-grid">
+        <div class="result-card">
+          <h4>Exact Resistor Value</h4>
+          <p class="res-value" id="exactResistorResult">510 Ω</p>
+          <div class="res-sub" id="standardResistorResult">Standard E24: 510 Ω</div>
+        </div>
+        <div class="result-card">
+          <h4>Power Dissipation</h4>
+          <p class="res-value" id="powerDissipationResult">0.20 W</p>
+          <div class="res-sub" id="powerRatingRecommendation">Recommended: 1/2 W</div>
+        </div>
+        <div class="result-card">
+          <h4>Total Circuit Current</h4>
+          <p class="res-value" id="totalCurrentResult">20.0 mA</p>
+          <div class="res-sub" id="voltageDropSummary">LED Drop: 1.8V | Res: 10.2V</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateLedResistor()">Recalculate Values</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy LED Specification Summary</button>
+        <button class="f-btn f-btn-clear" onclick="clearLedWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Ohm's Law & Power Verification Engine Active:</span>
+        Calculations instantly evaluate series voltage drops, standard E24/E12 resistor rounding tiers, and minimum thermal power dissipation wattages to prevent component overheating.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Engineering Physics of LED Circuitry: Ohm's Law, Forward Voltage Drop Curves, and Resistor Power Dissipation Ratings</h2>
+      <p class="seo-p">Light Emitting Diodes (LEDs) are current-driven semiconductor devices characterized by a non-linear voltage-current (V-I) curve. Unlike incandescent bulbs that act as simple ohmic resistors, an LED exhibits a relatively constant forward voltage drop ($V_f$) once it begins conducting. If connected directly to a DC voltage source that exceeds this forward threshold without current-limiting hardware, the LED's internal resistance collapses, resulting in thermal runaway and catastrophic semiconductor burnout within milliseconds. Deploying an accurately sized series resistor is essential to regulate current flow safely.</p>
+      <p class="seo-p">This extensive engineering manual examines the mathematical equations governing series resistor selection, analyzes power dissipation rules, explores multi-LED array configurations, and explains how standard resistor tolerance bands impact long-term circuit stability.</p>
+
+      <div class="seo-callout">
+        <strong>The Fundamental Calculation Equation:</strong> The required series resistance ($R$) is determined by subtracting the total LED forward voltage drop from the supply voltage, then dividing the result by the target forward current ($I_f$): <br><br>
+        <code>R = (V_in - (V_f × N)) / I_f</code>
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Step-by-Step Circuit Design Mathematics</h3>
+      <p class="seo-p">When designing single or multi-stage LED illumination setups, engineers follow a precise sequence of calculations to ensure optimal brightness and component longevity:</p>
+
+      <h4 class="seo-h3">1. Establishing Source Voltage and Total Forward Potential</h4>
+      <p class="seo-p">The power supply voltage ($V_{in}$) represents the available electrical potential (e.g., a 5V USB line, 12V automotive battery, or 24V industrial bus). When multiple LEDs are wired in series, their forward voltage drops ($V_f$) add up directly. For example, three white LEDs in series at 3.3V each create a combined drop of 9.9V.</p>
+
+      <h4 class="seo-h3">2. Calculating Voltage Across the Current-Limiting Resistor</h4>
+      <p class="seo-p">According to Kirchhoff's Voltage Law, the sum of voltage drops around a closed loop must equal the source voltage. The remaining voltage that the series resistor must drop ($V_r$) is calculated as: <br>
+      `V_r = V_{in} - (V_f \times \text{LED Count})`</p>
+
+      <h4 class="seo-h3">3. Applying Ohm's Law for Resistance Value</h4>
+      <p class="seo-p">Using Ohm's Law ($R = V / I$), the required resistance is found by dividing the resistor voltage ($V_r$) by the desired forward current ($I_f$). A small safety margin (typically 5% to 10%) is often factored in to account for component tolerances and supply voltage fluctuations.</p>
+
+      <h4 class="seo-h3">4. Determining Power Dissipation and Resistor Wattage</h4>
+      <p class="seo-p">Electric current passing through a resistor generates thermal energy. Power dissipation ($P$) is calculated using the formula: <br>
+      `P = V_r \times I_f` or `P = I_f^2 \times R`. <br>
+      Selecting a resistor with an adequate wattage rating (e.g., 1/4W, 1/2W, or 1W) prevents the component from overheating or burning out.</p>
+
+      <h3>Standard LED Characteristics and Typical Electrical Parameters</h3>
+      <p class="seo-p">Different semiconductor chemical compositions determine the characteristic forward voltage and typical operating currents of various LED colors:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>LED Color / Type</th>
+              <th>Typical Forward Voltage ($V_f$)</th>
+              <th>Standard Forward Current ($I_f$)</th>
+              <th>Semiconductor Material Base</th>
+              <th>Primary Application Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Red LED</td>
+              <td><b>1.8 V</b> - 2.0 V</td>
+              <td>15 mA - 20 mA</td>
+              <td>Gallium Arsenide Phosphide (GaAsP)</td>
+              <td>Indicator lights, instrument panels, hobbyist projects.</td>
+            </tr>
+            <tr>
+              <td>Green LED</td>
+              <td><b>2.1 V</b> - 2.4 V</td>
+              <td>15 mA - 20 mA</td>
+              <td>Gallium Phosphide (GaP)</td>
+              <td>Status displays, traffic signals, backlight illumination.</td>
+            </tr>
+            <tr>
+              <td>Blue LED</td>
+              <td><b>3.2 V</b> - 3.6 V</td>
+              <td>20 mA - 25 mA</td>
+              <td>Indium Gallium Nitride (InGaN)</td>
+              <td>Display backlights, architectural lighting, indicators.</td>
+            </tr>
+            <tr>
+              <td>White LED</td>
+              <td><b>3.2 V</b> - 3.4 V</td>
+              <td>20 mA - 30 mA</td>
+              <td>InGaN with YAG Phosphor Coating</td>
+              <td>Flashlights, room lighting, automotive headlamps.</td>
+            </tr>
+            <tr>
+              <td>Infrared (IR) LED</td>
+              <td><b>1.2 V</b> - 1.5 V</td>
+              <td>50 mA - 100 mA</td>
+              <td>Gallium Arsenide (GaAs)</td>
+              <td>Remote controls, optical sensors, night vision arrays.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Engineering Diagnostic Segment</h3>
+
+      <h3>What happens if the calculated resistor value is not available in standard E24/E12 series?</h3>
+      <p class="seo-p">Resistors are manufactured in standardized commercial values (such as the E12 and E24 series). If your exact calculated resistance is 482 ohms, you should select the next higher standard value (in this case, 510 ohms). Choosing a slightly higher resistance marginally decreases the forward current, which increases LED lifespan with an imperceptible reduction in brightness.</p>
+
+      <h3>Can I connect multiple LEDs in parallel using a single resistor?</h3>
+      <p class="seo-p">Connecting multiple LEDs in parallel with a *single* shared resistor is generally discouraged unless the LEDs are from the exact same manufacturing batch and share identical thermal conditions. Due to minor variations in forward voltage, one LED will hog more current, heat up, lower its resistance further, and eventually fail. Always use individual resistors for parallel legs or wire LEDs in series.</p>
+
+      <h3>Why is resistor wattage rating important in high-voltage differential circuits?</h3>
+      <p class="seo-p">When the voltage drop across the resistor is large (such as running a 1.8V red LED from a 24V industrial supply), the resistor must dissipate substantial thermal energy. If you use a standard 1/4W (0.25W) resistor when the circuit requires 0.6W, the resistor will overheat, smoke, and fail open-circuit. Always match or exceed the calculated power dissipation rating.</p>
+
+      <h3>How does local device script execution ensure project security?</h3>
+      <p class="seo-p">Texus Pro Tools values your data privacy. All electrical calculations execute entirely within your browser's local memory engine. No design inputs, voltage parameters, or circuit variables are ever transmitted to external servers.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Circuit Design</h3>
+      <p class="seo-p">To build reliable, long-lasting electronic circuits, always verify your power supply voltage stability, account for multi-LED forward voltage drops, select standard resistor values rounded upward, and ensure adequate power dissipation wattage margins.</p>
+      <p class="seo-p">Our Advanced LED Series Resistor Calculator automates all these computational tasks instantly, providing precise resistor values, power ratings, and circuit parameters across any mobile or desktop device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // LED Calculator Core Logic
+    const standardE24Values = [
+      10, 11, 12, 13, 15, 16, 18, 20, 22, 24, 27, 30, 33, 36, 39, 43, 47, 51, 56, 62, 68, 75, 82, 91,
+      100, 110, 120, 130, 150, 160, 180, 200, 220, 240, 270, 300, 330, 360, 390, 430, 470, 510, 560, 620, 680, 750, 820, 910,
+      1000, 1100, 1200, 1300, 1500, 1600, 1800, 2000, 2200, 2400, 2700, 3000, 3300, 3600, 3900, 4300, 4700, 5100, 5600, 6200, 6800, 7500, 8200, 9100,
+      10000, 11000, 12000, 13000, 15000, 16000, 18000, 20000, 22000, 24000, 27000, 30000, 33000, 36000, 39000, 43000, 47000, 51000, 56000, 62000, 68000, 75000, 82000, 91000,
+      100000, 120000, 150000, 180000, 220000, 270000, 330000, 390000, 470000, 560000, 680000, 820000, 1000000
+    ];
+
+    function applyLedPreset() {
+      const preset = document.getElementById('ledPreset').value;
+      const vfInput = document.getElementById('forwardVoltage');
+      const ifInput = document.getElementById('forwardCurrent');
+
+      switch(preset) {
+        case 'red':
+          vfInput.value = 1.8;
+          ifInput.value = 20;
+          break;
+        case 'green':
+          vfInput.value = 2.1;
+          ifInput.value = 20;
+          break;
+        case 'blue':
+          vfInput.value = 3.2;
+          ifInput.value = 20;
+          break;
+        case 'white':
+          vfInput.value = 3.3;
+          ifInput.value = 20;
+          break;
+        case 'amber':
+          vfInput.value = 2.0;
+          ifInput.value = 20;
+          break;
+        case 'infrared':
+          vfInput.value = 1.4;
+          ifInput.value = 50;
+          break;
+        default:
+          break;
+      }
+    }
+
+    function getStandardResistor(exactOhms) {
+      if (exactOhms <= 0) return 0;
+      for (let i = 0; i < standardE24Values.length; i++) {
+        if (standardE24Values[i] >= exactOhms) {
+          return standardE24Values[i];
+        }
+      }
+      return standardE24Values[standardE24Values.length - 1];
+    }
+
+    function formatResistance(ohms) {
+      if (ohms >= 1000000) {
+        return (ohms / 1000000).toFixed(2) + ' MΩ';
+      } else if (ohms >= 1000) {
+        return (ohms / 1000).toFixed(2) + ' kΩ';
+      } else {
+        return Math.round(ohms) + ' Ω';
+      }
+    }
+
+    function calculateLedResistor() {
+      const vs = parseFloat(document.getElementById('supplyVoltage').value) || 0;
+      const vf = parseFloat(document.getElementById('forwardVoltage').value) || 0;
+      const ifmA = parseFloat(document.getElementById('forwardCurrent').value) || 0;
+      const count = parseInt(document.getElementById('ledCount').value) || 1;
+      const margin = parseFloat(document.getElementById('safetyMargin').value) || 0;
+
+      const totalVf = vf * count;
+      const adjustedIfmA = ifmA * (1 - margin / 100);
+      const ifAmps = adjustedIfmA / 1000;
+
+      const exactResEl = document.getElementById('exactResistorResult');
+      const stdResEl = document.getElementById('standardResistorResult');
+      const powerResEl = document.getElementById('powerDissipationResult');
+      const powerRecEl = document.getElementById('powerRatingRecommendation');
+      const totalCurrEl = document.getElementById('totalCurrentResult');
+      const voltSummaryEl = document.getElementById('voltageDropSummary');
+
+      if (vs <= totalVf) {
+        exactResEl.innerText = 'Voltage Too Low';
+        stdResEl.innerText = 'Source voltage must exceed total Vf (' + totalVf.toFixed(1) + 'V)';
+        powerResEl.innerText = '0.00 W';
+        powerRecEl.innerText = 'Invalid Configuration';
+        totalCurrEl.innerText = '0.0 mA';
+        voltSummaryEl.innerText = 'Check Supply / LED count';
+        return;
+      }
+
+      if (ifAmps <= 0) {
+        exactResEl.innerText = 'Invalid Current';
+        stdResEl.innerText = 'Current must be greater than 0';
+        powerResEl.innerText = '0.00 W';
+        powerRecEl.innerText = 'Invalid Configuration';
+        totalCurrEl.innerText = '0.0 mA';
+        voltSummaryEl.innerText = 'Check Forward Current';
+        return;
+      }
+
+      const voltageDrop = vs - totalVf;
+      const exactOhms = voltageDrop / ifAmps;
+      const standardOhms = getStandardResistor(exactOhms);
+      
+      // Actual current with standard resistor
+      const actualIfAmps = voltageDrop / standardOhms;
+      const actualIfmA = actualIfAmps * 1000;
+
+      // Power Dissipation P = I^2 * R or P = V * I
+      const powerWatts = voltageDrop * actualIfAmps;
+
+      // Power rating recommendation
