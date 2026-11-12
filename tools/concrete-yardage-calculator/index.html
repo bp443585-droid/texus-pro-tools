@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Concrete Yardage Calculator | Free Online Cubic Yards Estimator</title>
+  <meta name="description" content="Calculate cubic yards of concrete needed for slabs, footings, curbs, and columns instantly with our free online Concrete Yardage Calculator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/concrete-yardage-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Concrete Yardage Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced construction volume estimation tool to calculate exact cubic yards and bags of concrete needed for slabs, footings, and cylindrical columns cleanly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TABS SYSTEM */
+    .calc-tabs { display: flex; gap: 10px; margin-bottom: 25px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; flex-wrap: wrap; }
+    .calc-tab { background: #f8fafc; border: 1px solid #cbd5e1; color: #475569; padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
+    .calc-tab.active { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    /* INPUT FIELDS & GRIDS */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS DASHBOARD */
+    .results-display-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 25px; margin-top: 25px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+    .result-item { display: flex; flex-direction: column; gap: 5px; }
+    .result-label { font-size: 0.8rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.5px; }
+    .result-value { font-size: 1.8rem; font-weight: 800; color: #0f172a; }
+    .result-value span { font-size: 1rem; font-weight: 600; color: #475569; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .results-display-box { grid-template-columns: 1fr; gap: 15px; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🏗️</span> Concrete Yardage Calculator</div>
+    
+    <div class="f-card">
+      <div class="calc-tabs">
+        <button class="calc-tab active" onclick="switchTab('slab', this)">Slab / Rectangle</button>
+        <button class="calc-tab" onclick="switchTab('footing', this)">Footing / Trench</button>
+        <button class="calc-tab" onclick="switchTab('column', this)">Cylindrical Column</button>
+      </div>
+
+      <!-- SLAB FORM -->
+      <div id="form-slab" class="calc-form-pane">
+        <div class="f-io-grid">
+          <div class="f-panel-box">
+            <label for="slab-length">Length</label>
+            <div style="display: flex; gap: 10px;">
+              <input type="number" id="slab-length" class="f-input-field" value="20" min="0" step="0.1" oninput="calculateConcrete()">
+              <select id="slab-length-unit" class="f-select-field" style="max-width: 110px;" onchange="calculateConcrete()">
+                <option value="ft">Feet</option>
+                <option value="in">Inches</option>
+                <option value="yd">Yards</option>
+                <option value="m">Meters</option>
+                <option value="cm">cm</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="f-panel-box">
+            <label for="slab-width">Width</label>
+            <div style="display: flex; gap: 10px;">
+              <input type="number" id="slab-width" class="f-input-field" value="10" min="0" step="0.1" oninput="calculateConcrete()">
+              <select id="slab-width-unit" class="f-select-field" style="max-width: 110px;" onchange="calculateConcrete()">
+                <option value="ft">Feet</option>
+                <option value="in">Inches</option>
+                <option value="yd">Yards</option>
+                <option value="m">Meters</option>
+                <option value="cm">cm</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="f-io-grid" style="margin-top: 15px;">
+          <div class="f-panel-box">
+            <label for="slab-depth">Thickness / Depth</label>
+            <div style="display: flex; gap: 10px;">
+              <input type="number" id="slab-depth" class="f-input-field" value="4" min="0" step="0.1" oninput="calculateConcrete()">
+              <select id="slab-depth-unit" class="f-select-field" style="max-width: 110px;" onchange="calculateConcrete()">
+                <option value="in">Inches</option>
+                <option value="ft">Feet</option>
+                <option value="cm">cm</option>
+                <option value="m">Meters</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="f-panel-box">
+            <label for="slab-waste">Waste Allowance (%)</label>
+            <input type="number" id="slab-waste" class="f-input-field" value="5" min="0" max="50" step="1" oninput="calculateConcrete()">
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTING FORM -->
+      <div id="form-footing" class="calc-form-pane" style="display: none;">
+        <div class="f-io-grid">
+          <div class="f-panel-box">
+            <label for="footing-length">Total Length / Perimeter</label>
+            <div style="display: flex; gap: 10px;">
+              <input type="number" id="footing-length" class="f-input-field" value="50" min="0" step="0.1" oninput="calculateConcrete()">
+              <select id="footing-length-unit" class="f-select-field" style="max-width: 110px;" onchange="calculateConcrete()">
+                <option value="ft">Feet</option>
+                <option value="yd">Yards</option>
+                <option value="m">Meters</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="f-panel-box">
+            <label for="footing-width">Width</label>
+            <div style="display: flex; gap: 10px;">
+              <input type="number" id="footing-width" class="f-input-field" value="16" min="0" step="0.1" oninput="calculateConcrete()">
+              <select id="footing-width-unit" class="f-select-field" style="max-width: 110px;" onchange="calculateConcrete()">
+                <option value="in">Inches</option>
+                <option value="ft">Feet</option>
+                <option value="cm">cm</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="f-io-grid" style="margin-top: 15px;">
+          <div class="f-panel-box">
+            <label for="footing-depth">Depth / Thickness</label>
+            <div style="display: flex; gap: 10px;">
+              <input type="number" id="footing-depth" class="f-input-field" value="8" min="0" step="0.1" oninput="calculateConcrete()">
+              <select id="footing-depth-unit" class="f-select-field" style="max-width: 110px;" onchange="calculateConcrete()">
+                <option value="in">Inches</option>
+                <option value="ft">Feet</option>
+                <option value="cm">cm</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="f-panel-box">
+            <label for="footing-waste">Waste Allowance (%)</label>
+            <input type="number" id="footing-waste" class="f-input-field" value="10" min="0" max="50" step="1" oninput="calculateConcrete()">
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMN FORM -->
+      <div id="form-column" class="calc-form-pane" style="display: none;">
+        <div class="f-io-grid">
+          <div class="f-panel-box">
+            <label for="col-diameter">Diameter</label>
+            <div style="display: flex; gap: 10px;">
+              <input type="number" id="col-diameter" class="f-input-field" value="12" min="0" step="0.1" oninput="calculateConcrete()">
+              <select id="col-diameter-unit" class="f-select-field" style="max-width: 110px;" onchange="calculateConcrete()">
+                <option value="in">Inches</option>
+                <option value="ft">Feet</option>
+                <option value="cm">cm</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="f-panel-box">
+            <label for="col-height">Height / Depth</label>
+            <div style="display: flex; gap: 10px;">
+              <input type="number" id="col-height" class="f-input-field" value="8" min="0" step="0.1" oninput="calculateConcrete()">
+              <select id="col-height-unit" class="f-select-field" style="max-width: 110px;" onchange="calculateConcrete()">
+                <option value="ft">Feet</option>
+                <option value="in">Inches</option>
+                <option value="m">Meters</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="f-io-grid" style="margin-top: 15px;">
+          <div class="f-panel-box">
+            <label for="col-count">Number of Columns</label>
+            <input type="number" id="col-count" class="f-input-field" value="4" min="1" step="1" oninput="calculateConcrete()">
+          </div>
+          
+          <div class="f-panel-box">
+            <label for="col-waste">Waste Allowance (%)</label>
+            <input type="number" id="col-waste" class="f-input-field" value="5" min="0" max="50" step="1" oninput="calculateConcrete()">
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULTS PANEL -->
+      <div class="results-display-box">
+        <div class="result-item">
+          <span class="result-label">Cubic Yards</span>
+          <span class="result-value" id="res-cuyd">0.00 <span>yd³</span></span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Cubic Feet</span>
+          <span class="result-value" id="res-cuft">0.00 <span>ft³</span></span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Bag Estimate (80 lb)</span>
+          <span class="result-value" id="res-bags80">0 <span>bags</span></span>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateConcrete()">Recalculate Volume</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultsToClipboard()">📋 Copy Results</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Professional Estimating Tip:</span>
+        Always add a 5% to 10% waste factor to your calculated volume to account for uneven sub-grade excavation, form deflection, and spillages during truck discharge or wheelbarrow hauling.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Concrete Volume Estimation: Cubic Yards, Bag Yield Formulas, and Jobsite Pouring Best Practices</h2>
+      <p class="seo-p">Ordering the exact volume of ready-mix concrete for a construction project—whether pouring a residential patio slab, foundation footings, or structural column piers—requires absolute mathematical precision. Under-ordering leaves you with cold joints and emergency batch orders, while over-ordering results in expensive disposal fees and wasted material. This comprehensive technical guide covers concrete volume mathematics, standard unit conversions, bag yield calculations, and industry-standard waste factors.</p>
+      <p class="seo-p">Our advanced Concrete Yardage Calculator automates these tedious calculations instantly, allowing general contractors, masons, and DIY homeowners to determine exact cubic yardage requirements and bag counts across multiple geometric shapes with absolute confidence.</p>
+
+      <div class="seo-callout">
+        <strong>The Golden Volume Equation:</strong> Concrete volume is determined by multiplying Length × Width × Depth and dividing the total cubic footage by 27 (since 1 cubic yard equals 27 cubic feet).
+      </div>
+
+      <h3 class="seo-h2">The Mathematical Core: Geometric Volume Formulas for Construction</h3>
+      <p class="seo-p">Different structural elements require distinct mathematical formulas to determine precise cubic yardage requirements before adding site waste buffers:</p>
+
+      <h4 class="seo-h3">1. Rectangular Slabs and Patios</h4>
+      <p class="seo-p">For standard flatwork, slabs, driveways, and sidewalks, convert all dimensions (length, width, and thickness) into feet, multiply them together, and divide by 27. For example, a 20 ft × 10 ft slab that is 4 inches (0.333 ft) thick yields $(20 \times 10 \times 0.333) / 27 = 2.47$ cubic yards.</p>
+
+      <h4 class="seo-h3">2. Continuous Footings and Trenches</h4>
+      <p class="seo-p">Foundation footings typically follow linear running feet specifications. Measure the total perimeter length of the trench, multiply by the excavated width and depth in feet, and divide by 27 to find the baseline yardage.</p>
+
+      <h4 class="seo-h3">3. Cylindrical Piers and Columns</h4>
+      <p class="seo-p">Columns and sonotube footings use circular volume geometry. The formula is $\pi \times r^2 \times h$, where $r$ is the radius (half of the diameter) and $h$ is the column height. Convert all measurements to feet before computing.</p>
+
+      <h3>Standard Concrete Bag Yield Reference Matrix</h3>
+      <p class="seo-p">When pouring smaller pads, fence posts, or repairs where ordering a full ready-mix truck is impractical, bagged pre-mixed concrete is used. Understanding bag yields per cubic yard ensures you purchase the correct pallet quantities:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Bag Weight Class</th>
+              <th>Dry Volume Yield (Cubic Feet)</th>
+              <th>Bags Required per Cubic Yard</th>
+              <th>Typical Project Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>40 lb Bag</b></td>
+              <td>~0.30 cu. ft.</td>
+              <td>90 bags</td>
+              <td>Small post holes, minor patch repairs, garden edgings.</td>
+            </tr>
+            <tr>
+              <td><b>60 lb Bag</b></td>
+              <td>~0.45 cu. ft.</td>
+              <td>60 bags</td>
+              <td>Standard walkways, steps, fence posts, medium DIY pads.</td>
+            </tr>
+            <tr>
+              <td><b>80 lb Bag</b></td>
+              <td>~0.60 cu. ft.</td>
+              <td>45 bags</td>
+              <td>Heavy slabs, driveways, structural footings, professional masonry.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Construction Estimating Segment</h3>
+
+      <h3>Why should I always include a waste percentage when ordering concrete?</h3>
+      <p class="seo-p">Sub-grades are rarely perfectly flat; excavation often digs slightly deeper than planned, and side forms can bow slightly under the immense hydraulic pressure of wet concrete. Adding a 5% to 10% waste buffer ensures you won't run short with half a slab left to finish.</p>
+
+      <h3>What is a concrete cold joint and how do I prevent it?</h3>
+      <p class="seo-p">A cold joint occurs when concrete begins to set before the next batch is placed against it, creating a weak plane that allows water infiltration and structural cracking. Accurate yardage calculations and reliable batch scheduling prevent delivery delays.</p>
+
+      <h3>How does local device calculation ensure project privacy?</h3>
+      <p class="seo-p">All calculations run directly inside your browser's local JavaScript engine. No architectural dimensions, job notes, or estimate parameters are transmitted to external servers—ensuring your project data remains completely private.</p>
+
+      <h3 class="seo-h2">Summary: Professional Concrete Estimation Checklist</h3>
+      <p class="seo-p">To ensure a flawless concrete pour, always double-check your measurements, convert units to feet before computing, factor in sub-grade settlement and form deflection with a 5-10% waste allowance, and verify whether your supplier has minimum truck load fees for small yardage orders.</p>
+      <p class="seo-p">Our Advanced Concrete Yardage Calculator automates these calculations instantly, giving you precise cubic yards, cubic feet, and bag counts for any mobile or desktop device cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // Conversion factors to Feet
+    const unitToFeet = {
+      ft: 1,
+      in: 1 / 12,
+      yd: 3,
+      m: 3.28084,
+      cm: 0.0328084,
+      mm: 0.00328084
+    };
+
+    let activeTab = 'slab';
+
+    function switchTab(tabName, el) {
+      activeTab = tabName;
+      document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+
+      document.querySelectorAll('.calc-form-pane').forEach(p => p.style.display = 'none');
+      document.getElementById('form-' + tabName).style.display = 'block';
+
+      calculateConcrete();
+    }
+
+    function calculateConcrete() {
+      let cuFt = 0;
+      let waste = 0;
+
+      if (activeTab === 'slab') {
+        const len = parseFloat(document.getElementById('slab-length').value) || 0;
+        const lenUnit = document.getElementById('slab-length-unit').value;
+        const wid = parseFloat(document.getElementById('slab-width').value) || 0;
+        const widUnit = document.getElementById('slab-width-unit').value;
+        const dep = parseFloat(document.getElementById('slab-depth').value) || 0;
+        const depUnit = document.getElementById('slab-depth-unit').value;
+        waste = parseFloat(document.getElementById('slab-waste').value) || 0;
+
+        const lenFt = len * unitToFeet[lenUnit];
+        const widFt = wid * unitToFeet[widUnit];
+        const depFt = dep * unitToFeet[depUnit];
+
+        cuFt = lenFt * widFt * depFt;
+      } 
+      else if (activeTab === 'footing') {
+        const len = parseFloat(document.getElementById('footing-length').value) || 0;
+        const lenUnit = document.getElementById('footing-length-unit').value;
+        const wid = parseFloat(document.getElementById('footing-width').value) || 0;
+        const widUnit = document.getElementById('footing-width-unit').value;
+        const dep = parseFloat(document.getElementById('footing-depth').value) || 0;
+        const depUnit = document.getElementById('footing-depth-unit').value;
+        waste = parseFloat(document.getElementById('footing-waste').value) || 0;
+
+        const lenFt = len * unitToFeet[lenUnit];
+        const widFt = wid * unitToFeet[widUnit];
+        const depFt = dep * unitToFeet[depUnit];
+
+        cuFt = lenFt * widFt * depFt;
+      }
+      else if (activeTab === 'column') {
+        const diam = parseFloat(document.getElementById('col-diameter').value) || 0;
+        const diamUnit = document.getElementById('col-diameter-unit').value;
+        const hgt = parseFloat(document.getElementById('col-height').value) || 0;
+        const hgtUnit = document.getElementById('col-height-unit').value;
+        const count = parseFloat(document.getElementById('col-count').value) || 1;
+        waste = parseFloat(document.getElementById('col-waste').value) || 0;
+
+        const diamFt = diam * unitToFeet[diamUnit];
+        const radiusFt = diamFt / 2;
+        const hgtFt = hgt * unitToFeet[hgtUnit];
+
+        const singleColCuFt = Math.PI * Math.pow(radiusFt, 2) * hgtFt;
+        cuFt = singleColCuFt * count;
+      }
+
+      // Apply waste
+      const totalCuFt = cuFt * (1 + (waste / 100));
+      const totalCuYd = totalCuFt / 27;
+      const bags80lb = Math.ceil(totalCuFt / 0.60);
+
+      document.getElementById('res-cuyd').innerHTML = totalCuYd.toFixed(2) + ' <span>yd³</span>';
+      document.getElementById('res-cuft').innerHTML = totalCuFt.toFixed(2) + ' <span>ft³</span>';
+      document.getElementById('res-bags80').innerHTML = bags80lb + ' <span>bags</span>';
+    }
+
+    function clearCalculator() {
+      document.querySelectorAll('.f-input-field').forEach(input => {
+        if(input.id.includes('waste')) {
+          input.value = '5';
+        } else if(input.id.includes('count')) {
+          input.value = '1';
+        } else {
+          input.value = '0';
+        }
+      });
+      calculateConcrete();
+    }
