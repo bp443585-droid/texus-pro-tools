@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Gay-Lussac's Law Calculator | Pressure-Temperature Gas Law Solver</title>
+  <meta name="description" content="Calculate pressure and temperature changes in ideal gases using Gay-Lussac's Law. Free online solver with step-by-step formulas, variable selection, and unit conversion." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/gay-lussac-s-law-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Gay-Lussac's Law Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "EducationalApplication",
+    "description": "An advanced thermodynamic calculation utility designed to compute pressure-temperature states for ideal gases under constant volume constraints.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CUSTOM APP LAYOUT */
+    .calc-controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .calc-group { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .calc-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .calc-select, .calc-input { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .calc-select:focus, .calc-input:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 180px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .calc-controls-grid { grid-template-columns: 1fr; gap: 16px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 140px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🌡️</span> Gay-Lussac's Law Calculator</div>
+    
+    <div class="f-card">
+      <div class="calc-controls-grid">
+        <div class="calc-group">
+          <label for="solveTargetSelect">Calculate Target Variable</label>
+          <select id="solveTargetSelect" class="calc-select" onchange="updateCalculatorFields()">
+            <option value="P2">Final Pressure ($P_2$)</option>
+            <option value="T2">Final Temperature ($T_2$)</option>
+            <option value="P1">Initial Pressure ($P_1$)</option>
+            <option value="T1">Initial Temperature ($T_1$)</option>
+          </select>
+        </div>
+        
+        <div class="calc-group">
+          <label for="tempUnitSelect">Temperature Scale</label>
+          <select id="tempUnitSelect" class="calc-select" onchange="runGayLussacCalculation()">
+            <option value="kelvin">Kelvin (K) - Absolute</option>
+            <option value="celsius">Celsius (°C)</option>
+            <option value="fahrenheit">Fahrenheit (°F)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="inputParamA" id="labelParamA">Initial Pressure ($P_1$)</label>
+          <input type="number" id="inputParamA" class="calc-input" value="1.0" step="any" oninput="runGayLussacCalculation()" />
+          <div style="font-size: 0.75rem; color: #64748b; margin-top: 2px;">Unit: atm (Atmospheres)</div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="inputParamB" id="labelParamB">Initial Temperature ($T_1$)</label>
+          <input type="number" id="inputParamB" class="calc-input" value="298.15" step="any" oninput="runGayLussacCalculation()" />
+          <div style="font-size: 0.75rem; color: #64748b; margin-top: 2px;" id="unitSubLabelA">Absolute scale required</div>
+        </div>
+      </div>
+
+      <div class="f-io-grid" style="margin-bottom: 20px;">
+        <div class="f-panel-box">
+          <label for="inputParamC" id="labelParamC">Final Temperature ($T_2$)</label>
+          <input type="number" id="inputParamC" class="calc-input" value="350.0" step="any" oninput="runGayLussacCalculation()" />
+          <div style="font-size: 0.75rem; color: #64748b; margin-top: 2px;" id="unitSubLabelB">Absolute scale required</div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Computed Result Output</label>
+          <textarea id="resultOutputConsole" class="f-textarea-field mono-font-panel" readonly placeholder="Result data will appear here..."></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="runGayLussacCalculation()">Compute Solution</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculatorWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Thermodynamic Constant Volume Enforcement:</span>
+        Gay-Lussac's Law dictates that pressure and absolute temperature are directly proportional when volume and gas mass remain constant ($P_1/T_1 = P_2/T_2$).
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Thermodynamics of Gay-Lussac's Law: Pressure-Temperature Proportionality in Isochoric Gas Systems</h2>
+      <p class="seo-p">Understanding how gases behave under constant volume constraints is fundamental to chemical engineering, mechanical thermodynamics, and atmospheric science. Formulated by French chemist and physicist Joseph Louis Gay-Lussac in 1802, Gay-Lussac's Law (sometimes referred to as Amontons's Law) establishes that the absolute pressure of a fixed mass of gas is directly proportional to its absolute temperature, provided that the volume remains entirely constant.</p>
+      <p class="seo-p">This comprehensive technical reference explores the mathematical foundations of isochoric transformations, examines kinetic molecular interpretations of pressure increase, reviews temperature scale requirements, and outlines clean methodologies for solving complex state-change problems in industrial and academic laboratories.</p>
+
+      <div class="seo-callout">
+        <strong>The Isochoric Proportionality Factor:</strong> When a rigid container is heated, gas molecules gain kinetic energy, colliding with container walls more frequently and with greater momentum. This directly elevates internal pressure without altering spatial dimensions ($P \propto T$).
+      </div>
+
+      <h3 class="seo-h2">Mathematical Formulation and Fundamental Constants</h3>
+      <p class="seo-p">Mathematically, Gay-Lussac's Law is expressed as the constant ratio between pressure ($P$) and absolute temperature ($T$):</p>
+
+      <div class="seo-callout" style="border-left-color: #0f172a; font-family: 'Courier New', Courier, monospace; font-size: 1.1rem; text-align: center;">
+        $$\frac{P_1}{T_1} = \frac{P_2}{T_2}$$
+      </div>
+
+      <p class="seo-p">Where $P_1$ and $T_1$ represent the initial pressure
