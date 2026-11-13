@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Charles's Law Calculator | Calculate Gas Volume & Temperature</title>
+  <meta name="description" content="Free online Charles's Law calculator. Instantly solve for initial or final gas volume and temperature using the direct proportionality of ideal gases." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/charles-s-law-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Charles's Law Calculator",
+    "operatingSystem": "Web",
+    "applicationCategory": "EducationalApplication",
+    "description": "Calculate gas volume and temperature changes under constant pressure using Charles's Law equation V1/T1 = V2/T2.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CALCULATOR SPECIFIC UI */
+    .calc-mode-select { display: flex; gap: 12px; margin-bottom: 24px; }
+    .mode-btn { flex: 1; padding: 12px; border-radius: 12px; font-weight: 700; font-size: 0.9rem; border: 1px solid #cbd5e1; background: #f8fafc; color: #475569; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .mode-btn.active { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .row-group { display: flex; gap: 10px; }
+    .row-group .f-input-field { flex: 2; }
+    .row-group .f-select-field { flex: 1; }
+
+    .result-box { background: #f1f5f9; border: 2px dashed #cbd5e1; border-radius: 16px; padding: 24px; margin-top: 25px; text-align: center; }
+    .result-box h4 { font-size: 0.9rem; text-transform: uppercase; color: #64748b; margin: 0 0 8px 0; letter-spacing: 0.5px; font-weight: 700; }
+    .result-value { font-size: 2rem; color: #0f172a; font-weight: 800; margin: 0; font-family: 'Courier New', Courier, monospace; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { height: 46px; font-size: 1rem; }
+      .calc-mode-select { flex-direction: column; gap: 8px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🌡️</span> Charles's Law Calculator</div>
+    
+    <div class="f-card">
+      <div class="calc-mode-select">
+        <button class="mode-btn active" id="modeV2Btn" onclick="setCalculationMode('V2')">Find Final Volume (V₂)</button>
+        <button class="mode-btn" id="modeT2Btn" onclick="setCalculationMode('T2')">Find Final Temperature (T₂)</button>
+        <button class="mode-btn" id="modeV1Btn" onclick="setCalculationMode('V1')">Find Initial Volume (V₁)</button>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box" id="inputBox1">
+          <label id="label1" for="val1">Initial Volume (V₁)</label>
+          <div class="row-group">
+            <input type="number" id="val1" class="f-input-field" placeholder="e.g. 2.5" value="2.5" step="any" oninput="calculateCharlesLaw()">
+            <select id="unit1" class="f-select-field" onchange="calculateCharlesLaw()">
+              <option value="L">Liters (L)</option>
+              <option value="mL">Milliliters (mL)</option>
+              <option value="m3">m³</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="f-panel-box" id="inputBox2">
+          <label id="label2" for="val2">Initial Temperature (T₁)</label>
+          <div class="row-group">
+            <input type="number" id="val2" class="f-input-field" placeholder="e.g. 25" value="25" step="any" oninput="calculateCharlesLaw()">
+            <select id="unit2" class="f-select-field" onchange="calculateCharlesLaw()">
+              <option value="C">°C</option>
+              <option value="K">K</option>
+              <option value="F">°F</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-io-grid" style="margin-bottom: 0;">
+        <div class="f-panel-box" id="inputBox3">
+          <label id="label3" for="val3">Final Temperature (T₂)</label>
+          <div class="row-group">
+            <input type="number" id="val3" class="f-input-field" placeholder="e.g. 100" value="100" step="any" oninput="calculateCharlesLaw()">
+            <select id="unit3" class="f-select-field" onchange="calculateCharlesLaw()">
+              <option value="C">°C</option>
+              <option value="K">K</option>
+              <option value="F">°F</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="f-panel-box" id="inputBoxOutput" style="justify-content: flex-end;">
+          <div style="background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 12px 16px; font-size: 0.9rem; color: #334155;">
+            <strong>Target Unit:</strong> <span id="targetUnitDisplay">Liters (L)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-box">
+        <h4 id="resultTitle">Calculated Final Volume (V₂)</h4>
+        <div class="result-value" id="resultValue">3.13 L</div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateCharlesLaw()">Calculate Results</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Absolute Temperature Conversion Notice:</span>
+        All internal calculations automatically convert Celsius and Fahrenheit inputs into Kelvin absolute temperature scales to satisfy direct proportionality requirements.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Thermodynamics of Ideal Gases: Mathematical Principles, Absolute Temperature Scales, and Charles's Law Applications</h2>
+      <p class="seo-p">Understanding how thermal energy influences volumetric expansion in gaseous systems is a fundamental requirement across chemical engineering, meteorological analysis, and HVAC system design. Formulated by French physicist Jacques Charles in the 1780s and later expanded by Joseph Louis Gay-Lussac, Charles's Law states that the volume of a given mass of gas is directly proportional to its absolute temperature, provided the pressure remains constant.</p>
+      <p class="seo-p">This extensive technical guide explores the mathematical framework underlying isobaric thermal expansion, explains why absolute zero Kelvin is mandatory for accurate gas law computations, reviews real-world applications in aerospace and industrial manufacturing, and outlines step-by-step calculation methods.</p>
+
+      <div class="seo-callout">
+        <strong>The Proportionality Formula:</strong> Expressed mathematically as $\frac{V_1}{T_1} = \frac{V_2}{T_2}$ or $V \propto T$, when temperature increases, kinetic molecular energy rises, forcing gas particles to collide more forcefully and expand the flexible boundaries of their container.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Isobaric Expansions and Kinetic Molecular Theory</h3>
+      <p class="seo-p">When analyzing gas behavior under constant pressure, several key thermodynamic principles govern state transformations:</p>
+
+      <h4 class="seo-h3">1. Constant Pressure Boundary Conditions</h4>
+      <p class="seo-p">Charles's Law applies strictly to isobaric systems—where external atmospheric pressure or piston weight remains fixed. If pressure fluctuates during heating or cooling, Boyles's Law and the Combined Gas Law must be integrated to account for the pressure variable.</p>
+
+      <h4 class="seo-h3">2. The Absolute Zero Kelvin Threshold</h4>
+      <p class="seo-p">A common error in amateur chemistry calculations is utilizing Celsius (°C) or Fahrenheit (°F) directly in ratios. Because these scales feature arbitrary zero points (such as the freezing point of water or brine mixtures), ratios fail mathematically. All temperature inputs must be converted to Kelvin ($K = °C + 273.15$), where zero signifies complete cessation of molecular motion.</p>
+
+      <h4 class="seo-h3">3. Molecular Collision Frequency</h4>
+      <p class="seo-p">As thermal energy transfers into a gas sample, average translational kinetic energy increases. To maintain constant pressure against a piston or balloon membrane, the volume must expand proportionally so that particle impact frequency per unit area remains stable.</p>
+
+      <h3>The Statutory Reference Matrix: Comprehensive Gas State Conversion Table</h3>
+      <p class="seo-p">Reviewing standard temperature-volume transformations and equivalent units helps verify calculations in laboratory and industrial environments:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Gas State Parameter</th>
+              <th>Initial State (1)</th>
+              <th>Final State (2)</th>
+              <th>Absolute Temp (Kelvin)</th>
+              <th>Calculated Result & Context</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard Expansion</td>
+              <td>$V_1 = 2.0\text{ L}, T_1 = 298.15\text{ K}$</td>
+              <td>$T_2 = 373.15\text{ K}$</td>
+              <td>$25°C \rightarrow 100°C$</td>
+              <td>$V_2 = 2.50\text{ L}$ (Heated balloon expansion)</td>
+            </tr>
+            <tr>
+              <td>Cryogenic Cooling</td>
+              <td>$V_1 = 5.0\text{ L}, T_1 = 300\text{ K}$</td>
+              <td>$T_2 = 150\text{ K}$</td>
+              <td>$27°C \rightarrow -123°C$</td>
+              <td>$V_2 = 2.50\text{ L}$ (Volume halves as temp halves)</td>
+            </tr>
+            <tr>
+              <td>High Temperature Oven</td>
+              <td>$V_1 = 500\text{ mL}, T_1 = 293\text{ K}$</td>
+              <td>$T_2 = 586\text{ K}$</td>
+              <td>$20°C \rightarrow 313°C$</td>
+              <td>$V_2 = 1000\text{ mL}$ (Volume doubles with absolute temp)</td>
+            </tr>
+            <tr>
+              <td>Ambient Weather Drop</td>
+              <td>$V_1 = 1.2\text{ L}, T_1 = 288\text{ K}$</td>
+              <td>$T_2 = 258\text{ K}$</td>
+              <td>$15°C \rightarrow -15°C$</td>
+              <td>$V_2 = 1.07\text{ L}$ (Cold weather tyre pressure/volume drop)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Diagnostic Segment</h3>
+
+      <h3>Why is it critical to use Kelvin instead of Celsius in Charles's Law?</h3>
+      <p class="seo-p">Celsius is a relative temperature scale where 0°C is simply the melting point of water, not the absence of thermal energy. If you input 0°C into a ratio equation, division by zero occurs, producing undefined mathematical errors. Furthermore, doubling 10°C (283.15 K) to 20°C does not double the volume; true volume doubling requires doubling the Kelvin temperature (e.g., from 200 K to 400 K).</p>
+
+      <h3>Can Charles's Law be applied to liquids and solids?</h3>
+      <p class="seo-p">No. Liquids and solids have tightly packed intermolecular bonds and possess extremely low compressibility compared to gases. While thermal expansion does occur in condensed matter, it follows distinct volumetric thermal expansion coefficients rather than ideal gas proportionalities.</p>
+
+      <h3>How does this calculator ensure complete data privacy?</h3>
+      <p class="seo-p">Texus Pro Tools operates entirely within your browser client memory. No experimental numbers, chemical parameters, or calculation logs are ever transmitted to external web servers, guaranteeing complete privacy for academic assignments and industrial engineering audits.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for Thermodynamic Calculations</h3>
+      <p class="seo-p">To ensure flawless results when solving gas law problems, always check that pressure remains constant throughout the process. Convert all temperature units to Kelvin before computing ratios, maintain consistent volume units (such as liters or milliliters), and use our automated Charles's Law Calculator to verify your manual derivations instantly across desktop and mobile devices.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let currentMode = 'V2';
+
+    function setCalculationMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+      
+      if(mode === 'V2') {
+        document.getElementById('modeV2Btn').classList.add('active');
+        document.getElementById('label1').innerText = "Initial Volume (V₁)";
+        document.getElementById('label2').innerText = "Initial Temperature (T₁)";
+        document.getElementById('label3').innerText = "Final Temperature (T₂)";
+        document.getElementById('resultTitle').innerText = "Calculated Final Volume (V₂)";
+        document.getElementById('inputBox3').style.display = 'flex';
+        document.getElementById('inputBoxOutput').style.display = 'flex';
+      } else if(mode === 'T2') {
+        document.getElementById('modeT2Btn').classList.add('active');
+        document.getElementById('label1').innerText = "Initial Volume (V₁)";
+        document.getElementById('label2').innerText = "Initial Temperature (T₁)";
+        document.getElementById('label3').innerText = "Final Volume (V₂)";
+        document.getElementById('resultTitle').innerText = "Calculated Final Temperature (T₂)";
+        document.getElementById('inputBox3').style.display = 'flex';
+        document.getElementById('inputBoxOutput').style.display = 'none';
+      } else if(mode === 'V1') {
+        document.getElementById('modeV1Btn').classList.add('active');
+        document.getElementById('label1').innerText = "Final Volume (V₂)";
+        document.getElementById('label2').innerText = "Initial Temperature (T₁)";
+        document.getElementById('label3').innerText = "Final Temperature (T₂)";
+        document.getElementById('resultTitle').innerText = "Calculated Initial Volume (V₁)";
+        document.getElementById('inputBox3').style.display = 'flex';
+        document.getElementById('inputBoxOutput').style.display = 'flex';
+      }
+      calculateCharlesLaw();
+    }
+
+    function convertToKelvin(val, unit) {
+      const num = parseFloat(val);
+      if (isNaN(num)) return NaN;
+      if (unit === 'C') return num + 273.15;
+      if (unit === 'F') return (num - 32) * 5/9 + 273.15;
+      if (unit === 'K') return num;
+      return num;
+    }
+
+    function convertFromKelvin(kelvin, unit) {
+      if (unit === 'C') return kelvin - 273.15;
+      if (unit === 'F') return (kelvin - 273.15) * 9/5 + 32;
+      if (unit === 'K') return kelvin;
+      return kelvin;
+    }
+
+    function calculateCharlesLaw() {
+      const v1Val = parseFloat(document.getElementById('val1').value);
+      const u1 = document.getElementById('unit1').value;
+      const v2Val = parseFloat(document.getElementById('val2').value);
+      const u2 = document.getElementById('unit2').value;
+      const v3Val = parseFloat(document.getElementById('val3').value);
+      const u3 = document.getElementById('unit3').value;
+
+      const resEl = document.getElementById('resultValue');
+
+      if (isNaN(v1Val) || isNaN(v2Val) || isNaN(v3Val)) {
+        resEl.innerText = "Please enter valid numbers";
+        return;
+      }
+
+      if (currentMode === 'V2') {
+        const t1Kelvin = convertToKelvin(v2Val, u2);
+        const t2Kelvin = convertToKelvin(v3Val, u3);
+
+        if (t1Kelvin <= 0 || t2Kelvin <= 0) {
+          resEl.innerText = "Temperature must be > 0 K";
+          return;
+        }
+
+        // V2 = V1 * (T2 / T1)
+        const calculatedV2 = v1Val * (t2Kelvin / t1Kelvin);
+        resEl.innerText = `${calculatedV2.toFixed(4)} ${u1}`;
+        document.getElementById('targetUnitDisplay').innerText = document.getElementById('unit1').options[document.getElementById('unit1').selectedIndex].text;
+
+      } else if (currentMode === 'T2') {
+        // V1/T1 = V2/T2 => T2 = T1 * (V2 / V1)
+        const t1Kelvin = convertToKelvin(v2Val, u2);
+        if (t1Kelvin <= 0) {
+          resEl.innerText = "Initial Temperature must be > 0 K";
+          return;
+        }
+        if (v1Val === 0) {
+          resEl.innerText = "Initial Volume cannot be zero";
+          return;
+        }
+
+        const calculatedT2Kelvin = t1Kelvin * (v3Val / v1Val);
+        const t2Unit = u3; // Output temp unit selected in box 3
+        const finalTemp = convertFromKelvin(calculatedT2Kelvin, t2Unit);
+
+        let unitLabel = 'K';
+        if (t2Unit === 'C') unitLabel = '°C';
+        if (t2Unit === 'F') unitLabel = '°F';
+
+        resEl.innerText = `${finalTemp.toFixed(2)} ${unitLabel} (${calculatedT2Kelvin.toFixed(2)} K)`;
+
+      } else if (currentMode === 'V1') {
+        // V1/T1 = V2/T2 => V1 = V2 * (T1 / T2)
+        const t1Kelvin = convertToKelvin(v2Val, u2);
+        const t2Kelvin = convertToKelvin(v3Val, u3);
+
+        if (t1Kelvin <= 0 || t2Kelvin <= 0) {
+          resEl.innerText = "Temperature must be > 0 K";
+          return;
+        }
+
+        const calculatedV1 = v1Val * (t1Kelvin / t2Kelvin);
+        resEl.innerText = `${calculatedV1.toFixed(4)} ${u1}`;
+        document.getElementById('targetUnitDisplay').innerText = document.getElementById('unit1').options[document.getElementById('unit1').selectedIndex].text;
+      }
+    }
+
+    function clearCalculator() {
+      document.getElementById('val1').value = '';
+      document.getElementById('val2').value = '';
+      document.getElementById('val3').value = '';
+      document.getElementById('resultValue').innerText = '0.00';
+    }
+
+    function copyResultToClipboard() {
+      const textToCopy = document.getElementById('resultValue').innerText;
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => { btn.innerText = '📋 Copy Result'; }, 2000);
+      });
+    }
+
+    // Initialize calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateCharlesLaw();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
