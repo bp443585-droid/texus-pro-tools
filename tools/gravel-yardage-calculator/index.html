@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Gravel Yardage Calculator | Free Online Aggregate Estimator</title>
+  <meta name="description" content="Calculate cubic yards, tons, and bags of gravel, crushed stone, sand, or mulch needed for your driveway, patio, or landscaping project instantly." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/gravel-yardage-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Gravel Yardage Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced material volume estimation utility to calculate precise cubic yards, tons, and bag quantities for landscaping and construction aggregates.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CALCULATOR INTERACTIVE GRID SYSTEM */
+    .f-calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 25px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 10px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS SUMMARY PANEL */
+    .f-results-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 18px; padding: 25px; margin-top: 15px; }
+    .f-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; }
+    .f-result-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px; text-align: center; }
+    .f-result-card .val { font-size: 1.8rem; font-weight: 800; color: #2563eb; margin-bottom: 4px; }
+    .f-result-card .lbl { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .f-calc-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-results-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🏗️</span> Gravel Yardage Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-calc-grid">
+        <div class="f-panel-box">
+          <label for="shapeSelect">Area Shape</label>
+          <select id="shapeSelect" class="f-select-field" onchange="toggleShapeInputs()">
+            <option value="rectangle">Rectangular Area / Driveway</option>
+            <option value="circular">Circular Pad / Ring</option>
+          </select>
+        </div>
+
+        <div class="f-panel-box">
+          <label for="materialSelect">Aggregate Material Type</label>
+          <select id="materialSelect" class="f-select-field" onchange="calculateGravel()">
+            <option value="1.4">Standard Gravel / Crushed Stone (1.4 tons/yd³)</option>
+            <option value="1.5">Heavy Limestone / Granite (1.5 tons/yd³)</option>
+            <option value="1.3">River Rock / Pea Gravel (1.3 tons/yd³)</option>
+            <option value="1.2">Sand / Fine Aggregate (1.2 tons/yd³)</option>
+            <option value="0.85">Landscaping Mulch (0.85 tons/yd³)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-calc-grid" id="dimensionInputsContainer">
+        <div class="f-panel-box">
+          <label for="lengthInput">Length (feet)</label>
+          <input type="number" id="lengthInput" class="f-input-field" value="20" min="0" step="0.1" oninput="calculateGravel()" />
+        </div>
+        <div class="f-panel-box">
+          <label for="widthInput">Width (feet)</label>
+          <input type="number" id="widthInput" class="f-input-field" value="10" min="0" step="0.1" oninput="calculateGravel()" />
+        </div>
+      </div>
+
+      <div class="f-calc-grid">
+        <div class="f-panel-box">
+          <label for="depthInput">Depth / Thickness (inches)</label>
+          <input type="number" id="depthInput" class="f-input-field" value="4" min="0" step="0.25" oninput="calculateGravel()" />
+        </div>
+        <div class="f-panel-box">
+          <label for="wastageInput">Wastage / Settling Allowance (%)</label>
+          <input type="number" id="wastageInput" class="f-input-field" value="5" min="0" max="50" step="1" oninput="calculateGravel()" />
+        </div>
+      </div>
+
+      <div class="f-results-box">
+        <div class="f-results-grid">
+          <div class="f-result-card">
+            <div class="val" id="resCubicYards">0.00</div>
+            <div class="lbl">Cubic Yards (yd³)</div>
+          </div>
+          <div class="f-result-card">
+            <div class="val" id="resTons">0.00</div>
+            <div class="lbl">Total Weight (Tons)</div>
+          </div>
+          <div class="f-result-card">
+            <div class="val" id="resBags">0</div>
+            <div class="lbl">50lb Bags Needed</div>
+          </div>
+        </div>
+        <div style="font-size: 0.88rem; color: #475569; text-align: center; font-weight: 500;" id="resSummaryText">
+          Calculated for a 20 ft × 10 ft area at 4 inches depth with 5% compaction allowance.
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateGravel()">Recalculate Totals</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyGravelResult()">📋 Copy Estimate Summary</button>
+        <button class="f-btn f-btn-clear" onclick="clearGravelWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Professional Aggregate Estimator:</span>
+        Calculations automatically include material settling, compaction factors, and recommended 5% to 10% project wastage buffers to prevent short shipments on delivery day.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Master Guide to Aggregate Estimation: Calculating Cubic Yards, Tons, and Bag Quantities for Driveways, Walkways, and Landscaping Projects</h2>
+      <p class="seo-p">Ordering gravel, crushed stone, decomposed granite, or river rock without precise mathematical modeling often leads to costly project delays or expensive surplus deliveries. Whether you are surfacing a 500-foot rural driveway, laying down a solid crushed stone base for a backyard patio, or dressing garden beds with decorative pea gravel, determining the exact volume in cubic yards and weight in tons is the single most critical step in construction planning.</p>
+      <p class="seo-p">This extensive engineering manual explores the mathematical foundations of aggregate volume calculation, compares densities across various stone types, outlines the importance of compaction factors, and provides expert strategies to order your materials efficiently.</p>
+
+      <div class="seo-callout">
+        <strong>The Golden Formula:</strong> Volume in cubic yards equals length (in feet) multiplied by width (in feet) multiplied by depth (in feet), divided by 27. Always add a 5% to 10% wastage allowance to account for uneven subgrade excavation and settling during compaction.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Dimensional Formulas and Material Density Conversion</h3>
+      <p class="seo-p">When calculating bulk construction aggregates, you must bridge three distinct dimensional measurements: linear feet, cubic volumes, and weight in tons. Our high-performance calculation engine automates this math across standard geometric parameters:</p>
+
+      <h4 class="seo-h3">1. Rectangular Footprint Calculus</h4>
+      <p class="seo-p">For standard rectangular driveways, parking pads, and foundation trenches, the base area is calculated by multiplying length by width. To incorporate depth, convert inches into fractional feet by dividing the depth value by 12 before multiplying across the three dimensions. Dividing the resulting cubic foot total by 27 yields the exact cubic yardage.</p>
+
+      <h4 class="seo-h3">2. Circular and Ring Geometry</h4>
+      <p class="seo-p">For round fire pits, circular flower beds, or curved turnaround pads, the calculator applies the standard area formula ($\pi \times r^2$). When calculating ring shapes (such as tree rings or bordered patios), the tool computes the difference between outer and inner radii to isolate the active surface bed.</p>
+
+      <h4 class="seo-h3">3. Density and Weight Multipliers</h4>
+      <p class="seo-p">Volume alone is not enough when buying by weight from local quarries. Crushed limestone, washed river rock, heavy basalt, and dry sand all possess unique bulk densities. A cubic yard of standard crushed stone weighs approximately 1.4 tons (2,800 lbs), whereas lighter decorative gravels or dry mulches scale down significantly. Our calculator factors in these precise material densities automatically.</p>
+
+      <h3>The Statutory Reference Matrix: Aggregate Material Densities and Coverage Standards</h3>
+      <p class="seo-p">Reviewing standard weights and typical coverage volumes helps verify delivery quotes from local suppliers and ensures your hauling trailers remain safely under payload limits:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Material Classification</th>
+              <th>Bulk Density (Tons / yd³)</th>
+              <th>Weight per Cubic Foot</th>
+              <th>Coverage per 1 Ton (at 3" Depth)</th>
+              <th>Typical Project Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Crushed Stone (#57 / #411)</td>
+              <td><b>1.40 Tons</b></td>
+              <td>103.7 lbs</td>
+              <td>~105 sq. ft.</td>
+              <td>Driveway bases, drainage layers, structural parking pads.</td>
+            </tr>
+            <tr>
+              <td>Heavy Limestone / Granite</td>
+              <td><b>1.50 Tons</b></td>
+              <td>111.1 lbs</td>
+              <td>~95 sq. ft.</td>
+              <td>Heavy sub-bases, industrial access roads, retaining walls.</td>
+            </tr>
+            <tr>
+              <td>River Rock / Pea Gravel</td>
+              <td><b>1.30 Tons</b></td>
+              <td>96.3 lbs</td>
+              <td>~115 sq. ft.</td>
+              <td>Decorative garden paths, French drains, water features.</td>
+            </tr>
+            <tr>
+              <td>Construction Sand</td>
+              <td><b>1.20 Tons</b></td>
+              <td>88.9 lbs</td>
+              <td>~125 sq. ft.</td>
+              <td>Paver leveling beds, mortar mixes, playground sand.</td>
+            </tr>
+            <tr>
+              <td>Landscaping Mulch / Bark</td>
+              <td><b>0.85 Tons</b></td>
+              <td>63.0 lbs</td>
+              <td>~180 sq. ft.</td>
+              <td>Flower beds, tree mulch rings, moisture retention layers.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>How many 50 lb bags of gravel make up one single cubic yard?</h3>
+      <p class="seo-p">One cubic yard of standard gravel weighs approximately 2,800 lbs (1.4 tons). Because there are fifty pounds in a standard bag, you will need approximately 56 bags of gravel to equal one full cubic yard of material. For larger projects exceeding two cubic yards, ordering bulk delivery by the dump truck load is significantly more cost-effective.</p>
+
+      <h3>Why is a compaction wastage factor necessary when calculating gravel?</h3>
+      <p class="seo-p">Aggregate subgrades are rarely perfectly flat. When gravel is dumped and compacted with a plate compactor or roller, particles lock together and settle into minor depressions in the sub-base earth. Adding a 5% to 10% wastage buffer ensures you do not run short during the final rolling phase of your driveway or patio installation.</p>
+
+      <h3>What is the recommended gravel depth for a residential vehicle driveway?</h3>
+      <p class="seo-p">For standard passenger vehicles, a minimum finished depth of 4 to 6 inches of crushed stone is recommended. If your underlying soil is soft clay or experiences heavy freezing cycles, laying a 4-inch coarse base layer topped with 2 inches of finer crushed stone ensures long-term structural stability and prevents rutting.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Project Planning and Material Ordering</h3>
+      <p class="seo-p">Successful landscaping and hardscaping execution relies on accurate measurements and quality material estimates. Always measure your site dimensions at multiple points to account for irregularities, factor in the specific weight of your chosen aggregate, and include a reliable compaction buffer.</p>
+      <p class="seo-p">Our Gravel Yardage Calculator suite automates all these computational steps instantly, providing precise cubic yard, ton, and bag quantities to streamline your project planning across any mobile or desktop device cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function toggleShapeInputs() {
+      const shape = document.getElementById('shapeSelect').value;
+      const container = document.getElementById('dimensionInputsContainer');
+      if (shape === 'rectangle') {
+        container.innerHTML = `
+          <div class="f-panel-box">
+            <label for="lengthInput">Length (feet)</label>
+            <input type="number" id="lengthInput" class="f-input-field" value="20" min="0" step="0.1" oninput="calculateGravel()" />
+          </div>
+          <div class="f-panel-box">
+            <label for="widthInput">Width (feet)</label>
+            <input type="number" id="widthInput" class="f-input-field" value="10" min="0" step="0.1" oninput="calculateGravel()" />
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <div class="f-panel-box">
+            <label for="lengthInput">Diameter (feet)</label>
+            <input type="number" id="lengthInput" class="f-input-field" value="15" min="0" step="0.1" oninput="calculateGravel()" />
+          </div>
+          <div class="f-panel-box" style="visibility: hidden;">
+            <label>Placeholder</label>
+            <input type="number" class="f-input-field" value="0" />
+          </div>
+        `;
+      }
+      calculateGravel();
+    }
+
+    function calculateGravel() {
+      const shape = document.getElementById('shapeSelect').value;
+      const val1 = parseFloat(document.getElementById('lengthInput').value) || 0;
+      const widthInputEl = document.getElementById('widthInput');
+      const val2 = widthInputEl ? (parseFloat(widthInputEl.value) || 0) : 0;
+      const depthInches = parseFloat(document.getElementById('depthInput').value) || 0;
+      const wastagePct = parseFloat(document.getElementById('wastageInput').value) || 0;
+      const densityTonsPerYd3 = parseFloat(document.getElementById('materialSelect').value) || 1.4;
+
+      let cubicFeet = 0;
+      if (shape === 'rectangle') {
+        const lengthFt = val1;
+        const widthFt = val2;
+        const depthFt = depthInches / 12;
+        cubicFeet = lengthFt * widthFt * depthFt;
+      } else {
+        const diameterFt = val1;
+        const radiusFt = diameterFt / 2;
+        const depthFt = depthInches / 12;
+        cubicFeet = Math.PI * Math.pow(radiusFt, 2) * depthFt;
+      }
+
+      let cubicYards = cubicFeet / 27;
+      
+      // Apply wastage
+      if (wastagePct > 0) {
+        cubicYards *= (1 + wastagePct / 100);
+      }
+
+      const totalTons = cubicYards * densityTonsPerYd3;
+      // 1 cubic yard = 27 cubic ft. 1 cubic ft of water is ~62.4 lbs. 
+      // 50lb bag count estimation: total weight in lbs / 50
+      const totalWeightLbs = totalTons * 2000;
+      const bags50lb = Math.ceil(totalWeightLbs / 50);
+
+      document.getElementById('resCubicYards').textContent = cubicYards.toFixed(2);
+      document.getElementById('resTons').textContent = totalTons.toFixed(2);
+      document.getElementById('resBags').textContent = bags50lb;
+
+      if (shape === 'rectangle') {
+        document.getElementById('resSummaryText').textContent = `Calculated for a ${val1} ft × ${val2} ft area at ${depthInches} inches depth with ${wastagePct}% allowance.`;
+      } else {
+        document.getElementById('resSummaryText').textContent = `Calculated for a circular pad of ${val1} ft diameter at ${depthInches} inches depth with ${wastagePct}% allowance.`;
+      }
+    }
+
+    function copyGravelResult() {
+      const cy = document.getElementById('resCubicYards').textContent;
+      const tons = document.getElementById('resTons').textContent;
+      const bags = document.getElementById('resBags').textContent;
+      const summary = document.getElementById('resSummaryText').textContent;
+      
+      const textToCopy = `Gravel Estimation Summary:\n- Volume: ${cy} Cubic Yards\n- Weight: ${tons} Tons\n- 50lb Bags: ${bags} bags\n- Details: ${summary}`;
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.textContent = '✓ Copied to Clipboard!';
+        setTimeout(() => { btn.textContent = '📋 Copy Estimate Summary'; }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+
+    function clearGravelWorkspace() {
+      document.getElementById('lengthInput').value = '10';
+      const wIn = document.getElementById('widthInput');
+      if (wIn) wIn.value = '10';
+      document.getElementById('depthInput').value = '4';
+      document.getElementById('wastageInput').value = '5';
+      calculateGravel();
+    }
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
