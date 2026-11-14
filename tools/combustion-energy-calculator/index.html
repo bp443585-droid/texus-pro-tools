@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Combustion Energy Calculator | Heat of Combustion &amp; Thermal Output</title>
+  <meta name="description" content="Calculate combustion energy, heat release, and thermal output instantly with our free online Combustion Energy Calculator. Perfect for fuels, biomass, and thermodynamics." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/combustion-energy-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Combustion Energy Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced thermodynamic calculation engine to compute heat release, total energy output, and specific enthalpy changes during chemical fuel oxidation processes.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-textarea-field { width: 100%; height: 200px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 150px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🔥</span> Combustion Energy Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="fuelType">Select Fuel / Material</label>
+          <select id="fuelType" class="f-select-field" onchange="updateDefaultHHV()">
+            <option value="custom">Custom Heat of Combustion</option>
+            <option value="methane">Methane (CH₄)</option>
+            <option value="propane">Propane (C₃H₈)</option>
+            <option value="gasoline">Gasoline / Petrol</option>
+            <option value="diesel">Diesel Fuel</option>
+            <option value="ethanol">Ethanol (C₂H₅OH)</option>
+            <option value="hydrogen">Hydrogen (H₂)</option>
+            <option value="coal">Bituminous Coal</option>
+            <option value="wood">Wood (Dry)</option>
+          </select>
+
+          <label for="massInput" style="margin-top: 15px;">Fuel Mass or Volume</label>
+          <input type="number" id="massInput" class="f-input-field" value="1" min="0.0001" step="any" oninput="calculateCombustion()" />
+
+          <label for="massUnit" style="margin-top: 15px;">Unit of Quantity</label>
+          <select id="massUnit" class="f-select-field" onchange="calculateCombustion()">
+            <option value="kg">Kilograms (kg)</option>
+            <option value="g">Grams (g)</option>
+            <option value="lb">Pounds (lb)</option>
+            <option value="m3">Normal Cubic Meters (Nm³ - Gases)</option>
+            <option value="gal">Gallons (US liq)</option>
+          </select>
+
+          <label for="hhvInput" style="margin-top: 15px;">Higher Heating Value (HHV)</label>
+          <input type="number" id="hhvInput" class="f-input-field" value="50.0" min="0" step="any" oninput="calculateCombustion()" />
+
+          <label for="hhvUnit" style="margin-top: 15px;">HHV Unit Specification</label>
+          <select id="hhvUnit" class="f-select-field" onchange="calculateCombustion()">
+            <option value="MJ/kg">MJ/kg (Megajoules per kilogram)</option>
+            <option value="kJ/kg">kJ/kg (Kilojoules per kilogram)</option>
+            <option value="kcal/kg">kcal/kg (Kilocalories per kilogram)</option>
+            <option value="BTU/lb">BTU/lb (British Thermal Units per pound)</option>
+            <option value="MJ/m3">MJ/Nm³ (Megajoules per cubic meter)</option>
+          </select>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="combustionOutputConsole">Thermodynamic Calculation Results</label>
+          <textarea id="combustionOutputConsole" class="f-textarea-field mono-font-panel" readonly placeholder="Calculation results will appear here..."></textarea>
+          
+          <div class="f-action-strip" style="margin-top: 15px;">
+            <button class="f-btn f-btn-convert" onclick="calculateCombustion()">Compute Energy</button>
+            <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy Results</button>
+            <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Thermodynamic Energy Engine Active:</span>
+        Computes Higher Heating Value (HHV) total thermal release along with estimated Lower Heating Value (LHV) factoring in moisture vaporization latent heat losses.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Thermodynamics of Combustion Energy: Higher Heating Values, Stoichiometric Oxidation, and Thermal Output Calculations</h2>
+      <p class="seo-p">Combustion is one of the most fundamental chemical reactions harnessed by human civilization. Whether generating electrical power in combined-cycle gas turbines, propelling aerospace vehicles with liquid hydrogen, or heating residential spaces with natural gas, quantifying the exact energy released during exothermic oxidation is crucial for thermal engineering. The Combustion Energy Calculator provides engineers, researchers, and students with an instant, rigorous computational framework to evaluate energy yields across diverse hydrocarbon, biomass, and alternative fuels.</p>
+      <p class="seo-p">This extensive technical manual explores the theoretical foundations of reaction enthalpy, differentiates between Higher Heating Value (HHV) and Lower Heating Value (LHV), reviews standard energy conversion factors, and examines practical applications in energy auditing and boiler efficiency.</p>
+
+      <div class="seo-callout">
+        <strong>The Exothermic Principle:</strong> During combustion, chemical bonds within fuel molecules (primarily carbon-carbon, carbon-hydrogen, and hydrogen-hydrogen) are broken and replaced by more stable bonds in combustion products ($CO_2$ and $H_2O$). Because the bond energy of the products exceeds that of the reactants, net chemical energy is released as sensible heat.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: HHV versus LHV and Latent Heat of Vaporization</h3>
+      <p class="seo-p">When evaluating fuel energy, thermodynamic databases distinguish between two primary metrics of specific heat release:</p>
+
+      <h4 class="seo-h3">1. Higher Heating Value (Gross Calorific Value - HHV)</h4>
+      <p class="seo-p">HHV assumes that all water vapor formed during the combustion reaction is completely condensed back into liquid state at standard reference temperature ($25^\circ C$). Consequently, HHV captures the latent heat of vaporization of water in addition to the sensible sensible combustion heat.</p>
+
+      <h4 class="seo-h3">2. Lower Heating Value (Net Calorific Value - LHV)</h4>
+      <p class="seo-p">LHV assumes that water formed during combustion remains in the vapor phase in the exhaust flue gases. Because most industrial furnaces and engines exhaust water as superheated steam rather than condensing it inside equipment, LHV represents the practically recoverable thermal energy.</p>
+
+      <h4 class="seo-h3">3. Mathematical Conversion Relationship</h4>
+      <p class="seo-p">For typical hydrocarbon fuels containing hydrogen mass fraction $H$, LHV can be approximated from HHV using the latent heat of vaporization of water ($h_{fg} \approx 2.26 \text{ MJ/kg}$):</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px;">LHV = HHV - 9 × (Mass Fraction of $H$) × $h_{fg}$</p>
+
+      <h3>The Statutory Reference Matrix: Standard Enthalpy of Combustion for Common Fuels</h3>
+      <p class="seo-p">The table below outlines standard higher heating values (HHV) and chemical characteristics for representative solid, liquid, and gaseous fuels:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Fuel Classification</th>
+              <th>Chemical Formula / Composition</th>
+              <th>State of Matter</th>
+              <th>Typical HHV (MJ/kg)</th>
+              <th>Typical HHV (BTU/lb)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Hydrogen</td>
+              <td>$H_2$</td>
+              <td>Gas</td>
+              <td>141.8</td>
+              <td>61,000</td>
+            </tr>
+            <tr>
+              <td>Methane</td>
+              <td>$CH_4$</td>
+              <td>Gas</td>
+              <td>55.5</td>
+              <td>23,880</td>
+            </tr>
+            <tr>
+              <td>Propane</td>
+              <td>$C_3H_8$</td>
+              <td>Gas / Liquid</td>
+              <td>50.3</td>
+              <td>21,650</td>
+            </tr>
+            <tr>
+              <td>Gasoline (Petrol)</td>
+              <td>$C_4$ to $C_{12}$ Hydrocarbon Blend</td>
+              <td>Liquid</td>
+              <td>47.3</td>
+              <td>20,350</td>
+            </tr>
+            <tr>
+              <td>Diesel Fuel</td>
+              <td>$C_{10}$ to $C_{21}$ Hydrocarbon Blend</td>
+              <td>Liquid</td>
+              <td>44.8</td>
+              <td>19,280</td>
+            </tr>
+            <tr>
+              <td>Ethanol</td>
+              <td>$C_2H_5OH$</td>
+              <td>Liquid</td>
+              <td>29.7</td>
+              <td>12,780</td>
+            </tr>
+            <tr>
+              <td>Bituminous Coal</td>
+              <td>Complex Carbon / Ash Matrix</td>
+              <td>Solid</td>
+              <td>28.5</td>
+              <td>12,260</td>
+            </tr>
+            <tr>
+              <td>Dry Wood Biomass</td>
+              <td>Cellulose / Lignin Complex</td>
+              <td>Solid</td>
+              <td>18.5</td>
+              <td>7,960</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Combustion Engineering Insights</h3>
+
+      <h3>What is the difference between specific energy on a mass basis versus a volumetric basis?</h3>
+      <p class="seo-p">For solid and liquid fuels, energy density is almost universally measured per unit mass (e.g., $MJ/kg$ or $BTU/lb$). For gaseous fuels (such as natural gas or biogas), measuring energy per unit volume (e.g., $MJ/Nm^3$ or $BTU/scf$) is standard practice because volumetric flow meters are more common in gas pipeline distribution networks.</p>
+
+      <h3>How does excess air affect actual boiler combustion efficiency?</h3>
+      <p class="seo-p">Complete combustion requires supplying slightly more oxygen than the stoichiometric minimum to ensure every fuel molecule oxidizes fully. However, excessive air volume introduces unnecessary cold nitrogen and oxygen into the combustion chamber, which absorbs sensible heat and carries it out the exhaust stack, reducing overall thermal efficiency.</p>
+
+      <h3>Is my calculation data secure when using online browser tools?</h3>
+      <p class="seo-p">Yes. All engineering calculations executed within Texus Pro Tools run locally inside your browser's JavaScript execution thread. No numerical inputs or design parameters are transmitted to external servers, ensuring complete confidentiality for proprietary engineering calculations.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for Thermal Energy Calculations</h3>
+      <p class="seo-p">When performing thermodynamic energy audits, always verify whether your input fuel heating values are reported on a Higher Heating Value (HHV) or Lower Heating Value (LHV) basis to prevent systematic errors in thermal efficiency calculations. Account for moisture content in solid and biomass fuels, as latent vaporization heat can significantly reduce net usable energy.</p>
+      <p class="seo-p">Our Combustion Energy Calculator streamlines these evaluations instantly, providing robust, accurate energy totals across multiple engineering units for desktop and mobile users alike.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const fuelData = {
+      methane: { hhv: 55.5, unit: 'MJ/kg' },
+      propane: { hhv: 50.3, unit: 'MJ/kg' },
+      gasoline: { hhv: 47.3, unit: 'MJ/kg' },
+      diesel: { hhv: 44.8, unit: 'MJ/kg' },
+      ethanol: { hhv: 29.7, unit: 'MJ/kg' },
+      hydrogen: { hhv: 141.8, unit: 'MJ/kg' },
+      coal: { hhv: 28.5, unit: 'MJ/kg' },
+      wood: { hhv: 18.5, unit: 'MJ/kg' }
+    };
+
+    function updateDefaultHHV() {
+      const type = document.getElementById('fuelType').value;
+      if (type !== 'custom' && fuelData[type]) {
+        document.getElementById('hhvInput').value = fuelData[type].hhv;
+        document.getElementById('hhvUnit').value = fuelData[type].unit;
+      }
+      calculateCombustion();
+    }
+
+    function calculateCombustion() {
+      const mass = parseFloat(document.getElementById('massInput').value) || 0;
+      const massUnit = document.getElementById('massUnit').value;
+      const hhv = parseFloat(document.getElementById('hhvInput').value) || 0;
+      const hhvUnit = document.getElementById('hhvUnit').value;
+
+      // Convert mass to standard kg (or m3 for gases if unit is m3)
+      let massInKg = mass;
+      if (massUnit === 'g') massInKg = mass / 1000;
+      else if (massUnit === 'lb') massInKg = mass * 0.45359237;
+      else if (massUnit === 'gal') massInKg = mass * 2.83905; // Approx for gasoline ~2.84 kg/gal
+
+      // Convert HHV to MJ/kg (or MJ/m3 if unit is m3)
+      let hhvInMJ = hhv;
+      if (hhvUnit === 'kJ/kg') hhvInMJ = hhv / 1000;
+      else if (hhvUnit === 'kcal/kg') hhvInMJ = hhv * 0.004184;
+      else if (hhvUnit === 'BTU/lb') hhvInMJ = hhv * 0.002326;
+      else if (hhvUnit === 'MJ/m3') hhvInMJ = hhv; // Treated as volumetric energy density if m3 selected
+
+      let totalEnergyMJ = 0;
+      if (massUnit === 'm3' || hhvUnit === 'MJ/m3') {
+        // Volumetric calculation
+        totalEnergyMJ = mass * hhvInMJ;
+      } else {
+        totalEnergyMJ = massInKg * hhvInMJ;
+      }
+
+      const totalEnergyGJ = totalEnergyMJ / 1000;
+      const totalEnergyKWh = totalEnergyMJ * 0.277778;
+      const totalEnergyBTU = totalEnergyMJ * 947.817;
+      const totalEnergyKcal = totalEnergyMJ * 238.846;
+
+      // Estimated LHV (~90% of HHV for hydrocarbons, ~95% for hydrogen/gases)
+      const estimatedLHV = hhvInMJ * 0.91;
+      const totalLHV_MJ = (massUnit === 'm3' || hhvUnit === 'MJ/m3') ? (mass * estimatedLHV) : (massInKg * estimatedLHV);
+      const totalLHV_KWh = totalLHV_MJ * 0.277778;
+      const totalLHV_BTU = totalLHV_MJ * 947.817;
+
+      const outputText = 
+`==============================================
+🔥 COMBUSTION ENERGY CALCULATION REPORT
+==============================================
+Fuel Input Quantity : ${mass} ${massUnit}
+Higher Heating Value: ${hhv} ${hhvUnit}
+----------------------------------------------
+GROSS ENERGY RELEASE (HHV):
+ • Megajoules (MJ)  : ${totalEnergyMJ.toFixed(2)} MJ
+ • Gigajoules (GJ)  : ${totalEnergyGJ.toFixed(4)} GJ
+ • Kilowatt-hours   : ${totalEnergyKWh.toFixed(2)} kWh
+ • BTU (British)    : ${totalEnergyBTU.toLocaleString('en-US', {maximumFractionDigits: 0})} BTU
+ • Kilocalories     : ${totalEnergyKcal.toLocaleString('en-US', {maximumFractionDigits: 0})} kcal
+----------------------------------------------
+NET ENERGY RELEASE (LHV approx. 91%):
+ • Net Energy (MJ)  : ${totalLHV_MJ.toFixed(2)} MJ
+ • Net Energy (kWh) : ${totalLHV_KWh.toFixed(2)} kWh
+ • Net Energy (BTU) : ${totalLHV_BTU.toLocaleString('en-US', {maximumFractionDigits: 0})} BTU
+==============================================`;
+
+      document.getElementById('combustionOutputConsole').value = outputText;
+    }
+
+    function clearCalculator() {
+      document.getElementById('fuelType').value = 'methane';
+      document.getElementById('massInput').value = '1';
+      document.getElementById('massUnit').value = 'kg';
+      document.getElementById('hhvInput').value = '55.5';
+      document.getElementById('hhvUnit').value = 'MJ/kg';
+      calculateCombustion();
+    }
+
+    function copyResultToClipboard() {
+      const consoleBox = document.getElementById('combustionOutputConsole');
+      consoleBox.select();
+      navigator.clipboard.writeText(consoleBox.value).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '✓ Copied Successfully!';
+        setTimeout(() => { btn.innerText = originalText; }, 2000);
+      }).catch(err => {
+        console.error('Copy failed:', err);
+      });
+    }
+
+    // Run initial calculation on load
+    window.onload = function() {
+      calculateCombustion();
+    };
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
