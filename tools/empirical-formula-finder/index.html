@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Empirical Formula Finder | Instant Chemical Compound Calculator</title>
+  <meta name="description" content="Calculate empirical formulas instantly from mass percentages or elemental masses with our free online Empirical Formula Finder tool." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/empirical-formula-finder/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Empirical Formula Finder Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "EducationalApplication",
+    "description": "An advanced chemistry utility to compute exact empirical formulas and molecular simplifications from elemental mass composition data.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* INPUT GRID & ELEMENT BUILDER */
+    .element-input-row { display: grid; grid-template-columns: 2fr 3fr 1fr; gap: 12px; margin-bottom: 12px; align-items: center; }
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; margin-bottom: 20px; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.2rem; color: #0f172a; background: #f1f5f9; padding: 20px; border-radius: 16px; border: 2px solid #cbd5e1; word-break: break-all; text-align: center; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-add { background: #10b981; color: #ffffff; border-color: #10b981; margin-bottom: 15px; }
+    .f-btn-add:hover { background: #059669; }
+    .f-btn-del { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; padding: 10px; border-radius: 10px; font-weight: bold; cursor: pointer; }
+    .f-btn-del:hover { background: #fee2e2; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* RESULTS TABLE */
+    .step-results-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+    .step-results-table th, .step-results-table td { padding: 12px 14px; text-align: left; font-size: 0.95rem; border-bottom: 1px solid #e2e8f0; }
+    .step-results-table th { background: #f8fafc; color: #0f172a; font-weight: 700; }
+    .step-results-table td { color: #475569; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .element-input-row { grid-template-columns: 1fr 2fr auto; gap: 8px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .element-input-row { grid-template-columns: 1fr; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⚗️</span> Empirical Formula Finder</div>
+    
+    <div class="f-card">
+      <div class="f-panel-box">
+        <label>Input Mode</label>
+        <select id="inputMode" class="f-select-field" onchange="toggleInputMode()">
+          <option value="percent">Mass Percentages (%)</option>
+          <option value="grams">Mass in Grams (g)</option>
+        </select>
+      </div>
+
+      <div class="f-panel-box">
+        <label>Compound Elements &amp; Quantities</label>
+        <div id="elementsContainer">
+          <!-- Dynamic Element Rows will be injected here -->
+        </div>
+        <button class="f-btn f-btn-add" onclick="addElementRow()">+ Add Another Element</button>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateEmpiricalFormula()">Calculate Empirical Formula</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResult()">📋 Copy Formula</button>
+        <button class="f-btn f-btn-clear" onclick="resetCalculator()">Clear</button>
+      </div>
+
+      <div style="margin-top: 25px;">
+        <div class="f-panel-box">
+          <label>Calculated Empirical Formula Result</label>
+          <div id="resultOutput" class="mono-font-panel">Enter elemental data above and click Calculate</div>
+        </div>
+
+        <div id="stepBreakdownContainer" style="display:none; margin-top: 20px;">
+          <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px;">Step-by-Step Calculation Breakdown</label>
+          <div style="overflow-x: auto;">
+            <table class="step-results-table">
+              <thead>
+                <tr>
+                  <th>Element</th>
+                  <th>Mass / %</th>
+                  <th>Atomic Mass (g/mol)</th>
+                  <th>Moles (n = m/M)</th>
+                  <th>Mole Ratio</th>
+                  <th>Whole Number Ratio</th>
+                </tr>
+              </thead>
+              <tbody id="breakdownBody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Advanced Stoichiometry Engine:</span>
+        Computes exact molar quantities, determines limiting ratios, and automatically applies stoichiometric rounding multipliers for fractions like .33, .50, and .25.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Stoichiometry: How to Find Empirical and Molecular Formulas from Percentage Compositions</h2>
+      <p class="seo-p">In analytical chemistry and chemical engineering, determining the precise atomic composition of an unknown compound is a fundamental milestone. While molecular formulas express the exact count of each atom in a discrete molecule (such as $C_6H_12O_6$ for glucose), the <b>empirical formula</b> reveals the simplest whole-number ratio of elements present ($CH_2O$). Understanding how to derive these ratios from laboratory mass data or percentage composition reports is essential for synthesizing pharmaceuticals, analyzing combustion products, and verifying mineral structures.</p>
+      <p class="seo-p">This professional computing manual explores the rigorous mathematical principles behind mole conversions, evaluates strategies for handling fractional stoichiometric ratios, and explains how to transition from empirical formulas to true molecular mass weights using molar mass benchmarks.</p>
+
+      <div class="seo-callout">
+        <strong>The Golden Rule of Mass Percentages:</strong> When analyzing percentage data, always assume a total sample mass of exactly <b>100 grams</b>. This allows percentage values to be directly substituted as gram quantities, simplifying initial mole calculations without altering stoichiometric ratios.
+      </div>
+
+      <h3 class="seo-h2">The Four-Step Algorithmic Core of Empirical Formula Determination</h3>
+      <p class="seo-p">When raw laboratory numbers pass through a high-performance calculation engine like our Empirical Formula Finder, the processor executes four sequential mathematical transformations:</p>
+
+      <h4 class="seo-h3">1. Mass Normalization and Conversion</h4>
+      <p class="seo-p">If input parameters are expressed in mass percentages, the tool converts each percentage value directly into grams (assuming a 100g basis). If absolute gram masses are entered, the system utilizes those direct weights.</p>
+
+      <h4 class="seo-h3">2. Molar Division (Calculating Moles)</h4>
+      <p class="seo-p">The program divides each element's mass ($m$) by its standard atomic weight ($M$) sourced from IUPAC periodic table standards, yielding the total number of moles ($n = m / M$) for each constituent.</p>
+
+      <h4 class="seo-h3">3. Relative Ratio Normalization</h4>
+      <p class="seo-p">To establish a baseline, every calculated mole value is divided by the smallest mole quantity among all entered elements in the compound. This sets the lowest mole value to exactly 1.0.</p>
+
+      <h4 class="seo-h3">4. Whole-Number Multiplier Resolution</h4>
+      <p class="seo-p">If normalization yields fractional values (e.g., 1.33, 1.50, 1.25), the tool applies systematic rounding multipliers (such as multiplying by 2, 3, or 4) to resolve integers cleanly while respecting acceptable experimental error margins.</p>
+
+      <h3>Common Elements Reference Table &amp; Atomic Weights</h3>
+      <p class="seo-p">Reviewing standard atomic weights ensures accurate data entry when analyzing laboratory samples or textbook homework problems:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Element Name</th>
+              <th>Chemical Symbol</th>
+              <th>Standard Atomic Weight (g/mol)</th>
+              <th>Common Valency States</th>
+              <th>Typical Analytical Context</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Hydrogen</td>
+              <td><b>H</b></td>
+              <td>1.008</td>
+              <td>+1, -1</td>
+              <td>Hydrocarbons, organic acids, water of crystallization.</td>
+            </tr>
+            <tr>
+              <td>Carbon</td>
+              <td><b>C</b></td>
+              <td>12.011</td>
+              <td>+4, +2, -4</td>
+              <td>Backbone of all organic and biological molecules.</td>
+            </tr>
+            <tr>
+              <td>Nitrogen</td>
+              <td><b>N</b></td>
+              <td>14.007</td>
+              <td>-3, +3, +5</td>
+              <td>Amino acids, proteins, nitrates, and explosives.</td>
+            </tr>
+            <tr>
+              <td>Oxygen</td>
+              <td><b>O</b></td>
+              <td>15.999</td>
+              <td>-2</td>
+              <td>Oxides, carbohydrates, alcohols, and combustion products.</td>
+            </tr>
+            <tr>
+              <td>Sodium</td>
+              <td><b>Na</b></td>
+              <td>22.990</td>
+              <td>+1</td>
+              <td>Salts, alkaline solutions, and ionic minerals.</td>
+            </tr>
+            <tr>
+              <td>Chlorine</td>
+              <td><b>Cl</b></td>
+              <td>35.453</td>
+              <td>-1, +1, +5, +7</td>
+              <td>Chlorides, PVC polymers, and disinfectants.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Analytical Chemistry Segment</h3>
+
+      <h3>What is the difference between an empirical formula and a molecular formula?</h3>
+      <p class="seo-p">An empirical formula represents the lowest whole-number ratio of atoms in a compound (e.g., $CH_2O$ for formaldehyde, acetic acid, and glucose). A molecular formula gives the exact number of atoms of each element in a single molecule of the substance ($C_2H_4O_2$ for acetic acid). To find the molecular formula from an empirical formula, you must divide the molar mass of the compound by the empirical formula mass.</p>
+
+      <h3>How do I handle rounding when mole ratios result in numbers like 1.33 or 1.50?</h3>
+      <p class="seo-p">Never round numbers like 1.33 or 1.67 to the nearest whole integer, as this introduces massive compounding errors. Instead, multiply all ratios in the compound by a common integer that eliminates the fraction. For a decimal ending in .33 ($1/3$), multiply all values by 3. For .50 ($1/2$), multiply by 2. For .25 or .75 ($1/4$ or $3/4$), multiply by 4.</p>
+
+      <h3>Can this calculator be used for combustion analysis problems?</h3>
+      <p class="seo-p">Yes! In combustion analysis, masses of $CO_2$ and $H_2O$ produced from burning an organic sample are used to determine carbon and hydrogen masses. Once you calculate those individual elemental masses, you can input them directly into our tool in gram mode to instantly derive the empirical formula.</p>
+
+      <h3 class="seo-h2">Summary: Streamlining Chemical Calculations</h3>
+      <p class="seo-p">Calculating empirical formulas manually involves tedious divisions, intermediate rounding checks, and potential arithmetic errors. Our Advanced Empirical Formula Finder automates this entire workflow instantly while providing a complete step-by-step breakdown table for laboratory reports or academic study.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const COMMON_ELEMENTS = [
+      { symbol: 'H', name: 'Hydrogen', atomicMass: 1.008 },
+      { symbol: 'C', name: 'Carbon', atomicMass: 12.011 },
+      { symbol: 'N', name: 'Nitrogen', atomicMass: 14.007 },
+      { symbol: 'O', name: 'Oxygen', atomicMass: 15.999 },
+      { symbol: 'Na', name: 'Sodium', atomicMass: 22.990 },
+      { symbol: 'Mg', name: 'Magnesium', atomicMass: 24.305 },
+      { symbol: 'Al', name: 'Aluminum', atomicMass: 26.982 },
+      { symbol: 'Si', name: 'Silicon', atomicMass: 28.085 },
+      { symbol: 'P', name: 'Phosphorus', atomicMass: 30.974 },
+      { symbol: 'S', name: 'Sulfur', atomicMass: 32.06 },
+      { symbol: 'Cl', name: 'Chlorine', atomicMass: 35.45 },
+      { symbol: 'K', name: 'Potassium', atomicMass: 39.098 },
+      { symbol: 'Ca', name: 'Calcium', atomicMass: 40.078 },
+      { symbol: 'Fe', name: 'Iron', atomicMass: 55.845 },
+      { symbol: 'Cu', name: 'Copper', atomicMass: 63.546 },
+      { symbol: 'Zn', name: 'Zinc', atomicMass: 65.38 }
+    ];
+
+    function initDefaultRows() {
+      const container = document.getElementById('elementsContainer');
+      container.innerHTML = '';
+      addDefaultRow('C', '40');
+      addDefaultRow('H', '6.71');
+      addDefaultRow('O', '53.29');
+    }
+
+    function addDefaultRow(symbolVal, amountVal) {
+      const container = document.getElementById('elementsContainer');
+      const rowId = 'el_row_' + Math.random().toString(36.substring(2, 9));
+      
+      const rowDiv = document.createElement('div');
+      rowDiv.className = 'element-input-row';
+      rowDiv.id = rowId;
+
+      let optionsHtml = '';
+      COMMON_ELEMENTS.forEach(el => {
+        const selected = el.symbol === symbolVal ? 'selected' : '';
+        optionsHtml += `<option value="${el.symbol}" ${selected}>${el.symbol} (${el.name})</option>`;
+      });
+
+      rowDiv.innerHTML = `
+        <select class="f-select-field element-select" onchange="updateAtomicMassPlaceholder(this)">
+          ${optionsHtml}
+        </select>
+        <input type="number" step="any" class="f-input-field element-amount" placeholder="Amount / %" value="${amountVal}">
+        <button class="f-btn-del" onclick="document.getElementById('${rowId}').remove()">✕</button>
+      `;
+      container.appendChild(rowDiv);
+    }
+
+    function addElementRow() {
+      const container = document.getElementById('elementsContainer');
+      const rowId = 'el_row_' + Math.random().toString(36.substring(2, 9));
+      
+      const rowDiv = document.createElement('div');
+      rowDiv.className = 'element-input-row';
+      rowDiv.id = rowId;
+
+      let optionsHtml = '';
+      COMMON_ELEMENTS.forEach(el => {
+        optionsHtml += `<option value="${el.symbol}">${el.symbol} (${el.name})</option>`;
+      });
+
+      rowDiv.innerHTML = `
+        <select class="f-select-field element-select">
+          ${optionsHtml}
+        </select>
+        <input type="number" step="any" class="f-input-field element-amount" placeholder="Amount / %" value="">
+        <button class="f-btn-del" onclick="document.getElementById('${rowId}').remove()">✕</button>
+      `;
+      container.appendChild(rowDiv);
+    }
+
+    function toggleInputMode() {
+      const mode = document.getElementById('inputMode').value;
+      const labels = document.querySelectorAll('.element-input-row .element-amount');
+      labels.forEach(input => {
+        input.placeholder = mode === 'percent' ? 'Mass %' : 'Mass (g)';
+      });
+    }
+
+    function getElementAtomicMass(symbol) {
+      const found = COMMON_ELEMENTS.find(e => e.symbol === symbol);
+      return found ? found.atomicMass : 1.008;
+    }
+
+    function calculateEmpiricalFormula() {
+      const rows = document.querySelectorAll('.element-input-row');
+      if (rows.length === 0) {
+        alert('Please add at least one element.');
+        return;
+      }
+
+      let data = [];
+      let totalAmount = 0;
+
+      rows.forEach(row => {
+        const symbol = row.querySelector('.element-select').value;
+        const amountVal = parseFloat(row.querySelector('.element-amount').value);
+        
+        if (!isNaN(amountVal) && amountVal > 0) {
+          const atomicMass = getElementAtomicMass(symbol);
+          const moles = amountVal / atomicMass;
+          data.push({ symbol, amount: amountVal, atomicMass, moles });
+          totalAmount += amountVal;
+        }
+      });
+
+      if (data.length === 0) {
+        alert('Please enter valid positive numbers for the elements.');
+        return;
+      }
+
+      // Find minimum moles
+      let minMoles = Math.min(...data.map(d => d.moles));
+
+      // Calculate initial mole ratios
+      data.forEach(d => {
+        d.moleRatio = d.moles / minMoles;
+      });
+
+      // Determine best multiplier to clear fractions (.33, .50, .25, .20, etc.)
+      let bestMultiplier = 1;
+      let minFractionSum = 999;
+
+      for (let m = 1; m <= 12; m++) {
+        let currentFractionSum = 0;
+        let isValid = true;
+        
+        let testedRatios = data.map(d => {
+          let scaled = d.moleRatio * m;
+          let rounded = Math.round(scaled);
+          let diff = Math.abs(scaled - rounded);
+          currentFractionSum += diff;
+          if (diff > 0.15) isValid = false;
+          return rounded;
+        });
+
+        if (isValid && currentFractionSum < minFractionSum) {
+          minFractionSum = currentFractionSum;
+          bestMultiplier = m;
+        }
+      }
+
+      // Final whole number calculation
+      data.forEach(d => {
+        d.wholeRatio = Math.round(d.moleRatio * bestMultiplier);
+        if (d.wholeRatio < 1) d.wholeRatio = 1;
+      });
+
+      // Build formula string (Hill system approximation: C first, then H, then alphabetical)
+      data.sort((a, b) => {
+        if (a.symbol === 'C') return -1;
+        if (b.symbol === 'C') return 1;
+        if (a.symbol === 'H' && b.symbol !== 'C') return -1;
+        if (b.symbol === 'H' && a.symbol !== 'C') return 1;
+        return a.symbol.localeCompare(b.symbol);
+      });
+
+      let formulaString = '';
+      data.forEach(d => {
+        formulaString += d.symbol;
+        if (d.wholeRatio > 1) {
+          formulaString += `<sub>${d.wholeRatio}</sub>`;
+        }
+      });
+
+      // Display Formula
+      document.getElementById('resultOutput').innerHTML = formulaString;
+
+      // Build Breakdown Table
+      const breakdownBody = document.getElementById('breakdownBody');
+      breakdownBody.innerHTML = '';
+      data.forEach(d => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><b>${d.symbol}</b></td>
+          <td>${d.amount.toFixed(2)}</td>
+          <td>${d.atomicMass}</td>
+          <td>${d.moles.toFixed(4)}</td>
+          <td>${d.moleRatio.toFixed(3)}</td>
+          <td><b>${d.wholeRatio}</b></td>
+        `;
+        breakdownBody.appendChild(tr);
+      });
+
+      document.getElementById('stepBreakdownContainer').style.display = 'block';
+    }
+
+    function copyResult() {
+      const outputEl = document.getElementById('resultOutput');
+      // Strip HTML tags for clean clipboard text
+      const tempText = outputEl.innerText || outputEl.textContent;
+      navigator.clipboard.writeText(tempText).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.innerText = '✓ Copied!';
+        setTimeout(() => { btn.innerText = '📋 Copy Formula'; }, 2000);
+      });
+    }
+
+    function resetCalculator() {
+      initDefaultRows();
+      document.getElementById('resultOutput').innerText = 'Enter elemental data above and click Calculate';
+      document.getElementById('stepBreakdownContainer').style.display = 'none';
+    }
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      initDefaultRows();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
