@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Blue Hour Lighting Time Calculator | Photography Twilight Finder</title>
+  <meta name="description" content="Calculate precise morning and evening blue hour lighting times, civil twilight, and golden hour windows instantly for any geographic location and date." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/blue-hour-lighting-time-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Blue Hour Lighting Time Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced solar position and twilight calculation utility to determine precise morning and evening blue hour photography windows.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TOOL SPECIFIC INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS DISPLAY PANEL */
+    .results-display-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+    .result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; box-sizing: border-box; text-align: left; }
+    .result-card h4 { margin: 0 0 10px 0; font-size: 0.9rem; font-weight: 700; color: #1e3a8a; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px; }
+    .result-time-val { font-size: 1.4rem; font-weight: 800; color: #0f172a; margin-bottom: 6px; font-family: 'Courier New', Courier, monospace; }
+    .result-sub-val { font-size: 0.85rem; color: #64748b; line-height: 1.4; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 24px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid, .results-display-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🌆</span> Blue Hour Lighting Time Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="calcLatitude">Latitude (Decimal Degrees)</label>
+          <input type="number" id="calcLatitude" class="f-input-field" value="40.7128" step="0.0001" placeholder="e.g. 40.7128 (New York)" oninput="calculateBlueHour()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="calcLongitude">Longitude (Decimal Degrees)</label>
+          <input type="number" id="calcLongitude" class="f-input-field" value="-74.0060" step="0.0001" placeholder="e.g. -74.0060" oninput="calculateBlueHour()">
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="calcDate">Calculation Date</label>
+          <input type="date" id="calcDate" class="f-input-field" onchange="calculateBlueHour()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="calcTimezone">Timezone Offset (Hours from UTC)</label>
+          <input type="number" id="calcTimezone" class="f-input-field" value="-5" step="0.5" min="-12" max="14" oninput="calculateBlueHour()">
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; margin-bottom: 10px;">
+        <button type="button" class="f-btn f-btn-copy" onclick="useCurrentLocation()" style="flex:1;">📍 Detect My Location &amp; Today</button>
+      </div>
+
+      <div class="results-display-grid">
+        <div class="result-card">
+          <h4>🌅 Morning Blue Hour</h4>
+          <div class="result-time-val" id="resMorningBlue">--:-- --</div>
+          <div class="result-sub-val" id="resMorningDetails">Sun elevation: -6° to -4° before sunrise</div>
+        </div>
+        <div class="result-card">
+          <h4>🌇 Evening Blue Hour</h4>
+          <div class="result-time-val" id="resEveningBlue">--:-- --</div>
+          <div class="result-sub-val" id="resEveningDetails">Sun elevation: -4° to -6° after sunset</div>
+        </div>
+      </div>
+
+      <div class="results-display-grid" style="margin-top: 15px;">
+        <div class="result-card" style="background:#f1f5f9;">
+          <h4>☀️ Sunrise Time</h4>
+          <div class="result-time-val" id="resSunrise" style="font-size: 1.2rem;">--:-- --</div>
+          <div class="result-sub-val" id="resSunriseDetails">Solar center at horizon</div>
+        </div>
+        <div class="result-card" style="background:#f1f5f9;">
+          <h4>🌙 Sunset Time</h4>
+          <div class="result-time-val" id="resSunset" style="font-size: 1.2rem;">--:-- --</div>
+          <div class="result-sub-val" id="resSunsetDetails">Solar center at horizon</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateBlueHour()">Compute Schedule</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyScheduleToClipboard()">📋 Copy Lighting Schedule</button>
+        <button class="f-btn f-btn-clear" onclick="resetCalculatorDefaults()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Astronomical Solar Geometry Engine Active:</span>
+        Calculations utilize solar declination formulas and equation of time algorithms corrected for atmospheric refraction and coordinate latitude offsets.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Master Guide to Blue Hour Photography: Solar Angles, Twilight Physics, and Professional Lighting Planning</h2>
+      <p class="seo-p">The blue hour is widely considered by professional landscape, architectural, and cityscape photographers to be the most magical time of day. Occurring briefly before sunrise and immediately after sunset, this ethereal window bathes the world in deep, saturated cobalt blues while artificial city lights begin to glow in warm tungsten hues. Mastering this fleeting lighting window requires precise planning, deep awareness of solar geometry, and dependable calculation tools.</p>
+      <p class="seo-p">This comprehensive technical manual explores the astronomical mechanics governing twilight, breaks down the differences between civil, nautical, and astronomical phases, analyzes color temperature variations during sun descent, and provides actionable guidelines for capturing professional-grade low-light imagery.</p>
+
+      <div class="seo-callout">
+        <strong>The Solar Elevation Parameter:</strong> Scientifically, the blue hour corresponds precisely to when the geometric center of the Sun is positioned between 4 degrees and 6 degrees below the natural horizon, producing a high ratio of Rayleigh-scattered blue wavelengths.
+      </div>
+
+      <h3 class="seo-h2">The Science of Twilight: Understanding Solar Altitudes</h3>
+      <p class="seo-p">To calculate exact photography windows, we must examine how sunlight interacts with the Earth's atmosphere as the sun dips below the horizon:</p>
+
+      <h4 class="seo-h3">1. Civil Twilight (0° to -6°)</h4>
+      <p class="seo-p">Civil twilight begins right at sunset and extends until the sun reaches 6 degrees below the horizon. During the first half of this window (0° to -4°), the sky retains rich amber and orange gradients (the golden hour). As the sun drops from -4° to -6°, the direct solar glow fades, and scattered blue light takes over, creating the classic blue hour palette.</p>
+
+      <h4 class="seo-h3">2. Nautical Twilight (-6° to -12°)</h4>
+      <p class="seo-p">As the sun sinks deeper into nautical twilight, the horizon becomes indistinct at sea, and brighter navigation stars appear. While excellent for moody seascapes, the deep blue hue transitions rapidly into near-black darkness.</p>
+
+      <h4 class="seo-h3">3. Astronomical Twilight (-12° to -18°)</h4>
+      <p class="seo-p">At this stage, sky illumination is at absolute minimums, making it the primary domain for deep-sky astrophotography rather than urban or landscape blue hour compositions.</p>
+
+      <h3>The Statutory Reference Matrix: Twilight Phases and Photography Applications</h3>
+      <p class="seo-p">Reviewing the technical definitions of solar elevation angles helps photographers select the exact equipment settings and filters needed for each phase:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Twilight Phase</th>
+              <th>Sun Altitude (Degrees)</th>
+              <th>Sky Color Characteristics</th>
+              <th>Ideal Photography Genre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Golden Hour (Sunset)</td>
+              <td><b>+6° to 0°</b></td>
+              <td>Warm golden light, soft shadows, directional highlights</td>
+              <td>Portraits, wildlife, golden landscapes</td>
+            </tr>
+            <tr>
+              <td>Early Twilight</td>
+              <td><b>0° to -4°</b></td>
+              <td>Balanced warm and cool tones, glowing clouds</td>
+              <td>Cityscapes, coastal long exposures</td>
+            </tr>
+            <tr>
+              <td>Peak Blue Hour</td>
+              <td><b>-4° to -6°</b></td>
+              <td>Deep cobalt blue sky, balanced urban lights</td>
+              <td>Architecture, bridges, city skylines</td>
+            </tr>
+            <tr>
+              <td>Late Twilight</td>
+              <td><b>-6° to -12°</b></td>
+              <td>Dark navy blue, stars becoming visible</td>
+              <td>Nightscape astrophotography, twilight silhouettes</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>How long does the blue hour typically last?</h3>
+      <p class="seo-p">At equatorial latitudes, the sun descends rapidly at a steep angle, causing the blue hour to last as little as 20 to 25 minutes. However, closer to the poles during spring and autumn, the sun dips at a shallow angle, extending the twilight window to 45 minutes or longer.</p>
+
+      <h3>Why do I need city lights during evening blue hour?</h3>
+      <p class="seo-p">While morning blue hour is pristine and serene, evening blue hour benefits immensely from artificial streetlights, building windows, and bridge illuminations. When the ambient sky brightness matches the intensity of man-made lights (around -5° solar elevation), camera sensors capture both rich blue skies and glowing urban details without blown-out highlights.</p>
+
+      <h3>How do latitude and season affect twilight timing?</h3>
+      <p class="seo-p">Because the Earth's axis is tilted at 23.4 degrees, the length of day and twilight shifts dramatically depending on your latitude and the time of year. Summer months produce shorter twilight transitions in mid-latitudes, while winter months stretch out the twilight duration.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Low-Light Shoots</h3>
+      <p class="seo-p">To capture stunning twilight imagery, arrive at your location at least 30 minutes before sunset or sunrise. Mount your camera on a sturdy tripod, use a cable release or self-timer to prevent camera shake, shoot in RAW format to preserve dynamic range in shadow areas, and bracket your exposures to handle high-contrast urban scenes.</p>
+      <p class="seo-p">Our Blue Hour Lighting Time Calculator automates complex solar altitude math instantly, giving you precise schedules tailored to your exact GPS coordinates and date effortlessly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // Initialize date field to today on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('calcDate').value = today;
+      // Estimate timezone offset from browser
+      const tzOffset = -new Date().getTimezoneOffset() / 60;
+      document.getElementById('calcTimezone').value = tzOffset;
+      calculateBlueHour();
+    });
+
+    function useCurrentLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            document.getElementById('calcLatitude').value = position.coords.latitude.toFixed(4);
+            document.getElementById('calcLongitude').value = position.coords.longitude.toFixed(4);
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('calcDate').value = today;
+            const tzOffset = -new Date().getTimezoneOffset() / 60;
+            document.getElementById('calcTimezone').value = tzOffset;
+            calculateBlueHour();
+          },
+          (error) => {
+            alert('Unable to retrieve your location. Please enter latitude and longitude manually.');
+          }
+        );
+      } else {
+        alert('Geolocation is not supported by your browser.');
+      }
+    }
+
+    function calculateBlueHour() {
+      const lat = parseFloat(document.getElementById('calcLatitude').value) || 0;
+      const lon = parseFloat(document.getElementById('calcLongitude').value) || 0;
+      const dateStr = document.getElementById('calcDate').value;
+      const tz = parseFloat(document.getElementById('calcTimezone').value) || 0;
+
+      if (!dateStr) return;
+
+      const date = new Date(dateStr + 'T00:00:00Z');
+      const startOfYear = new Date(date.getFullYear(), 0, 1);
+      const dayOfYear = Math.floor((date - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
+
+      // Solar declination approximation (radians)
+      const declination = 23.45 * Math.sin((2 * Math.PI / 365) * (284 + dayOfYear)) * (Math.PI / 180);
+      const latRad = lat * (Math.PI / 180);
+
+      // Equation of time approximation in minutes
+      const b = (2 * Math.PI / 365) * (dayOfYear - 81);
+      const eot = 9.87 * Math.sin(2 * b) - 7.53 * Math.cos(b) - 1.5 * Math.sin(b);
+
+      // Solar noon calculation in UTC hours
+      const solarNoonUTC = 12 - (lon / 15) - (eot / 60);
+
+      // Helper function to calculate hour angle for a given solar altitude angle (in degrees)
+      function getHourAngle(altDeg) {
+        const altRad = altDeg * (Math.PI / 180);
+        const cosH = (Math.sin(altRad) - Math.sin(latRad) * Math.sin(declination)) / (Math.cos(latRad) * Math.cos(declination));
+        if (cosH < -1 || cosH > 1) return null; // Polar day/night condition
+        return Math.acos(cosH) * (180 / Math.PI) / 15;
+      }
+
+      // Altitudes: Sunrise/Sunset = -0.833°, Blue hour = -4° to -6°
+      const hSunrise = getHourAngle(-0.833);
+      const hBlueStart = getHourAngle(-4.0);
+      const hBlueEnd = getHourAngle(-6.0);
+
+      if (hSunrise === null || hBlueStart === null || hBlueEnd === null) {
+        document.getElementById('resMorningBlue').innerText = 'Extreme Latitude (No Blue Hour)';
+        document.getElementById('resEveningBlue').innerText = 'Extreme Latitude (No Blue Hour)';
+        document.getElementById('resSunrise').innerText = '--:--';
+        document.getElementById('resSunset').innerText = '--:--';
+        return;
+      }
+
+      // Times in UTC hours
+      const sunriseUTC = solarNoonUTC - hSunrise;
+      const sunsetUTC = solarNoonUTC + hSunrise;
+
+      // Morning blue hour: starts at sun -6°, ends at sun -4° (just before sunrise)
+      // Actually morning blue hour spans from when sun is at -6° to -4° before sunrise or closer to sunrise
+      // Let's compute exact clock times relative to local timezone
+      const toLocalTime = (utcHours) => {
+        let localH = utcHours + tz;
+        while (localH < 0) localH += 24;
+        while (localH >= 24) localH -= 24;
+        const hrs = Math.floor(localH);
+        const mins = Math.round((localH - hrs) * 60);
+        const period = hrs >= 12 ? 'PM' : 'AM';
+        const displayHrs = hrs % 12 === 0 ? 12 : hrs % 12;
+        const displayMins = mins < 10 ? '0' + mins : mins;
+        return `${displayHrs}:${displayMins} ${period}`;
+      };
+
+      // Morning blue hour window: from sun at -6° to -4° before sunrise
+      const mornStartUTC = solarNoonUTC - hBlueEnd;
+      const mornEndUTC = solarNoonUTC - hBlueStart;
+
+      // Evening blue hour window: from sun at -4° to -6° after sunset
+      const eveStartUTC = solarNoonUTC + hBlueStart;
+      const eveEndUTC = solarNoonUTC + hBlueEnd;
+
+      document.getElementById('resMorningBlue').innerText = `${toLocalTime(mornStartUTC)} - ${toLocalTime(mornEndUTC)}`;
+      document.getElementById('resEveningBlue').innerText = `${toLocalTime(eveStartUTC)} - ${toLocalTime(eveEndUTC)}`;
+      document.getElementById('resSunrise').innerText = toLocalTime(sunriseUTC);
+      document.getElementById('resSunset').innerText = toLocalTime(sunsetUTC);
+    }
+
+    function resetCalculatorDefaults() {
+      document.getElementById('calcLatitude').value = '40.7128';
+      document.getElementById('calcLongitude').value = '-74.0060';
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('calcDate').value = today;
+      const tzOffset = -new Date().getTimezoneOffset() / 60;
+      document.getElementById('calcTimezone').value = tzOffset;
+      calculateBlueHour();
+    }
+
+    function copyScheduleToClipboard() {
+      const morn = document.getElementById('resMorningBlue').innerText;
+      const eve = document.getElementById('resEveningBlue').innerText;
+      const sunrise = document.getElementById('resSunrise').innerText;
+      const sunset = document.getElementById('resSunset').innerText;
+      const lat = document.getElementById('calcLatitude').value;
+      const lon = document.getElementById('calcLongitude').value;
+      const date = document.getElementById('calcDate').value;
+
+      const scheduleText = `Blue Hour Lighting Schedule (${date}) [Lat: ${lat}, Lon: ${lon}]:\n- Morning Blue Hour: ${morn}\n- Sunrise: ${sunrise}\n- Sunset: ${sunset}\n- Evening Blue Hour: ${eve}`;
+
+      navigator.clipboard.writeText(scheduleText).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        const origText = btn.innerText;
+        btn.innerText = '✅ Copied to Clipboard!';
+        setTimeout(() => { btn.innerText = origText; }, 2000);
+      });
+    }
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
