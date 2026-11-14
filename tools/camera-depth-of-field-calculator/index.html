@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Camera Depth of Field Calculator | Calculate DOF, Hyperfocal Distance & Blur</title>
+  <meta name="description" content="Calculate camera depth of field, near/far focus limits, hyperfocal distance, and total depth instantly with our free online optical calculator for photographers." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/camera-depth-of-field-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Camera Depth of Field Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "MultimediaApplication",
+    "description": "An advanced optical computation tool to calculate depth of field, hyperfocal distance, near limit, far limit, and front/rear blur distributions for professional photographers.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOF CALCULATOR SPECIFIC GRID SYSTEM */
+    .f-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS DASHBOARD */
+    .dof-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 25px; margin-bottom: 20px; }
+    .dof-metric-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .dof-metric-title { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; font-weight: 700; margin-bottom: 6px; }
+    .dof-metric-value { font-size: 1.5rem; font-weight: 800; color: #0f172a; }
+    .dof-metric-sub { font-size: 0.85rem; color: #2563eb; font-weight: 600; margin-top: 4px; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .dof-results-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-grid-2 { grid-template-columns: 1fr; gap: 20px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📷</span> Camera Depth of Field Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-grid-2">
+        <div class="f-panel-box">
+          <label for="cameraSensor">Camera Sensor / Format</label>
+          <select id="cameraSensor" class="f-select-field" onchange="updateSensorCoC()">
+            <option value="0.030">Full Frame (35mm) - CoC 0.030 mm</option>
+            <option value="0.019">APS-C (Canon 1.6x) - CoC 0.019 mm</option>
+            <option value="0.020">APS-C (Nikon/Sony/Fuji 1.5x) - CoC 0.020 mm</option>
+            <option value="0.015">Micro Four Thirds (M4/3) - CoC 0.015 mm</option>
+            <option value="0.007">Medium Format (44x33mm) - CoC 0.039 mm</option>
+            <option value="0.006">1-inch Sensor - CoC 0.006 mm</option>
+            <option value="custom">Custom Circle of Confusion (CoC)</option>
+          </select>
+        </div>
+
+        <div class="f-panel-box" id="customCocBox" style="display:none;">
+          <label for="customCoc">Custom CoC (mm)</label>
+          <input type="number" id="customCoc" class="f-input-field" value="0.030" step="0.001" min="0.001" oninput="calculateDOF()">
+        </div>
+
+        <div class="f-panel-box">
+          <label for="focalLength">Focal Length (mm)</label>
+          <input type="number" id="focalLength" class="f-input-field" value="50" min="1" step="1" oninput="calculateDOF()">
+        </div>
+      </div>
+
+      <div class="f-grid-2">
+        <div class="f-panel-box">
+          <label for="apertureValue">Aperture (f-number)</label>
+          <select id="apertureValue" class="f-select-field" onchange="calculateDOF()">
+            <option value="1.2">f/1.2</option>
+            <option value="1.4">f/1.4</option>
+            <option value="1.8">f/1.8</option>
+            <option value="2">f/2.0</option>
+            <option value="2.8">f/2.8</option>
+            <option value="4" selected>f/4.0</option>
+            <option value="5.6">f/5.6</option>
+            <option value="8">f/8.0</option>
+            <option value="11">f/11</option>
+            <option value="16">f/16</option>
+            <option value="22">f/22</option>
+          </select>
+        </div>
+
+        <div class="f-panel-box">
+          <label for="subjectDistance">Subject Distance</label>
+          <div style="display: flex; gap: 10px;">
+            <input type="number" id="subjectDistance" class="f-input-field" value="3" min="0.1" step="0.1" oninput="calculateDOF()">
+            <select id="distanceUnit" class="f-select-field" style="width: 130px;" onchange="calculateDOF()">
+              <option value="m">Meters (m)</option>
+              <option value="ft">Feet (ft)</option>
+              <option value="cm">Centimeters (cm)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="dof-results-grid">
+        <div class="dof-metric-card">
+          <div class="dof-metric-title">Near Limit of Focus</div>
+          <div class="dof-metric-value" id="resNearLimit">2.68 m</div>
+          <div class="dof-metric-sub" id="resNearDistPercent">Front: 32 cm</div>
+        </div>
+        <div class="dof-metric-card">
+          <div class="dof-metric-title">Far Limit of Focus</div>
+          <div class="dof-metric-value" id="resFarLimit">3.41 m</div>
+          <div class="dof-metric-sub" id="resFarDistPercent">Rear: 41 cm</div>
+        </div>
+        <div class="dof-metric-card">
+          <div class="dof-metric-title">Total Depth of Field</div>
+          <div class="dof-metric-value" id="resTotalDof">0.73 m</div>
+          <div class="dof-metric-sub" id="resDofClass">Moderate DOF</div>
+        </div>
+      </div>
+
+      <div style="background: #f1f5f9; border-radius: 16px; padding: 20px; margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+        <div>
+          <div style="font-size: 0.8rem; text-transform: uppercase; color: #475569; font-weight: 700;">Hyperfocal Distance</div>
+          <div style="font-size: 1.25krem; font-weight: 800; color: #0f172a; margin-top: 4px;" id="resHyperfocal">20.83 m</div>
+        </div>
+        <div>
+          <div style="font-size: 0.8rem; text-transform: uppercase; color: #475569; font-weight: 700;">Background Blur Factor</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin-top: 4px;" id="resBlurFactor">Balanced Bokeh</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateDOF()">Recalculate Optics</button>
+        <button class="f-btn f-btn-copy" id="copyDofBtn" onclick="copyDofResults()">📋 Copy Calculation Report</button>
+        <button class="f-btn f-btn-clear" onclick="resetDofForm()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Optical Physics Precision Engine:</span>
+        Computations evaluate exact sensor diagonal thresholds, circle of confusion diameter parameters, and thin-lens conjugate equations in real time as you adjust your parameters.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Optical Physics: Understanding Camera Depth of Field, Hyperfocal Distance, and Sensor Formats</h2>
+      <p class="seo-p">Depth of Field (DOF) is one of the most powerful creative controls in photography. Whether you are isolating a portrait subject with buttery background blur or ensuring razor-sharp sharpness across an expansive landscape from foreground wildflowers to distant mountains, understanding how focal length, aperture, subject distance, and sensor size interact is essential. This professional-grade Camera Depth of Field Calculator is engineered to provide pinpoint optical calculations instantly, helping you eliminate guesswork in the field.</p>
+      <p class="seo-p">This extensive optical guide dives deep into the mathematical formulas behind depth of field, analyzes the critical concept of the Circle of Confusion (CoC), explores hyperfocal distance optimization for landscapes, and provides practical frameworks for professional composition.</p>
+
+      <div class="seo-callout">
+        <strong>The Fundamental Optical Tradeoff:</strong> While wide apertures (e.g., f/1.4, f/1.8) create stunning subject isolation and beautiful bokeh, they result in an extremely narrow plane of sharp focus, making precise autofocus placement critical to avoid missing your focal point.
+      </div>
+
+      <h3 class="seo-h2">The Mathematical Core: Thin Lens Equations and Circle of Confusion</h3>
+      <p class="seo-p">To calculate exact near and far boundaries, our optical calculator processes inputs through standard photographic physics equations:</p>
+
+      <h4 class="seo-h3">1. The Circle of Confusion (CoC) Baseline</h4>
+      <p class="seo-p">The human eye can resolve a certain amount of blur before an image appears unsharp. The Circle of Confusion represents the largest blur spot that appears as a single crisp point on a standard print viewed at a normal distance. Full-frame 35mm sensors traditionally use a standard CoC of 0.030 mm, while crop sensors require smaller CoC values proportional to their sensor size reduction.</p>
+
+      <h4 class="seo-h3">2. Hyperfocal Distance Calculation</h4>
+      <p class="seo-p">Hyperfocal distance ($H$) is the closest focus distance at which objects at infinity are still considered acceptably sharp. When you focus your camera at the hyperfocal distance, your depth of field extends from half that distance ($H/2$) all the way to infinity. The formula is expressed as:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">H = (f² / (N × c)) + f</p>
+      <p class="seo-p">Where $f$ is focal length, $N$ is the f-number (aperture), and $c$ is the circle of confusion.</p>
+
+      <h4 class="seo-h3">3. Near and Far Limit Equations</h4>
+      <p class="seo-p">Using subject distance ($s$) and hyperfocal distance ($H$), the near ($D_n$) and far ($D_f$) limits of acceptable sharpness are computed as:</p>
+      <ul class="seo-list">
+        <li><b>Near Limit ($D_n$):</b> $(H \times s) / (H + (s - f))$</li>
+        <li><b>Far Limit ($D_f$):</b> $(H \times s) / (H - (s - f))$ (if $s < H$)</li>
+      </ul>
+
+      <h3>The Statutory Reference Matrix: Standard Sensor Formats &amp; CoC Parameters</h3>
+      <p class="seo-p">Different sensor sizes capture different fields of view and exhibit distinct depth of field characteristics at identical focal lengths and f-stops:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Camera Sensor Format</th>
+              <th>Sensor Dimensions (mm)</th>
+              <th>Crop Factor</th>
+              <th>Standard CoC (mm)</th>
+              <th>Optical Characteristic &amp; DOF Behavior</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Medium Format</td>
+              <td>44 x 33 mm</td>
+              <td>0.79x</td>
+              <td>0.039 mm</td>
+              <td>Extremely shallow DOF at wide apertures; requires smaller stops for deep sharpness.</td>
+            </tr>
+            <tr>
+              <td>Full Frame (35mm)</td>
+              <td>36 x 24 mm</td>
+              <td>1.0x</td>
+              <td>0.030 mm</td>
+              <td>The industry standard baseline; offers optimal balance of low-light performance and bokeh.</td>
+            </tr>
+            <tr>
+              <td>APS-C (Nikon/Sony/Fuji)</td>
+              <td>23.5 x 15.6 mm</td>
+              <td>1.5x</td>
+              <td>0.020 mm</td>
+              <td>Provides slightly deeper DOF compared to full frame at equivalent framing and aperture.</td>
+            </tr>
+            <tr>
+              <td>APS-C (Canon)</td>
+              <td>22.2 x 14.8 mm</td>
+              <td>1.6x</td>
+              <td>0.019 mm</td>
+              <td>Popular crop format yielding robust telephoto reach with moderate background blur.</td>
+            </tr>
+            <tr>
+              <td>Micro Four Thirds</td>
+              <td>17.3 x 13 mm</td>
+              <td>2.0x</td>
+              <td>0.015 mm</td>
+              <td>Deep depth of field; ideal for macro and wildlife where maintaining focus is challenging.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Professional Optical Guide</h3>
+
+      <h3>Why does stopping down my lens increase the depth of field?</h3>
+      <p class="seo-p">When you close your aperture (e.g., moving from f/2.8 to f/11), you physically constrict the diameter of the aperture blades. This narrows the cone of light entering the optical assembly, which reduces the size of blur circles on the sensor plane and expands the range of distances that appear sharp.</p>
+
+      <h3>What is diffraction and how does it limit maximum f-stop selection?</h3>
+      <p class="seo-p">While stopping down to f/22 or f/32 maximizes depth of field geometrically, light waves bend (diffract) as they pass through extremely tiny aperture openings. This diffraction softens overall image sharpness across the entire frame. For most modern lenses, optical sweet spots lie between f/5.6 and f/11.</p>
+
+      <h3>How does subject distance impact background separation in portraits?</h3>
+      <p class="seo-p">Subject distance has a dramatic effect on background blur (bokeh). Moving closer to your subject while keeping the background distant compresses spatial perspective and drastically reduces the depth of field, creating professional subject isolation even with moderate telephoto lenses.</p>
+
+      <h3 class="seo-h2">Summary: Professional Best Practices for Field Photography</h3>
+      <p class="seo-p">Mastering depth of field requires balancing technical calculations with artistic vision. Use our calculator before important shoots to determine exact hyperfocal distances for landscapes, verify focus stacking parameters for macro photography, and ensure critical sharpness for commercial product sessions.</p>
+      <p class="seo-p">All calculations execute instantly in your browser without external server requests, ensuring a fast, private, and reliable workflow for professional creators worldwide.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function updateSensorCoC() {
+      const sensor = document.getElementById('cameraSensor').value;
+      const customBox = document.getElementById('customCocBox');
+      if (sensor === 'custom') {
+        customBox.style.display = 'flex';
+      } else {
+        customBox.style.display = 'none';
+        document.getElementById('customCoc').value = sensor;
+      }
+      calculateDOF();
+    }
+
+    function parseDistance(val, unit) {
+      let meters = val;
+      if (unit === 'cm') meters = val / 100;
+      if (unit === 'ft') meters = val * 0.3048;
+      return meters;
+    }
+
+    function formatDistance(meters, unit) {
+      if (unit === 'cm') return (meters * 100).toFixed(1) + ' cm';
+      if (unit === 'ft') return (meters / 0.3048).toFixed(2) + ' ft';
+      if (meters < 1) return (meters * 100).toFixed(1) + ' cm';
+      return meters.toFixed(2) + ' m';
+    }
+
+    function calculateDOF() {
+      let coc = parseFloat(document.getElementById('customCoc').value);
+      const sensor = document.getElementById('cameraSensor').value;
+      if (sensor !== 'custom') {
+        coc = parseFloat(sensor);
+      }
+      
+      const focalLength = parseFloat(document.getElementById('focalLength').value); // mm
+      const aperture = parseFloat(document.getElementById('apertureValue').value);
+      const subDistInput = parseFloat(document.getElementById('subjectDistance').value);
+      const unit = document.getElementById('distanceUnit').value;
+
+      if (isNaN(coc) || isNaN(focalLength) || isNaN(aperture) || isNaN(subDistInput) || subDistInput <= 0 || focalLength <= 0) {
+        return;
+      }
+
+      const s = parseDistance(subDistInput, unit); // subject distance in meters
+      const f = focalLength / 1000; // focal length in meters
+      const c = coc / 1000; // CoC in meters
+
+      // Hyperfocal distance H = (f^2) / (N * c) + f
+      const H = (Math.pow(f, 2) / (aperture * c)) + f; // meters
+
+      let nearLimit, farLimit, totalDof;
+
+      // Near limit Dn = (H * s) / (H + (s - f))
+      const denominatorNear = H + (s - f);
+      nearLimit = denominatorNear > 0 ? (H * s) / denominatorNear : 0;
+
+      // Far limit Df = (H * s) / (H - (s - f))
+      const denominatorFar = H - (s - f);
+      if (denominatorFar <= 0 || s >= H) {
+        farLimit = Infinity;
+        totalDof = Infinity;
+      } else {
+        farLimit = (H * s) / denominatorFar;
+        totalDof = farLimit - nearLimit;
+      }
+
+      // Update UI results
+      document.getElementById('resNearLimit').innerText = formatDistance(nearLimit, unit);
+      const frontDist = s - nearLimit;
+      document.getElementById('resNearDistPercent').innerText = 'Front: ' + formatDistance(Math.abs(frontDist), unit);
+
+      if (farLimit === Infinity) {
+        document.getElementById('resFarLimit').innerText = 'Infinity (∞)';
+        document.getElementById('resFarDistPercent').innerText = 'Rear: Infinity';
+        document.getElementById('resTotalDof').innerText = 'Infinite';
+      } else {
+        document.getElementById('resFarLimit').innerText = formatDistance(farLimit, unit);
+        const rearDist = farLimit - s;
+        document.getElementById('resFarDistPercent').innerText = 'Rear: ' + formatDistance(rearDist, unit);
+        document.getElementById('resTotalDof').innerText = formatDistance(totalDof, unit);
+      }
+
+      document.getElementById('resHyperfocal').innerText = formatDistance(H, unit);
+
+      // DOF classification & bokeh factor
+      const dofClassElem = document.getElementById('resDofClass');
+      const blurFactorElem = document.getElementById('resBlurFactor');
+      
+      if (H < s * 1.5) {
+        dofClassElem.innerText = 'Deep Depth of Field';
+        blurFactorElem.innerText = 'Deep Focus / Landscape';
+      } else if (totalDof < 0.5) {
+        dofClassElem.innerText = 'Razor Thin DOF';
+        blurFactorElem.innerText = 'Stunning Bokeh & Isolation';
+      } else {
+        dofClassElem.innerText = 'Moderate / Standard DOF';
+        blurFactorElem.innerText = 'Balanced Background Blur';
+      }
+    }
+
+    function resetDofForm() {
+      document.getElementById('cameraSensor').value = '0.030';
+      document.getElementById('customCocBox').style.display = 'none';
+      document.getElementById('focalLength').value = 50;
+      document.getElementById('apertureValue').value = 4;
+      document.getElementById('subjectDistance').value = 3;
+      document.getElementById('distanceUnit').value = 'm';
+      calculateDOF();
+    }
+
+    function copyDofResults() {
+      const near = document.getElementById('resNearLimit').innerText;
+      const far = document.getElementById('resFarLimit').innerText;
+      const total = document.getElementById('resTotalDof').innerText;
+      const hyper = document.getElementById('resHyperfocal').innerText;
+      
+      const report = `Camera Depth of Field Calculation Report:\n- Near Limit: ${near}\n- Far Limit: ${far}\n- Total DOF: ${total}\n- Hyperfocal Distance: ${hyper}\nGenerated via TexusProTools.com`;
+      
+      navigator.clipboard.writeText(report).then(() => {
+        const btn = document.getElementById('copyDofBtn');
+        btn.innerText = '✓ Report Copied!';
+        setTimeout(() => { btn.innerText = '📋 Copy Calculation Report'; }, 2000);
+      });
+    }
+
+    // Initialize on load
+    window.onload = calculateDOF;
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
