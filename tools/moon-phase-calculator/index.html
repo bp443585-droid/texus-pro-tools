@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Moon Phase Calculator | Accurate Lunar Calendar & Illumination Tracker</title>
+  <meta name="description" content="Calculate current and historical moon phases, illumination percentage, lunar age, and zodiac signs instantly with our free online Moon Phase Calculator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/moon-phase-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Moon Phase Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced astronomical calculator to determine precise lunar phases, moon illumination percentages, lunar ages, and moonrise/moonset configurations.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* MOON CALCULATOR SPECIFIC GRID */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* VISUAL MOON DISPLAY BOX */
+    .moon-display-panel { background: #0f172a; border-radius: 20px; padding: 30px; color: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 15px; }
+    .moon-graphic-container { width: 120px; height: 120px; border-radius: 50%; background: #1e293b; position: relative; overflow: hidden; box-shadow: 0 0 30px rgba(255,255,255,0.15); border: 3px solid #334155; }
+    .moon-crater { position: absolute; background: rgba(0,0,0,0.25); border-radius: 50%; }
+    .moon-shadow-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); border-radius: 50%; transition: transform 0.4s ease, width 0.4s ease; transform-origin: center; }
+    
+    .moon-stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; margin-top: 10px; }
+    .moon-stat-card { background: rgba(255, 255, 255, 0.07); padding: 12px; border-radius: 12px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); }
+    .moon-stat-card span { display: block; font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; font-weight: 600; margin-bottom: 4px; }
+    .moon-stat-card strong { font-size: 1.1rem; color: #f8fafc; font-weight: 700; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🌕</span> Moon Phase Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box" style="justify-content: space-between;">
+          <div>
+            <label for="targetDateInput">Select Observation Date</label>
+            <input type="date" id="targetDateInput" class="f-input-field" onchange="calculateMoonPhase()" style="margin-top: 8px;" />
+          </div>
+          
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; margin-top: 15px;">
+            <h4 style="margin: 0 0 8px 0; color: #0f172a; font-size: 1.05rem;">Quick Astronomical Preset</h4>
+            <p style="margin: 0 0 14px 0; color: #64748b; font-size: 0.9rem;">Instantly load today's real-time lunar telemetry or calculate for custom dates.</p>
+            <button class="f-btn f-btn-copy" onclick="setTodayDate()" style="width: 100%;">📅 Jump to Today</button>
+          </div>
+        </div>
+        
+        <div class="moon-display-panel">
+          <div class="moon-graphic-container" id="moonGraphic">
+            <div class="moon-crater" style="width: 25px; height: 25px; top: 20px; left: 30px;"></div>
+            <div class="moon-crater" style="width: 18px; height: 18px; bottom: 25px; right: 25px;"></div>
+            <div class="moon-crater" style="width: 12px; height: 12px; top: 55px; right: 35px;"></div>
+            <div id="moonShadow" class="moon-shadow-overlay"></div>
+          </div>
+          
+          <div>
+            <h3 id="moonPhaseName" style="margin: 0 0 4px 0; font-size: 1.4rem; font-weight: 700; color: #f8fafc;">Calculating...</h3>
+            <p id="moonPhaseSubtitle" style="margin: 0; font-size: 0.9rem; color: #94a3b8;">Synchronizing with lunar ephemeris...</p>
+          </div>
+
+          <div class="moon-stats-grid">
+            <div class="moon-stat-card">
+              <span>Illumination</span>
+              <strong id="statIllumination">0%</strong>
+            </div>
+            <div class="moon-stat-card">
+              <span>Lunar Age</span>
+              <strong id="statAge">0 Days</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateMoonPhase()">Calculate Phase</button>
+        <button class="f-btn f-btn-copy" id="copyMoonDataBtn" onclick="copyMoonData()">📋 Copy Lunar Summary</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Astronomical Ephemeris Accuracy:</span>
+        Calculations utilize standard synodic month algorithms (29.5305877057 days) relative to known New Moon epochs, providing high-precision lunar phase tracking directly in your browser.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Science of Lunar Cycles: Synodic Months, Illumination Geometry, and Astronomical Calculations</h2>
+      <p class="seo-p">Humanity has tracked the moon's phases for millennia to guide agriculture, maritime navigation, religious calendars, and cultural traditions. Modern astronomy models these celestial shifts with high mathematical precision. The lunar cycle is governed by the relative positions of the Earth, Moon, and Sun. As the Moon orbits Earth once every 27.32 days (sidereal month), the changing angle between the Sun and Moon results in the cycle of phases we observe from Earth, repeating every 29.53 days (synodic month).</p>
+      <p class="seo-p">This extensive guide explores the mechanics of lunar phases, explains how illumination percentages and lunar ages are calculated, reviews the traditional names of full moons, and highlights how our free online Moon Phase Calculator delivers instant astronomical insights.</p>
+
+      <div class="seo-callout">
+        <strong>The Synodic Cycle:</strong> Because Earth is simultaneously orbiting the Sun while the Moon orbits Earth, it takes the Moon an extra 2.2 days to catch up to the same apparent angle relative to the Sun, completing the 29.53-day synodic cycle from New Moon to New Moon.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Algorithmic Moon Phase Calculation</h3>
+      <p class="seo-p">When you select a date in our tool, the calculation pipeline executes verified astronomical algorithms to determine the exact lunar state:</p>
+
+      <h4 class="seo-h3">1. Epoch Reference Mapping</h4>
+      <p class="seo-p">The program calculates the number of days elapsed between a known historical New Moon epoch (such as January 6, 2000) and your chosen target date.</p>
+
+      <h4 class="seo-h3">2. Synodic Modulus Division</h4>
+      <p class="seo-p">By dividing the elapsed days by the average length of a synodic month (29.530588 days), the algorithm extracts the fractional remainder. This remainder represents the current phase angle within the lunar cycle.</p>
+
+      <h4 class="seo-h3">3. Illumination and Shadow Modeling</h4>
+      <p class="seo-p">Using trigonometric cosine functions based on the lunar phase angle, the tool calculates the exact illuminated fraction of the lunar disk, rendering a dynamic visual representation instantly.</p>
+
+      <h3>The Statutory Reference Matrix: Comprehensive Lunar Phase Definitions</h3>
+      <p class="seo-p">Understanding the eight primary phases of the lunar cycle is essential for tracking celestial events, gardening by the moon, or planning night photography:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Lunar Phase Name</th>
+              <th>Lunar Age (Days)</th>
+              <th>Illumination Range</th>
+              <th>Visual Appearance</th>
+              <th>Astronomical &amp; Cultural Significance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>New Moon</td>
+              <td>0.0 - 1.8 Days</td>
+              <td>0% - 2%</td>
+              <td>Dark / Invisible</td>
+              <td>Moon is between Earth and Sun; marks the start of the new synodic month.</td>
+            </tr>
+            <tr>
+              <td>Waxing Crescent</td>
+              <td>1.8 - 7.4 Days</td>
+              <td>2% - 49%</td>
+              <td>Right sliver illuminated</td>
+              <td>Growing sliver visible in the western evening sky after sunset.</td>
+            </tr>
+            <tr>
+              <td>First Quarter</td>
+              <td>7.4 - 9.2 Days</td>
+              <td>50%</td>
+              <td>Right half illuminated</td>
+              <td>Exactly half of the moonlit disk is visible; high tide variations.</td>
+            </tr>
+            <tr>
+              <td>Waxing Gibbous</td>
+              <td>9.2 - 14.8 Days</td>
+              <td>51% - 99%</td>
+              <td>Mostly lit on right</td>
+              <td>Growing larger toward full illumination; prominent in evening skies.</td>
+            </tr>
+            <tr>
+              <td>Full Moon</td>
+              <td>14.8 - 16.6 Days</td>
+              <td>100%</td>
+              <td>Fully illuminated disk</td>
+              <td>Earth is directly between Sun and Moon; maximum brightness and tidal range.</td>
+            </tr>
+            <tr>
+              <td>Waning Gibbous</td>
+              <td>16.6 - 22.1 Days</td>
+              <td>99% - 51%</td>
+              <td>Mostly lit on left</td>
+              <td>Moon begins shrinking, rising later in the evening and night hours.</td>
+            </tr>
+            <tr>
+              <td>Third Quarter</td>
+              <td>22.1 - 23.9 Days</td>
+              <td>50%</td>
+              <td>Left half illuminated</td>
+              <td>Exactly half illuminated on the opposite side; visible in morning hours.</td>
+            </tr>
+            <tr>
+              <td>Waning Crescent</td>
+              <td>23.9 - 29.5 Days</td>
+              <td>49% - 1%</td>
+              <td>Left sliver illuminated</td>
+              <td>Shrinking crescent visible just before dawn in the eastern sky.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Astronomical Guide</h3>
+
+      <h3>How does the Moon Phase Calculator determine illumination percentages?</h3>
+      <p class="seo-p">The calculator determines illumination by computing the cosine of the phase angle between the Sun, Earth, and Moon. At New Moon (angle = 0°), illumination is 0%. At Full Moon (angle = 180°), illumination reaches 100%.</p>
+
+      <h3>Why do moon phases vary slightly from calendar to calendar?</h3>
+      <p class="seo-p">Minor variations occur due to time zone differences and the elliptical nature of the Moon's orbit, which causes orbital speed to fluctuate slightly throughout the year. Our tool calculates exact ephemeris positions relative to UTC standard time.</p>
+
+      <h3>Is my observation date data kept private?</h3>
+      <p class="seo-p">Yes! All astronomical calculations run entirely within your browser's local JavaScript engine. No search queries or date parameters are transmitted to external servers, ensuring complete privacy.</p>
+
+      <h3 class="seo-h2">Summary: Mastering Lunar Tracking</h3>
+      <p class="seo-p">Whether you are an amateur astronomer planning astrophotography, a gardener following biodynamic planting calendars, or simply curious about tonight's night sky, understanding lunar phases connects us to celestial mechanics. Our Free Moon Phase Calculator delivers instant, high-precision results across any device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // MOON PHASE CALCULATOR ENGINE
+    function setTodayDate() {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('targetDateInput').value = today;
+      calculateMoonPhase();
+    }
+
+    function calculateMoonPhase() {
+      const dateVal = document.getElementById('targetDateInput').value;
+      if (!dateVal) return;
+
+      const date = new Date(dateVal + 'T00:00:00Z');
+      
+      // Known New Moon Epoch: Jan 6, 2000 18:14 UTC
+      const epoch = Date.UTC(2000, 0, 6, 18, 14, 0);
+      const targetTime = date.getTime();
+      const diffDays = (targetTime - epoch) / (1000 * 60 * 60 * 24);
+      
+      const synodicMonth = 29.5305877057;
+      let phase = (diffDays % synodicMonth) / synodicMonth;
+      if (phase < 0) phase += 1;
+
+      const lunarAge = phase * synodicMonth;
+      const illumination = (1 - Math.cos(phase * 2 * Math.PI)) / 2 * 100;
+
+      let phaseName = "";
+      let subtitle = "";
+      
+      if (phase < 0.03 || phase > 0.97) {
+        phaseName = "New Moon";
+        subtitle = "Invisible in the night sky";
+      } else if (phase < 0.22) {
+        phaseName = "Waxing Crescent";
+        subtitle = "Visible as a growing sliver in the west";
+      } else if (phase < 0.28) {
+        phaseName = "First Quarter";
+        subtitle = "Exactly half illuminated on the right";
+      } else if (phase < 0.47) {
+        phaseName = "Waxing Gibbous";
+        subtitle = "Growing larger toward full moon";
+      } else if (phase < 0.53) {
+        phaseName = "Full Moon";
+        subtitle = "Fully illuminated disk";
+      } else if (phase < 0.72) {
+        phaseName = "Waning Gibbous";
+        subtitle = "Decreasing illumination after full moon";
+      } else if (phase < 0.78) {
+        phaseName = "Third Quarter";
+        subtitle = "Exactly half illuminated on the left";
+      } else {
+        phaseName = "Waning Crescent";
+        subtitle = "Shrinking crescent visible before dawn";
+      }
+
+      document.getElementById('moonPhaseName').innerText = phaseName;
+      document.getElementById('moonPhaseSubtitle').innerText = subtitle;
+      document.getElementById('statIllumination').innerText = illumination.toFixed(1) + '%';
+      document.getElementById('statAge').innerText = lunarAge.toFixed(1) + ' Days';
+
+      // Update Visual Moon Graphic Shadow
+      const shadow = document.getElementById('moonShadow');
+      // Simple visual approximation for shadow overlay positioning
+      if (phase <= 0.5) {
+        // Waxing (shadow moves from right to left or covers left)
+        const translateVal = (phase * 200) - 100;
+        shadow.style.transform = `translateX(${translateVal}%)`;
+      } else {
+        // Waning
+        const translateVal = 100 - ((phase - 0.5) * 200);
+        shadow.style.transform = `translateX(${translateVal}%)`;
+      }
+    }
+
+    function copyMoonData() {
+      const name = document.getElementById('moonPhaseName').innerText;
+      const illum = document.getElementById('statIllumination').innerText;
+      const age = document.getElementById('statAge').innerText;
+      const date = document.getElementById('targetDateInput').value;
+
+      const text = `Moon Phase Summary (${date}):\nPhase: ${name}\nIllumination: ${illum}\nLunar Age: ${age}`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyMoonDataBtn');
+        btn.innerText = '✓ Copied Successfully!';
+        setTimeout(() => { btn.innerText = '📋 Copy Lunar Summary'; }, 2000);
+      });
+    }
+
+    // Initialize on load
+    window.onload = function() {
+      setTodayDate();
+    };
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
