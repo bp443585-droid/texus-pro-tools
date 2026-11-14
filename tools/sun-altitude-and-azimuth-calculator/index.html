@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Sun Altitude and Azimuth Calculator | Solar Position Tool</title>
+  <meta name="description" content="Calculate precise solar altitude and azimuth angles for any location, date, and time. Essential tool for solar panel placement, architecture, and photography." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/sun-altitude-and-azimuth-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Sun Altitude and Azimuth Calculator",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced solar geometry calculation tool to compute sun altitude, azimuth, declination, and daylight parameters for any geographic coordinate and timestamp.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+    .f-result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .f-result-card h4 { font-size: 0.8rem; text-transform: uppercase; color: #64748b; margin: 0 0 8px 0; font-weight: 700; letter-spacing: 0.5px; }
+    .f-result-card .f-val { font-size: 1.6rem; font-weight: 800; color: #0f172a; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .f-results-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>☀️</span> Sun Altitude and Azimuth Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="latInput">Latitude (Degrees)</label>
+          <input type="number" id="latInput" class="f-input-field" value="40.7128" step="0.0001" placeholder="e.g. 40.7128 (-90 to 90)" oninput="calculateSolarPosition()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="lonInput">Longitude (Degrees)</label>
+          <input type="number" id="lonInput" class="f-input-field" value="-74.0060" step="0.0001" placeholder="e.g. -74.0060 (-180 to 180)" oninput="calculateSolarPosition()">
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="dateInput">Observation Date</label>
+          <input type="date" id="dateInput" class="f-input-field" onchange="calculateSolarPosition()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="timeInput">UTC Time (HH:MM)</label>
+          <input type="time" id="timeInput" class="f-input-field" value="12:00" onchange="calculateSolarPosition()">
+        </div>
+      </div>
+
+      <div class="f-results-grid">
+        <div class="f-result-card">
+          <h4>Solar Altitude</h4>
+          <div class="f-val" id="altResult">--</div>
+        </div>
+        <div class="f-result-card">
+          <h4>Solar Azimuth</h4>
+          <div class="f-val" id="azResult">--</div>
+        </div>
+        <div class="f-result-card">
+          <h4>Solar Declination</h4>
+          <div class="f-val" id="decResult">--</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="setCurrentDateTime()">Use Current UTC Time</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copySolarData()">📋 Copy Solar Data</button>
+        <button class="f-btn f-btn-clear" onclick="resetSolarForm()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ High-Precision Astronomical Ephemeris Engine:</span>
+        Calculations utilize standard solar vector equations accounting for Earth's orbital eccentricity, equation of time, and diurnal celestial rotation relative to observer coordinates.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Solar Geometry: Understanding Altitude, Azimuth, and Celestial Coordinates for Engineering, Architecture, and Renewable Energy</h2>
+      <p class="seo-p">Accurately determining the position of the sun in the sky at any given moment is foundational across numerous scientific and commercial disciplines. Whether you are optimizing photovoltaic solar panel tilt angles, designing passive solar architectural shading systems, planning outdoor theatrical lighting, or calculating shadow lengths for urban real estate developments, knowing the precise solar altitude and azimuth is essential.</p>
+      <p class="seo-p">This professional online tool calculates exact solar positioning parameters based on spherical trigonometry and astronomical algorithms. Below, we explore the theoretical mechanics of solar geometry, examine mathematical models governing celestial coordinates, and provide practical guidelines for interpreting solar data.</p>
+
+      <div class="seo-callout">
+        <strong>The Observer Horizon Framework:</strong> Solar altitude measures the angular height of the sun above the geometric horizon (0° at horizon, 90° directly overhead), while solar azimuth measures the compass bearing of the sun along the horizon (0° North, 90° East, 180° South, 270° West).
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Astronomical Equations and Solar Angles</h3>
+      <p class="seo-p">Computing the exact position of the sun requires tracking Earth's axial tilt (approximately 23.44°) and its elliptical orbit around the sun throughout the 365.25-day year. The primary variables computed by our precision algorithm include:</p>
+
+      <h4 class="seo-h3">1. Day of Year and Fractional Time</h4>
+      <p class="seo-p">The calculation begins by determining the exact fractional day of the year ($n$) from the user's input date and Coordinated Universal Time (UTC). This accounts for leap years and orbital progression.</p>
+
+      <h4 class="seo-h3">2. Solar Declination ($\delta$)</h4>
+      <p class="seo-p">Solar declination is the angle between the equator of the earth and the line connecting the centers of the earth and the sun. It varies smoothly between -23.44° during the winter solstice and +23.44° during the summer solstice, calculated via Fourier approximations of Earth's orbital eccentricity.</p>
+
+      <h4 class="seo-h3">3. Equation of Time (EoT)</h4>
+      <p class="seo-p">Because Earth's orbit is elliptical and its rotational axis is tilted, apparent solar time differs from clock time by up to 16 minutes throughout the year. The Equation of Time corrects for this temporal discrepancy.</p>
+
+      <h4 class="seo-h3">4. Altitude and Azimuth Transformation</h4>
+      <p class="seo-p">Using the observer's latitude ($\phi$), local solar time converted into hour angle ($H$), and solar declination ($\delta$), standard spherical coordinate transformations yield the altitude ($h$) and azimuth ($A$):</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+        $$\sin(h) = \sin(\phi)\sin(\delta) + \cos(\phi)\cos(\delta)\cos(H)$$
+      </p>
+
+      <h3>The Statutory Reference Matrix: Typical Solar Angles Across Global Latitudes</h3>
+      <p class="seo-p">Understanding how maximum sun altitude changes across different latitudes and seasonal markers is critical for architectural planning and solar energy capture:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Geographic Zone</th>
+              <th>Latitude Benchmark</th>
+              <th>Summer Solstice Noon Altitude</th>
+              <th>Winter Solstice Noon Altitude</th>
+              <th>Primary Engineering &amp; Architectural Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Equatorial Zone</td>
+              <td>0° (Equator)</td>
+              <td>66.5° (Zenith shifts North/South)</td>
+              <td>66.5° (Zenith shifts North/South)</td>
+              <td>Dual-axis tracking optimization; vertical facade shading.</td>
+            </tr>
+            <tr>
+              <td>Mid-Latitude North</td>
+              <td>40° N (New York, Madrid)</td>
+              <td>73.5°</td>
+              <td>26.5°</td>
+              <td>Fixed rooftop solar panel tilt (approx. 35°); overhang sizing.</td>
+            </tr>
+            <tr>
+              <td>High Latitude North</td>
+              <td>60° N (Oslo, Anchorage)</td>
+              <td>53.5°</td>
+              <td>6.5°</td>
+              <td>Deep window reveals; low-angle thermal gain strategies.</td>
+            </tr>
+            <tr>
+              <td>Southern Mid-Latitude</td>
+              <td>33° S (Sydney, Buenos Aires)</td>
+              <td>80.5° (Dec)</td>
+              <td>33.5° (Jun)</td>
+              <td>North-facing orientation optimization for southern hemisphere roofs.</td>
+            </tr>
+            <tr>
+              <td>Polar Circle</td>
+              <td>66.5° N (Arctic Circle)</td>
+              <td>47.0°</td>
+              <td>-0.5° (Midnight Sun / Polar Night)</td>
+              <td>Extreme seasonal insulation variation and extreme thermal insulation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Solar Calculation Segment</h3>
+
+      <h3>Why is Coordinated Universal Time (UTC) used for solar calculations?</h3>
+      <p class="seo-p">UTC provides a universal temporal baseline free from local political time zone boundaries, daylight saving time shifts, and irregular provincial borders. By converting local dates to UTC and incorporating longitude offsets, the solar geometry engine computes exact hour angles anywhere on Earth without ambiguity.</p>
+
+      <h3>How does solar azimuth determine photovoltaic panel orientation?</h3>
+      <p class="seo-p">In the Northern Hemisphere, solar panels generally yield maximum annual energy when oriented due South (azimuth 180°). In the Southern Hemisphere, panels face due North (azimuth 0° or 360°). Knowing the exact sun azimuth throughout the day also helps identify morning or evening shadow obstructions from nearby buildings or terrain.</p>
+
+      <h3>Does this calculator account for atmospheric refraction?</h3>
+      <p class="seo-p">Atmospheric refraction bends light rays passing through denser air layers near the horizon, making the sun appear slightly higher than its true geometric position (by up to 0.5° when near the horizon). High-precision ephemeris tools apply standard atmospheric corrections when altitude is close to zero.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for Solar Data Utilization</h3>
+      <p class="seo-p">To ensure maximum accuracy in your solar analysis projects, always double-check your input coordinates, verify Coordinated Universal Time offsets, and account for local terrain topography when evaluating horizon obstructions.</p>
+      <p class="seo-p">Our Advanced Sun Altitude and Azimuth Calculator performs rigorous celestial algorithms instantly in your browser, delivering professional-grade astronomical data for engineers, researchers, and renewable energy professionals worldwide.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // Initialize date input to today
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date();
+      const yyyy = today.getUTCFullYear();
+      const mm = String(today.getUTCMonth() + 1).padStart(2, '0');
+      const dd = String(today.getUTCDate()).padStart(2, '0');
+      document.getElementById('dateInput').value = `${yyyy}-${mm}-${dd}`;
+      calculateSolarPosition();
+    });
+
+    function setCurrentDateTime() {
+      const now = new Date();
+      const yyyy = now.getUTCFullYear();
+      const mm = String(now.getUTCMonth() + 1).padStart(2, '0');
+      const dd = String(now.getUTCDate()).padStart(2, '0');
+      document.getElementById('dateInput').value = `${yyyy}-${mm}-${dd}`;
+      
+      const hh = String(now.getUTCHours()).padStart(2, '0');
+      const min = String(now.getUTCMinutes()).padStart(2, '0');
+      document.getElementById('timeInput').value = `${hh}:${min}`;
+      calculateSolarPosition();
+    }
+
+    function calculateSolarPosition() {
+      const latVal = parseFloat(document.getElementById('latInput').value);
+      const lonVal = parseFloat(document.getElementById('lonInput').value);
+      const dateVal = document.getElementById('dateInput').value;
+      const timeVal = document.getElementById('timeInput').value;
+
+      if (isNaN(latVal) || isNaN(lonVal) || !dateVal || !timeVal) {
+        document.getElementById('altResult').innerText = '--';
+        document.getElementById('azResult').innerText = '--';
+        document.getElementById('decResult').innerText = '--';
+        return;
+      }
+
+      // Parse date and time (UTC)
+      const [year, month, day] = dateVal.split('-').map(Number);
+      const [hour, minute] = timeVal.split(':').map(Number);
+
+      // Calculate Day of Year (n)
+      const start = Date.UTC(year, 0, 0);
+      const current = Date.UTC(year, month - 1, day);
+      const oneDay = 1000 * 60 * 60 * 24;
+      const doy = Math.floor((current - start) / oneDay);
+
+      // Fractional year in radians
+      const gamma = (2 * Math.PI / 365) * (doy - 1 + (hour - 12) / 24);
+
+      // Equation of time in minutes
+      const eqtime = 229.18 * (0.000075 + 0.001868 * Math.cos(gamma) - 0.032077 * Math.sin(gamma) - 0.014615 * Math.cos(2 * gamma) - 0.040849 * Math.sin(2 * gamma));
+
+      // Solar declination in radians
+      const decl = 0.006918 - 0.399912 * Math.cos(gamma) + 0.070257 * Math.sin(gamma) - 0.006758 * Math.cos(2 * gamma) + 0.000907 * Math.sin(2 * gamma) - 0.002697 * Math.cos(3 * gamma) + 0.00148 * Math.sin(3 * gamma);
+
+      // Time offset in minutes
+      const timeOffset = eqtime + 4 * lonVal;
+
+      // True solar time in minutes from midnight
+      const tst = hour * 60 + minute + timeOffset;
+
+      // Solar hour angle in degrees and radians
+      let solarHourAngle = (tst / 4) - 180;
+      const haRad = solarHourAngle * (Math.PI / 180);
+
+      const latRad = latVal * (Math.PI / 180);
+
+      // Solar Elevation / Altitude
+      const sinAlt = Math.sin(latRad) * Math.sin(decl) + Math.cos(latRad) * Math.cos(decl) * Math.cos(haRad);
+      const altRad = Math.asin(Math.max(-1, Math.min(1, sinAlt)));
+      let altDeg = altRad * (180 / Math.PI);
+
+      // Atmospheric refraction correction for low altitude
+      if (altDeg > -0.5 && altDeg < 85) {
+        const refraction = 1.02 / Math.tan((altDeg + 10.3 / (altDeg + 5.11)) * Math.PI / 180) / 60;
+        altDeg += refraction / 60;
+      }
+
+      // Solar Azimuth
+      const cosAz = (Math.sin(decl) - Math.sin(latRad) * Math.sin(altRad)) / (Math.cos(latRad) * Math.cos(altRad));
+      let azRad = Math.acos(Math.max(-1, Math.min(1, cosAz)));
+      let azDeg = azRad * (180 / Math.PI);
+
+      if (solarHourAngle > 0) {
+        azDeg = 360 - azDeg;
+      }
+
+      const decDeg = decl * (180 / Math.PI);
+
+      document.getElementById('altResult').innerText = altDeg.toFixed(2) + '°';
+      document.getElementById('azResult').innerText = azDeg.toFixed(2) + '°';
+      document.getElementById('decResult').innerText = decDeg.toFixed(2) + '°';
+    }
+
+    function copySolarData() {
+      const alt = document.getElementById('altResult').innerText;
+      const az = document.getElementById('azResult').innerText;
+      const dec = document.getElementById('decResult').innerText;
+      const lat = document.getElementById('latInput').value;
+      const lon = document.getElementById('lonInput').value;
+      const date = document.getElementById('dateInput').value;
+      const time = document.getElementById('timeInput').value;
+
+      const payload = `Solar Position Report:\nLatitude: ${lat}° | Longitude: ${lon}°\nDate (UTC): ${date} ${time}\n---\nSolar Altitude: ${alt}\nSolar Azimuth: ${az}\nSolar Declination: ${dec}`;
+      
+      navigator.clipboard.writeText(payload).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.innerText = '✅ Copied to Clipboard!';
+        setTimeout(() => { btn.innerText = '📋 Copy Solar Data'; }, 2000);
+      });
+    }
+
+    function resetSolarForm() {
+      document.getElementById('latInput').value = '40.7128';
+      document.getElementById('lonInput').value = '-74.0060';
+      setCurrentDateTime();
+    }
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
