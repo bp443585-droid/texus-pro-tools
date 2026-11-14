@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Orbital Period Calculator | Kepler's Third Law Calculator Online</title>
+  <meta name="description" content="Calculate orbital periods instantly using Kepler's Third Law. Compute orbital times for planets, satellites, and spacecraft with our free online calculator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/orbital-period-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Orbital Period Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "EducationalApplication",
+    "description": "An advanced astronomical calculator utilizing Kepler's Third Law of Planetary Motion to determine orbital periods, semi-major axes, and central mass parameters.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.2rem; color: #0f172a; background: #f1f5f9; padding: 16px; border-radius: 16px; border: 2px solid #cbd5e1; word-break: break-all; text-align: center; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🪐</span> Orbital Period Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="centralBodySelect">Central Body (Mass & Gravitational Parameter)</label>
+          <select id="centralBodySelect" class="f-select-field" onchange="handlePresetChange()">
+            <option value="sun">Sun (Standard Solar Mass)</option>
+            <option value="earth" selected>Earth (Terrestrial Standard)</option>
+            <option value="jupiter">Jupiter (Gas Giant Standard)</option>
+            <option value="moon">Earth's Moon</option>
+            <option value="custom">Custom Mass / Parameter</option>
+          </select>
+        </div>
+        
+        <div class="f-panel-box" id="customMassBox" style="display: none;">
+          <label for="centralMassInput">Central Body Mass (kg)</label>
+          <input type="number" id="centralMassInput" class="f-input-field" value="5.97219e24" step="any" oninput="calculateOrbitalPeriod()">
+        </div>
+
+        <div class="f-panel-box">
+          <label for="semiMajorAxisInput">Semi-Major Axis ($a$)</label>
+          <div style="display: flex; gap: 10px;">
+            <input type="number" id="semiMajorAxisInput" class="f-input-field" value="6710" step="any" oninput="calculateOrbitalPeriod()" style="flex: 2;">
+            <select id="distanceUnitSelect" class="f-select-field" onchange="calculateOrbitalPeriod()" style="flex: 1;">
+              <option value="km" selected>Kilometers (km)</option>
+              <option value="m">Meters (m)</option>
+              <option value="au">Astronomical Units (AU)</option>
+              <option value="mi">Miles (mi)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="f-panel-box">
+          <label for="resultConsole">Computed Orbital Period</label>
+          <div id="resultConsole" class="mono-font-panel">95.45 Minutes</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateOrbitalPeriod()">Calculate Period</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculatorWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Kepler's Third Law Engine Active:</span>
+        Computes exact orbital mechanics parameters using Newton's generalization of Kepler's Third Law ($T = 2\pi \sqrt{a^3 / GM}$). Results automatically convert into seconds, minutes, hours, and days.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Mechanics of Celestial Trajectories: Kepler's Laws, Gravitational Physics, and Orbital Period Calculations</h2>
+      <p class="seo-p">Understanding the rhythmic dance of planets, artificial satellites, and stellar companions requires mastering Kepler's Laws of Planetary Motion. Formulated by Johannes Kepler in the early 17th century and later proven mathematically by Sir Isaac Newton using his universal law of gravitation, these principles form the bedrock of modern astrodynamics and aerospace engineering. Whether tracking low Earth orbit (LEO) telecommunication constellations or mapping exoplanetary systems light-years away, calculating orbital periods accurately is essential for space mission design.</p>
+      <p class="seo-p">This comprehensive technical guide explores the mathematical formulation of orbital periods, analyzes the physical significance of semi-major axes, examines central gravitational parameters, and breaks down how mass and distance interact across diverse cosmic scales.</p>
+
+      <div class="seo-callout">
+        <strong>The Universal Harmonic Law:</strong> Kepler's Third Law establishes that the square of a planet's orbital period ($T$) is directly proportional to the cube of the semi-major axis of its orbit ($a$), summarized mathematically as $T^2 \propto a^3$.
+      </div>
+
+      <h3 class="seo-h2">The Mathematical Core: Newton's Generalization of Kepler's Third Law</h3>
+      <p class="seo-p">While Kepler originally observed planetary ratios relative to our Sun, Sir Isaac Newton expanded the formula to apply to any two-body gravitational system. The generalized equation incorporates the mass of the central body, making it universally applicable across moons, planets, black holes, and binary stars:</p>
+
+      <h4 class="seo-h3">1. The Governing Equation</h4>
+      <p class="seo-p">The exact orbital period $T$ is calculated using the formula:</p>
+      <p class="seo-p" style="text-align: center; font-weight: 700; font-family: monospace; font-size: 1.15rem; color: #2563eb;">T = 2&pi; &radic;( a<sup>3</sup> / (G &middot; M) )</p>
+      <p class="seo-p">Where:</p>
+      <ul class="seo-list">
+        <li><b>$T$</b> = Orbital period in seconds</li>
+        <li><b>$a$</b> = Semi-major axis (average orbital radius) in meters</li>
+        <li><b>$G$</b> = Newtonian constant of gravitation ($6.67430 \times 10^{-11} \text{ m}^3 \text{ kg}^{-1} \text{ s}^{-2}$)</li>
+        <li><b>$M$</b> = Mass of the central primary body in kilograms</li>
+      </ul>
+
+      <h4 class="seo-h3">2. Gravitational Parameter Simplification ($&mu;$)</h4>
+      <p class="seo-p">In aerospace engineering, the product of the gravitational constant and central mass ($G \cdot M$) is frequently treated as a single unified constant known as the standard gravitational parameter ($\mu$). Utilizing $\mu$ simplifies complex trajectory computations for artificial satellites orbiting Earth.</p>
+
+      <h4 class="seo-h3">3. Multi-Unit Conversion Arrays</h4>
+      <p class="seo-p">Because raw periods calculated in seconds are difficult to interpret for distant celestial bodies, our calculator automatically parses total output seconds into human-readable duration metrics: seconds, minutes, hours, days, and Julian years.</p>
+
+      <h3>The Planetary Reference Matrix: Standard Orbital Metrics in Our Solar System</h3>
+      <p class="seo-p">Reviewing standard orbital parameters for major celestial bodies in our solar system provides valuable baseline data for verifying calculations and understanding orbital mechanics:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Celestial Body / Satellite</th>
+              <th>Central Primary Body</th>
+              <th>Semi-Major Axis ($a$)</th>
+              <th>Standard Orbital Period</th>
+              <th>Astrodynamic Application & Classification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>International Space Station (ISS)</td>
+              <td>Earth</td>
+              <td>6,738 km (Altitude ~360 km)</td>
+              <td>92.68 Minutes</td>
+              <td>Low Earth Orbit (LEO) manned research laboratory.</td>
+            </tr>
+            <tr>
+              <td>Geostationary Satellite (GEO)</td>
+              <td>Earth</td>
+              <td>42,164 km (Altitude ~35,786 km)</td>
+              <td>23.93 Hours (1 Sidereal Day)</td>
+              <td>Global telecommunications and meteorological observation.</td>
+            </tr>
+            <tr>
+              <td>Earth's Moon</td>
+              <td>Earth</td>
+              <td>384,400 km</td>
+              <td>27.32 Days</td>
+              <td>Natural lunar satellite governing tides and stabilization.</td>
+            </tr>
+            <tr>
+              <td>Planet Earth</td>
+              <td>Sun</td>
+              <td>1.000 AU (149.6 Million km)</td>
+              <td>365.25 Days (1 Year)</td>
+              <td>Terrestrial standard orbital reference point.</td>
+            </tr>
+            <tr>
+              <td>Planet Jupiter</td>
+              <td>Sun</td>
+              <td>5.204 AU (778.5 Million km)</td>
+              <td>11.86 Earth Years</td>
+              <td>Gas giant orbital benchmark and Trojan asteroid anchor.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Astrodynamics Diagnostic Segment</h3>
+
+      <h3>What is the difference between circular and elliptical orbits when calculating period?</h3>
+      <p class="seo-p">For perfectly circular orbits, the radius ($r$) is constant and directly equals the semi-major axis ($a$). For elliptical orbits, the semi-major axis represents half of the longest diameter of the ellipse. According to Kepler's first and third laws, the orbital period of an elliptical orbit depends solely on its semi-major axis, regardless of orbital eccentricity.</p>
+
+      <h3>How does central mass impact the orbital speed of a satellite?</h3>
+      <p class="seo-p">A heavier central body exerts a stronger gravitational pull, requiring orbiting bodies to travel at higher velocities to maintain stable centrifugal equilibrium. Consequently, increasing the central mass $M$ shortens the orbital period $T$ for a given semi-major axis $a$.</p>
+
+      <h3>Are these orbital calculations executed securely on my device?</h3>
+      <p class="seo-p">Yes. All astrodynamic computations run entirely inside your browser's local JavaScript execution engine. No user inputs, orbital coordinates, or custom satellite parameters are transmitted to external servers, ensuring complete data privacy.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Astrodynamic Modeling</h3>
+      <p class="seo-p">To achieve high precision in orbital trajectory planning, always ensure your units match consistently—converting kilometers to meters before computing gravitational equations. Utilize standard solar mass parameters for interplanetary maneuvers and terrestrial constants for Earth-orbiting spacecraft.</p>
+      <p class="seo-p">Our Orbital Period Calculator automates these rigorous mathematical transformations instantly, giving students, astronomers, and aerospace engineers reliable results across any desktop or mobile device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const GM_SUN = 1.32712440018e20;  // m^3 s^-2
+    const GM_EARTH = 3.986004418e14;  // m^3 s^-2
+    const GM_JUPITER = 1.26686534e17; // m^3 s^-2
+    const GM_MOON = 4.9048695e12;     // m^3 s^-2
+    const G_CONST = 6.67430e-11;
+
+    const presetMasses = {
+      sun: GM_SUN / G_CONST,
+      earth: GM_EARTH / G_CONST,
+      jupiter: GM_JUPITER / G_CONST,
+      moon: GM_MOON / G_CONST
+    };
+
+    function handlePresetChange() {
+      const select = document.getElementById('centralBodySelect');
+      const customBox = document.getElementById('customMassBox');
+      if (select.value === 'custom') {
+        customBox.style.display = 'flex';
+      } else {
+        customBox.style.display = 'none';
+      }
+      calculateOrbitalPeriod();
+    }
+
+    function calculateOrbitalPeriod() {
+      const bodySelect = document.getElementById('centralBodySelect').value;
+      let massKg = 0;
+
+      if (bodySelect === 'custom') {
+        massKg = parseFloat(document.getElementById('centralMassInput').value);
+      } else {
+        massKg = presetMasses[bodySelect];
+      }
+
+      let axisVal = parseFloat(document.getElementById('semiMajorAxisInput').value);
+      const unit = document.getElementById('distanceUnitSelect').value;
+
+      if (isNaN(axisVal) || axisVal <= 0 || isNaN(massKg) || massKg <= 0) {
+        document.getElementById('resultConsole').innerText = 'Invalid Input Data';
+        return;
+      }
+
+      // Convert semi-major axis to meters
+      let aMeters = axisVal;
+      if (unit === 'km') {
+        aMeters = axisVal * 1000;
+      } else if (unit === 'au') {
+        aMeters = axisVal * 1.495978707e11;
+      } else if (unit === 'mi') {
+        aMeters = axisVal * 1609.344;
+      } // if 'm', already meters
+
+      // Kepler's Third Law: T = 2 * pi * sqrt( a^3 / (G * M) )
+      const mu = G_CONST * massKg;
+      const tSeconds = 2 * Math.PI * Math.sqrt(Math.pow(aMeters, 3) / mu);
+
+      formatAndDisplayPeriod(tSeconds);
+    }
+
+    function formatAndDisplayPeriod(sec) {
+      let outputText = '';
+      if (sec < 60) {
+        outputText = sec.toFixed(2) + ' Seconds';
+      } else if (sec < 3600) {
+        const mins = sec / 60;
+        outputText = mins.toFixed(2) + ' Minutes (' + sec.toFixed(1) + ' s)';
+      } else if (sec < 86400) {
+        const hours = sec / 3600;
+        const mins = (sec % 3600) / 60;
+        outputText = hours.toFixed(2) + ' Hours (' + Math.floor(hours) + 'h ' + Math.round(mins) + 'm)';
+      } else if (sec < 31557600) {
+        const days = sec / 86400;
+        outputText = days.toFixed(2) + ' Days (' + (sec / 3600).toFixed(1) + ' Hours)';
+      } else {
+        const years = sec / 31557600;
+        outputText = years.toFixed(3) + ' Julian Years (' + (sec / 86400).toFixed(1) + ' Days)';
+      }
+
+      document.getElementById('resultConsole').innerText = outputText;
+    }
+
+    function copyResultToClipboard() {
+      const text = document.getElementById('resultConsole').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => { btn.innerText = '📋 Copy Result'; }, 2000);
+      });
+    }
+
+    function clearCalculatorWorkspace() {
+      document.getElementById('centralBodySelect').value = 'earth';
+      document.getElementById('centralMassInput').value = '5.97219e24';
+      document.getElementById('semiMajorAxisInput').value = '6710';
+      document.getElementById('distanceUnitSelect').value = 'km';
+      document.getElementById('customMassBox').style.display = 'none';
+      calculateOrbitalPeriod();
+    }
+
+    // Initialize calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateOrbitalPeriod();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
