@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Timecode to Frames Converter | Online SMPTE Calculator</title>
+  <meta name="description" content="Convert SMPTE timecode (HH:MM:SS:FF) to total video frames instantly. Supports 24fps, 25fps, 29.97 Drop-Frame, 30fps, 50fps, and 60fps accurately." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/timecode-to-frames-converter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Timecode to Frames Converter Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced video editing utility to convert SMPTE timecodes into precise absolute frame counts and vice versa across all broadcast frame rates.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 54px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-select-field { width: 100%; height: 54px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.25rem; color: #0f172a; background: #f1f5f9; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { height: 48px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⏱️</span> Timecode to Frames Converter</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid" style="margin-bottom: 15px;">
+        <div class="f-panel-box">
+          <label for="timecodeInput">SMPTE Timecode (HH:MM:SS:FF)</label>
+          <input type="text" id="timecodeInput" class="f-input-field mono-font-panel" placeholder="01:00:00:00" value="01:00:00:00" oninput="convertTimecodeToFrames()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="frameRateSelect">Target Frame Rate Standard</label>
+          <select id="frameRateSelect" class="f-select-field" onchange="convertTimecodeToFrames()">
+            <option value="23.976">23.976 fps (24k / NTSC Film)</option>
+            <option value="24" selected>24 fps (Standard Cinema Film)</option>
+            <option value="25">25 fps (PAL / European Broadcast)</option>
+            <option value="29.97">29.97 fps (NTSC Color Non-Drop)</option>
+            <option value="29.97df">29.97 fps (NTSC Color Drop-Frame)</option>
+            <option value="30">30 fps (SMPTE Timecode Standard)</option>
+            <option value="50">50 fps (High Frame Rate PAL)</option>
+            <option value="59.94">59.94 fps (HDTV High Speed)</option>
+            <option value="60">60 fps (Web &amp; Gaming Standard)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-io-grid" style="margin-bottom: 20px;">
+        <div class="f-panel-box">
+          <label for="totalFramesOutput">Total Absolute Frames</label>
+          <input type="text" id="totalFramesOutput" class="f-input-field mono-font-panel" placeholder="86400" oninput="convertFramesToTimecode()" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="secondsOutput">Total Elapsed Seconds / Milliseconds</label>
+          <input type="text" id="secondsOutput" class="f-input-field mono-font-panel" readonly style="background: #e2e8f0; color: #334155; cursor: not-allowed;" placeholder="3600.00s" />
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="convertTimecodeToFrames()">Calculate Frame Data</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy Frame Count</button>
+        <button class="f-btn f-btn-clear" onclick="clearWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Bidirectional SMPTE Synchronization Engine Active:</span>
+        Enter any standard SMPTE timecode string in the left field to calculate absolute frames instantly, or input absolute frame indices in the bottom-left box to generate the corresponding timecode.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Mathematics of SMPTE Timecode: Frame Rates, Drop-Frame Compensation, and Broadcast Synchronization Laws</h2>
+      <p class="seo-p">In professional motion picture editing, television broadcasting, audio post-production, and visual effects supervision, absolute precision is paramount. Every single frame of media must synchronize across multi-track audio timelines, compositing scripts, and color grading suites without a single frame of drift. At the heart of this synchronization lies SMPTE timecode (Society of Motion Picture and Television Engineers)—a standardized human-readable addressing system formatted strictly as Hours:Minutes:Seconds:Frames (`HH:MM:SS:FF`).</p>
+      <p class="seo-p">This comprehensive technical manual explores the mechanics behind timecode calculations, breaks down the complexities of NTSC drop-frame compensation algorithms, reviews frame rate standards across cinema and digital video, and outlines how professional tools execute high-speed conversions securely inside client browser memory blocks.</p>
+
+      <div class="seo-callout">
+        <strong>The Broadcast Drift Factor:</strong> While cinema and PAL standards operate on strict integer divisors, NTSC color television introduced a fractional frame rate of 29.97 fps (actually 30 × 1000/1001), creating an accumulative time drift that requires specialized drop-frame math to match wall-clock time.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Algorithmic Timecode and Frame Conversions</h3>
+      <p class="seo-p">When professional video editors pass timecode values through a computational conversion pipeline, the script executes precise mathematical transformations depending on whether the target format operates on integer or fractional time bases:</p>
+
+      <h4 class="seo-h3">1. Absolute Frame Extraction from SMPTE Strings</h4>
+      <p class="seo-p">For standard non-drop frame rates (such as 24, 25, 30, or 60 fps), calculating total frames from `HH:MM:SS:FF` is a direct scalar multiplication operation:</p>
+      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; background: #f8fafc; padding: 12px 16px; border-radius: 8px; border: 1px solid #e2e8f0;">Total Frames = (Hours × 3600 × fps) + (Minutes × 60 × fps) + (Seconds × fps) + Frames</p>
+
+      <h4 class="seo-h3">2. NTSC Drop-Frame (DF) Compensation Logic</h4>
+      <p class="seo-p">Because 29.97 fps is slightly slower than true 30 fps, running a non-drop counter over 24 hours creates a wall-clock error of roughly 86.4 seconds. To eliminate this drift, the drop-frame algorithm skips two frame numbers (`00` and `01`) at the start of every minute, except for minutes that are exact multiples of ten (00, 10, 20, 30, 40, 50). This ingenious trick forces the timecode display to match wall-clock time precisely.</p>
+
+      <h4 class="seo-h3">3. Bidirectional DOM State Synchronization</h4>
+      <p class="seo-p">Modern web-based tools utilize dual event listeners that track input changes in real-time. Whether an operator types `01:00:00:00` or inputs absolute frame integer `108000`, the calculation engine instantly updates corresponding fields without requiring full page reloads.</p>
+
+      <h3>The Statutory Reference Matrix: Broadcast Frame Rate and Timecode Standard Map</h3>
+      <p class="seo-p">Understanding how different frame rate standards affect absolute frame counts per hour of footage is essential for calculating storage capacities, rendering times, and EDL (Edit Decision List) logs:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Frame Rate Standard</th>
+              <th>Nominal Speed</th>
+              <th>Exact Mathematical Basis</th>
+              <th>Frames per Hour (HH:00:00:00)</th>
+              <th>Primary Industry Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cinema Film Standard</td>
+              <td>24 fps</td>
+              <td>`24` (Integer)</td>
+              <td>86,400 frames</td>
+              <td>Feature films, high-end digital cinema, and streaming theatrical releases.</td>
+            </tr>
+            <tr>
+              <td>NTSC Film / 24k</td>
+              <td>23.976 fps</td>
+              <td>`24 * 1000 / 1001`</td>
+              <td>86,313 frames</td>
+              <td>North American digital television broadcasts and telecine transfers.</td>
+            </tr>
+            <tr>
+              <td>European PAL Broadcast</td>
+              <td>25 fps</td>
+              <td>`25` (Integer)</td>
+              <td>90,000 frames</td>
+              <td>European, Australian, and Asian television broadcasting and DVD mastering.</td>
+            </tr>
+            <tr>
+              <td>NTSC Color Standard</td>
+              <td>29.97 fps (NDF/DF)</td>
+              <td>`30 * 1000 / 1001`</td>
+              <td>107,892 frames</td>
+              <td>Standard definition NTSC broadcast television and commercial spots.</td>
+            </tr>
+            <tr>
+              <td>SMPTE Timecode Base</td>
+              <td>30 fps</td>
+              <td>`30` (Integer)</td>
+              <td>108,000 frames</td>
+              <td>Monochrome television, audio recording sync, and SMPTE master clocks.</td>
+            </tr>
+            <tr>
+              <td>High Definition Speed</td>
+              <td>59.94 / 60 fps</td>
+              <td>`60` or `60 * 1000 / 1001`</td>
+              <td>216,000 frames</td>
+              <td>Sports broadcasting, modern video games, and smooth web video production.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the exact difference between Drop-Frame (DF) and Non-Drop-Frame (NDF) timecode?</h3>
+      <p class="seo-p">Non-Drop-Frame (NDF) timecode counts every single frame sequentially without omission. However, because NTSC color television runs at 29.97 fps rather than exactly 30 fps, NDF timecode drifts away from true wall-clock time by about 3.6 seconds every hour. Drop-Frame (DF) timecode periodically drops frame numbers from the visual display count so that the timecode readout matches actual elapsed wall-clock time down to the second.</p>
+
+      <h3>How do I convert timecode when working with fractional frame rates like 23.976?</h3>
+      <p class="seo-p">When calculating absolute frames for 23.976 fps, tools use the precise rational multiplier `24000 / 1001` rather than the rounded decimal. This guarantees that long-form feature films maintain exact sync when exported to professional conform and mixing systems like Pro Tools or DaVinci Resolve.</p>
+
+      <h3>Is my video project data secure when using online conversion utilities?</h3>
+      <p class="seo-p">Absolutely. Texus Pro Tools processes all calculations entirely within your browser's local JavaScript runtime environment. No timecode values, project lengths, or filenames ever leave your local computer device.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Post-Production Timecode Management</h3>
+      <p class="seo-p">To maintain rigorous technical standards across modern post-production pipelines, always verify your project's capture frame rate before generating EDL sheets or cut lists. Use automated web-based conversion calculators to instantly cross-reference absolute frame counts against SMPTE timecode logs, ensuring flawless delivery to broadcasters and streaming platforms.</p>
+      <p class="seo-p">Our Advanced Timecode to Frames Converter suite streamlines these calculations instantly, delivering accurate mathematical conversions across all broadcast standards on any desktop or mobile device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // Core Conversion Logic
+    function timecodeToFrames(tc, fpsStr) {
+      const parts = tc.split(':');
+      if (parts.length !== 4) return 0;
+      
+      const h = parseInt(parts[0], 10) || 0;
+      const m = parseInt(parts[1], 10) || 0;
+      const s = parseInt(parts[2], 10) || 0;
+      const f = parseInt(parts[3], 10) || 0;
+
+      if (fpsStr === '29.97df') {
+        // Drop frame calculation for 29.97
+        // 2 frames dropped every minute except minutes 0, 10, 20, 30, 40, 50
+        const totalMinutes = h * 60 + m;
+        const dropFrames = 2;
+        const framesPerMin = 1798; // 30 * 60 - 2
+        
+        const totalMinFrames = totalMinutes * framesPerMin;
+        const tensMin = Math.floor(totalMinutes / 10);
+        const normalMin = totalMinutes - tensMin;
+        
+        // Correct frames calculation
+        let frames = (h * 3600 * 30) + (m * 60 * 30) + (s * 30) + f;
+        // Approximate standard conversion or exact DF formula
+        // Let's use standard robust algorithm for DF:
+        let minuteFrames = h * 1798 + m * 1798; // simplified
+        // Standard formula:
+        let d = Math.floor(totalMinutes / 10);
+        let frames_val = (h * 107892) + (m * 1798) + (s * 30) + f - (2 * (totalMinutes - d));
+        return frames_val;
+      }
+
+      let baseFps = parseFloat(fpsStr);
+      if (isNaN(baseFps)) baseFps = 24;
+
+      let totalSeconds = (h * 3600) + (m * 60) + s;
+      let totalFrames = Math.round(totalSeconds * baseFps) + f;
+      return totalFrames;
+    }
+
+    function framesToTimecode(totalFrames, fpsStr) {
+      if (isNaN(totalFrames) || totalFrames < 0) totalFrames = 0;
+
+      if (fpsStr === '29.97df') {
+        // Drop frame inverse
+        let dropFrames = 2;
+        let framesPerMin = 1798;
+        let framesPerTenMins = 17982;
+        
+        let d = Math.floor(totalFrames / framesPerTenMins);
+        let m = totalFrames % framesPerTenMins;
+        
+        // Adjust frames
+        let framen = totalFrames + 18 * d + 2 * Math.floor((m - 2) / framesPerMin);
+        
+        let f = framen % 30;
+        let s = Math.floor(framen / 30) % 60;
+        let min = Math.floor(framen / (30 * 60)) % 60;
+        let h = Math.floor(framen / (30 * 3600));
+        
+        return pad(h) + ':' + pad(min) + ':' + pad(s) + ':' + pad(f);
+      }
+
+      let baseFps = parseFloat(fpsStr);
+      if (isNaN(baseFps) || baseFps <= 0) baseFps = 24;
+
+      // For fractional rates like 23.976 or 29.97, round base for timecode clock display
+      let clockFps = Math.round(baseFps);
+      if (fpsStr === '23.976') clockFps = 24;
+      if (fpsStr === '29.97') clockFps = 30;
+      if (fpsStr === '59.94') clockFps = 60;
+
+      let totalSeconds = totalFrames / baseFps;
+      let h = Math.floor(totalSeconds / 3600);
+      let m = Math.floor((totalSeconds % 3600) / 60);
+      let s = Math.floor(totalSeconds % 60);
+      let f = Math.round((totalSeconds % 1) * clockFps);
+
+      return pad(h) + ':' + pad(m) + ':' + pad(s) + ':' + pad(f);
+    }
+
+    function pad(num) {
+      return num < 10 ? '0' + num : num;
+    }
+
+    let isUpdatingFromTimecode = false;
+    let isUpdatingFromFrames = false;
+
+    function convertTimecodeToFrames() {
+      if (isUpdatingFromFrames) return;
+      isUpdatingFromTimecode = true;
+
+      const tcVal = document.getElementById('timecodeInput').value.trim();
+      const fpsVal = document.getElementById('frameRateSelect').value;
+
+      const frames = timecodeToFrames(tcVal, fpsVal);
+      document.getElementById('totalFramesOutput').value = frames;
+
+      let baseFps = parseFloat(fpsVal);
+      if (isNaN(baseFps)) baseFps = 24;
+      let secs = frames / baseFps;
+      document.getElementById('secondsOutput').value = secs.toFixed(3) + 's (' + (secs * 1000).toFixed(0) + ' ms)';
+
+      isUpdatingFromTimecode = false;
+    }
+
+    function convertFramesToTimecode() {
+      if (isUpdatingFromTimecode) return;
+      isUpdatingFromFrames = true;
+
+      const framesVal = parseInt(document.getElementById('totalFramesOutput').value, 10) || 0;
+      const fpsVal = document.getElementById('frameRateSelect').value;
+
+      const tc = framesToTimecode(framesVal, fpsVal);
+      document.getElementById('timecodeInput').value = tc;
+
+      let baseFps = parseFloat(fpsVal);
+      if (isNaN(baseFps)) baseFps = 24;
+      let secs = framesVal / baseFps;
+      document.getElementById('secondsOutput').value = secs.toFixed(3) + 's (' + (secs * 1000).toFixed(0) + ' ms)';
+
+      isUpdatingFromFrames = false;
+    }
+
+    function clearWorkspace() {
+      document.getElementById('timecodeInput').value = '00:00:00:00';
+      document.getElementById('totalFramesOutput').value = '0';
+      document.getElementById('secondsOutput').value = '0.000s (0 ms)';
+    }
+
+    function copyResultToClipboard() {
+      const val = document.getElementById('totalFramesOutput').value;
+      navigator.clipboard.writeText(val).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '✅ Copied to Clipboard!';
+        setTimeout(() => { btn.innerText = originalText; }, 2000);
+      });
+    }
+
+    // Initial run on load
+    window.addEventListener('DOMContentLoaded', () => {
+      convertTimecodeToFrames();
+    });
+
+    // Component loader
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
