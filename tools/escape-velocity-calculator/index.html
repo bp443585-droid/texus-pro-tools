@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Escape Velocity Calculator | Calculate Gravitational Escape Speed</title>
+  <meta name="description" content="Calculate the escape velocity required for a spacecraft to break free from a planet or celestial body's gravitational pull instantly with our free online calculator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/escape-velocity-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Escape Velocity Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced physics calculator to compute gravitational escape velocities for custom masses, radii, and predefined celestial bodies.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CALCULATOR INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .f-select-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-result-box { background: #f1f5f9; border: 2px solid #cbd5e1; border-radius: 16px; padding: 24px; text-align: center; margin-top: 10px; }
+    .f-result-title { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .f-result-value { font-size: 2.2rem; font-weight: 800; color: #0f172a; font-family: 'Courier New', Courier, monospace; word-break: break-all; }
+    .f-result-sub { font-size: 0.95rem; color: #334155; margin-top: 6px; font-weight: 500; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { height: 48px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🚀</span> Escape Velocity Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="celestialPreset">Select Celestial Body</label>
+          <select id="celestialPreset" class="f-select-field" onchange="applyCelestialPreset()">
+            <option value="custom">-- Custom Mass & Radius --</option>
+            <option value="earth" selected>Earth (Standard)</option>
+            <option value="moon">Moon</option>
+            <option value="mars">Mars</option>
+            <option value="jupiter">Jupiter</option>
+            <option value="sun">Sun</option>
+            <option value="venus">Venus</option>
+            <option value="mercury">Mercury</option>
+            <option value="saturn">Saturn</option>
+          </select>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="gravConstantDisplay">Gravitational Constant (G)</label>
+          <input type="text" id="gravConstantDisplay" class="f-input-field" value="6.67430 × 10⁻¹¹ m³ kg⁻¹ s⁻²" readonly style="background: #f1f5f9; color: #475569; font-weight: 600;" />
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="massInput">Mass of Body (M in kg)</label>
+          <input type="number" id="massInput" class="f-input-field" value="5.97219e24" step="any" oninput="calculateEscapeVelocity()" placeholder="e.g. 5.972e24" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="radiusInput">Radius of Body (r in meters)</label>
+          <input type="number" id="radiusInput" class="f-input-field" value="6371000" step="any" oninput="calculateEscapeVelocity()" placeholder="e.g. 6371000" />
+        </div>
+      </div>
+
+      <div class="f-result-box">
+        <div class="f-result-title">Calculated Escape Velocity</div>
+        <div id="resultOutput" class="f-result-value">11,186.00 m/s</div>
+        <div id="resultOutputAlt" class="f-result-sub">≈ 11.19 km/s (40,269.60 km/h | 25,022.40 mph)</div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateEscapeVelocity()">Recalculate</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy Result</button>
+        <button class="f-btn f-btn-clear" onclick="resetEscapeCalculator()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Real-Time Physics Computation Engine:</span>
+        Values update instantly as you adjust mass, radius, or pick solar system bodies. Results are presented simultaneously in meters per second, kilometers per second, kilometers per hour, and miles per hour.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Mechanics of Gravitational Escape Velocity: Derivation, Kinetic Energy Equations, and Orbital Mechanics</h2>
+      <p class="seo-p">Escape velocity is one of the most fundamental concepts in astronautics, astrophysics, and orbital mechanics. It is defined as the minimum speed needed for a free, non-propelled object to escape from the gravitational influence of a primary body, effectively reaching an infinite distance from it without any further propulsion. Understanding this threshold is vital for rocketry design, interplanetary mission planning, and calculating the gravitational binding energy of stellar structures.</p>
+      <p class="seo-p">This extensive technical guide explores the mathematical derivation of escape velocity from conservation of energy principles, reviews the universal gravitational constant, compares velocities across solar system bodies, and explains how kinetic and potential energy interact in gravitational fields.</p>
+
+      <div class="seo-callout">
+        <strong>The Fundamental Equation:</strong> The mathematical formula for escape velocity ($v_e$) is derived by equating an object's kinetic energy to its gravitational potential energy: <b>$v_e = \sqrt{\frac{2GM}{r}}$</b>, where <i>G</i> is the gravitational constant, <i>M</i> is the mass of the celestial body, and <i>r</i> is the distance from the center of mass.
+      </div>
+
+      <h3 class="seo-h2">The Physics Core: Conservation of Energy and Gravitational Potentials</h3>
+      <p class="seo-p">To derive the escape velocity formula, physicists analyze the total mechanical energy of a projectile of mass $m$ located at distance $r$ from the center of a celestial body of mass $M$:</p>
+
+      <h4 class="seo-h3">1. Gravitational Potential Energy</h4>
+      <p class="seo-p">The gravitational potential energy ($U$) of a mass $m$ at distance $r$ from mass $M$ is expressed by Newton's law of universal gravitation as $U = -\frac{G M m}{r}$. The negative sign indicates that the potential energy is bound, meaning work must be done on the system to separate the masses to infinity where potential energy approaches zero.</p>
+
+      <h4 class="seo-h3">2. Kinetic Energy Formulation</h4>
+      <p class="seo-p">The kinetic energy ($K$) imparted to the projectile is given by the classical mechanics formula $K = \frac{1}{2} m v^2$. For the object to completely escape the gravitational well and coast to infinity with a final velocity of zero, its total mechanical energy ($E = K + U$) must be at least zero.</p>
+
+      <h4 class="seo-h3">3. Algebraic Derivation</h4>
+      <p class="seo-p">Setting total energy to zero yields $\frac{1}{2} m v_e^2 - \frac{G M m}{r} = 0$. Solving for velocity $v_e$ cancels the mass of the projectile ($m$), proving that escape velocity is entirely independent of the mass of the escaping object: $v_e = \sqrt{\frac{2GM}{r}}$.</p>
+
+      <h3>Solar System Reference Matrix: Gravitational Escape Speeds</h3>
+      <p class="seo-p">Examining how escape velocities vary across different planetary masses and radii highlights the challenges of launching missions from massive gas giants versus smaller terrestrial bodies:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Celestial Body</th>
+              <th>Mass (kg)</th>
+              <th>Mean Radius (m)</th>
+              <th>Escape Velocity (km/s)</th>
+              <th>Escape Velocity (mph)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Sun</b></td>
+              <td>1.989 × 10³⁰</td>
+              <td>6.963 × 10⁸</td>
+              <td>617.50 km/s</td>
+              <td>1,381,600 mph</td>
+            </tr>
+            <tr>
+              <td><b>Jupiter</b></td>
+              <td>1.898 × 10²⁷</td>
+              <td>6.991 × 10⁷</td>
+              <td>59.50 km/s</td>
+              <td>133,100 mph</td>
+            </tr>
+            <tr>
+              <td><b>Earth</b></td>
+              <td>5.972 × 10²⁴</td>
+              <td>6.371 × 10⁶</td>
+              <td>11.19 km/s</td>
+              <td>25,022 mph</td>
+            </tr>
+            <tr>
+              <td><b>Venus</b></td>
+              <td>4.867 × 10²⁴</td>
+              <td>6.051 × 10⁶</td>
+              <td>10.36 km/s</td>
+              <td>23,170 mph</td>
+            </tr>
+            <tr>
+              <td><b>Mars</b></td>
+              <td>6.417 × 10²³</td>
+              <td>3.389 × 10⁶</td>
+              <td>5.03 km/s</td>
+              <td>11,250 mph</td>
+            </tr>
+            <tr>
+              <td><b>Moon</b></td>
+              <td>7.342 × 10²²</td>
+              <td>1.737 × 10⁶</td>
+              <td>2.38 km/s</td>
+              <td>5,320 mph</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Does the mass of the spacecraft affect its escape velocity?</h3>
+      <p class="seo-p">No. As derived from the conservation of energy equation, the mass of the escaping object ($m$) cancels out entirely. Whether launching a tiny 1-kilogram CubeSat or a massive 100-tonne Saturn V rocket, the required initial velocity to break free from Earth's gravity well is exactly the same (approx. 11.19 km/s), provided atmospheric drag is ignored.</p>
+
+      <h3>How does atmospheric drag influence actual rocket launches?</h3>
+      <p class="seo-p">While the theoretical escape velocity assumes a vacuum, real-world rocket launches within planetary atmospheres must contend with aerodynamic drag. Rockets do not fire all their fuel in an instantaneous explosion to reach 11.19 km/s at ground level; instead, they accelerate gradually through the atmosphere, minimizing structural stress and thermal friction before achieving orbital insertion.</p>
+
+      <h3>What is the difference between orbital velocity and escape velocity?</h3>
+      <p class="seo-p">Orbital velocity is the speed required for a spacecraft to maintain a stable circular orbit around a celestial body at a specific altitude. For low Earth orbit (LEO), this is approximately 7.8 km/s. Escape velocity, by contrast, is roughly $\sqrt{2}$ (or about 1.414) times the orbital velocity at the same altitude, representing the threshold to leave orbit entirely.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Applications in Modern Astronautics</h3>
+      <p class="seo-p">Computing escape velocity is critical for calculating delta-v budgets, planning interplanetary gravity assists, and understanding black hole event horizons where escape velocity exceeds the speed of light. Our advanced online calculator provides instant, highly accurate computations across both predefined planetary presets and custom astronomical variables.</p>
+      <p class="seo-p">All calculations run locally inside your browser memory with zero server latency, ensuring a secure and reliable tool for students, physicists, and aerospace engineers alike.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const celestialPresets = {
+      earth: { mass: 5.97219e24, radius: 6371000 },
+      moon: { mass: 7.342e22, radius: 1737400 },
+      mars: { mass: 6.4171e23, radius: 3389500 },
+      jupiter: { mass: 1.8982e27, radius: 69911000 },
+      sun: { mass: 1.9885e30, radius: 696340000 },
+      venus: { mass: 4.8675e24, radius: 6051800 },
+      mercury: { mass: 3.3011e23, radius: 2439700 },
+      saturn: { mass: 5.6834e26, radius: 58232000 }
+    };
+
+    const G = 6.67430e-11;
+
+    function applyCelestialPreset() {
+      const select = document.getElementById('celestialPreset');
+      const val = select.value;
+      if (val === 'custom') return;
+      
+      const body = celestialPresets[val];
+      if (body) {
+        document.getElementById('massInput').value = body.mass;
+        document.getElementById('radiusInput').value = body.radius;
+        calculateEscapeVelocity();
+      }
+    }
+
+    function calculateEscapeVelocity() {
+      const massStr = document.getElementById('massInput').value;
+      const radiusStr = document.getElementById('radiusInput').value;
+      
+      const M = parseFloat(massStr);
+      const r = parseFloat(radiusStr);
+      
+      const out = document.getElementById('resultOutput');
+      const outAlt = document.getElementById('resultOutputAlt');
+
+      if (isNaN(M) || isNaN(r) || M <= 0 || r <= 0) {
+        out.innerText = "Invalid Input";
+        outAlt.innerText = "Please enter positive numbers for mass and radius.";
+        return;
+      }
+
+      // v = sqrt(2 * G * M / r)
+      const v = Math.sqrt((2 * G * M) / r);
+      
+      const v_km_s = v / 1000;
+      const v_km_h = v_km_s * 3600;
+      const v_mph = v_km_s * 2236.93629;
+
+      out.innerText = v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " m/s";
+      outAlt.innerText = `≈ ${v_km_s.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} km/s (${v_km_h.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} km/h | ${v_mph.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} mph)`;
+    }
+
+    function resetEscapeCalculator() {
+      document.getElementById('celestialPreset').value = 'earth';
+      document.getElementById('massInput').value = celestialPresets.earth.mass;
+      document.getElementById('radiusInput').value = celestialPresets.earth.radius;
+      calculateEscapeVelocity();
+    }
+
+    function copyResultToClipboard() {
+      const out = document.getElementById('resultOutput').innerText;
+      const outAlt = document.getElementById('resultOutputAlt').innerText;
+      const textToCopy = `Escape Velocity: ${out} (${outAlt})`;
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        const originalText = btn.innerText;
+        btn.innerText = "✓ Copied Successfully!";
+        btn.style.background = "#dcfce7";
+        btn.style.color = "#166534";
+        btn.style.borderColor = "#bbf7d0";
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = "";
+          btn.style.color = "";
+          btn.style.borderColor = "";
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateEscapeVelocity();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
