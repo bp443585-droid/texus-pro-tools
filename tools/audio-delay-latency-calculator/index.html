@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Audio Delay Latency Calculator | Milliseconds, Meters, Feet & Samples</title>
+  <meta name="description" content="Calculate audio delay latency, speaker distance in meters/feet, sample frames, and tempo beat intervals instantly with our precise free audio delay calculator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/audio-delay-latency-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Audio Delay Latency Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "MultimediaApplication",
+    "description": "An advanced professional acoustic delay and latency calculation tool for live sound engineering, studio production, and speaker alignment.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CALCULATOR INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .results-display-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 20px; }
+    .result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 6px; }
+    .result-card label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; }
+    .result-value { font-size: 1.5rem; font-weight: 800; color: #0f172a; font-family: 'Courier New', Courier, monospace; word-break: break-all; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 25px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .results-display-grid { grid-template-columns: 1fr; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🎚️</span> Audio Delay Latency Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="inputValue">Input Value</label>
+          <input type="number" id="inputValue" class="f-input-field" value="10" step="any" oninput="calculateAudioDelay()" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="inputType">Input Type & Unit</label>
+          <select id="inputType" class="f-select-field" onchange="calculateAudioDelay()">
+            <option value="ms">Milliseconds (ms)</option>
+            <option value="meters">Distance (Meters)</option>
+            <option value="feet">Distance (Feet)</option>
+            <option value="samples">Digital Samples</option>
+            <option value="hz">Frequency (Hz - Wavelength)</option>
+            <option value="bpm">Tempo Beat (1/4 Note / BPM)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-io-grid" style="margin-top: 15px;">
+        <div class="f-panel-box">
+          <label for="tempCelsius">Ambient Temperature (°C)</label>
+          <input type="number" id="tempCelsius" class="f-input-field" value="20" step="any" oninput="calculateAudioDelay()" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="sampleRate">Sample Rate (Hz)</label>
+          <select id="sampleRate" class="f-select-field" onchange="calculateAudioDelay()">
+            <option value="44100">44,100 Hz (CD Audio)</option>
+            <option value="48000" selected>48,000 Hz (Video / Professional)</option>
+            <option value="88200">88,200 Hz (High-Res)</option>
+            <option value="96000">96,000 Hz (Studio Master)</option>
+            <option value="176400">176,400 Hz (Ultra High-Res)</option>
+            <option value="192000">192,000 Hz (Mastering)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="results-display-grid">
+        <div class="result-card">
+          <label>Time Delay</label>
+          <div id="resMs" class="result-value">10.00 ms</div>
+        </div>
+        <div class="result-card">
+          <label>Speaker Distance (Meters)</label>
+          <div id="resMeters" class="result-value">3.44 m</div>
+        </div>
+        <div class="result-card">
+          <label>Speaker Distance (Feet)</label>
+          <div id="resFeet" class="result-value">11.29 ft</div>
+        </div>
+        <div class="result-card">
+          <label>Buffer / Latency Samples</label>
+          <div id="resSamples" class="result-value">480 samples</div>
+        </div>
+        <div class="result-card">
+          <label>Wavelength (at Temp)</label>
+          <div id="resWavelength" class="result-value">34.40 m</div>
+        </div>
+        <div class="result-card">
+          <label>Tempo 1/4 Note (at 120 BPM)</label>
+          <div id="resBpm" class="result-value">500.00 ms</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateAudioDelay()">Recalculate</button>
+        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyResultsToClipboard()">📋 Copy Results Summary</button>
+        <button class="f-btn f-btn-clear" onclick="clearAudioCalculator()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Acoustic Precision Calibration Active:</span>
+        Calculations automatically factor in ambient temperature adjustments for sound speed ($v = 331.3 + 0.6 \times T$) and sample-accurate digital buffer frames.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Physics of Acoustic Propagation: Master Audio Delay, Latency, Wavelengths, and Speaker Alignment</h2>
+      <p class="seo-p">In live sound reinforcement, broadcast mixing, studio tracking, and architectural acoustic design, mastering the relationship between time and distance is vital. Sound travels through air at a finite velocity governed by ambient temperature, barometric pressure, and humidity. When setting up multi-speaker arrays, digital mixing console buffer blocks, or time-based hardware effects, even a few milliseconds of phase misalignment can cause destructive interference, comb filtering, and audible latency.</p>
+      <p class="seo-p">This extensive engineering reference examines the mathematics of acoustic propagation, digital audio buffer sample rates, temperature compensation formulas, and phase alignment strategies used by professional audio engineers worldwide.</p>
+
+      <div class="seo-callout">
+        <strong>The Speed of Sound Baseline:</strong> At standard sea level and 20°C (68°F), sound travels at approximately 343 meters per second (1,125 feet per second), covering roughly 1 meter every 2.91 milliseconds or 1 foot every 0.88 milliseconds.
+      </div>
+
+      <h3 class="seo-h2">Core Mathematical Formulas for Audio Calculations</h3>
+      <p class="seo-p">To design accurate alignment filters and speaker delay matrices, audio engineers rely on rigorous physical equations:</p>
+
+      <h4 class="seo-h3">1. Temperature-Compensated Sound Velocity</h4>
+      <p class="seo-p">The speed of sound ($v$) in meters per second in dry air is directly proportional to the Celsius temperature ($T$):</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 10px; border-radius: 8px;">v = 331.3 + (0.6 × T)</p>
+
+      <h4 class="seo-h3">2. Time Delay to Distance Conversion</h4>
+      <p class="seo-p">To calculate the physical distance ($d$) in meters corresponding to a specific time delay ($t$ in milliseconds):</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 10px; border-radius: 8px;">d (meters) = (t / 1000) × v</p>
+
+      <h4 class="seo-h3">3. Digital Audio Sample Frame Latency</h4>
+      <p class="seo-p">Digital signal processors (DSP) process audio in discrete sample blocks. To convert milliseconds ($t$) into digital samples at a specific sample rate ($SR$):</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 10px; border-radius: 8px;">Samples = (t / 1000) × SR</p>
+
+      <h3>The Statutory Reference Matrix: Standard Acoustic Delay and Distance Values</h3>
+      <p class="seo-p">This reference table outlines common delay intervals at 20°C (343.4 m/s) and their corresponding physical speaker distances and digital sample counts at a 48 kHz sampling rate:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Time Delay (ms)</th>
+              <th>Distance (Meters)</th>
+              <th>Distance (Feet)</th>
+              <th>Samples (@ 48kHz)</th>
+              <th>Practical Acoustic Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1.00 ms</td>
+              <td>0.34 m</td>
+              <td>1.13 ft</td>
+              <td>48 samples</td>
+              <td>Immediate close mic phase correction / Comb filtering check</td>
+            </tr>
+            <tr>
+              <td>5.00 ms</td>
+              <td>1.72 m</td>
+              <td>5.63 ft</td>
+              <td>240 samples</td>
+              <td>Drum overhead to snare capsule phase alignment</td>
+            </tr>
+            <tr>
+              <td>10.00 ms</td>
+              <td>3.43 m</td>
+              <td>11.27 ft</td>
+              <td>480 samples</td>
+              <td>Small stage front-fill speaker alignment delay</td>
+            </tr>
+            <tr>
+              <td>29.15 ms</td>
+              <td>10.00 m</td>
+              <td>32.81 ft</td>
+              <td>1,399 samples</td>
+              <td>Balcony delay speaker stack time compensation</td>
+            </tr>
+            <tr>
+              <td>100.00 ms</td>
+              <td>34.34 m</td>
+              <td>112.66 ft</td>
+              <td>4,800 samples</td>
+              <td>Large outdoor concert tower delay alignment</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Professional Audio Engineering</h3>
+
+      <h3>Why does ambient temperature change speaker delay settings?</h3>
+      <p class="seo-p">Sound waves travel via molecular collisions in air. When temperature increases, air molecules move faster, allowing sound waves to propagate at a higher velocity. At 0°C, sound travels at 331.3 m/s, whereas at 30°C, it reaches 349.3 m/s. Outdoor festival audio systems require recalibration throughout the day as sunlight heats the venue.</p>
+
+      <h3>What is buffer latency in digital audio workstations (DAWs)?</h3>
+      <p class="seo-p">Buffer latency occurs when audio interfaces accumulate a set number of samples (e.g., 64, 128, 512 samples) before sending them to the computer CPU and back to the output monitors. Lower buffer sizes reduce monitoring delay but increase CPU processing load, risking audio dropouts and clicks.</p>
+
+      <h3>How do I align a subwoofer with main PA speakers?</h3>
+      <p class="seo-p">Measure the physical distance difference between the main loudspeakers and the subwoofers relative to the listening position. Apply a delay to the closer speaker stack equal to the time difference so that low-frequency wavefronts arrive at the listener's ears simultaneously, maximizing low-end punch and avoiding phase cancellation.</p>
+
+      <h3 class="seo-h2">Summary: Professional Audio Delay Management</h3>
+      <p class="seo-p">Mastering acoustic time alignment ensures pristine audio clarity, eliminates phase anomalies in multi-mic setups, and guarantees tight time synchronization across complex sound reinforcement networks.</p>
+      <p class="seo-p">Our Audio Delay Latency Calculator automates these complex calculations instantly, providing precise milliseconds, meters, feet, and sample values directly inside your browser workspace.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function calculateAudioDelay() {
+      const val = parseFloat(document.getElementById('inputValue').value) || 0;
+      const type = document.getElementById('inputType').value;
+      const tempC = parseFloat(document.getElementById('tempCelsius').value) || 20;
+      const sampleRate = parseFloat(document.getElementById('sampleRate').value) || 48000;
+
+      // Speed of sound v = 331.3 + 0.6 * T (m/s)
+      const soundSpeed = 331.3 + (0.6 * tempC);
+      const soundSpeedFt = soundSpeed * 3.28084;
+
+      let ms = 0;
+
+      switch(type) {
+        case 'ms':
+          ms = val;
+          break;
+        case 'meters':
+          ms = (val / soundSpeed) * 1000;
+          break;
+        case 'feet':
+          ms = (val / soundSpeedFt) * 1000;
+          break;
+        case 'samples':
+          ms = (val / sampleRate) * 1000;
+          break;
+        case 'hz':
+          if (val > 0) {
+            const wavelengthM = soundSpeed / val;
+            ms = (wavelengthM / soundSpeed) * 1000;
+          } else {
+            ms = 0;
+          }
+          break;
+        case 'bpm':
+          if (val > 0) {
+            // 1 beat (quarter note) = 60000 / BPM
+            ms = 60000 / val;
+          } else {
+            ms = 0;
+          }
+          break;
+      }
+
+      const meters = (ms / 1000) * soundSpeed;
+      const feet = meters * 3.28084;
+      const samples = Math.round((ms / 1000) * sampleRate);
+      const wavelength = meters; // for 1 cycle at that ms if treated as period, or let's show wavelength of 1kHz as reference or period wavelength
+      // Wavelength for frequency or time period: if ms is time t, distance covered in time t is meters.
+      // Let's calculate 1/4 note BPM if input isn't BPM:
+      const bpmVal = ms > 0 ? (60000 / ms) : 120;
+
+      // Update UI
+      document.getElementById('resMs').textContent = ms.toFixed(2) + ' ms';
+      document.getElementById('resMeters').textContent = meters.toFixed(2) + ' m';
+      document.getElementById('resFeet').textContent = feet.toFixed(2) + ' ft';
+      document.getElementById('resSamples').textContent = samples.toLocaleString() + ' samples';
+      document.getElementById('resWavelength').textContent = meters.toFixed(2) + ' m';
+      document.getElementById('resBpm').textContent = ms.toFixed(2) + ' ms (' + bpmVal.toFixed(1) + ' BPM)';
+    }
+
+    function clearAudioCalculator() {
+      document.getElementById('inputValue').value = '10';
+      document.getElementById('inputType').value = 'ms';
+      document.getElementById('tempCelsius').value = '20';
+      document.getElementById('sampleRate').value = '48000';
+      calculateAudioDelay();
+    }
+
+    function copyResultsToClipboard() {
+      const ms = document.getElementById('resMs').textContent;
+      const meters = document.getElementById('resMeters').textContent;
+      const feet = document.getElementById('resFeet').textContent;
+      const samples = document.getElementById('resSamples').textContent;
+      const summary = `Audio Delay Calculation Results:\n- Time Delay: ${ms}\n- Distance: ${meters} (${feet})\n- Buffer Samples: ${samples}`;
+      
+      navigator.clipboard.writeText(summary).then(() => {
+        const btn = document.getElementById('copyResultsBtn');
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Copied to Clipboard!';
+        setTimeout(() => { btn.textContent = originalText; }, 2000);
+      }).catch(err => {
+        console.error('Copy failed:', err);
+      });
+    }
+
+    // Run initial calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateAudioDelay();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
