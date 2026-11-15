@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Aspect Ratio Padding Calculator | CSS % Padding Hack Utility</title>
+  <meta name="description" content="Calculate responsive CSS padding-bottom values for maintainable aspect ratios (16:9, 4:3, 21:9) instantly with our free online utility." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/aspect-ratio-padding-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Aspect Ratio Padding Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced CSS layout tool to calculate precise percentage padding-bottom values for responsive video containers and media wrappers.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-textarea-field { width: 100%; height: 160px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.95rem; font-family: 'Courier New', Courier, monospace; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREVIEW CONTAINER WRAPPER */
+    .preview-box { margin-top: 25px; background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 16px; padding: 20px; text-align: center; }
+    .preview-stage { width: 100%; max-width: 480px; margin: 0 auto; background: #0f172a; border-radius: 12px; position: relative; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+    .preview-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.5px; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📐</span> Aspect Ratio Padding Calculator</div>
+    
+    <div class="f-card">
+      <div style="margin-bottom: 20px;">
+        <label for="presetRatio" style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px;">Quick Ratio Presets</label>
+        <select id="presetRatio" class="f-select-field" onchange="applyPresetRatio()">
+          <option value="16:9">16:9 (Widescreen Video / HD - 56.25%)</option>
+          <option value="4:3">4:3 (Standard Definition TV - 75%)</option>
+          <option value="21:9">21:9 (Ultramide Cinematic - 42.857%)</option>
+          <option value="1:1">1:1 (Square Profile / Instagram - 100%)</option>
+          <option value="9:16">9:16 (Vertical Story / TikTok - 177.778%)</option>
+          <option value="4:5">4:5 (Portrait Feed - 125%)</option>
+          <option value="custom">Custom Dimensions</option>
+        </select>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="inputWidth">Target Width (Units)</label>
+          <input type="number" id="inputWidth" class="f-input-field" value="16" min="1" oninput="calculatePadding()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="inputHeight">Target Height (Units)</label>
+          <input type="number" id="inputHeight" class="f-input-field" value="9" min="1" oninput="calculatePadding()">
+        </div>
+      </div>
+
+      <div class="f-io-grid" style="margin-top: 15px;">
+        <div class="f-panel-box">
+          <label for="calculatedPercentage">Calculated Padding Bottom (%)</label>
+          <input type="text" id="calculatedPercentage" class="f-input-field mono-font-panel" readonly>
+        </div>
+
+        <div class="f-panel-box">
+          <label for="cssCodeOutput">Generated CSS Code Snippet</label>
+          <textarea id="cssCodeOutput" class="f-textarea-field mono-font-panel" readonly></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculatePadding()">Recalculate Values</button>
+        <button class="f-btn f-btn-copy" id="copyCssBtn" onclick="copyCssSnippet()">📋 Copy CSS Code</button>
+        <button class="f-btn f-btn-clear" onclick="resetCalculator()">Reset</button>
+      </div>
+
+      <div class="preview-box">
+        <div style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; margin-bottom: 12px;">Live Responsive Proportional Aspect Ratio Preview</div>
+        <div id="previewContainer" class="preview-stage">
+          <div class="preview-content" id="previewText">16 : 9</div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ CSS % Padding Hack Principle:</span>
+        In CSS specifications, percentage values for padding-top and padding-bottom properties are calculated with respect to the <em>width</em> of the containing block, not its height. This math trick creates robust, perfectly responsive aspect ratio boxes without modern grid distortion.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Responsive Layout Geometry: The CSS Percentage Padding Hack and Aspect Ratio Engineering</h2>
+      <p class="seo-p">Building fluid, responsive web layouts that maintain strict proportional dimensions across varying screen sizes has historically presented unique CSS design challenges. While modern layout models like CSS Grid and native properties such as `aspect-ratio` have simplified modern workflows, legacy browser compatibility requirements, nested media wrappers, and complex iframe embeds often necessitate the timeless <b>CSS Percentage Padding Hack</b>.</p>
+      <p class="seo-p">This comprehensive technical manual explores the mathematical foundation of percentage padding rules, examines how browser layout engines compute block dimensions, compares modern CSS approaches with legacy percentage wrappers, and provides practical guidelines for integrating responsive containers into enterprise-grade web applications.</p>
+
+      <div class="seo-callout">
+        <strong>The Percentage Calculation Axiom:</strong> According to the W3C CSS Box Model specification, vertical padding percentages (`padding-top` and `padding-bottom`) use the <b>width</b> of the parent containing block as their reference baseline. If a container is 1000px wide, a `padding-bottom: 56.25%` rule allocates precisely 562.5 pixels of vertical space.
+      </div>
+
+      <h3 class="seo-h2">The Mathematics Behind Aspect Ratio Padding Formulas</h3>
+      <p class="seo-p">To compute the exact percentage required for any custom media aspect ratio, developers divide the target height by the target width and multiply the result by 100. The equation is represented as:</p>
+      
+      <p class="seo-p" style="text-align: center; font-family: 'Courier New', monospace; font-weight: bold; font-size: 1.2rem; background: #f8fafc; padding: 12px; border-radius: 8px;">
+        Padding Bottom (%) = (Height &divide; Width) &times; 100
+      </p>
+
+      <h4 class="seo-h3">1. Widescreen Video (16:9 Standard)</h4>
+      <p class="seo-p">Dividing 9 by 16 yields `0.5625`. Multiplying by 100 produces `56.25%`. This ensures that any container stretching to fit full device width expands its vertical dimension in exact harmony with HD video streams.</p>
+
+      <h4 class="seo-h3">2. Standard Definition Television (4:3 Classic)</h4>
+      <p class="seo-p">Dividing 3 by 4 produces `0.75`, resulting in a `75%` padding-bottom value. This maintains taller vertical profiles required for vintage archival media feeds.</p>
+
+      <h4 class="seo-h3">3. Cinematic Ultrawide (21:9 Scope)</h4>
+      <p class="seo-p">Dividing 9 by 21 yields approximately `0.42857`, translating to a sleek `42.857%` padding-bottom rule suited for immersive panoramic movie trailers.</p>
+
+      <h3>The Reference Matrix: Common Aspect Ratios and CSS Padding Equivalents</h3>
+      <p class="seo-p">Use this comprehensive lookup table to identify standard media dimensions, calculated percentage constants, and recommended CSS wrapper classes:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Media Format Class</th>
+              <th>Ratio Dimensions</th>
+              <th>Padding Bottom (%)</th>
+              <th>Primary Use Case &amp; Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Widescreen HD</td>
+              <td>16 : 9</td>
+              <td>`56.25%`</td>
+              <td>YouTube embeds, HTML5 video tags, hero background banners.</td>
+            </tr>
+            <tr>
+              <td>Standard Definition</td>
+              <td>4 : 3</td>
+              <td>`75.00%`</td>
+              <td>Legacy television streams, archival photography displays.</td>
+            </tr>
+            <tr>
+              <td>Ultrawide Cinematic</td>
+              <td>21 : 9</td>
+              <td>`42.857%`</td>
+              <td>Cinematic movie trailers, ultra-wide landing page headers.</td>
+            </tr>
+            <tr>
+              <td>Square Profile</td>
+              <td>1 : 1</td>
+              <td>`100.00%`</td>
+              <td>Instagram feeds, product thumbnails, avatar card grids.</td>
+            </tr>
+            <tr>
+              <td>Vertical Story</td>
+              <td>9 : 16</td>
+              <td>`177.778%`</td>
+              <td>TikTok clips, Instagram Reels, vertical smartphone media.</td>
+            </tr>
+            <tr>
+              <td>Portrait Standard</td>
+              <td>4 : 5</td>
+              <td>`125.00%`</td>
+              <td>Vertical portrait photography, mobile feed cards.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why do vertical padding percentages reference container width instead of height?</h3>
+      <p class="seo-p">In early CSS layout specifications, allowing vertical padding to depend on height would create infinite circular layout loops (where a container's height depends on its content, which in turn depends on height). Tying vertical padding to parent width provided a stable mathematical anchor for calculating box models reliably across browser reflows.</p>
+
+      <h3>How do absolute positioned child elements interact with padding-bottom wrappers?</h3>
+      <p class="seo-p">When using the padding hack, the parent container requires `position: relative` and zero height. The child element (such as an `&lt;iframe&gt;` or `&lt;img&gt;`) uses `position: absolute`, `top: 0`, `left: 0`, `width: 100%`, and `height: 100%`. This forces the media item to fill the exact proportional box created by the parent's padding.</p>
+
+      <h3>Is the CSS `aspect-ratio` property replacing the percentage padding hack?</h3>
+      <p class="seo-p">Modern browsers widely support the native `aspect-ratio: 16 / 9` property. However, the percentage padding hack remains invaluable when supporting legacy enterprise browsers, older email clients, or specialized PDF generation engines that lack robust support for newer CSS layout primitives.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for Responsive Media Container Architecture</h3>
+      <p class="seo-p">Maintaining clean aspect ratios ensures your website layouts remain stable, preventing layout shifts (CLS) while media assets load asynchronously. By leveraging our Aspect Ratio Padding Calculator, you eliminate manual math errors and generate clean, drop-in CSS code snippets instantly.</p>
+      <p class="seo-p">Bookmark this utility to streamline your frontend development workflow across desktop and mobile devices.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function calculatePadding() {
+      const widthInput = document.getElementById('inputWidth');
+      const heightInput = document.getElementById('inputHeight');
+      const percentageOutput = document.getElementById('calculatedPercentage');
+      const cssOutput = document.getElementById('cssCodeOutput');
+      const previewContainer = document.getElementById('previewContainer');
+      const previewText = document.getElementById('previewText');
+      const presetSelect = document.getElementById('presetRatio');
+
+      let w = parseFloat(widthInput.value);
+      let h = parseFloat(heightInput.value);
+
+      if (isNaN(w) || w <= 0) w = 16;
+      if (isNaN(h) || h <= 0) h = 9;
+
+      const percentage = (h / w) * 100;
+      const formattedPercentage = percentage.toFixed(3).replace(/\.?0+$/, "");
+
+      percentageOutput.value = formattedPercentage + '%';
+
+      const cssSnippet = `.responsive-media-container {\n  position: relative;\n  width: 100%;\n  padding-bottom: ${formattedPercentage}%;\n}\n\n.responsive-media-container > * {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}`;
+
+      cssOutput.value = cssSnippet;
+
+      // Update live preview box
+      previewContainer.style.paddingBottom = formattedPercentage + '%';
+      previewText.textContent = `${w} : ${h} (${formattedPercentage}%)`;
+
+      // Check if matches preset
+      let matchedPreset = 'custom';
+      if (w === 16 && h === 9) matchedPreset = '16:9';
+      else if (w === 4 && h === 3) matchedPreset = '4:3';
+      else if (w === 21 && h === 9) matchedPreset = '21:9';
+      else if (w === 1 && h === 1) matchedPreset = '1:1';
+      else if (w === 9 && h === 16) matchedPreset = '9:16';
+      else if (w === 4 && h === 5) matchedPreset = '4:5';
+
+      presetSelect.value = matchedPreset;
+    }
+
+    function applyPresetRatio() {
+      const preset = document.getElementById('presetRatio').value;
+      const widthInput = document.getElementById('inputWidth');
+      const heightInput = document.getElementById('inputHeight');
+
+      if (preset === '16:9') { widthInput.value = 16; heightInput.value = 9; }
+      else if (preset === '4:3') { widthInput.value = 4; heightInput.value = 3; }
+      else if (preset === '21:9') { widthInput.value = 21; heightInput.value = 9; }
+      else if (preset === '1:1') { widthInput.value = 1; heightInput.value = 1; }
+      else if (preset === '9:16') { widthInput.value = 9; heightInput.value = 16; }
+      else if (preset === '4:5') { widthInput.value = 4; heightInput.value = 5; }
+
+      calculatePadding();
+    }
+
+    function copyCssSnippet() {
+      const cssOutput = document.getElementById('cssCodeOutput');
+      const copyBtn = document.getElementById('copyCssBtn');
+
+      cssOutput.select();
+      cssOutput.setSelectionRange(0, 99999);
+
+      navigator.clipboard.writeText(cssOutput.value).then(() => {
+        const originalText = copyBtn.textContent;
+        copyBtn.textContent = '✅ Copied Successfully!';
+        copyBtn.style.background = '#dcfce7';
+        copyBtn.style.borderColor = '#86efac';
+        copyBtn.style.color = '#166534';
+
+        setTimeout(() => {
+          copyBtn.textContent = originalText;
+          copyBtn.style.background = '';
+          copyBtn.style.borderColor = '';
+          copyBtn.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+
+    function resetCalculator() {
+      document.getElementById('presetRatio').value = '16:9';
+      document.getElementById('inputWidth').value = 16;
+      document.getElementById('inputHeight').value = 9;
+      calculatePadding();
+    }
+
+    // Initialize on load
+    window.onload = function() {
+      calculatePadding();
+    };
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
