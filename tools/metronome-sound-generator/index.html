@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Metronome Sound Generator | Free Online Audio BPM Click Track</title>
+  <meta name="description" content="Master your tempo with our free online Metronome Sound Generator. Practice timing with custom BPM, tap tempo, time signatures, and clear click sounds." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/metronome-sound-generator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Metronome Sound Generator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "MultimediaApplication",
+    "description": "An advanced web-based metronome and audio click generator designed for musicians, producers, and students seeking precise timing practice.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* METRONOME CUSTOM UI STYLES */
+    .metro-display { text-align: center; background: #0f172a; color: #ffffff; padding: 30px; border-radius: 20px; margin-bottom: 30px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); }
+    .metro-bpm-val { font-size: 5rem; font-weight: 800; line-height: 1; letter-spacing: -2px; color: #38bdf8; margin-bottom: 5px; }
+    .metro-bpm-label { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; color: #94a3b8; font-weight: 600; }
+    .metro-tempo-marking { font-size: 1.2rem; color: #cbd5e1; margin-top: 10px; font-weight: 500; }
+
+    .metro-controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 30px; }
+    .metro-control-group { display: flex; flex-direction: column; gap: 10px; }
+    .metro-control-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .metro-slider { width: 100%; accent-color: #2563eb; cursor: pointer; height: 8px; border-radius: 4px; background: #e2e8f0; }
+    .metro-select { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .metro-select:focus { border-color: #2563eb; background: #ffffff; }
+
+    .metro-beats-row { display: flex; gap: 10px; justify-content: center; margin: 25px 0; }
+    .metro-beat-dot { width: 36px; height: 36px; border-radius: 50%; background: #e2e8f0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: #64748b; transition: all 0.1s ease; }
+    .metro-beat-dot.active { background: #2563eb; color: #ffffff; transform: scale(1.15); box-shadow: 0 0 12px rgba(37, 99, 235, 0.5); }
+    .metro-beat-dot.accent { background: #f59e0b; color: #ffffff; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 16px 20px; border-radius: 12px; cursor: pointer; font-size: 1.05rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .f-btn-start { background: #16a34a; color: #ffffff; border-color: #16a34a; }
+    .f-btn-start:hover { background: #15803d; }
+    .f-btn-start.playing { background: #dc2626; border-color: #dc2626; }
+    .f-btn-start.playing:hover { background: #b91c1c; }
+    
+    .f-btn-tap { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-tap:hover { background: #1d4ed8; }
+    
+    .f-btn-adjust { background: #f1f5f9; border-color: #cbd5e1; color: #334155; max-width: 70px; }
+    .f-btn-adjust:hover { background: #e2e8f0; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .metro-controls-grid { grid-template-columns: 1fr; gap: 20px; }
+      .metro-bpm-val { font-size: 4rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 14px; font-size: 0.95rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⏱️</span> Metronome Sound Generator</div>
+    
+    <div class="f-card">
+      <div class="metro-display">
+        <div id="bpmDisplay" class="metro-bpm-val">120</div>
+        <div class="metro-bpm-label">Beats Per Minute (BPM)</div>
+        <div id="tempoMarking" class="metro-tempo-marking">Allegro (Fast, quick, and bright)</div>
+      </div>
+
+      <div class="metro-beats-row" id="beatsContainer">
+        <!-- Visual beat dots will be dynamically rendered here -->
+      </div>
+
+      <div class="metro-controls-grid">
+        <div class="metro-control-group">
+          <label for="bpmSlider">Tempo Slider: <span id="sliderValDisplay">120</span> BPM</label>
+          <input type="range" id="bpmSlider" class="metro-slider" min="40" max="240" value="120" oninput="updateBpmFromSlider(this.value)">
+        </div>
+
+        <div class="metro-control-group">
+          <label for="timeSigSelect">Time Signature / Meter</label>
+          <select id="timeSigSelect" class="metro-select" onchange="updateTimeSignature(this.value)">
+            <option value="4">4/4 Standard Common Time</option>
+            <option value="3">3/4 Waltz Time</option>
+            <option value="2">2/4 March Time</option>
+            <option value="6">6/8 Compound Meter</option>
+            <option value="1">1/4 Steady Click</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 25px;">
+        <button class="f-btn f-btn-adjust" onclick="adjustBpm(-5)">-5</button>
+        <button class="f-btn f-btn-adjust" onclick="adjustBpm(-1)">-1</button>
+        <button class="f-btn f-btn-tap" id="tapTempoBtn" onclick="handleTapTempo()">🎯 Tap Tempo</button>
+        <button class="f-btn f-btn-adjust" onclick="adjustBpm(1)">+1</button>
+        <button class="f-btn f-btn-adjust" onclick="adjustBpm(5)">+5</button>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-start" id="togglePlayBtn" onclick="toggleMetronome()">▶ Start Metronome</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Web Audio API High-Precision Timing:</span>
+        Powered by high-performance browser audio scheduling buffers to eliminate timing jitter, ensuring rock-solid rhythm tracking across all desktop and mobile web browsers.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Art and Science of Precision Timing: Metronome Sound Generators, Tempo Dynamics, and Rhythm Mastery</h2>
+      <p class="seo-p">Developing an unwavering internal sense of rhythm is the single most critical milestone for any serious instrumentalist, vocal performer, or audio producer. Whether practicing complex polyrhythms on an acoustic drum kit, tracking multi-layered guitar arrangements in a digital audio workstation, or preparing classical piano etudes, maintaining a consistent tempo separates amateur performances from professional studio-grade recordings. Without an external timekeeper, human performers naturally exhibit micro-fluctuations in speed—rushing through familiar passages and dragging during intricate technical phrases.</p>
+      <p class="seo-p">This extensive guide explores the historical evolution of timekeeping devices, examines the acoustic physics of frequency-modulated click tracks, reviews tempo terminology from grave to prestissimo, and explains how modern Web Audio API scheduling pipelines achieve sample-accurate rhythm generation inside web browsers.</p>
+
+      <div class="seo-callout">
+        <strong>The Internal Clock Principle:</strong> Regular practice with a precise click track rewires neuromuscular pathways, training your hands and mind to internalize microsecond subdivisions without relying on conscious effort.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Web Audio API Scheduling and Clock Precision</h3>
+      <p class="seo-p">Building a reliable browser metronome requires overcoming standard JavaScript timing limitations. Standard `setInterval` or `setTimeout` timers are notoriously inaccurate in web browsers due to event loop throttling, background tab management, and garbage collection pauses. To guarantee rock-solid stability, our Metronome Sound Generator relies on advanced audio scheduling protocols:</p>
+
+      <h4 class="seo-h3">1. Lookahead Buffer Architecture</h4>
+      <p class="seo-p">The application runs a high-frequency polling loop every 25 milliseconds, checking ahead in time to schedule audio events precisely before their playback deadline. This decouples visual animations from audio synthesis, preventing audio stuttering and timing drift.</p>
+
+      <h4 class="seo-h3">2. Oscillator-Based Synthesis</h4>
+      <p class="seo-p">Instead of loading external MP3 or WAV audio files over network requests—which can introduce latency—the generator synthesizes click tones instantly using Web Audio API oscillators. The downbeat click emits a sharp 1000 Hz tone, while secondary subdivision beats generate a crisp 800 Hz click.</p>
+
+      <h4 class="seo-h3">3. Sample-Accurate Timestamps</h4>
+      <p class="seo-p">Audio events are scheduled directly against `audioContext.currentTime`, a high-precision hardware clock that operates independently of the main browser thread. This ensures millisecond-perfect tick execution.</p>
+
+      <h3>Tempo Terminology and Italian Musical Speed Classifications</h3>
+      <p class="seo-p">Classical music nomenclature categorizes tempos into descriptive Italian terms that convey both speed and emotional character. Understanding these markings helps musicians interpret compositions accurately:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Italian Tempo Marking</th>
+              <th>Typical BPM Range</th>
+              <th>Musical Character and Mood</th>
+              <th>Common Application in Repertoire</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Larghetto / Largo</b></td>
+              <td>40 - 60 BPM</td>
+              <td>Broad, extremely slow, and solemn.</td>
+              <td>Funeral marches, deep adagio movements, and solemn intros.</td>
+            </tr>
+            <tr>
+              <td><b>Adagio / Andante</b></td>
+              <td>66 - 76 BPM</td>
+              <td>Slow and stately; "walking pace".</td>
+              <td>Expressive ballad introductions and lyrical solos.</td>
+            </tr>
+            <tr>
+              <td><b>Moderato</b></td>
+              <td>108 - 120 BPM</td>
+              <td>Moderate speed; balanced and steady.</td>
+              <td>Standard rock beats, pop rhythms, and moderate dance tracks.</td>
+            </tr>
+            <tr>
+              <td><b>Allegro</b></td>
+              <td>120 - 156 BPM</td>
+              <td>Fast, quick, bright, and energetic.</td>
+              <td>Upbeat pop arrangements, jazz swing numbers, and allegro movements.</td>
+            </tr>
+            <tr>
+              <td><b>Presto / Prestissimo</b></td>
+              <td>168 - 200+ BPM</td>
+              <td>Extremely fast, rapid, and urgent.</td>
+              <td>High-speed guitar shredding, fast bluegrass, and virtuosic etudes.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Practical Guidance Segment</h3>
+
+      <h3>Why is practicing with a metronome essential for developing musicians?</h3>
+      <p class="seo-p">A metronome acts as an objective mirror for your timing. It highlights hidden rushing and dragging tendencies, strengthens rhythmic subdivision awareness, and builds physical stamina when practicing difficult technical passages at gradually increasing speeds.</p>
+
+      <h3>How does the Tap Tempo feature calculate BPM?</h3>
+      <p class="seo-p">The Tap Tempo algorithm measures the exact time intervals in milliseconds between your consecutive button clicks. By averaging the time differences across your taps, the system instantly computes and locks in your desired Beats Per Minute.</p>
+
+      <h3>Can I use this metronome tool on mobile phones and tablets?</h3>
+      <p class="seo-p">Yes! Our Metronome Sound Generator is fully optimized for touch devices. It adapts fluidly to smartphones and tablets, allowing you to practice timing anywhere—from mobile jam sessions to backstage warm-ups.</p>
+
+      <h3 class="seo-h2">Summary: Mastering Rhythm and Tempo Consistency</h3>
+      <p class="seo-p">Consistent rhythmic practice transforms shaky execution into locked-in, professional grooves. By combining adjustable BPM sliders, tap-tempo detection, flexible time signatures, and precision audio synthesis, our online Metronome Sound Generator provides all the professional features you need to elevate your musical timing.</p>
+      <p class="seo-p">Bookmark Texus Pro Tools today and make precision click-track training a core pillar of your daily practice routine!</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+
+  <script>
+    // METRONOME APPLICATION ENGINE LOGIC
+    let audioCtx = null;
+    let isPlaying = false;
+    let bpm = 120;
+    let beatsPerMeasure = 4;
+    let currentBeat = 0;
+    let timerID = null;
+    let nextNoteTime = 0.0;
+    let scheduleAheadTime = 0.1;
+    let lookaheadInterval = 25.0;
+    let tapTimes = [];
+
+    const tempoMap = [
+      { max: 45, name: "Grave (Extremely slow and solemn)" },
+      { max: 60, name: "Largo / Larghetto (Broad and slow)" },
+      { max: 76, name: "Adagio / Andante (Slow at a walking pace)" },
+      { max: 108, name: "Moderato (Moderate, balanced speed)" },
+      { max: 120, name: "Allegretto (Moderately fast)" },
+      { max: 156, name: "Allegro (Fast, quick, and bright)" },
+      { max: 176, name: "Vivace (Lively and brisk)" },
+      { max: 200, name: "Presto (Extremely fast and rapid)" },
+      { max: 999, name: "Prestissimo (As fast as humanly possible)" }
+    ];
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function updateBpmFromSlider(val) {
+      bpm = parseInt(val, 10);
+      document.getElementById('bpmDisplay').innerText = bpm;
+      document.getElementById('sliderValDisplay').innerText = bpm;
+      document.getElementById('bpmSlider').value = bpm;
+      updateTempoMarking();
+    }
+
+    function adjustBpm(amount) {
+      let newBpm = bpm + amount;
+      if (newBpm < 40) newBpm = 40;
+      if (newBpm > 240) newBpm = 240;
+      updateBpmFromSlider(newBpm);
+    }
+
+    function updateTempoMarking() {
+      let marking = tempoMap.find(m => bpm <= m.max);
+      document.getElementById('tempoMarking').innerText = marking ? marking.name : "Allegro";
+    }
+
+    function updateTimeSignature(val) {
+      beatsPerMeasure = parseInt(val, 10);
+      currentBeat = 0;
+      renderBeatsDots();
+    }
+
+    function renderBeatsDots() {
+      const container = document.getElementById('beatsContainer');
+      container.innerHTML = '';
+      for (let i = 0; i < beatsPerMeasure; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'metro-beat-dot' + (i === 0 ? ' accent' : '');
+        dot.id = `beatDot-${i}`;
+        dot.innerText = i + 1;
+        container.appendChild(dot);
+      }
+    }
+
+    function playClickSound(isAccent, time) {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const envelope = audioCtx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.value = isAccent ? 1000 : 800;
+
+      envelope.gain.setValueAtTime(1, time);
+      envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.05);
+
+      osc.connect(envelope);
+      envelope.connect(audioCtx.destination);
+
+      osc.start(time);
+      osc.stop(time + 0.05);
+    }
+
+    function scheduler() {
+      while (nextNoteTime < audioCtx.currentTime + scheduleAheadTime) {
+        scheduleNote(currentBeat, nextNoteTime);
+        nextNote();
+      }
+    }
+
+    function scheduleNote(beatNumber, time) {
+      const isAccent = (beatNumber === 0);
+      playClickSound(isAccent, time);
+
+      // Schedule visual update
+      const drawTime = (time - audioCtx.currentTime) * 1000;
+      setTimeout(() => {
+        highlightBeatDot(beatNumber);
+      }, Math.max(0, drawTime));
+    }
+
+    function nextNote() {
+      const secondsPerBeat = 60.0 / bpm;
+      nextNoteTime += secondsPerBeat;
+      currentBeat = (currentBeat + 1) % beatsPerMeasure;
+    }
+
+    function highlightBeatDot(beatIndex) {
+      for (let i = 0; i < beatsPerMeasure; i++) {
+        const dot = document.getElementById(`beatDot-${i}`);
+        if (dot) {
+          if (i === beatIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        }
+      }
+    }
+
+    function toggleMetronome() {
+      initAudioContext();
+      const btn = document.getElementById('togglePlayBtn');
+
+      if (!isPlaying) {
+        isPlaying = true;
+        btn.innerHTML = '⏹ Stop Metronome';
+        btn.classList.add('playing');
+
+        currentBeat = 0;
+        nextNoteTime = audioCtx.currentTime + 0.05;
+        timerID = setInterval(scheduler, lookaheadInterval);
+      } else {
+        isPlaying = false;
+        btn.innerHTML = '▶ Start Metronome';
+        btn.classList.remove('playing');
+
+        clearInterval(timerID);
+        highlightBeatDot(-1);
+      }
+    }
+
+    function handleTapTempo() {
+      const now = performance.now();
+      tapTimes.push(now);
+
+      // Keep only taps within the last 2 seconds
+      tapTimes = tapTimes.filter(t => now - t < 2000);
+
+      if (tapTimes.length > 1) {
+        let intervals = [];
+        for (let i = 1; i < tapTimes.length; i++) {
+          intervals.push(tapTimes[i] - tapTimes[i - 1]);
+        }
+        let avgInterval = intervals.reduce((a, b) => a + b, 0) / intervals.length;
+        let calculatedBpm = Math.round(60000 / avgInterval);
+
+        if (calculatedBpm >= 40 && calculatedBpm <= 240) {
+          updateBpmFromSlider(calculatedBpm);
+        }
+      }
+
+      const btn = document.getElementById('tapTempoBtn');
+      btn.style.transform = 'scale(0.95)';
+      setTimeout(() => { btn.style.transform = 'scale(1)'; }, 100);
+    }
+
+    // Initialize dots on load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderBeatsDots();
+      updateTempoMarking();
+    });
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
