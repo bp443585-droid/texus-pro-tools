@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Subtitle SRT Time Shift Tool | Online Subtitle Sync & Offset Adjuster</title>
+  <meta name="description" content="Shift, sync, and adjust SubRip (.SRT) subtitle timestamps forward or backward easily. Fix audio desync issues with millisecond accuracy completely in your browser." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/subtitle-srt-time-shift-tool/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Subtitle SRT Time Shift Tool Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "A high-precision client-side utility to offset, adjust, and synchronize SubRip (.SRT) subtitle file timestamps forward or backward in milliseconds.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CONTROL CONFIGURATION STRIP */
+    .f-config-bar { display: grid; grid-template-columns: 1fr 1fr auto; gap: 16px; margin-bottom: 24px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 18px 20px; border-radius: 16px; align-items: center; }
+    .f-config-group { display: flex; flex-direction: column; gap: 6px; }
+    .f-config-group label { font-size: 0.82rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-input-field { background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 10px 14px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; }
+    .f-input-field:focus { border-color: #2563eb; }
+    .f-select-field { background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 10px 14px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; }
+
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-header { display: flex; justify-content: space-between; align-items: center; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-sub-meta { font-size: 0.78rem; color: #64748b; font-weight: 600; }
+    
+    .f-textarea-field { width: 100%; height: 260px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 600; font-size: 0.92rem; color: #0f172a; background: #f8fafc; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.92rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-download { background: #ecfdf5; border-color: #a7f3d0; color: #047857; }
+    .f-btn-download:hover { background: #d1fae5; color: #065f46; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-config-bar { grid-template-columns: 1fr; gap: 14px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 180px; font-size: 0.92rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⏱️</span> Subtitle SRT Time Shift Tool</div>
+    
+    <div class="f-card">
+      <div class="f-config-bar">
+        <div class="f-config-group">
+          <label for="shiftDirection">Shift Direction</label>
+          <select id="shiftDirection" class="f-select-field" onchange="processSrtShift()">
+            <option value="forward">Delay Subtitles (+ Shift Forward / Later)</option>
+            <option value="backward">Speed Up Subtitles (- Shift Backward / Earlier)</option>
+          </select>
+        </div>
+
+        <div class="f-config-group">
+          <label for="timeShiftAmount">Offset Value (Seconds or Milliseconds)</label>
+          <input type="number" id="timeShiftAmount" class="f-input-field" placeholder="e.g. 1.5 or 1500" value="1.0" step="0.1" min="0" oninput="processSrtShift()" />
+        </div>
+
+        <div class="f-config-group">
+          <label for="shiftUnit">Time Unit</label>
+          <select id="shiftUnit" class="f-select-field" onchange="processSrtShift()">
+            <option value="seconds">Seconds (s)</option>
+            <option value="milliseconds">Milliseconds (ms)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <div class="f-panel-header">
+            <label for="rawSrtInput">Raw Input Subtitle (.SRT)</label>
+            <span class="f-sub-meta" id="inputCueCount">0 Cues Detected</span>
+          </div>
+          <textarea id="rawSrtInput" class="f-textarea-field mono-font-panel" placeholder="Paste your .SRT subtitle content here...&#10;&#10;1&#10;00:00:01,200 --> 00:00:04,500&#10;Welcome to the video presentation!&#10;&#10;2&#10;00:00:04,800 --> 00:00:07,350&#10;Synchronize subtitles with ease." oninput="processSrtShift()"></textarea>
+          <div style="display:flex; justify-content: flex-end; margin-top: 4px;">
+            <input type="file" id="srtFileInput" accept=".srt,.txt" style="display:none;" onchange="handleFileUpload(event)">
+            <button type="button" class="f-btn f-btn-copy" style="max-width: fit-content; padding: 6px 12px; font-size: 0.78rem;" onclick="document.getElementById('srtFileInput').click()">📂 Load .SRT File</button>
+          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <div class="f-panel-header">
+            <label for="shiftedSrtOutput">Shifted & Synchronized SRT</label>
+            <span class="f-sub-meta" id="outputCueCount">Ready for Export</span>
+          </div>
+          <textarea id="shiftedSrtOutput" class="f-textarea-field mono-font-panel" placeholder="Adjusted timestamps will populate here instantly..." readonly></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="processSrtShift()">⚡ Recalculate Shift</button>
+        <button class="f-btn f-btn-copy" id="copySrtBtn" onclick="copyShiftedResult()">📋 Copy Shifted SRT</button>
+        <button class="f-btn f-btn-download" id="downloadSrtBtn" onclick="downloadSrtFile()">💾 Download .SRT</button>
+        <button class="f-btn f-btn-clear" onclick="clearSrtWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 18px; font-size: 0.8rem; line-height: 1.45; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 12px 16px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Zero-Latency In-Browser Audio/Video Calibration:</span>
+        Timestamps are recalculated locally with millisecond boundary clamping at <code>00:00:00,000</code>. No subtitle lines, dialogue tokens, or personal media scripts are transmitted to remote servers.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h1 class="seo-title">The Engineering of Subtitle Synchronization: SubRip (.SRT) Time Shifting, Timestamp Serialization, and Audio Desync Rectification</h1>
+      <p class="seo-p">In media post-production, digital streaming delivery, and multi-language video localization, achieving exact temporal alignment between spoken dialogue and on-screen caption cues is critical. When audio and subtitle tracks fall out of alignment—often caused by introductory studio bumpers, differences between broadcast and theatrical cuts, commercial break removals, or disparate frame rate telecine pulldowns—the viewer experience degrades immediately. A fixed time offset error can render foreign language translations frustratingly unreadable or disorienting.</p>
+      <p class="seo-p">This comprehensive technical manual details the inner architecture of the SubRip (.SRT) container format, breaks down the mathematics behind timestamp vector recalculation, analyzes the distinctions between constant linear time shifts and progressive drift, and demonstrates how browser-based memory parsing reliably rectifies caption synchronization across standard video containers such as MP4, MKV, and WebM.</p>
+
+      <div class="seo-callout">
+        <strong>The Zero-Threshold Boundary Rule:</strong> Subtitle renderers inside video engines (e.g., VLC, MPV, HTML5 <code>&lt;track&gt;</code>) fail or drop cues entirely if timestamps resolve to negative values. When shifting subtitles backward, any start or end vector that lands before the video stream starts must clamp strictly to <code>00:00:00,000</code> to preserve player integrity.
+      </div>
+
+      <h2 class="seo-h2">The Technical Anatomy of the SubRip (.SRT) File Specification</h2>
+      <p class="seo-p">Originally developed for the Windows SubRip software application to extract subtitles and timings from optical DVD media, the plain-text <code>.srt</code> format has become the universal industry standard for closed and open captions. Understanding its structural grammar is required to manipulate timestamp tokens programmatically without corrupting line-breaks or metadata:</p>
+
+      <h3 class="seo-h3">1. Sequential Cue Sequence Numbers</h3>
+      <p class="seo-p">Each individual subtitle event begins with an integer counter (1, 2, 3...) incrementing sequentially. While many modern players parse files that skip numbers, strict compliance with the Matroska and SMPTE standards requires continuous numerical order followed by standard CRLF or LF newline breaks.</p>
+
+      <h3 class="seo-h3">2. The Standard Timecode Paradigm</h3>
+      <p class="seo-p">The synchronization coordinate line adheres to an inflexible layout: <code>HH:MM:SS,mmm --&gt; HH:MM:SS,mmm</code>. The hours (<code>HH</code>), minutes (<code>MM</code>), and seconds (<code>SS</code>) must be zero-padded to two digits, while the millisecond parameter (<code>mmm</code>) requires three digits separated from the seconds by a comma delimiter (<code>,</code>). Note that while WebVTT (.vtt) adopted the period (<code>.</code>), traditional SubRip strict parsers expect a comma.</p>
+
+      <h3 class="seo-h3">3. Dialogue Payloads and Terminal Separators</h3>
+      <p class="seo-p">Following the timecode line, one or more lines of Unicode text convey dialogue, styling tags (such as <code>&lt;i&gt;</code>, <code>&lt;b&gt;</code>, or <code>&lt;font&gt;</code>), and speaker identifiers. Each block must conclude with a double newline to signal the parser that the current cue has closed and a new index counter is forthcoming.</p>
+
+      <h2 class="seo-h2">Mathematical Mechanics: Parsing and Vector Shifting</h2>
+      <p class="seo-p">To offset subtitle files without breaking timing, the raw string buffer passes through an isolated computational pipeline operating directly within local JavaScript heap memory:</p>
+
+      <h3 class="seo-h3">Step 1: Timestamp Tokenization and Lexical Extraction</h3>
+      <p class="seo-p">The engine executes a regular expression scan tailored to identify SubRip timeline structures:</p>
+      <p class="seo-p"><code>/(\d{2}):(\d{2}):(\d{2})[,.](\d{3})\s*--&gt;\s*(\d{2}):(\d{2}):(\d{2})[,.](\d{3})/g</code></p>
+      <p class="seo-p">This pattern isolates both the start timecode and end timecode components, accommodating both comma and period separators for maximum compatibility across varying media authoring suites.</p>
+
+      <h3 class="seo-h3">Step 2: Total Millisecond Vector Conversion</h3>
+      <p class="seo-p">Converting complex sexagesimal time structures (base-60 hours and minutes coupled with base-10 decimals) into a single scalar millisecond integer simplifies arithmetic. The formula translates each marker:</p>
+      <p class="seo-p"><code>Total_ms = (Hours &times; 3,600,000) + (Minutes &times; 60,000) + (Seconds &times; 1,000) + Milliseconds</code></p>
+
+      <h3 class="seo-h3">Step 3: Signed Offset Application and Boundary Protection</h3>
+      <p class="seo-p">Depending on whether the dialogue leads or lags the video, an offset (&Delta;ms) is applied:</p>
+      <ul class="seo-list">
+        <li><strong>Positive Shift (Delaying):</strong> <code>New_ms = Total_ms + &Delta;ms</code>. Used when subtitles appear ahead of the speaker's voice.</li>
+        <li><strong>Negative Shift (Advancing):</strong> <code>New_ms = Math.max(0, Total_ms - &Delta;ms)</code>. Used when subtitles appear after dialogue has already commenced. The lower-bound limit prevents impossible negative timeline addresses.</li>
+      </ul>
+
+      <h3 class="seo-h3">Step 4: Re-Serialization to SubRip Standard Output</h3>
+      <p class="seo-p">The transformed millisecond scalar is broken back down via division and modulo operations into hours, minutes, seconds, and milliseconds, zero-padded, and reconstructed with the canonical <code>--&gt;</code> arrow connector cleanly.</p>
+
+      <h2 class="seo-h2">Comparative Matrix: Caption Formats and Timing Specifications</h2>
+      <p class="seo-p">Subtitles exist in multiple competing file formats across the web, mobile, and television broadcast spaces. The following reference matrix highlights structural and temporal differences:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Format Class</th>
+              <th>Timecode Formatting</th>
+              <th>Delimiter</th>
+              <th>Sub-Second Precision</th>
+              <th>Primary Industry Use Case</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SubRip (.SRT)</strong></td>
+              <td><code>00:01:23,456</code></td>
+              <td>Comma (<code>,</code>)</td>
+              <td>Milliseconds (3 digits)</td>
+              <td>Universal video players, VLC, YouTube uploads, Matroska muxing.</td>
+            </tr>
+            <tr>
+              <td><strong>WebVTT (.VTT)</strong></td>
+              <td><code>00:01:23.456</code></td>
+              <td>Period (<code>.</code>)</td>
+              <td>Milliseconds (3 digits)</td>
+              <td>HTML5 web native video (<code>&lt;video&gt;</code> elements), HLS, DASH streaming.</td>
+            </tr>
+            <tr>
+              <td><strong>SubStation Alpha (.ASS/.SSA)</strong></td>
+              <td><code>0:01:23.45</code></td>
+              <td>Period (<code>.</code>)</td>
+              <td>Centiseconds (2 digits)</td>
+              <td>Anime fansubbing, advanced karaoke animations, dynamic typography.</td>
+            </tr>
+            <tr>
+              <td><strong>Timed Text Markup (.TTML)</strong></td>
+              <td><code>00:01:23:12</code> or <code>83.45s</code></td>
+              <td>Colon / Suffix</td>
+              <td>Frames or Decimals</td>
+              <td>Netflix, Amazon Prime Video, SMPTE broadcast compliance pipelines.</td>
+            </tr>
+            <tr>
+              <td><strong>MicroDVD (.SUB)</strong></td>
+              <td><code>{1250}{1380}</code></td>
+              <td>Brackets (<code>{}</code>)</td>
+              <td>Frame counts</td>
+              <td>Legacy DivX/XviD CD-ROM video rips; heavily framerate-dependent.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="seo-h2">Linear Offset vs Progressive Frame Rate Drift: Diagnosis</h2>
+      <p class="seo-p">Before adjusting your subtitles, you must diagnose whether your sync issue is a <em>constant linear offset</em> or a <em>progressive frame rate drift</em>:</p>
+      
+      <h3 class="seo-h3">Scenario A: Constant Linear Time Shift</h3>
+      <p class="seo-p">If the subtitles appear exactly 2.5 seconds early at the beginning of the movie and remain exactly 2.5 seconds early at the end, your file has a constant linear offset. This happens frequently when subtitles are sourced from a home-release cut that lacks an opening studio distribution credit. Using our <strong>Subtitle SRT Time Shift Tool</strong> with a simple positive or negative offset resolves this issue entirely in one pass.</p>
+
+      <h3 class="seo-h3">Scenario B: Progressive Frame Rate Desynchronization</h3>
+      <p class="seo-p">If the subtitle lines start in sync at minute 01:00, drift out of sync by 1.5 seconds by minute 30:00, and drift by over 4 seconds by minute 90:00, the issue is caused by a frame-rate mismatch—typically converting between cinematic film (23.976 fps or 24.0 fps) and television broadcast standards (25.0 fps PAL or 29.97 fps NTSC). While a constant shift will align one specific scene, you will ultimately need frame rate stretching to scale the timecodes across the entire video duration.</p>
+
+      <h2 class="seo-h2">Frequently Asked Questions (FAQ)</h2>
+
+      <h3 class="seo-h3">How do I determine how many milliseconds to shift my subtitles?</h3>
+      <p class="seo-p">Play your video file in a desktop media player such as VLC Player. Use the shortcut keys ('G' to advance by 50ms, 'H' to delay by 50ms in VLC) until the speech matches the subtitle display on-screen. Read the reported sync delay from the player HUD (for example, "+1500 ms" or "-0.800 s"), input that exact value into our tool, process the file, and export your permanently adjusted SRT.</p>
+
+      <h3 class="seo-h3">Will shifting my SRT file affect HTML formatting tags like &lt;i&gt; or &lt;b&gt;?</h3>
+      <p class="seo-p">No. Our parsing engine uses non-destructive regular expressions targeted exclusively at the <code>--&gt;</code> timestamp coordination strings. All text nodes, dialogue payloads, font coloring directives, coordinates, and nested styling tags are preserved bit-for-bit.</p>
+
+      <h3 class="seo-h3">What
