@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Subwoofer Box Volume Calculator | Sealed &amp; Ported Enclosure Designer</title>
+  <meta name="description" content="Calculate net internal subwoofer box volume instantly. Account for wood thickness, driver displacement, port volume, and wedge slant angles with precision." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/subwoofer-box-volume-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Subwoofer Box Volume Calculator",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Calculate exact net and gross internal volume for rectangular and wedge subwoofer enclosures, including wood thickness, driver displacement, and port volume.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; height: 48px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .f-group-title { font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-top: 10px; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
+    .f-grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    /* SUMMARY RESULTS PANEL */
+    .f-result-box { background: #f1f5f9; border: 2px solid #cbd5e1; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+    .f-stat-main { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 14px; padding: 18px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    .f-stat-label { font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-stat-value { font-size: 2.2rem; font-weight: 800; color: #2563eb; margin-top: 4px; line-height: 1.1; }
+    .f-stat-sub { font-size: 0.9rem; font-weight: 600; color: #475569; margin-top: 4px; }
+    
+    .f-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .f-stat-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; }
+    .f-stat-card-title { font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; }
+    .f-stat-card-num { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-top: 2px; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-grid-2col { grid-template-columns: 1fr; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🔊</span> Subwoofer Box Volume Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        
+        <!-- LEFT PANEL: ENCLOSURE PARAMETERS -->
+        <div class="f-panel-box">
+          <div class="f-group-title">1. Enclosure Geometry &amp; Measurement Units</div>
+          <div class="f-grid-2col">
+            <div>
+              <label for="boxShape">Box Shape Style</label>
+              <select id="boxShape" class="f-select-field" onchange="toggleBoxShapeFields(); calculateSubBox();">
+                <option value="rectangular" selected>Standard Rectangular</option>
+                <option value="wedge_single">Single Slanted Wedge</option>
+                <option value="wedge_double">Double Slanted Wedge</option>
+              </select>
+            </div>
+            <div>
+              <label for="unitType">Measurement Unit</label>
+              <select id="unitType" class="f-select-field" onchange="updateUnitLabels(); calculateSubBox();">
+                <option value="inches" selected>Inches (in)</option>
+                <option value="cm">Centimeters (cm)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="f-group-title">2. External Dimensions</div>
+          <div class="f-grid-2col">
+            <div>
+              <label for="extWidth">External Width <span class="unit-lbl">(in)</span></label>
+              <input type="number" id="extWidth" class="f-input-field" value="30" step="0.1" min="0" oninput="calculateSubBox()">
+            </div>
+            <div>
+              <label for="extHeight">External Height <span class="unit-lbl">(in)</span></label>
+              <input type="number" id="extHeight" class="f-input-field" value="16" step="0.1" min="0" oninput="calculateSubBox()">
+            </div>
+          </div>
+
+          <div class="f-grid-2col">
+            <div>
+              <label for="extDepth1" id="lblDepth1">External Depth / Bottom Depth <span class="unit-lbl">(in)</span></label>
+              <input type="number" id="extDepth1" class="f-input-field" value="14" step="0.1" min="0" oninput="calculateSubBox()">
+            </div>
+            <div id="wrapperDepth2" style="display:none;">
+              <label for="extDepth2">Top Depth <span class="unit-lbl">(in)</span></label>
+              <input type="number" id="extDepth2" class="f-input-field" value="9" step="0.1" min="0" oninput="calculateSubBox()">
+            </div>
+          </div>
+
+          <div>
+            <label for="woodThickness">Wood / MDF Thickness <span class="unit-lbl">(in)</span></label>
+            <input type="number" id="woodThickness" class="f-input-field" value="0.75" step="0.05" min="0" oninput="calculateSubBox()">
+          </div>
+
+          <div class="f-group-title">3. Displacement Subtractions</div>
+          <div class="f-grid-2col">
+            <div>
+              <label for="driverDisplacement">Sub Driver Disp. (ft³)</label>
+              <input type="number" id="driverDisplacement" class="f-input-field" value="0.14" step="0.01" min="0" oninput="calculateSubBox()">
+            </div>
+            <div>
+              <label for="bracingDisplacement">Internal Bracing Disp. (ft³)</label>
+              <input type="number" id="bracingDisplacement" class="f-input-field" value="0.05" step="0.01" min="0" oninput="calculateSubBox()">
+            </div>
+          </div>
+
+          <div class="f-group-title">4. Port Design Specifications</div>
+          <div class="f-grid-2col">
+            <div>
+              <label for="portType">Port Style Configuration</label>
+              <select id="portType" class="f-select-field" onchange="togglePortFields(); calculateSubBox();">
+                <option value="none" selected>Sealed Box (No Port)</option>
+                <option value="round">Round PVC / Aeroport</option>
+                <option value="slot">Slot Port (Wood)</option>
+              </select>
+            </div>
+            <div id="wrapperPortQty" style="display:none;">
+              <label for="portQty">Number of Ports</label>
+              <input type="number" id="portQty" class="f-input-field" value="1" min="1" step="1" oninput="calculateSubBox()">
+            </div>
+          </div>
+
+          <div id="wrapperRoundPort" class="f-grid-2col" style="display:none;">
+            <div>
+              <label for="portDiameter">Port Diameter <span class="unit-lbl">(in)</span></label>
+              <input type="number" id="portDiameter" class="f-input-field" value="4" step="0.1" min="0" oninput="calculateSubBox()">
+            </div>
+            <div>
+              <label for="portLengthRound">Port Length <span class="unit-lbl">(in)</span></label>
+              <input type="number" id="portLengthRound" class="f-input-field" value="12" step="0.1" min="0" oninput="calculateSubBox()">
+            </div>
+          </div>
+
+          <div id="wrapperSlotPort" style="display:none;">
+            <div class="f-grid-2col">
+              <div>
+                <label for="slotWidth">Slot Port Width <span class="unit-lbl">(in)</span></label>
+                <input type="number" id="slotWidth" class="f-input-field" value="2.5" step="0.1" min="0" oninput="calculateSubBox()">
+              </div>
+              <div>
+                <label for="slotHeight">Slot Port Height <span class="unit-lbl">(in)</span></label>
+                <input type="number" id="slotHeight" class="f-input-field" value="14.5" step="0.1" min="0" oninput="calculateSubBox()">
+              </div>
+            </div>
+            <div style="margin-top: 8px;">
+              <label for="slotLength">Slot Port Length <span class="unit-lbl">(in)</span></label>
+              <input type="number" id="slotLength" class="f-input-field" value="20" step="0.1" min="0" oninput="calculateSubBox()">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT PANEL: DYNAMIC RESULTS -->
+        <div class="f-panel-box">
+          <label>Enclosure Calculation Summary</label>
+          <div class="f-result-box">
+            
+            <div class="f-stat-main">
+              <div class="f-stat-label">Net Internal Volume (Air Volume)</div>
+              <div class="f-stat-value" id="resNetFt">2.15 ft³</div>
+              <div class="f-stat-sub" id="resNetLiters">60.88 Liters</div>
+            </div>
+
+            <div class="f-stat-grid">
+              <div class="f-stat-card">
+                <div class="f-stat-card-title">Gross Internal Vol</div>
+                <div class="f-stat-card-num" id="resGrossInternal">2.48 ft³</div>
+              </div>
+              <div class="f-stat-card">
+                <div class="f-stat-card-title">Gross External Vol</div>
+                <div class="f-stat-card-num" id="resGrossExternal">3.89 ft³</div>
+              </div>
+              <div class="f-stat-card">
+                <div class="f-stat-card-title">Total Subtractions</div>
+                <div class="f-stat-card-num" id="resTotalDisplacement">0.33 ft³</div>
+              </div>
+              <div class="f-stat-card">
+                <div class="f-stat-card-title">Port Displacement</div>
+                <div class="f-stat-card-num" id="resPortDisplacement">0.14 ft³</div>
+              </div>
+            </div>
+
+            <div class="f-stat-card" style="background:#ffffff; border:1px solid #cbd5e1;">
+              <div class="f-stat-card-title" style="color:#2563eb;">Internal Dimensions (W × H × Depth Avg)</div>
+              <div class="f-stat-card-num" id="resInternalDims" style="font-size: 0.98rem; font-weight:600; color:#1e293b; margin-top:4px;">
+                28.50" × 14.50" × 12.50"
+              </div>
+            </div>
+
+            <div class="f-stat-card" style="background:#ffffff; border:1px solid #cbd5e1;">
+              <div class="f-stat-card-title" style="color:#2563eb;">Approximate Cut List Guidelines (Outer Panels)</div>
+              <div style="font-size:0.85rem; color:#475569; margin-top:6px; line-height:1.5;" id="resCutList">
+                • Front &amp; Back: 30.00" × 16.00" (×2)<br>
+                • Top &amp; Bottom: 30.00" × 12.50" (×2)<br>
+                • Left &amp; Right Sides: 12.50" × 14.50" (×2)
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateSubBox()">Recalculate Volume</button>
+        <button class="f-btn f-btn-copy" id="copySubBoxBtn" onclick="copyBoxSummary()">📋 Copy Enclosure Specs</button>
+        <button class="f-btn f-btn-clear" onclick="resetSubBoxForm()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Acoustic Precision Note:</span>
+        Net internal volume represents the active air space available to your subwoofer driver after accounting for wood panel boundaries, speaker basket/magnet displacement, port structure volume, and internal cross bracing.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Engineering &amp; Physics of Subwoofer Enclosure Acoustics: Net Volume Optimization, Displacement Dynamics, and Tuning Parameters</h2>
+      <p class="seo-p">Building an exceptional high-performance car audio or home theater subwoofer system relies fundamentally on precise enclosure design. Subwoofer drivers operate by displacing air through controlled cone excursions. However, the physical air volume enclosed inside the cabinet acts as an acoustic spring, directly controlling cone damping, power handling, low-frequency extension, and mechanical thermal limits. Miscalculating enclosure volume by failing to subtract wood thickness, woofer basket displacement, or port assembly bulk leads to choked bass response, elevated distortion, or premature driver failure.</p>
+      <p class="seo-p">This engineering guide breaks down the acoustic principles behind sealed and ported subwoofer box designs, details exact volumetric equations, explores Thiele-Small parameter compliance, and provides step-by-step mathematical procedures for computing net internal volumes across standard rectangular and slanted wedge cabinet geometries.</p>
+
+      <div class="seo-callout">
+        <strong>The Net Volume Golden Rule:</strong> Driver manufacturers specify recommended enclosure volumes as <i>Net Internal Air Space</i> (Vb). To achieve optimal acoustic compliance, you must design a cabinet with a <i>Gross Internal Volume</i> that compensates for driver displacement, port tube displacement, and internal bracing structures.
+      </div>
+
+      <h3 class="seo-h2">Core Enclosure Geometries and Volumetric Formulas</h3>
+      <p class="seo-p">Subwoofer boxes are constructed in several primary structural shapes depending on vehicle trunk boundaries or listening room layouts. Calculating net air space requires measuring external dimensions, subtracting double wall thickness on each axis, and deriving the internal volume space.</p>
+
+      <h4 class="seo-h3">1. Standard Rectangular Enclosures</h4>
+      <p class="seo-p">For a standard 6-sided rectangular prism cabinet, internal dimensions are calculated by subtracting twice the material thickness ($T$) from the external width ($W$), height ($H$), and depth ($D$):</p>
+      <p class="seo-p" style="font-family:monospace; background:#f8fafc; padding:12px; border-radius:8px; border:1px solid #e2e8f0;">
+        Internal Width (W_in) = External Width - (2 × T)<br>
+        Internal Height (H_in) = External Height - (2 × T)<br>
+        Internal Depth (D_in) = External Depth - (2 × T)<br>
+        Gross Internal Volume (V_gross) = W_in × H_in × D_in
+      </p>
+
+      <h4 class="seo-h3">2. Single Slanted Wedge (Trapezoidal Rear) Enclosures</h4>
+      <p class="seo-p">Wedge enclosures feature a vertical front baffle and a slanted rear wall designed to conform tightly against angled rear trunk seats. Volume is derived using the average internal depth calculated between the top depth ($D_2$) and bottom depth ($D_1$):</p>
+      <p class="seo-p" style="font-family:monospace; background:#f8fafc; padding:12px; border-radius:8px; border:1px solid #e2e8f0;">
+        Internal Depth Average (D_avg) = [ (External D1 - 2T) + (External D2 - 2T) ] / 2<br>
+        Gross Internal Volume (V_gross) = W_in × H_in × D_avg
+      </p>
+
+      <h4 class="seo-h3">3. Converting Cubic Units to Industry Metrics</h4>
+      <p class="seo-p">Once gross internal volume is computed in cubic
