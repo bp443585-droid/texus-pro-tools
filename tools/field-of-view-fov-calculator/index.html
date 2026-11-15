@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Field of View FOV Calculator | Calculate Horizontal, Vertical & Diagonal FOV</title>
+  <meta name="description" content="Calculate horizontal, vertical, and diagonal Field of View (FOV) instantly with our free online FOV calculator for gaming, photography, cinematography, and optics." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/field-of-view-fov-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Field of View FOV Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced optical and gaming Field of View (FOV) computation utility to calculate horizontal, vertical, and diagonal angular metrics cleanly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📐</span> Field of View (FOV) Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="calcMode">Calculation Mode</label>
+          <select id="calcMode" class="f-select-field" onchange="toggleFovInputs()">
+            <option value="lens">Focal Length & Sensor Size</option>
+            <option value="gaming">Video Game FOV Conversion</option>
+          </select>
+
+          <div id="groupLens" style="display: flex; flex-direction: column; gap: 16px; margin-top: 12px;">
+            <div class="f-panel-box">
+              <label for="focalLength">Focal Length (mm)</label>
+              <input type="number" id="focalLength" class="f-input-field" value="50" min="1" max="2000" step="0.1" oninput="calculateFov()" />
+            </div>
+            <div class="f-panel-box">
+              <label for="sensorPreset">Sensor Format / Preset</label>
+              <select id="sensorPreset" class="f-select-field" onchange="applySensorPreset()">
+                <option value="fullframe">Full Frame (36 x 24 mm)</option>
+                <option value="aps-c-canon">APS-C Canon (22.3 x 14.9 mm)</option>
+                <option value="aps-c-nikon">APS-C Nikon/Sony (23.5 x 15.6 mm)</option>
+                <option value="m43">Micro Four Thirds (17.3 x 13 mm)</option>
+                <option value="custom">Custom Dimensions</option>
+              </select>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div class="f-panel-box">
+                <label for="sensorWidth">Sensor Width (mm)</label>
+                <input type="number" id="sensorWidth" class="f-input-field" value="36" min="0.1" step="0.1" oninput="calculateFov()" />
+              </div>
+              <div class="f-panel-box">
+                <label for="sensorHeight">Sensor Height (mm)</label>
+                <input type="number" id="sensorHeight" class="f-input-field" value="24" min="0.1" step="0.1" oninput="calculateFov()" />
+              </div>
+            </div>
+          </div>
+
+          <div id="groupGaming" style="display: none; flex-direction: column; gap: 16px; margin-top: 12px;">
+            <div class="f-panel-box">
+              <label for="gameFov">Current Game FOV (Degrees)</label>
+              <input type="number" id="gameFov" class="f-input-field" value="90" min="1" max="179" step="1" oninput="calculateFov()" />
+            </div>
+            <div class="f-panel-box">
+              <label for="sourceAspect">Source Aspect Ratio</label>
+              <select id="sourceAspect" class="f-select-field" onchange="calculateFov()">
+                <option value="16:9">16:9 Widescreen</option>
+                <option value="4:3">4:3 Standard</option>
+                <option value="16:10">16:10 Widescreen</option>
+                <option value="21:9">21:9 Ultrawide</option>
+              </select>
+            </div>
+            <div class="f-panel-box">
+              <label for="targetAspect">Target Aspect Ratio</label>
+              <select id="targetAspect" class="f-select-field" onchange="calculateFov()">
+                <option value="21:9">21:9 Ultrawide</option>
+                <option value="32:9">32:9 Super Ultrawide</option>
+                <option value="16:9">16:9 Widescreen</option>
+                <option value="4:3">4:3 Standard</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="resultConsole">Computed FOV Metrics & Output</label>
+          <div id="resultConsole" class="f-input-field mono-font-panel" style="height: 100%; min-height: 280px; display: flex; flex-direction: column; justify-content: center; gap: 12px; white-space: pre-line;">
+            Awaiting optical parameters...
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateFov()">Compute FOV</button>
+        <button class="f-btn f-btn-copy" id="copyBtn" onclick="copyResultToClipboard()">📋 Copy Results</button>
+        <button class="f-btn f-btn-clear" onclick="clearFovWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Optical & Gaming Computation Protocol:</span>
+        Calculations execute in real-time as you modify lens focal lengths, camera sensor formats, or gaming aspect ratios. All angles are computed precisely using trigonometric formulas.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Master Guide to Field of View (FOV): Optics, Photography, Cinematography, and Gaming Mathematics</h2>
+      <p class="seo-p">Field of View (FOV) is one of the most critical foundational concepts across computer graphics, optical engineering, professional photography, and cinematic production. Defined as the observable world that is visible through a camera sensor, optical lens, or gaming display at any given moment, understanding FOV allows creators, players, and engineers to accurately map three-dimensional spatial environments onto two-dimensional screens without geometric distortion or spatial disorientation.</p>
+      <p class="seo-p">This extensive reference manual explores the mathematical mechanics behind horizontal, vertical, and diagonal FOV, examines how focal length interacts with physical sensor dimensions, reviews gaming aspect ratio conversions, and details how to optimize your setup for immersive experiences.</p>
+
+      <div class="seo-callout">
+        <strong>The Trigonometric Foundation:</strong> Field of view is fundamentally calculated using inverse trigonometric functions. Specifically, the angle $\theta$ is determined by taking twice the inverse tangent (arctan) of half the sensor dimension divided by the focal length: $\theta = 2 \cdot \arctan\left(\frac{\text{Dimension}}{2 \cdot f}\right)$.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Focal Lengths, Sensor Formats, and Aspect Ratios</h3>
+      <p class="seo-p">When calculating FOV for optical systems or video games, two distinct operational modes govern the underlying calculation architecture:</p>
+
+      <h4 class="seo-h3">1. Optical Lens & Sensor Geometry</h4>
+      <p class="seo-p">In traditional optics, FOV is strictly determined by two variables: the focal length ($f$) of the lens measured in millimeters and the physical dimensions (width and height) of the image sensor or film frame. A smaller focal length (e.g., 14mm ultrawide) captures a much wider angle of view, whereas a large telephoto focal length (e.g., 300mm) compresses the perspective into a narrow visual slice.</p>
+
+      <h4 class="seo-h3">2. Video Game Horizontal & Vertical Scaling</h4>
+      <p class="seo-p">In modern game engines (such as Unreal Engine or Unity), FOV usually refers to the vertical or horizontal angular span rendered on screen. Because modern gamers utilize diverse monitor setups ranging from standard 16:9 displays to expansive 32:9 super-ultrawide curved screens, converting FOV correctly across aspect ratios prevents "fisheye" distortion or tunnel vision.</p>
+
+      <h4 class="seo-h3">3. Diagonal FOV Calculations</h4>
+      <p class="seo-p">Diagonal FOV measures the angle from one corner of the sensor or display to the opposite corner. By applying the Pythagorean theorem to combine horizontal and vertical sensor dimensions, the diagonal calculation provides a holistic metric for overall optical coverage.</p>
+
+      <h3>The Statutory Reference Matrix: Sensor Formats and Crop Factors</h3>
+      <p class="seo-p">Reviewing how different sensor standards impact field of view for identical focal lengths is essential for camera operators and digital artists:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Sensor Format Class</th>
+              <th>Sensor Width (mm)</th>
+              <th>Sensor Height (mm)</th>
+              <th>Diagonal (mm)</th>
+              <th>Crop Factor vs Full Frame</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Full Frame (35mm)</td>
+              <td>36.0 mm</td>
+              <td>24.0 mm</td>
+              <td>43.3 mm</td>
+              <td>1.0x (Baseline Reference)</td>
+            </tr>
+            <tr>
+              <td>APS-C (Canon)</td>
+              <td>22.3 mm</td>
+              <td>14.9 mm</td>
+              <td>26.8 mm</td>
+              <td>~1.6x Crop Factor</td>
+            </tr>
+            <tr>
+              <td>APS-C (Nikon / Sony / Fuji)</td>
+              <td>23.5 mm</td>
+              <td>15.6 mm</td>
+              <td>28.2 mm</td>
+              <td>~1.5x Crop Factor</td>
+            </tr>
+            <tr>
+              <td>Micro Four Thirds (M43)</td>
+              <td>17.3 mm</td>
+              <td>13.0 mm</td>
+              <td>21.6 mm</td>
+              <td>2.0x Crop Factor</td>
+            </tr>
+            <tr>
+              <td>Medium Format (Fujifilm GFX)</td>
+              <td>43.8 mm</td>
+              <td>32.9 mm</td>
+              <td>54.8 mm</td>
+              <td>~0.79x (Wider Coverage)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>How does changing my gaming FOV affect performance and spatial awareness?</h3>
+      <p class="seo-p">Increasing your game's FOV allows you to see more of your peripheral environment, making it easier to spot flanking enemies in competitive titles. However, extremely high FOV values (above 110°) can cause objects in the center of the screen to appear smaller and more distant, making precision aiming more difficult.</p>
+
+      <h3>What is the difference between horizontal and vertical FOV?</h3>
+      <p class="seo-p">Horizontal FOV measures the angular span from the left edge of your view to the right edge, while vertical FOV measures from the top edge to the bottom edge. Games configured with vertical FOV locking keep the vertical angle constant regardless of monitor width, automatically expanding horizontal FOV on wider screens.</p>
+
+      <h3>Why do ultrawide monitors require specialized FOV calculations?</h3>
+      <p class="seo-p">Standard 16:9 FOV formulas fail on 21:9 or 32:9 monitors because the extra horizontal screen real estate stretches standard projections. Using correct horizontal scaling formulas ensures natural perspective and eliminates motion sickness.</p>
+
+      <h3 class="seo-h2">Summary: Optimizing Optics and Gaming Environments</h3>
+      <p class="seo-p">Mastering field of view calculations bridges the gap between hardware physics and visual comfort. Whether you are framing a cinematic shot with prime camera lenses or calibrating immersive sim-racing rigs, our Field of View Calculator delivers instant, high-precision angular metrics directly in your browser.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function toggleFovInputs() {
+      const mode = document.getElementById('calcMode').value;
+      const groupLens = document.getElementById('groupLens');
+      const groupGaming = document.getElementById('groupGaming');
+      if (mode === 'lens') {
+        groupLens.style.display = 'flex';
+        groupGaming.style.display = 'none';
+      } else {
+        groupLens.style.display = 'none';
+        groupGaming.style.display = 'flex';
+      }
+      calculateFov();
+    }
+
+    function applySensorPreset() {
+      const preset = document.getElementById('sensorPreset').value;
+      const wInput = document.getElementById('sensorWidth');
+      const hInput = document.getElementById('sensorHeight');
+      
+      if (preset === 'fullframe') {
+        wInput.value = 36; hInput.value = 24;
+      } else if (preset === 'aps-c-canon') {
+        wInput.value = 22.3; hInput.value = 14.9;
+      } else if (preset === 'aps-c-nikon') {
+        wInput.value = 23.5; hInput.value = 15.6;
+      } else if (preset === 'm43') {
+        wInput.value = 17.3; hInput.value = 13;
+      }
+      calculateFov();
+    }
+
+    function calculateFov() {
+      const mode = document.getElementById('calcMode').value;
+      let outputText = '';
+
+      if (mode === 'lens') {
+        const f = parseFloat(document.getElementById('focalLength').value) || 50;
+        const sw = parseFloat(document.getElementById('sensorWidth').value) || 36;
+        const sh = parseFloat(document.getElementById('sensorHeight').value) || 24;
+
+        if (f <= 0 || sw <= 0 || sh <= 0) {
+          document.getElementById('resultConsole').innerText = 'Error: Parameters must be greater than zero.';
+          return;
+        }
+
+        const hFov = 2 * Math.atan(sw / (2 * f)) * (180 / Math.PI);
+        const vFov = 2 * Math.atan(sh / (2 * f)) * (180 / Math.PI);
+        const diag = Math.sqrt(sw * sw + sh * sh);
+        const dFov = 2 * Math.atan(diag / (2 * f)) * (180 / Math.PI);
+
+        outputText = `📸 OPTICAL LENS ANALYSIS:\n` +
+                     `• Focal Length: ${f} mm\n` +
+                     `• Sensor Size: ${sw} mm × ${sh} mm\n\n` +
+                     `📐 COMPUTED ANGLES:\n` +
+                     `• Horizontal FOV: ${hFov.toFixed(2)}°\n` +
+                     `• Vertical FOV: ${vFov.toFixed(2)}°\n` +
+                     `• Diagonal FOV: ${dFov.toFixed(2)}°`;
+      } else {
+        const fov = parseFloat(document.getElementById('gameFov').value) || 90;
+        const srcAspectStr = document.getElementById('sourceAspect').value;
+        const tgtAspectStr = document.getElementById('targetAspect').value;
+
+        const parseAspect = (str) => {
+          const parts = str.split(':');
+          return parseFloat(parts[0]) / parseFloat(parts[1]);
+        };
+
+        const srcAspect = parseAspect(srcAspectStr);
+        const tgtAspect = parseAspect(tgtAspectStr);
+
+        // Convert source FOV (assumed horizontal) to vertical radians, then to target horizontal FOV
+        const hFovRad = fov * (Math.PI / 180);
+        const vFovRad = 2 * Math.atan(Math.tan(hFovRad / 2) / srcAspect);
+        const tgtHFovRad = 2 * Math.atan(Math.tan(vFovRad / 2) * tgtAspect);
+        const tgtFov = tgtHFovRad * (180 / Math.PI);
+
+        outputText = `🎮 GAMING FOV CONVERSION:\n` +
+                     `• Input FOV (${srcAspectStr}): ${fov}°\n` +
+                     `• Target Aspect Ratio: ${tgtAspectStr}\n\n` +
+                     `📐 CONVERTED OUTPUT:\n` +
+                     `• Adjusted Horizontal FOV: ${tgtFov.toFixed(2)}°\n` +
+                     `• Vertical FOV (Constant): ${(vFovRad * (180 / Math.PI)).toFixed(2)}°`;
+      }
+
+      document.getElementById('resultConsole').innerText = outputText;
+    }
+
+    function copyResultToClipboard() {
+      const consoleText = document.getElementById('resultConsole').innerText;
+      navigator.clipboard.writeText(consoleText).then(() => {
+        const btn = document.getElementById('copyBtn');
+        const orig = btn.innerText;
+        btn.innerText = '✅ Copied Successfully!';
+        setTimeout(() => { btn.innerText = orig; }, 2000);
+      });
+    }
+
+    function clearFovWorkspace() {
+      document.getElementById('focalLength').value = 50;
+      document.getElementById('sensorWidth').value = 36;
+      document.getElementById('sensorHeight').value = 24;
+      document.getElementById('sensorPreset').value = 'fullframe';
+      document.getElementById('gameFov').value = 90;
+      document.getElementById('calcMode').value = 'lens';
+      toggleFovInputs();
+      calculateFov();
+    }
+
+    // Initialize on load
+    calculateFov();
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
