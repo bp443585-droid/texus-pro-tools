@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Audio Bit Depth Dynamic Range Calculator | Theoretical dB & SNR Utility</title>
+  <meta name="description" content="Calculate theoretical dynamic range, signal-to-noise ratio (SNR), and quantization noise floors instantly for any digital audio bit depth from 1-bit to 64-bit float." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/audio-bit-depth-dynamic-range-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Audio Bit Depth Dynamic Range Calculator",
+    "operatingSystem": "Web",
+    "applicationCategory": "MultimediaApplication",
+    "description": "An advanced digital audio utility to compute theoretical dynamic range, signal-to-noise ratio (SNR), and quantization bit depth parameters.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* AUDIO CALCULATOR SPECIFIC GRID */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-select-field, .f-input-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-select-field:focus, .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .result-display-box { background: #f1f5f9; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
+    .result-metric-item { margin-bottom: 12px; }
+    .result-metric-item:last-child { margin-bottom: 0; }
+    .metric-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; }
+    .metric-value { font-size: 1.4rem; font-weight: 800; color: #0f172a; font-family: 'Courier New', Courier, monospace; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🎚️</span> Audio Bit Depth Dynamic Range Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="bitDepthSelect">Select Standard or Custom Bit Depth</label>
+          <select id="bitDepthSelect" class="f-select-field" onchange="handlePresetChange()">
+            <option value="8">8-bit (Telephony / Retro Sampling)</option>
+            <option value="12">12-bit (Early Samplers / Medical)</option>
+            <option value="16" selected>16-bit (CD Audio Standard)</option>
+            <option value="24">24-bit (Professional Studio Recording)</option>
+            <option value="32">32-bit Fixed Point</option>
+            <option value="32">32-bit Floating Point (DAW Internal)</option>
+            <option value="64">64-bit Floating Point (Mastering Precision)</option>
+            <option value="custom">Custom Bit Depth...</option>
+          </select>
+
+          <div id="customBitContainer" style="margin-top: 12px; display: none;">
+            <label for="customBitInput">Enter Custom Bit Depth (1 to 128)</label>
+            <input type="number" id="customBitInput" class="f-input-field" min="1" max="128" value="24" oninput="calculateAudioMetrics()" />
+          </div>
+
+          <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+            <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Theoretical Formula Principle:</span>
+            Dynamic Range (dB) ≈ $6.02 \times N + 1.76$ for fixed-point integer PCM audio, where $N$ represents the quantization bit depth.
+          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Calculated Audio Performance Metrics</label>
+          <div class="result-display-box">
+            <div class="result-metric-item">
+              <div class="metric-label">Theoretical Dynamic Range</div>
+              <div id="dynRangeOutput" class="metric-value">144.24 dB</div>
+            </div>
+            <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 12px 0;">
+            <div class="result-metric-item">
+              <div class="metric-label">Signal-to-Noise Ratio (SNR)</div>
+              <div id="snrOutput" class="metric-value">146.00 dB</div>
+            </div>
+            <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 12px 0;">
+            <div class="result-metric-item">
+              <div class="metric-label">Quantization Noise Floor</div>
+              <div id="noiseFloorOutput" class="metric-value">-144.24 dBFS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateAudioMetrics()">Recalculate Metrics</button>
+        <button class="f-btn f-btn-copy" id="copyMetricsBtn" onclick="copyMetricsToClipboard()">📋 Copy Audio Report</button>
+        <button class="f-btn f-btn-clear" onclick="resetAudioCalculator()">Reset</button>
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Physics of Digital Audio Quantization: Bit Depths, Dynamic Range, and Quantization Noise Floors</h2>
+      <p class="seo-p">In digital signal processing, the bit depth of an audio stream dictates the precision with which amplitude values are sampled and stored. Every single bit added to a digital audio word doubles the number of discrete amplitude steps available, directly expanding the theoretical signal-to-noise ratio and dynamic range. Understanding these mathematical relationships is essential for audio engineers, acoustic researchers, and system designers aiming to eliminate distortion, manage gain staging, and preserve pristine audio fidelity.</p>
+      <p class="seo-p">This engineering utility evaluates core digital audio metrics across standard and custom quantization word lengths. Below, we examine the fundamental formulas governing dynamic range, the operational differences between fixed-point PCM and floating-point audio architectures, and practical guidelines for recording and mixing.</p>
+
+      <div class="seo-callout">
+        <strong>The Golden Ratio of PCM Audio:</strong> For linear pulse-code modulation (PCM), each incremental bit contributes approximately <b>6.02 dB</b> of dynamic range expansion, combined with an inherent DC offset constant of <b>1.76 dB</b> for full-scale sine waves.
+      </div>
+
+      <h3 class="seo-h2">Mathematical Foundations: How Bit Depth Determines Dynamic Range</h3>
+      <p class="seo-p">To compute the theoretical dynamic range ($DR$) of a linear PCM digital audio system, engineers use the standard logarithmic equation:</p>
+      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; background: #f8fafc; padding: 14px; border-radius: 12px; border: 1px solid #e2e8f0; font-weight: 700; color: #1e293b;">
+        DR (dB) = (6.0206 × N) + 1.7610
+      </p>
+      <p class="seo-p">Where $N$ represents the bit depth (number of bits per sample). For example, standard Compact Disc audio operates at 16 bits. Multiplying 16 by 6.0206 and adding 1.7610 yields a theoretical dynamic range of approximately 98.09 dB. In comparison, professional 24-bit studio tracking pushes this boundary past 144 dB, far exceeding the acoustic noise floor of any real-world microphone or listening environment.</p>
+
+      <h3 class="seo-h2">Fixed-Point PCM vs. Floating-Point Audio Architectures</h3>
+      <p class="seo-p">Modern Digital Audio Workstations (DAWs) process audio internally using 32-bit or 64-bit floating-point arithmetic. Unlike fixed-point integers (where clipping occurs immediately when signals exceed 0 dBFS), floating-point formats allocate part of the bit word to a dynamic exponent scale.</p>
+      <ul class="seo-list">
+        <li><b>16-bit Fixed Point:</b> Standardized for consumer delivery. Prone to quantization distortion if recorded too low; clips immediately above 0 dBFS.</li>
+        <li><b>24-bit Fixed Point:</b> The golden standard for tracking and mixing. Provides enough headroom and noise floor isolation to capture whispers alongside explosive transients without preamp clipping.</li>
+        <li><b>32-bit Floating Point:</b> Offers an astronomical theoretical dynamic range exceeding 1,500 dB. Internal mixing buses cannot clip digitally, allowing mix engineers to push faders well above +0 dBFS without artifacts as long as master outputs are trimmed before DAC conversion.</li>
+      </ul>
+
+      <h3>The Statutory Reference Matrix: Bit Depth Performance Benchmarks</h3>
+      <p class="seo-p">The following table outlines theoretical performance metrics across standard digital audio bit depths:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Bit Depth (N)</th>
+              <th>Audio Format Classification</th>
+              <th>Discrete Amplitude Steps</th>
+              <th>Theoretical Dynamic Range (dB)</th>
+              <th>Quantization Noise Floor (dBFS)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>8-bit</b></td>
+              <td>Telephony / Retro Lo-Fi</td>
+              <td>256 steps</td>
+              <td>49.93 dB</td>
+              <td>-49.93 dBFS</td>
+            </tr>
+            <tr>
+              <td><b>12-bit</b></td>
+              <td>Early Samplers / Medical</td>
+              <td>4,096 steps</td>
+              <td>74.01 dB</td>
+              <td>-74.01 dBFS</td>
+            </tr>
+            <tr>
+              <td><b>16-bit</b></td>
+              <td>Compact Disc (Red Book)</td>
+              <td>65,536 steps</td>
+              <td>98.09 dB</td>
+              <td>-98.09 dBFS</td>
+            </tr>
+            <tr>
+              <td><b>24-bit</b></td>
+              <td>Professional Studio Audio</td>
+              <td>16,777,216 steps</td>
+              <td>144.25 dB</td>
+              <td>-144.25 dBFS</td>
+            </tr>
+            <tr>
+              <td><b>32-bit</b></td>
+              <td>High-Res &amp; Internal DAW Float</td>
+              <td>4,294,967,296 steps</td>
+              <td>192.42 dB (Fixed) / 1,500+ dB (Float)</td>
+              <td>-192.42 dBFS</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Technical Troubleshooting</h3>
+
+      <h3>Can human hearing perceive the dynamic range of 24-bit audio?</h3>
+      <p class="seo-p">No. The threshold of human hearing (the quietest sound perceptible in an anechoic chamber) sits near 0 dB SPL, while the threshold of pain is around 130 to 140 dB SPL. A 24-bit audio file provides over 144 dB of dynamic range, meaning quantization noise in a 24-bit system is lower than the thermal noise of air molecules hitting a microphone diaphragm.</p>
+
+      <h3>Why does dither need to be added when reducing bit depth?</h3>
+      <p class="seo-p">When truncating audio from 24-bit to 16-bit, quantization errors correlate directly with the input signal, resulting in harsh harmonic distortion. Adding a tiny amount of randomized noise (dither) linearizes the quantization error, replacing harmonic distortion with a smooth, benign analog-like hiss.</p>
+
+      <h3>Is client-side calculation secure for project planning?</h3>
+      <p class="seo-p">Yes. All mathematical computations in this utility execute entirely within your browser's JavaScript engine. No data is transmitted to external servers, ensuring absolute privacy for your engineering notes.</p>
+
+      <h3 class="seo-h2">Summary: Optimizing Bit Depth for Modern Workflows</h3>
+      <p class="seo-p">Selecting the correct bit depth balances storage efficiency with fidelity requirements. While 24-bit recording remains the gold standard for acoustic capture, 32-bit float internal processing eliminates digital clipping anxiety. Use this calculator to verify theoretical limits instantly across any custom word length.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // Audio Bit Depth Dynamic Range Calculator Logic
+    function handlePresetChange() {
+      const select = document.getElementById('bitDepthSelect');
+      const customContainer = document.getElementById('customBitContainer');
+      if (select.value === 'custom') {
+        customContainer.style.display = 'block';
+      } else {
+        customContainer.style.display = 'none';
+      }
+      calculateAudioMetrics();
+    }
+
+    function calculateAudioMetrics() {
+      const select = document.getElementById('bitDepthSelect');
+      let bits = 16;
+      if (select.value === 'custom') {
+        bits = parseFloat(document.getElementById('customBitInput').value) || 24;
+      } else {
+        bits = parseFloat(select.value);
+      }
+
+      if (bits < 1) bits = 1;
+      if (bits > 128) bits = 128;
+
+      // Dynamic Range formula for PCM: (6.0206 * N) + 1.7610
+      const dynRange = (6.0206 * bits) + 1.7610;
+      // SNR is typically equal to dynamic range for full scale sine waves
+      const snr = dynRange;
+      // Quantization noise floor is negative of dynamic range in dBFS
+      const noiseFloor = -dynRange;
+
+      document.getElementById('dynRangeOutput').innerText = dynRange.toFixed(2) + ' dB';
+      document.getElementById('snrOutput').innerText = snr.toFixed(2) + ' dB';
+      document.getElementById('noiseFloorOutput').innerText = noiseFloor.toFixed(2) + ' dBFS';
+    }
+
+    function copyMetricsToClipboard() {
+      const dr = document.getElementById('dynRangeOutput').innerText;
+      const snr = document.getElementById('snrOutput').innerText;
+      const nf = document.getElementById('noiseFloorOutput').innerText;
+      const select = document.getElementById('bitDepthSelect');
+      let bits = select.value === 'custom' ? document.getElementById('customBitInput').value : select.value;
+
+      const report = `Audio Bit Depth Performance Report:\n- Bit Depth: ${bits}-bit\n- Dynamic Range: ${dr}\n- SNR: ${snr}\n- Noise Floor: ${nf}`;
+      
+      navigator.clipboard.writeText(report).then(() => {
+        const btn = document.getElementById('copyMetricsBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '✅ Copied Report!';
+        setTimeout(() => { btn.innerText = originalText; }, 2000);
+      }).catch(err => {
+        console.error('Copy failed:', err);
+      });
+    }
+
+    function resetAudioCalculator() {
+      document.getElementById('bitDepthSelect').value = '16';
+      document.getElementById('customBitContainer').style.display = 'none';
+      document.getElementById('customBitInput').value = '24';
+      calculateAudioMetrics();
+    }
+
+    // Run initial calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateAudioMetrics();
+    });
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
