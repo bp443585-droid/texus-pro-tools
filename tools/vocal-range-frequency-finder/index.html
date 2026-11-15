@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Vocal Range Frequency Finder | Online Voice Pitch &amp; Note Calculator</title>
+  <meta name="description" content="Discover your exact vocal range, fundamental frequency limits, and singing voice type (Soprano, Tenor, Bass, etc.) instantly with our free online Vocal Range Frequency Finder." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/vocal-range-frequency-finder/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Vocal Range Frequency Finder Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "MultimediaApplication",
+    "description": "An advanced audio pitch and frequency analysis utility to determine vocal range, musical notes, and vocal classifications accurately.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TOOL SPECIFIC INTERACTIVE GRID SYSTEM */
+    .vocal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .vocal-panel { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 16px; box-sizing: border-box; }
+    .vocal-panel h3 { font-size: 1.1rem; color: #0f172a; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 8px; }
+    
+    .vocal-control-group { display: flex; flex-direction: column; gap: 6px; }
+    .vocal-control-group label { font-size: 0.82rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .vocal-select, .vocal-input { width: 100%; background: #ffffff; border: 2px solid #cbd5e1; border-radius: 12px; padding: 12px; font-size: 1rem; color: #1e293b; font-family: inherit; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .vocal-select:focus, .vocal-input:focus { border-color: #2563eb; }
+
+    .live-pitch-box { background: #eff6ff; border: 2px dashed #bfdbfe; border-radius: 16px; padding: 24px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+    .live-note-display { font-size: 3rem; font-weight: 800; color: #1d4ed8; line-height: 1; }
+    .live-freq-display { font-size: 1.1rem; font-weight: 600; color: #475569; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* RESULTS DASHBOARD */
+    .results-dashboard { margin-top: 30px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .result-metric { background: #ffffff; padding: 16px; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center; }
+    .result-metric span { display: block; font-size: 0.78rem; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 6px; }
+    .result-metric strong { font-size: 1.4rem; color: #0f172a; font-weight: 800; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .vocal-grid, .results-dashboard { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🎶</span> Vocal Range Frequency Finder</div>
+    
+    <div class="f-card">
+      <div class="vocal-grid">
+        <!-- Manual Note Selector Panel -->
+        <div class="vocal-panel">
+          <h3>🎹 Manual Range Calculator</h3>
+          <div class="vocal-control-group">
+            <label for="lowestNoteSelect">Lowest Note Sung / Spoken</label>
+            <select id="lowestNoteSelect" class="vocal-select">
+              <!-- Populated dynamically via JS -->
+            </select>
+          </div>
+          <div class="vocal-control-group">
+            <label for="highestNoteSelect">Highest Note Sung / Spoken</label>
+            <select id="highestNoteSelect" class="vocal-select">
+              <!-- Populated dynamically via JS -->
+            </select>
+          </div>
+          <button class="f-btn f-btn-convert" onclick="calculateManualRange()" style="margin-top: 10px;">Calculate Range</button>
+        </div>
+
+        <!-- Live Microphone Pitch Detector Panel -->
+        <div class="vocal-panel">
+          <h3>🎤 Live Microphone Pitch Detector</h3>
+          <div class="live-pitch-box">
+            <div id="liveNoteDisplay" class="live-note-display">--</div>
+            <div id="liveFreqDisplay" class="live-freq-display">0.0 Hz</div>
+          </div>
+          <button id="micToggleBtn" class="f-btn f-btn-copy" onclick="toggleMicrophone()">Start Microphone</button>
+        </div>
+      </div>
+
+      <!-- Results Dashboard -->
+      <div class="results-dashboard">
+        <div class="result-metric">
+          <span>Estimated Voice Type</span>
+          <strong id="resVoiceType">--</strong>
+        </div>
+        <div class="result-metric">
+          <span>Frequency Span</span>
+          <strong id="resSpan">0 Hz - 0 Hz</strong>
+        </div>
+        <div class="result-metric">
+          <span>Total Semitones</span>
+          <strong id="resSemitones">0</strong>
+        </div>
+      </div>
+
+      <div class="f-action-strip" style="margin-top: 24px;">
+        <button class="f-btn f-btn-copy" id="copyVocalReportBtn" onclick="copyVocalReport()">📋 Copy Vocal Report</button>
+        <button class="f-btn f-btn-clear" onclick="resetVocalWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Acoustic Precision Guarantee:</span>
+        Calculations utilize standard scientific pitch tuning ($A_4 = 440\text{ Hz}$). Live microphone frequency detection utilizes real-time Fast Fourier Transform (FFT) and autocorrelation analysis directly inside your browser sandbox.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Physics of Vocal Resonance: Fundamental Frequencies, Musical Notes, and Voice Classifications</h2>
+      <p class="seo-p">Understanding the human voice requires an appreciation of acoustics, respiratory physics, and neurological motor control. When a person sings or speaks, air expelled from the lungs passes through the vocal folds within the larynx, causing them to oscillate rapidly. This vibration chops continuous airflow into periodic pulses, generating a complex sound wave rich in fundamental frequencies and harmonic overtones. The fundamental frequency ($F_0$) corresponds directly to the perceived musical pitch of the voice.</p>
+      <p class="seo-p">This extensive technical manual explores the mathematical relationship between musical note frequencies and human vocal anatomy, analyzes classical voice type boundaries across standard octave registers, examines real-time pitch detection methodologies, and provides actionable guidelines to help vocalists measure and expand their vocal capabilities safely.</p>
+
+      <div class="seo-callout">
+        <strong>The Scientific Pitch Standard:</strong> Modern acoustic calculations rely universally on International Standard ISO 16, where musical pitch $A_4$ vibrates at exactly <b>440 Hz</b>. Every semitone above or below $A_4$ is calculated using an exponential geometric progression factor of $\sqrt[12]{2} \approx 1.059463$.
+      </div>
+
+      <h3 class="seo-h2">The Mathematical Core: Frequency Calculation and Semitone Intervals</h3>
+      <p class="seo-p">Converting raw acoustic vibrations into standardized musical note names and frequency spans requires robust mathematical algorithms:</p>
+
+      <h4 class="seo-h3">1. Semitone Distance Equations</h4>
+      <p class="seo-p">The precise musical distance ($n$) in semitones between any arbitrary frequency ($f$) and the reference concert pitch $A_4$ ($440\text{ Hz}$) is determined by the logarithmic equation:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center;">$n = 12 \times \log_2\left(\frac{f}{440}\right)$</p>
+
+      <h4 class="seo-h3">2. Note Index Resolution</h4>
+      <p class="seo-p">Once the semitone offset $n$ is calculated, the absolute MIDI note number $M$ is derived by adding 69 (since MIDI note 69 corresponds to $A_4$). The note name is then parsed modulo 12 against standard chromatic arrays (`C`, `C#`, `D`, `D#`, `E`, `F`, `F#`, `G`, `G#`, `A`, `A#`, `B`), while the octave is calculated via integer division.</p>
+
+      <h4 class="seo-h3">3. Real-Time Autocorrelation and FFT</h4>
+      <p class="seo-p">Live microphone analysis utilizes Web Audio API Analyser nodes. By processing time-domain PCM audio buffer frames through autocorrelation and zero-crossing algorithms, the browser extracts the dominant fundamental frequency ($F_0$) even amidst background acoustic interference.</p>
+
+      <h3>The Statutory Reference Matrix: Standard Voice Classifications and Frequency Ranges</h3>
+      <p class="seo-p">Classical vocal pedagogy classifies singing voices into specific ranges based on tessitura (comfortable working timbre), vocal weight, and absolute pitch boundaries:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Vocal Classification Type</th>
+              <th>Gender / Register Category</th>
+              <th>Standard Note Span Range</th>
+              <th>Fundamental Frequency Span ($Hz$)</th>
+              <th>Acoustic Characteristics &amp; Repertory</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Soprano</b></td>
+              <td>Female / High Voice</td>
+              <td>`C4` to `C6`</td>
+              <td>261.6 Hz – 1046.5 Hz</td>
+              <td>Bright, agile high register; dominates operatic coloratura and lead soprano roles.</td>
+            </tr>
+            <tr>
+              <td><b>Mezzo-Soprano</b></td>
+              <td>Female / Mid-High Voice</td>
+              <td>`A3` to `A5`</td>
+              <td>220.0 Hz – 880.0 Hz</td>
+              <td>Warmer midrange power; rich tone color spanning dramatic and lyrical mezzo repertoire.</td>
+            </tr>
+            <tr>
+              <td><b>Contralto / Alto</b></td>
+              <td>Female / Low Voice</td>
+              <td>`F3` to `F5`</td>
+              <td>174.6 Hz – 698.5 Hz</td>
+              <td>Deepest female vocal classification; possesses rich chest resonance and dark timbre.</td>
+            </tr>
+            <tr>
+              <td><b>Countertenor</b></td>
+              <td>Male / High Voice (Falsetto)</td>
+              <td>`E3` to `E5`</td>
+              <td>164.8 Hz – 659.3 Hz</td>
+              <td>Utilizes head voice and falsetto registers to match female alto/soprano ranges.</td>
+            </tr>
+            <tr>
+              <td><b>Tenor</b></td>
+              <td>Male / Mid-High Voice</td>
+              <td>`C3` to `C5`</td>
+              <td>130.8 Hz – 523.3 Hz</td>
+              <td>Highest standard male chest voice; brilliant upper extension and ringing high notes.</td>
+            </tr>
+            <tr>
+              <td><b>Baritone</b></td>
+              <td>Male / Mid Voice</td>
+              <td>`G2` to `G4`</td>
+              <td>98.0 Hz – 392.0 Hz</td>
+              <td>Most common male voice type; perfectly balanced between rich warmth and agile resonance.</td>
+            </tr>
+            <tr>
+              <td><b>Bass</b></td>
+              <td>Male / Low Voice</td>
+              <td>`E2` to `E4`</td>
+              <td>82.4 Hz – 329.6 Hz</td>
+              <td>Deepest male voice category; provides robust harmonic foundation in choral music.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Acoustic &amp; Vocal Diagnostics</h3>
+
+      <h3>How can I accurately find my lowest and highest singing notes without straining?</h3>
+      <p class="seo-p">To find your lowest note, descend down a comfortable vowel sound (like "ah") from your normal speaking pitch until your voice cracks, gravels, or loses tone stability—your lowest stable pitch is your floor. For your highest note, ascend using a light head voice or falsetto until you reach a pitch you can sustain cleanly without vocal fatigue. Never force or strain your vocal cords.</p>
+
+      <h3>Why does my recorded microphone pitch fluctuate rapidly while testing?</h3>
+      <p class="seo-p">Microphone pitch fluctuation usually stems from ambient room noise, vocal jitter, or vibrato. Our Vocal Range Frequency Finder incorporates stabilizing smoothing algorithms, but maintaining a steady vowel sound in a quiet room yields the most consistent frequency readings.</p>
+
+      <h3>Is my speaking voice range different from my singing range?</h3>
+      <p class="seo-p">Yes. Normal conversational speech typically occupies a narrow span of about 3 to 4 semitones located near the lower third of a person's total vocal range. Singing utilizes a much wider span, often stretching across 1.5 to 3 full octaves (18 to 36 semitones) through specialized resonance adjustments.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for Vocal Development and Range Expansion</h3>
+      <p class="seo-p">Expanding your vocal range safely requires consistent warm-ups, proper breath support from the diaphragm, hydration, and avoiding vocal abuse. Regularly testing your pitch boundaries using precision tools like our Vocal Range Frequency Finder helps track progress over time.</p>
+      <p class="seo-p">All audio processing and frequency calculations run entirely within your device's browser memory, guaranteeing absolute data privacy and lightning-fast performance across all desktop and mobile devices.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // --- VOCAL RANGE FINDER APPLICATION ENGINE ---
+    const notesData = [];
+    const noteNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+    
+    // Generate musical notes from C0 (16.35 Hz) to B7 (3951.07 Hz)
+    for (let octave = 0; octave <= 7; octave++) {
+      for (let i = 0; i < noteNames.length; i++) {
+        const name = noteNames[i] + octave;
+        // MIDI note number formula: midi = 12 * (octave + 1) + i
+        const midi = 12 * (octave + 1) + i;
+        const freq = 440 * Math.pow(2, (midi - 69) / 12);
+        notesData.push({ name, freq, midi });
+      }
+    }
+
+    function initVocalSelects() {
+      const lowSelect = document.getElementById('lowestNoteSelect');
+      const highSelect = document.getElementById('highestNoteSelect');
+      
+      notesData.forEach((note, index) => {
+        const optLow = document.createElement('option');
+        optLow.value = note.freq;
+        optLow.textContent = `${note.name} (${note.freq.toFixed(1)} Hz)`;
+        if (note.name === 'C2') optLow.selected = true;
+        lowSelect.appendChild(optLow);
+
+        const optHigh = document.createElement('option');
+        optHigh.value = note.freq;
+        optHigh.textContent = `${note.name} (${note.freq.toFixed(1)} Hz)`;
+        if (note.name === 'G4') optHigh.selected = true;
+        highSelect.appendChild(optHigh);
+      });
+
+      calculateManualRange();
+    }
+
+    function calculateManualRange() {
+      const lowFreq = parseFloat(document.getElementById('lowestNoteSelect').value);
+      const highFreq = parseFloat(document.getElementById('highestNoteSelect').value);
+
+      if (lowFreq >= highFreq) {
+        alert('Lowest note frequency must be lower than highest note frequency.');
+        return;
+      }
+
+      const semitones = Math.round(12 * Math.log2(highFreq / lowFreq));
+      const lowNoteObj = getClosestNote(lowFreq);
+      const highNoteObj = getClosestNote(highFreq);
+
+      // Determine Voice Type based on average frequency or center note
+      const avgFreq = Math.sqrt(lowFreq * highFreq);
+      let voiceType = 'Unknown / Mixed';
+
+      if (avgFreq >= 349.2) { // Above F4 center
+        voiceType = lowFreq >= 261.6 ? 'Soprano' : 'Mezzo-Soprano / Countertenor';
+      } else if (avgFreq >= 261.6) { // Around C4
+        voiceType = lowFreq >= 220 ? 'Mezzo-Soprano' : 'Tenor';
+      } else if (avgFreq >= 196.0) { // Around G3
+        voiceType = lowFreq >= 174.6 ? 'Contralto / Alto' : 'Baritone';
+      } else if (avgFreq >= 146.8) {
+        voiceType = 'Baritone';
+      } else {
+        voiceType = 'Bass';
+      }
+
+      document.getElementById('resVoiceType').textContent = voiceType;
+      document.getElementById('resSpan').textContent = `${lowNoteObj.name} (${lowFreq.toFixed(1)} Hz) - ${highNoteObj.name} (${highFreq.toFixed(1)} Hz)`;
+      document.getElementById('resSemitones').textContent = `${semitones} Semitones (~${(semitones / 12).toFixed(1)} Octaves)`;
+    }
+
+    function getClosestNote(freq) {
+      let closest = notesData[0];
+      let minDiff = Math.abs(freq - closest.freq);
+      for (let i = 1; i < notesData.length; i++) {
+        let diff = Math.abs(freq - notesData[i].freq);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closest = notesData[i];
+        }
+      }
+      return closest;
+    }
+
+    // --- LIVE MICROPHONE PITCH DETECTION (Web Audio API) ---
+    let audioContext = null;
+    let analyser = null;
+    let microphone = null;
+    let isListening = false;
+    let animationId = null;
+
+    function toggleMicrophone() {
+      const btn = document.getElementById('micToggleBtn');
+      if (!isListening) {
+        navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+          .then(stream => {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = audioContext.createAnalyser();
+            analyser.fftSize = 2048;
+            microphone = audioContext.createMediaStreamSource(stream);
+            microphone.connect(analyser);
+            
+            isListening = true;
+            btn.textContent = 'Stop Microphone';
+            btn.style.background = '#fee2e2';
+            btn.style.color = '#dc2626';
+            btn.style.borderColor = '#fecaca';
+
+            updatePitchLoop();
+          })
+          .catch(err => {
+            console.error('Microphone access denied:', err);
+            alert('Microphone access is required for live pitch detection. Please check your browser permissions.');
+          });
+      } else {
+        stopMicrophone();
+      }
+    }
+
+    function stopMicrophone() {
+      if (animationId) cancelAnimationFrame(animationId);
+      if (audioContext && audioContext.state !== 'closed') {
+        audioContext.close();
+      }
+      isListening = false;
+      const btn = document.getElementById('micToggleBtn');
+      btn.textContent = 'Start Microphone';
+      btn.style.background = '#f8fafc';
+      btn.style.color = '#475569';
+      btn.style.borderColor = '#cbd5e1';
+
+      document.getElementById('liveNoteDisplay').textContent = '--';
+      document.getElementById('liveFreqDisplay').textContent = '0.0 Hz';
+    }
+
+    function updatePitchLoop() {
+      if (!isListening) return;
+      const bufferLength = analyser.fftSize;
+      const buffer = new Float32Array(bufferLength);
+      analyser.getFloatTimeDomainData(buffer);
+
+      const freq = autoCorrelate(buffer, audioContext.sampleRate);
+      if (freq !== -1) {
+        const noteObj = getClosestNote(freq);
+        document.getElementById('liveNoteDisplay').textContent = noteObj.name;
+        document.getElementById('liveFreqDisplay').textContent = `${freq.toFixed(1)} Hz`;
+      }
+
+      animationId = requestAnimationFrame(updatePitchLoop);
+    }
+
+    function autoCorrelate(buffer, sampleRate) {
+      // Basic autocorrelation pitch detection algorithm
+      let SIZE = buffer.length;
+      let sumOfSquares = 0;
+      for (let i = 0; i < SIZE; i++) {
+        let val = buffer[i];
+        sumOfSquares += val * val;
+      }
+      let rootMeanSquare = Math.sqrt(sumOfSquares / SIZE);
+      if (rootMeanSquare < 0.01) return -1; // Insufficient audio signal volume
+
+      let r1 = 0, r2 = SIZE - 1, threshold = 0.2;
+      for (let i = 0; i < SIZE / 2; i++) {
+        if (Math.abs(buffer[i]) < threshold) { r1 = i; break; }
+      }
+      for (let i = 1; i < SIZE / 2; i++) {
+        if (Math.abs(buffer[SIZE - i]) < threshold) { r2 = SIZE - i; break; }
+      }
+
+      buffer = buffer.slice(r1, r2);
+      SIZE = buffer.length;
+
+      let c = new Array(SIZE).fill(0);
+      for (let i = 0; i < SIZE; i++) {
+        for (let j = 0; j < SIZE - i; j++) {
+          c[i] = c[i] + buffer[j] * buffer[j + i];
+        }
+      }
+
+      let d = 0;
+      while (c[d] > c[d + 1]) d++;
+      let maxval = -1, maxpos = -1;
+      for (let i = d; i < SIZE; i++) {
+        if (c[i] > maxval) {
+          maxval = c[i];
+          maxpos = i;
+        }
+      }
+      let T0 = maxpos;
+      return sampleRate / T0;
+    }
+
+    function copyVocalReport() {
+      const voiceType = document.getElementById('resVoiceType').textContent;
+      const span = document.getElementById('resSpan').textContent;
+      const semitones = document.getElementById('resSemitones').textContent;
+      
+      const report = `Vocal Range Analysis Report:\n- Voice Classification: ${voiceType}\n- Frequency & Note Span: ${span}\n- Total Span: ${semitones}\nGenerated via TexusProTools Vocal Range Frequency Finder.`;
+
+      navigator.clipboard.writeText(report).then(() => {
+        const btn = document.getElementById('copyVocalReportBtn');
+        const origText = btn.textContent;
+        btn.textContent = '✅ Report Copied!';
+        setTimeout(() => { btn.textContent = origText; }, 2000);
+      });
+    }
+
+    function resetVocalWorkspace() {
+      if (isListening) stopMicrophone();
+      document.getElementById('lowestNoteSelect').selectedIndex = 24; // C2
+      document.getElementById('highestNoteSelect').selectedIndex = 55; // G4
+      calculateManualRange();
+    }
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      initVocalSelects();
+    });
+
+    // Header and Footer Dynamic Loader
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site
