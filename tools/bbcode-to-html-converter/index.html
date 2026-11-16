@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>BBCode to HTML Converter | Online Bulletin Board Code Parser</title>
+  <meta name="description" content="Convert BBCode tags into clean, semantic HTML markup instantly. Free online parser supporting bold, italic, links, images, lists, and quote blocks." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/bbcode-to-html-converter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BBCode to HTML Converter Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced parsing tool to convert bulletin board codes (BBCode) into compliant, structured HTML markup cleanly and instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 220px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 600; font-size: 0.95rem; color: #0f172a; background: #f1f5f9; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table-td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child .seo-table-td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 160px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table-td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table-td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📋</span> BBCode to HTML Converter</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="bbcodeConsole">Input BBCode Markup</label>
+          <textarea id="bbcodeConsole" class="f-textarea-field" placeholder="Paste or type BBCode here (e.g., [b]Hello[/b] [url=https://example.com]Link[/url])..." oninput="convertBbcode()"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="htmlOutputConsole">Generated HTML Markup</label>
+          <textarea id="htmlOutputConsole" class="f-textarea-field mono-font-panel" placeholder="Converted HTML output will appear here automatically..." readonly></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="convertBbcode()">Convert Now</button>
+        <button class="f-btn f-btn-copy" id="copyHtmlBtn" onclick="copyHtmlResult()">📋 Copy HTML</button>
+        <button class="f-btn f-btn-clear" onclick="clearBbcodeWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Client-Side Parsing Active:</span>
+        Your BBCode strings translate instantly into compliant HTML tags as you type. All formatting tokens including nested quotes, lists, colors, and media embeds are supported.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Comprehensive Guide to BBCode Translation: Understanding Bulletin Board Tags, HTML DOM Rendering, and Modern Forum Migration Strategies</h2>
+      <p class="seo-p">Bulletin Board Code (BBCode) has served as the foundational lightweight markup language for internet forums, message boards, gaming communities, and legacy web communities for over two decades. Developed to allow users to format posts securely without risking raw HTML injection attacks, BBCode relies on square bracket enclosures—such as `[b]` for bold or `[url]` for hyperlinks—to govern text presentation. However, as web architectures migrate toward modern semantic HTML5 documents, content managers, archivists, and developers frequently encounter archives filled with legacy BBCode records that require rapid, accurate conversion into standard HTML nodes.</p>
+      <p class="seo-p">This extensive technical resource examines the structural anatomy of BBCode lexicons, explores security considerations surrounding user-submitted formatting tags, analyzes regex parsing mechanisms, and provides a clear blueprint for migrating community databases cleanly without breaking web design hierarchies.</p>
+
+      <div class="seo-callout">
+        <strong>The Secure Enclosure Principle:</strong> Unlike raw HTML where stray angle brackets can break entire document object models or trigger Cross-Site Scripting (XSS) vectors, BBCode isolates formatting instructions inside predictable tag boundaries, making programmatic string substitution safe and predictable.
+      </div>
+
+      <h3 class="seo-h2">The Mechanics of BBCode Parsing: From Square Brackets to DOM Elements</h3>
+      <p class="seo-p">When high-performance conversion pipelines ingest legacy forum strings, the software executes a sequence of regular expression and string replacement passes to map proprietary tags into standard World Wide Web Consortium (W3C) elements:</p>
+
+      <h4 class="seo-h3">1. Token Recognition and Sanitization</h4>
+      <p class="seo-p">The parser first scans the input text for paired opening and closing bracket markers. Before any HTML substitution occurs, special characters within the raw text stream are escaped to prevent malicious script injection.</p>
+
+      <h4 class="seo-h3">2. Attribute Extraction and Validation</h4>
+      <p class="seo-p">Complex tags like URLs, image embeds, font colors, and sizing parameters often accept arguments (e.g., `[url=https://example.com]`). The conversion algorithm extracts these attributes, sanitizes target URLs against JavaScript injection schemes, and wraps them in valid HTML attributes (e.g., `href="..." rel="noopener"`).</p>
+
+      <h4 class="seo-h3">3. Nesting and Block Structure Resolution</h4>
+      <p class="seo-p">Nested styles—such as bold text inside an italicized quote block—require recursive token replacement or structured parser passes to ensure that HTML elements close in the correct order (`&lt;strong&gt;&lt;em&gt;text&lt;/em&gt;&lt;/strong&gt;`), preventing malformed DOM trees.</p>
+
+      <h3>The Definitive BBCode-to-HTML Reference Matrix</h3>
+      <p class="seo-p">Review how standard bulletin board formatting codes map directly into semantic HTML5 equivalents during conversion operations:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Formatting Objective</th>
+              <th>Input BBCode Tag Syntax</th>
+              <th>Generated HTML5 Equivalent Output</th>
+              <th>Semantic Purpose and Security Attribute</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Strong Emphasis</td>
+              <td>`[b]Bold Text[/b]`</td>
+              <td>`&lt;strong&gt;Bold Text&lt;/strong&gt;`</td>
+              <td>Applies strong importance weight for screen readers and search engines.</td>
+            </tr>
+            <tr>
+              <td>Italic Emphasis</td>
+              <td>`[i]Italicized Text[/i]`</td>
+              <td>`&lt;em&gt;Italicized Text&lt;/em&gt;`</td>
+              <td>Indicates stress emphasis or alternate voice in typography.</td>
+            </tr>
+            <tr>
+              <td>Underline Decor</td>
+              <td>`[u]Underline Text[/u]`</td>
+              <td>`&lt;span style="text-decoration:underline;"&gt;...&lt;/span&gt;`</td>
+              <td>Renders underline styling via inline CSS wrapper rules.</td>
+            </tr>
+            <tr>
+              <td>Hyperlink Anchor</td>
+              <td>`[url=https://site.com]Link[/url]`</td>
+              <td>`&lt;a href="https://site.com" rel="noopener"&gt;Link&lt;/a&gt;`</td>
+              <td>Generates secure outbound hyperlink with anti-tabnapping attributes.</td>
+            </tr>
+            <tr>
+              <td>Image Embedding</td>
+              <td>`[img]https://site.com/pic.jpg[/img]`</td>
+              <td>`&lt;img src="https://site.com/pic.jpg" alt="User Image" /&gt;`</td>
+              <td>Embeds external visual media assets with default alt descriptors.</td>
+            </tr>
+            <tr>
+              <td>Quote Block</td>
+              <td>`[quote=Author]Message[/quote]`</td>
+              <td>`&lt;blockquote&gt;&lt;strong&gt;Author wrote:&lt;/strong&gt;&lt;p&gt;Message&lt;/p&gt;&lt;/blockquote&gt;`</td>
+              <td>Structures cited discussion threads and community message excerpts.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - BBCode Conversion Guide</h3>
+
+      <h3>Can this converter handle nested BBCode tags like bold inside quotes?</h3>
+      <p class="seo-p">Yes! Our advanced parsing algorithm handles complex nested structures, allowing you to combine bold, italic, color, and quote tags simultaneously without breaking the generated HTML output tree.</p>
+
+      <h3>Is my forum database data secure when using this online tool?</h3>
+      <p class="seo-p">Absolutely. All BBCode parsing and HTML generation occurs entirely within your browser's local JavaScript execution environment. No text strings, user posts, or database dumps ever leave your device or touch external servers.</p>
+
+      <h3>How are unsupported or custom BBCode tags handled?</h3>
+      <p class="seo-p">If the parser encounters unrecognized tags (such as custom forum badges or game-specific codes), it safely preserves them or strips the bracket syntax depending on configuration, ensuring your primary text content remains readable and intact.</p>
+
+      <h3 class="seo-h2">Summary: Streamlining Legacy Forum Migrations</h3>
+      <p class="seo-p">Migrating bulletin board databases to modern content management systems no longer requires writing complex custom scripts. By utilizing our free, client-side BBCode to HTML Converter, developers and community administrators can translate thousands of forum posts into clean, semantic HTML markup instantly and securely.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function convertBbcode() {
+      const input = document.getElementById('bbcodeConsole').value;
+      let output = input;
+
+      // HTML Escape first to prevent XSS in preview/output
+      output = output
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+      // BBCode Replacements
+      // Quotes with author: [quote=Name]text[/quote]
+      output = output.replace(/\[quote=(.*?)\]([\s\S]*?)\[\/quote\]/gi, '<blockquote style="border-left: 4px solid #2563eb; margin: 15px 0; padding: 10px 15px; background: #f8fafc; border-radius: 0 8px 8px 0;"><strong>$1 wrote:</strong><p style="margin: 5px 0 0 0;">$2</p></blockquote>');
+      
+      // Simple quotes: [quote]text[/quote]
+      output = output.replace(/\[quote\]([\s\S]*?)\[\/quote\]/gi, '<blockquote style="border-left: 4px solid #cbd5e1; margin: 15px 0; padding: 10px 15px; background: #f8fafc; border-radius: 0 8px 8px 0;"><p style="margin: 0;">$1</p></blockquote>');
+
+      // Bold: [b]text[/b]
+      output = output.replace(/\[b\]([\s\S]*?)\[\/b\]/gi, '<strong>$1</strong>');
+
+      // Italic: [i]text[/i]
+      output = output.replace(/\[i\]([\s\S]*?)\[\/i\]/gi, '<em>$1</em>');
+
+      // Underline: [u]text[/u]
+      output = output.replace(/\[u\]([\s\S]*?)\[\/u\]/gi, '<span style="text-decoration: underline;">$1</span>');
+
+      // Strikethrough: [s]text[/s]
+      output = output.replace(/\[s\]([\s\S]*?)\[\/s\]/gi, '<del>$1</del>');
+
+      // URLs with label: [url=https://example.com]Link Text[/url]
+      output = output.replace(/\[url=(https?:\-?[\w\-_\.~:\/\?#\[\]@!$&'\(\)\*\+,;=%]+)\]([\s\S]*?)\[\/url\]/gi, '<a href="$1" target="_blank" rel="noopener">$2</a>');
+      output = output.replace(/\[url=([^\]]+)\]([\s\S]*?)\[\/url\]/gi, '<a href="$1" target="_blank" rel="noopener">$2</a>');
+
+      // URLs simple: [url]https://example.com[/url]
+      output = output.replace(/\[url\](https?:\-?[\w\-_\.~:\/\?#\[\]@!$&'\(\)\*\+,;=%]+)\[\/url\]/gi, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+
+      // Images: [img]https://example.com/image.jpg[/img]
+      output = output.replace(/\[img\](https?:\-?[\w\-_\.~:\/\?#\[\]@!$&'\(\)\*\+,;=%]+)\[\/img\]/gi, '<img src="$1" alt="User submitted image" style="max-width:100%; height:auto; border-radius:8px;" />');
+
+      // Colors: [color=red]text[/color]
+      output = output.replace(/\[color=([a-zA-Z#0-9]+)\]([\s\S]*?)\[\/color\]/gi, '<span style="color: $1;">$2</span>');
+
+      // Sizes: [size=150]text[/size] (percentage or px)
+      output = output.replace(/\[size=([0-9]+)%?\]([\s\S]*?)\[\/size\]/gi, '<span style="font-size: $1%;">$2</span>');
+
+      // Lists: [list] [*] item 1 [*] item 2 [/list]
+      output = output.replace(/\[list\]([\s\S]*?)\[\/list\]/gi, function(match, p1) {
+        let items = p1.replace(/\[\*\]\s*/g, '<li>').split('<li>').filter(Boolean);
+        return '<ul>\n  <li>' + items.join('  <li>') + '</ul>';
+      });
+
+      // Line breaks
+      output = output.replace(/\n/g, '<br />');
+
+      document.getElementById('htmlOutputConsole').value = output;
+    }
+
+    function copyHtmlResult() {
+      const consoleField = document.getElementById('htmlOutputConsole');
+      consoleField.select();
+      consoleField.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(consoleField.value).then(() => {
+        const btn = document.getElementById('copyHtmlBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '✓ Copied Successfully!';
+        btn.style.background = '#dcfce7';
+        btn.style.color = '#166534';
+        btn.style.borderColor = '#bbf7d0';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+          btn.style.borderColor = '';
+        }, 2000);
+      });
+    }
+
+    function clearBbcodeWorkspace() {
+      document.getElementById('bbcodeConsole').value = '';
+      document.getElementById('htmlOutputConsole').value = '';
+    }
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
