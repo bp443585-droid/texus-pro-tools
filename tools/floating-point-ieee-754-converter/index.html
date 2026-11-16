@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Floating Point IEEE 754 Converter | Single & Double Precision Calculator</title>
+  <meta name="description" content="Convert floating-point numbers to IEEE 754 binary representation (32-bit single precision and 64-bit double precision) instantly with our free online converter." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/floating-point-ieee-754-converter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Floating Point IEEE 754 Converter Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced mathematical utility to encode decimal values into binary IEEE 754 single and double precision representations and decode bitstrings instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 160px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* ADDITIONAL TOOL CONTROLS */
+    .f-sub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+    .precision-breakdown { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; margin-top: 20px; }
+    .precision-breakdown h4 { margin: 0 0 12px 0; font-size: 1rem; color: #0f172a; font-weight: 700; }
+    .bit-row { display: flex; flex-wrap: wrap; gap: 4px; font-family: monospace; font-size: 0.95rem; margin-bottom: 8px; align-items: center; }
+    .bit-badge { padding: 4px 8px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
+    .bit-sign { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+    .bit-exp { background: #e0e7ff; color: #3730a3; border: 1px solid #c7d2fe; }
+    .bit-mant { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid, .f-sub-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 130px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🔢</span> Floating Point IEEE 754 Converter</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="decimalInput">Decimal Floating-Point Number</label>
+          <textarea id="decimalInput" class="f-textarea-field" placeholder="Enter decimal number (e.g. 3.14159, -42.5, 0.1)..." oninput="convertDecimalToIEEE()"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="binaryInput">IEEE 754 Binary Representation</label>
+          <textarea id="binaryInput" class="f-textarea-field mono-font-panel" placeholder="Enter binary bit string (32 or 64 bits)..." oninput="convertIEEEToDecimal()"></textarea>
+        </div>
+      </div>
+
+      <div class="f-sub-grid">
+        <div class="f-panel-box">
+          <label>Single Precision (32-bit)</label>
+          <div id="singlePrecisionOutput" class="f-textarea-field mono-font-panel" style="height: 60px; display: flex; align-items: center; overflow: hidden;">00000000000000000000000000000000</div>
+        </div>
+        <div class="f-panel-box">
+          <label>Double Precision (64-bit)</label>
+          <div id="doublePrecisionOutput" class="f-textarea-field mono-font-panel" style="height: 60px; display: flex; align-items: center; overflow: hidden; font-size: 0.85rem;">0000000000000000000000000000000000000000000000000000000000000000</div>
+        </div>
+      </div>
+
+      <div class="precision-breakdown">
+        <h4>IEEE 754 32-Bit Structural Breakdown</h4>
+        <div class="bit-row">
+          <span class="bit-badge bit-sign">Sign (1 bit):</span> <span id="breakdownSign">-</span>
+        </div>
+        <div class="bit-row">
+          <span class="bit-badge bit-exp">Exponent (8 bits):</span> <span id="breakdownExp">-</span>
+        </div>
+        <div class="bit-row">
+          <span class="bit-badge bit-mant">Mantissa (23 bits):</span> <span id="breakdownMant">-</span>
+        </div>
+      </div>
+
+      <div class="f-action-strip" style="margin-top: 20px;">
+        <button class="f-btn f-btn-convert" onclick="convertDecimalToIEEE()">Recalculate Values</button>
+        <button class="f-btn f-btn-copy" onclick="copyBinaryResult()">📋 Copy 32-bit Binary</button>
+        <button class="f-btn f-btn-clear" onclick="clearWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Bidirectional IEEE 754 Engine Active:</span>
+        Type any standard decimal floating-point number in the left panel to instantly inspect its single and double precision binary bit string, or paste a binary sequence into the right panel to resolve its decimal value.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Demystifying IEEE 754 Floating-Point Representation: Single and Double Precision Binary Standards</h2>
+      <p class="seo-p">Computing real numbers with fractional components inside digital hardware demands an exact, universally standardized mathematical convention. Because computer registers operate strictly on binary logic (zeros and ones), representing continuous quantities—such as pi, exponential growth rates, or financial currency calculations—requires precise encoding rules. The Institute of Electrical and Electronics Engineers established the IEEE 754 standard to govern floating-point arithmetic across every processor architecture, from embedded microcontrollers to enterprise server arrays.</p>
+      <p class="seo-p">This extensive reference manual explores the underlying architecture of IEEE 754 single-precision (32-bit) and double-precision (64-bit) data structures, examines exponent biasing and mantissa normalization, reviews rounding errors inherent in binary fractional approximations, and outlines the robust conversion mechanisms executed inside our real-time client-side calculator.</p>
+
+      <div class="seo-callout">
+        <strong>The Scientific Notation Blueprint:</strong> Just as scientific notation expresses numbers as $sign \times mantissa \times base^{exponent}$ (e.g., $-1.5 \times 10^3$), IEEE 754 encodes numbers in base-2 binary format: $(-1)^{\text{sign}} \times 1.\text{mantissa}_2 \times 2^{\text{exponent} - \text{bias}}$.
+      </div>
+
+      <h3 class="seo-h2">The Architectural Anatomy of Floating-Point Formats</h3>
+      <p class="seo-p">To understand how decimal numbers translate into binary bitstreams, we must examine the three distinct bitfields that compose both 32-bit and 64-bit floating-point words:</p>
+
+      <h4 class="seo-h3">1. The Sign Bit ($S$)</h4>
+      <p class="seo-p">The most significant bit (leftmost position) dictates the algebraic sign of the number. A value of `0` denotes a positive number or positive zero, while a value of `1` indicates a negative number or negative zero. This sign bit applies uniformly across single and double precision standards.</p>
+
+      <h4 class="seo-h3">2. The Biased Exponent ($E$)</h4>
+      <p class="seo-p">The exponent field allows the floating-point window to scale across massive magnitudes. Because exponents can be positive or negative, IEEE 754 introduces an exponent bias. For 32-bit single precision, the bias is `127`; for 64-bit double precision, the bias is `1023`. Subtracting this bias from the stored unsigned integer yields the actual power of two.</p>
+
+      <h4 class="seo-h3">3. The Mantissa / Significand ($M$)</h4>
+      <p class="seo-p">Also known as the fraction, the mantissa represents the precision digits of the number. In normalized IEEE 754 numbers, an implicit leading `1` is assumed before the binary point (i.e., $1.\text{fraction}_2$), effectively granting an extra bit of precision without explicitly storing it in memory.</p>
+
+      <h3>The Precision Matrix: Single vs. Double Precision Comparison</h3>
+      <p class="seo-p">Review the structural differences between 32-bit single-precision and 64-bit double-precision floating-point formats:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Precision Parameter</th>
+              <th>Single Precision (binary32)</th>
+              <th>Double Precision (binary64)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Total Bit Width</td>
+              <td>32 bits (4 bytes)</td>
+              <td>64 bits (8 bytes)</td>
+            </tr>
+            <tr>
+              <td>Sign Bit Width</td>
+              <td>1 bit (Bit 31)</td>
+              <td>1 bit (Bit 63)</td>
+            </tr>
+            <tr>
+              <td>Exponent Bit Width</td>
+              <td>8 bits (Bits 30-23)</td>
+              <td>11 bits (Bits 62-52)</td>
+            </tr>
+            <tr>
+              <td>Exponent Bias</td>
+              <td>127</td>
+              <td>1023</td>
+            </tr>
+            <tr>
+              <td>Mantissa Bit Width</td>
+              <td>23 bits (Bits 22-0)</td>
+              <td>52 bits (51-0)</td>
+            </tr>
+            <tr>
+              <td>Approximate Decimal Range</td>
+              <td>$\pm 1.18 \times 10^{-38}$ to $\pm 3.4 \times 10^{38}$</td>
+              <td>$\pm 2.23 \times 10^{-308}$ to $\pm 1.79 \times 10^{308}$</td>
+            </tr>
+            <tr>
+              <td>Machine Epsilon ($\epsilon$)</td>
+              <td>$\approx 1.19 \times 10^{-7}$</td>
+              <td>$\approx 2.22 \times 10^{-16}$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why does $0.1 + 0.2$ not equal $0.3$ in computer programming?</h3>
+      <p class="seo-p">Many decimal fractions (like $0.1$ or $0.2$) have infinite recurring representations in binary, just as $\frac{1}{3}$ has an infinite recurring decimal representation in base-10 ($0.3333...$). When a computer truncates these infinite binary fractions to fit within 23 or 52 mantissa bits, small rounding inaccuracies occur, leading to floating-point arithmetic discrepancies.</p>
+
+      <h3>What are Denormalized (Subnormal) numbers in IEEE 754?</h3>
+      <p class="seo-p">When the exponent field is all zeros (`0000...0`), the number is considered subnormal (or denormalized). In this state, the implicit leading bit of the mantissa is `0` instead of `1`. This allows the floating-point system to gracefully underflow toward zero rather than abruptly cutting off at the smallest normalized threshold.</p>
+
+      <h3>How does the converter handle special values like Infinity and NaN?</h3>
+      <p class="seo-p">If the exponent field is all ones (`1111...1`) and the mantissa is all zeros, the value represents positive or negative infinity (resulting from overflow or division by zero). If the mantissa is non-zero, the value represents `NaN` (Not a Number), indicating an undefined mathematical operation such as $0/0$ or the square root of a negative number.</p>
+
+      <h3 class="seo-h2">Summary: Mastering Numerical Precision in Software Engineering</h3>
+      <p class="seo-p">Understanding IEEE 754 floating-point architecture is essential for debugging numerical instability, optimizing memory footprints, and writing robust mathematical algorithms. Whether you are analyzing single-precision GPU shaders or high-precision scientific simulations, our interactive Floating Point IEEE 754 Converter provides instant, accurate bit-level visibility across all browser platforms securely.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // IEEE 754 Conversion Engine Logic
+    function numberToIEEE32(n) {
+      if (isNaN(n)) return '01111111110000000000000000000000'; // NaN
+      if (!isFinite(n)) return n > 0 ? '01111111100000000000000000000000' : '11111111100000000000000000000000';
+      
+      const buffer = new ArrayBuffer(4);
+      const floatView = new Float32Array(buffer);
+      const intView = new Uint32Array(buffer);
+      
+      floatView[0] = n;
+      const intVal = intView[0];
+      
+      let binStr = intVal.toString(2);
+      while (binStr.length < 32) binStr = '0' + binStr;
+      return binStr;
+    }
+
+    function numberToIEEE64(n) {
+      if (isNaN(n)) return '0111111111111000000000000000000000000000000000000000000000000000';
+      if (!isFinite(n)) return n > 0 ? '0111111111110000000000000000000000000000000000000000000000000000' : '1111111111110000000000000000000000000000000000000000000000000000';
+      
+      const buffer = new ArrayBuffer(8);
+      const floatView = new Float64Array(buffer);
+      const intView = new Uint32Array(buffer);
+      
+      floatView[0] = n;
+      
+      // Uint32Array in little endian
+      let low = intView[0].toString(2);
+      let high = intView[1].toString(2);
+      while (low.length < 32) low = '0' + low;
+      while (high.length < 32) high = '0' + high;
+      
+      return high + low;
+    }
+
+    function ieee32ToNumber(bin32) {
+      bin32 = bin32.replace(/[^01]/g, '');
+      if (bin32.length !== 32) return NaN;
+      
+      const sign = parseInt(bin32[0], 2);
+      const exp = parseInt(bin32.slice(1, 9), 2);
+      const mant = parseInt(bin32.slice(9), 2);
+      
+      if (exp === 255) {
+        if (mant === 0) return sign === 1 ? -Infinity : Infinity;
+        return NaN;
+      }
+      if (exp === 0) {
+        if (mant === 0) return sign === 1 ? -0 : 0;
+        return (sign === 1 ? -1 : 1) * Math.pow(2, -126) * (mant / Math.pow(2, 23));
+      }
+      return (sign === 1 ? -1 : 1) * Math.pow(2, exp - 127) * (1 + mant / Math.pow(2, 23));
+    }
+
+    let isUpdating = false;
+
+    function convertDecimalToIEEE() {
+      if (isUpdating) return;
+      isUpdating = true;
+      
+      const valStr = document.getElementById('decimalInput').value.trim();
+      const num = parseFloat(valStr);
+      
+      if (valStr === '' || isNaN(num)) {
+        document.getElementById('singlePrecisionOutput').innerText = '00000000000000000000000000000000';
+        document.getElementById('doublePrecisionOutput').innerText = '0000000000000000000000000000000000000000000000000000000000000000';
+        document.getElementById('binaryInput').value = '';
+        document.getElementById('breakdownSign').innerText = '-';
+        document.getElementById('breakdownExp').innerText = '-';
+        document.getElementById('breakdownMant').innerText = '-';
+        isUpdating = false;
+        return;
+      }
+      
+      const bin32 = numberToIEEE32(num);
+      const bin64 = numberToIEEE64(num);
+      
+      document.getElementById('singlePrecisionOutput').innerText = bin32;
+      document.getElementById('doublePrecisionOutput').innerText = bin64;
+      document.getElementById('binaryInput').value = bin32;
+      
+      document.getElementById('breakdownSign').innerText = bin32[0] + ` (${bin32[0] === '1' ? 'Negative' : 'Positive'})`;
+      document.getElementById('breakdownExp').innerText = bin32.slice(1, 9) + ` (Decimal: ${parseInt(bin32.slice(1, 9), 2)}, Unbiased: ${parseInt(bin32.slice(1, 9), 2) - 127})`;
+      document.getElementById('breakdownMant').innerText = bin32.slice(9) + ` (Implicit 1 + Fraction)`;
+      
+      isUpdating = false;
+    }
+
+    function convertIEEEToDecimal() {
+      if (isUpdating) return;
+      isUpdating = true;
+      
+      const binStr = document.getElementById('binaryInput').value.replace(/[^01]/g, '').trim();
+      
+      if (binStr.length === 32) {
+        const num = ieee32ToNumber(binStr);
+        document.getElementById('decimalInput').value = num;
+        document.getElementById('singlePrecisionOutput').innerText = binStr;
+        document.getElementById('doublePrecisionOutput').innerText = numberToIEEE64(num);
+        
+        document.getElementById('breakdownSign').innerText = binStr[0] + ` (${binStr[0] === '1' ? 'Negative' : 'Positive'})`;
+        document.getElementById('breakdownExp').innerText = binStr.slice(1, 9) + ` (Decimal: ${parseInt(binStr.slice(1, 9), 2)}, Unbiased: ${parseInt(binStr.slice(1, 9), 2) - 127})`;
+        document.getElementById('breakdownMant').innerText = binStr.slice(9) + ` (Implicit 1 + Fraction)`;
+      } else if (binStr.length === 64) {
+        document.getElementById('doublePrecisionOutput').innerText = binStr;
+      }
+      
+      isUpdating = false;
+    }
+
+    function copyBinaryResult() {
+      const bin = document.getElementById('singlePrecisionOutput').innerText;
+      navigator.clipboard.writeText(bin).then(() => {
+        const btn = document.querySelector('.f-btn-copy');
+        const orig = btn.innerText;
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => btn.innerText = orig, 1500);
+      });
+    }
+
+    function clearWorkspace() {
+      document.getElementById('decimalInput').value = '';
+      document.getElementById('binaryInput').value = '';
+      document.getElementById('singlePrecisionOutput').innerText = '00000000000000000000000000000000';
+      document.getElementById('doublePrecisionOutput').innerText = '0000000000000000000000000000000000000000000000000
