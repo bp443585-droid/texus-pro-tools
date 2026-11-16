@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>XML Tree Node Visualizer | Free Online XML Parser & Viewer</title>
+  <meta name="description" content="Visualize, parse, and inspect XML hierarchical node trees instantly online. Collapse tags, inspect attributes, debug syntax errors, and analyze node depths safely." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/xml-tree-node-visualizer/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "XML Tree Node Visualizer Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced client-side XML tree visualizer and DOM inspector for parsing, exploring, and debugging complex structured XML documents interactively.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
+    
+    .f-textarea-field { width: 100%; height: 360px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.95rem; font-family: 'Fira Code', 'Courier New', monospace; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; white-space: pre; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-tree-view-panel { width: 100%; height: 360px; background: #0f172a; border: 2px solid #1e293b; border-radius: 16px; padding: 18px; font-family: 'Fira Code', 'Courier New', monospace; font-size: 0.9rem; color: #f8fafc; overflow: auto; box-sizing: border-box; line-height: 1.6; }
+
+    /* XML TREE NODES VISUAL STYLING */
+    .xml-details { margin-left: 14px; position: relative; }
+    .xml-details[open] > summary::before { content: "▼ "; color: #94a3b8; font-size: 0.75rem; }
+    .xml-details:not([open]) > summary::before { content: "▶ "; color: #94a3b8; font-size: 0.75rem; }
+    .xml-summary { cursor: pointer; list-style: none; user-select: none; outline: none; padding: 2px 4px; border-radius: 4px; display: inline-block; }
+    .xml-summary:hover { background: #1e293b; }
+    .xml-summary::-webkit-details-marker { display: none; }
+    .xml-tag { color: #38bdf8; font-weight: 600; }
+    .xml-attr-name { color: #c084fc; font-weight: 500; }
+    .xml-attr-val { color: #fde047; }
+    .xml-text { color: #f8fafc; font-weight: 400; }
+    .xml-comment { color: #64748b; font-style: italic; }
+    .xml-cdata { color: #fb923c; font-weight: 500; }
+    .xml-leaf { margin-left: 20px; padding: 2px 0; }
+    .xml-error-box { color: #f87171; background: #450a0a; border: 1px solid #991b1b; padding: 14px; border-radius: 10px; font-family: sans-serif; font-size: 0.9rem; white-space: pre-wrap; line-height: 1.5; }
+    .xml-badge { font-size: 0.72rem; background: #334155; color: #cbd5e1; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .f-btn { flex: 1; min-width: 130px; font-weight: 700; padding: 12px 16px; border-radius: 12px; cursor: pointer; font-size: 0.88rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-sample { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+    .f-btn-sample:hover { background: #dcfce7; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 110px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* STATS STRIP */
+    .f-stats-strip { display: flex; gap: 15px; margin-top: 15px; padding: 12px 18px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; font-size: 0.82rem; color: #475569; font-weight: 600; flex-wrap: wrap; }
+    .f-stat-item span { color: #2563eb; font-weight: 800; font-size: 0.95rem; margin-left: 4px; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field, .f-tree-view-panel { height: 260px; font-size: 0.88rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🌳</span> XML Tree Node Visualizer</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="xmlInputConsole">Raw XML Source Code <span id="xmlLengthBadge" class="xml-badge">0 bytes</span></label>
+          <textarea id="xmlInputConsole" class="f-textarea-field" placeholder="Paste your raw XML code here (e.g., &lt;catalog&gt;&lt;product id='101'&gt;Item&lt;/product&gt;&lt;/catalog&gt;)..." oninput="processXmlVisualization()"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Interactive Hierarchy Tree View <span id="treeStatusBadge" class="xml-badge">Idle</span></label>
+          <div id="treeOutputConsole" class="f-tree-view-panel">
+            <div style="color: #64748b; font-style: italic; margin-top: 40px; text-align: center;">
+              Enter or paste XML markup on the left panel to parse and generate the dynamic node visualizer tree...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="processXmlVisualization()">Render Tree</button>
+        <button class="f-btn f-btn-sample" onclick="loadSampleXml()">Load Sample</button>
+        <button class="f-btn f-btn-copy" onclick="expandAllNodes()">Expand All</button>
+        <button class="f-btn f-btn-copy" onclick="collapseAllNodes()">Collapse All</button>
+        <button class="f-btn f-btn-copy" onclick="copyXmlSource()">📋 Copy Source</button>
+        <button class="f-btn f-btn-clear" onclick="clearXmlWorkspace()">Clear</button>
+      </div>
+
+      <div class="f-stats-strip" id="xmlStatsStrip">
+        <div class="f-stat-item">Total Elements: <span id="statElements">0</span></div>
+        <div class="f-stat-item">Attributes: <span id="statAttributes">0</span></div>
+        <div class="f-stat-item">Text Nodes: <span id="statTextNodes">0</span></div>
+        <div class="f-stat-item">Max Depth: <span id="statMaxDepth">0</span></div>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Client-Side Browser DOM Engine Active:</span>
+        All XML parsing, tag nested tree expansions, and structural syntax checking are performed locally in memory using native browser XML DOM parsers. No document contents are sent to remote servers.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h1 class="seo-title">The Architecture of XML Document Trees: Parsing Engine Mechanics, Node Graph Visualizations, and Hierarchical Data Auditing</h1>
+      <p class="seo-p">In enterprise software development, data interchange pipelines, configuration management, and document transformation frameworks, Extensible Markup Language (XML) remains an essential foundation. Unlike loose, unvalidated data streams, XML relies on strict syntactic rules, absolute parent-child element nesting, attribute key-value scoping, and schema validation bounds. Inspecting, debugging, and navigating multi-layered XML payloads require dedicated visualization utilities capable of rendering structural Abstract Syntax Trees (AST) into interactive DOM graphs.</p>
+      <p class="seo-p">This technical manual examines the computational mechanics of XML parsing engines, evaluates node taxonomy classifications, contrasts Document Object Model (DOM) tree representations against streaming SAX architectures, details namespace isolation rules, and outlines best practices for inspecting complex document trees safely within web browsers.</p>
+
+      <div class="seo-callout">
+        <strong>The Structural Node Principle:</strong> XML parsers treat every valid XML document as an inverted tree graph anchored by a single root element. Every structural tag, inline text fragment, attribute pair, CDATA block, and comment represents a specialized node coordinate within memory, accessible via explicit parent-child and sibling relationships.
+      </div>
+
+      <h2 class="seo-h2">Understanding the Node Taxonomy: How Parsers Construct Document Object Models</h2>
+      <p class="seo-p">When raw character arrays flow into a compliant XML DOM parser (such as the standard browser <code>DOMParser</code> API), the lexical scanner tokenizes strings into a sequence of nodes. Understanding these node archetypes is essential for auditing structured schemas and analyzing XPath queries:</p>
+
+      <h3 class="seo-h3">1. Element Nodes (NodeType 1)</h3>
+      <p class="seo-p">Element nodes form the primary backbone of the hierarchy tree. Each element is defined by an opening tag (e.g., <code>&lt;catalog&gt;</code>) and a matching closing tag (e.g., <code>&lt;/catalog&gt;</code>) or a self-closing element signature (e.g., <code>&lt;item /&gt;</code>). Elements dictate structural depth and maintain child element collections.</p>
+
+      <h3 class="seo-h3">2. Attribute Nodes (NodeType 2)</h3>
+      <p class="seo-p">Attributes provide inline metadata parameters bound directly to an element node. Though attributes describe elements (such as <code>id="bk101"</code> or <code>currency="USD"</code>), standard XML specifications declare that attributes are not formal child nodes of an element, but rather properties associated with the element node container.</p>
+
+      <h3 class="seo-h3">3. Text Nodes (NodeType 3) & Whitespace Preservations</h3>
+      <p class="seo-p">Text nodes contain literal text data housed between element boundaries. Standard DOM parsers extract character data, entity expansions, and whitespace formatting into text node instances. Empty space between structural tags is frequently tokenized as ignorable whitespace text nodes depending on parser configuration settings.</p>
+
+      <h3 class="seo-h3">4. CDATA Sections (NodeType 4) & Comments (NodeType 8)</h3>
+      <p class="seo-p">Character Data (<code>&lt;![CDATA[ ... ]]&gt;</code>) sections insulate raw blocks of text containing characters like <code>&lt;</code>, <code>&gt;</code>, or <code>&amp;</code> from standard parsing rules, preventing tag execution. Comment nodes (<code>&lt;!-- ... --&gt;</code>) capture informational metadata intended for human inspectors without altering programmatic schemas.</p>
+
+      <h2 class="seo-h2">Architectural Comparison: Tree Visualizers vs Stream Parsers vs XPath Query Engines</h2>
+      <p class="seo-p">Selecting the optimal tool or library for inspecting and processing XML depends on document size, memory budgets, and the need for random node navigation. The table below compares modern processing methodologies:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Processing Paradigm</th>
+              <th>Memory Footprint</th>
+              <th>Navigation Capability</th>
+              <th>Primary Use Case</th>
+              <th>Structural Visualizer Advantage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Tree-Based DOM Parser</b></td>
+              <td>High (Loads full graph into RAM)</td>
+              <td>Full Bidirectional Random Access</td>
+              <td>Interactive Node Visualizers & AST Editors</td>
+              <td>Provides complete structural context, collapsible nodes, and attribute inspection.</td>
+            </tr>
+            <tr>
+              <td><b>SAX Stream Parser</b></td>
+              <td>Very Low (Constant Memory O(1))</td>
+              <td>Forward Read-Only Single Pass</td>
+              <td>Processing Multi-Gigabyte XML Log Files</td>
+              <td>Fast sequential parsing, but lacks spatial node tree navigation.</td>
+            </tr>
+            <tr>
+              <td><b>StAX Pull Parser</b></td>
+              <td>Low (Application Driven Stream)</td>
+              <td>Forward Read-Only Event Pulling</td>
+              <td>High-Performance Server Middleware</td>
+              <td>Efficient programmatic reading, lacks graphical tree hierarchy representations.</td>
+            </tr>
+            <tr>
+              <td><b>XPath Query Evaluator</b></td>
+              <td>Medium to High (Requires DOM Node Index)</td>
+              <td>Targeted Expression Match Filtering</td>
+              <td>Complex Database & Schema Queries</td>
+              <td>Precise pointer retrieval, requires manual query syntax knowledge.</td>
+            </tr>
+            <tr>
+              <td><b>JSON/AST Transpiler</b></td>
+              <td>Medium (Maps XML to Object Graph)</td>
+              <td>Object Key Tree Inspection</td>
+              <td>RESTful Web Service Conversion</td>
+              <td>Simplifies web integration, but may lose CDATA and attribute distinction.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="seo-h2">Handling XML Edge Cases: Namespaces, Malformed Syntax, and Entities</h2>
+      <p class="seo-p">Modern software integration platforms frequently encounter XML variations that break standard rendering scripts if handled incorrectly:</p>
+
+      <h3 class="seo-h3">XML Namespace (xmlns) Scoping</h3>
+      <p class="seo-p">Namespaces prevent element naming collisions when merging multi-vendor schemas. By declaring prefixes (e.g., <code>xmlns:xs="http://www.w3.org/2001/XMLSchema"</code>), nodes bind explicitly to URI identifiers. Our visualizer preserves namespace prefixes while rendering clean, readable node summaries.</p>
+
+      <h3 class="seo-h3">Syntax Error Boundary Detection</h3>
+      <p class="seo-p">XML demands strict syntactic compliance. Missing end tags, unquoted attribute values, unclosed CDATA blocks, or multiple root elements instantly trigger standard browser <code>&lt;parsererror&gt;</code> blocks. The visualizer isolates these errors and exposes exact line indices to simplify debugging.</p>
+
+      <h2 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h2>
+
+      <h3 class="seo-h3">Why does the XML Visualizer highlight a parser error when pasting snippet fragments?</h3>
+      <p class="seo-p">XML requires every compliant document to contain exactly one top-level root element. If you paste multiple standalone elements (e.g., <code>&lt;item&gt;1&lt;/item&gt;&lt;item&gt;2&lt;/item&gt;</code>) without wrapping them in a single parent container tag (e.g., <code>&lt;root&gt;...&lt;/root&gt;</code>), standard DOM parsers flag a structural document formatting error.</p>
+
+      <h3 class="seo-h3">How are XML attribute key-value pairs formatted inside the tree visualizer?
