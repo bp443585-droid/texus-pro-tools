@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Bitwise AND OR XOR Calculator | Online Binary Logic Tool</title>
+  <meta name="description" content="Perform bitwise AND, OR, XOR, NOT, and bitshift operations instantly. Convert between binary, decimal, and hexadecimal formats with our free online calculator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/bitwise-and-or-xor-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Bitwise AND OR XOR Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "DeveloperApplication",
+    "description": "An advanced online utility for executing bitwise logical operations (AND, OR, XOR, NOT, Shift) across binary, decimal, and hexadecimal numeric formats.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
+    
+    .f-textarea-field { width: 100%; height: 110px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* CONTROLS & SELECTORS */
+    .calc-controls-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 24px; }
+    .calc-control-group { display: flex; flex-direction: column; gap: 6px; }
+    .calc-control-group label { font-size: 0.82rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .calc-select, .calc-input-small { width: 100%; padding: 12px 14px; border: 2px solid #e2e8f0; border-radius: 12px; background: #f8fafc; font-family: inherit; font-size: 0.95rem; color: #1e293b; font-weight: 600; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .calc-select:focus, .calc-input-small:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* OUTPUT RESULTS GRID */
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 25px; padding-top: 25px; border-top: 2px solid #f1f5f9; }
+    .result-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+    .result-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; }
+    .result-value { font-family: 'Courier New', Courier, monospace; font-size: 1.15rem; font-weight: 700; color: #0f172a; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .calc-controls-row { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 90px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⚡</span> Bitwise AND OR XOR Calculator</div>
+    
+    <div class="f-card">
+      <div class="calc-controls-row">
+        <div class="calc-control-group">
+          <label for="operationSelect">Logical Operation</label>
+          <select id="operationSelect" class="calc-select" onchange="calculateBitwise()">
+            <option value="AND">AND (&amp;)</option>
+            <option value="OR">OR (|)</option>
+            <option value="XOR">XOR (^)</option>
+            <option value="NOT_A">NOT Operand A (~)</option>
+            <option value="SHL">Shift Left (&lt;&lt;)</option>
+            <option value="SHR">Shift Right (&gt;&gt;)</option>
+          </select>
+        </div>
+
+        <div class="calc-control-group">
+          <label for="baseSelect">Number Format Base</label>
+          <select id="baseSelect" class="calc-select" onchange="calculateBitwise()">
+            <option value="dec">Decimal (Base 10)</option>
+            <option value="hex">Hexadecimal (Base 16)</option>
+            <option value="bin">Binary (Base 2)</option>
+          </select>
+        </div>
+
+        <div class="calc-control-group" id="shiftGroup" style="display: none;">
+          <label for="shiftBits">Shift Amount (Bits)</label>
+          <input type="number" id="shiftBits" class="calc-input-small" value="1" min="0" max="64" oninput="calculateBitwise()">
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="inputA">Operand A <span id="labelABase">(Base 10)</span></label>
+          <textarea id="inputA" class="f-textarea-field mono-font-panel" placeholder="Enter first number..." oninput="calculateBitwise()">170</textarea>
+        </div>
+        
+        <div class="f-panel-box" id="panelBoxB">
+          <label for="inputB">Operand B <span id="labelBBase">(Base 10)</span></label>
+          <textarea id="inputB" class="f-textarea-field mono-font-panel" placeholder="Enter second number..." oninput="calculateBitwise()">85</textarea>
+        </div>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-box">
+          <span class="result-label">Decimal (Base 10)</span>
+          <span id="resDec" class="result-value">0</span>
+        </div>
+        <div class="result-box">
+          <span class="result-label">Hexadecimal (Base 16)</span>
+          <span id="resHex" class="result-value">0x0</span>
+        </div>
+        <div class="result-box">
+          <span class="result-label">Binary (Base 2)</span>
+          <span id="resBin" class="result-value">0</span>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateBitwise()">Calculate Operation</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyBitwiseResult()">📋 Copy Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearBitwiseWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Advanced Binary Pipeline Verified:</span>
+        Computations evaluate 32-bit signed integer logic across Decimal, Hexadecimal, and Binary formats in real-time. Toggle shift operators or unary negation seamlessly.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Low-Level Digital Logic: Bitwise AND, OR, XOR Operations, Masking Fundamentals, and Embedded Systems Architecture</h2>
+      <p class="seo-p">Low-level software development, embedded hardware registers, network packet routing protocols, and cryptography ciphers rely fundamentally on bitwise operations. Unlike standard arithmetic calculations that evaluate numbers as single mathematical quantities, bitwise logic inspects and manipulates individual binary digits (bits) simultaneously. Whether you are setting configuration flags in a microcontroller, optimizing high-performance graphics algorithms, or obfuscating data streams with exclusive-or ciphering, understanding bitwise logic is an essential engineering skill.</p>
+      <p class="seo-p">This professional computing manual provides an exhaustive exploration of bitwise operators—covering AND, OR, XOR, NOT, and shift functions—analyzes their underlying truth tables, examines practical software engineering use cases, and demonstrates how to execute precise binary transformations safely.</p>
+
+      <div class="seo-callout">
+        <strong>The Bitwise Transformation Principle:</strong> Bitwise operators process corresponding bit positions in integer operands independently, executing logic gates directly mirrored in silicon microprocessors without intermediate floating-point overhead.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Logic Gates and Binary Transformations</h3>
+      <p class="seo-p">When raw numerical inputs pass through our high-performance bitwise engine, values convert into 32-bit binary arrays where specific boolean logic gates apply across every column index:</p>
+
+      <h4 class="seo-h3">1. Bitwise AND (&amp;) Operator</h4>
+      <p class="seo-p">The AND operator compares two corresponding bits. If both bits are 1, the resulting bit is 1; otherwise, it yields 0. Software engineers frequently use AND masks to isolate specific bit flags or clear designated register bits without altering neighboring data.</p>
+
+      <h4 class="seo-h3">2. Bitwise OR (|) Operator</h4>
+      <p class="seo-p">The OR operator compares two bits and returns 1 if at least one of the bits is 1. It is heavily utilized in systems programming to set or enable specific feature flags within control registers.</p>
+
+      <h4 class="seo-h3">3. Bitwise XOR (^) Exclusive Disjunction</h4>
+      <p class="seo-p">The XOR operator evaluates two bits, returning 1 if the bits are different (one 0 and one 1) and 0 if they are identical. Because XORing a value twice with the same key restores the original input, it forms the bedrock of lightweight symmetric cryptography and parity error-checking algorithms.</p>
+
+      <h3>The Statutory Reference Matrix: Comprehensive Bitwise Operator Truth Table</h3>
+      <p class="seo-p">Reviewing how inputs combine across standard binary states helps software developers audit low-level routines and verify expected hardware register outputs:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Bit A</th>
+              <th>Bit B</th>
+              <th>AND (&amp;) Result</th>
+              <th>OR (|) Result</th>
+              <th>XOR (^) Result</th>
+              <th>NAND Result</th>
+              <th>NOR Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0</td>
+              <td>0</td>
+              <td><b>0</b></td>
+              <td><b>0</b></td>
+              <td><b>0</b></td>
+              <td><b>1</b></td>
+              <td><b>1</b></td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>1</td>
+              <td><b>0</b></td>
+              <td><b>1</b></td>
+              <td><b>1</b></td>
+              <td><b>1</b></td>
+              <td><b>0</b></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>0</td>
+              <td><b>0</b></td>
+              <td><b>1</b></td>
+              <td><b>1</b></td>
+              <td><b>1</b></td>
+              <td><b>0</b></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>1</td>
+              <td><b>1</b></td>
+              <td><b>1</b></td>
+              <td><b>0</b></td>
+              <td><b>0</b></td>
+              <td><b>0</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the difference between logical operators (&amp;&amp;, ||) and bitwise operators (&amp;, |)?</h3>
+      <p class="seo-p">Logical operators (`&amp;&amp;`, `||`) evaluate entire conditional expressions for truthiness, returning boolean `true` or `false` with short-circuit evaluation. Bitwise operators (`&amp;`, `|`) evaluate all individual bits of integer values simultaneously across numeric data representations, making them crucial for low-level data manipulation.</p>
+
+      <h3>How do bitshift operations multiply and divide numbers efficiently?</h3>
+      <p class="seo-p">Shifting bits to the left (`&lt;&lt;`) by $n$ positions multiplies an integer by $2^n$, while shifting bits to the right (`&gt;&gt;`) divides the integer by $2^n$ (rounding towards negative infinity). These shift instructions execute in a single CPU cycle in many machine architectures, offering massive performance gains in game engines and image processing.</p>
+
+      <h3>Is my numerical data transmitted to external servers during calculation?</h3>
+      <p class="seo-p">No. All bitwise calculations execute entirely within your browser's local JavaScript environment. Your numbers, memory addresses, and register states never leave your device, ensuring total privacy and lightning-fast calculation speeds.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Low-Level Binary Calculations</h3>
+      <p class="seo-p">Mastering bitwise logic enables developers to write ultra-fast, memory-efficient software. Whether you are debugging network headers, configuring microcontroller GPIO pins, or writing high-performance shaders, having a reliable calculator saves time and prevents costly binary offset errors.</p>
+      <p class="seo-p">Our Advanced Bitwise AND OR XOR Calculator automates complex number base conversions and logical evaluations instantly, delivering robust performance across all desktop and mobile devices.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function parseInputNumber(val, base) {
+      val = val.trim();
+      if (!val) return 0;
+      
+      let cleanVal = val;
+      if (base === 'hex') {
+        cleanVal = val.startsWith('0x') || val.startsWith('0X') ? val : '0x' + val;
+        let parsed = parseInt(cleanVal, 16);
+        return isNaN(parsed) ? 0 : parsed;
+      } else if (base === 'bin') {
+        cleanVal = val.startsWith('0b') || val.startsWith('0B') ? val.slice(2) : val;
+        let parsed = parseInt(cleanVal, 2);
+        return isNaN(parsed) ? 0 : parsed;
+      } else {
+        let parsed = parseInt(val, 10);
+        return isNaN(parsed) ? 0 : parsed;
+      }
+    }
+
+    function calculateBitwise() {
+      const op = document.getElementById('operationSelect').value;
+      const base = document.getElementById('baseSelect').value;
+      const shiftGroup = document.getElementById('shiftGroup');
+      const panelBoxB = document.getElementById('panelBoxB');
+      
+      const labelABase = document.getElementById('labelABase');
+      const labelBBase = document.getElementById('labelBBase');
+      
+      const baseText = base === 'dec' ? '(Base 10)' : base === 'hex' ? '(Base 16)' : '(Base 2)';
+      labelABase.textContent = baseText;
+      labelBBase.textContent = baseText;
+
+      if (op === 'NOT_A') {
+        panelBoxB.style.display = 'none';
+        shiftGroup.style.display = 'none';
+      } else if (op === 'SHL' || op === 'SHR') {
+        panelBoxB.style.display = 'none';
+        shiftGroup.style.display = 'flex';
+      } else {
+        panelBoxB.style.display = 'flex';
+        shiftGroup.style.display = 'none';
+      }
+
+      const rawA = document.getElementById('inputA').value;
+      const rawB = document.getElementById('inputB').value;
+      const shiftBits = parseInt(document.getElementById('shiftBits').value, 10) || 0;
+
+      const a = parseInputNumber(rawA, base);
+      const b = parseInputNumber(rawB, base);
+
+      let result = 0;
+
+      switch (op) {
+        case 'AND':
+          result = a & b;
+          break;
+        case 'OR':
+          result = a | b;
+          break;
+        case 'XOR':
+          result = a ^ b;
+          break;
+        case 'NOT_A':
+          result = ~a;
+          break;
+        case 'SHL':
+          result = a << (shiftBits & 31);
+          break;
+        case 'SHR':
+          result = a >> (shiftBits & 31);
+          break;
+      }
+
+      // Ensure 32-bit signed integer representation for consistency
+      result = result | 0;
+      
+      // Unsigned view for binary/hex representation if negative
+      let unsignedResult = result >>> 0;
+
+      document.getElementById('resDec').textContent = result;
+      document.getElementById('resHex').textContent = '0x' + unsignedResult.toString(16).toUpperCase();
+      document.getElementById('resBin').textContent = unsignedResult.toString(2);
+    }
+
+    function copyBitwiseResult() {
+      const decVal = document.getElementById('resDec').textContent;
+      const hexVal = document.getElementById('resHex').textContent;
+      const binVal = document.getElementById('resBin').textContent;
+      
+      const payload = `Decimal: ${decVal}\nHexadecimal: ${hexVal}\nBinary: ${binVal}`;
+      
+      navigator.clipboard.writeText(payload).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        const origText = btn.textContent;
+        btn.textContent = '✅ Copied to Clipboard!';
+        setTimeout(() => { btn.textContent = origText; }, 2000);
+      }).catch(err => {
+        console.error('Copy failed:', err);
+      });
+    }
+
+    function clearBitwiseWorkspace() {
+      document.getElementById('inputA').value = '';
+      document.getElementById('inputB').value = '';
+      document.getElementById('shiftBits').value = '1';
+      calculateBitwise();
+    }
+
+    // Initialize calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateBitwise();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
