@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Multi-line Indentation Formatter | Online Code Indent & Unindent Tool</title>
+  <meta name="description" content="Instantly format, indent, or unindent multi-line code blocks with custom spaces, tabs, and alignment configurations. Free online developer utility." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/multi-line-indentation-formatter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Multi-line Indentation Formatter Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced text formatting utility to precisely adjust, increase, or decrease block indentation across multi-line source strings instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CUSTOM CONTROLS BAR FOR INDENTATION */
+    .f-controls-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; background: #f8fafc; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0; }
+    .f-control-group { display: flex; flex-direction: column; gap: 6px; }
+    .f-control-group label { font-size: 0.8rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-select, .f-input-num { padding: 10px 14px; border-radius: 10px; border: 2px solid #e2e8f0; background: #ffffff; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: border-color 0.2s; }
+    .f-select:focus, .f-input-num:focus { border-color: #2563eb; }
+
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 220px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-size: 1rem; color: #0f172a; background: #f1f5f9; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 160px; font-size: 1rem; }
+      .f-controls-bar { grid-template-columns: 1fr; padding: 15px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📏</span> Multi-line Indentation Formatter</div>
+    
+    <div class="f-card">
+      <!-- CONFIGURATION OPTIONS BAR -->
+      <div class="f-controls-bar">
+        <div class="f-control-group">
+          <label for="actionType">Operation Mode</label>
+          <select id="actionType" class="f-select" onchange="executeIndentationPipeline()">
+            <option value="indent">Indent (Add Spaces/Tabs)</option>
+            <option value="unindent">Unindent (Remove Spaces/Tabs)</option>
+            <option value="strip">Strip All Leading Indentation</option>
+          </select>
+        </div>
+        
+        <div class="f-control-group">
+          <label for="indentChar">Indentation Character</label>
+          <select id="indentChar" class="f-select" onchange="executeIndentationPipeline()">
+            <option value="space">Spaces ( )</option>
+            <option value="tab">Tabs (\t)</option>
+          </select>
+        </div>
+
+        <div class="f-control-group">
+          <label for="indentSize">Size / Multiplier</label>
+          <input type="number" id="indentSize" class="f-input-num" value="4" min="1" max="16" oninput="executeIndentationPipeline()">
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="rawInputConsole">Source Code / Text Input</label>
+          <textarea id="rawInputConsole" class="f-textarea-field" placeholder="Paste or type multi-line code blocks here..." oninput="executeIndentationPipeline()"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="formattedOutputConsole">Formatted Indentation Output</label>
+          <textarea id="formattedOutputConsole" class="f-textarea-field mono-font-panel" placeholder="Formatted output will appear here instantly..." readonly></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="executeIndentationPipeline()">Format Indentation</button>
+        <button class="f-btn f-btn-copy" id="copyActiveBtn" onclick="copyResultToClipboard()">📋 Copy Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Live Client-Side Processing Active:</span>
+        All formatting adjustments execute instantly inside your browser. Blank lines are preserved automatically to prevent accidental structure loss in your code blocks.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Code Readability: The Complete Guide to Multi-line Indentation Formatter Utilities and Whitespace Standards</h2>
+      <p class="seo-p">Clean, consistent indentation is the cornerstone of professional software craftsmanship. Whether you are debugging complex JavaScript applications, structuring nested JSON objects, writing Python scripts, or authoring Markdown documentation, maintaining uniform whitespace across multi-line blocks directly impacts code maintainability and team collaboration. Inconsistent tabs and mixed spaces often trigger syntax errors, trigger compiler warnings, or create messy git diffs during code reviews.</p>
+      <p class="seo-p">This extensive guide explores the mechanics of programmatic text indentation, examines the historical debate between tabs and spaces, reviews whitespace parsing behaviors across programming languages, and outlines best practices for managing code blocks efficiently using our client-side Multi-line Indentation Formatter.</p>
+
+      <div class="seo-callout">
+        <strong>The Whitespace Principle:</strong> Consistent block indentation acts as a visual hierarchy parser for the human brain, immediately revealing scopes, conditional loops, and nested object boundaries without requiring syntax highlighters.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Algorithmic Line-by-Line Indentation Processing</h3>
+      <p class="seo-p">When raw code fragments pass through a high-performance formatting pipeline, the application evaluates each line independently using robust string-manipulation algorithms:</p>
+
+      <h4 class="seo-h3">1. Line Splitting &amp; Preservation</h4>
+      <p class="seo-p">The engine splits input payloads by newline characters (`\n`), retaining empty lines to ensure paragraph breaks and spacing structures remain undisturbed throughout the transformation.</p>
+
+      <h4 class="seo-h3">2. Dynamic Indent Calculation &amp; Stripping</h4>
+      <p class="seo-p">For unindenting or restyling operations, the formatter calculates leading whitespace sequences (spaces and tab characters) on non-empty lines, subtracting the specified depth while preserving inner alignment spacing.</p>
+
+      <h4 class="seo-h3">3. Character Substitution &amp; Output Assembly</h4>
+      <p class="seo-p">Depending on user configurations, leading spaces are converted into uniform tab characters or padded with precise space counts before joining the processed line array back into a cohesive code block.</p>
+
+      <h3>The Statutory Reference Matrix: Whitespace Configuration &amp; Language Standards</h3>
+      <p class="seo-p">Different programming ecosystems enforce strict style guides regarding indentation depth, character types, and formatting conventions:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Language Ecosystem</th>
+              <th>Recommended Standard</th>
+              <th>Standard Depth</th>
+              <th>Primary Rationale</th>
+              <th>Common Tooling</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Python (PEP 8)</td>
+              <td>Spaces Only</td>
+              <td>4 Spaces</td>
+              <td>Prevents tab-size display discrepancies across different terminal editors.</td>
+              <td>Black, Flake8, Autopep8</td>
+            </tr>
+            <tr>
+              <td>JavaScript / TypeScript</td>
+              <td>Spaces or Tabs</td>
+              <td>2 or 4 Spaces</td>
+              <td>Enforces clean nesting structures inside modern frontend frameworks.</td>
+              <td>Prettier, ESLint</td>
+            </tr>
+            <tr>
+              <td>Go Language</td>
+              <td>Tabs Only</td>
+              <td>1 Tab (gofmt)</td>
+              <td>Eliminates stylistic debates; enforces uniform repository aesthetics.</td>
+              <td>gofmt</td>
+            </tr>
+            <tr>
+              <td>YAML Configuration</td>
+              <td>Spaces Only</td>
+              <td>2 Spaces</td>
+              <td>Mandatory requirement; tabs are strictly prohibited in YAML syntax.</td>
+              <td>YAML Linter</td>
+            </tr>
+            <tr>
+              <td>HTML / CSS / XML</td>
+              <td>Spaces</td>
+              <td>2 or 4 Spaces</td>
+              <td>Improves DOM hierarchy visibility across nested template tags.</td>
+              <td>Prettier, W3C Validator</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What happens to empty lines during multi-line indentation?</h3>
+      <p class="seo-p">Our Multi-line Indentation Formatter automatically detects empty or whitespace-only lines and skips adding unnecessary trailing spaces to them, keeping your file clean and preventing unnecessary git diff changes.</p>
+
+      <h3>Is it better to use tabs or spaces for code formatting?</h3>
+      <p class="seo-p">The choice depends on your team and language guidelines. Accessibility advocates often prefer tabs because developers can configure their own display width, whereas Python and YAML strictly require spaces for structural parsing.</p>
+
+      <h3>How does local device processing protect my source code privacy?</h3>
+      <p class="seo-p">Texus Pro Tools values your data privacy. All text formatting operations execute entirely within your web browser's local JavaScript engine. Your source code, confidential scripts, and proprietary configurations never leave your device.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Code Formatting</h3>
+      <p class="seo-p">To maintain pristine codebases, standardize your project's indentation rules early, integrate automated linters into your build pipelines, and use quick online utilities like our Multi-line Indentation Formatter when cleaning up snippets for documentation, email sharing, or code reviews.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function executeIndentationPipeline() {
+      const action = document.getElementById('actionType').value;
+      const charType = document.getElementById('indentChar').value;
+      const size = parseInt(document.getElementById('indentSize').value, 10) || 4;
+      const input = document.getElementById('rawInputConsole').value;
+      const outputConsole = document.getElementById('formattedOutputConsole');
+
+      if (!input) {
+        outputConsole.value = '';
+        return;
+      }
+
+      const indentString = charType === 'tab' ? '\t' : ' '.repeat(Math.max(1, size));
+      const lines = input.split(/\r?\n/);
+      let processedLines = [];
+
+      if (action === 'indent') {
+        processedLines = lines.map(line => {
+          if (line.trim() === '') return '';
+          return indentString + line;
+        });
+      } else if (action === 'unindent') {
+        processedLines = lines.map(line => {
+          if (line.trim() === '') return '';
+          // Remove up to 'size' spaces or 1 tab from the beginning
+          if (charType === 'tab') {
+            return line.startsWith('\t') ? line.substring(1) : line.replace(/^ {1,\d}/, '');
+          } else {
+            const regex = new RegExp(`^ {1,${size}}`);
+            return line.replace(regex, '');
+          }
+        });
+      } else if (action === 'strip') {
+        processedLines = lines.map(line => line.trimStart());
+      }
+
+      outputConsole.value = processedLines.join('\n');
+    }
+
+    function copyResultToClipboard() {
+      const outputConsole = document.getElementById('formattedOutputConsole');
+      const copyBtn = document.getElementById('copyActiveBtn');
+
+      if (!outputConsole.value) return;
+
+      navigator.clipboard.writeText(outputConsole.value).then(() => {
+        const originalText = copyBtn.innerText;
+        copyBtn.innerText = '✅ Copied Successfully!';
+        copyBtn.style.background = '#dcfce7';
+        copyBtn.style.color = '#166534';
+        copyBtn.style.borderColor = '#bbf7d0';
+
+        setTimeout(() => {
+          copyBtn.innerText = originalText;
+          copyBtn.style.background = '';
+          copyBtn.style.color = '';
+          copyBtn.style.borderColor = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text:', err);
+      });
+    }
+
+    function clearWorkspace() {
+      document.getElementById
