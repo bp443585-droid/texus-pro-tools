@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>MAC Address Vendor Finder Simulator | Free OUI Lookup Tool</title>
+  <meta name="description" content="Identify network hardware manufacturers instantly with our MAC Address Vendor Finder Simulator. Decode OUI prefixes, validate formats, and simulate network interfaces." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/mac-address-vendor-finder-simulator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "MAC Address Vendor Finder Simulator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "A high-performance IEEE 802 MAC address parser, OUI vendor identification simulator, and frame bit inspector.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 200px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 600; font-size: 0.95rem; color: #0f172a; background: #f1f5f9; white-space: pre-wrap; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-sim { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+    .f-btn-sim:hover { background: #dcfce7; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* SIMULATOR QUICK PRESETS BADGES */
+    .preset-container { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; align-items: center; }
+    .preset-label { font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+    .preset-chip { font-size: 0.8rem; font-weight: 600; padding: 6px 12px; background: #f1f5f9; color: #334155; border-radius: 20px; border: 1px solid #cbd5e1; cursor: pointer; transition: all 0.15s ease; }
+    .preset-chip:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    /* DETAIL DATA CARD TILES */
+    .telemetry-deck { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 20px; }
+    .telemetry-tile { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; text-align: left; }
+    .telemetry-title { font-size: 0.72rem; text-transform: uppercase; font-weight: 800; color: #64748b; margin-bottom: 4px; letter-spacing: 0.5px; }
+    .telemetry-val { font-size: 1.05rem; font-weight: 700; color: #0f172a; word-break: break-all; font-family: 'Courier New', Courier, monospace; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 160px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+      .telemetry-deck { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📡</span> MAC Address Vendor Finder Simulator</div>
+    
+    <div class="f-card">
+      <div class="preset-container">
+        <span class="preset-label">Test Hardware Presets:</span>
+        <button class="preset-chip" type="button" onclick="loadSamplePreset('apple')">Apple iPhone</button>
+        <button class="preset-chip" type="button" onclick="loadSamplePreset('cisco')">Cisco Catalyst</button>
+        <button class="preset-chip" type="button" onclick="loadSamplePreset('intel')">Intel Wi-Fi NIC</button>
+        <button class="preset-chip" type="button" onclick="loadSamplePreset('rpi')">Raspberry Pi 4</button>
+        <button class="preset-chip" type="button" onclick="loadSamplePreset('espressif')">ESP32 IoT Node</button>
+        <button class="preset-chip" type="button" onclick="loadSamplePreset('private')">Randomized Private MAC</button>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="macInputConsole">MAC Address or OUI Prefix</label>
+          <textarea id="macInputConsole" class="f-textarea-field" placeholder="Enter MAC address (e.g., 00:1A:2B:3C:4D:5E, 70-85-C2-..., or 001a.2b3c.4d5e)..." oninput="processMacLookup()"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="vendorOutputConsole">OUI Diagnostic &amp; Architecture Log</label>
+          <textarea id="vendorOutputConsole" class="f-textarea-field mono-font-panel" readonly placeholder="Awaiting MAC address or OUI telemetry data..."></textarea>
+        </div>
+      </div>
+
+      <div class="telemetry-deck" id="telemetryDeck">
+        <div class="telemetry-tile">
+          <div class="telemetry-title">Manufacturer / Vendor</div>
+          <div class="telemetry-val" id="dispVendor" style="color:#2563eb;">--</div>
+        </div>
+        <div class="telemetry-tile">
+          <div class="telemetry-title">OUI Prefix (24-bit)</div>
+          <div class="telemetry-val" id="dispOui">--:--:--</div>
+        </div>
+        <div class="telemetry-tile">
+          <div class="telemetry-title">Transmission Mode</div>
+          <div class="telemetry-val" id="dispCast">--</div>
+        </div>
+        <div class="telemetry-tile">
+          <div class="telemetry-title">Administration Scope</div>
+          <div class="telemetry-val" id="dispScope">--</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="processMacLookup()">Analyze MAC</button>
+        <button class="f-btn f-btn-sim" onclick="simulateRandomMac()">🎲 Generate Hardware MAC</button>
+        <button class="f-btn f-btn-copy" id="copyMacReportBtn" onclick="copyMacDiagnostics()">📋 Copy Diagnostic Telemetry</button>
+        <button class="f-btn f-btn-clear" onclick="clearMacWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Hardware Frame Inspector &amp; OUI Registry Engine Active:</span>
+        Paste standard colon formats, Windows hyphenated strings, Cisco dotted quad hex notations, or continuous 12-character hex payloads. The local IEEE 802 inspection pipeline evaluates vendor identities, frame bit flags (I/G and U/L), and device-specific extension octets without sending packets across external networks.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h1 class="seo-title">The Engineering Foundations of MAC Addressing: IEEE 802 Structure, OUI Allocations, Frame Bit Flagging, and Network Discovery Forensics</h1>
+      <p class="seo-p">Within Layer 2 of the Open Systems Interconnection (OSI) reference model, every network interface controller (NIC) communicates using a globally distinctive hardware identifier known as a Media Access Control (MAC) address. Also designated as the physical hardware address or Ethernet hardware address, this 48-bit (6-octet) binary structure governs how Ethernet, Wi-Fi (IEEE 802.11), and Bluetooth transceivers identify themselves across local local-area network collision and broadcast domains. Network engineers, cybersecurity forensic auditors, and IT systems administrators routinely decode these signatures to map topologies, isolate rogue hardware, and configure Layer 2 firewall rules.</p>
+      
+      <p class="seo-p">The <strong>MAC Address Vendor Finder Simulator</strong> provides a dedicated client-side platform to deconstruct, validate, and simulate network interface hardware signatures. By decomposing continuous hex streams and standard colon-delimited notation into their authoritative IEEE Registration Authority assignments, the engine maps physical frames against designated manufacturer registries and inspects bit-level transmission parameters in real time.</p>
+
+      <div class="seo-callout">
+        <strong>The 24-Bit OUI Boundary:</strong> A standard IEEE 802 MAC-48 address is split symmetrically into two operational halves: the initial 24 bits (3 octets) constitute the Organizationally Unique Identifier (OUI) assigned to registered manufacturers by the IEEE Standards Association, while the remaining 24 bits represent the Network Interface Controller (NIC) extension identifier assigned by the manufacturer to individual physical transceivers.
+      </div>
+
+      <h2 class="seo-h2">Architectural Anatomy: The 48-Bit Media Access Control Frame</h2>
+      <p class="seo-p">Every standard Ethernet frame encapsulates 48 bits of physical destination and source addressing. In human-readable formats, these 48 bits are represented as 12 hexadecimal characters separated into pairs (e.g., <code>00:1A:2B:3C:4D:5E</code>). However, deep beneath formatting styles, the individual bits of the very first octet carry specialized structural instructions governing frame switching behavior:</p>
+
+      <h3 class="seo-h3">1. The Individual / Group (I/G) Bit (Bit 0 of First Octet)</h3>
+      <p class="seo-p">The least significant bit (LSB) of the first transmitted byte dictates whether a frame targets an isolated network recipient or a multi-device cluster. When Bit 0 is set to <strong>0</strong>, the address represents an <em>Individual</em> recipient (Unicast communication). When Bit 0 is set to <strong>1</strong>, the frame denotes a <em>Group</em> address (Multicast or Ethernet Broadcast such as <code>FF:FF:FF:FF:FF:FF</code>). Network switches utilize this bit to determine whether to consult their Content Addressable Memory (CAM) lookup table or flood the frame out of all ports within a VLAN.</p>
+
+      <h3 class="seo-h3">2. The Universal / Local (U/L) Bit (Bit 1 of First Octet)</h3>
+      <p class="seo-p">The second least significant bit of the initial byte defines the organizational scope of the physical address. If Bit 1 is <strong>0</strong>, the address is <em>Universally Administered</em> (assigned directly by the hardware manufacturer under an IEEE-purchased OUI block). If Bit 1 is toggled to <strong>1</strong>, the address is designated as <em>Locally Administered</em> (LAA). Locally administered addresses bypass global IEEE uniqueness constraints and are commonly utilized in virtual machines (hypervisors like VMware, Hyper-V, and KVM), software-defined networks (SDN), or randomized Wi-Fi privacy schemes on contemporary mobile platforms.</p>
+
+      <h3 class="seo-h3">3. Modern Randomized MAC Addresses for Mobile Privacy</h3>
+      <p class="seo-p">Modern operating systems (including Apple iOS 14+, Google Android 10+, and Windows 11) protect user privacy during Wi-Fi network probing by spoofing MAC addresses. Rather than broadcasting the physical hardware burnt-in address (BIA), client devices generate pseudorandom addresses with the U/L bit actively enabled and the I/G bit set to Unicast. Because of this mathematical rule, private randomized addresses almost invariably present a second hexadecimal character matching <strong>2, 6, A, or E</strong> (such as <code>x2:xx:xx:...</code> or <code>xE:xx:xx:...</code>). When network diagnostic tools encounter these nibbles, the physical hardware vendor cannot be derived from global OUI lookup registries.</p>
+
+      <h2 class="seo-h2">Registry Categories: IEEE Standards Assignment Schemes</h2>
+      <p class="seo-p">The IEEE Registration Authority offers three distinct tiers of MAC Address Blocks tailored to vendor manufacturing capacities, preventing premature exhaustion of the global 48-bit address space:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Registry Tier</th>
+              <th>Prefix Length</th>
+              <th>Available Host Addresses</th>
+              <th>Target Hardware Deployments</th>
+              <th>Assignment Designation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>MA-L (Large)</strong></td>
+              <td>24 Bits (3 Octets)</td>
+              <td>16,777,216 addresses (2<sup>24</sup>)</td>
+              <td>Enterprise networking vendors, PC OEMs, smartphone titans</td>
+              <td>Traditional Standard OUI block</td>
+            </tr>
+            <tr>
+              <td><strong>MA-M (Medium)</strong></td>
+              <td>28 Bits (3.5 Octets)</td>
+              <td>1,048,576 addresses (2<sup>20</sup>)</td>
+              <td>Mid-sized IoT hardware vendors, specialized industrial automation</td>
+              <td>Shared 24-bit OUI with nibble split</td>
+            </tr>
+            <tr>
+              <td><strong>MA-S (Small)</strong></td>
+              <td>36 Bits (4.5 Octets)</td>
+              <td>4,096 addresses (2<sup>12</sup>)</td>
+              <td>Boutique laboratory sensors, embedded nodes, prototype controllers</td>
+              <td>Formerly known as IEEE OUI-36</td>
+            </tr>
+            <tr>
+              <td><strong>CID (Company ID)</strong></td>
+              <td>24 Bits (Prefix Only)</td>
+              <td>N/A (Non-EUI-48 use)</td>
+              <td>Proprietary protocol identifiers and field bus applications</td>
+              <td>Non-device specific identifier</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="seo-h2">Syntactical Notations Across Contemporary Operating Systems</h2>
+      <p class="seo-p">System engineers encounter physical hardware addresses across disparate software ecosystems, each adopting distinctive string formatting conventions. The vendor finder parser sanitizes all incoming strings by removing extraneous delimiters before performing prefix queries:</p>
+      
+      <ul class="seo-list">
+        <li><strong>IEEE / UNIX / Linux Standard (Colon-Delimited):</strong> Formatted as six two-digit hexadecimal octets joined by colons (e.g., <code>08:00:27:12:34:56</code>). Utilized across Linux terminal tools (<code>ip link</code>, <code>ifconfig</code>), macOS, and BSD network stacks.</li>
+        <li><strong>Microsoft Windows Format (Hyphen-Delimited):</strong> Expressed via hyphens (e.g., <code>08-00-27-12-34-56</code>), observed within the Command Prompt using <code>getmac /v</code> or <code>ipconfig /all</code>.</li>
+        <li><strong>Cisco Systems Tri-Dot Format (Dotted Quad):</strong> Represented as three four-digit hexadecimal clusters separated by periods (e.g., <code>0800.2712.3456</code>). Common across Cisco IOS, Arista EOS, and Junos switches.</li>
+        <li><strong>Continuous Raw Hexadecimal (Delimiter-Free):</strong> A contiguous 12-character hex stream (e.g., <code>080027123456</code>), frequently utilized in asset inventory databases and RADIUS access accounting logs.</li>
+      </ul>
+
+      <h2 class="seo-h2">Frequently Asked Questions (FAQ)</h2>
+
+      <h3 class="seo-h3">Why does my router display "Unknown Vendor" or "Locally Administered" for my phone?</h3>
+      <p class="seo-p">Smartphones utilize MAC randomization to prevent commercial Wi-Fi hotspots and retail tracking beacons from tracing device movements. In this mode, the operating system assigns an ephemeral MAC address with the U/L bit enabled. Because this temporary address was not issued by the IEEE Registration Authority, it contains no valid OUI matching a commercial manufacturer like Apple or Samsung.</p>
+
+      <h3 class="seo-h3">Can two network adapters safely share the same MAC address?</h3>
+      <p class="seo-p">Within the same Layer 2 broadcast domain (VLAN or physical switch), duplicate MAC addresses trigger MAC flap errors, causing switch CAM tables to constantly overwrite port mappings. This leads to dropped frames, severe packet collisions, and intermittent connectivity. However, if two identical MAC addresses reside in geographically isolated subnets routed purely across Layer 3 IP boundaries, no collision occurs because Ethernet frames are rewritten by each router hop.</p>
+
+      <h3 class="seo-h3">How does an OUI lookup differ from an IP Whois query?</h3>
+      <p class="seo-p">An IP Whois query investigates Layer 3 network blocks registered with regional internet registries (such as ARIN, RIPE NCC, or APNIC) to pinpoint an Internet Service Provider (ISP) or autonomous system. Conversely, an OUI query examines Layer 2 hardware identifiers to identify the physical factory manufacturer of the network transceiver, operating independent of IP routing or geographic geolocation.</p>
+
+      <h3 class="seo-h3">Does this simulator transmit my hardware addresses to a remote server?</h3>
+      <p class="seo-p">No. All address normalization, binary bit inspection, and OUI lookups execute entirely inside your local web browser using client-side JavaScript. Your sensitive device MAC addresses, router BSSIDs, and network logs remain strictly within your device's private sandbox memory.</p>
+
+      <h2 class="seo-h2">Summary: Strategic Best Practices for Hardware Inventory Auditing</h2>
+      <p class="seo-p">Verifying network interface origins constitutes a critical baseline in physical asset tracking, zero-trust network access (ZTNA), and dynamic 802.1X port security. By checking MAC addresses against IEEE registry standards, system engineers can swiftly discriminate between legitimate corporate endpoints, virtual hypervisors, and unauthorized rogue access nodes across the enterprise perimeter.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // Built-in high-performance OUI lookup dictionary representing major global vendors
+    const OUI_DATABASE = {
+      "00000C": "Cisco Systems, Inc.",
+      "000142": "Cisco Systems, Inc.",
+      "0001C7": "Cisco Systems, Inc.",
+      "00049F": "Freescale Semiconductor",
+      "000C29": "VMware, Inc. (Virtual NIC)",
+      "005056": "VMware, Inc. (Virtual NIC)",
+      "00155D": "Microsoft Corporation (Hyper-V)",
+      "001A11": "Google, Inc.",
+      "001A2B": "Ayecom Technology Co., Ltd.",
+      "001B63": "Apple, Inc.",
+      "001C42": "Parallels, Inc. (Virtualization)",
+      "002312": "Apple, Inc.",
+      "002590": "Super Micro Computer, Inc.",
+      "002608": "Apple, Inc.",
+      "00E04C": "Realtek Semiconductor Corp.",
+      "04D3CF": "Apple, Inc.",
+      "080027": "Oracle VirtualBox",
+      "106530": "Apple, Inc.",
+      "186590": "Apple, Inc.",
+      "24F5AA": "Espressif Systems (Shanghai) Co., Ltd.",
+      "28CFE9": "Apple, Inc.",
+      "30D042": "Espressif Systems (Shanghai) Co., Ltd.",
+      "340286": "Intel Corporate",
+      "3C5AB4": "Google, Inc.",
+      "44650D": "Amazon Technologies Inc.",
+      "482AE3": "Apple, Inc.",
+      "485D60": "AzureWave Technology Inc.",
+      "50ED3C": "TP-Link Corporation Limited",
+      "525400": "QEMU / KVM Virtual NIC",
+      "54271E": "Intel Corporate",
+      "54724F": "Apple, Inc.",
+      "6045BD": "Samsung Electronics Co., Ltd.",
+      "641666": "Apple, Inc.",
+      "68DBCA": "Apple, Inc.",
+      "7085C2": "Apple, Inc.",
+      "74D435": "Giga-Byte Technology Co., Ltd.",
+      "7828CA": "Huawei Technologies Co., Ltd.",
+      "8086F2": "Intel Corporate",
+      "842B2B": "Dell Inc.",
+      "88665A": "Apple, Inc.",
+      "90B686": "Xiaomi Communications Co., Ltd.",
+      "A4C361": "Apple, Inc.",
+      "A86DAA": "Ubiquiti Networks, Inc.",
+      "AC87A3": "Apple, Inc.",
+      "B42E99": "Hewlett Packard",
+      "B827EB": "Raspberry Pi Foundation",
+      "C4AD34": "Apple, Inc.",
+      "D83ADD": "Apple, Inc.",
