@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Monitor Viewing Distance Calculator | Optimal Screen Distance Tool</title>
+  <meta name="description" content="Calculate the ideal monitor viewing distance based on screen size, resolution, and aspect ratio. Optimize ergonomics, visual acuity, and field of view." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/monitor-viewing-distance-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Monitor Viewing Distance Calculator",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced ergonomic display calculator that computes visual acuity limits, SMPTE guidelines, and THX field-of-view viewing distances for computer monitors.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; height: 48px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* PRESETS & UNIT SWITCHER STRIP */
+    .f-preset-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+    .f-preset-chip { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 12px; font-size: 0.8rem; font-weight: 600; color: #334155; cursor: pointer; transition: all 0.15s ease; }
+    .f-preset-chip:hover { background: #e2e8f0; color: #0f172a; }
+    .f-preset-chip.active { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    /* CALCULATED METRICS CARDS */
+    .f-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+    .f-result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .f-result-card.highlight { background: #eff6ff; border-color: #bfdbfe; }
+    .f-result-label { font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .f-result-value { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+    .f-result-card.highlight .f-result-value { color: #2563eb; }
+    .f-result-sub { font-size: 0.82rem; color: #64748b; line-height: 1.3; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 24px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* SPECS DETAIL SUMMARY TABLE */
+    .f-specs-box { margin-top: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; }
+    .f-specs-row { display: flex; justify-content: space-between; font-size: 0.9rem; color: #475569; padding: 6px 0; border-bottom: 1px dashed #e2e8f0; }
+    .f-specs-row:last-child { border-bottom: none; }
+    .f-specs-val { font-weight: 700; color: #0f172a; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .f-results-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🖥️</span> Monitor Viewing Distance Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="screenDiagonal">Screen Size (Diagonal Inches)</label>
+          <input type="number" id="screenDiagonal" class="f-input-field" value="27" min="10" max="120" step="0.5" oninput="calculateDistance()">
+          
+          <label style="margin-top: 10px;">Quick Size Presets</label>
+          <div class="f-preset-row">
+            <button type="button" class="f-preset-chip" onclick="setPresetSize(24)">24"</button>
+            <button type="button" class="f-preset-chip active" id="chip27" onclick="setPresetSize(27)">27"</button>
+            <button type="button" class="f-preset-chip" onclick="setPresetSize(32)">32"</button>
+            <button type="button" class="f-preset-chip" onclick="setPresetSize(34)">34" UW</button>
+            <button type="button" class="f-preset-chip" onclick="setPresetSize(49)">49" SUW</button>
+          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="displayResolution">Native Resolution</label>
+          <select id="displayResolution" class="f-select-field" onchange="handleResolutionChange()">
+            <option value="1920x1080">1080p Full HD (1920 × 1080)</option>
+            <option value="2560x1440" selected>1440p QHD / 2K (2560 × 1440)</option>
+            <option value="3440x1440">UWQHD (3440 × 1440)</option>
+            <option value="3840x2160">4K UHD (3840 × 2160)</option>
+            <option value="5120x1440">DQHD Dual 1440p (5120 × 1440)</option>
+            <option value="7680x4320">8K UHD (7680 × 4320)</option>
+            <option value="custom">Custom Resolution...</option>
+          </select>
+
+          <div id="customResBox" style="display: none; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px;">
+            <input type="number" id="customWidth" class="f-input-field" placeholder="Width (px)" value="2560" oninput="calculateDistance()">
+            <input type="number" id="customHeight" class="f-input-field" placeholder="Height (px)" value="1440" oninput="calculateDistance()">
+          </div>
+
+          <label for="aspectRatio" style="margin-top: 10px;">Aspect Ratio</label>
+          <select id="aspectRatio" class="f-select-field" onchange="calculateDistance()">
+            <option value="16:9" selected>16:9 (Standard Widescreen)</option>
+            <option value="16:10">16:10 (Productivity Widescreen)</option>
+            <option value="21:9">21:9 (Ultrawide)</option>
+            <option value="32:9">32:9 (Super Ultrawide)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 10px; margin-bottom: 20px;">
+        <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase;">Distance Unit Output:</label>
+        <div class="f-preset-row" style="margin-top: 0;">
+          <button type="button" class="f-preset-chip active" id="unitInches" onclick="setUnit('inches')">Inches (in)</button>
+          <button type="button" class="f-preset-chip" id="unitCm" onclick="setUnit('cm')">Centimeters (cm)</button>
+          <button type="button" class="f-preset-chip" id="unitFeet" onclick="setUnit('feet')">Feet & Inches</button>
+        </div>
+      </div>
+
+      <!-- MAIN RESULTS DISPLAY GRID -->
+      <div class="f-results-grid">
+        <div class="f-result-card highlight">
+          <div class="f-result-label">Recommended Ergonomic Range</div>
+          <div class="f-result-value" id="valRecommended">2.2 - 3.4 ft</div>
+          <div class="f-result-sub" id="subRecommended">Optimal balance between eye strain and field of view</div>
+        </div>
+
+        <div class="f-result-card">
+          <div class="f-result-label">Visual Acuity Limit (20/20)</div>
+          <div class="f-result-value" id="valAcuity">2.7 ft</div>
+          <div class="f-result-sub" id="subAcuity">Distance where individual pixels blend together seamlessly</div>
+        </div>
+
+        <div class="f-result-card">
+          <div class="f-result-label">Cinema / Gaming FOV (40°)</div>
+          <div class="f-result-value" id="valTHX">2.7 ft</div>
+          <div class="f-result-sub" id="subTHX">THX maximum recommended distance for full immersion</div>
+        </div>
+      </div>
+
+      <!-- TECHNICAL SPECS MATRIX -->
+      <div class="f-specs-box">
+        <div class="f-specs-row">
+          <span>Pixel Density (PPI):</span>
+          <span class="f-specs-val" id="specPPI">108.79 PPI</span>
+        </div>
+        <div class="f-specs-row">
+          <span>Physical Screen Dimensions (W × H):</span>
+          <span class="f-specs-val" id="specDim">23.53" × 13.24" (59.8 cm × 33.6 cm)</span>
+        </div>
+        <div class="f-specs-row">
+          <span>SMPTE Work Standard (30° Field of View):</span>
+          <span class="f-specs-val" id="specSMPTE">3.6 ft (111.8 cm)</span>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateDistance()">Recalculate Bounds</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copySetupSummary()">📋 Copy Specs Summary</button>
+        <button class="f-btn f-btn-clear" onclick="resetCalculator()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Dynamic Visual Acuity Model:</span>
+        Calculations integrate angular eye resolution thresholds (1 arcminute = 1/60°) along with SMPTE and THX visual field standards to prevent ocular fatigue and cervical spine strain.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Physics of Display Ergonomics: Visual Acuity, Field of View (FOV), and Optimal Viewing Distances for Computer Monitors</h2>
+      <p class="seo-p">Configuring a modern desktop setup—whether for software development, professional graphic editing, intense competitive gaming, or financial modeling—requires precise positioning relative to your display monitor. Sitting too close to a monitor forces continuous eye muscle micro-adjustments, leading to eye strain and headaches. Conversely, sitting too far away reduces visual clarity, hides fine typography, and prompts improper forward head posture (often termed "tech neck").</p>
+      <p class="seo-p">This engineering manual examines the optical physics of human visual acuity, explores standardized cinema and workstation Field of View (FOV) guidelines established by SMPTE and THX, and provides an authoritative framework for setting up ergonomic desktop display distances.</p>
+
+      <div class="seo-callout">
+        <strong>The 1 Arcminute Rule of Visual Acuity:</strong> Human vision with 20/20 acuity can resolve details down to approximately 1 arcminute (1/60th of a degree) of angular separation. The <b>Visual Acuity Distance</b> represents the precise boundary beyond which individual pixels on a monitor become imperceptible, producing a totally smooth, continuous image array.
+      </div>
+
+      <h3 class="seo-h2">Core Scientific Principles Governing Display Viewing Distance</h3>
+      <p class="seo-p">Calculating the mathematically ideal distance to position your computer monitor relies on three distinct physiological and optical calculations:</p>
+
+      <h4 class="seo-h3">1. Visual Acuity Limit (Pixel Density & Angular Resolution)</h4>
+      <p class="seo-p">Pixel density is expressed in Pixels Per Inch (PPI). When a screen's pixel density is low (such as a 27-inch 1080p monitor at ~81 PPI), you must sit further away to prevent seeing individual pixel structures and screen-door artifacts. For high-density displays (such as a 27-inch 4K monitor at ~163 PPI), you can sit significantly closer without seeing pixel grids, allowing your eyes to capture sharper details effortlessly.</p>
+
+      <h4 class="seo-h3">2. Field of View (FOV) Standards (SMPTE vs. THX)</h4>
+      <p class="seo-p">Your peripheral vision and comfortable visual field dictate how much of the screen you can comfortably consume without constantly panning your head side-to-side:</p>
+      <ul class="seo-list">
+        <li><b>SMPTE Standard (30° FOV):</b> Recommended by the Society of Motion Picture and Television Engineers for general productivity, web navigation, and document processing. It ensures the entire monitor fits comfortably within your primary vision cone.</li>
+        <li><b>THX Standard (36° to 40° FOV):</b> Designed for immersive media, video editing, and gaming. A 40° field of view fills more of your peripheral vision, creating an engrossing visual environment without causing disorientation.</li>
+      </ul>
+
+      <h4 class="seo-h3">3. Occupational Ergonomics & Cervical Spine Strain</h4>
+      <p class="seo-p">Ergonomic standards established by OSHA and human factors engineering groups recommend positioning your display at approximately arm's length (between 20 to 30 inches / 50 to 75 cm) as a baseline, with the top line of screen text positioned at or slightly below horizontal eye level.</p>
+
+      <h3 class="seo-h2">Master Reference Table: Monitor Viewing Distance Matrix</h3>
+      <p class="seo-p">The following comparison matrix breaks down standard display sizes, native resolutions, pixel densities, and calculated viewing distance ranges for desktop environments:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Screen Size & Form Factor</th>
+              <th>Native Resolution</th>
+              <th>Pixel Density (PPI)</th>
+              <th>Visual Acuity Distance</th>
+              <th>SMPTE (30° FOV) Distance</th>
+              <th>THX (40° FOV) Distance</th>
+              <th>Recommended Desk Setup Range</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>24-Inch 16:9</b></td>
+              <td>1920 × 1080 (FHD)</td>
+              <td>91.79 PPI</td>
+              <td>3.12 ft (95 cm)</td>
+              <td>3.24 ft (99 cm)</td>
+              <td>2.38 ft (73 cm)</td>
+              <td>2.5 - 3.2 ft (75 - 98 cm)</td>
+            </tr>
+            <tr>
+              <td><b>27-Inch 16:9</b></td>
+              <td>1920 × 1080 (FHD)</td>
+              <td>81.59 PPI</td>
+              <td>3.51 ft (107 cm)</td>
+              <td>3.64 ft (111 cm)</td>
+              <td>2.68 ft (82 cm)</td>
+              <td>2.8 - 3.5 ft (85 - 107 cm)</td>
+            </tr>
+            <tr>
+              <td><b>27-Inch 1
