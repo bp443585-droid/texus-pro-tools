@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Refresh Rate Frame Time Calculator | Hz to Ms Conversion</title>
+  <meta name="description" content="Calculate exact frame times in milliseconds, microseconds, and nanoseconds for any monitor refresh rate or frame rate (FPS). Perfect for gaming performance, motion clarity, and frame pacing analysis." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/refresh-rate-frame-time-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Refresh Rate Frame Time Calculator",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Calculate frame time budgets, render latency intervals, and display refresh metrics across Hz and FPS targets instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.1rem; font-family: inherit; color: #0f172a; outline: none; transition: all 0.2s; box-sizing: border-box; font-weight: 600; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .f-preset-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 4px; }
+    .f-preset-btn { background: #f1f5f9; border: 1px solid #cbd5e1; color: #334155; font-weight: 700; font-size: 0.85rem; padding: 8px 10px; border-radius: 8px; cursor: pointer; transition: all 0.15s ease; text-align: center; }
+    .f-preset-btn:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    .result-display-card { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+    .result-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #cbd5e1; padding-bottom: 10px; }
+    .result-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .result-label { font-size: 0.88rem; color: #475569; font-weight: 600; }
+    .result-val { font-size: 1.25rem; color: #0f172a; font-weight: 800; font-family: 'Courier New', Courier, monospace; }
+    .result-val-primary { font-size: 1.8rem; color: #2563eb; font-weight: 800; font-family: 'Courier New', Courier, monospace; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-preset-grid { grid-template-columns: repeat(3, 1fr); }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+      .f-preset-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⚡</span> Refresh Rate Frame Time Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <!-- LEFT INPUT PANEL -->
+        <div class="f-panel-box">
+          <label for="hzInput">Refresh Rate (Hz / FPS)</label>
+          <input type="number" id="hzInput" class="f-input-field" placeholder="e.g. 144" value="144" min="0.1" step="any" oninput="calcFromHz()">
+          
+          <label style="margin-top: 10px;">Quick Gaming & Display Presets</label>
+          <div class="f-preset-grid">
+            <button class="f-preset-btn" onclick="applyPreset(60)">60 Hz</button>
+            <button class="f-preset-btn" onclick="applyPreset(120)">120 Hz</button>
+            <button class="f-preset-btn" onclick="applyPreset(144)">144 Hz</button>
+            <button class="f-preset-btn" onclick="applyPreset(165)">165 Hz</button>
+            <button class="f-preset-btn" onclick="applyPreset(240)">240 Hz</button>
+            <button class="f-preset-btn" onclick="applyPreset(360)">360 Hz</button>
+            <button class="f-preset-btn" onclick="applyPreset(480)">480 Hz</button>
+            <button class="f-preset-btn" onclick="applyPreset(500)">500 Hz</button>
+            <button class="f-preset-btn" onclick="applyPreset(1000)">1000 Hz</button>
+          </div>
+
+          <label for="msInput" style="margin-top: 12px;">Direct Frame Time Input (ms)</label>
+          <input type="number" id="msInput" class="f-input-field" placeholder="e.g. 6.94" min="0.001" step="any" oninput="calcFromMs()">
+        </div>
+        
+        <!-- RIGHT OUTPUT PANEL -->
+        <div class="f-panel-box">
+          <label>Calculated Frame Time Metrics</label>
+          <div class="result-display-card">
+            <div class="result-row">
+              <span class="result-label">Frame Duration (Milliseconds):</span>
+              <span class="result-val-primary" id="resMs">6.944 ms</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Microseconds (µs):</span>
+              <span class="result-val" id="resUs">6,944.44 µs</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Nanoseconds (ns):</span>
+              <span class="result-val" id="resNs">6,944,444 ns</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Effective Display Refresh:</span>
+              <span class="result-val" id="resHz">144.00 Hz</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Frames Rendered Per Second:</span>
+              <span class="result-val" id="resFps">144 FPS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calcFromHz()">Recalculate Metrics</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResults()">📋 Copy Calculations</button>
+        <button class="f-btn f-btn-clear" onclick="clearWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Bidirectional Precision Logic:</span>
+        Changing the Hertz (Hz / FPS) value instantly updates the frame budget in milliseconds, microseconds, and nanoseconds. Entering a target milliseconds frame time updates the required Hz threshold in real time.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h1 class="seo-title">The Physics of Display Latency: Refresh Rates, Frame Pacing, and Nanosecond Frame Time Calculations</h1>
+      <p class="seo-p">In modern graphics processing, digital display engineering, and competitive esports architecture, measuring rendering performance solely in Frames Per Second (FPS) offers an incomplete representation of real-world motion clarity and system responsiveness. FPS measures an aggregated count of rendered images over a full second, whereas <b>Frame Time</b> measures the exact temporal duration of each individual frame cycle. Understanding frame time budgets is the cornerstone of optimizing game engine pacing, eliminating screen tearing, tuning variable refresh rate (VRR) standards like G-Sync and FreeSync, and evaluating display response windows.</p>
+      <p class="seo-p">This engineering manual breaks down the inverse mathematical relationship between frequency (Hz) and frame latency (ms), examines how frame time consistency dictates input lag and micro-stuttering, provides a reference matrix for standard display panels, and details best practices for hardware telemetry optimization.</p>
+
+      <div class="seo-callout">
+        <strong>The Frame Time Golden Equation:</strong> Frame duration is the reciprocal of frequency. To calculate the baseline temporal budget of any display refresh rate or game render target: 
+        <br><br>
+        $$\text{Frame Time (ms)} = \frac{1000}{\text{Refresh Rate (Hz)}}$$
+      </div>
+
+      <h2 class="seo-h2">Mathematical Foundations: Converting Hertz (Hz) to Milliseconds (ms)</h2>
+      <p class="seo-p">A display refresh rate expressed in Hertz defines how many times per second the monitor scans and updates its pixel array. A frequency of 1 Hz equals 1 cycle per second. Because there are 1,000 milliseconds in a single second, dividing 1,000 by the refresh rate yields the precise time available to compute, render, transmit, and display a single frame before the next scan line cycle begins.</p>
+
+      <h3 class="seo-h3">1. Millisecond, Microsecond, and Nanosecond Conversions</h3>
+      <p class="seo-p">High-speed esports panels operating at 240 Hz, 360 Hz, or 500 Hz operate within sub-5-millisecond windows. At these scales, precision latency tracking shifts into microsecond ($\mu s$) and nanosecond ($ns$) resolutions:</p>
+      <ul class="seo-list">
+        <li><b>Milliseconds (ms):</b> $\text{Frame Time (ms)} = \frac{1000}{\text{Hz}}$</li>
+        <li><b>Microseconds ($\mu s$):</b> $\text{Frame Time } (\mu s) = \frac{1,000,000}{\text{Hz}}$</li>
+        <li><b>Nanoseconds ($ns$):</b> $\text{Frame Time (ns)} = \frac{1,000,000,000}{\text{Hz}}$</li>
+      </ul>
+
+      <h3 class="seo-h3">2. Diminishing Returns in Latency Scaling</h3>
+      <p class="seo-p">The mathematical relationship between refresh rate and frame time is non-linear. Upgrading from standard 60 Hz to 144 Hz reduces frame duration from <b>16.67 ms to 6.94 ms</b>—a massive latency saving of <b>9.73 ms</b>. However, upgrading from 240 Hz (4.17 ms) to 500 Hz (2.00 ms) yields a absolute frame time reduction of only <b>2.17 ms</b>. While high refresh rates provide smoother sample-and-hold motion clarity and cleaner motion blur reduction, latency gains diminish logarithmically as frequency increases.</p>
+
+      <h2 class="seo-h2">Frame Pacing, Micro-Stutter, and 1% Low FPS Analysis</h2>
+      <p class="seo-p">Average FPS can be deceiving. A system generating an average of 144 FPS may still suffer from terrible stuttering if individual frame times fluctuate dramatically. For instance, if 143 frames render in 3 ms each (consuming 429 ms total) and a single complex frame takes 571 ms to process, the system technically delivers 144 frames within that 1-second window. However, the user experiences a severe half-second visual freeze (micro-stutter).</p>
+
+      <h3 class="seo-h3">Why Frame Pacing Matters</h3>
+      <p class="seo-p">Consistent frame pacing requires every frame to deliver within a tight tolerance of the monitor's target refresh budget. When a GPU misses a refresh window (e.g., taking 18 ms on a 60 Hz monitor), the display must re-render the previous frame for a second cycle, causing visual judder. Modern benchmark utilities measure <b>1% low</b> and <b>0.1% low</b> FPS precisely to capture these temporal frame time spikes.</p>
+
+      <h2 class="seo-h2">Reference Matrix: Refresh Rate & Frame Time Standards</h2>
+      <p class="seo-p">The table below details standard display frequencies, their exact frame duration allocations, and their typical domain applications across consumer technology and hardware engineering:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Refresh Rate (Hz / FPS)</th>
+              <th>Frame Time (ms)</th>
+              <th>Microseconds (µs)</th>
+              <th>Nanoseconds (ns)</th>
+              <th>Primary Technical Application Target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>24 Hz</b></td>
+              <td>41.67 ms</td>
+              <td>41,666.67 µs</td>
+              <td>41,666,667 ns</td>
+              <td>Standard Cinematic Film Projection (24p cadence)</td>
+            </tr>
+            <tr>
+              <td><b>30 Hz</b></td>
+              <td>33.33 ms</td>
+              <td>33,333.33 µs</td>
+              <td>33,333,333 ns</td>
+              <td>Legacy Console Target / Broadcast Television Standard</td>
+            </tr>
+            <tr>
+              <td><b>60 Hz</b></td>
+              <td>16.67 ms</td>
+              <td>16,666.67 µs</td>
+              <td>16,666,667 ns</td>
+              <td>Standard PC Monitors, TVs, Mobile Devices, Web Browsing</td>
+            </tr>
+            <tr>
+              <td><b>90 Hz</b></td>
+              <td>11.11 ms</td>
+              <td>11,111.11 µs</td>
+              <td>11,111,111 ns</td>
+              <td>Virtual Reality (VR) Minimum Latency & Mobile Displays</td>
+            </tr>
+            <tr>
+              <td><b>120 Hz</b></td>
+              <td>8.33 ms</td>
+              <td>8,333.33 µs</td>
+              <td>8,333,333 ns</td>
+              <td>Next-Gen Gaming Consoles (PS5/Xbox Series X), Pro Mobile</td>
+            </tr>
+            <tr>
+              <td><b>144 Hz</b></td>
+              <td>6.94 ms</td>
+              <td>6,944.44 µs</td>
+              <td>6,944,444 ns</td>
+              <td>Mainstream PC Gaming Benchmark Standard</td>
+            </tr>
+            <tr>
+              <td><b>165 Hz</b></td>
+              <td>6.06 ms</td>
+              <td>6,060.61 µs</td>
+              <td>6,060,606 ns</td>
+              <td>Overclocked Gaming Panels & Mid-Tier Esports Displays</td>
+            </tr>
+            <tr>
+              <td><b>240 Hz</b></td>
+              <td>4.17 ms</td>
+              <td>4,166.67 µs</td>
+              <td>4,166,667 ns</td>
+              <td>Competitive Esports Tournament Standard</td>
+            </tr>
+            <tr>
+              <td><b>360 Hz</b></td>
+              <td>2.78 ms</td>
+              <td>2,777.78 µs</td>
+              <td>2,777,778 ns</td>
+              <td>Ultra-High-Speed Esports Monitors (TN / Fast IPS)</td>
+            </tr>
+            <tr>
+              <td><b>480 Hz / 500 Hz</b></td>
+              <td>2.08 ms / 2.00 ms</td>
+              <td>2,083 µs / 2,000 µs</td>
+              <td>2,083,333 ns</td>
+              <td>Cutting-Edge OLED / QD-OLED High-Speed Panels</td>
+            </tr>
+            <tr>
+              <td><b>1000 Hz</b></td>
+              <td>1.00 ms</td>
+              <td>1,000.00 µs</td>
+              <td>1,000,000 ns</td>
+              <td>Theoretical Blur-Free Motion Threshold (1ms Sample-and-Hold)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="seo-h2">Frequently Asked Questions (FAQ)</h2>
+
+      <h3 class="seo-h3">What is the difference between frame time and pixel response time?</h3>
+      <p class="seo-p"><b>Frame time</b> is the temporal duration available for the GPU and display driver to output a new frame image (e.g., 6.94 ms at 144 Hz). <b>Pixel response time</b> (GtG - Grey to Grey) is the physical duration required for an individual display pixel to shift from one color state or luminance level to another. If pixel response time exceeds frame time, visual ghosting or motion smearing occurs.</p>
+
+      <h3 class="seo-h3">How does Variable Refresh Rate (VRR) interact with frame time?</h3>
+      <p class="seo-p">Technologies like NVIDIA G-Sync and AMD FreeSync dynamically adjust the monitor's refresh rate to match the instantaneous frame time output by the GPU. If your GPU renders a frame in 10 ms (100 FPS), the display dynamically extends its refresh window to 10 ms (100 Hz), ensuring the new frame renders immediately without tearing or forced double-buffering delay.</p>
+
+      <h3 class="seo-h3">Why should frame rates be capped slightly below the maximum refresh rate?</h3>
+      <p class="seo-p">Capping frame rates (e.g., 141 FPS on a 144 Hz display) prevents the frame render loop from hitting the upper boundary of the VRR window. When FPS matches or exceeds the display refresh limit, traditional V-Sync engages, introducing systemic input latency. Capping frame rates keeps frame timing strictly within the zero-latency G-Sync/FreeSync active range.</p>
+
+      <h2 class="seo-h2">Summary & Best Practices for System Tuning</h2>
+      <p class="seo-p">To optimize visual fidelity and input responsiveness across gaming rigs, simulation environments, and display workstations:</p>
+      <ul class="seo-list">
+        <li><b>Monitor Frame Pacing:</b> Utilize latency profiling overlays like RivaTuner Statistics Server (RTSS), CapFrameX, or NVIDIA FrameView to measure 1% low frame time stability.</li>
+        <li><b>Match Display Latency Budget:</b> Ensure your rendering pipeline consistently finishes frames well within your target monitor's millisecond allocation.</li>
+        <li><b>Leverage Instant Conversion:</b> Use this calculator to immediately evaluate frame time targets when configuring game graphics settings, in-game frame caps, or render buffer limits.</li>
+      </ul>
+    </div>
+  </main>
