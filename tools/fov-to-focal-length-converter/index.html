@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>FOV to Focal Length Converter | Calculate Lens Focal Length & Angle of View</title>
+  <meta name="description" content="Calculate camera lens focal length from field of view (FOV) or vice versa. Free online optical calculator for photographers, cinematographers, and 3D artists." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/fov-to-focal-length-converter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FOV to Focal Length Converter Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced optical calculator to compute camera lens focal lengths, horizontal/vertical field of view angles, and sensor format dimensions instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; }
+
+    /* RESULTS DASHBOARD */
+    .f-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; margin-bottom: 24px; }
+    .f-result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .f-result-card .res-label { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .f-result-card .res-value { font-size: 1.5rem; color: #0f172a; font-weight: 800; font-family: 'Courier New', Courier, monospace; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .f-results-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📐</span> FOV to Focal Length Converter</div>
+    
+    <div class="f-card">
+      <div style="margin-bottom: 24px; display: flex; gap: 12px; align-items: center;">
+        <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase;">Conversion Mode:</label>
+        <select id="conversionMode" class="f-select-field" style="max-width: 320px;" onchange="toggleMode()">
+          <option value="fov_to_focal">FOV Angle ➔ Focal Length</option>
+          <option value="focal_to_fov">Focal Length ➔ FOV Angle</option>
+        </select>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box" id="inputParamBox">
+          <label id="inputParamLabel" for="primaryInput">Field of View (Degrees)</label>
+          <input type="number" id="primaryInput" class="f-input-field mono-font-panel" value="50" step="0.1" min="0.1" max="179.9" oninput="calculateOptics()" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="sensorPreset">Camera Sensor Format / Preset</label>
+          <select id="sensorPreset" class="f-select-field" onchange="updateSensorDimensions()">
+            <option value="full_frame">Full Frame (36 x 24 mm)</option>
+            <option value="aps_c_canon">APS-C Canon (22.3 x 14.9 mm)</option>
+            <option value="aps_c_nikon">APS-C Nikon/Sony/Fuji (23.6 x 15.6 mm)</option>
+            <option value="m43">Micro Four Thirds (17.3 x 13 mm)</option>
+            <option value="super35">Super 35mm Cine (24.89 x 18.66 mm)</option>
+            <option value="medium_format">Medium Format 44x33 (44 x 33 mm)</option>
+            <option value="custom">Custom Sensor Dimensions</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-io-grid" id="sensorDimGrid">
+        <div class="f-panel-box">
+          <label for="sensorWidth">Sensor Width (mm)</label>
+          <input type="number" id="sensorWidth" class="f-input-field mono-font-panel" value="36" step="0.1" min="1" oninput="calculateOptics()" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="sensorHeight">Sensor Height (mm)</label>
+          <input type="number" id="sensorHeight" class="f-input-field mono-font-panel" value="24" step="0.1" min="1" oninput="calculateOptics()" />
+        </div>
+      </div>
+
+      <div class="f-results-grid">
+        <div class="f-result-card">
+          <div class="res-label" id="resCard1Title">Calculated Focal Length</div>
+          <div class="res-value" id="resFocalLength">35.0 mm</div>
+        </div>
+        <div class="f-result-card">
+          <div class="res-label">Horizontal FOV</div>
+          <div class="res-value" id="resHFOV">54.4°</div>
+        </div>
+        <div class="f-result-card">
+          <div class="res-label">Vertical FOV</div>
+          <div class="res-value" id="resVFOV">37.8°</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateOptics()">Recalculate Optics</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyOpticalResults()">📋 Copy Calculation Data</button>
+        <button class="f-btn f-btn-clear" onclick="resetOpticsWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Advanced Optical Trig Engine Active:</span>
+        Computes accurate rectilinear projection angles using standard trigonometric formulas ($FOV = 2 \cdot \arctan(\frac{d}{2f})$). Switch between focal length and field of view instantly for photography, cinematography, and 3D camera matching.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Mathematics of Lens Optics: Calculating Field of View (FOV) and Focal Length for Photography & Cinematography</h2>
+      <p class="seo-p">Mastering camera optics requires a firm grasp of the mathematical relationship between lens focal length, sensor physical dimensions, and the resulting angle of view. Whether framing a cinematic sequence on a Super 35 sensor, calibrating a virtual 3D camera in Blender or Unreal Engine, or choosing the ideal prime lens for portrait photography, understanding how focal length dictates field of view is essential for creative control.</p>
+      <p class="seo-p">This professional optical calculator provides instant, precise conversions between field of view angles and lens focal lengths across various sensor formats. Below, we explore the underlying trigonometric formulas, examine sensor format size differences, and review standard lens classifications.</p>
+
+      <div class="seo-callout">
+        <strong>The Core Optical Formula:</strong> The field of view ($FOV$) angle is calculated using the sensor dimension ($d$) and focal length ($f$) via the tangent trigonometric function: <b>$FOV = 2 \cdot \arctan \left( \frac{d}{2 \cdot f} \right)$</b>. Conversely, solving for focal length yields <b>$f = \frac{d}{2 \cdot \tan(FOV / 2)}$</b>.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Trigonometry, Sensors, and Rectilinear Projections</h3>
+      <p class="seo-p">When light passes through a camera lens aperture, it projects an inverted image onto the digital image sensor or film plane. Several key optical factors govern this projection:</p>
+
+      <h4 class="seo-h3">1. Sensor Format Dimensions</h4>
+      <p class="seo-p">The physical width and height of the sensor dictate how much of the projected image circle is captured. A larger sensor (such as full frame 36x24mm) captures a wider field of view for the same focal length compared to a cropped sensor (such as APS-C or Micro Four Thirds).</p>
+
+      <h4 class="seo-h3">2. Horizontal vs. Vertical vs. Diagonal FOV</h4>
+      <p class="seo-p">Depending on composition requirements, cinematographers often analyze horizontal FOV (lateral perspective framing) or diagonal FOV (total corner-to-corner angle coverage). Our calculator computes horizontal, vertical, and focal parameters simultaneously.</p>
+
+      <h4 class="seo-h3">3. Virtual Production & 3D Matching</h4>
+      <p class="seo-p">In VFX pipelines and virtual production, matching live-action plates with CGI camera renders requires exact focal length matching. Converting known plate FOV angles to precise virtual camera focal lengths ensures seamless compositing without perspective distortion.</p>
+
+      <h3>Standard Sensor Size Reference Matrix</h3>
+      <p class="seo-p">Reviewing standard camera sensor dimensions helps clarify crop factors and focal length equivalencies across equipment platforms:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Sensor Format Classification</th>
+              <th>Width (mm)</th>
+              <th>Height (mm)</th>
+              <th>Crop Factor vs Full Frame</th>
+              <th>Typical Industry Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Full Frame (35mm)</td>
+              <td>36.0 mm</td>
+              <td>24.0 mm</td>
+              <td>1.0x</td>
+              <td>High-end DSLR, Mirrorless, Cinematic VistaVision.</td>
+            </tr>
+            <tr>
+              <td>Super 35mm Cine</td>
+              <td>24.89 mm</td>
+              <td>18.66 mm</td>
+              <td>~1.45x</td>
+              <td>Industry standard for digital cinema cameras (ARRI, RED).</td>
+            </tr>
+            <tr>
+              <td>APS-C (Nikon / Sony / Fuji)</td>
+              <td>23.6 mm</td>
+              <td>15.6 mm</td>
+              <td>1.5x</td>
+              <td>Popular enthusiast mirrorless and DSLR bodies.</td>
+            </tr>
+            <tr>
+              <td>APS-C (Canon)</td>
+              <td>22.3 mm</td>
+              <td>14.9 mm</td>
+              <td>1.6x</td>
+              <td>Entry to mid-range Canon interchangeable lens cameras.</td>
+            </tr>
+            <tr>
+              <td>Micro Four Thirds (M4/3)</td>
+              <td>
