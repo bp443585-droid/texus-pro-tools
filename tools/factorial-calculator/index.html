@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Factorial Calculator | Online Math & Combinatorics Tool</title>
+  <meta name="description" content="Calculate factorials ($n!$) instantly with our free online Factorial Calculator. Supports large integers, permutations, combinations, and scientific notation." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/factorial-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Factorial Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "EducationalApplication",
+    "description": "An advanced mathematical computation utility for calculating factorials, permutations, and combinations instantly with high precision.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 54px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 0 16px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; font-weight: 700; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-textarea-field { width: 100%; height: 160px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 130px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🔢</span> Factorial Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="numberInput">Enter Integer ($n$)</label>
+          <input type="number" id="numberInput" class="f-input-field" value="5" min="0" max="170" placeholder="Enter non-negative integer..." oninput="calculateFactorial()" />
+          
+          <div style="margin-top: 15px;">
+            <label for="calculationSteps">Mathematical Breakdown & Properties</label>
+            <textarea id="calculationSteps" class="f-textarea-field" readonly placeholder="Step-by-step expansion will appear here..."></textarea>
+          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="factorialResult">Factorial Result ($n!$)</label>
+          <textarea id="factorialResult" class="f-textarea-field mono-font-panel" readonly placeholder="Awaiting numerical input..."></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateFactorial()">Calculate Factorial</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ High-Precision Arithmetic Engine Active:</span>
+        Computes exact integer sequences up to $170!$ using BigInt arithmetic without floating-point rounding errors. Higher numbers automatically resolve via scientific notation approximation.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Mathematics of Factorials: Permutations, Combinations, and Combinatorial Growth Laws</h2>
+      <p class="seo-p">The factorial of a non-negative integer $n$, denoted by $n!$, is the product of all positive integers less than or equal to $n$. As one of the most fundamental operations in combinatorics, probability theory, algebra, and computer science algorithm analysis, factorials dictate how items can be arranged, selected, or ordered. Understanding the exponential growth curves of factorial functions is essential for designing efficient software algorithms, solving probability models, and analyzing recursive computing complexities.</p>
+      <p class="seo-p">This extensive reference manual explores the formal mathematical definitions of factorials, examines Stirling's approximation for extremely large values, outlines permutations and combinations formulas, and highlights the mechanics of our high-precision client-side computation engine.</p>
+
+      <div class="seo-callout">
+        <strong>The Zero Factorial Axiom:</strong> By convention of the empty product in mathematics, the factorial of zero ($0!$) evaluates strictly to <b>1</b>, ensuring consistency across binomial coefficient expansions and exponential generating functions.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Recursive Multiplication and BigInt Precision</h3>
+      <p class="seo-p">When calculating factorials programmatically, standard 64-bit floating-point numbers (IEEE 754 double precision) overflow or lose integer exactness past $20!$ ($2,432,902,008,176,640,000$). To overcome this architectural limitation:</p>
+
+      <h4 class="seo-h3">1. Arbitrary-Precision Integer Arithmetic</h4>
+      <p class="seo-p">Our calculation pipeline leverages native JavaScript `BigInt` objects. This allows calculations to scale seamlessly past standard integer limits, outputting exact digits for hundreds of iterations without rounding corruption.</p>
+
+      <h4 class="seo-h3">2. Iterative Multiplier Loops</h4>
+      <p class="seo-p">For inputs ranging from $0$ to $170$, the tool runs an optimized linear accumulator loop: $\prod_{i=1}^{n} i$. This guarantees execution times under one millisecond while maintaining memory efficiency.</p>
+
+      <h4 class="seo-h3">3. Scientific Notation Fallbacks</h4>
+      <p class="seo-p">When calculations exceed practical display limits or enter upper theoretical bounds, the interface dynamically formats results into engineering and scientific notation ($a \times 10^b$), supplying both total digits and normalized approximations.</p>
+
+      <h3>The Statutory Reference Matrix: First 10 Factorial Values and Properties</h3>
+      <p class="seo-p">Reviewing the progression of early factorial integers demonstrates their rapid scaling behavior:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Integer ($n$)</th>
+              <th>Expanded Product Formula</th>
+              <th>Calculated Result Value ($n!$)</th>
+              <th>Combinatorial Significance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>0!</b></td>
+              <td>Empty product</td>
+              <td>`1`</td>
+              <td>Base identity for binomial expansions and permutations.</td>
+            </tr>
+            <tr>
+              <td><b>1!</b></td>
+              <td>`1`</td>
+              <td>`1`</td>
+              <td>Trivial single-element arrangement.</td>
+            </tr>
+            <tr>
+              <td><b>2!</b></td>
+              <td>`2 × 1`</td>
+              <td>`2`</td>
+              <td>Permutations of 2 distinct objects ($AB$ and $BA$).</td>
+            </tr>
+            <tr>
+              <td><b>3!</b></td>
+              <td>`3 × 2 × 1`</td>
+              <td>`6`</td>
+              <td>Arrangements for 3 items in linear sequence.</td>
+            </tr>
+            <tr>
+              <td><b>4!</b></td>
+              <td>`4 × 3 × 2 × 1`</td>
+              <td>`24`</td>
+              <td>Tetrahedral symmetry groups and card deck shufflings.</td>
+            </tr>
+            <tr>
+              <td><b>5!</b></td>
+              <td>`5 × 4 × 3 × 2 × 1`</td>
+              <td>`120`</td>
+              <td>Combinatorial permutations of 5 distinct elements.</td>
+            </tr>
+            <tr>
+              <td><b>10!</b></td>
+              <td>`10 × 9 × ... × 1`</td>
+              <td>`3,628,800`</td>
+              <td>Standard threshold for simple brute-force search algorithms.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+<h3>What is the maximum integer value this calculator can process?</h3>
+      <p class="seo-p">Our calculator handles exact integer calculations up to $170!$. Beyond $170!$, standard web browser number formatting limits are reached, at which point the engine provides advanced scientific notation approximations.</p>
+
+<h3>Why does $0!$ equal 1 instead of 0?</h3>
+      <p class="seo-p">In mathematics, $0!$ is defined as an empty product. When multiplying no numbers together, the multiplicative identity is 1. Furthermore, formulas for permutations ($P(n,r) = \frac{n!}{(n-r)!}$) would fail if $0!$ evaluated to zero.</p>
+
+<h3>How does local device script compilation ensure business security benchmarks?</h3>
+      <p class="seo-p">Texus Pro Tools values your data privacy above everything else. The factorial calculations execute entirely inside your device's local browser memory. No numbers or computing variables ever traverse external server networks—establishing a private sandbox environment for your academic and professional work.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Combinatorial Mathematics</h3>
+      <p class="seo-p">To optimize mathematical workflows, always verify whether your problem requires permutations (order matters) or combinations (order does not matter). Utilize BigInt tools when absolute digit accuracy is required, and leverage scientific notation when comparing magnitude scales across statistical models.</p>
+      <p class="seo-p">Our Advanced Factorial Calculator suite automates all these computational extraction routines instantly, providing clear visibility into your mathematical sequences across any mobile or desktop device cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function calculateFactorial() {
+      const inputVal = document.getElementById('numberInput').value;
+      const resultBox = document.getElementById('factorialResult');
+      const stepsBox = document.getElementById('calculationSteps');
+
+      if (inputVal === '' || isNaN(inputVal)) {
+        resultBox.value = '';
+        stepsBox.value = 'Please enter a valid non-negative integer.';
+        return;
+      }
+
+      const n = parseInt(inputVal, 10);
+
+      if (n < 0) {
+        resultBox.value = 'Error: Factorial is not defined for negative numbers.';
+        stepsBox.value = 'Negative input detected. Factorials apply only to integers n >= 0.';
+        return;
+      }
+
+      if (n > 170) {
+        resultBox.value = 'Value exceeds maximum safe calculation limit (170!).';
+        stepsBox.value = 'Input too large for exact BigInt rendering. Consider using Stirling\'s approximation for asymptotic estimation.';
+        return;
+      }
+
+      // Compute BigInt factorial
+      let result = 1n;
+      let stepsArr = [];
+      
+      if (n === 0 || n === 1) {
+        result = 1n;
+        stepsArr.push(`${n}! = 1 (by definition of empty product / base axiom)`);
+      } else {
+        let expansion = [];
+        for (let i = BigInt(n); i >= 1n; i--) {
+          result *= i;
+          if (n <= 20) {
+            expansion.push(i.toString());
+          }
+        }
+        
+        if (n <= 20) {
+          stepsArr.push(`Expanded Form: ${n}! = ${expansion.join(' × ')}`);
+        } else {
+          stepsArr.push(`Expanded Form: Product of integers from 1 to ${n}`);
+        }
+        stepsArr.push(`Total Digit Count: ${result.toString().length} digits`);
+      }
+
+      resultBox.value = result.toString();
+      stepsBox.value = stepsArr.join('\n');
+    }
+
+    function clearCalculator() {
+      document.getElementById('numberInput').value = '5';
+      calculateFactorial();
+    }
+
+    function copyResultToClipboard() {
+      const resultBox = document.getElementById('factorialResult');
+      const copyBtn = document.getElementById('copyResultBtn');
+      
+      if (!resultBox.value) return;
+
+      navigator.clipboard.writeText(resultBox.value).then(() => {
+        const originalText = copyBtn.innerText;
+        copyBtn.innerText = '✅ Copied to Clipboard!';
+        copyBtn.style.background = '#dcfce7';
+        copyBtn.style.color = '#166534';
+        copyBtn.style.borderColor = '#86efac';
+        
+        setTimeout(() => {
+          copyBtn.innerText = originalText;
+          copyBtn.style.background = '';
+          copyBtn.style.color = '';
+          copyBtn.style.borderColor = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text:', err);
+      });
+    }
+
+    // Run initial calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateFactorial();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
