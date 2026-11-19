@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Right Triangle Trigonometry Solver | Online Angle & Side Calculator</title>
+  <meta name="description" content="Calculate missing sides, angles, area, and perimeter of a right triangle instantly. Enter any two known values using Pythagorean theorem and trigonometric functions." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/right-triangle-trigonometry-solver/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Right Triangle Trigonometry Solver Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "CalculatorApplication",
+    "description": "An advanced mathematical calculator to solve unknown sides, angles, perimeter, and area of right triangles using trigonometric laws.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TOOL SPECIFIC INTERACTIVE LAYOUT */
+    .trig-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: start; }
+    .trig-inputs { display: flex; flex-direction: column; gap: 16px; }
+    .trig-field-group { display: flex; flex-direction: column; gap: 6px; }
+    .trig-field-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .trig-input { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .trig-input:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .trig-select { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .trig-select:focus { border-color: #2563eb; background: #ffffff; }
+
+    .trig-results-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 16px; box-sizing: border-box; }
+    .trig-result-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+    .trig-result-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .trig-result-label { font-size: 0.9rem; color: #64748b; font-weight: 600; }
+    .trig-result-value { font-size: 1.1rem; color: #0f172a; font-weight: 700; font-family: 'Courier New', Courier, monospace; }
+
+    .triangle-canvas-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 220px; box-sizing: border-box; }
+    
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 25px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 900px) {
+      .trig-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📐</span> Right Triangle Trigonometry Solver</div>
+    
+    <div class="f-card">
+      <div class="trig-grid">
+        <div class="trig-inputs">
+          <div class="trig-field-group">
+            <label for="modeSelect">Selection Mode (Known Parameters)</label>
+            <select id="modeSelect" class="trig-select" onchange="updateInputMode()">
+              <option value="aa">Side a & Angle Alpha (a, α)</option>
+              <option value="ab">Side a & Side b (a, b)</option>
+              <option value="ac">Side a & Hypotenuse c (a, c)</option>
+              <option value="acbeta">Side a & Angle Beta (a, β)</option>
+              <option value="cbeta">Hypotenuse c & Angle Beta (c, β)</option>
+              <option value="calpha">Hypotenuse c & Angle Alpha (c, α)</option>
+            </select>
+          </div>
+
+          <div class="trig-field-group" id="inputGroup1Container">
+            <label id="labelInput1" for="inputVal1">Side a</label>
+            <input type="number" id="inputVal1" class="trig-input" placeholder="Enter value..." oninput="solveTriangle()" step="any" />
+          </div>
+
+          <div class="trig-field-group" id="inputGroup2Container">
+            <label id="labelInput2" for="inputVal2">Angle Alpha (°)</label>
+            <input type="number" id="inputVal2" class="trig-input" placeholder="Enter value..." oninput="solveTriangle()" step="any" />
+          </div>
+
+          <div id="errorMessage" style="color: #dc2626; font-size: 0.88rem; font-weight: 600; min-height: 20px;"></div>
+        </div>
+
+        <div class="trig-results-box">
+          <div style="font-size: 1rem; font-weight: 800; color: #0f172a; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Computed Solution</div>
+          
+          <div class="trig-result-row">
+            <span class="trig-result-label">Side a (Leg)</span>
+            <span class="trig-result-value" id="resA">—</span>
+          </div>
+          <div class="trig-result-row">
+            <span class="trig-result-label">Side b (Leg)</span>
+            <span class="trig-result-value" id="resB">—</span>
+          </div>
+          <div class="trig-result-row">
+            <span class="trig-result-label">Hypotenuse (c)</span>
+            <span class="trig-result-value" id="resC">—</span>
+          </div>
+          <div class="trig-result-row">
+            <span class="trig-result-label">Angle Alpha (α)</span>
+            <span class="trig-result-value" id="resAlpha">—</span>
+          </div>
+          <div class="trig-result-row">
+            <span class="trig-result-label">Angle Beta (β)</span>
+            <span class="trig-result-value" id="resBeta">—</span>
+          </div>
+          <div class="trig-result-row">
+            <span class="trig-result-label">Area</span>
+            <span class="trig-result-value" id="resArea">—</span>
+          </div>
+          <div class="trig-result-row">
+            <span class="trig-result-label">Perimeter</span>
+            <span class="trig-result-value" id="resPerimeter">—</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 30px;">
+        <div class="triangle-canvas-box">
+          <canvas id="triangleCanvas" width="360" height="200" style="max-width: 100%; height: auto;"></canvas>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="solveTriangle()">Calculate Again</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultsToClipboard()">📋 Copy Solution Data</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Interactive Geometry Engine Active:</span>
+        Enter any valid combination of two parameters (sides or angles) to instantly compute the complete right triangle profile, layout dimensions, and visual canvas representation.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Geometry of Right Triangles: Pythagorean Theorem, Trigonometric Ratios, and Practical Applications</h2>
+      <p class="seo-p">The right-angled triangle forms the absolute bedrock of modern geometry, architectural drafting, structural engineering, and trigonometric calculation. Defined as a triangle in which one angle is exactly 90 degrees (a right angle), this geometric shape possesses unique mathematical symmetry governed by the Pythagorean theorem and primary trigonometric functions—sine, cosine, and tangent.</p>
+      <p class="seo-p">This extensive computing manual explores the fundamental laws governing right triangles, analyzes the mathematical relationships between legs and angles, reviews practical use cases in surveying and physics, and outlines clean methods to solve complex spatial coordinates instantly.</p>
+
+      <div class="seo-callout">
+        <strong>The Pythagorean Identity:</strong> In any right triangle, the square of the length of the hypotenuse ($c$) is equal to the sum of the squares of the lengths of the two legs ($a$ and $b$), expressed mathematically as $a^2 + b^2 = c^2$.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Fundamental Formulas and Calculation Algorithms</h3>
+      <p class="seo-p">When calculating unknown parameters in a right triangle, our client-side trigonometry engine applies rigorous algebraic formulas based on your input mode:</p>
+
+      <h4 class="seo-h3">1. Pythagorean Theorem Solver (Given Two Sides)</h4>
+      <p class="seo-p">If two legs ($a$ and $b$) are known, the hypotenuse is derived directly via $c = \sqrt{a^2 + b^2}$. If a leg and the hypotenuse are known ($a$ and $c$), the missing leg is calculated as $b = \sqrt{c^2 - a^2}$.</p>
+
+      <h4 class="seo-h3">2. Trigonometric Ratios (SOH-CAH-TOA)</h4>
+      <p class="seo-p">To resolve angles from side measurements, the application utilizes inverse trigonometric functions:
+        <br>• $\sin(\alpha) = \frac{\text{Opposite}}{\text{Hypotenuse}} = \frac{a}{c}$ $\rightarrow$ $\alpha = \arcsin\left(\frac{a}{c}\right)$
+        <br>• $\cos(\alpha) = \frac{\text{Adjacent}}{\text{Hypotenuse}} = \frac{b}{c}$ $\rightarrow$ $\alpha = \arccos\left(\frac{b}{c}\right)$
+        <br>• $\tan(\alpha) = \frac{\text{Opposite}}{\text{Adjacent}} = \frac{a}{b}$ $\rightarrow$ $\alpha = \arctan\left(\frac{a}{b}\right)$
+      </p>
+
+      <h4 class="seo-h3">3. Complementary Angle Theorem</h4>
+      <p class="seo-p">Because the interior angles of any triangle always sum to 180° and the right angle occupies 90°, the two acute angles ($\alpha$ and $\beta$) are strictly complementary: $\alpha + \beta = 90^\circ$. Therefore, if one acute angle is known, the other is immediately found by subtracting it from 90°.</p>
+
+      <h3>The Statutory Reference Matrix: Core Right Triangle Formulas and Properties</h3>
+      <p class="seo-p">Reviewing standard formulas and measurement properties ensures high accuracy when designing structural components or solving engineering homework problems:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Calculated Property</th>
+              <th>Algebraic Formula Expression</th>
+              <th>Required Known Inputs</th>
+              <th>Engineering / Practical Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Hypotenuse ($c$)</td>
+              <td>$c = \sqrt{a^2 + b^2}$</td>
+              <td>Side $a$ and Side $b$</td>
+              <td>Determining diagonal bracing lengths and structural span supports.</td>
+            </tr>
+            <tr>
+              <td>Leg ($a$ or $b$)</td>
+              <td>$a = \sqrt{c^2 - b^2}$</td>
+              <td>Hypotenuse $c$ and Leg $b$</td>
+              <td>Calculating wall heights and horizontal ground clearances in construction.</td>
+            </tr>
+            <tr>
+              <td>Angle Alpha ($\alpha$)</td>
+              <td>$\alpha = \arctan\left(\frac{a}{b}\right)$</td>
+              <td>Leg $a$ and Leg $b$</td>
+              <td>Roof pitch calculations, stair stringer angles, and optical surveying.</td>
+            </tr>
+            <tr>
+              <td>Triangle Area</td>
+              <td>$\text{Area} = \frac{1}{2} \cdot a \cdot b$</td>
+              <td>Both Legs ($a$ and $b$)</td>
+              <td>Material estimation (drywall, flooring, sheet metal surface areas).</td>
+            </tr>
+            <tr>
+              <td>Triangle Perimeter</td>
+              <td>$P = a + b + c$</td>
+              <td>All Three Sides ($a, b, c$)</td>
+              <td>Perimeter fencing, trim molding lengths, and boundary calculations.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What happens if I enter impossible side lengths (e.g., leg longer than hypotenuse)?</h3>
+      <p class="seo-p">According to Euclidean geometry, the hypotenuse must always be strictly longer than either individual leg. If an invalid combination is entered (such as leg $a = 10$ and hypotenuse $c = 5$), our calculation engine immediately flags an error notice, preventing invalid geometric outputs.</p>
+
+      <h3>How are area and perimeter calculated once the sides are found?</h3>
+      <p class="seo-p">The area is calculated using standard right triangle geometry ($\frac{1}{2} \times \text{base} \times \text{height}$), while the perimeter is simply the arithmetic sum of all three bounding sides ($a + b + c$).</p>
+
+      <h3>Is my calculation data secure when using online trigonometry solvers?</h3>
+      <p class="seo-p">Texus Pro Tools processes all calculations locally inside your browser's JavaScript engine. No numerical values or engineering variables are transmitted to external servers, ensuring complete privacy for your technical calculations.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Trigonometry and Geometry</h3>
+      <p class="seo-p">Mastering right triangle calculations is essential for professionals across architecture, carpentry, navigation, and engineering. Utilizing automated solvers eliminates manual computation errors and accelerates project planning.</p>
+      <p class="seo-p">Our Right Triangle Trigonometry Solver suite provides instantaneous, highly accurate solutions with visual canvas schematics, ensuring seamless execution across all desktop and mobile devices.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // Right Triangle Solver Logic
+    function updateInputMode() {
+      const mode = document.getElementById('modeSelect').value;
+      const l1 = document.getElementById('labelInput1');
+      const l2 = document.getElementById('labelInput2');
+      const i1 = document.getElementById('inputVal1');
+      const i2 = document.getElementById('inputVal2');
+
+      i1.value = '';
+      i2.value = '';
+      document.getElementById('errorMessage').innerText = '';
+
+      switch(mode) {
+        case 'aa':
+          l1.innerText = 'Side a (Leg)';
+          l2.innerText = 'Angle Alpha (α in °)';
+          break;
+        case 'ab':
+          l1.innerText = 'Side a (Leg)';
+          l2.innerText = 'Side b (Leg)';
+          break;
+        case 'ac':
+          l1.innerText = 'Side a (Leg)';
+          l2.innerText = 'Hypotenuse (c)';
+          break;
+        case 'acbeta':
+          l1.innerText = 'Side a (Leg)';
+          l2.innerText = 'Angle Beta (β in °)';
+          break;
+        case 'cbeta':
+          l1.innerText = 'Hypotenuse (c)';
+          l2.innerText = 'Angle Beta (β in °)';
+          break;
+        case 'calpha':
+          l1.innerText = 'Hypotenuse (c)';
+          l2.innerText = 'Angle Alpha (α in °)';
+          break;
+      }
+      solveTriangle();
+    }
+
+    function solveTriangle() {
+      const mode = document.getElementById('modeSelect').value;
+      const val1 = parseFloat(document.getElementById('inputVal1').value);
+      const val2 = parseFloat(document.getElementById('inputVal2').value);
+      const errEl = document.getElementById('errorMessage');
+
+      errEl.innerText = '';
+
+      if (isNaN(val1) || isNaN(val2)) {
+        clearResultsDisplay();
+        drawTriangle(null, null);
+        return;
+      }
+
+      if (val1 <= 0 || val2 <= 0) {
+        errEl.innerText = 'Error: All input values must be greater than zero.';
+        clearResultsDisplay();
+        drawTriangle(null, null);
+        return;
+      }
+
+      let a, b, c, alpha, beta;
+      const radToDeg = rad => rad * (180 / Math.PI);
+      const degToRad = deg => deg * (Math.PI / 180);
+
+      try {
+        switch(mode) {
+          case 'aa': // a and alpha
+            if (val2 >= 90) throw new Error('Angle Alpha must be less than 90°');
+            a = val1;
+            alpha = val2;
+            beta = 90 - alpha;
+            c = a / Math.sin(degToRad(alpha));
+            b = Math.sqrt(c*c - a*a);
+            break;
+
+          case 'ab': // a and b
+            a = val1;
+            b = val2;
+            c = Math.sqrt(a*a + b*b);
+            alpha = radToDeg(Math.atan(a / b));
+            beta = 90 - alpha;
+            break;
+
+          case 'ac': // a and c
+            a = val1;
+            c = val2;
+            if (a >= c) throw new Error('Hypotenuse c must be strictly greater than leg a.');
+            b = Math.sqrt(c*c - a*a);
+            alpha = radToDeg(Math.asin(a / c));
+            beta = 90 - alpha;
+            break;
+
+          case 'acbeta': // a and beta
+            if (val2 >= 90) throw new Error('Angle Beta must be less than 90°');
+            a = val1;
+            beta = val2;
+            alpha = 90 - beta;
+            c = a / Math.cos(degToRad(beta));
+            b = Math.sqrt(c*c - a*a);
+            break;
+
+          case 'cbeta': // c and beta
+            if (val2 >= 90) throw new Error('Angle Beta must be less than 90°');
+            c = val1;
+            beta = val2;
+            alpha = 90 - beta;
+            b = c * Math.sin(degToRad(beta));
+            a = c * Math.cos(degToRad(beta));
+            break;
+
+          case 'calpha': // c and alpha
+            if (val2 >= 90) throw new Error('Angle Alpha must be less than 90°');
+            c = val1;
+            alpha = val2;
+            beta = 90 - alpha;
+            a = c * Math.sin(degToRad(alpha));
+            b = c * Math.cos(degToRad(alpha));
+            break;
+        }
+
+        const area = 0.5 * a * b;
+        const perimeter = a + b + c;
+
+        document.getElementById('resA').innerText = a.toFixed(4);
+        document.getElementById('resB').innerText = b.toFixed(4);
+        document.getElementById('resC').innerText = c.toFixed(4);
+        document.getElementById('resAlpha').innerText = alpha.toFixed(4) + '°';
+        document.getElementById('resBeta').innerText = beta.toFixed(4) + '°';
+        document.getElementById('resArea').innerText = area.toFixed(4);
+        document.getElementById('resPerimeter').innerText = perimeter.toFixed(4);
+
+        drawTriangle(a, b);
+
+      } catch (ex) {
+        errEl.innerText = ex.message;
+        clearResultsDisplay();
+        drawTriangle(null, null);
+      }
+    }
+
+    function clearResultsDisplay() {
+      document.getElementById('resA').innerText = '—';
+      document.getElementById('resB').innerText = '—';
+      document.getElementById('resC').innerText = '—';
+      document.getElementById('resAlpha').innerText = '—';
+      document.getElementById('resBeta').innerText = '—';
+      document.getElementById('resArea').innerText = '—';
+      document.getElementById('resPerimeter').innerText = '—';
+    }
+
+    function clearCalculator() {
+      document.getElementById('inputVal1').value = '';
+      document.getElementById('inputVal2').value = '';
+      document.getElementById('errorMessage').innerText = '';
+      clearResultsDisplay();
+      drawTriangle(null, null);
+    }
+
+    function drawTriangle(a, b) {
+      const canvas = document.getElementById('triangleCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (!a || !b) {
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '14px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Enter valid parameters to render triangle diagram', canvas.width / 2, canvas.height / 2);
+        return;
+      }
+
+      const padding = 40;
+      const maxW = canvas.width - (padding * 2);
+      const maxH = canvas.height - (padding * 2);
+
+      const scale = Math.min(maxW / b, maxH / a);
+      const drawW = b * scale;
+      const drawH = a * scale;
+
+      const startX = (canvas.width - drawW) / 2;
+      const startY = (canvas.height + drawH) / 2;
+
+      // Draw triangle
+      ctx.beginPath();
+      ctx.moveTo(startX, startY); // Bottom-left (Angle Beta / C)
+      ctx.lineTo(startX + drawW, startY); // Bottom-right (Angle A / 90 deg)
+      ctx.lineTo(startX, startY - drawH); // Top-left (Angle Alpha)
+      ctx.closePath();
+
+      ctx.fillStyle = 'rgba(37, 99, 235, 0.08)';
+      ctx.fill();
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = '#2563eb';
+      ctx.stroke();
+
+      // Right angle box
+      const boxSize = 14;
+      ctx.beginPath();
+      ctx.rect(startX + drawW - boxSize, startY - boxSize, boxSize, boxSize);
+      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = '#0f172a';
+      ctx.stroke();
+
+      // Labels
+      ctx.fillStyle = '#0f172a';
+      ctx.font = 'bold 12px Inter, sans-serif';
+      
+      // Side b (bottom)
+      ctx.textAlign = 'center';
+      ctx.fillText('b = ' + b.toFixed(2), startX + (drawW /
