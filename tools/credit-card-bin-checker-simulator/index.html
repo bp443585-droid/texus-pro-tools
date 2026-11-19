@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Credit Card Bin Checker Simulator | Verify Bank Identification Numbers</title>
-  <meta name="description" content="Test and verify Bank Identification Numbers (BIN) instantly with our free online Credit Card Bin Checker Simulator. Analyze card brands, types, issuers, and countries securely." />
+  <title>Credit Card Bin Checker Simulator | Verify BIN & IIN Codes Instantly</title>
+  <meta name="description" content="Test and verify bank identification numbers (BIN/IIN) with our free online Credit Card Bin Checker Simulator. Instant schema lookup, card type, tier, and issuing bank details." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -18,12 +18,12 @@ crossorigin="anonymous"></script>
     "@type": "SoftwareApplication",
     "name": "Credit Card Bin Checker Simulator",
     "operatingSystem": "Web",
-    "applicationCategory": "FinancialApplication",
-    "description": "An advanced financial utility tool to inspect, simulate, and validate Bank Identification Numbers (BIN) and Issuer Identification Numbers (IIN) with comprehensive metadata.",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced Bank Identification Number (BIN) and Issuer Identification Number (IIN) verification and simulation utility.",
     "offers": {
       "@type": "Offer",
       "price": "0",
-      "priceCurrency": "USD"
+      "priceCurrency": "INR"
     }
   }
   </script>
@@ -41,13 +41,22 @@ crossorigin="anonymous"></script>
     /* WORKSPACE CORE CONTAINER CARD */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
     
-    /* TOOL SPECIFIC STYLING */
-    .bin-input-group { margin-bottom: 24px; }
-    .bin-input-group label { display: block; font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
-    .bin-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.25rem; font-family: 'Courier New', Courier, monospace; font-weight: 700; color: #0f172a; outline: none; transition: all 0.2s; box-sizing: border-box; }
-    .bin-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    /* TOOL SPECIFIC INTERACTIVE STYLING */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; font-weight: 600; letter-spacing: 1px; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
 
-    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .result-display-panel { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; }
+    .result-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; font-size: 0.95rem; }
+    .result-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .result-label { color: #64748b; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; }
+    .result-value { color: #0f172a; font-weight: 700; font-family: 'Courier New', Courier, monospace; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
     .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
     .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
     .f-btn-convert:hover { background: #1d4ed8; }
@@ -56,23 +65,10 @@ crossorigin="anonymous"></script>
     .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
     .f-btn-clear:hover { background: #fee2e2; }
 
-    /* RESULTS GRID DISPLAY */
-    .bin-results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 30px; }
-    .bin-result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; box-sizing: border-box; }
-    .bin-result-card.full-width { grid-column: span 2; }
-    .bin-result-label { font-size: 0.78rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 6px; }
-    .bin-result-value { font-size: 1.15rem; color: #0f172a; font-weight: 700; font-family: 'Inter', sans-serif; }
-    .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; }
-    .badge-visa { background: #dbeafe; color: #1e40af; }
-    .badge-mastercard { background: #ffedd5; color: #9a3412; }
-    .badge-amex { background: #e0e7ff; color: #3730a3; }
-    .badge-discover { background: #fef3c7; color: #92400e; }
-    .badge-unknown { background: #f1f5f9; color: #475569; }
-
-    /* SAMPLE BUTTONS CONTAINER */
-    .sample-bins { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .sample-btn { background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.15s; }
-    .sample-btn:hover { background: #dbeafe; }
+    /* PRESET BADGES */
+    .preset-container { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+    .preset-badge { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+    .preset-badge:hover { background: #dbeafe; }
 
     /* PREMIUM EDITORIAL CONTENT STYLING GRID */
     .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
@@ -99,9 +95,8 @@ crossorigin="anonymous"></script>
     @media (max-width: 768px) {
       .f-card { padding: 25px 20px; border-radius: 20px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
-      .bin-results-grid { grid-template-columns: 1fr; }
-      .bin-result-card.full-width { grid-column: span 1; }
-      .bin-input-field { font-size: 1.1rem; padding: 12px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field { height: 48px; font-size: 1rem; }
       
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
@@ -121,148 +116,147 @@ crossorigin="anonymous"></script>
     <div class="f-heading"><span>💳</span> Credit Card Bin Checker Simulator</div>
     
     <div class="f-card">
-      <div class="bin-input-group">
-        <label for="binInput">Enter Bank Identification Number (6 to 8 Digits)</label>
-        <input type="text" id="binInput" class="bin-input-field" maxlength="8" placeholder="e.g. 453215 or 541275..." oninput="simulateBinCheck()" />
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="binInput">Enter 6-digit or 8-digit BIN / IIN</label>
+          <input type="text" id="binInput" class="f-input-field" maxlength="8" placeholder="e.g. 453265 or 541333..." oninput="simulateBinLookup()" />
+          <div style="font-size: 0.8rem; color: #64748b; margin-top: 4px;">Quick test presets:</div>
+          <div class="preset-container">
+            <span class="preset-badge" onclick="setPreset('453265')">453265 (Visa)</span>
+            <span class="preset-badge" onclick="setPreset('541333')">541333 (Mastercard)</span>
+            <span class="preset-badge" onclick="setPreset('371449')">371449 (Amex)</span>
+            <span class="preset-badge" onclick="setPreset('601100')">601100 (Discover)</span>
+          </div>
+        </div>
         
-        <div style="margin-top: 8px; font-size: 0.85rem; color: #64748b;">
-          Quick test samples: 
-          <div class="sample-bins">
-            <button class="sample-btn" onclick="loadSampleBin('453215')">453215 (Visa)</button>
-            <button class="sample-btn" onclick="loadSampleBin('541275')">541275 (Mastercard)</button>
-            <button class="sample-btn" onclick="loadSampleBin('378282')">378282 (Amex)</button>
-            <button class="sample-btn" onclick="loadSampleBin('601100')">601100 (Discover)</button>
-            <button class="sample-btn" onclick="loadSampleBin('352800')">352800 (JCB)</button>
+        <div class="f-panel-box">
+          <label>Simulation Result Data</label>
+          <div class="result-display-panel">
+            <div class="result-row">
+              <span class="result-label">Network / Scheme</span>
+              <span id="resScheme" class="result-value">-</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Card Type</span>
+              <span id="resType" class="result-value">-</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Card Tier / Category</span>
+              <span id="resTier" class="result-value">-</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Issuing Bank</span>
+              <span id="resBank" class="result-value">-</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Country Code</span>
+              <span id="resCountry" class="result-value">-</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="bin-results-grid">
-        <div class="bin-result-card">
-          <div class="bin-result-label">Card Scheme / Brand</div>
-          <div class="bin-result-value" id="resBrand"><span class="badge badge-unknown">Awaiting Input</span></div>
-        </div>
-        <div class="bin-result-card">
-          <div class="bin-result-label">Card Type</div>
-          <div class="bin-result-value" id="resType">---</div>
-        </div>
-        <div class="bin-result-card">
-          <div class="bin-result-label">Card Category / Tier</div>
-          <div class="bin-result-value" id="resCategory">---</div>
-        </div>
-        <div class="bin-result-card">
-          <div class="bin-result-label">Issuing Country</div>
-          <div class="bin-result-value" id="resCountry">---</div>
-        </div>
-        <div class="bin-result-card full-width">
-          <div class="bin-result-label">Issuing Bank / Financial Institution</div>
-          <div class="bin-result-value" id="resBank">---</div>
-        </div>
-      </div>
-
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="simulateBinCheck()">Verify BIN Code</button>
-        <button class="f-btn f-btn-copy" onclick="copyBinResult()">📋 Copy Details</button>
+        <button class="f-btn f-btn-convert" onclick="simulateBinLookup()">Run Simulation</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copySimulationResult()">📋 Copy Data Report</button>
         <button class="f-btn f-btn-clear" onclick="clearBinWorkspace()">Clear</button>
       </div>
       
-      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Secure Client-Side Simulation Notice:</span>
-        This utility runs entirely inside your browser sandbox to simulate BIN lookup responses for testing and development workflows without external API tracking.
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Sandbox Security Notice:</span>
+        This tool simulates BIN/IIN structure decoding locally in your browser memory for software testing and integration development. No real banking networks or live payment credentials are accessed.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">Understanding Bank Identification Numbers (BIN) and Issuer Identification Numbers (IIN): Architecture, Fraud Prevention, and Payment Gateway Integration</h2>
-      <p class="seo-p">In modern digital commerce and online payment processing, security, precision, and speed are critical. Every electronic transaction initiated via credit, debit, or prepaid cards begins with a precise sequence of digits that instantly identifies the issuing institution, network, and geographical location. This foundational sequence is known as the Bank Identification Number (BIN) or, under recent ISO/IEC standards updates, the Issuer Identification Number (IIN).</p>
-      <p class="seo-p">This extensive technical guide explores the structural mechanics of BIN codes, examines how payment gateways utilize BIN databases for real-time risk mitigation and anti-fraud checks, reviews ISO compliance standards, and outlines best practices for integrating BIN validation tools into web applications.</p>
+      <h2 class="seo-title">Comprehensive Guide to Bank Identification Number (BIN) and Issuer Identification Number (IIN) Verification Mechanics</h2>
+      <p class="seo-p">In modern financial technology, payment processing infrastructure, and e-commerce gateway development, validating transaction metadata is critical for security, fraud prevention, and interchange optimization. At the core of every payment card identifier lies the Bank Identification Number (BIN)—recently formalized as the Issuer Identification Number (IIN) by the International Organization for Standardization (ISO/IEC 7812). Understanding how these numeric sequences structure financial routing is essential for software architects building robust checkout workflows.</p>
+      <p class="seo-p">This detailed guide explores the structural anatomy of credit card prefixes, the transition from 6-digit to 8-digit BIN standards, the role of ISO registry bodies, and how client-side simulators assist QA engineers in evaluating fraud screening rules without compromising sensitive financial data.</p>
 
       <div class="seo-callout">
-        <strong>The 6-to-8 Digit Shift:</strong> While traditional payment cards historically relied on the first 6 digits to identify the issuer, ISO/IEC 7812 standards have expanded IIN prefixes up to 8 digits to accommodate a rapidly growing volume of global financial institutions and card portfolios.
+        <strong>The ISO/IEC 7812 Standard:</strong> The initial digits of a payment card number designate the major industry identifier (MII) and the specific financial institution responsible for issuing the credential, creating a standardized framework for global clearing networks.
       </div>
 
-      <h3 class="seo-h2">The Anatomy of a Credit Card Number and BIN Structure</h3>
-      <p class="seo-p">A standard payment card number contains between 12 and 19 digits, structured according to rigorous international financial algorithms. The leading digits comprise the BIN/IIN structure:</p>
+      <h3 class="seo-h2">The Technical Anatomy of Payment Card Identifiers</h3>
+      <p class="seo-p">A standard payment card number (PAN) ranges from 13 to 19 digits, with the primary prefix carrying vital metadata regarding the card's issuing institution and network affiliation:</p>
 
       <h4 class="seo-h3">1. Major Industry Identifier (MII)</h4>
-      <p class="seo-p">The very first digit of any payment card indicates the broader industry of the card issuer. For example, '4' designates Visa, '5' represents Mastercard, '3' points to American Express or JCB, and '6' indicates Discover or other financial networks.</p>
+      <p class="seo-p">The very first digit of any payment card denotes the overarching industry sector. For instance, prefixes starting with '3' typically denote travel and entertainment cards (like American Express or JCB), '4' and '5' represent banking and financial services (Visa and Mastercard), while '6' signifies merchandising and financial institutions (Discover).</p>
 
-      <h4 class="seo-h3">2. Issuer Identification Number (IIN / BIN)</h4>
-      <p class="seo-p">Comprising the first 6 to 8 digits (inclusive of the MII), this segment points directly to the specific bank, credit union, or financial institution that issued the payment instrument to the cardholder.</p>
+      <h4 class="seo-h3">2. Expanding from 6 to 8 Digits</h4>
+      <p class="seo-p">Historically, payment networks relied on the first 6 digits to identify the issuing bank. However, due to the rapid proliferation of digital fintech services, prepaid wallets, and specialized card tiers, the payment industry transitioned to an 8-digit BIN standard to drastically expand available issuer address spaces.</p>
 
-      <h4 class="seo-h3">3. Account Number Identifier</h4>
-      <p class="seo-p">The subsequent sequence of digits uniquely identifies the individual cardholder's account within the issuing bank's database.</p>
+      <h4 class="seo-h3">3. Luhn Algorithm Validation Checksum</h4>
+      <p class="seo-p">While BIN lookup modules inspect the prefix, the final digit of every valid card number serves as a mathematical checksum validated via the Luhn formula, protecting against accidental keystroke errors during data entry.</p>
 
-      <h4 class="seo-h3">4. Luhn Check Digit</h4>
-      <p class="seo-p">The final single digit of the card number is a mathematical checksum calculated via the Luhn algorithm, ensuring the entire number was typed without transposition errors.</p>
-
-      <h3>Global Card Networks and Prefix Reference Matrix</h3>
-      <p class="seo-p">Reviewing standard major network prefix ranges helps developers and merchants configure payment routers, enforce currency restrictions, and identify potential fraud vectors instantly:</p>
+      <h3>Global Network Prefix Matrix: Standard Issuer Identification Signatures</h3>
+      <p class="seo-p">Reviewing standard prefix ranges helps developers configure regex filters and gateway routing rules accurately across different payment schemes:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Card Network / Scheme</th>
-              <th>Leading Prefix / MII</th>
+              <th>Payment Network Scheme</th>
+              <th>MII / Prefix Range</th>
               <th>Standard Length</th>
-              <th>Typical BIN Range</th>
-              <th>Primary Network Characteristics</th>
+              <th>ISO Identifier Classification</th>
+              <th>Typical Processing Characteristics</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><b>Visa</b></td>
-              <td>4</td>
-              <td>16 digits (sometimes 13)</td>
-              <td>400000 - 499999</td>
-              <td>Global dominance, extensive international merchant acceptance.</td>
+              <td>4xxxxxx</td>
+              <td>16 Digits</td>
+              <td>Banking & Financial</td>
+              <td>Global acceptance, supports 8-digit BIN expansion.</td>
             </tr>
             <tr>
               <td><b>Mastercard</b></td>
-              <td>51 - 55, 2221 - 2720</td>
-              <td>16 digits</td>
-              <td>510000 - 559999</td>
-              <td>Worldwide coverage, robust corporate and consumer portfolios.</td>
+              <td>51-55 / 2221-2720</td>
+              <td>16 Digits</td>
+              <td>Banking & Financial</td>
+              <td>Dual-range prefixes covering European and global issuers.</td>
             </tr>
             <tr>
               <td><b>American Express</b></td>
-              <td>34, 37</td>
-              <td>15 digits</td>
-              <td>340000 - 379999</td>
-              <td>T&amp;E market focus, premium rewards and high spending limits.</td>
+              <td>34xxxx, 37xxxx</td>
+              <td>15 Digits</td>
+              <td>Travel & Entertainment</td>
+              <td>Proprietary closed-loop issuing and acquiring network.</td>
             </tr>
             <tr>
               <td><b>Discover</b></td>
-              <td>6011, 64, 65</td>
-              <td>16 or 19 digits</td>
-              <td>601100 - 601199</td>
-              <td>Major North American footprint, widespread debit interoperability.</td>
+              <td>6011xx, 64xxxx, 65xxxx</td>
+              <td>16-19 Digits</td>
+              <td>Merchandising & Banking</td>
+              <td>Extensive domestic footprint with international alliance routing.</td>
             </tr>
             <tr>
-              <td><b>JCB</b></td>
-              <td>3528 - 3589</td>
-              <td>16 to 19 digits</td>
-              <td>352800 - 358999</td>
-              <td>Leading Japanese international payment brand with global acceptance.</td>
+              <td><b>UnionPay</b></td>
+              <td>62xxxx, 81xxxx</td>
+              <td>16-19 Digits</td>
+              <td>National / Global Financial</td>
+              <td>Massive regional adoption with expanding international corridors.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - BIN Verification Guide</h3>
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Technical & Diagnostic Insights</h3>
 
       <h3>What is the difference between a BIN and an IIN?</h3>
-      <p class="seo-p">Historically, the financial industry referred to the initial numbers of a payment card as the Bank Identification Number (BIN). However, as non-bank financial institutions, fintechs, and payment facilitators began issuing cards, the International Organization for Standardization (ISO) officially updated the terminology to Issuer Identification Number (IIN) to reflect a broader range of issuers.</p>
+      <p class="seo-p">Historically referred to as Bank Identification Numbers (BINs) in banking circles, the ISO/IEC 7812 standards committee formally updated the nomenclature to Issuer Identification Number (IIN) to reflect that modern cards are frequently issued by non-bank financial institutions, fintech startups, and digital wallet providers rather than traditional commercial banks.</p>
 
-      <h3>Why do e-commerce merchants check BIN codes during checkout?</h3>
-      <p class="seo-p">Merchants use BIN lookup tools to perform essential risk scoring. By verifying that the card's issuing country matches the customer's IP geolocation and billing address, businesses can detect and block fraudulent orders, reduce costly chargebacks, and prevent unauthorized card-not-present transactions.</p>
+      <h3>Why is 8-digit BIN expansion necessary for modern e-commerce?</h3>
+      <p class="seo-p">Traditional 6-digit BIN registries provided one million potential issuer combinations per network prefix. As neobanks, embedded finance platforms, and specialized corporate expense card programs multiplied, the 6-digit pool faced exhaustion. Moving to 8 digits creates 100 million combinations per prefix, preventing issuer collisions.</p>
 
-      <h3>Is our Credit Card Bin Checker Simulator safe to use?</h3>
-      <p class="seo-p">Yes, absolutely. Texus Pro Tools is built with privacy-first principles. This simulator runs entirely within your browser's local script memory. No financial data, test strings, or search queries ever leave your device or get transmitted to external servers.</p>
+      <h3>Is this simulation tool safe for production testing?</h3>
+      <p class="seo-p">Yes. This simulator operates entirely client-side using deterministic pattern matching and mock database tables. No real financial account data is stored, transmitted, or validated against live clearing houses, ensuring complete security and privacy during software development.</p>
 
-      <h3 class="seo-h2">Summary: Optimizing Financial Workflows with BIN Simulation</h3>
-      <p class="seo-p">Integrating robust BIN verification practices into payment applications ensures seamless user onboarding, accurate currency routing, and enhanced anti-fraud defenses. Whether you are testing checkout forms or analyzing card portfolio distributions, our Credit Card Bin Checker Simulator provides instant, reliable simulated metadata across all major global card networks.</p>
+      <h3 class="seo-h2">Summary: Best Practices for Integrating BIN Checkers in Checkout Flows</h3>
+      <p class="seo-p">Integrating real-time BIN lookups during the checkout process allows merchants to instantly identify debit versus credit cards, assess foreign transaction fees, apply optimized routing logic, and trigger 3D Secure (3DS) authentication challenges proactively.</p>
+      <p class="seo-p">Our Credit Card Bin Checker Simulator provides an instant, developer-friendly sandbox environment to test UI responses and data extraction logic across diverse card schemes without relying on external APIs.</p>
     </div>
   </main>
 
@@ -282,113 +276,95 @@ crossorigin="anonymous"></script>
       .catch(err => console.error('Footer failed to compile:', err));
 
     // TOOL LOGIC SCRIPT
-    function loadSampleBin(bin) {
-      document.getElementById('binInput').value = bin;
-      simulateBinCheck();
-    }
+    const mockBinDatabase = {
+      "453265": { scheme: "VISA", type: "DEBIT", tier: "CLASSIC", bank: "JPMORGAN CHASE BANK, N.A.", country: "UNITED STATES (US)" },
+      "541333": { scheme: "MASTERCARD", type: "CREDIT", tier: "WORLD", bank: "CITIBANK, N.A.", country: "UNITED STATES (US)" },
+      "371449": { scheme: "AMERICAN EXPRESS", type: "CREDIT", tier: "PLATINUM", bank: "AMERICAN EXPRESS", country: "UNITED STATES (US)" },
+      "601100": { scheme: "DISCOVER", type: "CREDIT", tier: "STANDARD", bank: "DISCOVER BANK", country: "UNITED STATES (US)" },
+      "414720": { scheme: "VISA", type: "CREDIT", tier: "SIGNATURE", bank: "BARCLAYS BANK PLC", country: "UNITED KINGDOM (GB)" },
+      "516875": { scheme: "MASTERCARD", type: "DEBIT", tier: "STANDARD", bank: "HSBC BANK PLC", country: "UNITED KINGDOM (GB)" }
+    };
 
-    function simulateBinCheck() {
-      const rawInput = document.getElementById('binInput').value.replace(/\D/g, '');
-      const brandEl = document.getElementById('resBrand');
-      const typeEl = document.getElementById('resType');
-      const catEl = document.getElementById('resCategory');
-      const countryEl = document.getElementById('resCountry');
-      const bankEl = document.getElementById('resBank');
+    function simulateBinLookup() {
+      const inputVal = document.getElementById('binInput').value.trim();
+      const cleanBin = inputVal.replace(/\D/g, '').substring(0, 8);
 
-      if (rawInput.length < 4) {
-        brandEl.innerHTML = '<span class="badge badge-unknown">Enter at least 4-6 digits</span>';
-        typeEl.textContent = '---';
-        catEl.textContent = '---';
-        countryEl.textContent = '---';
-        bankEl.textContent = '---';
+      const resScheme = document.getElementById('resScheme');
+      const resType = document.getElementById('resType');
+      const resTier = document.getElementById('resTier');
+      const resBank = document.getElementById('resBank');
+      const resCountry = document.getElementById('resCountry');
+
+      if (cleanBin.length < 6) {
+        resScheme.textContent = "-";
+        resType.textContent = "-";
+        resTier.textContent = "-";
+        resBank.textContent = "-";
+        resCountry.textContent = "-";
         return;
       }
 
-      const prefix = parseInt(rawInput.substring(0, 4), 10);
-      const firstDigit = rawInput.charAt(0);
-
-      let brand = 'Unknown Network';
-      let badgeClass = 'badge-unknown';
-      let type = 'Credit / Debit';
-      let category = 'Standard';
-      let country = 'United States (US)';
-      let bank = 'Global Financial Institution';
-
-      if (firstDigit === '4') {
-        brand = 'Visa';
-        badgeClass = 'badge-visa';
-        type = prefix >= 4500 && prefix <= 4999 ? 'Debit Card' : 'Credit Card';
-        category = prefix % 2 === 0 ? 'Infinite / Signature' : 'Classic / Gold';
-        country = prefix % 3 === 0 ? 'United Kingdom (GB)' : 'United States (US)';
-        bank = prefix % 2 === 0 ? 'JPMorgan Chase Bank, N.A.' : 'Bank of America, N.A.';
-      } else if ((prefix >= 5100 && prefix <= 5599) || (prefix >= 2221 && prefix <= 2720)) {
-        brand = 'Mastercard';
-        badgeClass = 'badge-mastercard';
-        type = 'Credit Card';
-        category = prefix >= 2221 ? 'World Elite' : 'Standard Mastercard';
-        country = 'Germany (DE)';
-        bank = 'Citibank, N.A. / Mastercard Issuer';
-      } else if (firstDigit === '3' && (rawInput.charAt(1) === '4' || rawInput.charAt(1) === '7')) {
-        brand = 'American Express';
-        badgeClass = 'badge-amex';
-        type = 'Charge Card / Credit';
-        category = 'Platinum / Centurion';
-        country = 'United States (US)';
-        bank = 'American Express Company';
-      } else if (prefix >= 6011 && prefix <= 6011) {
-        brand = 'Discover';
-        badgeClass = 'badge-discover';
-        type = 'Credit Card';
-        category = 'Discover It Cashback';
-        country = 'United States (US)';
-        bank = 'Discover Bank';
-      } else if (prefix >= 3528 && prefix <= 3589) {
-        brand = 'JCB';
-        badgeClass = 'badge-unknown';
-        type = 'Credit / Prepaid';
-        category = 'JCB Global';
-        country = 'Japan (JP)';
-        bank = 'JCB Co., Ltd.';
-      } else {
-        brand = 'Generic Financial Network';
-        badgeClass = 'badge-unknown';
-        type = 'Universal Payment Card';
-        category = 'Standard Commercial';
-        country = 'International';
-        bank = 'Associated Banking Syndicate';
+      // Check exact match or prefix match
+      let match = mockBinDatabase[cleanBin];
+      if (!match && cleanBin.length >= 6) {
+        const prefix6 = cleanBin.substring(0, 6);
+        match = mockBinDatabase[prefix6];
       }
 
-      brandEl.innerHTML = `<span class="badge ${badgeClass}">${brand}</span>`;
-      typeEl.textContent = type;
-      catEl.textContent = category;
-      countryEl.textContent = country;
-      bankEl.textContent = bank;
+      if (match) {
+        resScheme.textContent = match.scheme;
+        resType.textContent = match.type;
+        resTier.textContent = match.tier;
+        resBank.textContent = match.bank;
+        resCountry.textContent = match.country;
+      } else {
+        // Fallback generator based on MII
+        const firstDigit = cleanBin.charAt(0);
+        let scheme = "UNKNOWN";
+        if (firstDigit === '4') scheme = "VISA";
+        else if (firstDigit === '5') scheme = "MASTERCARD";
+        else if (firstDigit === '3') scheme = "AMERICAN EXPRESS";
+        else if (firstDigit === '6') scheme = "DISCOVER";
+        else if (firstDigit === '2') scheme = "MASTERCARD";
+
+        resScheme.textContent = scheme;
+        resType.textContent = parseInt(cleanBin) % 2 === 0 ? "CREDIT" : "DEBIT";
+        resTier.textContent = "STANDARD / REWARDS";
+        resBank.textContent = "GLOBAL ISSUING BANK SIMULATOR";
+        resCountry.textContent = "INTERNATIONAL (INT)";
+      }
     }
 
-    function copyBinResult() {
-      const brand = document.getElementById('resBrand').textContent;
-      const type = document.getElementById('resType').textContent;
-      const cat = document.getElementById('resCategory').textContent;
-      const country = document.getElementById('resCountry').textContent;
-      const bank = document.getElementById('resBank').textContent;
-      const bin = document.getElementById('binInput').value;
-
-      const payload = `BIN Details [${bin}]:\nBrand: ${brand}\nType: ${type}\nCategory: ${cat}\nCountry: ${country}\nBank: ${bank}`;
-      
-      navigator.clipboard.writeText(payload).then(() => {
-        alert('BIN details copied to clipboard successfully!');
-      }).catch(err => {
-        console.error('Copy failed:', err);
-      });
+    function setPreset(bin) {
+      document.getElementById('binInput').value = bin;
+      simulateBinLookup();
     }
 
     function clearBinWorkspace() {
       document.getElementById('binInput').value = '';
-      document.getElementById('resBrand').innerHTML = '<span class="badge badge-unknown">Awaiting Input</span>';
-      document.getElementById('resType').textContent = '---';
-      document.getElementById('resCategory').textContent = '---';
-      document.getElementById('resCountry').textContent = '---';
-      document.getElementById('resBank').textContent = '---';
+      simulateBinLookup();
+    }
+
+    function copySimulationResult() {
+      const scheme = document.getElementById('resScheme').textContent;
+      if (scheme === '-') {
+        alert('Please run a valid BIN simulation first.');
+        return;
+      }
+      const report = `--- BIN SIMULATION REPORT ---\n` +
+                     `BIN: ${document.getElementById('binInput').value}\n` +
+                     `Scheme: ${scheme}\n` +
+                     `Type: ${document.getElementById('resType').textContent}\n` +
+                     `Tier: ${document.getElementById('resTier').textContent}\n` +
+                     `Bank: ${document.getElementById('resBank').textContent}\n` +
+                     `Country: ${document.getElementById('resCountry').textContent}`;
+      
+      navigator.clipboard.writeText(report).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        const origText = btn.textContent;
+        btn.textContent = '✓ Copied Report!';
+        setTimeout(() => { btn.textContent = origText; }, 2000);
+      });
     }
   </script>
   
