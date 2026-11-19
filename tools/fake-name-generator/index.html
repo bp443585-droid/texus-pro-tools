@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Fake Name Generator | Free Random Identity & Persona Creator</title>
-  <meta name="description" content="Generate realistic fake identities instantly with our free online Fake Name Generator. Create random names, addresses, phone numbers, birthdates, and profile details." />
+  <title>Fake Name Generator | Free Online Synthetic Identity & Name Generator</title>
+  <meta name="description" content="Generate realistic fake names, synthetic user profiles, mock addresses, emails, and demographics instantly. Free online identity generator for testing, QA, and privacy." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -19,11 +19,11 @@ crossorigin="anonymous"></script>
     "name": "Fake Name Generator Pro",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced identity generation utility to create realistic fictional user personas, addresses, credentials, and contact records instantly.",
+    "description": "An advanced synthetic identity and pseudonym generator designed for software QA testing, database seeding, privacy protection, and user interface prototyping.",
     "offers": {
       "@type": "Offer",
       "price": "0",
-      "priceCurrency": "INR"
+      "priceCurrency": "USD"
     }
   }
   </script>
@@ -41,24 +41,22 @@ crossorigin="anonymous"></script>
     /* WORKSPACE CORE CONTAINER CARD */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
     
-    /* CONTROL GRID & INPUTS */
-    .f-controls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
-    .f-control-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
-    .f-control-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-    .f-select-field { width: 100%; height: 48px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 14px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
-    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-select-field, .f-input-field { width: 100%; height: 46px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 14px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-select-field:focus, .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .f-textarea-field { width: 100%; height: 290px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.6; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 600; font-size: 0.95rem; color: #0f172a; background: #f8fafc; }
 
-    /* IDENTITY RESULT DISPLAY CARD */
-    .id-display-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 24px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 24px; margin-bottom: 20px; align-items: center; }
-    .id-avatar-box { display: flex; flex-direction: column; align-items: center; justify-content: center; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; text-align: center; }
-    .id-avatar-icon { font-size: 3.5rem; margin-bottom: 8px; }
-    .id-main-name { font-size: 1.25rem; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
-    .id-main-gender-age { font-size: 0.9rem; color: #64748b; font-weight: 500; }
-
-    .id-details-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .id-detail-item { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 14px; }
-    .id-detail-label { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; display: block; }
-    .id-detail-value { font-size: 0.95rem; color: #0f172a; font-weight: 600; word-break: break-all; }
+    .f-checkbox-group { display: flex; flex-direction: column; gap: 10px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+    .f-checkbox-label { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 600; color: #334155; cursor: pointer; text-transform: none; letter-spacing: normal; }
+    .f-checkbox-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: #2563eb; cursor: pointer; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
     .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
@@ -67,8 +65,10 @@ crossorigin="anonymous"></script>
     .f-btn-convert:hover { background: #1d4ed8; }
     .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
     .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
 
-    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    /* EDITORIAL CONTENT STYLING GRID */
     .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
     .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
     .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
@@ -84,17 +84,17 @@ crossorigin="anonymous"></script>
     .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
     .seo-list li { margin-bottom: 8px; }
 
-    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    /* RESPONSIVENESS MATRIX SETUP */
     @media (max-width: 850px) {
       .f-wrapper { padding: 0 28px !important; }
       .seo-title { font-size: 1.8rem; }
       .seo-h2 { font-size: 1.35rem; }
-      .id-display-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .f-card { padding: 25px 20px; border-radius: 20px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
-      .id-details-list { grid-template-columns: 1fr; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 200px; font-size: 0.9rem; }
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
       .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
@@ -113,304 +113,197 @@ crossorigin="anonymous"></script>
     <div class="f-heading"><span>👤</span> Fake Name Generator</div>
     
     <div class="f-card">
-      <div class="f-controls-grid">
-        <div class="f-control-box">
-          <label for="genderSelect">Gender Identity</label>
-          <select id="genderSelect" class="f-select-field">
-            <option value="random">Random / Any</option>
-            <option value="male">Male Persona</option>
-            <option value="female">Female Persona</option>
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="genderSelect">Target Gender</label>
+          <select id="genderSelect" class="f-select-field" onchange="generateFakeNames()">
+            <option value="random">Random (Mixed)</option>
+            <option value="male">Male Only</option>
+            <option value="female">Female Only</option>
           </select>
-        </div>
 
-        <div class="f-control-box">
-          <label for="countrySelect">Country / Region</label>
-          <select id="countrySelect" class="f-select-field">
-            <option value="us">United States</option>
-            <option value="uk">United Kingdom</option>
-            <option value="ca">Canada</option>
-            <option value="au">Australia</option>
+          <label for="regionSelect">Cultural / Geographic Origin</label>
+          <select id="regionSelect" class="f-select-field" onchange="generateFakeNames()">
+            <option value="us">American (Anglo-Western)</option>
+            <option value="hispanic">Hispanic / Latin American</option>
+            <option value="european">European (German/French/Nordic)</option>
+            <option value="asian">East Asian (Japanese/Chinese/Korean)</option>
+            <option value="southasian">South Asian (Indian/Pakistani)</option>
           </select>
-        </div>
-      </div>
 
-      <div class="id-display-grid">
-        <div class="id-avatar-box">
-          <div class="id-avatar-icon" id="avatarIcon">👨‍💼</div>
-          <div class="id-main-name" id="fullNameDisplay">Alexander Vance</div>
-          <div class="id-main-gender-age" id="genderAgeDisplay">Male • 32 Years Old</div>
-        </div>
+          <label for="countInput">Quantity to Generate (1 to 50)</label>
+          <input type="number" id="countInput" class="f-input-field" value="5" min="1" max="50" onchange="generateFakeNames()" oninput="generateFakeNames()" />
 
-        <div class="id-details-list">
-          <div class="id-detail-item">
-            <span class="id-detail-label">Date of Birth</span>
-            <div class="id-detail-value" id="dobDisplay">October 14, 1993</div>
+          <div class="f-checkbox-group">
+            <label class="f-checkbox-label">
+              <input type="checkbox" id="includeMiddleName" onchange="generateFakeNames()" checked> Include Middle Name Initial
+            </label>
+            <label class="f-checkbox-label">
+              <input type="checkbox" id="includeExtendedDetails" onchange="generateFakeNames()" checked> Include Synthetic Profile (Address, Phone, Email, DOB)
+            </label>
           </div>
-          <div class="id-detail-item">
-            <span class="id-detail-label">Email Address</span>
-            <div class="id-detail-value" id="emailDisplay">alexander.vance93@gmail.com</div>
-          </div>
-          <div class="id-detail-item">
-            <span class="id-detail-label">Street Address</span>
-            <div class="id-detail-value" id="addressDisplay">742 Evergreen Terrace</div>
-          </div>
-          <div class="id-detail-item">
-            <span class="id-detail-label">City, State, Zip</span>
-            <div class="id-detail-value" id="cityStateZipDisplay">Springfield, OR 97477</div>
-          </div>
-          <div class="id-detail-item">
-            <span class="id-detail-label">Phone Number</span>
-            <div class="id-detail-value" id="phoneDisplay">+1 (541) 555-0143</div>
-          </div>
-          <div class="id-detail-item">
-            <span class="id-detail-label">Employment / Job</span>
-            <div class="id-detail-value" id="jobDisplay">Software Developer</div>
-          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="outputConsole">Generated Pseudonyms & Metadata Output</label>
+          <textarea id="outputConsole" class="f-textarea-field mono-font-panel" readonly placeholder="Click 'Generate Names' to create realistic synthetic identities..."></textarea>
         </div>
       </div>
 
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="generateNewIdentity()">🎲 Generate New Persona</button>
-        <button class="f-btn f-btn-copy" onclick="copyIdentityToClipboard()">📋 Copy Full Persona Details</button>
+        <button class="f-btn f-btn-convert" onclick="generateFakeNames()">⚡ Generate Names</button>
+        <button class="f-btn f-btn-copy" id="copyBtn" onclick="copyResultToClipboard()">📋 Copy Generated List</button>
+        <button class="f-btn f-btn-clear" onclick="clearWorkspace()">Clear</button>
       </div>
       
       <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Secure Client-Side Identity Synthesis:</span>
-        All generated names, addresses, and demographic tokens are synthesized locally inside your browser session using high-entropy arrays. No personal data records are stored or transmitted.
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">🔒 100% Client-Side Privacy Guarantee:</span>
+        All pseudo-random identity records are calculated instantly inside your local browser runtime environment. Zero data parameters or configuration selections are ever logged or transferred over network channels.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Complete Guide to Synthetic Identity Generation: Testing Mockups, Software QA, and Privacy Preservation Standards</h2>
-      <p class="seo-p">In modern software engineering, web development, and UX testing protocols, engineers frequently require realistic dummy data to populate user interfaces, populate database tables, test sign-up forms, and simulate user journeys. Relying on real personal details compromises individual privacy, invites compliance violations under GDPR and CCPA regulations, and exposes organizations to unnecessary security risks. A reliable Fake Name Generator solves this challenge by instantly creating authentic-looking, completely fictional personas consisting of first and last names, realistic street addresses, phone numbers, birthdates, and occupations.</p>
-      <p class="seo-p">This comprehensive technical reference explores the architecture of synthetic identity generation, reviews linguistic name distribution models, analyzes how regional address structures are formulated, and outlines best practices for leveraging mock credentials in staging environments.</p>
+      <h2 class="seo-title">The Architecture of Synthetic Personas: Realistic Pseudonyms, Data Anonymization, and QA Test Seeding</h2>
+      <p class="seo-p">In modern software engineering, staging environments, user interface prototyping, database performance benchmarking, and privacy compliance frameworks require vast volumes of realistic persona records. Relying on actual end-user personally identifiable information (PII) during development pipelines exposes organizations to catastrophic privacy breaches, statutory compliance violations under GDPR and CCPA, and accidental real-world communications triggering during automated integration runs.</p>
+      <p class="seo-p">The <strong>Fake Name Generator</strong> provides a high-throughput, client-side algorithmic engine designed to generate cryptographically random, ethnically balanced, and structurally authentic fake identity vectors. Whether populating mock SQL relational schemas, verifying frontend input validation routines, masking administrative accounts during screencasts, or safeguarding online personal identity against predatory web scrapers, this browser-based apparatus yields deterministic, instantly copyable dataset payloads.</p>
 
       <div class="seo-callout">
-        <strong>The Synthetic Persona Principle:</strong> By pairing localized first and corresponding surname arrays with geographically accurate postal codes and telephone area prefixes, test suites maintain structural integrity without violating data privacy laws.
+        <strong>The Synthetic Integrity Vector:</strong> Real-world database schemas do not simply store isolated strings; they depend on relational metadata structures. Generating realistic fake identity clusters—combining regional nomenclature, formatted phone patterns, valid email syntax, and realistic birth dates—allows automated testing suites to catch edge cases before code releases hit production networks.
       </div>
 
-      <h3 class="seo-h2">The Technical Core: Algorithmic Persona Composition and Data Arrays</h3>
-      <p class="seo-p">When a user requests a new fictional profile, our high-performance client script executes a structured randomization workflow across multiple categorical arrays:</p>
+      <h3 class="seo-h2">Algorithmic Identity Synthesis: How Name Data Structures Are Constructed</h3>
+      <p class="seo-p">Synthetic name generation is governed by combinatorial probability across multi-dimensional linguistic arrays. Rather than randomly stringing together characters, the generator organizes linguistic datasets into regional, demographic, and syntactical nodes:</p>
 
-      <h4 class="seo-h3">1. Linguistic First and Surname Matching</h4>
-      <p class="seo-p">Names are not merely concatenated at random. The generator first establishes gender and regional parameters, selecting given names from curated frequency lists before matching them with statistically probable family names native to the chosen country.</p>
+      <h4 class="seo-h3">1. Geographic and Demographic Phoneme Weighting</h4>
+      <p class="seo-p">Human names carry strong cultural, phonetic, and historical traits. Our identity synthesis engine categorizes nomenclature databases into distinct linguistic regions (Anglo-Western, Hispanic, Germanic/Nordic, East Asian, and South Asian). This ensures generated first and last name pairings reflect realistic geographic distribution patterns.</p>
 
-      <h4 class="seo-h3">2. Geographically Coherent Address Mapping</h4>
-      <p class="seo-p">A realistic test address requires synchronization between street names, municipal districts, state/province abbreviations, and postal codes. Our generator cross-references valid regional naming conventions to ensure that ZIP codes and telephone area codes correspond accurately to the generated city.</p>
+      <h4 class="seo-h3">2. Structured Metadata Correlation</h4>
+      <p class="seo-p">When extended synthetic profile flags are enabled, the generator synthesizes synchronized auxiliary parameters linked to the primary identity node:</p>
+      <ul class="seo-list">
+        <li><strong>Deterministic Email Generation:</strong> Constructs plausible email identifiers based on lowercased identity fragments mapped to standard tech domains (`@example.com`, `@testmail.org`, `@mockdata.net`).</li>
+        <li><strong>Regional Phone Syntax:</strong> Formats random numeric payloads into realistic North American and international calling plan formats (e.g., `+1 (555) 019-XXXX`).</li>
+        <li><strong>Normalized Street Address Blocks:</strong> Pairs randomized cardinal directions, street identifiers, and building numbers with valid municipal entity listings.</li>
+        <li><strong>Demographically Scaled DOB Matrices:</strong> Restricts generated age outputs within logical working-adult parameters (18 to 72 years old).</li>
+      </ul>
 
-      <h4 class="seo-h3">3. Temporal and Demographic Consistency</h4>
-      <p class="seo-p">A generated birthdate dictates logical age boundaries, which in turn inform career titles, email formatting styles, and telephone exchange patterns, ensuring the complete profile feels cohesive and authentic during form validation testing.</p>
+      <h4 class="seo-h3">3. Client-Side Cryptographic Randomness</h4>
+      <p class="seo-p">Traditional server-side generators incur latency and present potential data privacy risks. By executing array lookups and string concatenations locally via modern JavaScript engines, identity generation happens instantly with zero memory retention across sessions.</p>
 
-      <h3>Regional Identity Metrics: Comparison of Supported Country Data Formats</h3>
-      <p class="seo-p">Different countries maintain distinct address formats, postal code structures, and phone number lengths. Reviewing these regional templates helps developers verify that internationalized web forms handle input validation correctly:</p>
+      <h3>Comparative Audit: Test Data Strategies Across Enterprise Staging Workflows</h3>
+      <p class="seo-p">Choosing the right strategy for populating test databases and user interface wireframes is crucial for security compliance and software QA integrity:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Country Jurisdiction</th>
-              <th>Postal Code Structure</th>
-              <th>Phone Number Format</th>
-              <th>Primary Language / Cultural Origin</th>
-              <th>Typical Testing Application</th>
+              <th>Data Strategy Model</th>
+              <th>Privacy & Security Vector</th>
+              <th>Implementation Velocity</th>
+              <th>Structural Realism</th>
+              <th>Compliance Status (GDPR/CCPA)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>United States (US)</td>
-              <td>5 Digits (e.g., 90210)</td>
-              <td>+1 (XXX) XXX-XXXX</td>
-              <td>Anglo-American</td>
-              <td>Standard e-commerce checkout and US-based SaaS validation testing.</td>
+              <td><strong>Algorithmic Fake Data</strong></td>
+              <td>100% Secure (Zero PII Risk)</td>
+              <td>Instant (&lt; 1 millisecond)</td>
+              <td>High (Linguistically Structured)</td>
+              <td>Fully Exempt (Non-PII Payload)</td>
             </tr>
             <tr>
-              <td>United Kingdom (UK)</td>
-              <td>Alphanumeric (e.g., SW1A 1AA)</td>
-              <td>+44 20 XXXX XXXX</td>
-              <td>British English</td>
-              <td>UK banking, postcode lookup integration, and GDPR compliance checks.</td>
+              <td><strong>Production DB Scrubbing</strong></td>
+              <td>Moderate (Risk of Obfuscation Drops)</td>
+              <td>Slow (Batch Processing Scripting)</td>
+              <td>Extreme (Historical Production Records)</td>
+              <td>High Risk (Requires Audation Logs)</td>
             </tr>
             <tr>
-              <td>Canada (CA)</td>
-              <td>Alternating Letter/Number (A1A 1A1)</td>
-              <td>+1 (XXX) XXX-XXXX</td>
-              <td>Canadian English / French</td>
-              <td>Cross-border shipping calculators and provincial tax validation.</td>
+              <td><strong>Manual Data Entry</strong></td>
+              <td>High Security (Developer Invented)</td>
+              <td>Extremely Slow (Manual Effort)</td>
+              <td>Low (Repetitive `test1`, `john doe`)</td>
+              <td>Compliant (Inadequate Volume)</td>
             </tr>
             <tr>
-              <td>Australia (AU)</td>
-              <td>4 Digits (e.g., 2000)</td>
-              <td>+61 X XXXX XXXX</td>
-              <td>Australian English</td>
-              <td>APAC region localization testing and timezone verification.</td>
+              <td><strong>Unprocessed Raw Prod Copies</strong></td>
+              <td>Critical Breach Risk</td>
+              <td>Fast (Direct Database Dump)</td>
+              <td>Absolute Realism</td>
+              <td>Direct Statutory Violation</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ)</h3>
 
-      <h3>Are the generated fake names and addresses tied to real people?</h3>
-      <p class="seo-p">No. All names, addresses, phone numbers, and identifying details generated by this tool are entirely synthetic and randomly assembled from statistical frequency lists. Any coincidence with real living persons is purely accidental.</p>
+      <h3 class="seo-h3">Are the generated identity profiles real people?</h3>
+      <p class="seo-p">No. All generated names, addresses, phone numbers, and email accounts are synthetically compiled by combining randomized arrays of common linguistic elements. Any resemblance to real individuals or active physical locations is completely coincidental.</p>
 
-      <h3>Can I use these fake profiles to create real online accounts or verify services?</h3>
-      <p class="seo-p">No. These profiles are strictly designed for software testing, design mockups, educational demonstrations, and protecting your personal privacy on untrusted public forums where you do not wish to disclose your real identity. Using fake credentials to violate third-party terms of service or commit fraud is strictly prohibited.</p>
+      <h3 class="seo-h3">Can these names be legally used for software testing and public demonstrations?</h3>
+      <p class="seo-p">Yes. Synthetic pseudonyms produced by this utility contain zero personally identifiable information (PII) belonging to living or deceased individuals. They are completely safe for use in QA testing suites, open-source documentation screenshots, UI mockups, and database load tests.</p>
 
-      <h3>How does local execution guarantee absolute data confidentiality?</h3>
-      <p class="seo-p">Texus Pro Tools prioritizes user privacy. All persona generation scripts execute entirely within your browser's local JavaScript execution environment. No generated profiles, queries, or user actions ever leave your device or touch an external server.</p>
+      <h3 class="seo-h3">Why are the generated phone numbers using 555-style formats?</h3>
+      <p class="seo-p">The generator utilizes standard unassigned prefix sequences (such as `555-01XX`) reserved internationally for fictional, media, and testing purposes. This ensures automated test calls or text messages never reach actual telephone subscribers.</p>
 
-      <h3 class="seo-h2">Summary: Strategic Best Practices for Mock Data Integration</h3>
-      <p class="seo-p">Integrating synthetic user personas into your software testing lifecycle eliminates dependency on live production data, protecting user privacy and preventing accidental data leaks. Use structured country filters to test internationalized forms, leverage batch generation for database stress testing, and maintain clean separation between testing artifacts and real records.</p>
-      <p class="seo-p">Our Fake Name Generator suite streamlines this process instantly, giving developers, designers, and privacy advocates a reliable tool to generate realistic credentials on demand across any device.</p>
+      <h3 class="seo-h3">How can I export hundreds of names directly into an SQL database?</h3>
+      <p class="seo-p">Simply set the desired output quantity, copy the generated output block using the copy button, and paste the plain text directly into your script environment or CSV transformation script for bulk database seeding.</p>
+
+      <h3 class="seo-h2">Best Practices for Synthetic Data Management in Development</h3>
+      <p class="seo-p">To maintain robust software pipelines without compromising user privacy, adopt the following operational rules:</p>
+      <ul class="seo-list">
+        <li>Never paste live production user databases into local testing environments or third-party web forms.</li>
+        <li>Incorporate synthetic name generators into frontend UI component design phases to verify text box overflow limits and long surname rendering limits.</li>
+        <li>Utilize multi-cultural regional selections when building user registration systems to ensure validation scripts correctly process international character structures and non-Western name layouts.</li>
+      </ul>
     </div>
   </main>
 
   <div id="site-footer"></div>
 
   <script type="text/javascript">
-    const basePath = window.location.origin;
-    
-    fetch('/components/header.html')
-      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
-      .then(data => { document.getElementById('site-header').innerHTML = data; })
-      .catch(err => console.error('Header failed to compile:', err));
-
-    fetch('/components/footer.html')
-      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
-      .then(data => { document.getElementById('site-footer').innerHTML = data; })
-      .catch(err => console.error('Footer failed to compile:', err));
-
-    // FAKE NAME GENERATOR CORE LOGIC
-    const firstNamesMale = {
-      us: ['James', 'John', 'Robert', 'Michael', 'William', 'David', 'Richard', 'Joseph', 'Thomas', 'Charles', 'Christopher', 'Daniel', 'Matthew', 'Anthony', 'Mark', 'Donald', 'Steven', 'Paul', 'Andrew', 'Joshua'],
-      uk: ['Oliver', 'George', 'Harry', 'Jack', 'Jacob', 'Noah', 'Charlie', 'Muhammad', 'Thomas', 'Oscar', 'William', 'James', 'Henry', 'Alfie', 'Leo', 'Joshua', 'Freddie', 'Archie', 'Ethan', 'Isaac'],
-      ca: ['Liam', 'Jackson', 'Lucas', 'Noah', 'Oliver', 'Ethan', 'Logan', 'Benjamin', 'Mason', 'Elijah', 'Caleb', 'Alexander', 'Gabriel', 'Owen', 'Carter', 'Ryan', 'Luke', 'Wyatt', 'jayden', 'Nathan'],
-      au: ['Oliver', 'Noah', 'Jack', 'William', 'Leo', 'Lucas', 'Thomas', 'Henry', 'Charlie', 'James', 'Mason', 'Ethan', 'Hunter', 'Harrison', 'Lachlan', 'Cooper', 'Logan', 'Benjamin', 'Samuel', 'Archie']
+    // DATA DICTIONARIES FOR SYNTHETIC NAME GENERATION
+    const NAME_DATA = {
+      us: {
+        male: ["James", "John", "Robert", "Michael", "William", "David", "Richard", "Joseph", "Thomas", "Charles", "Christopher", "Daniel", "Matthew", "Anthony", "Mark", "Donald", "Steven", "Paul", "Andrew", "Joshua", "Kenneth", "Kevin", "Brian", "George", "Timothy", "Jason", "Edward", "Jeffrey", "Ryan", "Jacob"],
+        female: ["Mary", "Patricia", "Jennifer", "Linda", "Elizabeth", "Barbara", "Susan", "Jessica", "Sarah", "Karen", "Lisa", "Nancy", "Betty", "Sandra", "Margaret", "Ashley", "Kimberly", "Emily", "Donna", "Michelle", "Carol", "Amanda", "Melissa", "Deborah", "Stephanie", "Rebecca", "Sharon", "Laura", "Cynthia", "Amy"],
+        last: ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson"]
+      },
+      hispanic: {
+        male: ["Carlos", "Alejandro", "Mateo", "Santiago", "Diego", "Luis", "Gabriel", "Fernando", "Javier", "Manuel", "Ricardo", "Rafael", "Andres", "Miguel", "Jose", "Juan", "Jorge", "Eduardo", "Adrian", "Gonzalo"],
+        female: ["Sofia", "Isabella", "Camila", "Valeria", "Mariana", "Lucia", "Elena", "Gabriela", "Daniela", "Martina", "Victoria", "Natalia", "Carmen", "Adriana", "Ana", "Rosa", "Maria", "Laura", "Paula", "Ximena"],
+        last: ["Rodriguez", "Gomez", "Fernandez", "Lopez", "Diaz", "Martinez", "Perez", "Garcia", "Sanchez", "Torres", "Alvarez", "Romero", "Ruiz", "Vargas", "Castro", "Morales", "Ortega", "Mendoza", "Silva", "Delgado"]
+      },
+      european: {
+        male: ["Lukas", "Maximilian", "Alexander", "Felix", "Julian", "Henri", "Antoine", "Mathieu", "Lars", "Erik", "Frederik", "Soren", "Jan", "Klaus", "Marco", "Matteo", "Hugo", "Leo", "Arthur", "Oliver"],
+        female: ["Emma", "Hannah", "Mia", "Sophia", "Anna", "Chloe", "Camille", "Manon", "Astrid", "Freja", "Ingrid", "Greta", "Elena", "Giulia", "Clara", "Charlotte", "Lea", "Zoe", "Eva", "Mathilde"],
+        last: ["Mueller", "Schneider", "Fischer", "Weber", "Meyer", "Dubois", "Moreau", "Laurent", "Lefebvre", "Jansen", "De Jong", "Bakker", "Johansson", "Andersson", "Nilsson", "Rossi", "Russo", "Ferrari", "Esposito", "Hansen"]
+      },
+      asian: {
+        male: ["Ren", "Haruto", "Hiroshi", "Kenji", "Takumi", "Wei", "Ming", "Jun", "Zheng", "Min-jun", "Seo-jun", "Do-yun", "Takahashi", "Kazuki", "Daisuke", "Yuki", "Chen", "Bo", "Kaito", "Sora"],
+        female: ["Yui", "Hina", "Aoi", "Sakura", "Mei", "Ling", "Xiu", "Fang", "Seo-yeon", "Ji-woo", "Ha-eun", "Yuna", "Hanako", "Rin", "Kiko", "Naomi", "Yan", "Jia", "Soo-jin", "Min-ji"],
+        last: ["Sato", "Suzuki", "Takahashi", "Tanaka", "Watanabe", "Ito", "Yamamoto", "Nakamura", "Wang", "Li", "Zhang", "Chen", "Liu", "Yang", "Kim", "Lee", "Park", "Choi", "Jung", "Kang"]
+      },
+      southasian: {
+        male: ["Aarav", "Vihaan", "Vivaan", "Ananya", "Diya", "Aditya", "Rahul", "Rohan", "Amit", "Sanjay", "Vikram", "Arjun", "Karan", "Dev", "Rajesh", "Sunil", "Pranav", "Nikhil", "Gaurav", "Deepak"],
+        female: ["Aaliyah", "Ananya", "Diya", "Priya", "Pooja", "Neha", "Kavya", "Isha", "Riya", "Sneha", "Anushka", "Meera", "Shreya", "Sunita", "Anita", "Deepika", "Kriti", "Aditi", "Simran", "Preeti"],
+        last: ["Sharma", "Verma", "Gupta", "Patel", "Kumar", "Singh", "Shah", "Joshi", "Mehta", "Rao", "Nair", "Reddy", "Chowdhury", "Das", "Banerjee", "Bhat", "Deshmukh", "Pillai", "Kulkarni", "Aggarwal"]
+      }
     };
 
-    const firstNamesFemale = {
-      us: ['Mary', 'Patricia', 'Jennifer', 'Linda', 'Elizabeth', 'Barbara', 'Susan', 'Jessica', 'Sarah', 'Karen', 'Lisa', 'Nancy', 'Betty', 'Margaret', 'Sandra', 'Ashley', 'Kimberly', 'Emily', 'Donna', 'Michelle'],
-      uk: ['Olivia', 'Amelia', 'Isla', 'Ava', 'Mia', 'Ivy', 'Lily', 'Florence', 'Rosie', 'Sophia', 'Grace', 'Freya', 'Harper', 'Evelyn', 'E-loise', 'Aria', 'Ellie', 'Mia', 'Phoebe', 'Sienna'],
-      ca: ['Olivia', 'Emma', 'Charlotte', 'Amelia', 'Sophia', 'Chloe', 'Mia', 'Harper', 'Evelyn', 'Aria', 'Abigail', 'Emily', 'Ella', 'Elizabeth', 'Mila', 'Ella', 'Scarlett', 'Victoria', 'Hannah', 'Avery'],
-      au: ['Isla', 'Charlotte', 'Olivia', 'Amelia', 'Mia', 'Harper', 'Evie', 'Grace', 'Willow', 'Chloe', 'Matilda', 'Lily', 'Zoe', 'Sophie', 'Sienna', 'Lucy', 'Ava', 'Ruby', 'Ella', 'Ivy']
-    };
+    const STREET_NAMES = ["Oak St", "Maple Ave", "Washington Blvd", "Park Rd", "Cedar Ln", "Pine St", "Elm St", "View Dr", "Hill Rd", "Lake Ave"];
+    const CITIES = ["Springfield", "Riverside", "Greenville", "Fairfield", "Georgetown", "Madison", "Franklin", "Clinton", "Arlington", "Centerville"];
+    const DOMAINS = ["example.com", "testmail.org", "mockdata.net", "devdemo.io", "samplebox.com"];
 
-    const lastNames = {
-      us: ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin'],
-      uk: ['Smith', 'Jones', 'Taylor', 'Brown', 'Williams', 'Wilson', 'Johnson', 'Davies', 'Patel', 'Robinson', 'Wright', 'Thompson', 'Evans', 'Javed', 'Walker', 'White', 'Roberts', 'Green', 'Hall', 'Wood'],
-      ca: ['Smith', 'Brown', 'Tremblay', 'Martin', 'Roy', 'Wilson', 'Gagnon', 'Johnson', 'MacDonald', 'Taylor', 'Lee', 'Anderson', 'White', 'Lapointe', 'Martin', 'Clark', 'Lavoie', 'Fortin', 'Moore', 'Young'],
-      au: ['Smith', 'Jones', 'Williams', 'Brown', 'Wilson', 'Taylor', 'Morton', 'Johnson', 'White', 'Martin', 'Anderson', 'Thompson', 'Nguyen', 'Thomas', 'Walker', 'Harris', 'Lee', 'Ryan', 'Robinson', 'Kelly']
-    };
-
-    const citiesData = {
-      us: [
-        { city: 'Springfield', state: 'OR', zip: '97477', street: '742 Evergreen Terrace' },
-        { city: 'Seattle', state: 'WA', zip: '98101', street: '452 Pine Street' },
-        { city: 'Austin', state: 'TX', zip: '78701', street: '1200 Congress Avenue' },
-        { city: 'Denver', state: 'CO', zip: '80202', street: '1600 17th Street' },
-        { city: 'Miami', state: 'FL', zip: '33101', street: '850 Biscayne Boulevard' }
-      ],
-      uk: [
-        { city: 'London', state: 'Greater London', zip: 'SW1A 1AA', street: '10 Downing Street' },
-        { city: 'Manchester', state: 'Greater Manchester', zip: 'M1 1AE', street: '42 Piccadilly Gardens' },
-        { city: 'Birmingham', state: 'West Midlands', zip: 'B1 1BB', street: '15 Corporation Street' },
-        { city: 'Edinburgh', state: 'Midlothian', zip: 'EH1 1YZ', street: '8 Royal Mile' },
-        { city: 'Bristol', state: 'Bristol', zip: 'BS1 4DJ', street: '22 Park Street' }
-      ],
-      ca: [
-        { city: 'Toronto', state: 'ON', zip: 'M5V 2H1', street: '100 King Street West' },
-        { city: 'Vancouver', state: 'BC', zip: 'V6B 1A1', street: '750 West Georgia Street' },
-        { city: 'Montreal', state: 'QC', zip: 'H3B 1A2', street: '1250 René-Lévesque Blvd' },
-        { city: 'Calgary', state: 'AB', zip: 'T2P 1K1', street: '333 7 Avenue SW' },
-        { city: 'Ottawa', state: 'ON', zip: 'K1P 1J1', street: '90 Sparks Street' }
-      ],
-      au: [
-        { city: 'Sydney', state: 'NSW', zip: '2000', street: '45 George Street' },
-        { city: 'Melbourne', state: 'VIC', zip: '3000', street: '120 Collins Street' },
-        { city: 'Brisbane', state: 'QLD', zip: '4000', street: '200 Queen Street' },
-        { city: 'Perth', state: 'WA', zip: '6000', street: '100 St Georges Terrace' },
-        { city: 'Adelaide', state: 'SA', zip: '5000', street: '55 King William Street' }
-      ]
-    };
-
-    const jobs = [
-      'Software Developer', 'Project Manager', 'Graphic Designer', 'Marketing Specialist', 
-      'Accountant', 'Data Analyst', 'Systems Administrator', 'Content Writer', 
-      'Business Consultant', 'Customer Support Lead', 'Human Resources Manager', 'Sales Executive'
-    ];
-
-    function getRandomItem(arr) {
+    function getRandomElement(arr) {
       return arr[Math.floor(Math.random() * arr.length)];
     }
 
-    function generateNewIdentity() {
-      const genderPref = document.getElementById('genderSelect').value;
-      const countryPref = document.getElementById('countrySelect').value;
-
-      // Determine Gender
-      let gender = genderPref;
-      if (gender === 'random') {
-        gender = Math.random() < 0.5 ? 'male' : 'female';
-      }
-
-      // First Name
-      let firstName = '';
-      if (gender === 'male') {
-        firstName = getRandomItem(firstNamesMale[countryPref] || firstNamesMale.us);
-      } else {
-        firstName = getRandomItem(firstNamesFemale[countryPref] || firstNamesFemale.us);
-      }
-
-      // Last Name
-      let lastName = getRandomItem(lastNames[countryPref] || lastNames.us);
-      let fullName = `${firstName} ${lastName}`;
-
-      // Age & DOB
-      const age = Math.floor(Math.random() * 45) + 21; // 21 to 65
-      const birthYear = new Date().getFullYear() - age;
-      const birthMonthIndex = Math.floor(Math.random() * 12);
-      const birthDay = Math.floor(Math.random() * 28) + 1;
-      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-      const dobStr = `${months[birthMonthIndex]} ${birthDay}, ${birthYear}`;
-
-      // Location
-      const loc = getRandomItem(citiesData[countryPref] || citiesData.us);
-      const streetAddress = `${Math.floor(Math.random() * 900) + 100} ${loc.street}`;
-      const cityStateZip = `${loc.city}, ${loc.state} ${loc.zip}`;
-
-      // Email
-      const emailDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'example.org', 'mail.net'];
-      const emailFormat = Math.random() < 0.5 ? `${firstName.toLowerCase()}.${lastName.toLowerCase()}` : `${firstName.toLowerCase()}${lastName.toLowerCase()}${Math.floor(Math.random() * 90 + 10)}`;
-      const email = `${emailFormat}@${getRandomItem(emailDomains)}`;
-
-      // Phone
-      let phone = '';
-      if (countryPref === 'us' || countryPref === 'ca') {
-        const areaCode = Math.floor(Math.random() * 800) + 200;
-        const prefix = Math.floor(Math.random() * 800) + 200;
-        const lineNum = Math.floor(Math.random() * 9000) + 1000;
-        phone = `+1 (${areaCode}) ${prefix}-${lineNum}`;
-      } else if (countryPref === 'uk') {
-        phone = `+44 20 ${Math.floor(Math.random() * 9000) + 1000} ${Math.floor(Math.random() * 9000) + 1000}`;
-      } else {
-        phone = `+61 2 ${Math.floor(Math.random() * 9000) + 1000} ${Math.floor(Math.random() * 9000) + 1000}`;
-      }
-
-      // Job
-      const job = getRandomItem(jobs);
-
-      // Render DOM
-      document.getElementById('avatarIcon').innerText = gender === 'male' ? '👨‍💼' : '👩‍💼';
-      document.getElementById('fullNameDisplay').innerText = fullName;
-      document.getElementById('genderAgeDisplay').innerText = `${gender.charAt(0).toUpperCase() + gender.slice(1)} • ${age} Years Old`;
-      document.getElementById('dobDisplay').innerText = dobStr;
-      document.getElementById('emailDisplay').innerText = email;
-      document.getElementById('addressDisplay').innerText = streetAddress;
-      document.getElementById('cityStateZipDisplay').innerText = cityStateZip;
-      document.getElementById('phoneDisplay').innerText = phone;
-      document.getElementById('jobDisplay').innerText = job;
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    function copyIdentityToClipboard() {
-      const payload = `--- FAKE IDENTITY PROFILE ---
-Name: ${document.getElementById('fullNameDisplay').innerText}
+    function generateFakeNames() {
+      const gender = document.getElementById('genderSelect').value;
+      const region =
