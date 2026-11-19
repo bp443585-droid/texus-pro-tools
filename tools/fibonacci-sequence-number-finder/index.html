@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Fibonacci Sequence Number Finder | Generate & Verify Fibonacci Numbers</title>
+  <meta name="description" content="Calculate, generate, and verify Fibonacci sequence numbers instantly. Find the Nth term, check if a number is Fibonacci, and explore advanced mathematical properties." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/fibonacci-sequence-number-finder/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Fibonacci Sequence Number Finder Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced mathematical utility to calculate Nth Fibonacci numbers, generate complete sequence ranges, and verify membership instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-textarea-field { width: 100%; height: 160px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* MODE SELECTOR TABS */
+    .f-tabs { display: flex; gap: 10px; margin-bottom: 25px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; }
+    .f-tab { background: #f1f5f9; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; color: #475569; cursor: pointer; transition: all 0.2s; }
+    .f-tab.active { background: #2563eb; color: #ffffff; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 130px; font-size: 1rem; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+      .f-tabs { overflow-x: auto; white-space: nowrap; padding-bottom: 10px; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🔢</span> Fibonacci Sequence Number Finder</div>
+    
+    <div class="f-card">
+      <div class="f-tabs">
+        <button class="f-tab active" onclick="switchToolMode('nth')">Find Nth Term</button>
+        <button class="f-tab" onclick="switchToolMode('range')">Generate Range</button>
+        <button class="f-tab" onclick="switchToolMode('verify')">Verify Number</button>
+      </div>
+
+      <div id="panel-nth" class="tool-mode-panel">
+        <div class="f-io-grid">
+          <div class="f-panel-box">
+            <label for="nthInput">Enter Term Index (n)</label>
+            <input type="number" id="nthInput" class="f-input-field" placeholder="e.g., 10 (F(10))" min="0" max="1000" value="10" oninput="calculateNth()" />
+          </div>
+          <div class="f-panel-box">
+            <label for="nthResult">Fibonacci Number Result</label>
+            <textarea id="nthResult" class="f-textarea-field mono-font-panel" readonly placeholder="Result will appear here..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-range" class="tool-mode-panel" style="display: none;">
+        <div class="f-io-grid">
+          <div class="f-panel-box">
+            <label for="rangeCountInput">Number of Terms to Generate</label>
+            <input type="number" id="rangeCountInput" class="f-input-field" placeholder="e.g., 15" min="1" max="500" value="15" oninput="calculateRange()" />
+          </div>
+          <div class="f-panel-box">
+            <label for="rangeResult">Generated Sequence Array</label>
+            <textarea id="rangeResult" class="f-textarea-field mono-font-panel" readonly placeholder="Sequence will appear here..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-verify" class="tool-mode-panel" style="display: none;">
+        <div class="f-io-grid">
+          <div class="f-panel-box">
+            <label for="verifyInput">Test Number</label>
+            <input type="number" id="verifyInput" class="f-input-field" placeholder="e.g., 55" min="0" oninput="verifyFibonacci()" />
+          </div>
+          <div class="f-panel-box">
+            <label for="verifyResult">Verification Status</label>
+            <textarea id="verifyResult" class="f-textarea-field mono-font-panel" readonly placeholder="Verification output..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip" style="margin-top: 25px;">
+        <button class="f-btn f-btn-convert" onclick="executeActiveMode()">Calculate & Refresh</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ High-Precision Arithmetic Support:</span>
+        Calculates terms up to high indices using optimized BigInt arithmetic, ensuring exact integer precision without floating-point rounding errors.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Mathematics of Growth: Fibonacci Sequences, Golden Ratios, and Computational Number Theory</h2>
+      <p class="seo-p">The Fibonacci sequence is one of the most famous and fascinating integer sequences in mathematics. Starting with 0 and 1, each subsequent number is obtained by adding together the two preceding terms. This simple recursive rule generates a rich tapestry of numerical patterns that appear throughout nature, financial market analysis, computer algorithms, and architectural design. Whether you are studying number theory, writing recursive functions in software engineering, or modeling natural growth spirals, understanding how Fibonacci numbers behave is a fundamental pillar of applied mathematics.</p>
+      <p class="seo-p">This comprehensive guide explores the historical origins of the Fibonacci sequence, examines its deep connection to the Golden Ratio ($\phi$), reviews computational algorithms for high-index extraction, and demonstrates practical applications across scientific and engineering disciplines.</p>
+
+      <div class="seo-callout">
+        <strong>The Recursive Definition:</strong> Mathematically, the sequence $F_n$ is defined by the recurrence relation $F_n = F_{n-1} + F_{n-2}$, with initial seed values $F_0 = 0$ and $F_1 = 1$.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Algorithms and Computational Complexity</h3>
+      <p class="seo-p">When calculating Fibonacci numbers programmatically, the choice of algorithm dictates computational efficiency and memory consumption:</p>
+
+      <h4 class="seo-h3">1. Naive Recursive Approach</h4>
+      <p class="seo-p">A direct translation of the mathematical definition leads to a recursive function. However, this approach has an exponential time complexity of $O(2^n)$ because it repeatedly recalculates identical sub-problems, making it impractical for $n > 40$.</p>
+
+      <h4 class="seo-h3">2. Iterative Dynamic Programming</h4>
+      <p class="seo-p">By storing previous values in a linear loop or sliding window, iterative calculation reduces time complexity to $O(n)$ and space complexity to $O(1)$. This is the method utilized by our tool for fast, lightweight range generation.</p>
+
+      <h4 class="seo-h3">3. BigInt Arbitrary Precision Arithmetic</h4>
+      <p class="seo-p">Standard double-precision floating-point numbers in JavaScript lose integer precision beyond $2^{53} - 1$ (around $F_{78}$). Our tool utilizes native `BigInt` objects to compute massive terms accurately into the hundreds and thousands without truncation errors.</p>
+
+      <h3>The Statutory Reference Matrix: First 15 Fibonacci Sequence Term Values</h3>
+      <p class="seo-p">Reviewing the foundational index positions helps verify algorithm accuracy and observe rapid exponential growth:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Index Position ($n$)</th>
+              <th>Fibonacci Value ($F_n$)</th>
+              <th>Mathematical Derivation</th>
+              <th>Growth Ratio ($F_n / F_{n-1}$)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$F_0$</td>
+              <td><b>0</b></td>
+              <td>Initial Seed Base</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>$F_1$</td>
+              <td><b>1</b></td>
+              <td>Initial Seed Base</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>$F_2$</td>
+              <td><b>1</b></td>
+              <td>$F_1 + F_0 = 1 + 0$</td>
+              <td>1.000000</td>
+            </tr>
+            <tr>
+              <td>$F_3$</td>
+              <td><b>2</b></td>
+              <td>$F_2 + F_1 = 1 + 1$</td>
+              <td>2.000000</td>
+            </tr>
+            <tr>
+              <td>$F_4$</td>
+              <td><b>3</b></td>
+              <td>$F_3 + F_2 = 2 + 1$</td>
+              <td>1.500000</td>
+            </tr>
+            <tr>
+              <td>$F_5$</td>
+              <td><b>5</b></td>
+              <td>$F_4 + F_3 = 3 + 2$</td>
+              <td>1.666667</td>
+            </tr>
+            <tr>
+              <td>$F_10$</td>
+              <td><b>55</b></td>
+              <td>$F_9 + F_8 = 34 + 21$</td>
+              <td>1.617647</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the relationship between the Fibonacci sequence and the Golden Ratio?</h3>
+      <p class="seo-p">As the index $n$ approaches infinity, the ratio of consecutive Fibonacci numbers ($F_n / F_{n-1}$) converges on the Golden Ratio, approximately $1.61803398875$, denoted by the Greek letter $\Phi$ (Phi). This constant appears extensively in geometry, art, and botanical structures such as sunflower seed heads and pinecone spirals.</p>
+
+      <h3>How can you mathematically test if a number is part of the Fibonacci sequence?</h3>
+      <p class="seo-p">A positive integer $x$ is a Fibonacci number if and only if one or both of $(5x^2 + 4)$ or $(5x^2 - 4)$ is a perfect square. Our verification module applies this precise algebraic test instantly.</p>
+
+      <h3>Is data privacy maintained when using this calculator?</h3>
+      <p class="seo-p">Yes. All computations are executed locally inside your web browser via client-side JavaScript. No calculation parameters or numerical queries are ever transmitted to external servers.</p>
+
+      <h3 class="seo-h2">Summary: Applications in Modern Science and Engineering</h3>
+      <p class="seo-p">From computer science searching algorithms (Fibonacci search technique) and data structure balancing (Fibonacci heaps) to cryptographic key generation and financial retracement analysis, Fibonacci numbers remain an indispensable mathematical tool.</p>
+      <p class="seo-p">Our Fibonacci Sequence Number Finder provides instantaneous, high-precision results for developers, educators, students, and researchers alike.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let currentMode = 'nth';
+
+    function switchToolMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll('.f-tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+
+      document.getElementById('panel-nth').style.display = (mode === 'nth') ? 'block' : 'none';
+      document.getElementById('panel-range').style.display = (mode === 'range') ? 'block' : 'none';
+      document.getElementById('panel-verify').style.display = (mode === 'verify') ? 'block' : 'none';
+
+      executeActiveMode();
+    }
+
+    function fibonacciBig(n) {
+      if (n < 0) return 0n;
+      if (n === 0) return 0n;
+      if (n === 1 || n === 2) return 1n;
+      let a = 1n, b = 1n, c = 1n;
+      for (let i = 3; i <= n; i++) {
+        c = a + b;
+        a = b;
+        b = c;
+      }
+      return c;
+    }
+
+    function calculateNth() {
+      const nVal = parseInt(document.getElementById('nthInput').value);
+      const resBox = document.getElementById('nthResult');
+      if (isNaN(nVal) || nVal < 0) {
+        resBox.value = "Please enter a valid non-negative integer index.";
+        return;
+      }
+      if (nVal > 10000) {
+        resBox.value = "Index too large. Maximum supported index is 10,000 to prevent performance lag.";
+        return;
+      }
+      try {
+        const result = fibonacciBig(nVal);
+        resBox.value = `F(${nVal}) = ${result.toString()}`;
+      } catch (e) {
+        resBox.value = "Calculation error.";
+      }
+    }
+
+    function calculateRange() {
+      const count = parseInt(document.getElementById('rangeCountInput').value);
+      const resBox = document.getElementById('rangeResult');
+      if (isNaN(count) || count < 1) {
+        resBox.value = "Please enter a valid count (1 or greater).";
+        return;
+      }
+      if (count > 1000) {
+        resBox.value = "Count capped at 1,000 terms for optimal display performance.";
+        return;
+      }
+      let arr = [];
+      for (let i = 0; i < count; i++) {
+        arr.push(fibonacciBig(i).toString());
+      }
+      resBox.value = arr.join(', ');
+    }
+
+    function isPerfectSquare(num) {
+      if (num < 0n) return false;
+      let sqrt = num ** 0.5n; // approximate
+      // refine
+      while ((sqrt + 1n) * (sqrt + 1n) <= num) sqrt++;
+      while (sqrt * sqrt > num) sqrt--;
+      return sqrt * sqrt === num;
+    }
+
+    function verifyFibonacci() {
+      const valStr = document.getElementById('verifyInput').value.trim();
+      const resBox = document.getElementById('verifyResult');
+      if (valStr === '' || isNaN(valStr)) {
+        resBox.value = "Please enter a valid number to verify.";
+        return;
+      }
+      try {
+        const n = BigInt(valStr);
+        if (n < 0n) {
+          resBox.value = `${n.toString()} is NOT a Fibonacci number (sequence is non-negative).`;
+          return;
+        }
+        const test1 = 5n * n * n + 4n;
+        const test2 = 5n * n * n - 4n;
+        if (isPerfectSquare(test1) || isPerfectSquare(test2)) {
+          resBox.value = `✅ SUCCESS: ${n.toString()} IS a valid Fibonacci number!`;
+        } else {
+          resBox.value = `❌ FALSE: ${n.toString()} is NOT part of the Fibonacci sequence.`;
+        }
+      } catch (e) {
+        resBox.value = "Invalid number format.";
+      }
+    }
+
+    function executeActiveMode() {
+      if (currentMode === 'nth') calculateNth();
+      else if (currentMode === 'range') calculateRange();
+      else if (currentMode === 'verify') verifyFibonacci();
+    }
+
+    function copyResultToClipboard() {
+      let targetText = '';
+      if (currentMode === 'nth') targetText = document.getElementById('nthResult').value;
+      else if (currentMode === 'range') targetText = document.getElementById('rangeResult').value;
+      else if (currentMode === 'verify') targetText = document.getElementById('verifyResult').value;
+
+      if (!targetText) return;
+      navigator.clipboard.writeText(targetText).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '✨ Copied Successfully!';
+        setTimeout(() => { btn.innerText = originalText; }, 2000);
+      }).catch(err => console.error('Copy failed:', err));
+    }
+
+    function clearWorkspace() {
+      if (currentMode === 'nth') {
+        document.getElementById('nthInput').value = '';
+        document.getElementById('nthResult').value = '';
+      } else if (currentMode === 'range') {
+        document.getElementById('rangeCountInput').value = '';
+        document.getElementById('rangeResult').value = '';
+      } else if (currentMode === 'verify') {
+        document.getElementById('verifyInput').value = '';
+        document.getElementById('verifyResult').value = '';
+      }
+    }
+
+    // Initial load calculation
+    window.onload = () => { calculateNth(); };
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
