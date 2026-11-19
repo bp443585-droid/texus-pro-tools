@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Least Common Multiple LCM Calculator | Step-by-Step Multi-Number Solver</title>
+  <meta name="description" content="Calculate the Least Common Multiple (LCM) of two or more numbers instantly. View complete step-by-step solutions using Prime Factorization, Division, and GCD methods." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/least-common-multiple-lcm-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Least Common Multiple LCM Calculator",
+    "operatingSystem": "Web",
+    "applicationCategory": "EducationalApplication",
+    "description": "An interactive mathematical computing tool providing instant Least Common Multiple (LCM) calculations with prime factorizations, division ladders, and GCD step-by-step solutions.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 200px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'JetBrains Mono', 'Courier New', Courier, monospace; font-weight: 600; font-size: 0.98rem; color: #0f172a; background: #f1f5f9; word-break: break-word; white-space: pre-wrap; overflow-y: auto; }
+
+    /* CONTROLS & SELECTION */
+    .f-input-row { display: flex; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; align-items: center; }
+    .f-input-field { flex: 1; min-width: 200px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; font-size: 1rem; color: #1e293b; outline: none; font-family: inherit; font-weight: 600; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    .f-select-field { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; font-size: 0.95rem; color: #1e293b; font-weight: 600; outline: none; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; }
+
+    /* RESULT SUMMARY BANNER */
+    .result-banner { background: #f0fdf4; border: 2px solid #86efac; border-radius: 16px; padding: 18px 24px; margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .result-banner .banner-label { font-size: 0.9rem; font-weight: 700; color: #166534; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-banner .banner-value { font-size: 2rem; font-weight: 800; color: #15803d; font-family: 'JetBrains Mono', monospace; }
+    .result-banner .banner-meta { font-size: 0.85rem; color: #166534; font-weight: 500; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-sample { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
+    .f-btn-sample:hover { background: #dbeafe; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 160px; font-size: 0.95rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+      .result-banner { flex-direction: column; align-items: flex-start; }
+      .result-banner .banner-value { font-size: 1.6rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🔢</span> Least Common Multiple LCM Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-input-row">
+        <input type="text" id="quickNumbersInput" class="f-input-field" placeholder="Enter positive integers (e.g. 12, 18, 30)..." oninput="syncFromInputBar()" />
+        <select id="methodSelector" class="f-select-field" onchange="runLcmPipeline()">
+          <option value="all">Comprehensive Analysis (All Methods)</option>
+          <option value="prime">Prime Factorization Method</option>
+          <option value="division">Continuous Division Method</option>
+          <option value="gcd">Euclidean / GCD Formula Method</option>
+          <option value="multiples">Listing Multiples Method</option>
+        </select>
+      </div>
+
+      <div class="result-banner" id="lcmResultBanner" style="display: none;">
+        <div>
+          <div class="banner-label">Calculated Least Common Multiple</div>
+          <div class="banner-value" id="displayLcmNumber">0</div>
+        </div>
+        <div class="banner-meta" id="displayLcmMeta">Evaluated 0 numbers</div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="plainTextConsole">Input Numbers (Separated by Comma, Space, or Line)</label>
+          <textarea id="plainTextConsole" class="f-textarea-field" placeholder="Enter two or more positive integers, for example:&#10;12, 18, 30&#10;&#10;Supports large integers, multiple entries, and custom sets." oninput="syncFromTextArea()"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="htmlEntitiesConsole">Step-by-Step Mathematical Derivation</label>
+          <textarea id="htmlEntitiesConsole" class="f-textarea-field mono-font-panel" readonly placeholder="Detailed mathematical decomposition will appear here automatically..."></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="runLcmPipeline()">Calculate LCM</button>
+        <button class="f-btn f-btn-sample" onclick="loadSampleNumbers()">Load Sample</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copySolutionToClipboard()">📋 Copy Solution</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculatorWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ High-Precision Number Theory Pipeline:</span>
+        Computes the Least Common Multiple (LCM) across arbitrary lists of positive integers using prime decomposition trees, Euclidean reduction chains, and step-by-step arithmetic verification in local client memory.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Arithmetic Architecture of Common Multiples: Number Theory, Prime Spectra, and Algorithmic LCM Foundations</h2>
+      <p class="seo-p">The Least Common Multiple (often abbreviated as LCM, or lowest common multiple) represents one of the most fundamental structural keystones in elementary number theory, modern cryptography, digital signal scheduling, and fractional algebra. Given a finite set of positive non-zero integers, their least common multiple is defined as the smallest positive integer that is uniformly divisible by every member of the set without generating an algebraic remainder.</p>
+      <p class="seo-p">Whether adding rational fractions with disparate denominators, synchronizing asynchronous mechanical gears, harmonizing periodic digital pulses in embedded systems, or balancing distributed network workloads, understanding how to decompose, extract, and verify the LCM accurately is a vital technical skill. This comprehensive mathematical guide delves into the foundational mechanics of the LCM, contrasts the four principal computational algorithms, analyzes computational complexity, and demonstrates real-world engineering applications.</p>
+
+      <div class="seo-callout">
+        <strong>The Fundamental Property of Common Multiples:</strong> For any two positive integers \(a\) and \(b\), their product is strictly equal to the product of their Greatest Common Divisor (\(\gcd\)) and their Least Common Multiple (\(\operatorname{lcm}\)):
+        <br><br>
+        <code style="font-size: 1.1rem; font-weight: 700; color: #1e3a8a;">a &times; b = GCD(a, b) &times; LCM(a, b) &emsp;&rArr;&emsp; LCM(a, b) = (a &times; b) / GCD(a, b)</code>
+      </div>
+
+      <h3 class="seo-h2">The Four Core Computational Methodologies</h3>
+      <p class="seo-p">Depending on the magnitude of the integers and the number of inputs, mathematicians and computer scientists rely on distinct algorithmic strategies to evaluate the LCM:</p>
+
+      <h4 class="seo-h3">1. The Prime Factorization Method (Unique Factorization Theorem)</h4>
+      <p class="seo-p">According to the Fundamental Theorem of Arithmetic, every integer greater than 1 can be represented uniquely as a product of prime powers. To find the LCM using prime factorization:</p>
+      <ul class="seo-list">
+        <li>Deconstruct each input integer into its canonical prime base and exponent components: \(N = p_1^{a_1} \cdot p_2^{a_2} \cdots p_k^{a_k}\).</li>
+        <li>Identify every unique prime factor that appears across any of the factorizations.</li>
+        <li>For each prime factor, select the <em>maximum</em> exponent observed among all the decompositions.</li>
+        <li>Multiply these highest prime powers together. The resultant value is the exact LCM of the set.</li>
+      </ul>
+
+      <h4 class="seo-h3">2. The Euclidean Algorithm &amp; GCD Reduction Chain</h4>
+      <p class="seo-p">For two large numbers where direct prime factorization would require costly trial divisions, the Euclidean Algorithm calculates the Greatest Common Divisor in \(O(\log(\min(a, b)))\) operations. Using the scalar identity \(\operatorname{LCM}(a, b) = \frac{a \cdot b}{\operatorname{GCD}(a, b)}\), we determine the LCM with zero factorization overhead. To scale this technique across an arbitrary list of \(n\) numbers, the associative property is leveraged:</p>
+      <ul class="seo-list">
+        <li>\(\operatorname{LCM}(a, b, c) = \operatorname{LCM}(\operatorname{LCM}(a, b), c)\)</li>
+        <li>\(\operatorname{LCM}(a_1, a_2, \dots, a_n) = \operatorname{LCM}(\operatorname{LCM}(a_1, \dots, a_{n-1}), a_n)\)</li>
+      </ul>
+
+      <h4 class="seo-h3">3. The Common Division (Ladder or Cake) Method</h4>
+      <p class="seo-p">A classical classroom and quick-pencil strategy where all numbers are arranged side-by-side in a horizontal array. The analyst divides across the row using the smallest common prime factor that divides at least two of the numbers. Numbers that cannot be divided evenly are simply carried down to the next tier intact. The procedure repeats iteratively until all remaining values are mutually co-prime. The final LCM equals the product of all row-divisors and the bottom irreducible quotients.</p>
+
+      <h4 class="seo-h3">4. Exhaustive Multiples Enumeration</h4>
+      <p class="seo-p">For very small integer pairs (such as 4 and 6), one can sequentially generate positive multiples for each number until the first overlapping shared scalar appears in both lists:
+      <br>Multiples of 4: \(\{4, 8, 12, 16, 20, \dots\}\)
+      <br>Multiples of 6: \(\{6, 12, 18, 24, \dots\}\)
+      <br>Smallest common member: \(12\). While intuitive, this approach scales poorly when input magnitudes exceed double digits.</p>
+
+      <h3 class="seo-h2">Algorithmic Comparison Matrix</h3>
+      <p class="seo-p">When selecting the optimal LCM resolution pipeline for high-performance software, classroom instruction, or numerical modeling, performance characteristics vary significantly:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Calculation Method</th>
+              <th>Optimal Use Case</th>
+              <th>Time Complexity</th>
+              <th>Pedagogical Value</th>
+              <th>Scalability (Large Integers)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Prime Factorization</b></td>
+              <td>Theoretical proofs, moderate integers, algebraic expressions</td>
+              <td>\(O(\sqrt{N})\) per number</td>
+              <td>Highest &mdash; illustrates unique factor sets and power laws</td>
+              <td>Moderate (prime hunting becomes slow for cryptographically large values)</td>
+            </tr>
+            <tr>
+              <td><b>Euclidean Reduction (GCD)</b></td>
+              <td>Production software, high-throughput backend scripts</td>
+              <td>\(O(\log(\min(a,b)))\)</td>
+              <td>Moderate &mdash; relies on modular arithmetic</td>
+              <td>Extremely High &mdash; handles large big-integer types with ease</td>
+            </tr>
+            <tr>
+              <td><b>Division Ladder Table</b></td>
+              <td>Manual paper examinations and multi-term synchronization</td>
+              <td>Iterative polynomial</td>
+              <td>High &mdash; visual step-by-step table format</td>
+              <td>Low to Moderate (cumbersome for wide lists)</td>
+            </tr>
+            <tr>
+              <td><b>Brute Force Multiples</b></td>
+              <td>Early elementary education, single-digit mental math</td>
+              <td>\(O(\operatorname{LCM} / \min(a,b))\)</td>
+              <td>Very High &mdash; visually explains the term "multiple"</td>
+              <td>Extremely Poor (exponential memory and iteration growth)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Practical Real-World Applications of LCM</h3>
+      <p class="seo-p">Beyond foundational academic drills, the Least Common Multiple serves critical functions in everyday engineering and applied sciences:</p>
+      <ul class="seo-list">
+        <li><b>Fractional Addition &amp; Subtraction:</b> Establishing the Lowest Common Denominator (LCD) to add or compare rational fractions without inflating intermediate numerators.</li>
+        <li><b>Clock Cycles &amp; CPU Scheduling:</b> In real-time multi-threaded operating systems, calculating when periodic tasks with execution frequencies \(T_1, T_2, \dots, T_k\) will coincide and request shared bus resources simultaneously.</li>
+        <li><b>Mechanical Engineering &amp; Gear Trains:</b> Predicting how many shaft rotations must occur before paired gear teeth that began in physical contact touch again, a metric central to estimating mechanical wear.</li>
+        <li><b>Astronomy &amp; Planetary Alignments:</b> Determining the synodic cycle of celestial bodies that orbit around a focal star at distinct periodic rates.</li>
+      </ul>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ)</h3>
+
+      <h3 class="seo-h3">Can the LCM of two numbers be smaller than either number?</h3>
+      <p class="seo-p">No. By definition, a positive multiple of a positive integer \(n\) is always greater than or equal to \(n\). Therefore, the Least Common Multiple of any set of positive integers must be greater than or equal to the largest integer within that set.</p>
+
+      <h3 class="seo-h3">What happens if zero or negative numbers are included in the LCM set?</h3>
+      <p class="seo-p">Standard arithmetic conventions restrict the LCM to non-zero positive integers. Because every integer divides 0 (\(n \times 0 = 0\)), defining the LCM with zero leads to degenerate trivial cases (usually evaluated as 0). For negative numbers, mathematicians evaluate the LCM of their absolute values, as common multiples are defined over the positive integer domain.</p>
+
+      <h3 class="seo-h3">What is the difference between LCM and GCD (GCF)?</h3>
+      <p class="seo-p">The Greatest Common Divisor (GCD), also called the Greatest Common Factor (GCF), identifies the largest integer that divides <em>into</em> all given numbers evenly. Conversely, the Least Common Multiple (LCM) identifies the smallest number that all given numbers can divide <em>into</em> without a remainder.</p>
+
+      <h3 class="seo-h3">Are calculations performed securely on the client side?</h3>
+      <p class="seo-p">Yes. Like all tools on Texus Pro Tools, our Least Common Multiple LCM Calculator executes arithmetic logic directly inside your local web browser sandbox using modern JavaScript engines. No numerical inputs or calculations are sent to external databases or servers.</p>
+
+      <h3 class="seo-h2">Summary: Mastering Common Multiple Solutions</h3>
+      <p class="seo-p">Whether solving complex fraction problems or coordinating system schedules, finding the Least Common Multiple is straightforward when utilizing prime factorization or the Euclidean GCD formula. Use this calculator to generate instant, mathematically rigorous breakdowns for any set of integers cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    /* LCM CORE ARITHMETIC PIPELINE */
+    function parseNumbers(inputStr) {
+      if (!inputStr) return [];
+      const tokens = inputStr.replace(/[^0-9,\s]/g, ' ').split(/[\s,]+/);
+      const nums = [];
+      for (const t of tokens) {
+        if (t.trim() !== '') {
+          try {
+            const val = BigInt(t.trim());
+            if (val > 0n && !nums.includes(val)) {
+              nums.push(val);
+            }
+          } catch (e) {
+            // Ignore non-convertible chunks
+          }
+        }
+      }
+      return nums;
+    }
+
+    function bigIntGcd(a, b) {
+      let x = a < 0n ? -a : a;
+      let y = b < 0n ? -b : b;
+      while (y !== 0n) {
+        const temp = y;
+        y = x % y;
+        x = temp;
+      }
+      return x;
+    }
+
+    function bigIntLcm(a, b) {
+      if (a === 0n || b === 0n) return 0n;
+      const gcd = bigIntGcd(a, b);
+      return (a / gcd) * b;
+    }
+
+    function getPrimeFactors(n) {
+      let temp = n;
+      const factors = {};
+      let d = 2n;
+      while (d * d <= temp) {
+        if (temp % d === 0n) {
+          let count = 0n;
+          while (temp % d === 0n) {
+            count++;
+            temp /= d;
+          }
+          factors[d.toString()] = count;
+        }
+        d = d === 2n ? 3n : d + 2n;
+      }
+      if (temp > 1n) {
+        factors[temp.toString()] = (factors[temp.toString()] || 0n) + 1n;
+      }
+      return factors;
+    }
+
+    function syncFromInputBar() {
+      const val = document.getElementById('quickNumbersInput').value;
+      document.getElementById('plainTextConsole').value = val;
+      runLcmPipeline();
+    }
+
+    function syncFromTextArea() {
+      const val = document.getElementById('plainTextConsole').value;
+      document.getElementById('quickNumbersInput').value = val;
+      runLcmPipeline();
+    }
+
+    function runLcmPipeline() {
+      const inputStr = document.getElementById('plainTextConsole').value;
+      const nums = parseNumbers(inputStr);
+      const outputConsole = document.getElementById('htmlEntitiesConsole');
+      const resultBanner = document.getElementById('lcmResultBanner');
+      const displayLcm = document.getElementById('displayLcmNumber');
+      const displayMeta = document.getElementById('displayLcmMeta');
+      const method = document.getElementById('methodSelector').value;
+
+      if (nums.length === 0) {
+        outputConsole.value = "Please enter two or more positive integers (e.g. 12, 18, 30) to compute the LCM.";
+        resultBanner.style.display = 'none';
+        return;
+      }
+
+      if (nums.length === 1) {
+        outputConsole.value = `Single number entered: ${nums[0]}.\nLCM requires at least two distinct values to calculate commonality.\nLCM(${nums[0]}) = ${nums[0]}.`;
+        resultBanner.style.display = 'flex';
+        displayLcm.textContent = nums[0].toString();
+        displayMeta.textContent = `Evaluated single integer: ${nums[0]}`;
+        return;
+      }
+
+      // Calculate sequential LCM
+      let runningLcm = nums[0];
+      const gcdSteps = [];
+      for (let i = 1; i < nums.length; i++) {
+        const prev = runningLcm;
+        const current = nums[i];
+        const g = bigIntGcd(prev, current);
+        runningLcm = (prev / g) * current;
+        gcdSteps.push({
+          step: i,
+          a: prev,
+          b: current,
+          gcd: g,
+          lcm: runningLcm
+        });
+      }
+
+      resultBanner.style.display = 'flex';
+      displayLcm.textContent = runningLcm.toLocaleString();
+      displayMeta.textContent = `Evaluated ${nums.length} unique positive integers`;
+
+      let report = [];
+      report.push(`=======================================================`);
+      report.push(`LEAST COMMON MULTIPLE (LCM) COMPUTATION RESULT`);
+      report.push
