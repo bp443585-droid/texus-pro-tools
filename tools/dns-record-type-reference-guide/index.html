@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>DNS Record Type Reference Guide | A, AAAA, MX, TXT, CNAME Lookup Table</title>
+  <meta name="description" content="Explore our comprehensive DNS Record Type Reference Guide. Instantly lookup and filter A, AAAA, CNAME, MX, TXT, SRV, NS, and CAA records with detailed technical explanations." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/dns-record-type-reference-guide/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DNS Record Type Reference Guide",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An interactive technical reference guide and lookup tool for Domain Name System (DNS) record types including A, AAAA, CNAME, MX, TXT, SRV, and CAA.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TOOL SPECIFIC INTERACTIVE STYLES */
+    .dns-filter-bar { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+    .dns-search-input { flex: 1; min-width: 240px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 18px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; }
+    .dns-search-input:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .dns-category-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+    .dns-chip { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 20px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; color: #475569; cursor: pointer; transition: all 0.15s ease; }
+    .dns-chip:hover { background: #e2e8f0; color: #0f172a; }
+    .dns-chip.active { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    .dns-results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px; }
+    .dns-record-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 12px; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .dns-record-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+    .dns-record-header { display: flex; justify-content: space-between; align-items: center; }
+    .dns-record-tag { font-size: 1.25rem; font-weight: 800; color: #1e293b; font-family: monospace; background: #e2e8f0; padding: 4px 10px; border-radius: 8px; }
+    .dns-record-category { font-size: 0.75rem; text-transform: uppercase; font-weight: 700; padding: 4px 8px; border-radius: 6px; background: #dbeafe; color: #1e40af; letter-spacing: 0.5px; }
+    .dns-record-name { font-size: 0.95rem; font-weight: 700; color: #334155; }
+    .dns-record-desc { font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0; }
+    .dns-record-example { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; padding: 10px 14px; font-family: 'Courier New', Courier, monospace; font-size: 0.82rem; color: #0f172a; word-break: break-all; margin-top: auto; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; max-width: 200px; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .dns-results-grid { grid-template-columns: 1fr; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🌐</span> DNS Record Type Reference Guide</div>
+    
+    <div class="f-card">
+      <div class="dns-filter-bar">
+        <input type="text" id="dnsSearchInput" class="dns-search-input" placeholder="Search DNS records by type, name, or description (e.g., A, MX, CNAME)..." oninput="filterDnsRecords()">
+      </div>
+
+      <div class="dns-category-chips">
+        <button class="dns-chip active" onclick="setCategoryFilter('all', this)">All Records</button>
+        <button class="dns-chip" onclick="setCategoryFilter('core', this)">Core / Addressing</button>
+        <button class="dns-chip" onclick="setCategoryFilter('mail', this)">Mail & Security</button>
+        <button class="dns-chip" onclick="setCategoryFilter('routing', this)">Routing & Advanced</button>
+        <button class="dns-chip" onclick="setCategoryFilter('domain', this)">Domain & Auth</button>
+      </div>
+
+      <div id="dnsResultsGrid" class="dns-results-grid">
+        <!-- Populated via JavaScript -->
+      </div>
+
+      <div class="f-action-strip" style="margin-top: 30px;">
+        <button class="f-btn f-btn-copy" onclick="copyActiveReferenceSummary()">📋 Copy Reference Summary</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Technical Lookup Engine:</span>
+        Use the search bar above to filter through 16+ core DNS record types instantly. Click any record card to copy its syntax configuration.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Architecture of Domain Name Resolution: Comprehensive DNS Record Types, Zone Files, and Global Propagation Protocols</h2>
+      <p class="seo-p">The Domain Name System (DNS) acts as the decentralized telephone directory of the modern internet, translating human-readable hostnames such as `example.com` into machine-routable IPv4 and IPv6 numerical addresses. Managing modern web servers, configuring robust email delivery pipelines, and enforcing tight enterprise security frameworks requires an exact understanding of DNS record types, zone file syntax, Time-To-Live (TTL) values, and recursive resolver caching behaviors.</p>
+      <p class="seo-p">This authoritative technical manual explores the structural hierarchy of DNS databases, details every standard and modern record type, examines propagation mechanics, and outlines best practices for configuring secure, high-availability domain infrastructures.</p>
+
+      <div class="seo-callout">
+        <strong>The DNS Resolution Chain:</strong> When a client queries a domain, recursive nameservers query Root servers, TLD (Top-Level Domain) registries, and Authoritative Nameservers sequentially, utilizing cached zone data to minimize latency and ensure fault-tolerant connectivity across global networks.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Anatomy of a DNS Zone File</h3>
+      <p class="seo-p">A DNS zone file is a text-based configuration document hosted on authoritative nameservers that defines all resource records (RRs) associated with a specific domain zone. Each record line typically adheres to a standardized syntax:</p>
+
+      <h4 class="seo-h3">1. Owner Name &amp; TTL Parameters</h4>
+      <p class="seo-p">The zone file begins with an optional TTL (Time-To-Live) declaration in seconds, which dictates how long recursive resolvers cache the record before requesting a fresh lookup from the authoritative server.</p>
+
+      <h4 class="seo-h3">2. Record Class and Type Definitions</h4>
+      <p class="seo-p">The class is nearly always designated as `IN` (Internet). The record type (`A`, `MX`, `TXT`, etc.) instructs the querying parser on how to interpret the target data payload that follows.</p>
+
+      <h4 class="seo-h3">3. Target Data Payload (RDATA)</h4>
+      <p class="seo-p">The final parameter represents the destination value—whether it is an IP address, a mail exchanger priority weight, a cryptographic public key, or a canonical hostname alias.</p>
+
+      <h3>The Statutory Reference Matrix: Core DNS Record Types</h3>
+      <p class="seo-p">Reviewing standard DNS record types and their practical applications is vital for systems administrators, DevOps engineers, and web developers managing domain infrastructure:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Record Type</th>
+              <th>Full Name</th>
+              <th>Category</th>
+              <th>Primary Function</th>
+              <th>Syntax Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>A</b></td>
+              <td>Address Record</td>
+              <td>Core / Addressing</td>
+              <td>Maps a domain name to an IPv4 address.</td>
+              <td>`example.com. 3600 IN A 192.0.2.1`</td>
+            </tr>
+            <tr>
+              <td><b>AAAA</b></td>
+              <td>IPv6 Address Record</td>
+              <td>Core / Addressing</td>
+              <td>Maps a domain name to an IPv6 address.</td>
+              <td>`example.com. 3600 IN AAAA 2001:db8::1`</td>
+            </tr>
+            <tr>
+              <td><b>CNAME</b></td>
+              <td>Canonical Name</td>
+              <td>Routing &amp; Advanced</td>
+              <td>Aliases one domain name to another target hostname.</td>
+              <td>`www.example.com. 3600 IN CNAME example.com.`</td>
+            </tr>
+            <tr>
+              <td><b>MX</b></td>
+              <td>Mail Exchanger</td>
+              <td>Mail &amp; Security</td>
+              <td>Directs inbound email traffic to mail servers with priority weights.</td>
+              <td>`example.com. 3600 IN MX 10 mail.example.com.`</td>
+            </tr>
+            <tr>
+              <td><b>TXT</b></td>
+              <td>Text Record</td>
+              <td>Mail &amp; Security</td>
+              <td>Stores arbitrary text data used for SPF, DKIM, DMARC, and domain verification.</td>
+              <td>`example.com. 3600 IN TXT "v=spf1 include... "`</td>
+            </tr>
+            <tr>
+              <td><b>NS</b></td>
+              <td>Name Server</td>
+              <td>Core / Addressing</td>
+              <td>Delegates a DNS zone to authoritative nameservers.</td>
+              <td>`example.com. 3600 IN NS ns1.provider.com.`</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the difference between an A record and a CNAME record?</h3>
+      <p class="seo-p">An A record directly maps a hostname to a 32-bit IPv4 numerical address. A CNAME record maps a hostname to another domain name (an alias). Note that CNAME records cannot be applied to a root apex domain (e.g., `example.com`) without breaking other core records like MX, whereas A records are fully supported at the apex.</p>
+
+      <h3>How long does DNS propagation take after updating record values?</h3>
+      <p class="seo-p">DNS propagation duration is determined by the Time-To-Live (TTL) value configured on the previous record before the update. If a record had a TTL of 3600 seconds (1 hour), global recursive resolvers may cache the old value for up to one hour before querying your updated authoritative nameserver.</p>
+
+      <h3>How do SPF, DKIM, and DMARC TXT records protect domain reputation?</h3>
+      <p class="seo-p">These security protocols utilize TXT records published in your domain's zone file. SPF specifies authorized sending servers; DKIM adds cryptographic signatures to outgoing email headers; and DMARC defines policies for how receiving mail servers should handle messages that fail authentication checks, preventing spoofing and phishing.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for DNS Management</h3>
+      <p class="seo-p">Maintaining robust and reliable domain infrastructure requires careful planning of TTL durations before migrations, utilizing appropriate record types for apex vs. subdomain routing, and routinely auditing security records like SPF and CAA to prevent unauthorized certificate issuance and email spoofing.</p>
+      <p class="seo-p">Our Advanced DNS Record Type Reference Guide provides instant lookup capabilities and clear technical documentation across all modern record classes, helping administrators configure resilient web services effortlessly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const dnsRecordsData = [
+      { type: "A", name: "Address Record", category: "core", desc: "Maps a domain name to a 32-bit IPv4 address. Essential for directing web traffic to server IP addresses.", example: "example.com. IN A 192.0.2.1" },
+      { type: "AAAA", name: "IPv6 Address Record", category: "core", desc: "Maps a domain name to a 128-bit IPv6 address, supporting next-generation internet addressing architecture.", example: "example.com. IN AAAA 2001:db8::1" },
+      { type: "CNAME", name: "Canonical Name", category: "routing", desc: "Maps an alias domain name to a canonical target hostname. Cannot be used at the zone apex.", example: "www.example.com. IN CNAME example.com." },
+      { type: "MX", name: "Mail Exchanger", category: "mail", desc: "Specifies mail servers responsible for handling email delivery for the domain, complete with priority integers.", example: "example.com. IN MX 10 mail.example.com." },
+      { type: "TXT", name: "Text Record", category: "mail", desc: "Holds arbitrary text strings utilized for domain verification, SPF, DKIM, and DMARC email authentication.", example: "example.com. IN TXT \"v=spf1 include:_spf.google.com ~all\"" },
+      { type: "NS", name: "Name Server", category: "core", desc: "Designates authoritative nameservers that store and manage all DNS records for the specific domain zone.", example: "example.com. IN NS ns1.hostprovider.com." },
+      { type: "SOA", name: "Start of Authority", category: "core", desc: "Stores administrative zone metadata including primary nameserver, admin email, serial numbers, and refresh timers.", example: "example.com. IN SOA ns1.host.com. admin.host.com. 2026112001..." },
+      { type: "PTR", name: "Pointer Record", category: "routing", desc: "Enables Reverse DNS (rDNS) lookups, mapping an IP address back to its corresponding domain name.", example: "1.2.0.192.in-addr.arpa. IN PTR mail.example.com." },
+      { type: "SRV", name: "Service Locator", category: "routing", desc: "Defines specific TCP/UDP service endpoints, specifying hostname, port, priority, and weight for protocols like SIP or LDAP.", example: "_sip._tcp.example.com. IN SRV 10 60 5060 sipserver.com." },
+      { type: "CAA", name: "Certification Authority Authorization", category: "mail", desc: "Specifies which Certificate Authorities (CAs) are authorized to issue SSL/TLS certificates for the domain.", example: "example.com. IN CAA 0 issue \"letsencrypt.org\"" },
+      { type: "ALIAS / ANAME", name: "Alias / Aname Record", category: "routing", desc: "Proprietary pseudo-record type that flattens CNAME behavior at the root apex domain pointing to external hostnames.", example: "example.com. IN ALIAS cname.cloudfront.net." },
+      { type: "DNSKEY", name: "DNS Key Record", category: "domain", desc: "Stores public cryptographic signing keys used within DNSSEC zone validation chains.", example: "example.com. IN DNSKEY 256 3 8 AwEAAb..." },
+      { type: "DS", name: "Delegation Signer", category: "domain", desc: "Holds a hash of a DNSKEY record, establishing a secure chain of trust between parent and child DNS zones.", example: "example.com. IN DS 2371 8 2 E06D44..." },
+      { type: "SSHFP", name: "SSH Public Key Fingerprint", category: "domain", desc: "Publishes SSH public key fingerprints in DNS zone files to verify remote host authenticity securely.", example: "example.com. IN SSHFP 1 1 123456789abcdef..." },
+      { type: "TLSA", name: "TLSA Certificate Association", category: "domain", desc: "Associates a TLS server certificate or public key with a domain name for DANE verification protocols.", example: "_443._tcp.example.com. IN TLSA 3 1 1 e3b0c4..." }
+    ];
+
+    let currentCategory = 'all';
+
+    function renderDnsGrid(records) {
+      const grid = document.getElementById('dnsResultsGrid');
+      if (!records.length) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #64748b; font-weight: 550;">No matching DNS records found. Try a different search term or category.</div>';
+        return;
+      }
+      
+      grid.innerHTML = records.map(r => `
+        <div class="dns-record-card" onclick="copySnippet('${r.type} - ${r.name}: ${r.example}')" title="Click to copy record details" style="cursor: pointer;">
+          <div class="dns-record-header">
+            <span class="dns-record-tag">${r.type}</span>
+            <span class="dns-record-category">${r.category}</span>
+          </div>
+          <div class="dns-record-name">${r.name}</div>
+          <p class="dns-record-desc">${r.desc}</p>
+          <div class="dns-record-example">${r.example}</div>
+        </div>
+      `).join('');
+    }
+
+    function filterDnsRecords() {
+      const query = document.getElementById('dnsSearchInput').value.toLowerCase().trim();
+      let filtered = dnsRecordsData.filter(r => {
+        const matchesCategory = currentCategory === 'all' || r.category === currentCategory;
+        const matchesQuery = r.type.toLowerCase().includes(query) || 
+                             r.name.toLowerCase().includes(query) || 
+                             r.desc.toLowerCase().includes(query) ||
+                             r.example.toLowerCase().includes(query);
+        return matchesCategory && matchesQuery;
+      });
+      renderDnsGrid(filtered);
+    }
+
+    function setCategoryFilter(cat, btnEl) {
+      currentCategory = cat;
+      document.querySelectorAll('.dns-chip').forEach(c => c.classList.remove('active'));
+      btnEl.classList.add('active');
+      filterDnsRecords();
+    }
+
+    function copySnippet(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Copied DNS record info to clipboard!');
+      }).catch(err => {
+        console.error('Copy failed:', err);
+      });
+    }
+
+    function copyActiveReferenceSummary() {
+      const query = document.getElementById('dnsSearchInput').value.toLowerCase().trim();
+      let filtered = dnsRecordsData.filter(r => {
+        const matchesCategory = currentCategory === 'all' || r.category === currentCategory;
+        const matchesQuery = r.type.toLowerCase().includes(query) || r.name.toLowerCase().includes(query) || r.desc.toLowerCase().includes(query);
+        return matchesCategory && matchesQuery;
+      });
+      
+      const summaryText = filtered.map(r => `[${r.type}] ${r.name} (${r.category}): ${r.desc}\nExample: ${r.example}\n`).join('\n');
+      navigator.clipboard.writeText(summaryText).then(() => {
+        showToast('Copied filtered DNS Reference summary successfully!');
+      });
+    }
+
+    function showToast(msg) {
+      let toast = document.getElementById('fToastNotification');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'fToastNotification';
+        toast.style.cssText = 'position: fixed; bottom: 30px; right: 30px; background: #0f172a; color: #ffffff; padding: 12px 20px; border-radius: 12px; font-size: 0.9rem; font-weight: 600; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2); z-index: 9999; transition: opacity 0.3s ease;';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      toast.style.opacity = '1';
+      setTimeout(() => { toast.style.opacity = '0'; }, 2500);
+    }
+
+    // Initial render on load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderDnsGrid(dnsRecordsData);
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
