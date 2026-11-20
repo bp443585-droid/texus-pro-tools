@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>HTTP Status Code Lookup Guide | Complete Reference & Status Checker</title>
+  <meta name="description" content="Explore our free online HTTP Status Code Lookup Guide. Instantly search, filter, and understand 1xx informational, 2xx success, 3xx redirection, 4xx client, and 5xx server error codes." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/http-status-code-lookup-guide/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HTTP Status Code Lookup Guide Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced web developer utility to search, filter, and inspect HTTP response status codes, error descriptions, and troubleshooting protocols instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TOOL SPECIFIC STYLES */
+    .search-filter-bar { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+    .search-input-field { flex: 2; min-width: 260px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 18px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .search-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .filter-select { flex: 1; min-width: 180px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 18px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; cursor: pointer; transition: all 0.2s; }
+    .filter-select:focus { border-color: #2563eb; background: #ffffff; }
+
+    .status-results-container { display: flex; flex-direction: column; gap: 16px; max-height: 600px; overflow-y: auto; padding-right: 4px; }
+    .status-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; transition: all 0.2s ease; display: grid; grid-template-columns: 100px 1fr auto; gap: 20px; align-items: center; }
+    .status-card:hover { border-color: #cbd5e1; background: #f1f5f9; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    
+    .status-badge { font-family: 'Courier New', Courier, monospace; font-size: 1.25rem; font-weight: 800; padding: 8px 12px; border-radius: 10px; text-align: center; }
+    .badge-1xx { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .badge-2xx { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+    .badge-3xx { background: #fefce8; color: #a16207; border: 1px solid #fef08a; }
+    .badge-4xx { background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
+    .badge-5xx { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+
+    .status-info h4 { margin: 0 0 6px 0; font-size: 1.15rem; color: #0f172a; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+    .status-info p { margin: 0; font-size: 0.95rem; color: #475569; line-height: 1.5; }
+    
+    .status-category-tag { font-size: 0.75rem; text-transform: uppercase; font-weight: 700; padding: 4px 8px; border-radius: 6px; background: #e2e8f0; color: #334155; letter-spacing: 0.5px; }
+
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 140px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .status-card { grid-template-columns: 1fr; gap: 12px; }
+      .status-badge { width: fit-content; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .search-filter-bar { flex-direction: column; gap: 12px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🚦</span> HTTP Status Code Lookup Guide</div>
+    
+    <div class="f-card">
+      <div class="search-filter-bar">
+        <input type="text" id="statusSearchInput" class="search-input-field" placeholder="Search code, name, or keyword (e.g. 404, Not Found, Redirect)..." oninput="filterStatusCodes()" />
+        <select id="statusCategoryFilter" class="filter-select" onchange="filterStatusCodes()">
+          <option value="all">All Categories (1xx - 5xx)</option>
+          <option value="1xx">1xx - Informational</option>
+          <option value="2xx">2xx - Success</option>
+          <option value="3xx">3xx - Redirection</option>
+          <option value="4xx">4xx - Client Error</option>
+          <option value="5xx">5xx - Server Error</option>
+        </select>
+      </div>
+
+      <div id="statusResultsContainer" class="status-results-container">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-copy" onclick="copyActiveFilters()">📋 Copy Filtered Summary</button>
+        <button class="f-btn f-btn-clear" onclick="resetStatusCodeFilter()">Reset Search</button>
+      </div>
+      
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Client-Side Indexing Active:</span>
+        Search through official W3C and IANA standardized HTTP response codes instantly. No server lookups required—everything executes locally within your browser.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Complete HTTP Status Code Guide: Understanding Web Server Responses, Client Interactions, and Error Troubleshooting</h2>
+      <p class="seo-p">Navigating web development, network debugging, search engine optimization (SEO), and API architecture requires an intimate familiarity with HTTP status codes. Whenever a browser, crawler, or API client communicates with a web server, the server responds with a three-digit status code. These codes communicate whether the request succeeded, if the resource has moved, whether the client needs authentication, or if an internal server fault occurred.</p>
+      <p class="seo-p">This comprehensive engineering guide explores the five foundational classes of HTTP status codes defined by the Internet Engineering Task Force (IETF), analyzes their impact on web crawling and site indexing, and provides best practices for diagnosing and resolving common server communication failures.</p>
+
+      <div class="seo-callout">
+        <strong>The Protocol Architecture:</strong> HTTP status codes are split into five distinct numerical ranges (100–599), where the leading digit specifies the broad response category, enabling automated clients and browsers to handle responses programmatically without parsing human-readable text strings.
+      </div>
+
+      <h3 class="seo-h2">The Five Core HTTP Status Code Categories</h3>
+      <p class="seo-p">Every response code falls under one of five major groupings, each serving a distinct operational purpose in client-server communication:</p>
+
+      <h4 class="seo-h3">1. 1xx Informational (Request Received)</h4>
+      <p class="seo-p">Indicates that the server has received the request and is continuing the process. These interim responses are part of protocol handshakes (such as `100 Continue` during large file uploads) and rarely appear in regular browsing sessions.</p>
+
+      <h4 class="seo-h3">2. 2xx Success (Action Successfully Received and Processed)</h4>
+      <p class="seo-p">Confirms that the client's request was successfully received, understood, and accepted. The most common code here is `200 OK`, followed by `201 Created` for successful resource creation and `204 No Content` for successful actions that do not return a body.</p>
+
+      <h4 class="seo-h3">3. 3xx Redirection (Further Action Required)</h4>
+      <p class="seo-p">Informs the client that further action must be taken to complete the request, usually by following a redirected URL. Critical codes include `301 Moved Permanently` (crucial for SEO link equity transfer) and `302 Found` or `307 Temporary Redirect`.</p>
+
+      <h4 class="seo-h3">4. 4xx Client Error (Bad Syntax or Unauthorized Request)</h4>
+      <p class="seo-p">Indicates that the request contains bad syntax, lacks valid credentials, or references a resource that cannot be found. Examples include `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, and the infamous `404 Not Found`.</p>
+
+      <h4 class="seo-h3">5. 5xx Server Error (Server Failed to Fulfill Valid Request)</h4>
+      <p class="seo-p">Occurs when the server failed to fulfill a request that appeared valid. These indicate internal server faults, database connectivity crashes, or gateway timeouts (e.g., `500 Internal Server Error`, `502 Bad Gateway`, and `503 Service Unavailable`).</p>
+
+      <h3>Statutory Reference Matrix: Essential HTTP Status Codes</h3>
+      <p class="seo-p">Review the following reference table detailing the most critical status codes encountered during web application development and SEO audits:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Status Code</th>
+              <th>Reason Phrase</th>
+              <th>Category Class</th>
+              <th>Typical Trigger Scenario</th>
+              <th>SEO and Engineering Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>200</b></td>
+              <td>OK</td>
+              <td>2xx Success</td>
+              <td>Standard successful page load or API data return.</td>
+              <td>Ideal state; indexed normally by search engines.</td>
+            </tr>
+            <tr>
+              <td><b>301</b></td>
+              <td>Moved Permanently</td>
+              <td>3xx Redirection</td>
+              <td>Permanent URL restructuring or migration.</td>
+              <td>Passes approximately 90-99% of link equity (SEO authority) to the new URL.</td>
+            </tr>
+            <tr>
+              <td><b>302</b></td>
+              <td>Found (Temporary)</td>
+              <td>3xx Redirection</td>
+              <td>Temporary promotional landing pages or maintenance redirects.</td>
+              <td>Keeps the original URL indexed in search engines while temporarily serving alternate content.</td>
+            </tr>
+            <tr>
+              <td><b>400</b></td>
+              <td>Bad Request</td>
+              <td>4xx Client Error</td>
+              <td>Malformed JSON payload or corrupted cookie headers sent by client.</td>
+              <td>Prevents server execution; should be investigated via frontend request validators.</td>
+            </tr>
+            <tr>
+              <td><b>401</b></td>
+              <td>Unauthorized</td>
+              <td>4xx Client Error</td>
+              <td>Attempting to access protected API endpoints without bearer tokens.</td>
+              <td>Requires authentication credentials before granting resource access.</td>
+            </tr>
+            <tr>
+              <td><b>403</b></td>
+              <td>Forbidden</td>
+              <td>4xx Client Error</td>
+              <td>Server understands request, but refuses authorization due to permissions or IP blocks.</td>
+              <td>Not cached by search engines; restricts sensitive file access.</td>
+            </tr>
+            <tr>
+              <td><b>404</b></td>
+              <td>Not Found</td>
+              <td>4xx Client Error</td>
+              <td>Requested file or route does not exist on the server.</td>
+              <td>Wastes crawl budget if encountered frequently; should be redirected or fixed.</td>
+            </tr>
+            <tr>
+              <td><b>500</b></td>
+              <td>Internal Server Error</td>
+              <td>5xx Server Error</td>
+              <td>Uncaught application exception, syntax crash in backend code, or database failure.</td>
+              <td>Severe impact; search engines will temporarily de-index pages if persistent.</td>
+            </tr>
+            <tr>
+              <td><b>502</b></td>
+              <td>Bad Gateway</td>
+              <td>5xx Server Error</td>
+              <td>Upstream server (like Node.js or PHP-FPM) failed to respond to Nginx/Apache proxy.</td>
+              <td>Indicates infrastructure scaling bottlenecks or application crashes.</td>
+            </tr>
+            <tr>
+              <td><b>503</b></td>
+              <td>Service Unavailable</td>
+              <td>5xx Server Error</td>
+              <td>Server overloaded with traffic or undergoing routine maintenance.</td>
+              <td>Signals crawlers to retry later without penalizing site rankings.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the difference between a 301 redirect and a 302 redirect for SEO?</h3>
+      <p class="seo-p">A 301 redirect signals search engines that a page has moved permanently, transferring nearly all link authority (PageRank) to the new destination URL. A 302 redirect indicates a temporary move, meaning search engines will keep the original URL indexed and will not pass full link equity to the temporary target.</p>
+
+      <h3>How do 4xx errors impact my website's search engine rankings?</h3>
+      <p class="seo-p">Occasional 404 errors are normal when users mistype URLs or old links break. However, an abundance of broken links or 404s wastes search engine crawl budget and degrades user experience, which can indirectly harm search rankings over time. Use custom 404 pages with navigation links to retain users.</p>
+
+      <h3>What causes a 504 Gateway Timeout error?</h3>
+      <p class="seo-p">A 504 Gateway Timeout occurs when an intermediate proxy server (like Cloudflare, Nginx, or an AWS load balancer) does not receive a timely response from the backend application server or database executing a heavy query.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Monitoring HTTP Status Codes</h3>
+      <p class="seo-p">Maintaining a healthy web infrastructure requires regular site audits, robust error logging, and proper configuration of redirection rules. Leveraging our free online HTTP Status Code Lookup Guide allows developers, system administrators, and content creators to instantly inspect status definitions and troubleshoot web communication errors with absolute confidence.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // HTTP Status Codes Database
+    const httpStatusCodes = [
+      { code: "100", name: "Continue", category: "1xx", description: "The server has received the request headers and the client should proceed to send the request body." },
+      { code: "101", name: "Switching Protocols", category: "1xx", description: "The requester has asked the server to switch protocols and the server has agreed to do so." },
+      { code: "102", name: "Processing", category: "1xx", description: "WebDAV request may contain a large number of sub-requests involving file operations, requiring a long time to complete." },
+      { code: "103", name: "Early Hints", category: "1xx", description: "Used to return some response headers before final HTTP message." },
+      
+      { code: "200", name: "OK", category: "2xx", description: "Standard response for successful HTTP requests. The requested content is delivered with the response." },
+      { code: "201", name: "Created", category: "2xx", description: "The request has been fulfilled, resulting in the creation of a new resource." },
+      { code: "202", name: "Accepted", category: "2xx", description: "The request has been accepted for processing, but the processing has not been completed." },
+      { code: "203", name: "Non-Authoritative Information", category: "2xx", description: "The returned metainformation is not the definitive set from the origin server." },
+      { code: "204", name: "No Content", category: "2xx", description: "The server successfully processed the request, but is not returning any content." },
+      { code: "205", name: "Reset Content", category: "2xx", description: "The server successfully processed the request, but is not returning any content. Requires user agent to reset document view." },
+      { code: "206", name: "Partial Content", category: "2xx", description: "The server is delivering only part of the resource due to a range header sent by the client." },
+      { code: "207", name: "Multi-Status", category: "2xx", description: "Provides status for multiple independent operations (WebDAV)." },
+      { code: "208", name: "Already Reported", category: "2xx", description: "Used inside a DAV: propstat response element to avoid repeatedly enumerating internal members." },
+      { code: "226", name: "IM Used", category: "2xx", description: "The server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance." },
+
+      { code: "300", name: "Multiple Choices", category: "3xx", description: "Indicates multiple options for the resource from which the client may choose." },
+      { code: "301", name: "Moved Permanently", category: "3xx", description: "This and all future requests should be directed to the given URI. Essential for SEO link equity transfer." },
+      { code: "302", name: "Found (Temporary Redirect)", category: "3xx", description: "Tells the client to look at another URL temporarily. The original URL should still be used for future requests." },
+      { code: "303", name: "See Other", category: "3xx", description: "The response to the request can be found under another URI using a GET method." },
+      { code: "304", name: "Not Modified", category: "3xx", description: "Indicates that the resource has not been modified since the version specified by the request headers If-Modified-Since or If-None-Match." },
+      { code: "305", name: "Use Proxy", category: "3xx", description: "The requested resource MUST be accessed through the proxy given by the Location field." },
+      { code: "307", name: "Temporary Redirect", category: "3xx", description: "The request should be repeated with another URI, but future requests should still use the original URI." },
+      { code: "308", name: "Permanent Redirect", category: "3xx", description: "The request and all future requests should be repeated using another URI. Perpetuates HTTP method." },
+
+      { code: "400", name: "Bad Request", category: "4xx", description: "The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed syntax)." },
+      { code: "401", name: "Unauthorized", category: "4xx", description: "Similar to 403 Forbidden, but specifically for use when authentication is required and has failed or has not yet been provided." },
+      { code: "402", name: "Payment Required", category: "4xx", description: "Reserved for future use. Originally intended for digital payment systems." },
+      { code: "403", name: "Forbidden", category: "4xx", description: "The request was valid, but the server is refusing action. The user might not have the necessary permissions." },
+      { code: "404", name: "Not Found", category: "4xx", description: "The requested resource could not be found but may be available in the future. Subsequent requests by the client are permissible." },
+      { code: "405", name: "Method Not Allowed", category: "4xx", description: "A request method is not supported for the requested resource (e.g., using POST on a GET-only endpoint)." },
+      { code: "406", name: "Not Acceptable", category: "4xx", description: "The requested resource is capable of generating only content not acceptable according to the Accept headers sent in the request." },
+      { code: "407", name: "Proxy Authentication Required", category: "4xx", description: "The client must first authenticate itself with the proxy." },
+      { code: "408", name: "Request Timeout", category: "4xx", description: "The server timed out waiting for the request. The client may repeat the request without modifications." },
+      { code: "409", name: "Conflict", category: "4xx", description: "Indicates that the request could not be processed because of conflict in the current state of the resource (e.g. edit lock)." },
+      { code: "410", name: "Gone", category: "4xx", description: "Indicates that the resource requested is no longer available and will not be available again. Useful for permanent removal." },
+      { code: "411", name: "Length Required", category: "4xx", description: "The request did not specify the length of its content, which is required by the requested resource." },
+      { code: "412", name: "Precondition Failed", category: "4xx", description: "The server does not meet one of the preconditions that the requester put on the request header." },
+      { code: "413", name: "Payload Too Large", category: "4xx", description: "The request is larger than the server is willing or able to process." },
+      { code: "414", name: "URI Too Long", category: "4xx", description: "The URI provided was too long for the server to process. Often occurs when too much data is encoded into a GET query string." },
+      { code: "415", name: "Unsupported Media Type", category: "4xx", description: "The request entity has a media type which the server or resource does not support." },
+      { code: "416", name: "Range Not Satisfiable", category: "4xx", description: "The client has asked for a portion of the file, but the server cannot supply that portion." },
+      { code: "417", name: "Expectation Failed", category: "4xx", description: "The server cannot meet the requirements of the Expect request-header field." },
+      { code: "418", name: "I'm a teapot", category: "4xx", description: "Any attempt to brew coffee with a teapot should result in the error code 418 I'm a teapot (April Fools' joke RFC 2324)." },
+      { code: "421", name: "Misdirected Request", category: "4xx", description: "The request was directed at a server that is not able to produce a response." },
+      { code: "422", name: "Unprocessable Entity", category: "4xx", description: "The request was well-formed but was unable to be followed due to semantic errors (WebDAV)." },
+      { code: "423", name: "Locked", category: "4xx", description: "The resource that is being accessed is locked." },
+      { code: "424", name: "Failed Dependency", category: "4xx", description: "The request failed due to failure of a previous request." },
+      { code: "425", name: "Too Early", category: "4xx", description: "Indicates that the server is unwilling to risk processing a request that might be replayed." },
+      { code: "426", name: "Upgrade Required", category: "4xx", description: "The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades." },
+      { code: "428", name: "Precondition Required", category: "4xx", description: "The origin server requires the request to be conditional." },
+      { code: "429", name: "Too Many Requests", category: "4xx", description: "The user has sent too many requests in a given amount of time ('rate limiting')." },
+      { code: "431", name: "Request Header Fields Too Large", category: "4xx", description: "The server is unwilling to process the request because its header fields are too large." },
+      { code: "451", name: "Unavailable For Legal Reasons", category:
