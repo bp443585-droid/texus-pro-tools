@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Bandwidth Download Time Calculator | Calculate File Transfer Speed</title>
-  <meta name="description" content="Calculate file download time instantly based on file size and internet connection bandwidth (Mbps, MB/s, GB/s). Free, fast, and accurate online transfer calculator." />
+  <title>Bandwidth Download Time Calculator | Free Speed & File Time Tool</title>
+  <meta name="description" content="Calculate precise file download and upload times based on your internet bandwidth, network speed (Mbps, Gbps, MB/s), and protocol overhead loss instantly." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -19,7 +19,7 @@ crossorigin="anonymous"></script>
     "name": "Bandwidth Download Time Calculator Pro",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced network utility calculating exact data transfer intervals across varied bandwidth capacities and file sizes.",
+    "description": "An advanced network bandwidth and transfer time calculator that computes precise download and upload durations across variable units and TCP/IP protocol overheads.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -33,7 +33,7 @@ crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
   <style>
-    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with style.css) */
     .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
     .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
     .f-heading span { font-size: 2.4rem; }
@@ -46,17 +46,21 @@ crossorigin="anonymous"></script>
     .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
     .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .f-input-row { display: flex; gap: 10px; }
-    .f-input-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
-    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    .f-input-field, .f-select-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
     
-    .f-select-field { height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 12px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; cursor: pointer; font-weight: 600; }
-    .f-select-field:focus { border-color: #2563eb; }
+    .f-input-group { display: flex; gap: 10px; }
+    .f-input-group input { flex: 1.5; }
+    .f-input-group select { flex: 1; min-width: 110px; }
 
-    .f-results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 25px; }
-    .f-result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
-    .f-result-card h4 { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 8px 0; }
-    .f-result-card .value { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0; }
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.05rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* RESULTS DISPLAY BOX */
+    .f-result-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
+    .f-result-main { font-size: 1.8rem; font-weight: 800; color: #2563eb; margin: 10px 0; line-height: 1.2; }
+    .f-stat-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; color: #475569; }
+    .f-stat-row:last-child { border-bottom: none; }
+    .f-stat-value { font-weight: 700; color: #0f172a; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
     .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
@@ -94,14 +98,16 @@ crossorigin="anonymous"></script>
       .f-card { padding: 25px 20px; border-radius: 20px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
       .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
-      
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
       .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+      .f-result-main { font-size: 1.4rem; }
     }
     @media (max-width: 550px) {
       .f-wrapper { padding: 0 24px !important; }
       .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+      .f-input-group { flex-direction: column; gap: 8px; }
+      .f-input-group select { width: 100%; }
     }
   </style>
 </head>
@@ -110,276 +116,140 @@ crossorigin="anonymous"></script>
   <div id="site-header"></div>
 
   <main class="f-wrapper">
-    <div class="f-heading"><span>⏱️</span> Bandwidth Download Time Calculator</div>
+    <div class="f-heading"><span>🚀</span> Bandwidth Download Time Calculator</div>
     
     <div class="f-card">
       <div class="f-io-grid">
+        <!-- INPUT PARAMETERS PANEL -->
         <div class="f-panel-box">
-          <label for="fileSizeInput">File Size</label>
-          <div class="f-input-row">
-            <input type="number" id="fileSizeInput" class="f-input-field" value="1.5" min="0.001" step="any" oninput="calculateDownloadTime()">
-            <select id="fileSizeUnit" class="f-select-field" onchange="calculateDownloadTime()">
-              <option value="KB">KB</option>
-              <option value="MB" selected>MB</option>
-              <option value="GB">GB</option>
-              <option value="TB">TB</option>
-            </select>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <label for="fileSizeInput">File Size</label>
+              <div class="f-input-group" style="margin-top: 6px;">
+                <input type="number" id="fileSizeInput" class="f-input-field" placeholder="e.g. 50" value="10" min="0" step="any" oninput="calculateDownloadTime()" />
+                <select id="fileSizeUnit" class="f-select-field" onchange="calculateDownloadTime()">
+                  <option value="B">Bytes (B)</option>
+                  <option value="KB">Kilobytes (KB)</option>
+                  <option value="MB">Megabytes (MB)</option>
+                  <option value="GB" selected>Gigabytes (GB)</option>
+                  <option value="TB">Terabytes (TB)</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="bandwidthInput">Internet / Network Bandwidth</label>
+              <div class="f-input-group" style="margin-top: 6px;">
+                <input type="number" id="bandwidthInput" class="f-input-field" placeholder="e.g. 100" value="100" min="0" step="any" oninput="calculateDownloadTime()" />
+                <select id="bandwidthUnit" class="f-select-field" onchange="calculateDownloadTime()">
+                  <option value="Kbps">Kbps (Kilobits/s)</option>
+                  <option value="Mbps" selected>Mbps (Megabits/s)</option>
+                  <option value="Gbps">Gbps (Gigabits/s)</option>
+                  <option value="KBps">KB/s (Kilobytes/s)</option>
+                  <option value="MBps">MB/s (Megabytes/s)</option>
+                  <option value="GBps">GB/s (Gigabytes/s)</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="overheadSelect">Estimated TCP/IP Overhead Loss</label>
+              <select id="overheadSelect" class="f-select-field" style="margin-top: 6px;" onchange="calculateDownloadTime()">
+                <option value="0">0% (Theoretical Maximum)</option>
+                <option value="5">5% (Fiber Optic / LAN)</option>
+                <option value="10" selected>10% (Standard Wi-Fi / Broadband)</option>
+                <option value="20">20% (Congested 4G/5G Cellular)</option>
+                <option value="30">30% (High Packet Loss / VPN)</option>
+              </select>
+            </div>
           </div>
         </div>
         
+        <!-- OUTPUT RESULTS PANEL -->
         <div class="f-panel-box">
-          <label for="bandwidthInput">Download Speed (Bandwidth)</label>
-          <div class="f-input-row">
-            <input type="number" id="bandwidthInput" class="f-input-field" value="100" min="0.001" step="any" oninput="calculateDownloadTime()">
-            <select id="bandwidthUnit" class="f-select-field" onchange="calculateDownloadTime()">
-              <option value="Kbps">Kbps</option>
-              <option value="Mbps" selected>Mbps</option>
-              <option value="Gbps">Gbps</option>
-              <option value="KBps">KB/s</option>
-              <option value="MBps">MB/s</option>
-              <option value="GBps">GB/s</option>
-            </select>
-          </div>
-        </div>
-      </div>
+          <label>Transfer Time Analysis</label>
+          <div class="f-result-box">
+            <div>
+              <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px;">Estimated Download Time</span>
+              <div id="formattedTimeResult" class="f-result-main">00:00:00</div>
+              <div id="timeBreakdownText" style="font-size: 0.95rem; color: #334155; font-weight: 600; margin-bottom: 12px;">--</div>
+            </div>
 
-      <div class="f-results-grid">
-        <div class="f-result-card">
-          <h4>Estimated Time</h4>
-          <p id="resTime" class="value">00:00:12</p>
-        </div>
-        <div class="f-result-card">
-          <h4>Effective Speed</h4>
-          <p id="resSpeed" class="value">12.5 MB/s</p>
-        </div>
-        <div class="f-result-card">
-          <h4>Total Megabits</h4>
-          <p id="resBits" class="value">12 Mb</p>
+            <div>
+              <div class="f-stat-row">
+                <span>Total Data Payload:</span>
+                <span id="statDataBits" class="f-stat-value">--</span>
+              </div>
+              <div class="f-stat-row">
+                <span>Effective Transfer Speed:</span>
+                <span id="statEffectiveSpeed" class="f-stat-value">--</span>
+              </div>
+              <div class="f-stat-row">
+                <span>Total Seconds Required:</span>
+                <span id="statTotalSeconds" class="f-stat-value">--</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="f-action-strip">
         <button class="f-btn f-btn-convert" onclick="calculateDownloadTime()">Recalculate</button>
-        <button class="f-btn f-btn-copy" onclick="copyResultToClipboard()">📋 Copy Results Summary</button>
-        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyBandwidthSummary()">📋 Copy Speed Summary</button>
+        <button class="f-btn f-btn-clear" onclick="clearBandwidthWorkspace()">Clear</button>
       </div>
       
       <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Real-Time Math Pipeline Active:</span>
-        Computations account for standard data scale conversions (where 1 Byte equals 8 bits, and prefix multipliers follow standard decimal/binary base conventions).
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Network Mathematics Note:</span>
+        Internet Service Providers (ISPs) advertise speeds in <b>bits</b> per second (e.g., Mbps), whereas file sizes are measured in <b>Bytes</b> (8 bits = 1 Byte). This tool factors in binary byte scaling ($1024^n$) and protocol overhead losses for realistic real-world estimation.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Mathematics of Data Transfer: Understanding Bandwidth, Throughput, and Download Time Calculations</h2>
-      <p class="seo-p">In an era defined by high-definition streaming, massive multi-gigabyte software updates, and cloud infrastructure deployments, understanding how internet connection bandwidth translates into actual file download times is essential. Whether you are managing IT infrastructure upgrades, provisioning cloud server instances, or simply estimating how long a video file will take to download over a mobile hotspot, precise transfer calculations prevent bottlenecks and streamline workflow planning.</p>
-      <p class="seo-p">This extensive computing manual explores the fundamental differences between bits and bytes, analyzes network protocol overheads, evaluates various internet connection tiers, and outlines how to calculate data transfer durations accurately.</p>
+      <h1 class="seo-title">The Engineering Mechanics of Network Bandwidth: Calculating File Transfer Times, Packet Overhead, and Throughput Metrics</h1>
+      <p class="seo-p">Navigating large-scale cloud data migrations, downloading massive video game installations, or streaming high-bitrate raw video footage requires an absolute technical understanding of network throughput calculations. While Internet Service Providers (ISPs) routinely advertise broadband packages in megabits per second (Mbps), storage systems express file allocations in megabytes (MB), gigabytes (GB), or terabytes (TB). This standard distinction in unit notation—compounded by real-world protocol packet overhead—often creates confusion regarding how long a data transfer will take to complete.</p>
+      <p class="seo-p">This engineering manual breaks down the mathematical foundations of network throughput, explores the fundamental differences between data capacity units, accounts for TCP/IP framing overhead, and delivers a robust architectural overview of network bandwidth performance optimization.</p>
 
       <div class="seo-callout">
-        <strong>The Golden Rule of Data Transfer:</strong> Internet service providers (ISPs) advertise connection speeds in <b>bits per second (bps)</b>, while operating systems measure file sizes in <b>bytes (Bytes)</b>. Because 1 byte consists of 8 bits, dividing your connection bandwidth by 8 is the primary step to finding your maximum theoretical download speed in MB/s.
+        <strong>The Fundamental Rule of Network Math:</strong> Always convert all values to a common base unit before dividing. Because <b>1 Byte consists of 8 bits</b>, a 100 Mbps broadband connection delivers a theoretical maximum download speed of <b>12.5 MB/s</b> under ideal conditions.
       </div>
 
-      <h3 class="seo-h2">The Technical Core: Bits vs. Bytes and Transfer Formulas</h3>
-      <p class="seo-p">When calculating download intervals, confusing lowercase 'b' (bits) with uppercase 'B' (bytes) is the most common pitfall. A comprehensive examination of the underlying metrics reveals:</p>
+      <h2 class="seo-h2">1. Mathematical Foundations of Transfer Calculations</h2>
+      <p class="seo-p">Calculating file download or upload durations relies on a core formula linking total payload size with effective transfer rates:</p>
+      
+      <div class="mono-font-panel" style="padding: 16px; border-radius: 12px; margin: 20px 0;">
+        Time (seconds) = [ File Size (in Bytes) × 8 ] / [ Effective Bandwidth (in bits per second) ]
+      </div>
 
-      <h4 class="seo-h3">1. Megabits vs. Megabytes</h4>
-      <p class="seo-p">Network throughput is traditionally measured in Megabits per second (Mbps). Storage devices and file managers calculate capacity in Megabytes (MB). To bridge this gap, convert your file size into Megabits (multiply Megabytes by 8) or convert your bandwidth into Megabytes per second (divide Mbps by 8).</p>
+      <p class="seo-p">When parsing file sizes, modern computer memory systems use binary prefixes ($2^{10} = 1024$), where:</p>
+      <ul class="seo-list">
+        <li><b>1 Kilobyte (KB)</b> = 1,024 Bytes = 8,192 bits</li>
+        <li><b>1 Megabyte (MB)</b> = 1,024 KB = 1,048,576 Bytes = 8,388,608 bits</li>
+        <li><b>1 Gigabyte (GB)</b> = 1,024 MB = 1,073,741,824 Bytes = 8,589,934,592 bits</li>
+        <li><b>1 Terabyte (TB)</b> = 1,024 GB = 1,099,511,627,776 Bytes = 8,796,093,022,208 bits</li>
+      </ul>
 
-      <h4 class="seo-h3">2. Protocol Overhead and Real-World Latency</h4>
-      <p class="seo-p">Theoretical maximum speed is rarely achieved in real-world scenarios due to TCP/IP packet headers, network congestion, server throttling, and routing latency. Effective throughput typically hovers around 85% to 92% of your maximum rated ISP bandwidth.</p>
+      <p class="seo-p">Conversely, telecom network speed specifications follow standard decimal SI metrics ($10^3 = 1000$):</p>
+      <ul class="seo-list">
+        <li><b>1 Kbps (Kilobit per second)</b> = 1,000 bits per second</li>
+        <li><b>1 Mbps (Megabit per second)</b> = 1,000,000 bits per second</li>
+        <li><b>1 Gbps (Gigabit per second)</b> = 1,000,000,000 bits per second</li>
+      </ul>
 
-      <h4 class="seo-h3">3. Instant Client-Side Computation</h4>
-      <p class="seo-p">Our advanced online calculator processes your inputs locally in real-time, executing exact floating-point arithmetic across Kilobyte, Megabyte, Gigabyte, and Terabyte scales instantly.</p>
+      <h2 class="seo-h2">2. The Impact of TCP/IP Protocol Overhead</h2>
+      <p class="seo-p">In real-world networking, raw data payloads cannot travel across the internet without encapsulation headers. Every packet transmitted across an IP network contains structural metadata wrapper layers:</p>
+      
+      <h3 class="seo-h3">A. Data Link & Ethernet Headers</h3>
+      <p class="seo-p">Standard Ethernet frames attach a 14-byte frame header, a 4-byte Frame Check Sequence (FCS), a 7-byte preamble, and an Interpacket Gap (IPG). This adds 38 bytes of transmission overhead per maximum transmission unit (MTU) frame.</p>
 
-      <h3>The Statutory Reference Matrix: Connection Speeds and Transfer Benchmarks</h3>
-      <p class="seo-p">Reviewing how standard broadband tiers compare across various file sizes provides practical context for system administrators and everyday users alike:</p>
+      <h3 class="seo-h3">B. Network Layer (IPv4 / IPv6)</h3>
+      <p class="seo-p">An IPv4 packet header requires an additional 20 bytes (or 40 bytes under IPv6), specifying origin and destination addresses, time-to-live parameters, and routing flags.</p>
+
+      <h3 class="seo-h3">C. Transport Layer (TCP Acknowledgment)</h3>
+      <p class="seo-p">Transmission Control Protocol (TCP) ensures reliable delivery by attaching a 20-byte TCP header and requiring round-trip acknowledgment (ACK) packets. In typical broadband scenarios, protocol framing, packet retransmissions, latency fluctuations, and Wi-Fi interference reduce raw bandwidth throughput by <b>5% to 15%</b>.</p>
+
+      <h2 class="seo-h2">3. Download Time Matrix for Standard Connection Speeds</h2>
+      <p class="seo-p">The following table illustrates estimated download times across standard internet tiers, assuming a standard 10% TCP/IP protocol overhead:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
-          <thead>
-            <tr>
-              <th>Connection Tier</th>
-              <th>Bandwidth Speed</th>
-              <th>1 GB File Download</th>
-              <th>10 GB File Download</th>
-              <th>50 GB Game Package</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Basic Broadband</td>
-              <td>25 Mbps</td>
-              <td>5 min 20 sec</td>
-              <td>53 min 20 sec</td>
-              <td>4 hr 26 min</td>
-            </tr>
-            <tr>
-              <td>Standard Fiber</td>
-              <td>100 Mbps</td>
-              <td>1 min 20 sec</td>
-              <td>13 min 20 sec</td>
-              <td>1 hr 6 min</td>
-            </tr>
-            <tr>
-              <td>High-Speed Gigabit</td>
-              <td>1,000 Mbps (1 Gbps)</td>
-              <td>8 seconds</td>
-              <td>1 min 20 sec</td>
-              <td>6 min 40 sec</td>
-            </tr>
-            <tr>
-              <td>Enterprise Dedicated</td>
-              <td>10 Gbps</td>
-              <td>0.8 seconds</td>
-              <td>8 seconds</td>
-              <td>40 seconds</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
-
-      <h3>Why is my actual download speed lower than what my ISP advertises?</h3>
-      <p class="seo-p">ISPs advertise peak theoretical speeds under optimal laboratory conditions. Factors such as Wi-Fi signal interference, local network congestion, background application updates, server-side throttling from the host platform, and physical distance from your router all impact your real-world throughput.</p>
-
-      <h3>How do I convert Megabits per second (Mbps) to Megabytes per second (MB/s)?</h3>
-      <p class="seo-p">To convert Mbps to MB/s, simply divide the value by 8. For example, a 100 Mbps fiber connection delivers a maximum theoretical download speed of 12.5 Megabytes per second (100 / 8 = 12.5).</p>
-
-      <h3>Is my data secure when using this online calculator?</h3>
-      <p class="seo-p">Yes! Texus Pro Tools values your data privacy. All calculations run entirely inside your browser's local JavaScript execution environment. No file sizes, bandwidth figures, or system metrics are ever sent to external servers.</p>
-
-      <h3 class="seo-h2">Summary: Strategic Best Practices for Network Management</h3>
-      <p class="seo-p">To optimize large file transfers, schedule massive software updates during off-peak hours, utilize wired Ethernet connections over Wi-Fi whenever possible to eliminate packet loss, and verify your server bandwidth limits before initiating large data migrations.</p>
-      <p class="seo-p">Our Bandwidth Download Time Calculator automates these complex mathematical computations instantly, giving you precise, reliable insights across any mobile or desktop device.</p>
-    </div>
-  </main>
-
-  <div id="site-footer"></div>
-
-  <script type="text/javascript">
-    const basePath = window.location.origin;
-    
-    fetch('/components/header.html')
-      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
-      .then(data => { document.getElementById('site-header').innerHTML = data; })
-      .catch(err => console.error('Header failed to compile:', err));
-
-    fetch('/components/footer.html')
-      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
-      .then(data => { document.getElementById('site-footer').innerHTML = data; })
-      .catch(err => console.error('Footer failed to compile:', err));
-
-    // CALCULATOR LOGIC
-    function calculateDownloadTime() {
-      const fileSizeVal = parseFloat(document.getElementById('fileSizeInput').value) || 0;
-      const fileSizeUnit = document.getElementById('fileSizeUnit').value;
-      const bandwidthVal = parseFloat(document.getElementById('bandwidthInput').value) || 0;
-      const bandwidthUnit = document.getElementById('bandwidthUnit').value;
-
-      if (fileSizeVal <= 0 || bandwidthVal <= 0) {
-        document.getElementById('resTime').innerText = '00:00:00';
-        document.getElementById('resSpeed').innerText = '0 MB/s';
-        document.getElementById('resBits').innerText = '0 Mb';
-        return;
-      }
-
-      // Convert File Size to MegaBytes (MB)
-      let sizeInMB = fileSizeVal;
-      switch (fileSizeUnit) {
-        case 'KB': sizeInMB = fileSizeVal / 1024; break;
-        case 'MB': sizeInMB = fileSizeVal; break;
-        case 'GB': sizeInMB = fileSizeVal * 1024; break;
-        case 'TB': sizeInMB = fileSizeVal * 1024 * 1024; break;
-      }
-
-      const sizeInBits = sizeInMB * 8 * 1024 * 1024; // Total bits
-
-      // Convert Bandwidth to bits per second (bps)
-      let speedInBps = bandwidthVal;
-      switch (bandwidthUnit) {
-        case 'Kbps': speedInBps = bandwidthVal * 1000; break;
-        case 'Mbps': speedInBps = bandwidthVal * 1000000; break;
-        case 'Gbps': speedInBps = bandwidthVal * 1000000000; break;
-        case 'KBps': speedInBps = bandwidthVal * 8 * 1024; break;
-        case 'MBps': speedInBps = bandwidthVal * 8 * 1024 * 1024; break;
-        case 'GBps': speedInBps = bandwidthVal * 8 * 1024 * 1024 * 1024; break;
-      }
-
-      const totalSeconds = sizeInBits / speedInBps;
-      const speedInMBps = (speedInBps / 8) / (1024 * 1024);
-
-      // Format time
-      document.getElementById('resTime').innerText = formatTime(totalSeconds);
-      document.getElementById('resSpeed').innerText = formatSpeed(speedInMBps);
-      document.getElementById('resBits').innerText = formatBits(sizeInBits);
-    }
-
-    function formatTime(sec) {
-      if (!isFinite(sec) || sec < 0) return '00:00:00';
-      if (sec < 1) return '< 1 second';
-      
-      const hrs = Math.floor(sec / 3600);
-      const mins = Math.floor((sec % 3600) / 60);
-      const secs = Math.floor(sec % 60);
-
-      if (hrs > 0) {
-        return `${hrs}h ${mins}m ${secs}s`;
-      } else if (mins > 0) {
-        return `${mins}m ${secs}s`;
-      } else {
-        return `${secs} seconds`;
-      }
-    }
-
-    function formatSpeed(mbps) {
-      if (mbps >= 1024) {
-        return (mbps / 1024).toFixed(2) + ' GB/s';
-      } else if (mbps >= 1) {
-        return mbps.toFixed(2) + ' MB/s';
-      } else {
-        return (mbps * 1024).toFixed(2) + ' KB/s';
-      }
-    }
-
-    function formatBits(bits) {
-      if (bits >= 1000000000000) {
-        return (bits / 1000000000000).toFixed(2) + ' Tb';
-      } else if (bits >= 1000000000) {
-        return (bits / 1000000000).toFixed(2) + ' Gb';
-      } else if (bits >= 1000000) {
-        return (bits / 1000000).toFixed(2) + ' Mb';
-      } else {
-        return (bits / 1000).toFixed(2) + ' Kb';
-      }
-    }
-
-    function clearCalculator() {
-      document.getElementById('fileSizeInput').value = '';
-      document.getElementById('bandwidthInput').value = '';
-      document.getElementById('resTime').innerText = '00:00:00';
-      document.getElementById('resSpeed').innerText = '0 MB/s';
-      document.getElementById('resBits').innerText = '0 Mb';
-    }
-
-    function copyResultToClipboard() {
-      const time = document.getElementById('resTime').innerText;
-      const speed = document.getElementById('resSpeed').innerText;
-      const bits = document.getElementById('resBits').innerText;
-      const text = `Download Time Calculation Results:\nEstimated Time: ${time}\nEffective Speed: ${speed}\nTotal Size: ${bits}`;
-      
-      navigator.clipboard.writeText(text).then(() => {
-        const btn = document.querySelector('.f-btn-copy');
-        const originalText = btn.innerText;
-        btn.innerText = '✅ Copied to Clipboard!';
-        setTimeout(() => { btn.innerText = originalText; }, 2000);
-      });
-    }
-
-    // Initialize calculation on load
-    window.onload = calculateDownloadTime;
-  </script>
-  
-  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
-</body>
-</html>
