@@ -6,7 +6,7 @@ crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Spelling Phonetic Alphabet Converter | NATO Phonetic Translator</title>
-  <meta name="description" content="Convert any text into the NATO phonetic alphabet instantly with our free online Spelling Phonetic Alphabet Converter. Perfect for clear radio, phone, and voice communication." />
+  <meta name="description" content="Instantly convert any text into the NATO phonetic alphabet (Alpha, Bravo, Charlie) or spell words phonetically for clear radio, phone, and voice communication." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -16,10 +16,10 @@ crossorigin="anonymous"></script>
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Spelling Phonetic Alphabet Converter Pro",
+    "name": "Spelling Phonetic Alphabet Converter",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced text-to-phonetic translation utility to convert alphanumeric sequences into official NATO spelling alphabet words cleanly.",
+    "description": "An advanced phonetic alphabet translation tool to encode words and phrases into NATO phonetic codewords instantly.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -33,7 +33,7 @@ crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
   <style>
-    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
     .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
     .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
     .f-heading span { font-size: 2.4rem; }
@@ -109,106 +109,186 @@ crossorigin="anonymous"></script>
     <div class="f-card">
       <div class="f-io-grid">
         <div class="f-panel-box">
-          <label for="plainTextConsole">Standard Text / Alphanumeric Input</label>
-          <textarea id="plainTextConsole" class="f-textarea-field" placeholder="Type text here (e.g., Flight 402, SOS, Call Sign)..." oninput="executePhoneticPipeline()"></textarea>
+          <label for="plainTextConsole">Standard Input Text</label>
+          <textarea id="plainTextConsole" class="f-textarea-field" placeholder="Type text to convert to NATO phonetic words (e.g., Hello World)..." oninput="convertPhonetic()"></textarea>
         </div>
         
         <div class="f-panel-box">
-          <label for="phoneticConsole">NATO Phonetic Spelling Output</label>
-          <textarea id="phoneticConsole" class="f-textarea-field mono-font-panel" placeholder="Awaiting phonetic translation tokens (e.g., Foxtrot-Lima-India-Golf-Hotel-Tango)..." readonly></textarea>
+          <label for="phoneticConsole">NATO Phonetic Alphabet Output</label>
+          <textarea id="phoneticConsole" class="f-textarea-field mono-font-panel" placeholder="Awaiting conversion data (e.g., HOTEL ECHO LIMA LIMA OSCAR)..." readonly></textarea>
         </div>
       </div>
 
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="executePhoneticPipeline()">Refresh Conversion</button>
-        <button class="f-btn f-btn-copy" id="copyActivePhoneticBtn" onclick="copyResultToClipboard()">📋 Copy Phonetic Output</button>
+        <button class="f-btn f-btn-convert" onclick="convertPhonetic()">Convert Text</button>
+        <button class="f-btn f-btn-copy" id="copyActiveBtn" onclick="copyResultToClipboard()">📋 Copy Phonetic Code</button>
         <button class="f-btn f-btn-clear" onclick="clearPhoneticWorkspace()">Clear</button>
       </div>
       
       <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ NATO Standardization Compliance Verified:</span>
-        Instantly translates alphabets (A-Z) into International Radiotelephony Spelling Alphabet terms, numbers into standardized aviation digits, and preserves punctuation tokens.
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Real-Time Translation Enabled:</span>
+        Type or paste any alphanumeric string above to instantly generate official International Radiotelephony Spelling Alphabet (NATO / ICAO) codes for error-free voice communication.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Master Guide to the International Radiotelephony Spelling Alphabet: NATO Code Words, Aviation Phonetics, and Error-Free Voice Transmission</h2>
-      <p class="seo-p">Clear and unambiguous communication is vital across aviation, maritime navigation, military command, emergency dispatch, and enterprise IT helpdesks. When spelling out complex passwords, serial numbers, flight tags, or financial routing codes over noisy telephone lines, VHF radio channels, or VoIP networks, similar-sounding phonemes like 'M' and 'N', or 'B' and 'V', frequently cause disastrous misinterpretations. To eliminate human error, international bodies created standardized spelling alphabets where every single letter maps onto a distinct, highly intelligible multisyllabic word.</p>
-      <p class="seo-p">This extensive technical manual explores the history of phonetic alphabets, reviews the phonological design choices behind the International Civil Aviation Organization (ICAO) / NATO standard, analyzes numerical pronunciations, and demonstrates how automated client-side converters streamline mission-critical spelling tasks instantly.</p>
+      <h2 class="seo-title">Mastering Clear Voice Communication: The History, Standardisation, and Practical Application of the NATO Phonetic Alphabet</h2>
+      <p class="seo-p">In high-stakes environments—such as aviation dispatch, maritime navigation, emergency dispatch, military operations, and corporate IT support helpdesks—misunderstanding a single letter over a noisy radio or phone connection can lead to critical errors. Homophones and similar-sounding consonants like 'M' and 'N', or 'B', 'P', and 'T', frequently cause confusion when spoken in adverse acoustic conditions. To eliminate ambiguity, international agencies developed standardized spelling alphabets where each letter is represented by a distinct, highly distinguishable codeword.</p>
+      <p class="seo-p">This extensive manual explores the evolution of phonetic spelling systems, breaks down the official International Civil Aviation Organization (ICAO) / NATO standard, analyzes pronunciation nuances, and demonstrates how automated online converters streamline accurate transmission protocols for professionals worldwide.</p>
 
       <div class="seo-callout">
-        <strong>The Standardization Principle:</strong> Developed by ICAO in the 1950s and later adopted by NATO and the Federal Aviation Administration (FAA), the international spelling alphabet ensures that speakers of different native languages can spell out critical alphanumeric strings without confusion over accents or phonemes.
+        <strong>The Standardization Principle:</strong> Designed after extensive intelligibility testing across multiple languages by the International Civil Aviation Organization in the 1950s, the NATO phonetic alphabet is recognized universally as the gold standard for voice spelling.
       </div>
 
-      <h3 class="seo-h2">The Technical Core: Lexical Parsing and Phonetic Substitution Arrays</h3>
-      <p class="seo-p">When standard text passes through our high-performance client-side phonetic conversion pipeline, the script runs a series of deterministic transformation rules:</p>
+      <h3 class="seo-h2">The Technical Core: How Phonetic Conversion Works</h3>
+      <p class="seo-p">When raw text passes through our client-side conversion engine, each character is evaluated against a lookup matrix:</p>
 
-      <h4 class="seo-h3">1. Character Normalization & Case Insensitivity</h4>
-      <p class="seo-p">The parser evaluates incoming strings character by character. Uppercase and lowercase alphabetic characters are normalized, mapping directly to their designated radiotelephony counterpart regardless of user keyboard configurations.</p>
+      <h4 class="seo-h3">1. Alphanumeric Isolation & Normalization</h4>
+      <p class="seo-p">The algorithm iterates through every character of your input string, converting letters to uppercase and evaluating numbers and standard punctuation marks.</p>
 
-      <h4 class="seo-h3">2. Aviation Number Pronunciation Mapping</h4>
-      <p class="seo-p">Standard digits (0-9) receive special pronunciation transformations in aviation and military telecommunications (e.g., '9' is spoken as 'Niner' to avoid confusion with the German word 'nein') to ensure absolute clarity across static-heavy audio links.</p>
+      <h4 class="seo-h3">2. Codeword Mapping</h4>
+      <p class="seo-p">Alphabetic characters (A-Z) map directly to their designated NATO codewords (Alpha, Bravo, Charlie, etc.). Digits (0-9) translate into standardized radiotelephony number pronunciations (e.g., Zero, Wun, Too, Tree), while spaces and special symbols are cleanly formatted for readability.</p>
 
-      <h4 class="seo-h3">3. Punctuation & Space Preservation</h4>
-      <p class="seo-p">Unlike basic substitution ciphers that strip out spacing, our professional conversion engine preserves word breaks, line returns, and punctuation marks cleanly, allowing entire sentences or multi-line configuration blocks to be spelled out in sequence.</p>
+      <h4 class="seo-h3">3. Instant Client-Side Processing</h4>
+      <p class="seo-p">All translations occur directly inside your browser's local memory sandbox, ensuring rapid execution speed and complete data privacy without sending inputs to external servers.</p>
 
-      <h3>The Statutory Reference Matrix: Complete NATO Phonetic Alphabet Table</h3>
-      <p class="seo-p">Reviewing the official code words, spelling variations, and phonetic pronunciations for every letter and digit helps teams maintain operational discipline during voice transmissions:</p>
+      <h3>The Complete Reference Matrix: Official NATO / ICAO Phonetic Alphabet</h3>
+      <p class="seo-p">Review the complete official spelling table utilized by aviation, emergency services, and telecommunications personnel globally:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Character</th>
-              <th>NATO Code Word</th>
-              <th>Spoken Pronunciation Guide</th>
-              <th>Operational Context & Usage</th>
+              <th>Letter</th>
+              <th>NATO Codeword</th>
+              <th>Pronunciation Guide</th>
+              <th>Letter</th>
+              <th>NATO Codeword</th>
+              <th>Pronunciation Guide</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td><b>A</b></td><td>Alfa</td><td>AL-FAH</td><td>Aviation, Maritime, Emergency Dispatch</td></tr>
-            <tr><td><b>B</b></td><td>Bravo</td><td>BRAH-VOH</td><td>Military Command, Logistics</td></tr>
-            <tr><td><b>C</b></td><td>Charlie</td><td>CHAR-LEE</td><td>IT Support, Radio Communications</td></tr>
-            <tr><td><b>D</b></td><td>Delta</td><td>DELL-TAH</td><td>Aviation Flight Planning</td></tr>
-            <tr><td><b>E</b></td><td>Echo</td><td>ECK-OH</td><td>Phonetic Weather Reporting</td></tr>
-            <tr><td><b>F</b></td><td>Foxtrot</td><td>FOKS-TROT</td><td>Emergency Call Signs</td></tr>
-            <tr><td><b>G</b></td><td>Golf</td><td>GOLF</td><td>Maritime Navigation</td></tr>
-            <tr><td><b>H</b></td><td>Hotel</td><td>HOH-TEL</td><td>International Voice Relay</td></tr>
-            <tr><td><b>I</b></td><td>India</td><td>IN-DEE-AH</td><td>Telecom Engineering</td></tr>
-            <tr><td><b>J</b></td><td>Juliett</td><td>JEW-LEE-ETT</td><td>Flight Tracking Logs</td></tr>
-            <tr><td><b>K</b></td><td>Kilo</td><td>KEE-LOH</td><td>Weight & Measurement Units</td></tr>
-            <tr><td><b>L</b></td><td>Lima</td><td>LEE-MAH</td><td>Geographic Coordinate Spelling</td></tr>
-            <tr><td><b>M</b></td><td>Mike</td><td>MIKE</td><td>Audio Engineering & Radio IDs</td></tr>
-            <tr><td><b>N</b></td><td>November</td><td>NO-VEM-BER</td><td>Flight Designation Codes</td></tr>
-            <tr><td><b>O</b></td><td>Oscar</td><td>OSS-CAH</td><td>Maritime & Coastal Radio</td></tr>
-            <tr><td><b>P</b></td><td>Papa</td><td>PAH-PAH</td><td>Military Logistics</td></tr>
-            <tr><td><b>Q</b></td><td>Quebec</td><td>KEH-BECK</td><td>Legal & Technical Document ID</td></tr>
-            <tr><td><b>R</b></td><td>Romeo</td><td>ROH-ME-OH</td><td>Aviation Routing</td></tr>
-            <tr><td><b>S</b></td><td>Sierra</td><td>SEE-AIR-RAH</td><td>Emergency Services & Police</td></tr>
-            <tr><td><b>T</b></td><td>Tango</td><td>TANG-GO</td><td>Military & NATO Operations</td></tr>
-            <tr><td><b>U</b></td><td>Uniform</td><td>YOU-NEE-FORM</td><td>Standard Identification Tags</td></tr>
-            <tr><td><b>V</b></td><td>Victor</td><td>VIK-TAH</td><td>Technical Support Call Centers</td></tr>
-            <tr><td><b>W</b></td><td>Whiskey</td><td>WISS-KEY</td><td>Maritime & Weather Reporting</td></tr>
-            <tr><td><b>X</b></td><td>X-ray</td><td>ECKS-RAY</td><td>Medical & Technical Serial Numbers</td></tr>
-            <tr><td><b>Y</b></td><td>Yankee</td><td>YANG-KEE</td><td>Aviation Navigation</td></tr>
-            <tr><td><b>Z</b></td><td>Zulu</td><td>ZOO-LOO</td><td>Coordinated Universal Time (UTC)</td></tr>
+            <tr>
+              <td><b>A</b></td>
+              <td>Alpha</td>
+              <td>AL-fah</td>
+              <td><b>N</b></td>
+              <td>November</td>
+              <td>no-VEM-ber</td>
+            </tr>
+            <tr>
+              <td><b>B</b></td>
+              <td>Bravo</td>
+              <td>BRAH-voh</td>
+              <td><b>O</b></td>
+              <td>Oscar</td>
+              <td>OSS-cah</td>
+            </tr>
+            <tr>
+              <td><b>C</b></td>
+              <td>Charlie</td>
+              <td>CHAR-lee</td>
+              <td><b>P</b></td>
+              <td>Papa</td>
+              <td>pah-PAH</td>
+            </tr>
+            <tr>
+              <td><b>D</b></td>
+              <td>Delta</td>
+              <td>DELL-tah</td>
+              <td><b>Q</b></td>
+              <td>Quebec</td>
+              <td>keh-BECK</td>
+            </tr>
+            <tr>
+              <td><b>E</b></td>
+              <td>Echo</td>
+              <td>ECK-oh</td>
+              <td><b>R</b></td>
+              <td>Romeo</td>
+              <td>ROW-me-oh</td>
+            </tr>
+            <tr>
+              <td><b>F</b></td>
+              <td>Foxtrot</td>
+              <td>FOKS-trot</td>
+              <td><b>S</b></td>
+              <td>Sierra</td>
+              <td>see-AIR-rah</td>
+            </tr>
+            <tr>
+              <td><b>G</b></td>
+              <td>Golf</td>
+              <td>GOLF</td>
+              <td><b>T</b></td>
+              <td>Tango</td>
+              <td>TANG-go</td>
+            </tr>
+            <tr>
+              <td><b>H</b></td>
+              <td>Hotel</td>
+              <td>ho-TELL</td>
+              <td><b>U</b></td>
+              <td>Uniform</td>
+              <td>YOU-nee-form</td>
+            </tr>
+            <tr>
+              <td><b>I</b></td>
+              <td>India</td>
+              <td>IN-dee-ah</td>
+              <td><b>V</b></td>
+              <td>Victor</td>
+              <td>VIK-tah</td>
+            </tr>
+            <tr>
+              <td><b>J</b></td>
+              <td>Juliett</td>
+              <td>JEW-lee-ett</td>
+              <td><b>W</b></td>
+              <td>Whiskey</td>
+              <td>WISS-kee</td>
+            </tr>
+            <tr>
+              <td><b>K</b></td>
+              <td>Kilo</td>
+              <td>KEY-loh</td>
+              <td><b>X</b></td>
+              <td>X-ray</td>
+              <td>EKS-ray</td>
+            </tr>
+            <tr>
+              <td><b>L</b></td>
+              <td>Lima</td>
+              <td>LEE-mah</td>
+              <td><b>Y</b></td>
+              <td>Yankee</td>
+              <td>YANG-kee</td>
+            </tr>
+            <tr>
+              <td><b>M</b></td>
+              <td>Mike</td>
+              <td>MIKE</td>
+              <td><b>Z</b></td>
+              <td>Zulu</td>
+              <td>ZOO-loo</td>
+            </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Operational Support Segment</h3>
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Diagnostic Segment</h3>
 
-      <h3>Why are certain numbers pronounced differently in the NATO phonetic alphabet?</h3>
-      <p class="seo-p">Aviation and military number pronunciations (such as 'Niner' for 9, 'A-tree' for 3, and 'Fow-er' for 4) were carefully chosen by linguistic experts to overcome radio static, muffled intercoms, and language barriers. For instance, the digit 9 ('Niner') sounds distinct from the German word 'nein' (no), preventing critical misunderstandings in flight control towers.</p>
+      <h3>Why is the NATO phonetic alphabet used instead of traditional names (like 'A as in Apple')?</h3>
+      <p class="seo-p">Ad-hoc spelling alphabets ('A for apple', 'B for boy') cause confusion because different speakers use different words, and regional accents can distort everyday nouns. The NATO/ICAO alphabet was scientifically tested across diverse linguistic groups to ensure maximum distinctiveness even over heavily degraded radio frequencies.</p>
 
-      <h3>Is this spelling converter secure for confidential company data?</h3>
-      <p class="seo-p">Yes. Texus Pro Tools processes all text conversions locally inside your browser's execution thread. No passwords, serial keys, or sensitive customer names are ever transmitted to external servers, ensuring complete client-side data privacy.</p>
+      <h3>How are numbers pronounced in aviation and emergency radio procedures?</h3>
+      <p class="seo-p">In official radiotelephony, numbers follow specific pronunciation rules to avoid confusion over static: 0 is pronounced "Zero", 1 is "Wun", 2 is "Too", 3 is "Tree", 4 is "Fower", 5 is "Fife", 6 is "Six", 7 is "Seven", 8 is "Ait", and 9 is "Niner".</p>
 
-      <h3>Can I convert entire paragraphs of text into phonetic code?</h3>
-      <p class="seo-p">Absolutely. You can paste full sentences, serial numbers, or code blocks into the input console. The utility translates each character in sequence while preserving spaces and line breaks for effortless reading.</p>
+      <h3>Is my entered text secure when using this online converter?</h3>
+      <p class="seo-p">Yes. All conversion scripts run entirely within your web browser's local client memory. No personal notes, passwords, or sensitive account strings are ever transmitted to external servers.</p>
 
-      <h3 class="seo-h2">Summary: Streamlining Voice Communication with Automated Spelling Tools</h3>
-      <p class="seo-p">Eliminating ambiguity during phone or radio transmissions is essential for professional efficiency. By leveraging our Spelling Phonetic Alphabet Converter, teams can instantly translate complex alphanumeric strings into standardized NATO code words, ensuring clarity and precision across every conversation.</p>
+      <h3 class="seo-h2">Summary: Best Practices for Radio and Phone Spelling</h3>
+      <p class="seo-p">Whether you are transmitting serial numbers to technical support, spelling complex email addresses over the phone, or operating amateur radio equipment, using the Spelling Phonetic Alphabet Converter ensures absolute clarity and eliminates costly misunderstandings.</p>
     </div>
   </main>
 
@@ -216,67 +296,57 @@ crossorigin="anonymous"></script>
 
   <script type="text/javascript">
     const phoneticMap = {
-      'a': 'Alfa', 'b': 'Bravo', 'c': 'Charlie', 'd': 'Delta', 'e': 'Echo',
-      'f': 'Foxtrot', 'g': 'Golf', 'h': 'Hotel', 'i': 'India', 'j': 'Juliett',
-      'k': 'Kilo', 'l': 'Lima', 'm': 'Mike', 'n': 'November', 'o': 'Oscar',
-      'p': 'Papa', 'q': 'Quebec', 'r': 'Romeo', 's': 'Sierra', 't': 'Tango',
-      'u': 'Uniform', 'v': 'Victor', 'w': 'Whiskey', 'x': 'X-ray', 'y': 'Yankee',
-      'z': 'Zulu',
-      '0': 'Zero', '1': 'Wun', '2': 'Too', '3': 'Tree', '4': 'Fow-er',
-      '5': 'Fife', '6': 'Six', '7': 'Seven', '8': 'Ait', '9': 'Niner'
+      'A': 'Alpha', 'B': 'Bravo', 'C': 'Charlie', 'D': 'Delta', 'E': 'Echo',
+      'F': 'Foxtrot', 'G': 'Golf', 'H': 'Hotel', 'I': 'India', 'J': 'Juliett',
+      'K': 'Kilo', 'L': 'Lima', 'M': 'Mike', 'N': 'November', 'O': 'Oscar',
+      'P': 'Papa', 'Q': 'Quebec', 'R': 'Romeo', 'S': 'Sierra', 'T': 'Tango',
+      'U': 'Uniform', 'V': 'Victor', 'W': 'Whiskey', 'X': 'X-ray', 'Y': 'Yankee',
+      'Z': 'Zulu',
+      '0': 'Zero', '1': 'Wun', '2': 'Too', '3': 'Tree', '4': 'Fower',
+      '5': 'Fife', '6': 'Six', '7': 'Seven', '8': 'Ait', '9': 'Niner',
+      ' ': '[Space]', '.': 'Decimal', ',': 'Comma', '-': 'Dash'
     };
 
-    function executePhoneticPipeline() {
-      const input = document.getElementById('plainTextConsole').value;
-      const outputConsole = document.getElementById('phoneticConsole');
+    function convertPhonetic() {
+      const input = document.getElementById('plainTextConsole').value.toUpperCase();
+      let result = [];
       
-      if (!input.trim()) {
-        outputConsole.value = '';
-        return;
-      }
-
-      let resultWords = [];
       for (let i = 0; i < input.length; i++) {
-        let char = input[i];
-        let lowerChar = char.toLowerCase();
-        
-        if (phoneticMap[lowerChar]) {
-          resultWords.push(phoneticMap[lowerChar]);
-        } else if (char === ' ') {
-          resultWords.push('/ ');
-        } else if (char === '\n') {
-          resultWords.push('\n');
+        const char = input[i];
+        if (phoneticMap[char]) {
+          result.push(phoneticMap[char]);
         } else {
-          resultWords.push('[' + char + ']');
+          result.push(char);
         }
       }
-
-      outputConsole.value = resultWords.join(' - ');
+      
+      document.getElementById('phoneticConsole').value = result.join(' ');
     }
 
     function clearPhoneticWorkspace() {
       document.getElementById('plainTextConsole').value = '';
       document.getElementById('phoneticConsole').value = '';
+      document.getElementById('plainTextConsole').focus();
     }
 
     function copyResultToClipboard() {
-      const outputConsole = document.getElementById('phoneticConsole');
-      const copyBtn = document.getElementById('copyActivePhoneticBtn');
+      const outputBox = document.getElementById('phoneticConsole');
+      if (!outputBox.value) return;
       
-      if (!outputConsole.value.trim()) return;
-
-      navigator.clipboard.writeText(outputConsole.value).then(() => {
-        const originalText = copyBtn.innerText;
-        copyBtn.innerText = '✅ Copied Successfully!';
-        copyBtn.style.background = '#dcfce7';
-        copyBtn.style.color = '#166534';
-        copyBtn.style.borderColor = '#bbf7d0';
-        
+      outputBox.select();
+      outputBox.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(outputBox.value).then(() => {
+        const btn = document.getElementById('copyActiveBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '✓ Copied Successfully!';
+        btn.style.background = '#dcfce7';
+        btn.style.color = '#166534';
+        btn.style.borderColor = '#bbf7d0';
         setTimeout(() => {
-          copyBtn.innerText = originalText;
-          copyBtn.style.background = '';
-          copyBtn.style.color = '';
-          copyBtn.style.borderColor = '';
+          btn.innerText = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+          btn.style.borderColor = '';
         }, 2000);
       }).catch(err => {
         console.error('Copy operation failed:', err);
