@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Screen PPI and DPI Calculator | Calculate Pixel Density Instantly</title>
-  <meta name="description" content="Calculate your display's PPI (Pixels Per Inch) and DPI instantly. Enter screen resolution, diagonal size, or custom dimensions for precise pixel density analysis." />
+  <title>Screen PPI and DPI Calculator | Calculate Pixel Density Online</title>
+  <meta name="description" content="Calculate your display's PPI (Pixels Per Inch) and DPI instantly. Enter screen resolution and diagonal size to find exact pixel density and dot pitch." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -16,10 +16,10 @@ crossorigin="anonymous"></script>
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Screen PPI and DPI Calculator Pro",
+    "name": "Screen PPI and DPI Calculator",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced screen pixel density utility to calculate exact PPI, DPI, dot pitch, and visual acuity metrics for displays, monitors, and mobile screens.",
+    "description": "An advanced screen pixel density utility to compute exact PPI, dot pitch, and resolution metrics instantly.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -33,7 +33,7 @@ crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
   <style>
-    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
     .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
     .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
     .f-heading span { font-size: 2.4rem; }
@@ -41,22 +41,21 @@ crossorigin="anonymous"></script>
     /* WORKSPACE CORE CONTAINER CARD */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
     
-    /* CUSTOM INTERACTIVE GRID SYSTEM */
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
     .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
     .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
     .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .f-input-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
     .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
-
-    .f-select-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
-    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
     
-    /* RESULTS DASHBOARD */
-    .f-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 25px 0 20px 0; }
-    .f-result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
-    .f-result-label { font-size: 0.78rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-    .f-result-value { font-size: 1.6rem; color: #0f172a; font-weight: 800; font-family: 'Courier New', Courier, monospace; }
+    .f-select-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .result-display-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; margin-bottom: 24px; }
+    .result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
+    .result-card-title { font-size: 0.8rem; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .result-card-value { font-size: 1.8rem; font-weight: 800; color: #2563eb; font-family: 'Courier New', Courier, monospace; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
     .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
@@ -89,14 +88,12 @@ crossorigin="anonymous"></script>
       .f-wrapper { padding: 0 28px !important; }
       .seo-title { font-size: 1.8rem; }
       .seo-h2 { font-size: 1.35rem; }
-      .f-results-grid { grid-template-columns: 1fr; }
+      .result-display-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .f-card { padding: 25px 20px; border-radius: 20px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
       .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
-      .f-input-field, .f-select-field { height: 48px; font-size: 1rem; }
-      
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
       .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
@@ -115,16 +112,266 @@ crossorigin="anonymous"></script>
     <div class="f-heading"><span>🖥️</span> Screen PPI and DPI Calculator</div>
     
     <div class="f-card">
+      <div style="margin-bottom: 20px;">
+        <label for="presetSelector" style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px;">Quick Device Preset</label>
+        <select id="presetSelector" class="f-select-field" onchange="loadPreset()">
+          <option value="">-- Select Common Device Resolution --</option>
+          <option value="1920,1080,24">FHD Desktop (1920 × 1080, 24")</option>
+          <option value="2560,1440,27">QHD Monitor (2560 × 1440, 27")</option>
+          <option value="3840,2160,27">4K UHD Monitor (3840 × 2160, 27")</option>
+          <option value="2560,1600,13.3">MacBook Pro 13" Retina (2560 × 1600, 13.3")</option>
+          <option value="3024,1964,14.2">MacBook Pro 14" (3024 × 1964, 14.2")</option>
+          <option value="3456,2234,16.2">MacBook Pro 16" (3456 × 2234, 16.2")</option>
+          <option value="2532,1170,6.1">iPhone 14 / 15 (2532 × 1170, 6.1")</option>
+          <option value="3088,1440,6.8">Samsung Galaxy S23 Ultra (3088 × 1440, 6.8")</option>
+        </select>
+      </div>
+
       <div class="f-io-grid">
         <div class="f-panel-box">
-          <label for="presetSelect">Quick Display Presets</label>
-          <select id="presetSelect" class="f-select-field" onchange="loadPreset()">
-            <option value="">-- Select Standard Preset --</option>
-            <option value="1920,1080,24">FHD Desktop Monitor (24" 1080p)</option>
-            <option value="2560,1440,27">QHD Gaming Monitor (27" 1440p)</option>
-            <option value="3840,2160,27">4K UHD Monitor (27" 4K)</option>
-            <option value="2560,1600,13.3">MacBook Pro (13.3" Retina)</option>
-            <option value="3456,2234,16.2">MacBook Pro (16.2" Liquid Retina XDR)</option>
-            <option value="2532,1170,6.1">iPhone 14 / 15 (6.1" OLED)</option>
-            <option value="2796,1290,6.7">iPhone 14 / 15 Pro Max (6.7" OLED)</option>
-            <option value="31
+          <label for="horizRes">Horizontal Resolution (Pixels)</label>
+          <input type="number" id="horizRes" class="f-input-field" value="1920" min="1" oninput="calculatePPI()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="vertRes">Vertical Resolution (Pixels)</label>
+          <input type="number" id="vertRes" class="f-input-field" value="1080" min="1" oninput="calculatePPI()">
+        </div>
+      </div>
+
+      <div class="f-io-grid" style="margin-top: 15px;">
+        <div class="f-panel-box">
+          <label for="diagSize">Diagonal Screen Size (Inches)</label>
+          <input type="number" id="diagSize" class="f-input-field" value="24" min="0.1" step="0.1" oninput="calculatePPI()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="viewUnit">Measurement Unit Mode</label>
+          <select id="viewUnit" class="f-select-field" onchange="calculatePPI()">
+            <option value="inch">Imperial (Inches / PPI)</option>
+            <option value="cm">Metric (Centimeters / PPCM)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="result-display-grid">
+        <div class="result-card">
+          <div class="result-card-title" id="densityTitle">Pixel Density (PPI)</div>
+          <div class="result-card-value" id="resPPI">91.79</div>
+        </div>
+        <div class="result-card">
+          <div class="result-card-title">Dot Pitch</div>
+          <div class="result-card-value" id="resDotPitch">0.2768 mm</div>
+        </div>
+        <div class="result-card">
+          <div class="result-card-title">Total Pixels</div>
+          <div class="result-card-value" id="resTotalPixels">2,073,600</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculatePPI()">Calculate Metrics</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResults()">📋 Copy Results</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Live Calculation Matrix Active:</span>
+        Values update dynamically as you type screen resolutions or adjust diagonal lengths. Switch between imperial and metric units instantly.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Engineering Physics of Screen Pixel Density: Mastering PPI, DPI, Dot Pitch, and Retinal Display Thresholds</h2>
+      <p class="seo-p">Designing responsive user interfaces, developing immersive cross-platform applications, or purchasing high-resolution hardware requires an exact engineering understanding of display geometry. Terms like PPI (Pixels Per Inch), DPI (Dots Per Inch), and dot pitch define how crisp text appears, how UI scaling behaves across viewports, and how human eyes perceive individual pixels at standard viewing distances.</p>
+      <p class="seo-p">This extensive computing manual explores the mathematical formulations behind pixel density, analyzes the differences between physical hardware displays and digital printing resolutions, examines dot pitch metrics, and outlines clean strategies to optimize responsive layouts for high-density screens.</p>
+
+      <div class="seo-callout">
+        <strong>The Pythagorean PPI Formula:</strong> Pixel density is calculated by taking the square root of the sum of squared horizontal and vertical resolutions, divided by the diagonal screen size in inches: <b>PPI = &radic;(W² + H²) / D</b>.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Mathematical Derivation and Geometric Computations</h3>
+      <p class="seo-p">When raw display dimensions pass through our calculation engine, the script executes precise geometric transformations to determine exact optical characteristics:</p>
+
+      <h4 class="seo-h3">1. Pythagorean Diagonal Resolution Calculus</h4>
+      <p class="seo-p">Monitors and mobile screens are rectangular matrices. To find the exact pixel count along the diagonal axis, the calculator squares the horizontal pixel count ($W$) and vertical pixel count ($H$), adds them together, and computes the square root to determine total diagonal pixel span.</p>
+
+      <h4 class="seo-h3">2. Aspect Ratio and Physical Dimension Mapping</h4>
+      <p class="seo-p">By combining diagonal resolution with the physical screen size, the algorithm derives exact physical width and height dimensions in inches or centimeters, providing clear insight into actual workspace viewing areas.</p>
+
+      <h4 class="seo-h3">3. Dot Pitch and Subpixel Spacing Analysis</h4>
+      <p class="seo-p">Dot pitch measures the distance between two adjacent subpixels of the same color on a display. Higher pixel densities yield smaller dot pitch numbers, eliminating visible pixelation and smoothing fine typography.</p>
+
+      <h3>The Statutory Reference Matrix: Common Display Resolution and PPI Benchmarks</h3>
+      <p class="seo-p">Reviewing standard device pixel densities helps developers and designers establish baseline UI scaling rules and test responsive breakpoints effectively:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Device Category & Model</th>
+              <th>Resolution (Pixels)</th>
+              <th>Diagonal Size</th>
+              <th>Calculated PPI</th>
+              <th>Visual Sharpness & Usage Classification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard Office Monitor</td>
+              <td>1920 × 1080 (FHD)</td>
+              <td>24.0 Inches</td>
+              <td>91.79 PPI</td>
+              <td>Standard desktop clarity; excellent for general office productivity and coding.</td>
+            </tr>
+            <tr>
+              <td>Pro Desktop Monitor</td>
+              <td>2560 × 1440 (QHD)</td>
+              <td>27.0 Inches</td>
+              <td>108.79 PPI</td>
+              <td>Crisp workstation density; ideal balance for professional media editing.</td>
+            </tr>
+            <tr>
+              <td>Ultra-HD 4K Display</td>
+              <td>3840 × 2160 (4K)</td>
+              <td>27.0 Inches</td>
+              <td>163.18 PPI</td>
+              <td>Ultra-sharp visual density; requires OS scaling for comfortable UI reading.</td>
+            </tr>
+            <tr>
+              <td>Retina Laptop Display</td>
+              <td>3024 × 1964</td>
+              <td>14.2 Inches</td>
+              <td>254.04 PPI</td>
+              <td>High-density mobile workstation panel; completely eliminates visible pixel structure.</td>
+            </tr>
+            <tr>
+              <td>Flagship Smartphone</td>
+              <td>3088 × 1440</td>
+              <td>6.8 Inches</td>
+              <td>500.41 PPI</td>
+              <td>Extreme handheld pixel density; optimized for close-up mobile viewing.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the fundamental difference between PPI and DPI?</h3>
+      <p class="seo-p">While often used interchangeably in casual conversation, PPI (Pixels Per Inch) refers to digital display screens made of physical pixels containing red, green, and blue subpixels. DPI (Dots Per Inch) strictly applies to physical printing devices that drop microscopic cyan, magenta, yellow, and black ink dots onto paper.</p>
+
+      <h3>How does viewing distance affect the perception of screen PPI?</h3>
+      <p class="seo-p">Human visual acuity is measured in arcminutes. At normal desktop viewing distances (about 20-24 inches), screens exceeding 100 to 110 PPI appear crisp. Mobile phones, held much closer to the face (10-12 inches), require over 300 PPI to prevent the human eye from distinguishing individual pixels.</p>
+
+      <h3>Why do web developers need to calculate screen PPI?</h3>
+      <p class="seo-p">Understanding pixel density helps developers deliver responsive images, configure CSS media queries, and design high-resolution vector assets (like SVG icons) that remain razor-sharp on both standard 96-PPI displays and high-density Retina screens.</p>
+
+      <h3>Does device calculation security meet professional benchmarks?</h3>
+      <p class="seo-p">Texus Pro Tools operates entirely client-side within your browser sandbox. No resolution variables or device dimensions are ever transmitted to external servers, ensuring absolute privacy for your engineering calculations.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Display Resolution Management</h3>
+      <p class="seo-p">To optimize digital interfaces, always test layouts across multiple PPI tiers, account for operating system UI scaling factors, and verify that raster graphics match target device pixel densities to prevent blurring.</p>
+      <p class="seo-p">Our Screen PPI and DPI Calculator automates these complex mathematical computations instantly, providing precise pixel density and dot pitch data for any display configuration.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function loadPreset() {
+      const val = document.getElementById('presetSelector').value;
+      if (!val) return;
+      const parts = val.split(',');
+      document.getElementById('horizRes').value = parts[0];
+      document.getElementById('vertRes').value = parts[1];
+      document.getElementById('diagSize').value = parts[2];
+      calculatePPI();
+    }
+
+    function calculatePPI() {
+      const w = parseFloat(document.getElementById('horizRes').value) || 0;
+      const h = parseFloat(document.getElementById('vertRes').value) || 0;
+      let d = parseFloat(document.getElementById('diagSize').value) || 0;
+      const unit = document.getElementById('viewUnit').value;
+
+      if (unit === 'cm') {
+        d = d / 2.54; // Convert cm to inches for standard formula
+      }
+
+      if (w <= 0 || h <= 0 || d <= 0) {
+        document.getElementById('resPPI').innerText = '0.00';
+        document.getElementById('resDotPitch').innerText = '0.00 mm';
+        document.getElementById('resTotalPixels').innerText = '0';
+        return;
+      }
+
+      const diagPixels = Math.sqrt((w * w) + (h * h));
+      const ppi = diagPixels / d;
+      const ppcm = ppi / 2.54;
+      
+      const dotPitchMm = (25.4 / ppi);
+      const totalPixels = w * h;
+
+      const densityTitle = document.getElementById('densityTitle');
+      if (unit === 'cm') {
+        densityTitle.innerText = 'Pixel Density (PPCM)';
+        document.getElementById('resPPI').innerText = ppcm.toFixed(2);
+      } else {
+        densityTitle.innerText = 'Pixel Density (PPI)';
+        document.getElementById('resPPI').innerText = ppi.toFixed(2);
+      }
+
+      document.getElementById('resDotPitch').innerText = dotPitchMm.toFixed(4) + ' mm';
+      document.getElementById('resTotalPixels').innerText = totalPixels.toLocaleString();
+    }
+
+    function clearCalculator() {
+      document.getElementById('horizRes').value = '';
+      document.getElementById('vertRes').value = '';
+      document.getElementById('diagSize').value = '';
+      document.getElementById('presetSelector').value = '';
+      document.getElementById('resPPI').innerText = '0.00';
+      document.getElementById('resDotPitch').innerText = '0.00 mm';
+      document.getElementById('resTotalPixels').innerText = '0';
+    }
+
+    function copyResults() {
+      const ppiVal = document.getElementById('resPPI').innerText;
+      const dotPitchVal = document.getElementById('resDotPitch').innerText;
+      const totalPxVal = document.getElementById('resTotalPixels').innerText;
+      const unit = document.getElementById('viewUnit').value === 'cm' ? 'PPCM' : 'PPI';
+      
+      const payload = `Screen PPI & DPI Calculation Results:\n- Pixel Density: ${ppiVal} ${unit}\n- Dot Pitch: ${dotPitchVal}\n- Total Pixels: ${totalPxVal}`;
+      
+      navigator.clipboard.writeText(payload).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        const origText = btn.innerText;
+        btn.innerText = '✓ Copied Successfully!';
+        setTimeout(() => { btn.innerText = origText; }, 2000);
+      }).catch(err => {
+        alert('Failed to copy results.');
+      });
+    }
+
+    // Run initial calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculatePPI();
+    });
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
