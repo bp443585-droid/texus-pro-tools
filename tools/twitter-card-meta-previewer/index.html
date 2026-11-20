@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Twitter Card Meta Previewer | Test X / Twitter Meta Tags Live</title>
+  <meta name="description" content="Preview how your web pages, blog posts, and products look when shared on X (Twitter). Test summary cards, large image cards, titles, descriptions, and domains instantly." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/twitter-card-meta-previewer/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Twitter Card Meta Previewer Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced social meta testing utility to inspect and generate Twitter / X summary and large image card tags with real-time visual rendering.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TWITTER PREVIEWER SPECIFIC LAYOUT */
+    .tc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: start; }
+    .tc-form-column { display: flex; flex-direction: column; gap: 16px; }
+    .tc-preview-column { display: flex; flex-direction: column; gap: 12px; position: sticky; top: 20px; }
+    
+    .tc-input-group { display: flex; flex-direction: column; gap: 6px; }
+    .tc-input-group label { font-size: 0.82rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .tc-input, .tc-select { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .tc-input:focus, .tc-select:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* TWITTER CARD MOCKUP WIDGET */
+    .x-card-container { background: #ffffff; border: 1px solid #cfd9de; border-radius: 16px; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; box-shadow: 0 1px 3px rgba(0,0,0,0.08); transition: all 0.2s; }
+    .x-card-img-wrap { width: 100%; background: #e1e8ed; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #536471; font-size: 0.85rem; }
+    .x-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    
+    /* Summary Card vs Large Image Card Aspect Ratios */
+    .x-card-container.summary .x-card-img-wrap { aspect-ratio: 1 / 1; max-height: 200px; }
+    .x-card-container.summary_large_image .x-card-img-wrap { aspect-ratio: 1.91 / 1; max-height: 260px; }
+
+    .x-card-content { padding: 12px 16px; background: #ffffff; }
+    .x-card-domain { font-size: 0.82rem; color: #536471; text-transform: lowercase; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 400; }
+    .x-card-title { font-size: 0.95rem; color: #0f1419; font-weight: 700; line-height: 1.35; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .x-card-desc { font-size: 0.85rem; color: #536471; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
+
+    /* CODE EXPORT BOX */
+    .tc-code-output { width: 100%; height: 150px; background: #0f172a; color: #38bdf8; border: none; border-radius: 12px; padding: 14px; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; resize: none; outline: none; box-sizing: border-box; line-height: 1.5; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 15px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .tc-grid { grid-template-columns: 1fr; gap: 24px; }
+      .tc-preview-column { position: static; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🐦</span> Twitter Card Meta Previewer</div>
+    
+    <div class="f-card">
+      <div class="tc-grid">
+        <!-- Form Fields Column -->
+        <div class="tc-form-column">
+          <div class="tc-input-group">
+            <label for="tcCardType">Card Type</label>
+            <select id="tcCardType" class="tc-select" onchange="updateTwitterPreview()">
+              <option value="summary_large_image">Summary Card with Large Image</option>
+              <option value="summary">Summary Card (Square)</option>
+            </select>
+          </div>
+
+          <div class="tc-input-group">
+            <label for="tcTitle">Page Title</label>
+            <input type="text" id="tcTitle" class="tc-input" value="Texus Pro Tools | Free Professional Online Web Utilities" placeholder="Enter page title..." oninput="updateTwitterPreview()">
+          </div>
+
+          <div class="tc-input-group">
+            <label for="tcDesc">Description</label>
+            <textarea id="tcDesc" class="tc-input" style="height: 80px; resize: vertical;" placeholder="Enter page description..." oninput="updateTwitterPreview()">Discover 100% free developer utilities, text encoders, and SEO testing tools built for speed, accuracy, and privacy.</textarea>
+          </div>
+
+          <div class="tc-input-group">
+            <label for="tcImage">Image URL</label>
+            <input type="text" id="tcImage" class="tc-input" value="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" placeholder="https://example.com/image.jpg" oninput="updateTwitterPreview()">
+          </div>
+
+          <div class="tc-input-group">
+            <label for="tcDomain">Domain Name</label>
+            <input type="text" id="tcDomain" class="tc-input" value="texusprotools.com" placeholder="texusprotools.com" oninput="updateTwitterPreview()">
+          </div>
+
+          <div class="tc-input-group">
+            <label for="tcHandle">Twitter Handle (@username)</label>
+            <input type="text" id="tcHandle" class="tc-input" value="@texusprotools" placeholder="@username" oninput="updateTwitterPreview()">
+          </div>
+        </div>
+
+        <!-- Live Preview & Code Generator Column -->
+        <div class="tc-preview-column">
+          <label style="font-size: 0.82rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Live X / Twitter Preview</label>
+          
+          <div id="xCardWidget" class="x-card-container summary_large_image">
+            <div id="xCardImgWrap" class="x-card-img-wrap">
+              <img id="xCardImgPreview" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" alt="Card Preview Image" onerror="this.style.display='none'; document.getElementById('xCardImgFallback').style.display='block';">
+              <span id="xCardImgFallback" style="display:none; padding:20px;">Image failed to load or invalid URL</span>
+            </div>
+            <div class="x-card-content">
+              <div id="xCardDomainPreview" class="x-card-domain">texusprotools.com</div>
+              <div id="xCardTitlePreview" class="x-card-title">Texus Pro Tools | Free Professional Online Web Utilities</div>
+              <div id="xCardDescPreview" class="x-card-desc">Discover 100% free developer utilities, text encoders, and SEO testing tools built for speed, accuracy, and privacy.</div>
+            </div>
+          </div>
+
+          <div class="tc-input-group" style="margin-top: 10px;">
+            <label for="tcCodeOutput">Generated Meta Tags HTML Code</label>
+            <textarea id="tcCodeOutput" class="tc-code-output" readonly></textarea>
+          </div>
+
+          <div class="f-action-strip" style="margin-top: 0;">
+            <button class="f-btn f-btn-copy" id="copyTwitterTagsBtn" onclick="copyTwitterCode()">📋 Copy HTML Tags</button>
+            <button class="f-btn f-btn-clear" onclick="resetTwitterWorkspace()">Reset</button>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 25px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Meta Inspector Active:</span>
+        Paste your page data into the left configuration form to verify card layouts, title truncation lengths, and image aspect ratios instantly before deploying code to production servers.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Social Graph Optimization: Twitter Cards, Open Graph Metadata, and CTR Enhancement Strategies</h2>
+      <p class="seo-p">In today's fast-paced digital ecosystem, social media platforms act as primary traffic gateways for blogs, SaaS platforms, e-commerce stores, and corporate web portals. When users paste a link onto X (formerly Twitter), the platform's crawler parses the target URL's HTML header for structured meta tags. Without properly configured Twitter Card tags, your shared URLs risk rendering as plain unformatted text links—drastically lowering click-through rates and brand authority.</p>
+      <p class="seo-p">This comprehensive technical manual explores the mechanics behind Twitter Card architecture, contrasts summary cards with large image variants, examines optimal image dimensions, and provides actionable guidelines to audit your metadata for maximum social engagement.</p>
+
+      <div class="seo-callout">
+        <strong>The Visual Engagement Multiplier:</strong> Tweets containing rich graphical preview cards receive significantly higher engagement, retweets, and click-through rates compared to standard text-only hyperlinks or unformatted snippets.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Anatomy of Twitter Meta Tags</h3>
+      <p class="seo-p">Twitter utilizes the `twitter:` namespace alongside standard Open Graph (`og:`) properties to determine how links display in timelines. When configuring your document head, ensuring correct syntax prevents crawler errors:</p>
+
+      <h4 class="seo-h3">1. `twitter:card` (Card Type Definition)</h4>
+      <p class="seo-p">This mandatory attribute tells the X crawler whether to render a compact square thumbnail (`summary`) or an immersive widescreen hero banner (`summary_large_image`).</p>
+
+      <h4 class="seo-h3">2. `twitter:title` and `twitter:description`</h4>
+      <p class="seo-p">While crawlers often fall back to Open Graph tags (`og:title`), explicitly setting Twitter-specific strings allows you to craft tighter, action-driven copy tailored specifically to X's fast-moving audience.</p>
+
+      <h4 class="seo-h3">3. `twitter:image` and Domain Attribution</h4>
+      <p class="seo-p">High-resolution image URLs ensure crisp rendering across desktop and mobile app viewports. Including creator handles (`twitter:creator`) and site attribution (`twitter:site`) ties shared content directly back to your brand profile.</p>
+
+      <h3>The Statutory Reference Matrix: Complete Twitter Card Tag Directory</h3>
+      <p class="seo-p">Review this detailed breakdown of essential Twitter meta tags, recommended attribute values, and their functional impact on social rendering engines:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Meta Property Attribute</th>
+              <th>Accepted Value Type</th>
+              <th>Recommended Dimension / Limit</th>
+              <th>Functional Purpose and Rendering Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>`twitter:card`</td>
+              <td>`summary` or `summary_large_image`</td>
+              <td>Preset selector</td>
+              <td>Defines whether the card renders a square thumbnail or widescreen banner.</td>
+            </tr>
+            <tr>
+              <td>`twitter:title`</td>
+              <td>Plain text string</td>
+              <td>Under 70 characters</td>
+              <td>Displays as the primary bold heading beneath the image container.</td>
+            </tr>
+            <tr>
+              <td>`twitter:description`</td>
+              <td>Descriptive text string</td>
+              <td>Under 200 characters</td>
+              <td>Provides secondary context snippet below the title. Truncates if too long.</td>
+            </tr>
+            <tr>
+              <td>`twitter:image`</td>
+              <td>Absolute HTTPS Image URL</td>
+              <td>1200 x 628 px (Min 600x314)</td>
+              <td>Visual banner graphic displayed prominently inside the timeline preview.</td>
+            </tr>
+            <tr>
+              <td>`twitter:site` / `creator`</td>
+              <td>X Handle (`@username`)</td>
+              <td>Active account handle</td>
+              <td>Links authorship and brand attribution directly to the shared post.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why is my Twitter card showing up as a plain link instead of a rich image preview?</h3>
+      <p class="seo-p">Plain text fallback usually occurs due to missing `twitter:card` tags, incorrect absolute image URLs (must start with `https://`), server blocks preventing Twitter's user-agent bot (`Twitterbot`) from scraping your page, or restrictive robots.txt rules.</p>
+
+      <h3>What are the exact recommended image dimensions for Twitter cards?</h3>
+      <p class="seo-p">For Summary Cards with Large Image, use an aspect ratio of 1.91:1 with a minimum resolution of 600x314 pixels (1200x628 pixels is ideal for retina displays). For standard square Summary Cards, use a 1:1 aspect ratio with a minimum of 144x144 pixels.</p>
+
+      <h3>How does local device preview testing protect developer workflows?</h3>
+      <p class="seo-p">Texus Pro Tools provides instant client-side rendering simulators. You can test variations of your titles, descriptions, and image links instantly without needing to push experimental code live to production servers.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Social Metadata Management</h3>
+      <p class="seo-p">To maximize your social media reach, always validate your website's meta headers before launching marketing campaigns. Keep title lengths concise to avoid truncation, use optimized high-contrast imagery, and leverage real-time preview tools to ensure flawless brand presentation across all mobile and desktop viewports.</p>
+      <p class="seo-p">Our Advanced Twitter Card Meta Previewer suite streamlines this entire testing workflow, allowing you to generate clean production-ready HTML tags instantly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function updateTwitterPreview() {
+      const cardType = document.getElementById('tcCardType').value;
+      const title = document.getElementById('tcTitle').value;
+      const desc = document.getElementById('tcDesc').value;
+      const image = document.getElementById('tcImage').value;
+      const domain = document.getElementById('tcDomain').value;
+      const handle = document.getElementById('tcHandle').value;
+
+      // Update Widget Container Class
+      const widget = document.getElementById('xCardWidget');
+      widget.className = 'x-card-container ' + cardType;
+
+      // Update Preview Elements
+      document.getElementById('xCardDomainPreview').textContent = domain || 'example.com';
+      document.getElementById('xCardTitlePreview').textContent = title || 'Add a page title...';
+      document.getElementById('xCardDescPreview').textContent = desc || 'Add a description...';
+      
+      const imgElem = document.getElementById('xCardImgPreview');
+      if (image) {
+        imgElem.src = image;
+        imgElem.style.display = 'block';
+        document.getElementById('xCardImgFallback').style.display = 'none';
+      } else {
+        imgElem.style.display = 'none';
+        document.getElementById('xCardImgFallback').style.display = 'block';
+      }
+
+      // Generate HTML Code
+      const codeString = `<meta name="twitter:card" content="${escapeHtml(cardType)}" />\n` +
+        (handle ? `<meta name="twitter:site" content="${escapeHtml(handle)}" />\n` : '') +
+        `<meta name="twitter:title" content="${escapeHtml(title)}" />\n` +
+        `<meta name="twitter:description" content="${escapeHtml(desc)}" />\n` +
+        `<meta name="twitter:image" content="${escapeHtml(image)}" />`;
+
+      document.getElementById('tcCodeOutput').value = codeString;
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+
+    function copyTwitterCode() {
+      const codeBox = document.getElementById('tcCodeOutput');
+      codeBox.select();
+      codeBox.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(codeBox.value).then(() => {
+        const btn = document.getElementById('copyTwitterTagsBtn');
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Copied Successfully!';
+        btn.style.background = '#dcfce7';
+        btn.style.color = '#166534';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '#f8fafc';
+          btn.style.color = '#475569';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text:', err);
+      });
+    }
+
+    function resetTwitterWorkspace() {
+      document.getElementById('tcCardType').value = 'summary_large_image';
+      document.getElementById('tcTitle').value = 'Texus Pro Tools | Free Professional Online Web Utilities';
+      document.getElementById('tcDesc').value = 'Discover 100% free developer utilities, text encoders, and SEO testing tools built for speed, accuracy, and privacy.';
+      document.getElementById('tcImage').value = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80';
+      document.getElementById('tcDomain').value = 'texusprotools.com';
+      document.getElementById('tcHandle').value = '@texusprotools';
+      updateTwitterPreview();
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', updateTwitterPreview);
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
