@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Vigenère Cipher Matrix Visualizer | Interactive Polyalphabetic Encryption Tool</title>
-  <meta name="description" content="Explore and encrypt messages with the Vigenère Cipher Matrix Visualizer. Interactive 26x26 tabulation square, real-time stepping, encryption, and decryption." />
+  <title>Vigenère Cipher Matrix Visualizer | Interactive Polyalphabetic Cryptography Tool</title>
+  <meta name="description" content="Explore classical cryptography with our interactive Vigenère Cipher Matrix Visualizer. Encrypt, decrypt, and inspect Tableau tabula recta intersections in real-time." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -19,7 +19,7 @@ crossorigin="anonymous"></script>
     "name": "Vigenère Cipher Matrix Visualizer",
     "operatingSystem": "Web",
     "applicationCategory": "SecurityApplication",
-    "description": "Interactive educational tool to visualize the 26x26 Vigenère cipher tabula recta matrix, perform polyalphabetic substitution encryption and decryption instantly.",
+    "description": "An interactive pedagogical cryptography tool to visualize polyalphabetic substitution matrices, encrypt, and decrypt secret messages using the Vigenère square.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -33,7 +33,7 @@ crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
   <style>
-    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
     .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
     .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
     .f-heading span { font-size: 2.4rem; }
@@ -41,14 +41,16 @@ crossorigin="anonymous"></script>
     /* WORKSPACE CORE CONTAINER CARD */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
     
-    /* TOOL SPECIFIC CONTROLS */
+    /* CONTROL CONTROLS GRID */
     .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
     .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
     .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .f-input-field, .f-textarea-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
-    .f-textarea-field { height: 120px; resize: vertical; line-height: 1.5; }
-    .f-input-field:focus, .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    .f-textarea-field { width: 100%; height: 130px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
     
     .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
 
@@ -62,15 +64,21 @@ crossorigin="anonymous"></script>
     .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
     .f-btn-clear:hover { background: #fee2e2; }
 
-    /* VIGENERE MATRIX CONTAINER */
-    .matrix-wrapper { margin-top: 30px; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid #cbd5e1; border-radius: 14px; background: #ffffff; }
-    .matrix-table { border-collapse: collapse; width: 100%; min-width: 700px; text-align: center; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; }
-    .matrix-table th, .matrix-table td { width: 32px; height: 32px; border: 1px solid #e2e8f0; padding: 0; margin: 0; }
-    .matrix-table th { background: #f1f5f9; color: #0f172a; font-weight: 700; }
-    .matrix-table td { color: #334155; }
-    .matrix-table td.highlight-row { background: #dbeafe !important; color: #1e40af; font-weight: bold; }
-    .matrix-table td.highlight-col { background: #e0e7ff !important; color: #3730a3; font-weight: bold; }
-    .matrix-table td.highlight-cell { background: #2563eb !important; color: #ffffff !important; font-weight: bold; transform: scale(1.05); box-shadow: 0 0 8px rgba(37,99,235,0.6); }
+    /* VIGENERE SPECIFIC MATRIX STYLING */
+    .matrix-section { margin-top: 30px; border-top: 2px solid #f1f5f9; padding-top: 25px; }
+    .matrix-title { font-size: 1.1rem; font-weight: 700; color: #1e293b; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .matrix-wrapper { width: 100%; overflow-x: auto; background: #0f172a; border-radius: 16px; padding: 16px; box-sizing: border-box; }
+    .vigenere-table { border-collapse: collapse; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; width: 100%; text-align: center; }
+    .vigenere-table th, .vigenere-table td { width: 28px; height: 28px; padding: 0; color: #94a3b8; border: 1px solid #1e293b; transition: all 0.1s; }
+    .vigenere-table th { background: #1e293b; color: #f8fafc; font-weight: 700; }
+    .vigenere-table td.matrix-header-col { background: #1e293b; color: #f8fafc; font-weight: 700; }
+    .vigenere-table td.highlight-row { background: rgba(37, 99, 235, 0.25); color: #ffffff; }
+    .vigenere-table td.highlight-col { background: rgba(37, 99, 235, 0.25); color: #ffffff; }
+    .vigenere-table td.highlight-intersect { background: #2563eb; color: #ffffff; font-weight: 800; border: 2px solid #ffffff; }
+
+    /* STEP TRACE CONSOLE */
+    .trace-container { margin-top: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; max-height: 160px; overflow-y: auto; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; color: #334155; }
+    .trace-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed #e2e8f0; }
 
     /* PREMIUM EDITORIAL CONTENT STYLING GRID */
     .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
@@ -98,7 +106,7 @@ crossorigin="anonymous"></script>
       .f-card { padding: 25px 20px; border-radius: 20px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
       .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
-      .f-textarea-field { height: 110px; font-size: 1rem; }
+      .f-textarea-field { height: 120px; font-size: 1rem; }
       
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
@@ -118,318 +126,168 @@ crossorigin="anonymous"></script>
     <div class="f-heading"><span>🔐</span> Vigenère Cipher Matrix Visualizer</div>
     
     <div class="f-card">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+      <div class="f-io-grid">
         <div class="f-panel-box">
-          <label for="cipherMode">Operation Mode</label>
-          <select id="cipherMode" class="f-input-field" onchange="runVigenereProcess()">
-            <option value="encrypt">Encrypt Plaintext</option>
-            <option value="decrypt">Decrypt Ciphertext</option>
-          </select>
+          <label for="inputText">Plaintext or Ciphertext Message</label>
+          <textarea id="inputText" class="f-textarea-field" placeholder="Enter message here (e.g. ATTACKATDAWN)..." oninput="processVigenere()">ATTACKATDAWN</textarea>
         </div>
-        <div class="f-panel-box">
-          <label for="secretKey">Secret Keyword</label>
-          <input type="text" id="secretKey" class="f-input-field mono-font-panel" value="TEXUS" placeholder="Enter keyword..." oninput="runVigenereProcess()" />
+        
+        <div class="f-panel-box" style="gap: 16px;">
+          <div>
+            <label for="keywordInput">Secret Key / Keyword</label>
+            <input type="text" id="keywordInput" class="f-input-field" placeholder="e.g. LEMON" value="LEMON" oninput="processVigenere()">
+          </div>
+          <div style="display: flex; gap: 12px;">
+            <div style="flex: 1;" class="f-panel-box">
+              <label for="modeSelect">Operation Mode</label>
+              <select id="modeSelect" class="f-input-field" onchange="processVigenere()" style="padding: 12px 16px;">
+                <option value="encrypt">Encrypt Message</option>
+                <option value="decrypt">Decrypt Message</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="f-io-grid">
-        <div class="f-panel-box">
-          <label for="inputConsole">Input Message Text</label>
-          <textarea id="inputConsole" class="f-textarea-field" placeholder="Type message here..." oninput="runVigenereProcess()">Hello Cryptography World!</textarea>
-        </div>
-        
-        <div class="f-panel-box">
-          <label for="outputConsole">Processed Result Output</label>
-          <textarea id="outputConsole" class="f-textarea-field mono-font-panel" placeholder="Result will appear here..." readonly></textarea>
-        </div>
+      <div class="f-panel-box" style="margin-bottom: 20px;">
+        <label for="outputText">Output Result Payload</label>
+        <textarea id="outputText" class="f-textarea-field mono-font-panel" readonly placeholder="Result will appear here..."></textarea>
       </div>
 
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="runVigenereProcess()">Process Cipher</button>
-        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyCipherResult()">📋 Copy Output Result</button>
-        <button class="f-btn f-btn-clear" onclick="clearVigenereWorkspace()">Clear</button>
+        <button class="f-btn f-btn-convert" onclick="processVigenere()">Compute Cipher</button>
+        <button class="f-btn f-btn-copy" id="copyBtn" onclick="copyResultToClipboard()">📋 Copy Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearWorkspace()">Clear</button>
       </div>
 
+      <!-- STEP-BY-STEP TRACE -->
       <div style="margin-top: 25px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-          <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Interactive Tabula Recta Matrix Grid</label>
-          <span id="matrixStatusInfo" style="font-size: 0.85rem; color: #2563eb; font-weight: 600;">Showing 26x26 Square</span>
+        <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px;">Polyalphabetic Calculation Trace</label>
+        <div id="traceContainer" class="trace-container">
+          <div class="trace-row"><span>Ready for cryptographic visualization...</span><span>-</span></div>
         </div>
-        <div class="matrix-wrapper" id="matrixContainer">
-          <!-- Dynamically populated matrix table -->
+      </div>
+
+      <!-- INTERACTIVE TABULA RECTA MATRIX -->
+      <div class="matrix-section">
+        <div class="matrix-title">
+          <span>Tabula Recta (Vigenère Square)</span>
+          <span id="matrixCoordInfo" style="font-size: 0.85rem; color: #64748b; font-weight: 500;">Select characters to highlight intersection</span>
+        </div>
+        <div class="matrix-wrapper">
+          <table class="vigenere-table" id="vigenereMatrixTable">
+            <!-- Dynamically populated via JS -->
+          </table>
         </div>
       </div>
       
-      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Live Matrix Trace Enabled:</span>
-        Typing letters into the input field and keyword boxes instantly highlights the corresponding rows, columns, and intersecting intersection coordinates across the polyalphabetic square below.
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Interactive Matrix Coordinate Inspection:</span>
+        Hover or run text calculations to see live row and column coordinate highlights across the 26x26 polyalphabetic substitution matrix.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Mathematics of Polyalphabetic Substitution: Vigenère Ciphers, Tabula Recta Matrices, and Cryptographic Security Evolution</h2>
-      <p class="seo-p">For centuries, classical cryptography relied on monoalphabetic substitution ciphers—such as the famous Caesar cipher—where each letter of the alphabet was shifted by a fixed number of positions throughout an entire message. While simple to execute by hand, these historical ciphers proved notoriously vulnerable to frequency analysis. Because common letters like 'E' or 'T' always mapped to identical ciphertext symbols, cryptanalysts could easily crack codes by studying letter occurrences. The invention of the Vigenère cipher revolutionized manual cryptography by introducing a polyalphabetic system that changed substitution alphabets dynamically using a repeating secret keyword.</p>
-      <p class="seo-p">This extensive technical resource explores the mathematical architecture of the Vigenère square (Tabula Recta), details step-by-step encryption and decryption algorithms, analyzes historical vulnerabilities, and demonstrates how automated client-side tools simplify polyalphabetic cryptography for educational and security development tasks.</p>
+      <h2 class="seo-title">The Cryptographic Architecture of Polyalphabetic Substitution: Mastering the Vigenère Cipher Matrix, Tabula Recta, and Historical Encryption Security</h2>
+      <p class="seo-p">For centuries, classical cryptography relied on monoalphabetic substitution ciphers—such as the famous Caesar shift—where each letter of the plaintext alphabet maps consistently to a single replacement character throughout the entire message. While effective in antiquity, these uniform systems proved vulnerable to basic frequency analysis. By simply counting letter occurrences and comparing them against known natural language distributions, cryptanalysts could easily break the code.</p>
+      <p class="seo-p">The Vigenère cipher, first documented by Italian cryptographer Giovan Battista Bellaso in 1553 and later misattributed to French diplomat Blaise de Vigenère in the 19th century, revolutionized classical cryptography by introducing <b>polyalphabetic substitution</b>. By cycling through a sequence of multiple Caesar shifts determined by a secret keyword, identical plaintext letters map to different ciphertext characters depending on their position in the text. This comprehensive technical guide explores the mathematical mechanics of the Vigenère square, examines the tabula recta intersection grid, evaluates historical security milestones, and outlines clean deployment methodologies for educational cryptography applications.</p>
 
       <div class="seo-callout">
-        <strong>The Polyalphabetic Principle:</strong> Instead of relying on a single Caesar shift, the Vigenère cipher uses a keyword where each letter dictates a unique shift row on a 26x26 grid, effectively hiding letter frequency signatures from traditional cryptanalysis.
+        <strong>The Polyalphabetic Transformation Principle:</strong> The core strength of the Vigenère cipher lies in shifting the alphabet multiple times based on recurring keyword indices. This flattens out single-letter frequency spikes, rendering traditional frequency analysis useless against direct ciphertexts.
       </div>
 
-      <h3 class="seo-h2">The Technical Core: Tabula Recta Generation and Modular Arithmetic</h3>
-      <p class="seo-p">At the heart of the Vigenère cipher lies the <b>Tabula Recta</b>—a square matrix consisting of the 26 letters of the English alphabet written out 26 times in rows, each row shifted one place to the left relative to the previous row.</p>
+      <h3 class="seo-h2">Mathematical Mechanics: How the Tabula Recta Coordinates Cipher Transformations</h3>
+      <p class="seo-p">At the heart of the Vigenère cipher is the <b>Tabula Recta</b> (or Vigenère square), a 26x26 grid consisting of the English alphabet written out 26 times, each row shifted one place to the left relative to the previous row. Each row corresponds to a Caesar cipher starting with that row's initial letter index.</p>
 
-      <h4 class="seo-h3">1. Matrix Coordinate Indexing</h4>
-      <p class="seo-p">Each row in the matrix corresponds to a keyword letter shift (from A=0 to Z=25), while each column represents the plaintext message character. Finding the intersection of a plaintext column and a keyword row yields the precise ciphertext letter.</p>
-
-      <h4 class="seo-h3">2. Modular Arithmetic Formulas</h4>
-      <p class="seo-p">Programmatically, encryption without drawing a physical grid is executed using modular arithmetic. Given a plaintext letter index $P_i$ and a keyword letter index $K_i$, the ciphertext character $C_i$ is computed as:</p>
-      <p class="seo-p" style="text-align: center; font-family: 'Courier New', Courier, monospace; font-weight: bold; background: #f8fafc; padding: 12px; border-radius: 8px;">
+      <h4 class="seo-h3">1. Modular Arithmetic and Alphabet Indexing</h4>
+      <p class="seo-p">To automate encryption without needing to manually look up coordinates on paper tables, computers map letters to numerical values from 0 to 25 (A=0, B=1, ... Z=25). Encryption for a plaintext letter $P_i$ and key letter $K_i$ at index $i$ is calculated using standard modulo 26 arithmetic:</p>
+      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; background: #f8fafc; padding: 12px; border-radius: 8px; text-align: center; font-weight: 700;">
         $C_i = (P_i + K_i) \pmod{26}$
       </p>
-      <p class="seo-p">Conversely, decryption reverses the offset by subtracting the keyword index from the ciphertext index modulo 26:</p>
-      <p class="seo-p" style="text-align: center; font-family: 'Courier New', Courier, monospace; font-weight: bold; background: #f8fafc; padding: 12px; border-radius: 8px;">
+
+      <h4 class="seo-h3">2. Symmetric Decryption Calculations</h4>
+      <p class="seo-p">Because the underlying algebraic structure of the Vigenère cipher is symmetric when working modulo 26, decryption reverses the shift by subtracting the key index from the ciphertext index:</p>
+      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; background: #f8fafc; padding: 12px; border-radius: 8px; text-align: center; font-weight: 700;">
         $P_i = (C_i - K_i + 26) \pmod{26}$
       </p>
 
-      <h4 class="seo-h3">3. Preserving Non-Alphabetic Tokens</h4>
-      <p class="seo-p">Robust cryptographic tools preserve spaces, punctuation marks, digits, and special formatting characters without advancing the keyword sequence counter, ensuring the readability of natural language syntax.</p>
+      <h4 class="seo-h3">3. Handling Non-Alphabetic Characters</h4>
+      <p class="seo-p">Punctuation marks, spaces, numbers, and special symbols are preserved in their original positions without advancing the key pointer index. This ensures that the structural formatting of the source message remains intact while the cryptographic payload is transformed.</p>
 
-      <h3>The Statutory Reference Matrix: Vigenère Shift Reference Map</h3>
-      <p class="seo-p">Reviewing how initial alphabet coordinates interact under shifting keyword configurations illustrates the polyalphabetic transformation mechanics:</p>
+      <h3>The Statutory Reference Matrix: Vigenère Cipher Transformation Map</h3>
+      <p class="seo-p">The following table illustrates sample transformations using the classic keyword <b>LEMON</b> applied to standard plaintext inputs:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Plaintext Character</th>
-              <th>Keyword Character</th>
-              <th>Row Index (Key)</th>
-              <th>Col Index (Plain)</th>
-              <th>Resulting Ciphertext Intersection</th>
+              <th>Plaintext Index ($P$)</th>
+              <th>Keyword Character ($K$)</th>
+              <th>Tabula Recta Row</th>
+              <th>Tabula Recta Column</th>
+              <th>Ciphertext Output ($C$)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><b>H</b> (Index 7)</td>
-              <td><b>T</b> (Index 19)</td>
-              <td>Row 19</td>
-              <td>Col 7</td>
-              <td><b>A</b> (Index 26 $\to$ 0)</td>
+              <td><b>A</b> (0)</td>
+              <td><b>L</b> (11)</td>
+              <td>Row L</td>
+              <td>Column A</td>
+              <td><b>L</b> (11)</td>
             </tr>
             <tr>
-              <td><b>E</b> (Index 4)</td>
-              <td><b>E</b> (Index 4)</td>
-              <td>Row 4</td>
-              <td>Col 4</td>
-              <td><b>I</b> (Index 8)</td>
+              <td><b>T</b> (19)</td>
+              <td><b>E</b> (4)</td>
+              <td>Row E</td>
+              <td>Column T</td>
+              <td><b>X</b> (23)</td>
             </tr>
             <tr>
-              <td><b>L</b> (Index 11)</td>
-              <td><b>X</b> (Index 23)</td>
-              <td>Row 23</td>
-              <td>Col 11</td>
-              <td><b>I</b> (Index 34 $\to$ 8)</td>
+              <td><b>T</b> (19)</td>
+              <td><b>M</b> (12)</td>
+              <td>Row M</td>
+              <td>Column T</td>
+              <td><b>F</b> (5)</td>
             </tr>
             <tr>
-              <td><b>L</b> (Index 11)</td>
-              <td><b>U</b> (Index 20)</td>
-              <td>Row 20</td>
-              <td>Col 11</td>
-              <td><b>F</b> (Index 31 $\to$ 5)</td>
+              <td><b>A</b> (0)</td>
+              <td><b>O</b> (14)</td>
+              <td>Row O</td>
+              <td>Column A</td>
+              <td><b>O</b> (14)</td>
             </tr>
             <tr>
-              <td><b>O</b> (Index 14)</td>
-              <td><b>S</b> (Index 18)</td>
-              <td>Row 18</td>
-              <td>Col 14</td>
-              <td><b>G</b> (Index 32 $\to$ 6)</td>
+              <td><b>C</b> (2)</td>
+              <td><b>N</b> (13)</td>
+              <td>Row N</td>
+              <td>Column C</td>
+              <td><b>P</b> (15)</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Cryptographic Analysis Segment</h3>
 
-      <h3>What happens if the secret keyword is shorter than the plaintext message?</h3>
-      <p class="seo-p">The keyword repeats cyclically across the length of the plaintext string. For example, if the keyword is "TEXUS" (5 letters) and the message is 12 letters long, the keyword sequence applied is "TEXUSTEXUSTE". This repetition formed the basis for Kasiski examination, which eventually allowed cryptanalysts to deduce keyword lengths.</p>
+      <h3>Why was the Vigenère cipher considered "le chiffre indéchiffrable" (the indecipherable cipher) for 300 years?</h3>
+      <p class="seo-p">For centuries, cryptographers believed that combining multiple Caesar shifts neutralized frequency analysis. Because a single plaintext letter could map to multiple different ciphertext letters depending on the keyword, standard statistical cracking tools failed. It wasn't until the 19th century that Charles Babbage and Friedrich Kasiski independently developed methods (like the Kasiski examination) to detect repeating patterns in ciphertexts, exposing the key length and allowing successful cryptanalysis.</p>
 
-      <h3>Can numbers and special characters be encrypted using the Vigenère cipher?</h3>
-      <p class="seo-p">Classic Vigenère ciphers were designed exclusively for 26-letter alphabets. Modern digital implementations bypass this limitation by either ignoring non-alphabetic characters (preserving them verbatim) or by expanding the matrix modulus to encompass 128 ASCII or full Unicode character blocks.</p>
+      <h3>How does key repetition work when the keyword is shorter than the plaintext?</h3>
+      <p class="seo-p">When the secret keyword is shorter than the message, the keyword is repeated continuously (toggled cyclically) until it matches the length of the plaintext string. For example, if the plaintext is 12 characters long and the keyword is 5 characters long, the first 5 characters use the keyword, and the 6th character wraps back to the beginning of the keyword.</p>
 
-      <h3>How does local browser execution ensure complete data privacy?</h3>
-      <p class="seo-p">Texus Pro Tools prioritizes absolute user security. Our Vigenère Matrix Visualizer operates entirely on the client side using embedded JavaScript code. Your secret keywords and confidential message texts never leave your device or transmit across external servers—guaranteeing total privacy.</p>
+      <h3>Is the Vigenère cipher secure for modern digital communications?</h3>
+      <p class="seo-p">No. While the Vigenère cipher is a magnificent pedagogical tool for teaching modular arithmetic and polyalphabetic substitution, it is entirely insecure by modern cryptographic standards. Computers can crack Vigenère ciphers in milliseconds using statistical analysis of key lengths (such as the Index of Coincidence). Modern systems rely on robust symmetric algorithms like AES-256 and asymmetric protocols like RSA or ECC.</p>
 
-      <h3 class="seo-h2">Summary: Strategic Best Practices for Classical Cipher Analysis</h3>
-      <p class="seo-p">Exploring classical ciphers like the Vigenère square provides invaluable insight into the evolution of modern cryptography, symmetric key exchange, and cryptographic diffusion. By leveraging interactive visualizers, students and engineers can instantly verify modular calculations, test custom keys, and observe polyalphabetic substitution in real time.</p>
-      <p class="seo-p">Our Advanced Vigenère Cipher Matrix Visualizer suite automates grid tabulation and modular arithmetic instantly across any desktop or mobile device.</p>
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Cryptographic Education</h3>
+      <p class="seo-p">Visualizing classical ciphers helps students and developers grasp the foundational principles of information security, symmetric keys, and algorithmic transformations. By examining matrix coordinate intersections directly on the Tabula Recta, users build a concrete intuition for how cryptographic substitution operates beneath the hood.</p>
+      <p class="seo-p">Our Advanced Vigenère Cipher Matrix Visualizer suite automates these calculations instantly, providing an interactive, client-side sandbox to explore polyalphabetic encryption safely on any device.</p>
     </div>
   </main>
 
   <div id="site-footer"></div>
 
   <script type="text/javascript">
-    // --- VIGENERE CIPHER APP LOGIC ---
-    const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    function buildMatrixTable() {
-      const container = document.getElementById('matrixContainer');
-      let html = '<table class="matrix-table" id="tabulaRectaTable"><thead><tr><th>\\</th>';
-      
-      for (let c = 0; c < 26; c++) {
-        html += `<th>${ALPHABET[c]}</th>`;
-      }
-      html += '</tr></thead><tbody>';
-
-      for (let r = 0; r < 26; r++) {
-        const rowChar = ALPHABET[r];
-        html += `<tr><th>${rowChar}</th>`;
-        for (let c = 0; c < 26; c++) {
-          const charCode = ALPHABET[(r + c) % 26];
-          html += `<td id="cell-${r}-${c}">${charCode}</td>`;
-        }
-        html += '</tr>';
-      }
-      html += '</tbody></table>';
-      container.innerHTML = html;
-    }
-
-    function runVigenereProcess() {
-      const mode = document.getElementById('cipherMode').value;
-      const rawKey = document.getElementById('secretKey').value.toUpperCase().replace(/[^A-Z]/g, '');
-      const inputTxt = document.getElementById('inputConsole').value;
-      const outputConsole = document.getElementById('outputConsole');
-      const statusInfo = document.getElementById('matrixStatusInfo');
-
-      if (!rawKey) {
-        outputConsole.value = "Error: Secret keyword must contain at least one alphabetic character (A-Z).";
-        statusInfo.innerText = "Invalid Keyword";
-        clearHighlights();
-        return;
-      }
-
-      let result = "";
-      let keyIdx = 0;
-      let firstMappedRow = 0;
-      let firstMappedCol = 0;
-      let hasActiveMapping = false;
-
-      for (let i = 0; i < inputTxt.length; i++) {
-        const char = inputTxt[i];
-        const upperChar = char.toUpperCase();
-        const charCode = upperChar.charCodeAt(0);
-
-        if (charCode >= 65 && charCode <= 90) { // A-Z
-          const pVal = charCode - 65;
-          const kChar = rawKey[keyIdx % rawKey.length];
-          const kVal = kChar.charCodeAt(0) - 65;
-
-          let resVal;
-          if (mode === 'encrypt') {
-            resVal = (pVal + kVal) % 26;
-          } else {
-            resVal = (pVal - kVal + 26) % 26;
-          }
-
-          const resChar = ALPHABET[resVal];
-          
-          // Preserve case
-          if (char === char.toLowerCase()) {
-            result += resChar.toLowerCase();
-          } else {
-            result += resChar;
-          }
-
-          if (!hasActiveMapping) {
-            firstMappedRow = mode === 'encrypt' ? kVal : kVal; // For encryption: row is key, col is plain. For decryption: row is key, col is cipher.
-            firstMappedCol = mode === 'encrypt' ? pVal : resVal;
-            hasActiveMapping = true;
-          }
-
-          keyIdx++;
-        } else {
-          result += char; // Non-alphabetic character passed through
-        }
-      }
-
-      outputConsole.value = result;
-      statusInfo.innerText = `Mode: ${mode.toUpperCase()} | Keyword: ${rawKey} | Active Length: ${inputTxt.length} chars`;
-
-      if (hasActiveMapping && inputTxt.length > 0) {
-        highlightMatrixCell(firstMappedRow, firstMappedCol);
-      } else {
-        clearHighlights();
-      }
-    }
-
-    function highlightMatrixCell(targetRow, targetCol) {
-      clearHighlights();
-      const table = document.getElementById('tabulaRectaTable');
-      if (!table) return;
-
-      // Highlight row (key)
-      for (let c = 0; c < 26; c++) {
-        const cell = document.getElementById(`cell-${targetRow}-${c}`);
-        if (cell) cell.classList.add('highlight-col');
-      }
-
-      // Highlight column (plain/cipher)
-      for (let r = 0; r < 26; r++) {
-        const cell = document.getElementById(`cell-${r}-${targetCol}`);
-        if (cell) cell.classList.add('highlight-row');
-      }
-
-      // Highlight intersection cell
-      const targetCell = document.getElementById(`cell-${targetRow}-${targetCol}`);
-      if (targetCell) {
-        targetCell.classList.remove('highlight-row', 'highlight-col');
-        targetCell.classList.add('highlight-cell');
-      }
-    }
-
-    function clearHighlights() {
-      const cells = document.querySelectorAll('.matrix-table td');
-      cells.forEach(cell => {
-        cell.classList.remove('highlight-row', 'highlight-col', 'highlight-cell');
-      });
-    }
-
-    function clearVigenereWorkspace() {
-      document.getElementById('inputConsole').value = "";
-      document.getElementById('outputConsole').value = "";
-      document.getElementById('secretKey').value = "TEXUS";
-      document.getElementById('cipherMode').value = "encrypt";
-      document.getElementById('matrixStatusInfo').innerText = "Workspace Cleared";
-      clearHighlights();
-    }
-
-    function copyCipherResult() {
-      const outputConsole = document.getElementById('outputConsole');
-      const copyBtn = document.getElementById('copyResultBtn');
-      
-      outputConsole.select();
-      outputConsole.setSelectionRange(0, 99999);
-      navigator.clipboard.writeText(outputConsole.value).then(() => {
-        const originalText = copyBtn.innerText;
-        copyBtn.innerText = "✅ Copied Successfully!";
-        copyBtn.style.background = "#dcfce7";
-        copyBtn.style.color = "#166534";
-        setTimeout(() => {
-          copyBtn.innerText = originalText;
-          copyBtn.style.background = "";
-          copyBtn.style.color = "";
-        }, 2000);
-      }).catch(err => {
-        console.error('Failed to copy text: ', err);
-      });
-    }
-
-    // Initialize matrix on load
-    window.addEventListener('DOMContentLoaded', () => {
-      buildMatrixTable();
-      runVigenereProcess();
-    });
-
-    // --- COMPONENT LOADER ---
     const basePath = window.location.origin;
     
     fetch('/components/header.html')
@@ -441,6 +299,144 @@ crossorigin="anonymous"></script>
       .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
+
+    // --- VIGENERE CIPHER MATRIX & APP LOGIC ---
+    const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    function buildTabulaRecta() {
+      const table = document.getElementById('vigenereMatrixTable');
+      let html = '<tr><th>#</th>';
+      for (let i = 0; i < 26; i++) {
+        html += `<th>${ALPHABET[i]}</th>`;
+      }
+      html += '</tr>';
+
+      for (let r = 0; r < 26; r++) {
+        const rowChar = ALPHABET[r];
+        html += `<tr><td class="matrix-header-col">${rowChar}</td>`;
+        for (let c = 0; c < 26; c++) {
+          const charCode = ALPHABET[(r + c) % 26];
+          html += `<td id="cell-${r}-${c}" data-row="${r}" data-col="${c}">${charCode}</td>`;
+        }
+        html += '</tr>';
+      }
+      table.innerHTML = html;
+    }
+
+    function clearHighlights() {
+      const cells = document.querySelectorAll('.vigenere-table td');
+      cells.forEach(cell => {
+        cell.classList.remove('highlight-row', 'highlight-col', 'highlight-intersect');
+      });
+    }
+
+    function highlightCoordinates(rowIdx, colIdx) {
+      clearHighlights();
+      if (rowIdx < 0 || rowIdx >= 26 || colIdx < 0 || colIdx >= 26) return;
+
+      for (let c = 0; c < 26; c++) {
+        const cell = document.getElementById(`cell-${rowIdx}-${c}`);
+        if (cell) cell.classList.add('highlight-row');
+      }
+      for (let r = 0; r < 26; r++) {
+        const cell = document.getElementById(`cell-${r}-${colIdx}`);
+        if (cell) cell.classList.add('highlight-col');
+      }
+      const intersectCell = document.getElementById(`cell-${rowIdx}-${colIdx}`);
+      if (intersectCell) {
+        intersectCell.classList.remove('highlight-row', 'highlight-col');
+        intersectCell.classList.add('highlight-intersect');
+      }
+
+      document.getElementById('matrixCoordInfo').innerText = 
+        `Key: ${ALPHABET[rowIdx]} | Text: ${ALPHABET[colIdx]} ➔ Result: ${ALPHABET[(rowIdx + colIdx) % 26]}`;
+    }
+
+    function processVigenere() {
+      const input = document.getElementById('inputText').value;
+      const rawKeyword = document.getElementById('keywordInput').value.toUpperCase().replace(/[^A-Z]/g, '');
+      const mode = document.getElementById('modeSelect').value;
+      const outputBox = document.getElementById('outputText');
+      const traceContainer = document.getElementById('traceContainer');
+
+      if (!rawKeyword) {
+        outputBox.value = "Error: Please enter a valid alphabetic keyword.";
+        traceContainer.innerHTML = '<div class="trace-row"><span>Error: Empty or invalid keyword</span><span>-</span></div>';
+        return;
+      }
+
+      let output = '';
+      let traceHtml = '';
+      let keyIdx = 0;
+      let lastRow = 0, lastCol = 0;
+
+      for (let i = 0; i < input.length; i++) {
+        const char = input[i];
+        const upperChar = char.toUpperCase();
+
+        if (ALPHABET.includes(upperChar)) {
+          const pCode = ALPHABET.indexOf(upperChar);
+          const kChar = rawKeyword[keyIdx % rawKeyword.length];
+          const kCode = ALPHABET.indexOf(kChar);
+          let resCode, rCoord, cCoord;
+
+          if (mode === 'encrypt') {
+            resCode = (pCode + kCode) % 26;
+            rCoord = kCode;
+            cCoord = pCode;
+          } else {
+            resCode = (pCode - kCode + 26) % 26;
+            rCoord = kCode;
+            cCoord = resCode;
+          }
+
+          const resChar = ALPHABET[resCode];
+          output += (char === upperChar) ? resChar : resChar.toLowerCase();
+
+          lastRow = rCoord;
+          lastCol = cCoord;
+
+          traceHtml += `<div class="trace-row"><span>In: '${char}' (${upperChar}) | Key: '${kChar}'</span><span>➔ Out: '${resChar}' [Row ${kCode}, Col ${cCoord}]</span></div>`;
+          keyIdx++;
+        } else {
+          output += char;
+          traceHtml += `<div class="trace-row" style="color: #94a3b8;"><span>Skipped non-alpha: '${char}'</span><span>-</span></div>`;
+        }
+      }
+
+      outputBox.value = output;
+      traceContainer.innerHTML = traceHtml || '<div class="trace-row"><span>No alphabetic characters to process</span><span>-</span></div>';
+      highlightCoordinates(lastRow, lastCol);
+    }
+
+    function clearWorkspace() {
+      document.getElementById('inputText').value = '';
+      document.getElementById('keywordInput').value = 'LEMON';
+      document.getElementById('outputText').value = '';
+      document.getElementById('traceContainer').innerHTML = '<div class="trace-row"><span>Workspace cleared. Ready for input.</span><span>-</span></div>';
+      clearHighlights();
+      document.getElementById('matrixCoordInfo').innerText = 'Select characters to highlight intersection';
+    }
+
+    function copyResultToClipboard() {
+      const outputBox = document.getElementById('outputText');
+      outputBox.select();
+      outputBox.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(outputBox.value).then(() => {
+        const btn = document.getElementById('copyBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '✅ Copied Successfully!';
+        setTimeout(() => { btn.innerText = originalText; }, 2000);
+      }).catch(err => {
+        console.error('Copy failed:', err);
+      });
+    }
+
+    // Initialize matrix on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      buildTabulaRecta();
+      processVigenere();
+    });
   </script>
   
   <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
