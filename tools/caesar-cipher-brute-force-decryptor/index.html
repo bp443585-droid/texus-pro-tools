@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Caesar Cipher Brute Force Decryptor | Online Shift Cipher Analyzer</title>
-  <meta name="description" content="Instantly brute force and decrypt any Caesar cipher ciphertext across all 25 possible shift combinations. Free online shift cipher cracker and analysis tool." />
+  <title>Caesar Cipher Brute Force Decryptor | Online Shift Cipher Cracker</title>
+  <meta name="description" content="Instantly brute force and decrypt Caesar cipher texts across all 25 possible shift combinations. Free online shift cipher cracker with instant results." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -16,10 +16,10 @@ crossorigin="anonymous"></script>
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Caesar Cipher Brute Force Decryptor",
+    "name": "Caesar Cipher Brute Force Decryptor Pro",
     "operatingSystem": "Web",
-    "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced cryptographic brute-force utility to analyze and decrypt Caesar cipher texts across all possible shift keys simultaneously.",
+    "applicationCategory": "SecurityApplication",
+    "description": "An advanced cryptographic utility that instantly brute forces and decrypts Caesar cipher ciphertext across all 25 possible shift combinations locally.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -33,7 +33,7 @@ crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
   <style>
-    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
     .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
     .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
     .f-heading span { font-size: 2.4rem; }
@@ -41,12 +41,12 @@ crossorigin="anonymous"></script>
     /* WORKSPACE CORE CONTAINER CARD */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
     
-    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    /* INTERACTIVE GRID SYSTEM */
     .f-io-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 20px; }
     .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
     .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .f-textarea-field { width: 100%; height: 140px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field { width: 100%; height: 160px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
     .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
     
     .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
@@ -56,17 +56,17 @@ crossorigin="anonymous"></script>
     .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
     .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
     .f-btn-convert:hover { background: #1d4ed8; }
-    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 140px; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
     .f-btn-clear:hover { background: #fee2e2; }
 
-    /* RESULTS CONTAINER FOR BRUTE FORCE */
-    .brute-results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 25px; }
-    .brute-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; transition: all 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
-    .brute-card:hover { border-color: #2563eb; background: #ffffff; box-shadow: 0 4px 12px rgba(37,99,235,0.08); }
-    .brute-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.85rem; font-weight: 700; color: #2563eb; text-transform: uppercase; }
-    .brute-card-text { font-family: 'Courier New', Courier, monospace; font-size: 1rem; color: #1e293b; word-break: break-all; margin-bottom: 12px; }
-    .brute-copy-btn { background: #ffffff; border: 1px solid #cbd5e1; color: #475569; padding: 6px 12px; font-size: 0.75rem; border-radius: 8px; font-weight: 600; cursor: pointer; text-align: center; text-transform: uppercase; transition: all 0.1s; }
-    .brute-copy-btn:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    /* RESULTS CONTAINER GRID FOR BRUTE FORCE SHIFTS */
+    .results-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; max-height: 600px; overflow-y: auto; padding-right: 4px; }
+    .shift-result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: all 0.2s; }
+    .shift-result-card:hover { border-color: #cbd5e1; background: #f1f5f9; }
+    .shift-badge { background: #2563eb; color: #fff; font-weight: 700; font-size: 0.8rem; padding: 6px 12px; border-radius: 8px; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.5px; }
+    .shift-text { font-family: 'Courier New', Courier, monospace; font-size: 1.05rem; color: #0f172a; word-break: break-all; flex: 1; }
+    .shift-copy-btn { background: #ffffff; border: 1px solid #cbd5e1; color: #475569; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+    .shift-copy-btn:hover { background: #e2e8f0; color: #0f172a; }
 
     /* PREMIUM EDITORIAL CONTENT STYLING GRID */
     .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
@@ -93,10 +93,13 @@ crossorigin="anonymous"></script>
     @media (max-width: 768px) {
       .f-card { padding: 25px 20px; border-radius: 20px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
-      .f-textarea-field { height: 120px; font-size: 1rem; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 130px; font-size: 1rem; }
+      .shift-result-card { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .shift-copy-btn { width: 100%; text-align: center; }
+      
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
-      .brute-results-grid { grid-template-columns: 1fr; }
       .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
     }
     @media (max-width: 550px) {
@@ -115,112 +118,111 @@ crossorigin="anonymous"></script>
     <div class="f-card">
       <div class="f-io-grid">
         <div class="f-panel-box">
-          <label for="cipherInput">Encrypted Ciphertext String</label>
-          <textarea id="cipherInput" class="f-textarea-field" placeholder="Enter Caesar cipher text here (e.g., Khoor Zruog)..." oninput="runBruteForce()"></textarea>
+          <label for="cipherTextConsole">Ciphertext Input</label>
+          <textarea id="cipherTextConsole" class="f-textarea-field" placeholder="Paste encrypted Caesar cipher text here (e.g., 'Khoor Zruog')..." oninput="executeBruteForce()"></textarea>
         </div>
       </div>
 
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="runBruteForce()">Crack All 25 Shifts</button>
+        <button class="f-btn f-btn-convert" onclick="executeBruteForce()">Decrypt All 25 Shifts</button>
         <button class="f-btn f-btn-clear" onclick="clearWorkspace()">Clear</button>
       </div>
       
       <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Client-Side Cryptanalysis Active:</span>
-        Type or paste any shift cipher text above. All 25 possible decrypted variations will instantly populate below without needing to guess the correct rotation key.
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Client-Side Brute Force Engine:</span>
+        Instantly computes all 25 possible alphabetical rotation shifts in real-time. Review the generated candidate list below to locate your readable plaintext message instantly.
       </div>
 
-      <div id="resultsContainer" class="brute-results-grid">
-        <!-- Dynamically injected brute force permutation cards will appear here -->
-        <div style="grid-column: 1 / -1; text-align: center; color: #94a3b8; padding: 40px 0; font-style: italic;">
-          Enter ciphertext above to analyze and brute-force all possible Caesar cipher shifts...
+      <div id="resultsContainer" class="results-grid">
+        <div style="text-align: center; color: #94a3b8; padding: 40px; font-weight: 500;">
+          Awaiting ciphertext input above to execute cryptographic brute force analysis...
         </div>
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Cryptography of Substitution Ciphers: History, Mechanics, and Mathematical Brute-Force Analysis of Caesar Shifts</h2>
-      <p class="seo-p">Cryptography has accompanied human civilization for millennia, serving as the cornerstone of diplomatic confidentiality, military strategy, and modern digital privacy. Among historical encryption algorithms, the Caesar cipher remains the most iconic monoalphabetic substitution cipher. Named after Julius Caesar, who reportedly utilized a left shift of 3 to communicate securely with his military generals, this classic mechanism shifts each letter in the plaintext by a fixed number of positions down the alphabet.</p>
-      <p class="seo-p">While completely trivial to break today, understanding the mechanics of shift ciphers provides essential foundational knowledge for studying modern symmetric and asymmetric encryption models. This comprehensive guide explores the mathematics behind substitution ciphers, analyzes the vulnerability of small key spaces to brute-force attacks, and reviews how modern computational tools instantly crack historical encryption models.</p>
+      <h2 class="seo-title">The Mathematics of Substitution Ciphers: Understanding Caesar Shift Mechanics, Cryptanalysis, and Brute Force Algorithms</h2>
+      <p class="seo-p">The Caesar cipher stands as one of the oldest and most widely known encryption techniques in cryptographic history. Named after Julius Caesar, who reportedly used it to protect messages of military significance, the algorithm operates by replacing each letter in the plaintext with a letter a fixed number of positions down the alphabet. While unbreakable in ancient times due to widespread illiteracy, modern computing makes short work of this classical cipher through systematic brute force cryptanalysis.</p>
+      <p class="seo-p">This comprehensive technical manual explores the mechanics of substitution ciphers, examines the mathematics behind modular arithmetic shifts, evaluates the extreme vulnerability of small key spaces, and outlines how automated client-side tools instantly crack ciphertexts without network latency.</p>
 
       <div class="seo-callout">
-        <strong>The Key Space Vulnerability:</strong> Because the standard Latin alphabet contains only 26 distinct letters, the Caesar cipher possesses an exceptionally small key space of just 25 usable shift variations (excluding a shift of 0). This makes it entirely defenseless against automated brute-force scanning.
+        <strong>The Small Key Space Vulnerability:</strong> Because the English alphabet consists of only 26 letters, a Caesar cipher possesses a mere 25 non-trivial shift possibilities. Modern processors can test all permutations in microseconds.
       </div>
 
-      <h3 class="seo-h2">The Mathematical Core: Modular Arithmetic and Alphabet Rotations</h3>
-      <p class="seo-p">The Caesar cipher operates on simple modular arithmetic. By treating the alphabet as a numerical sequence from 0 (A) to 25 (Z), encryption and decryption are expressed as modular functions:</p>
+      <h3 class="seo-h2">The Technical Core: Modular Arithmetic and Alphabetical Rotations</h3>
+      <p class="seo-p">When encrypted text passes through a high-performance decryption pipeline, the script maps character codes across closed numerical rings:</p>
 
-      <h4 class="seo-h3">1. Numerical Indexing and Modular Wrapping</h4>
-      <p class="seo-p">Each letter in the plaintext message is converted to its corresponding integer index $x \in [0, 25]$. The encryption function with a chosen shift key $k$ is defined as $E_k(x) = (x + k) \pmod{26}$. Conversely, the decryption function reverses this shift: $D_k(x) = (x - k) \pmod{26}$.</p>
+      <h4 class="seo-h3">1. Character Index Normalization</h4>
+      <p class="seo-p">The script isolates each character in the input string, checking whether it falls within the uppercase (ASCII 65–90) or lowercase (ASCII 97–122) ranges while leaving punctuation, spaces, and numbers completely untouched.</p>
 
-      <h4 class="seo-h3">2. Exhaustive Key Space Enumeration</h4>
-      <p class="seo-p">When an intercepted ciphertext is encountered without knowing the encryption key $k$, a cryptographic analyst does not need to guess. Because there are only 25 possible keys, a brute-force attack simply generates all 26 possible permutations (shifts 0 through 25). One of these outputs is guaranteed to reveal the original plaintext.</p>
+      <h4 class="seo-h3">2. Modular Subtraction Shifts</h4>
+      <p class="seo-p">To reverse an encryption shift of $k$, the decryptor applies modular arithmetic: $\text{Plaintext} = (\text{Ciphertext} - k) \pmod{26}$. By iterating $k$ from 1 through 25, the algorithm generates every possible historical permutation of the original message.</p>
 
-      <h4 class="seo-h3">3. Preserving Case and Non-Alphabetic Symbols</h4>
-      <p class="seo-p">Robust decryption engines preserve casing (uppercase characters remain uppercase; lowercase characters remain lowercase) and leave punctuation marks, spaces, and numeric digits untouched. This ensures readability and structural integrity.</p>
+      <h4 class="seo-h3">3. Local DOM Rendering Pipeline</h4>
+      <p class="seo-p">Unlike server-bound applications that require request-response cycles, our client-side utility executes all 25 shift combinations instantly inside your browser's local memory, rendering clean, copyable plaintext blocks directly onto your screen.</p>
 
-      <h3>The Historical Reference Matrix: Caesar Cipher Shift Permutations</h3>
-      <p class="seo-p">To illustrate how a single ciphertext phrase transforms across different rotation keys, examine the behavior of the sample string <b>"KHOOR"</b> when subjected to various shift operations:</p>
+      <h3>The Statutory Reference Matrix: Caesar Cipher Shift Permutation Map</h3>
+      <p class="seo-p">Reviewing how standard alphabet indices shift across various key values helps cryptographers understand structural text transformations and cipher anomalies:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Shift Key Index</th>
-              <th>Transformation Operation</th>
-              <th>Resulting Output String</th>
-              <th>Cryptographic Status &amp; Readability</th>
+              <th>Shift Key ($k$)</th>
+              <th>Sample Ciphertext Input</th>
+              <th>Decrypted Plaintext Output</th>
+              <th>Cryptographic Significance &amp; Security Level</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><b>Shift 0</b></td>
-              <td>No rotation ($x - 0$)</td>
-              <td>`KHOOR`</td>
-              <td>Unchanged ciphertext (Encrypted state)</td>
+              <td><b>Shift 1</b></td>
+              <td>`Ipzzs`</td>
+              <td>`Horyr`</td>
+              <td>Trivial single-step backward rotation; easily spotted in short strings.</td>
             </tr>
             <tr>
-              <td><b>Shift 3</b></td>
-              <td>Standard Historical Key ($x - 3$)</td>
-      <td>`HELLO`</td>
-              <td><b>Valid Plaintext Decryption</b> (Target message found)</td>
+              <td><b>Shift 3 (Historical)</b></td>
+              <td>`Khoor Zruog`</td>
+              <td>`Hello World`</td>
+              <td>The classic historical rotation utilized by Julius Caesar for military dispatches.</td>
             </tr>
             <tr>
-              <td><b>Shift 7</b></td>
-              <td>Shift backward by 7 positions</td>
-              <td>`DAHHK`</td>
-              <td>Garbled ciphertext (Meaningless noise)</td>
+              <td><b>Shift 13 (ROT13)</b></td>
+              <td>`Uryyb Jbeyq`</td>
+              <td>`Hello World`</td>
+              <td>Symmetric self-inverse rotation used in online forums to hide spoilers.</td>
             </tr>
             <tr>
-              <td><b>Shift 13</b></td>
-              <td>ROT13 Symmetric Cipher ($x - 13$)</td>
-              <td>`XUBBE`</td>
-              <td>Alternative cipher rotation (Garbled text)</td>
+              <td><b>Shift 19</b></td>
+              <td>`Axebb Pkxlm`</td>
+              <td>`Hello World`</td>
+              <td>High-index backwards substitution requiring wrap-around modular math.</td>
             </tr>
             <tr>
               <td><b>Shift 25</b></td>
-              <td>Maximal rotation ($x - 25$)</td>
-              <td>`LIPPS`</td>
-              <td>Garbled ciphertext (Meaningless noise)</td>
+              <td>`Gdkkn Vnqkc`</td>
+              <td>`Hello World`</td>
+              <td>Maximum alphabetical rotation before cycling back to plaintext identity.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Cryptanalysis Diagnostic Segment</h3>
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
 
-      <h3>How does a brute-force decryptor identify the correct plaintext among 25 results?</h3>
-      <p class="seo-p">While advanced cryptanalysis tools use frequency analysis (comparing letter frequencies in English like 'E', 'T', 'A' against the decrypted output), human intuition remains the fastest decider. When reviewing our instant 25-shift grid, your brain instantly recognizes coherent English words (e.g., "HELLO WORLD") amongst the 24 lines of garbled text.</p>
+      <h3>How does a brute force decryptor work without knowing the original shift key?</h3>
+      <p class="seo-p">Because the Caesar cipher only has 26 possible shift keys, a brute force decryptor doesn't need to guess. It simply generates all 25 alternative combinations simultaneously. A human reader or frequency analysis script can then instantly scan the results to identify the readable English sentence.</p>
 
-      <h3>Can Caesar ciphers be modified to resist brute-force attacks?</h3>
-      <p class="seo-p">Yes. The Caesar cipher is simply a special case of the general substitution cipher, where the alphabet can be mixed in any arbitrary random sequence (26! or $4 \times 10^{26}$ possible keys). While mixed-alphabet substitution ciphers resist simple brute-force key generation, they remain vulnerable to frequency analysis.</p>
+      <h3>Why are numbers and special characters left unchanged during decryption?</h3>
+      <p class="seo-p">The standard Caesar cipher specification only applies cyclic permutations to the 26 letters of the Latin alphabet. Punctuation marks, numbers, and whitespace serve as natural word separators and structural markers that aid readability when inspecting decrypted candidate texts.</p>
 
-      <h3>Is my ciphertext secure when processed in this online tool?</h3>
-      <p class="seo-p">Absolutely. All cryptographic calculations and string permutations execute entirely inside your browser's local JavaScript execution engine. No ciphertext, plaintext, or sensitive logs are ever transmitted to external servers.</p>
+      <h3>Is my encrypted data secure when using online browser decoders?</h3>
+      <p class="seo-p">Yes. Texus Pro Tools runs entirely on client-side JavaScript within your web browser. No ciphertext or decrypted messages are ever transmitted to external servers or logged in remote databases—guaranteeing total privacy for your sensitive communications.</p>
 
-      <h3 class="seo-h2">Summary: The Evolution from Classical Substitution to Modern Encryption</h3>
-      <p class="seo-p">The Caesar cipher represents the dawn of cryptographic thinking—demonstrating that secret communication requires transforming readable text into obscured patterns using systematic rules. Although modern digital security relies on complex mathematical algorithms like AES and RSA rather than simple alphabet shifts, studying classical ciphers like the Caesar shift remains an essential rite of passage for students and security professionals alike.</p>
-      <p class="seo-p">Our Caesar Cipher Brute Force Decryptor tool automates the tedious math of generating all 25 shift permutations instantly, allowing you to decrypt messages in milliseconds across any desktop or mobile browser.</p>
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Classical Cryptanalysis</h3>
+      <p class="seo-p">To master classical cryptography, understanding substitution mechanics, modular arithmetic rings, and frequency distribution is essential. While Caesar ciphers offer virtually zero security against modern computers, exploring their mechanics provides foundational insight into asymmetric encryption, hashing algorithms, and modern data security protocols.</p>
+      <p class="seo-p">Our Advanced Caesar Cipher Brute Force Decryptor suite automates all cryptographic permutation loops instantly, providing clear visibility into encrypted text strings across any mobile or desktop device securely.</p>
     </div>
   </main>
 
@@ -239,34 +241,30 @@ crossorigin="anonymous"></script>
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
 
-    // Caesar Cipher Brute Force Core Script
+    // Caesar Cipher Brute Force Logic
     function decryptCaesar(str, shift) {
-      let result = "";
-      for (let i = 0; i < str.length; i++) {
-        let c = str.charCodeAt(i);
-        // Uppercase letters
-        if (c >= 65 && c <= 90) {
-          result += String.fromCharCode(((c - 65 - shift + 26) % 26) + 65);
+      return str.split('').map(char => {
+        let code = char.charCodeAt(0);
+        // Uppercase letters (A-Z: 65-90)
+        if (code >= 65 && code <= 90) {
+          return String.fromCharCode(((code - 65 - shift + 26) % 26) + 65);
         }
-        // Lowercase letters
-        else if (c >= 97 && c <= 122) {
-          result += String.fromCharCode(((c - 97 - shift + 26) % 26) + 97);
+        // Lowercase letters (a-z: 97-122)
+        if (code >= 97 && code <= 122) {
+          return String.fromCharCode(((code - 97 - shift + 26) % 26) + 97);
         }
-        else {
-          result += str.charAt(i);
-        }
-      }
-      return result;
+        return char;
+      }).join('');
     }
 
-    function runBruteForce() {
-      const input = document.getElementById('cipherInput').value;
+    function executeBruteForce() {
+      const input = document.getElementById('cipherTextConsole').value;
       const container = document.getElementById('resultsContainer');
-      
+
       if (!input.trim()) {
         container.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; color: #94a3b8; padding: 40px 0; font-style: italic;">
-            Enter ciphertext above to analyze and brute-force all possible Caesar cipher shifts...
+          <div style="text-align: center; color: #94a3b8; padding: 40px; font-weight: 500;">
+            Awaiting ciphertext input above to execute cryptographic brute force analysis...
           </div>
         `;
         return;
@@ -275,56 +273,41 @@ crossorigin="anonymous"></script>
       let html = '';
       for (let shift = 1; shift <= 25; shift++) {
         const decrypted = decryptCaesar(input, shift);
-        const cardId = `shiftCard_${shift}`;
+        const safeText = decrypted.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
         html += `
-          <div class="brute-card">
-            <div>
-              <div class="brute-card-header">
-                <span>Shift Key - ${shift}</span>
-                <span>Key: ${shift}</span>
-              </div>
-              <div class="brute-card-text" id="${cardId}">${escapeHtml(decrypted)}</div>
-            </div>
-            <button class="brute-copy-btn" onclick="copyCardResult('${cardId}', this)">📋 Copy Result</button>
+          <div class="shift-result-card">
+            <div class="shift-badge">Shift ${shift < 10 ? '0' + shift : shift}</div>
+            <div class="shift-text">${safeText}</div>
+            <button class="shift-copy-btn" onclick="copyShiftText(this, \`${safeText.replace(/`/g, '\\`')}\`)">📋 Copy</button>
           </div>
         `;
       }
       container.innerHTML = html;
     }
 
-    function escapeHtml(text) {
-      const map = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-      };
-      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
-    }
-
-    function copyCardResult(elementId, btnElement) {
-      const textToCopy = document.getElementById(elementId).innerText;
-      navigator.clipboard.writeText(textToCopy).then(() => {
-        const originalText = btnElement.innerText;
-        btnElement.innerText = '✅ Copied!';
-        btnElement.style.background = '#22c55e';
-        btnElement.style.color = '#ffffff';
-        btnElement.style.borderColor = '#22c55e';
-        setTimeout(() => {
-          btnElement.innerText = originalText;
-          btnElement.style.background = '';
-          btnElement.style.color = '';
-          btnElement.style.borderColor = '';
-        }, 1500);
-      }).catch(err => {
-        console.error('Failed to copy text:', err);
-      });
-    }
-
     function clearWorkspace() {
-      document.getElementById('cipherInput').value = '';
-      runBruteForce();
+      document.getElementById('cipherTextConsole').value = '';
+      executeBruteForce();
+    }
+
+    function copyShiftText(btn, text) {
+      // Decode entities for clipboard
+      const parser = new DOMParser();
+      const decodedText = parser.parseFromString(`<!doctype html><body>${text}`, 'text/html').body.textContent;
+      
+      navigator.clipboard.writeText(decodedText).then(() => {
+        const original = btn.textContent;
+        btn.textContent = '✓ Copied!';
+        btn.style.background = '#dcfce7';
+        btn.style.color = '#166534';
+        btn.style.borderColor = '#bbf7d0';
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.style.background = '#ffffff';
+          btn.style.color = '#475569';
+          btn.style.borderColor = '#cbd5e1';
+        }, 1500);
+      });
     }
   </script>
   
