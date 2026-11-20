@@ -19,7 +19,7 @@ crossorigin="anonymous"></script>
     "name": "Text Sentiment Analyzer Local Pro",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced client-side natural language processing utility for computing text polarity, sentiment scores, and emotional classifications instantly.",
+    "description": "An advanced client-side sentiment analysis utility to evaluate emotional tone, polarity, and polarity ratios instantly.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -49,17 +49,18 @@ crossorigin="anonymous"></script>
     .f-textarea-field { width: 100%; height: 220px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
     .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
     
-    .sentiment-dashboard { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; height: 220px; overflow-y: auto; }
-    .sentiment-score-card { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 12px; }
-    .sentiment-label { font-size: 1.25rem; font-weight: 800; }
-    .sentiment-numeric { font-size: 1.1rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
-    
-    .sentiment-metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
-    .metric-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px; text-align: center; }
-    .metric-title { font-size: 0.7rem; color: #64748b; text-transform: uppercase; font-weight: 700; margin-bottom: 2px; }
-    .metric-val { font-size: 0.95rem; color: #0f172a; font-weight: 800; }
+    /* METRICS PANEL */
+    .f-metrics-panel { background: #f1f5f9; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; border: 2px solid #e2e8f0; }
+    .sentiment-score-display { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .sentiment-badge { display: inline-block; padding: 6px 14px; border-radius: 8px; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .badge-positive { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .badge-neutral { background: #fef9c3; color: #854d0e; border: 1px solid #fef08a; }
+    .badge-negative { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
 
-    .sentiment-keywords { font-size: 0.82rem; color: #334155; line-height: 1.4; }
+    .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
+    .metric-card { background: #ffffff; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; }
+    .metric-card-label { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; }
+    .metric-card-val { font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-top: 4px; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
     .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
@@ -98,7 +99,6 @@ crossorigin="anonymous"></script>
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
       .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
       .f-textarea-field { height: 160px; font-size: 1rem; }
-      .sentiment-dashboard { height: auto; min-height: 180px; }
       
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
@@ -121,73 +121,288 @@ crossorigin="anonymous"></script>
       <div class="f-io-grid">
         <div class="f-panel-box">
           <label for="sentimentInputConsole">Input Text / Customer Review</label>
-          <textarea id="sentimentInputConsole" class="f-textarea-field" placeholder="Paste feedback, customer reviews, tweets, or survey comments here to analyze sentiment in real-time..." oninput="executeSentimentPipeline()"></textarea>
+          <textarea id="sentimentInputConsole" class="f-textarea-field" placeholder="Type or paste sentences, reviews, or feedback text here for instant local sentiment evaluation..." oninput="analyzeSentiment()"></textarea>
         </div>
         
         <div class="f-panel-box">
           <label>Sentiment Analysis Dashboard</label>
-          <div class="sentiment-dashboard" id="sentimentDashboardBox">
-            <div class="sentiment-score-card">
-              <div>
-                <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Polarity State</div>
-                <div class="sentiment-label" id="sentimentLabelDisplay" style="color: #64748b;">Awaiting Input</div>
+          <div class="f-metrics-panel">
+            <div>
+              <div class="sentiment-score-display">
+                <span id="sentimentEmoji">⚖️</span>
+                <span id="sentimentBadge" class="sentiment-badge badge-neutral">Neutral</span>
               </div>
-              <div class="sentiment-numeric" id="sentimentScoreBadge" style="background: #e2e8f0; color: #475569;">0.00</div>
-            </div>
-
-            <div class="sentiment-metrics-grid">
-              <div class="metric-box">
-                <div class="metric-title">Positive Words</div>
-                <div class="metric-val" id="posCountVal">0</div>
-              </div>
-              <div class="metric-box">
-                <div class="metric-title">Negative Words</div>
-                <div class="metric-val" id="negCountVal">0</div>
-              </div>
-              <div class="metric-box">
-                <div class="metric-title">Intensity</div>
-                <div class="metric-val" id="intensityVal">Neutral</div>
+              <div style="font-size: 0.9rem; color: #475569; margin-bottom: 12px;" id="sentimentDescription">
+                Awaiting input text to evaluate emotional polarity and token scores.
               </div>
             </div>
 
-            <div class="sentiment-keywords" id="keywordMatchesDisplay">
-              <strong>Key Vocabulary Drivers:</strong> None detected yet. Type or paste text to evaluate.
+            <div class="metrics-grid">
+              <div class="metric-card">
+                <div class="metric-card-label">Polarity Score</div>
+                <div class="metric-card-val" id="polarityScoreVal">0.00</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-label">Emotional Tone</div>
+                <div class="metric-card-val" id="toneRatioVal">Balanced</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-label">Positive Tokens</div>
+                <div class="metric-card-val" id="posCountVal">0</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-label">Negative Tokens</div>
+                <div class="metric-card-val" id="negCountVal">0</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="executeSentimentPipeline()">Run Analysis</button>
-        <button class="f-btn f-btn-copy" onclick="copySentimentReport()">📋 Copy Sentiment Report</button>
+        <button class="f-btn f-btn-convert" onclick="loadSampleText('positive')">💡 Load Positive Sample</button>
+        <button class="f-btn f-btn-copy" onclick="loadSampleText('negative')">⚠️ Load Negative Sample</button>
         <button class="f-btn f-btn-clear" onclick="clearSentimentWorkspace()">Clear</button>
       </div>
       
       <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ 100% Client-Side Privacy Protection:</span>
-        All sentiment computations occur directly inside your browser's local JavaScript environment. Your sensitive customer feedback, support tickets, and reviews are never transmitted to external servers.
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ 100% Client-Side Private Analysis:</span>
+        All sentiment scoring and lexical keyword matching execute directly inside your browser's local memory engine. No customer feedback data is ever transmitted to external servers.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Science of Lexicon-Based Sentiment Analysis: Polarity Scoring, Emotional Valence, and Natural Language Processing Fundamentals</h2>
-      <p class="seo-p">Understanding how customers, users, and audience segments feel about products, services, or brands requires accurate evaluation of textual sentiment. Natural Language Processing (NLP) bridges the gap between unstructured human communication and quantifiable business intelligence. By inspecting lexical polarity, valence shifters, and emotional amplifiers, organizations can gauge public opinion at scale without manual reading bottlenecks.</p>
-      <p class="seo-p">This extensive guide explores the underlying mechanics of lexicon-based sentiment analysis, reviews polarity calculation methodologies, analyzes linguistic intensifiers, and explains how client-side privacy safeguards benefit modern data workflows.</p>
+      <h2 class="seo-title">The Mechanics of Client-Side Text Sentiment Analysis: Lexical Scoring, Polarity Indices, and Natural Language Processing Fundamentals</h2>
+      <p class="seo-p">Understanding how customers, clients, and online communities perceive a brand, product, or service requires rigorous opinion mining and text classification. Sentiment analysis—often referred to as opinion mining—utilizes natural language processing (NLP) and computational linguistics to systematically identify, extract, quantify, and study affective states and subjective information. By processing unstructured feedback through deterministic valence dictionaries or machine learning models, organizations can instantly gauge public perception at scale.</p>
+      <p class="seo-p">This extensive computing manual explores the lexical foundations of sentiment polarity calculation, reviews valence dictionary matching techniques, analyzes token weighting models, and outlines clean workflows to deploy standalone client-side analysis utilities natively inside browser environments.</p>
 
       <div class="seo-callout">
-        <strong>The Polarity Equation:</strong> Sentiment scoring algorithms assign numerical valence weights to recognized adjectives, verbs, and nouns, summing them against negation modifiers to produce a net score ranging from highly negative to highly positive.
+        <strong>The Polarity Calculation Factor:</strong> Sentiment scoring transforms qualitative human expressions into quantitative metrics by assigning numerical valence ratings to individual lexical tokens, aggregating positive and negative weights into a unified polarity index.
       </div>
 
-      <h3 class="seo-h2">The Technical Core: Tokenization, Lexicon Matching, and Scoring Algorithms</h3>
-      <p class="seo-p">When raw sentences pass through our local sentiment evaluation pipeline, the engine follows a structured natural language processing sequence:</p>
+      <h3 class="seo-h2">The Technical Core: Lexical Extraction and Valence Token Scoring</h3>
+      <p class="seo-p">When raw textual feedback passes through a high-performance client-side sentiment pipeline, the script executes several precise analytical steps:</p>
 
-      <h4 class="seo-h3">1. Normalization and Tokenization</h4>
-      <p class="seo-p">The input text is converted to lowercase and split into discrete tokens (words), stripping away excessive punctuation marks while preserving vital emotional punctuation such as exclamation points and question marks.</p>
+      <h4 class="seo-h3">1. Tokenization and Normalization</h4>
+      <p class="seo-p">The text input is split into individual words (tokens) after converting all characters to lowercase and stripping punctuation marks. This ensures that variations in casing or punctuation do not disrupt keyword matching accuracy.</p>
 
-      <h4 class="seo-h3">2. Valence Dictionary Lookup</h4>
-      <p class="seo-p">Each token is checked against an expansive embedded lexicon of weighted sentiment terms. Words like "magnificent," "outstanding," and "delighted" register positive values, while terms like "frustrating," "broken," and "disappointed" contribute negative scores.</p>
+      <h4 class="seo-h3">2. Valence Dictionary Cross-Reference</h4>
+      <p class="seo-p">Each normalized token is checked against a comprehensive pre-compiled lexicon of sentiment-bearing words. Positive adjectives, verbs, and nouns (e.g., "outstanding", "love", "success") carry positive integer weights, whereas negative terms (e.g., "terrible", "failure", "disappointing") carry negative weights.</p>
 
-      <h4 class="seo-h3">3. Contextual Intensifier Adjustment</h4>
-      <p class="seo-p">Advanced sentiment engines also look at modifier words. Adverbs like "extremely" or "very" amplify the weight of subsequent sentiment words, whereas negations like "not" or "never" invert polarity ratings.</p>
+      <h4 class="seo-h3">3. Intensifier and Negation Adjustment</h4>
+      <p class="seo-p">Advanced parsing checks for modifier words. Negations (such as "not" or "never") invert the polarity of subsequent sentiment terms, while intensifiers (such as "extremely" or "very") amplify the assigned weight, ensuring nuanced sentence structures are evaluated correctly.</p>
 
-      <h3>The
+      <h3>The Statutory Reference Matrix: Core Sentiment Classification Parameters</h3>
+      <p class="seo-p">Understanding how polarity score ranges categorize emotional tone helps auditors and customer support teams interpret sentiment analytics effectively:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Polarity Range</th>
+              <th>Sentiment Classification</th>
+              <th>Emoji Indicator</th>
+              <th>Typical Customer Intent &amp; Feedback Tone</th>
+              <th>Recommended Action Protocol</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>+0.15 to +1.00</td>
+              <td>Positive</td>
+              <td>😊</td>
+              <td>Delighted feedback, praise, high satisfaction, endorsement.</td>
+              <td>Amplify as testimonials, engage for case studies.</td>
+            </tr>
+            <tr>
+              <td>-0.14 to +0.14</td>
+              <td>Neutral</td>
+              <td>⚖️</td>
+              <td>Factual inquiries, objective statements, mixed feedback.</td>
+              <td>Log for product improvements, answer routine questions.</td>
+            </tr>
+            <tr>
+              <td>-1.00 to -0.15</td>
+              <td>Negative</td>
+              <td>⚠️</td>
+              <td>Frustration, bugs, service failures, complaints.</td>
+              <td>Route immediately to priority customer support escalation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>How does local sentiment analysis protect sensitive business feedback?</h3>
+      <p class="seo-p">Traditional cloud-based sentiment APIs require sending raw customer feedback, chat logs, or survey responses to remote third-party servers. Texus Pro Tools executes 100% of its sentiment analysis algorithms locally within your web browser using JavaScript. Your data never leaves your device, guaranteeing absolute privacy and compliance with enterprise data security policies.</p>
+
+      <h3>What causes discrepancies between lexical sentiment scores and human emotion?</h3>
+      <p class="seo-p">Lexical dictionary-based sentiment analyzers evaluate words based on predefined sentiment weights. Sarcasm, irony, cultural idioms, and complex contextual metaphors can sometimes mislead keyword-matching algorithms. For straightforward customer reviews, product feedback, and social media comments, lexical tools provide remarkably fast and accurate insights.</p>
+
+      <h3>Can this analyzer process large batches of customer reviews?</h3>
+      <p class="seo-p">Yes! You can paste entire paragraphs, customer support tickets, or survey blocks into the input console. The real-time evaluation engine instantly calculates aggregate polarity scores, positive token counts, and negative token tallies as you type.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Sentiment Monitoring</h3>
+      <p class="seo-p">To optimize customer feedback loops, regularly analyze support tickets and product reviews using automated polarity scanners. Leverage clean, responsive web utilities to test customer sentiment metrics instantly, monitor shifting opinion trends over time, and ensure your team responds rapidly to negative sentiment spikes.</p>
+      <p class="seo-p">Our Advanced Text Sentiment Analyzer Local suite automates all these computational sentiment scoring routines instantly, providing clear visibility into your feedback data across any mobile or desktop device cleanly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // Sentiment Lexicons
+    const positiveWords = new Set([
+      'good', 'great', 'excellent', 'amazing', 'wonderful', 'fantastic', 'superb', 'outstanding',
+      'love', 'loved', 'loving', 'happy', 'joy', 'pleased', 'satisfied', 'best', 'brilliant',
+      'helpful', 'fast', 'smooth', 'easy', 'recommend', 'recommended', 'perfect', 'flawless',
+      'impressive', 'stellar', 'superior', 'effective', 'reliable', 'safe', 'secure', 'thank',
+      'thanks', 'appreciate', 'delighted', 'positive', 'success', 'successful', 'top'
+    ]);
+
+    const negativeWords = new Set([
+      'bad', 'poor', 'terrible', 'horrible', 'awful', 'dreadful', 'disappointing', 'worst',
+      'hate', 'hated', 'angry', 'sad', 'frustrated', 'annoyed', 'useless', 'broken', 'slow',
+      'difficult', 'hard', 'fail', 'failed', 'failure', 'bug', 'bugs', 'error', 'errors',
+      'issue', 'issues', 'problem', 'problems', 'trash', 'garbage', 'mediocre', 'subpar',
+      'unreliable', 'unsafe', 'insecure', 'negative', 'complaint', 'regret', 'sorry', 'costly'
+    ]);
+
+    const intensifiers = new Set([
+      'very', 'extremely', 'incredibly', 'exceptionally', 'absolutely', 'totally', 'really', 'so'
+    ]);
+
+    const negations = new Set([
+      'not', 'no', 'never', 'none', 'neither', 'nor', 'hardly', 'scarcely', 'barely'
+    ]);
+
+    function analyzeSentiment() {
+      const text = document.getElementById('sentimentInputConsole').value.trim();
+      const emojiEl = document.getElementById('sentimentEmoji');
+      const badgeEl = document.getElementById('sentimentBadge');
+      const descEl = document.getElementById('sentimentDescription');
+      const polarityValEl = document.getElementById('polarityScoreVal');
+      const toneValEl = document.getElementById('toneRatioVal');
+      const posCountEl = document.getElementById('posCountVal');
+      const negCountEl = document.getElementById('negCountVal');
+
+      if (!text) {
+        emojiEl.textContent = '⚖️';
+        badgeEl.textContent = 'Neutral';
+        badgeEl.className = 'sentiment-badge badge-neutral';
+        descEl.textContent = 'Awaiting input text to evaluate emotional polarity and token scores.';
+        polarityValEl.textContent = '0.00';
+        toneValEl.textContent = 'Balanced';
+        posCountEl.textContent = '0';
+        negCountEl.textContent = '0';
+        return;
+      }
+
+      // Tokenize
+      const cleanText = text.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+      const tokens = cleanText.split(/\s+/).filter(Boolean);
+
+      let posCount = 0;
+      let negCount = 0;
+      let score = 0;
+
+      for (let i = 0; i < tokens.length; i++) {
+        let token = tokens[i];
+        let multiplier = 1;
+        let negate = false;
+
+        // Check preceding context for intensifiers or negations
+        if (i > 0) {
+          if (intensifiers.has(tokens[i - 1])) multiplier = 1.5;
+          if (negations.has(tokens[i - 1])) negate = true;
+        }
+        if (i > 1 && !negate) {
+          if (negations.has(tokens[i - 2])) negate = true;
+        }
+
+        if (positiveWords.has(token)) {
+          let val = 1 * multiplier;
+          if (negate) {
+            negCount++;
+            score -= val;
+          } else {
+            posCount++;
+            score += val;
+          }
+        } else if (negativeWords.has(token)) {
+          let val = 1 * multiplier;
+          if (negate) {
+            posCount++;
+            score += val * 0.5; // negated negative becomes slightly positive
+          } else {
+            negCount++;
+            score -= val;
+          }
+        }
+      }
+
+      const totalSentimentTokens = posCount + negCount;
+      let polarity = 0;
+      if (totalSentimentTokens > 0) {
+        polarity = score / totalSentimentTokens;
+      }
+
+      // Clamp polarity between -1 and 1
+      polarity = Math.max(-1, Math.min(1, polarity));
+      polarityValEl.textContent = polarity.toFixed(2);
+      posCountEl.textContent = posCount;
+      negCountEl.textContent = negCount;
+
+      if (polarity >= 0.15) {
+        emojiEl.textContent = '😊';
+        badgeEl.textContent = 'Positive';
+        badgeEl.className = 'sentiment-badge badge-positive';
+        descEl.textContent = 'The analyzed text displays favorable emotional polarity, praise, and satisfaction.';
+        toneValEl.textContent = 'Upbeat';
+      } else if (polarity <= -0.15) {
+        emojiEl.textContent = '⚠️';
+        badgeEl.textContent = 'Negative';
+        badgeEl.className = 'sentiment-badge badge-negative';
+        descEl.textContent = 'The analyzed text expresses critical tone, frustration, or negative feedback.';
+        toneValEl.textContent = 'Critical';
+      } else {
+        emojiEl.textContent = '⚖️';
+        badgeEl.textContent = 'Neutral';
+        badgeEl.className = 'sentiment-badge badge-neutral';
+        descEl.textContent = 'The analyzed text is balanced, objective, or contains mixed sentiment signals.';
+        toneValEl.textContent = 'Balanced';
+      }
+    }
+
+    function loadSampleText(type) {
+      const inputEl = document.getElementById('sentimentInputConsole');
+      if (type === 'positive') {
+        inputEl.value = "We are absolutely delighted with the exceptional service and lightning-fast performance of this tool! It has been an absolute success for our team. Highly recommended!";
+      } else {
+        inputEl.value = "Very frustrating experience. The app kept crashing with unexpected errors and the slow response time made it completely useless for our daily workflow.";
+      }
+      analyzeSentiment();
+    }
+
+    function clearSentimentWorkspace() {
+      document.getElementById('sentimentInputConsole').value = '';
+      analyzeSentiment();
+    }
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
