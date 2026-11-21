@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>FOV to Focal Length Converter | Calculate Lens Focal Length & Angle of View</title>
-  <meta name="description" content="Calculate camera lens focal length from field of view (FOV) or vice versa. Free online optical calculator for photographers, cinematographers, and 3D artists." />
+  <title>FOV to Focal Length Converter | Calculate Camera Lens Optics Online</title>
+  <meta name="description" content="Calculate camera focal length from field of view (FOV) and sensor dimensions instantly with our free online tool. Perfect for photography, cinematography, and 3D CGI." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -19,7 +19,7 @@ crossorigin="anonymous"></script>
     "name": "FOV to Focal Length Converter Pro",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced optical calculator to compute camera lens focal lengths, horizontal/vertical field of view angles, and sensor format dimensions instantly.",
+    "description": "An advanced optical calculation tool to convert camera Field of View (FOV) angles into precise lens focal lengths across various sensor formats.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -33,7 +33,7 @@ crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
   <style>
-    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
     .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
     .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
     .f-heading span { font-size: 2.4rem; }
@@ -41,21 +41,15 @@ crossorigin="anonymous"></script>
     /* WORKSPACE CORE CONTAINER CARD */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
     
-    /* INTERACTIVE GRID SYSTEM */
+    /* TOOL SPECIFIC INTERACTIVE GRID */
     .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
     .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
     .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field, .f-select-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
     .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
     
-    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; }
-
-    /* RESULTS DASHBOARD */
-    .f-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; margin-bottom: 24px; }
-    .f-result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
-    .f-result-card .res-label { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-    .f-result-card .res-value { font-size: 1.5rem; color: #0f172a; font-weight: 800; font-family: 'Courier New', Courier, monospace; }
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.3rem; color: #0f172a; background: #f1f5f9; display: flex; align-items: center; padding: 0 16px; border-radius: 12px; border: 2px solid #e2e8f0; height: 50px; box-sizing: border-box; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
     .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
@@ -88,12 +82,12 @@ crossorigin="anonymous"></script>
       .f-wrapper { padding: 0 28px !important; }
       .seo-title { font-size: 1.8rem; }
       .seo-h2 { font-size: 1.35rem; }
-      .f-results-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .f-card { padding: 25px 20px; border-radius: 20px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
       .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { height: 46px; font-size: 1rem; }
       
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
@@ -110,140 +104,288 @@ crossorigin="anonymous"></script>
   <div id="site-header"></div>
 
   <main class="f-wrapper">
-    <div class="f-heading"><span>📐</span> FOV to Focal Length Converter</div>
+    <div class="f-heading"><span>📷</span> FOV to Focal Length Converter</div>
     
     <div class="f-card">
-      <div style="margin-bottom: 24px; display: flex; gap: 12px; align-items: center;">
-        <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase;">Conversion Mode:</label>
-        <select id="conversionMode" class="f-select-field" style="max-width: 320px;" onchange="toggleMode()">
-          <option value="fov_to_focal">FOV Angle ➔ Focal Length</option>
-          <option value="focal_to_fov">Focal Length ➔ FOV Angle</option>
-        </select>
-      </div>
-
       <div class="f-io-grid">
-        <div class="f-panel-box" id="inputParamBox">
-          <label id="inputParamLabel" for="primaryInput">Field of View (Degrees)</label>
-          <input type="number" id="primaryInput" class="f-input-field mono-font-panel" value="50" step="0.1" min="0.1" max="179.9" oninput="calculateOptics()" />
+        <div class="f-panel-box">
+          <label for="fovInput">Field of View (FOV in Degrees)</label>
+          <input type="number" id="fovInput" class="f-input-field" value="45" min="1" max="179" step="0.1" oninput="calculateFocalLength()" />
         </div>
         
         <div class="f-panel-box">
-          <label for="sensorPreset">Camera Sensor Format / Preset</label>
+          <label for="sensorPreset">Sensor Size Preset</label>
           <select id="sensorPreset" class="f-select-field" onchange="updateSensorDimensions()">
-            <option value="full_frame">Full Frame (36 x 24 mm)</option>
-            <option value="aps_c_canon">APS-C Canon (22.3 x 14.9 mm)</option>
-            <option value="aps_c_nikon">APS-C Nikon/Sony/Fuji (23.6 x 15.6 mm)</option>
-            <option value="m43">Micro Four Thirds (17.3 x 13 mm)</option>
-            <option value="super35">Super 35mm Cine (24.89 x 18.66 mm)</option>
-            <option value="medium_format">Medium Format 44x33 (44 x 33 mm)</option>
+            <option value="fullframe">Full Frame (36 × 24 mm)</option>
+            <option value="aps_c_canon">APS-C Canon (22.3 × 14.9 mm)</option>
+            <option value="aps_c_nikon">APS-C Nikon/Sony (23.5 × 15.6 mm)</option>
+            <option value="m43">Micro Four Thirds (17.3 × 13 mm)</option>
+            <option value="super35">Super 35mm Cine (24.89 × 18.66 mm)</option>
             <option value="custom">Custom Sensor Dimensions</option>
           </select>
         </div>
       </div>
 
-      <div class="f-io-grid" id="sensorDimGrid">
+      <div class="f-io-grid">
         <div class="f-panel-box">
-          <label for="sensorWidth">Sensor Width (mm)</label>
-          <input type="number" id="sensorWidth" class="f-input-field mono-font-panel" value="36" step="0.1" min="1" oninput="calculateOptics()" />
+          <label for="fovType">FOV Measurement Axis</label>
+          <select id="fovType" class="f-select-field" onchange="calculateFocalLength()">
+            <option value="diagonal">Diagonal FOV</option>
+            <option value="horizontal">Horizontal FOV</option>
+            <option value="vertical">Vertical FOV</option>
+          </select>
         </div>
-        
+
         <div class="f-panel-box">
-          <label for="sensorHeight">Sensor Height (mm)</label>
-          <input type="number" id="sensorHeight" class="f-input-field mono-font-panel" value="24" step="0.1" min="1" oninput="calculateOptics()" />
+          <label for="sensorDimension">Sensor Dimension (mm)</label>
+          <input type="number" id="sensorDimension" class="f-input-field" value="43.27" min="0.1" step="0.01" oninput="calculateFocalLength()" />
         </div>
       </div>
 
-      <div class="f-results-grid">
-        <div class="f-result-card">
-          <div class="res-label" id="resCard1Title">Calculated Focal Length</div>
-          <div class="res-value" id="resFocalLength">35.0 mm</div>
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="resultFocalLength">Calculated Focal Length</label>
+          <div id="resultFocalLength" class="mono-font-panel">-- mm</div>
         </div>
-        <div class="f-result-card">
-          <div class="res-label">Horizontal FOV</div>
-          <div class="res-value" id="resHFOV">54.4°</div>
-        </div>
-        <div class="f-result-card">
-          <div class="res-label">Vertical FOV</div>
-          <div class="res-value" id="resVFOV">37.8°</div>
+
+        <div class="f-panel-box">
+          <label for="resultHFOV">Horizontal / Vertical FOV Breakdown</label>
+          <div id="resultBreakdown" class="mono-font-panel" style="font-size: 0.95rem;">H: --° | V: --°</div>
         </div>
       </div>
 
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="calculateOptics()">Recalculate Optics</button>
-        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyOpticalResults()">📋 Copy Calculation Data</button>
-        <button class="f-btn f-btn-clear" onclick="resetOpticsWorkspace()">Reset</button>
+        <button class="f-btn f-btn-convert" onclick="calculateFocalLength()">Recalculate Optics</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy Focal Length</button>
+        <button class="f-btn f-btn-clear" onclick="clearFovWorkspace()">Reset</button>
       </div>
       
       <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Advanced Optical Trig Engine Active:</span>
-        Computes accurate rectilinear projection angles using standard trigonometric formulas ($FOV = 2 \cdot \arctan(\frac{d}{2f})$). Switch between focal length and field of view instantly for photography, cinematography, and 3D camera matching.
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Advanced Optical Math Engine Active:</span>
+        Computes accurate rectilinear focal lengths based on sensor geometry, catering to both professional cinematography setups and 3D virtual camera matching (Blender, Unreal Engine, Maya).
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Mathematics of Lens Optics: Calculating Field of View (FOV) and Focal Length for Photography & Cinematography</h2>
-      <p class="seo-p">Mastering camera optics requires a firm grasp of the mathematical relationship between lens focal length, sensor physical dimensions, and the resulting angle of view. Whether framing a cinematic sequence on a Super 35 sensor, calibrating a virtual 3D camera in Blender or Unreal Engine, or choosing the ideal prime lens for portrait photography, understanding how focal length dictates field of view is essential for creative control.</p>
-      <p class="seo-p">This professional optical calculator provides instant, precise conversions between field of view angles and lens focal lengths across various sensor formats. Below, we explore the underlying trigonometric formulas, examine sensor format size differences, and review standard lens classifications.</p>
+      <h2 class="seo-title">The Physics of Camera Optics: Mastering Field of View, Sensor Formats, and Focal Length Calculations</h2>
+      <p class="seo-p">Whether you are framing a cinematic blockbuster shot, calibrating machine vision sensors, or matching virtual camera parameters in a 3D animation pipeline (such as Blender or Unreal Engine), understanding the trigonometric relationship between a camera's Field of View (FOV) and its lens focal length is fundamental. Professional optical design requires absolute precision when translating angular coverage into physical millimeter measurements across varying sensor formats.</p>
+      <p class="seo-p">This comprehensive technical manual explores the mathematical principles behind rectilinear lens projection, examines standard digital sensor sensor formats, reviews crop factor implications, and provides practical formulas to calculate focal length from horizontal, vertical, and diagonal field of view angles instantly.</p>
 
       <div class="seo-callout">
-        <strong>The Core Optical Formula:</strong> The field of view ($FOV$) angle is calculated using the sensor dimension ($d$) and focal length ($f$) via the tangent trigonometric function: <b>$FOV = 2 \cdot \arctan \left( \frac{d}{2 \cdot f} \right)$</b>. Conversely, solving for focal length yields <b>$f = \frac{d}{2 \cdot \tan(FOV / 2)}$</b>.
+        <strong>The Optical Trigonometry Principle:</strong> Focal length ($f$) is directly proportional to the sensor dimension ($d$) divided by twice the tangent of half the Field of View ($\theta$): <br>
+        <b>$f = \frac{d}{2 \cdot \tan(\theta / 2)}$</b>
       </div>
 
-      <h3 class="seo-h2">The Technical Core: Trigonometry, Sensors, and Rectilinear Projections</h3>
-      <p class="seo-p">When light passes through a camera lens aperture, it projects an inverted image onto the digital image sensor or film plane. Several key optical factors govern this projection:</p>
+      <h3 class="seo-h2">Mathematical Core: Deriving Focal Length from Angular FOV</h3>
+      <p class="seo-p">Calculating focal length from an observed angle requires accounting for sensor geometry. Depending on whether your reference angle is measured across the horizontal axis, vertical axis, or diagonal corner-to-corner path, the underlying sensor dimension input changes:</p>
 
-      <h4 class="seo-h3">1. Sensor Format Dimensions</h4>
-      <p class="seo-p">The physical width and height of the sensor dictate how much of the projected image circle is captured. A larger sensor (such as full frame 36x24mm) captures a wider field of view for the same focal length compared to a cropped sensor (such as APS-C or Micro Four Thirds).</p>
+      <h4 class="seo-h3">1. Horizontal FOV Calculation</h4>
+      <p class="seo-p">When you know the horizontal angular coverage ($\text{HFOV}$) and the physical width ($W$) of the digital sensor in millimeters, the focal length is derived using the formula: $f = \frac{W}{2 \cdot \tan(\text{HFOV} / 2)}$. This is the most common metric used in CGI match-moving and cinematography.</p>
 
-      <h4 class="seo-h3">2. Horizontal vs. Vertical vs. Diagonal FOV</h4>
-      <p class="seo-p">Depending on composition requirements, cinematographers often analyze horizontal FOV (lateral perspective framing) or diagonal FOV (total corner-to-corner angle coverage). Our calculator computes horizontal, vertical, and focal parameters simultaneously.</p>
+      <h4 class="seo-h3">2. Vertical FOV Calculation</h4>
+      <p class="seo-p">When dealing with portrait orientations or specialized vertical framing constraints, substitute the sensor height ($H$) and vertical angle ($\text{VFOV}$) into the formula: $f = \frac{H}{2 \cdot \tan(\text{VFOV} / 2)}$.</p>
 
-      <h4 class="seo-h3">3. Virtual Production & 3D Matching</h4>
-      <p class="seo-p">In VFX pipelines and virtual production, matching live-action plates with CGI camera renders requires exact focal length matching. Converting known plate FOV angles to precise virtual camera focal lengths ensures seamless compositing without perspective distortion.</p>
+      <h4 class="seo-h3">3. Diagonal FOV and Sensor Hypotenuse</h4>
+      <p class="seo-p">For diagonal angle measurements ($\text{DFOV}$), the calculation utilizes the complete sensor diagonal ($D = \sqrt{W^2 + H^2}$), resulting in: $f = \frac{D}{2 \cdot \tan(\text{DFOV} / 2)}$. Our calculator automatically handles these geometric conversions in real time.</p>
 
-      <h3>Standard Sensor Size Reference Matrix</h3>
-      <p class="seo-p">Reviewing standard camera sensor dimensions helps clarify crop factors and focal length equivalencies across equipment platforms:</p>
+      <h3>Standard Digital Camera Sensor Dimensions Reference Matrix</h3>
+      <p class="seo-p">Different camera manufacturers utilize varying sensor sizes. Knowing exact millimeter dimensions is critical for achieving accurate focal length conversions across photography and CGI suites:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Sensor Format Classification</th>
-              <th>Width (mm)</th>
-              <th>Height (mm)</th>
-              <th>Crop Factor vs Full Frame</th>
-              <th>Typical Industry Application</th>
+              <th>Sensor Format Class</th>
+              <th>Width ($W$ in mm)</th>
+              <th>Height ($H$ in mm)</th>
+              <th>Diagonal ($D$ in mm)</th>
+              <th>Typical Application & Crop Factor</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Full Frame (35mm)</td>
-              <td>36.0 mm</td>
-              <td>24.0 mm</td>
-              <td>1.0x</td>
-              <td>High-end DSLR, Mirrorless, Cinematic VistaVision.</td>
+              <td>Full Frame (35mm Film Standard)</td>
+              <td><b>36.0 mm</b></td>
+              <td><b>24.0 mm</b></td>
+              <td><b>43.27 mm</b></td>
+              <td>Professional DSLR, mirrorless cameras (1.0x baseline).</td>
             </tr>
             <tr>
-              <td>Super 35mm Cine</td>
-              <td>24.89 mm</td>
-              <td>18.66 mm</td>
-              <td>~1.45x</td>
-              <td>Industry standard for digital cinema cameras (ARRI, RED).</td>
+              <td>APS-C (Canon Format)</td>
+              <td><b>22.3 mm</b></td>
+              <td><b>14.9 mm</b></td>
+              <td><b>26.82 mm</b></td>
+              <td>Canon consumer and mid-range DSLRs (1.6x crop factor).</td>
             </tr>
             <tr>
               <td>APS-C (Nikon / Sony / Fuji)</td>
-              <td>23.6 mm</td>
-              <td>15.6 mm</td>
-              <td>1.5x</td>
-              <td>Popular enthusiast mirrorless and DSLR bodies.</td>
-            </tr>
-            <tr>
-              <td>APS-C (Canon)</td>
-              <td>22.3 mm</td>
-              <td>14.9 mm</td>
-              <td>1.6x</td>
-              <td>Entry to mid-range Canon interchangeable lens cameras.</td>
+              <td><b>23.5 mm</b></td>
+              <td><b>15.6 mm</b></td>
+              <td><b>28.21 mm</b></td>
+              <td>Nikon, Sony, Fujifilm mirrorless and DSLRs (1.5x crop factor).</td>
             </tr>
             <tr>
               <td>Micro Four Thirds (M4/3)</td>
-              <td>
+              <td><b>17.3 mm</b></td>
+              <td><b>13.0 mm</b></td>
+              <td><b>21.64 mm</b></td>
+              <td>Panasonic and Olympus mirrorless cameras (2.0x crop factor).</td>
+            </tr>
+            <tr>
+              <td>Super 35mm Cine Format</td>
+              <td><b>24.89 mm</b></td>
+              <td><b>18.66 mm</b></td>
+              <td><b>31.11 mm</b></td>
+              <td>Industry standard cinema cameras (ARRI, RED, Sony Cinema).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Optical Diagnostic Segment</h3>
+
+      <h3>Why does sensor size change the calculated focal length for the same FOV?</h3>
+      <p class="seo-p">A lens does not change its optical focal length when mounted on different cameras; however, smaller sensors crop the image circle projected by the lens. To achieve a 45-degree horizontal field of view on a massive medium-format sensor, you need a longer focal length than you would on a tiny smartphone sensor because the physical sensor width is greater.</p>
+
+      <h3>How do I use this calculator for 3D animation software like Blender or Maya?</h3>
+      <p class="seo-p">In 3D packages, cameras are typically defined by their focal length in millimeters and sensor gate width. If you know the camera FOV from a live-action backplate or reference photo, enter that angle, select "Horizontal FOV", input your render sensor width (default 36mm for Full Frame), and the resulting focal length can be typed directly into your 3D software camera settings.</p>
+
+      <h3>Is this calculator suitable for fisheye or rectilinear lenses?</h3>
+      <p class="seo-p">This calculator is engineered strictly for <b>rectilinear lenses</b>, which preserve straight lines in the scene. Fisheye lenses use equidistant or stereographic projection models that map angles differently and require specialized non-linear distortion math.</p>
+
+      <h3 class="seo-h2">Summary: Professional Best Practices for Optical Calculations</h3>
+      <p class="seo-p">Mastering optical conversions bridges the gap between theoretical geometry and practical imaging. Whether you are selecting prime lenses for a cinematic shoot, mounting machine vision hardware, or setting up virtual cameras in CGI engines, verifying your sensor dimensions and FOV measurements ensures flawless visual continuity.</p>
+      <p class="seo-p">Our Advanced FOV to Focal Length Converter automates these trigonometric calculations instantly, delivering high-precision lens specifications across any desktop or mobile device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // Preset sensor dimensions mapping (width, height, diagonal)
+    const sensorPresets = {
+      fullframe: { w: 36.0, h: 24.0, d: 43.27 },
+      aps_c_canon: { w: 22.3, h: 14.9, d: 26.82 },
+      aps_c_nikon: { w: 23.5, h: 15.6, d: 28.21 },
+      m43: { w: 17.3, h: 13.0, d: 21.64 },
+      super35: { w: 24.89, h: 18.66, d: 31.11 },
+      custom: { w: 36.0, h: 24.0, d: 43.27 }
+    };
+
+    function updateSensorDimensions() {
+      const presetKey = document.getElementById('sensorPreset').value;
+      const dimInput = document.getElementById('sensorDimension');
+      const fovType = document.getElementById('fovType').value;
+      
+      if (presetKey !== 'custom') {
+        dimInput.disabled = true;
+        const s = sensorPresets[presetKey];
+        if (fovType === 'horizontal') {
+          dimInput.value = s.w;
+        } else if (fovType === 'vertical') {
+          dimInput.value = s.h;
+        } else {
+          dimInput.value = s.d;
+        }
+      } else {
+        dimInput.disabled = false;
+      }
+      calculateFocalLength();
+    }
+
+    // Also update dimension when FOV type changes if preset is active
+    document.getElementById('fovType').addEventListener('change', () => {
+      const presetKey = document.getElementById('sensorPreset').value;
+      if (presetKey !== 'custom') {
+        updateSensorDimensions();
+      }
+    });
+
+    function calculateFocalLength() {
+      const fovVal = parseFloat(document.getElementById('fovInput').value);
+      const sensorDim = parseFloat(document.getElementById('sensorDimension').value);
+      const fovType = document.getElementById('fovType').value;
+      const presetKey = document.getElementById('sensorPreset').value;
+
+      const resFocal = document.getElementById('resultFocalLength');
+      const resBreakdown = document.getElementById('resultBreakdown');
+
+      if (isNaN(fovVal) || fovVal <= 0 || fovVal >= 180 || isNaN(sensorDim) || sensorDim <= 0) {
+        resFocal.innerText = 'Invalid Input';
+        resBreakdown.innerText = 'H: --° | V: --°';
+        return;
+      }
+
+      // Convert FOV to radians for calculation
+      const fovRad = (fovVal * Math.PI) / 180;
+      
+      // Formula: f = dimension / (2 * tan(FOV / 2))
+      let focalLength = sensorDim / (2 * Math.tan(fovRad / 2));
+
+      resFocal.innerText = focalLength.toFixed(2) + ' mm';
+
+      // Calculate corresponding HFOV, VFOV, DFOV based on current sensor preset W and H
+      let w = sensorPresets[presetKey].w;
+      let h = sensorPresets[presetKey].h;
+      let d = sensorPresets[presetKey].d;
+
+      if (presetKey === 'custom') {
+        // If custom, approximate W and H assuming 3:2 aspect ratio if diagonal was given, or treat current sensorDim as W/H/D
+        if (fovType === 'horizontal') {
+          w = sensorDim;
+          h = w * (24 / 36);
+        } else if (fovType === 'vertical') {
+          h = sensorDim;
+          w = h * (36 / 24);
+        } else {
+          d = sensorDim;
+          w = d * (36 / 43.27);
+          h = d * (24 / 43.27);
+        }
+        d = Math.sqrt(w*w + h*h);
+      }
+
+      // Compute all 3 angles given focal length and sensor W, H, D
+      let hfov = 2 * Math.atan(w / (2 * focalLength)) * (180 / Math.PI);
+      let vfov = 2 * Math.atan(h / (2 * focalLength)) * (180 / Math.PI);
+
+      resBreakdown.innerText = `H: ${hfov.toFixed(1)}° | V: ${vfov.toFixed(1)}°`;
+    }
+
+    function clearFovWorkspace() {
+      document.getElementById('fovInput').value = '45';
+      document.getElementById('sensorPreset').value = 'fullframe';
+      document.getElementById('fovType').value = 'diagonal';
+      updateSensorDimensions();
+    }
+
+    function copyResultToClipboard() {
+      const resText = document.getElementById('resultFocalLength').innerText;
+      if (resText.includes('mm')) {
+        navigator.clipboard.writeText(resText).then(() => {
+          const btn = document.getElementById('copyResultBtn');
+          btn.innerText = '✅ Copied!';
+          setTimeout(() => { btn.innerText = '📋 Copy Focal Length'; }, 2000);
+        });
+      }
+    }
+
+    // Initial setup on load
+    updateSensorDimensions();
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
