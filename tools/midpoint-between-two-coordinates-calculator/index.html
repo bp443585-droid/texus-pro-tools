@@ -6,7 +6,7 @@ crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Midpoint Between Two Coordinates Calculator | Free Online Geometry Tool</title>
-  <meta name="description" content="Calculate the exact midpoint between two geographic or Cartesian coordinate points instantly with our free online calculator, step-by-step formulas, and visual graphs." />
+  <meta name="description" content="Calculate the exact midpoint between two coordinates instantly using our free online midpoint formula calculator. Includes step-by-step distance and geometry guide." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -19,7 +19,7 @@ crossorigin="anonymous"></script>
     "name": "Midpoint Between Two Coordinates Calculator Pro",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced mathematical and cartographic utility to instantly compute the midpoint coordinate between any two 2D Cartesian points or geographic lat/long coordinates.",
+    "description": "An advanced mathematical geometry tool to compute midpoint coordinates and Euclidean distance between two cartesian points instantly.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -41,24 +41,28 @@ crossorigin="anonymous"></script>
     /* WORKSPACE CORE CONTAINER CARD */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
     
-    /* INTERACTIVE GRID SYSTEM */
-    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
-    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
-    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    /* CALCULATOR SPECIFIC INPUT GRID */
+    .calc-input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .calc-point-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; }
+    .calc-point-title { font-size: 0.95rem; font-weight: 700; color: #1e293b; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
     
-    .coord-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 6px; text-align: left; margin-bottom: 12px; }
+    .f-panel-box:last-child { margin-bottom: 0; }
+    .f-panel-box label { font-size: 0.82rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 46px; background: #ffffff; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 14px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
     .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
     
-    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; }
-    
-    .result-display-box { background: #f8fafc; border: 2px solid #cbd5e1; border-radius: 16px; padding: 20px; margin-top: 15px; }
-    .result-title { font-size: 0.85rem; color: #2563eb; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
-    .result-value { font-size: 1.4rem; font-weight: 800; color: #0f172a; font-family: 'Courier New', Courier, monospace; word-break: break-all; }
-    .step-box { margin-top: 12px; font-size: 0.95rem; color: #475569; line-height: 1.6; }
+    /* RESULTS DISPLAY PANEL */
+    .results-container { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 24px; margin-top: 24px; }
+    .results-header { font-size: 1.1rem; font-weight: 800; color: #166534; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .result-item { background: #ffffff; border: 1px solid #dcfce7; border-radius: 12px; padding: 14px 16px; }
+    .result-label { font-size: 0.78rem; text-transform: uppercase; color: #15803d; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .result-value { font-size: 1.25rem; font-weight: 800; color: #14532d; font-family: 'Courier New', Courier, monospace; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
-    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-action-strip { display: flex; gap: 12px; margin-top: 24px; }
     .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
     .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
     .f-btn-convert:hover { background: #1d4ed8; }
@@ -92,8 +96,7 @@ crossorigin="anonymous"></script>
     @media (max-width: 768px) {
       .f-card { padding: 25px 20px; border-radius: 20px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
-      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
-      .coord-row { grid-template-columns: 1fr 1fr; }
+      .calc-input-grid, .results-grid { grid-template-columns: 1fr; gap: 16px; }
       
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
@@ -110,124 +113,161 @@ crossorigin="anonymous"></script>
   <div id="site-header"></div>
 
   <main class="f-wrapper">
-    <div class="f-heading"><span>📍</span> Midpoint Between Two Coordinates Calculator</div>
+    <div class="f-heading"><span>📐</span> Midpoint Between Two Coordinates Calculator</div>
     
     <div class="f-card">
-      <div class="f-io-grid">
-        <div class="f-panel-box">
-          <label>Point 1 (X₁, Y₁)</label>
-          <div class="coord-row">
-            <input type="number" id="x1" class="f-input-field mono-font-panel" placeholder="X₁" value="0" step="any" oninput="calculateMidpoint()">
-            <input type="number" id="y1" class="f-input-field mono-font-panel" placeholder="Y₁" value="0" step="any" oninput="calculateMidpoint()">
+      <div class="calc-input-grid">
+        <!-- Point 1 -->
+        <div class="calc-point-card">
+          <div class="calc-point-title"><span>📍</span> Point 1 (x₁, y₁)</div>
+          <div class="f-panel-box">
+            <label for="x1Input">X₁ Coordinate</label>
+            <input type="number" id="x1Input" class="f-input-field" placeholder="e.g. 2" value="0" oninput="calculateMidpoint()">
+          </div>
+          <div class="f-panel-box">
+            <label for="y1Input">Y₁ Coordinate</label>
+            <input type="number" id="y1Input" class="f-input-field" placeholder="e.g. 3" value="0" oninput="calculateMidpoint()">
           </div>
         </div>
-        
-        <div class="f-panel-box">
-          <label>Point 2 (X₂, Y₂)</label>
-          <div class="coord-row">
-            <input type="number" id="x2" class="f-input-field mono-font-panel" placeholder="X₂" value="4" step="any" oninput="calculateMidpoint()">
-            <input type="number" id="y2" class="f-input-field mono-font-panel" placeholder="Y₂" value="6" step="any" oninput="calculateMidpoint()">
-          </div>
-        </div>
-      </div>
 
-      <div class="result-display-box">
-        <div class="result-title">Exact Midpoint Result (M)</div>
-        <div id="resultOutput" class="result-value">M = (2.00, 3.00)</div>
-        <div id="stepOutput" class="step-box">
-          <b>Formula Applied:</b> M = ((X₁ + X₂) / 2, (Y₁ + Y₂) / 2)<br>
-          <b>Calculation:</b> ((0 + 4) / 2, (0 + 6) / 2) = (4 / 2, 6 / 2) = (2, 3)
+        <!-- Point 2 -->
+        <div class="calc-point-card">
+          <div class="calc-point-title"><span>📍</span> Point 2 (x₂, y₂)</div>
+          <div class="f-panel-box">
+            <label for="x2Input">X₂ Coordinate</label>
+            <input type="number" id="x2Input" class="f-input-field" placeholder="e.g. 8" value="4" oninput="calculateMidpoint()">
+          </div>
+          <div class="f-panel-box">
+            <label for="y2Input">Y₂ Coordinate</label>
+            <input type="number" id="y2Input" class="f-input-field" placeholder="e.g. 7" value="6" oninput="calculateMidpoint()">
+          </div>
         </div>
       </div>
 
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="calculateMidpoint()">Recalculate</button>
-        <button class="f-btn f-btn-copy" id="copyBtn" onclick="copyResultToClipboard()">📋 Copy Coordinates</button>
-        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
+        <button class="f-btn f-btn-convert" onclick="calculateMidpoint()">Calculate Midpoint</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyMidpointResult()">📋 Copy Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearMidpointForm()">Clear</button>
+      </div>
+
+      <!-- Results Display Box -->
+      <div class="results-container">
+        <div class="results-header"><span>✨</span> Computed Geometry Results</div>
+        <div class="results-grid">
+          <div class="result-item">
+            <div class="result-label">Midpoint Coordinates (M)</div>
+            <div id="midpointResultDisplay" class="result-value">(2, 3)</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Euclidean Distance</div>
+            <div id="distanceResultDisplay" class="result-value">4.4721</div>
+          </div>
+        </div>
       </div>
       
-      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Cartesian & Geographic Midpoint Engine:</span>
-        Enter any positive, negative, or decimal coordinates into Point 1 and Point 2. The utility computes exact arithmetic averages in real time.
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Real-Time Cartesian Processing Engine:</span>
+        Values update dynamically as you enter numeric parameters into X and Y coordinate fields. Both midpoint formula and straight-line distance are computed instantly.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Geometry of Coordinate Bisection: Mastering Midpoint Formulas, Analytical Geometry, and Spatial Navigation</h2>
-      <p class="seo-p">In analytical geometry and cartography, determining the exact center point between two distinct spatial locations is a fundamental operation. Whether you are plotting vector graphics on a computer screen, designing structural layouts in CAD software, calculating flight paths between global coordinates, or solving advanced algebra homework, the midpoint formula provides a reliable mathematical bridge between two coordinates.</p>
-      <p class="seo-p">This extensive guide explores the mathematical theory behind midpoint calculations, the difference between Cartesian grid geometry and spherical geodetic navigation, practical real-world applications in software and engineering, and step-by-step techniques to solve complex coordinate problems accurately.</p>
+      <h2 class="seo-title">Mastering Cartesian Geometry: The Complete Guide to the Midpoint Formula, Distance Equations, and Spatial Coordinate Systems</h2>
+      <p class="seo-p">Analytical geometry bridges algebra and visual plane mapping, allowing mathematicians, software developers, cartographers, and engineering students to quantify spatial relationships across two-dimensional planes. At the heart of cartesian calculations lies the <strong>midpoint formula</strong>—a foundational equation used to determine the exact central coordinate point equidistant from two distinct endpoints on a coordinate grid.</p>
+      <p class="seo-p">Whether you are programming video game physics engines, designing CAD architectural layouts, plotting GPS mapping vectors, or solving high school algebra problems, understanding how to compute midpoints and straight-line distances is an essential technical skill. This comprehensive technical guide explores the mathematical derivation of the midpoint equation, examines Euclidean distance principles, walks through solved examples, and highlights practical computing applications.</p>
 
       <div class="seo-callout">
-        <strong>The Fundamental Midpoint Theorem:</strong> The midpoint of a line segment in a two-dimensional Cartesian coordinate system is uniquely defined as the arithmetic mean of the x-coordinates and the arithmetic mean of the y-coordinates of its endpoints.
+        <strong>The Midpoint Equation Principle:</strong> The midpoint $(M)$ between two points $(x_1, y_1)$ and $(x_2, y_2)$ is calculated by taking the arithmetic mean of their respective $x$-coordinates and $y$-coordinates: 
+        <br><br>
+        $$M = \left( \frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2} \right)$$
       </div>
 
-      <h3 class="seo-h2">The Technical Core: Mathematical Derivation and Coordinate Averaging</h3>
-      <p class="seo-p">When calculating the halfway point between two points $P_1(x_1, y_1)$ and $P_2(x_2, y_2)$ on a standard 2D Cartesian plane, the computation relies on simple linear averaging:</p>
+      <h3 class="seo-h2">The Mathematical Core: Deriving the Midpoint and Distance Formulas</h3>
+      <p class="seo-p">To appreciate how our automated calculator works instantly in your browser, it helps to review the underlying algebraic axioms governing 2D cartesian space.</p>
 
-      <h4 class="seo-h3">1. Horizontal Abscissa Averaging ($X$-Axis)</h4>
-      <p class="seo-p">To find the horizontal position of the midpoint, the calculator sums the horizontal coordinates $x_1$ and $x_2$ and divides the sum by two: $x_m = \frac{x_1 + x_2}{2}$. This identifies the precise horizontal center along the horizontal axis.</p>
+      <h4 class="seo-h3">1. Understanding the Arithmetic Average of Coordinates</h4>
+      <p class="seo-p">On a number line, the midpoint between two numbers $a$ and $b$ is simply their average: $(a + b) / 2$. When transitioning to a two-dimensional Cartesian plane, this same principle applies independently to both axes. The $x$-coordinate of the midpoint is the average of $x_1$ and $x_2$, while the $y$-coordinate is the average of $y_1$ and $y_2$.</p>
 
-      <h4 class="seo-h3">2. Vertical Ordinate Averaging ($Y$-Axis)</h4>
-      <p class="seo-p">Similarly, the vertical position is determined by averaging the vertical coordinates: $y_m = \frac{y_1 + y_2}{2}$. Combining both calculated values produces the coordinate pair $M(x_m, y_m)$.</p>
+      <h4 class="seo-h3">2. The Pythagorean Connection to Euclidean Distance</h4>
+      <p class="seo-p">In addition to finding the midpoint, our calculation engine computes the straight-line Euclidean distance between your two input points. This relies on the Pythagorean theorem ($a^2 + b^2 = c^2$) adapted into the distance formula:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+        Distance ($d$) = $\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$
+      </p>
 
-      <h4 class="seo-h3">3. Extension to Three Dimensions ($Z$-Axis)</h4>
-      <p class="seo-p">In 3D modeling, spatial graphics, and physics simulations, a third coordinate ($z$) is added. The formula expands seamlessly to three dimensions: $M = \left(\frac{x_1+x_2}{2}, \frac{y_1+y_2}{2}, \frac{z_1+z_2}{2}\right)$.</p>
+      <h4 class="seo-h3">3. Client-Side Execution and Precision</h4>
+      <p class="seo-p">Modern web browsers execute JavaScript arithmetic operations with floating-point precision. Our calculator handles negative numbers, decimals, and large integer coordinates seamlessly without requiring server round-trips—ensuring instant results and absolute data privacy.</p>
 
-      <h3>The Reference Matrix: Comparative Coordinate Geometry Operations</h3>
-      <p class="seo-p">Understanding how different geometric operations relate to coordinate pairs helps clarify when to use the midpoint formula versus distance or slope calculations:</p>
+      <h3>The Reference Matrix: Common Coordinate Transformations &amp; Midpoints</h3>
+      <p class="seo-p">Review the table below for sample coordinate pairs and their exact computed midpoints and distances across various quadrants:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Geometric Operation</th>
-              <th>Mathematical Formula</th>
-              <th>Primary Use Case</th>
-              <th>Output Data Type</th>
+              <th>Point 1 ($x_1, y_1$)</th>
+              <th>Point 2 ($x_2, y_2$)</th>
+              <th>Computed Midpoint ($M_x, M_y$)</th>
+              <th>Euclidean Distance ($d$)</th>
+              <th>Cartesian Quadrant Relationship</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><b>Midpoint Formula</b></td>
-              <td>$M = \left(\frac{x_1+x_2}{2}, \frac{y_1+y_2}{2}\right)$</td>
-              <td>Finding the exact center between two points.</td>
-              <td>Coordinate Pair $(x, y)$</td>
+              <td>(0, 0)</td>
+              <td>(4, 6)</td>
+              <td><b>(2, 3)</b></td>
+              <td>7.2111</td>
+              <td>Origin to Quadrant I vector</td>
             </tr>
             <tr>
-              <td><b>Distance Formula</b></td>
-              <td>$d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$</td>
-              <td>Measuring straight-line length between points.</td>
-              <td>Scalar Value (Units)</td>
+              <td>(-3, 2)</td>
+              <td>(5, -4)</td>
+              <td><b>(1, -1)</b></td>
+              <td>10.0000</td>
+              <td>Crossing from QII to QIV</td>
             </tr>
             <tr>
-              <td><b>Slope (Gradient)</b></td>
-              <td>$m = \frac{y_2 - y_1}{x_2 - x_1}$</td>
-              <td>Determining the steepness of a line segment.</td>
-              <td>Ratio / Real Number</td>
+              <td>(-5, -5)</td>
+              <td>(-1, -1)</td>
+              <td><b>(-3, -3)</b></td>
+              <td>5.6569</td>
+              <td>Symmetric points in Quadrant III</td>
             </tr>
             <tr>
-              <td><b>Slope-Intercept Equation</b></td>
-              <td>$y = mx + b$</td>
-              <td>Defining the complete line passing through points.</td>
-              <td>Linear Equation Function</td>
+              <td>(1.5, 2.5)</td>
+              <td>(4.5, 6.5)</td>
+              <td><b>(3.0, 4.5)</b></td>
+              <td>5.0000</td>
+              <td>Decimal coordinate precision test</td>
+            </tr>
+            <tr>
+              <td>(-10, 20)</td>
+              <td>(10, -20)</td>
+              <td><b>(0, 0)</b></td>
+              <td>44.7214</td>
+              <td>Perfect origin-symmetric endpoints</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Geometric Computations</h3>
 
-      <h3>How do I calculate the midpoint if my coordinates contain negative numbers?</h3>
-      <p class="seo-p">Negative coordinates follow standard algebraic sign rules. For example, finding the midpoint between $(-4, -2)$ and $(6, 4)$ involves summing the x-values: $\frac{-4 + 6}{2} = \frac{2}{2} = 1$, and y-values: $\frac{-2 + 4}{2} = \frac{2}{2} = 1$, resulting in $(1, 1)$. Our online calculator automatically handles positive and negative signs without manual error.</p>
+      <h3>Can the midpoint formula be used with negative coordinates?</h3>
+      <p class="seo-p">Yes! The midpoint formula applies universally to positive numbers, negative numbers, and decimals across all four quadrants of the Cartesian plane. Just ensure you enter negative signs correctly into the input fields.</p>
 
-      <h3>Can this formula be used for GPS Latitude and Longitude coordinates?</h3>
-      <p class="seo-p">For small distances on flat maps, the standard arithmetic mean formula works reasonably well for latitude and longitude. However, because Earth is an oblate spheroid, calculating exact midpoints over thousands of miles requires Great-Circle navigation formulas (haversine-based midpoint algorithms) to account for Earth's curvature.</p>
+      <h3>How do I find the midpoint in 3D coordinate space?</h3>
+      <p class="seo-p">In three-dimensional space with points $(x_1, y_1, z_1)$ and $(x_2, y_2, z_2)$, you simply extend the average calculation to include the $z$-axis: $M = \left( \frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}, \frac{z_1 + z_2}{2} \right)$.</p>
 
-      <h3>Is this calculation tool completely free and secure?</h3>
-      <p class="seo-p">Yes! All calculations run entirely inside your browser using client-side JavaScript. No coordinate data or user inputs are transmitted to external servers, ensuring absolute privacy for your mathematical work and engineering data.</p>
+      <h3>Is the midpoint always the closest point between two coordinates?</h3>
+      <p class="seo-p">The midpoint is the exact halfway point along the straight-line segment connecting two coordinates. In terms of distance from either endpoint, the midpoint is equidistant to both Point 1 and Point 2.</p>
 
-      <h3 class="seo-h2">Summary: Practical Applications in Engineering and Development</h3>
-      <p class="seo-p">From computer graphics rendering pipelines and UI layout centering algorithms to robotics navigation and civil engineering surveying, the midpoint formula remains an indispensable computational tool. Our Advanced Midpoint Calculator automates these calculations instantly, providing clear step-by-step breakdowns for students, teachers, and professionals alike.</p>
+      <h3>Are my coordinate entries stored on external servers?</h3>
+      <p class="seo-p">No. All calculations run locally inside your browser's JavaScript engine. Your numbers, geometry problems, and mapping data never leave your device.</p>
+
+      <h3 class="seo-h2">Summary: Practical Applications of Coordinate Geometry</h3>
+      <p class="seo-p">Computing midpoints is a fundamental operation in software engineering, computer graphics, robotics pathfinding, and GIS mapping. By automating this process, our Midpoint Between Two Coordinates Calculator saves time and eliminates manual calculation errors.</p>
+      <p class="seo-p">Bookmark this free utility for quick geometry homework checks, game development math, and coordinate plotting tasks on any desktop or mobile device.</p>
     </div>
   </main>
 
@@ -246,54 +286,61 @@ crossorigin="anonymous"></script>
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
 
+    // Midpoint Calculator Logic
     function calculateMidpoint() {
-      const x1 = parseFloat(document.getElementById('x1').value);
-      const y1 = parseFloat(document.getElementById('y1').value);
-      const x2 = parseFloat(document.getElementById('x2').value);
-      const y2 = parseFloat(document.getElementById('y2').value);
+      const x1 = parseFloat(document.getElementById('x1Input').value);
+      const y1 = parseFloat(document.getElementById('y1Input').value);
+      const x2 = parseFloat(document.getElementById('x2Input').value);
+      const y2 = parseFloat(document.getElementById('y2Input').value);
 
       if (isNaN(x1) || isNaN(y1) || isNaN(x2) || isNaN(y2)) {
-        document.getElementById('resultOutput').innerText = "M = (Invalid Input)";
-        document.getElementById('stepOutput').innerHTML = "<b>Error:</b> Please enter valid numerical values for all coordinate fields.";
+        document.getElementById('midpointResultDisplay').innerText = "(Invalid Input)";
+        document.getElementById('distanceResultDisplay').innerText = "0.0000";
         return;
       }
 
-      const xm = (x1 + x2) / 2;
-      const ym = (y1 + y2) / 2;
+      const mx = (x1 + x2) / 2;
+      const my = (y1 + y2) / 2;
 
-      // Format to clean decimals if needed
-      const fmtXm = Number.isInteger(xm) ? xm : xm.toFixed(2);
-      const fmtYm = Number.isInteger(ym) ? ym : ym.toFixed(2);
+      // Format to remove trailing .0 if whole number, else keep up to 4 decimals
+      const fmtMx = Number.isInteger(mx) ? mx : Number(mx.toFixed(4));
+      const fmtMy = Number.isInteger(my) ? my : Number(my.toFixed(4));
 
-      document.getElementById('resultOutput').innerText = `M = (${fmtXm}, ${fmtYm})`;
-      document.getElementById('stepOutput').innerHTML = `
-        <b>Formula Applied:</b> M = ((X₁ + X₂) / 2, (Y₁ + Y₂) / 2)<br>
-        <b>Calculation:</b> ((${x1} + ${x2}) / 2, (${y1} + ${y2}) / 2) = (${(x1+x2)} / 2, ${(y1+y2)} / 2) = (${fmtXm}, ${fmtYm})
-      `;
+      const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+
+      document.getElementById('midpointResultDisplay').innerText = `(${fmtMx}, ${fmtMy})`;
+      document.getElementById('distanceResultDisplay').innerText = distance.toFixed(4);
     }
 
-    function clearCalculator() {
-      document.getElementById('x1').value = '0';
-      document.getElementById('y1').value = '0';
-      document.getElementById('x2').value = '0';
-      document.getElementById('y2').value = '0';
-      calculateMidpoint();
-    }
-
-    function copyResultToClipboard() {
-      const resultText = document.getElementById('resultOutput').innerText;
-      navigator.clipboard.writeText(resultText).then(() => {
-        const btn = document.getElementById('copyBtn');
+    function copyMidpointResult() {
+      const midpointText = document.getElementById('midpointResultDisplay').innerText;
+      const distanceText = document.getElementById('distanceResultDisplay').innerText;
+      const payload = `Midpoint: ${midpointText} | Distance: ${distanceText}`;
+      
+      navigator.clipboard.writeText(payload).then(() => {
+        const btn = document.getElementById('copyResultBtn');
         const originalText = btn.innerText;
-        btn.innerText = '✅ Copied!';
-        setTimeout(() => { btn.innerText = originalText; }, 2000);
+        btn.innerText = '✅ Copied to Clipboard!';
+        setTimeout(() => {
+          btn.innerText = originalText;
+        }, 2000);
       }).catch(err => {
         console.error('Failed to copy text: ', err);
       });
     }
 
+    function clearMidpointForm() {
+      document.getElementById('x1Input').value = '0';
+      document.getElementById('y1Input').value = '0';
+      document.getElementById('x2Input').value = '0';
+      document.getElementById('y2Input').value = '0';
+      calculateMidpoint();
+    }
+
     // Run initial calculation on load
-    window.onload = calculateMidpoint;
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateMidpoint();
+    });
   </script>
   
   <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
