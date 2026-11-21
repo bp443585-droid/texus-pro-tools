@@ -6,7 +6,7 @@ crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Cylinder Volume and Surface Area Calculator | Free Online Geometry Tool</title>
-  <meta name="description" content="Calculate the volume, total surface area, lateral surface area, and base area of a cylinder instantly. Free, precise, and easy-to-use geometric tool." />
+  <meta name="description" content="Calculate cylinder volume, total surface area, lateral surface area, and base area instantly. Free, accurate, and easy-to-use geometry calculator." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -16,10 +16,10 @@ crossorigin="anonymous"></script>
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Cylinder Volume and Surface Area Calculator",
+    "name": "Cylinder Volume and Surface Area Calculator Pro",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced geometric calculation utility to compute cylinder volume, lateral surface area, and total surface area instantly.",
+    "description": "An advanced geometry utility to calculate the volume, total surface area, and lateral surface area of right circular cylinders precisely.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -41,28 +41,31 @@ crossorigin="anonymous"></script>
     /* WORKSPACE CORE CONTAINER CARD */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
     
-    /* CYLINDER CALCULATOR SPECIFIC STYLING */
-    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 24px; }
-    .calc-panel { display: flex; flex-direction: column; gap: 16px; }
-    .input-group { display: flex; flex-direction: column; gap: 6px; }
-    .input-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    /* TOOL SPECIFIC LAYOUT */
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 25px; }
+    .calc-inputs-group { display: flex; flex-direction: column; gap: 20px; }
     
-    .input-row { display: flex; gap: 10px; }
-    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 14px 16px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; font-weight: 600; }
-    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    .input-field-wrapper { display: flex; flex-direction: column; gap: 8px; }
+    .input-field-wrapper label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .f-select-field { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 14px 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; font-weight: 600; cursor: pointer; }
-    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    .f-input { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input:focus { border-color: #2563eb; background: #ffffff; }
 
-    /* RESULTS DISPLAY PANEL */
-    .results-panel { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
-    .result-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; }
-    .result-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .result-label { font-size: 0.9rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-    .result-value { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.25rem; color: #0f172a; }
+    .f-select { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .f-select:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS OUTPUT PANEL */
+    .results-panel { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
+    .results-header { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+    
+    .result-item { margin-bottom: 16px; }
+    .result-item:last-child { margin-bottom: 0; }
+    .result-label { font-size: 0.85rem; color: #64748b; font-weight: 600; margin-bottom: 4px; }
+    .result-value { font-size: 1.5rem; color: #0f172a; font-weight: 800; font-family: 'Courier New', Courier, monospace; word-break: break-all; }
+    .result-unit { font-size: 0.9rem; color: #475569; font-weight: 500; margin-left: 4px; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
-    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-action-strip { display: flex; gap: 12px; margin-top: 15px; }
     .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
     .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
     .f-btn-convert:hover { background: #1d4ed8; }
@@ -113,178 +116,182 @@ crossorigin="anonymous"></script>
   <div id="site-header"></div>
 
   <main class="f-wrapper">
-    <div class="f-heading"><span>🛢️</span> Cylinder Volume & Surface Area Calculator</div>
+    <div class="f-heading"><span>📐</span> Cylinder Volume and Surface Area Calculator</div>
     
     <div class="f-card">
       <div class="calc-grid">
-        <div class="calc-panel">
-          <div class="input-group">
+        <div class="calc-inputs-group">
+          <div class="input-field-wrapper">
             <label for="dimensionType">Input Dimension Type</label>
-            <select id="dimensionType" class="f-select-field" onchange="toggleDimensionMode()">
+            <select id="dimensionType" class="f-select" onchange="toggleDimensionMode()">
               <option value="radius">Radius (r) & Height (h)</option>
               <option value="diameter">Diameter (d) & Height (h)</option>
             </select>
           </div>
 
-          <div class="input-group" id="radiusGroup">
-            <label for="cylinderRadius">Radius ($r$)</label>
-            <div class="input-row">
-              <input type="number" id="cylinderRadius" class="f-input-field" placeholder="e.g. 5" value="5" min="0" step="any" oninput="calculateCylinder()">
-              <select id="radiusUnit" class="f-select-field" style="width: 120px;" onchange="calculateCylinder()">
-                <option value="cm">cm</option>
-                <option value="m">m</option>
-                <option value="in">in</option>
-                <option value="ft">ft</option>
-              </select>
-            </div>
+          <div class="input-field-wrapper" id="primaryDimWrapper">
+            <label id="primaryDimLabel" for="primaryInput">Radius (r)</label>
+            <input type="number" id="primaryInput" class="f-input" placeholder="e.g., 5" min="0" step="any" oninput="calculateCylinder()" />
           </div>
 
-          <div class="input-group" id="diameterGroup" style="display: none;">
-            <label for="cylinderDiameter">Diameter ($d$)</label>
-            <div class="input-row">
-              <input type="number" id="cylinderDiameter" class="f-input-field" placeholder="e.g. 10" value="10" min="0" step="any" oninput="calculateCylinder()">
-              <select id="diameterUnit" class="f-select-field" style="width: 120px;" onchange="calculateCylinder()">
-                <option value="cm">cm</option>
-                <option value="m">m</option>
-                <option value="in">in</option>
-                <option value="ft">ft</option>
-              </select>
-            </div>
+          <div class="input-field-wrapper">
+            <label for="heightInput">Height (h)</label>
+            <input type="number" id="heightInput" class="f-input" placeholder="e.g., 10" min="0" step="any" oninput="calculateCylinder()" />
           </div>
 
-          <div class="input-group">
-            <label for="cylinderHeight">Height ($h$)</label>
-            <div class="input-row">
-              <input type="number" id="cylinderHeight" class="f-input-field" placeholder="e.g. 10" value="10" min="0" step="any" oninput="calculateCylinder()">
-              <select id="heightUnit" class="f-select-field" style="width: 120px;" onchange="calculateCylinder()">
-                <option value="cm">cm</option>
-                <option value="m">m</option>
-                <option value="in">in</option>
-                <option value="ft">ft</option>
-              </select>
-            </div>
+          <div class="input-field-wrapper">
+            <label for="unitSelect">Measurement Unit</label>
+            <select id="unitSelect" class="f-select" onchange="calculateCylinder()">
+              <option value="units">Generic Units</option>
+              <option value="mm">Millimeters (mm)</option>
+              <option value="cm">Centimeters (cm)</option>
+              <option value="m">Meters (m)</option>
+              <option value="in">Inches (in)</option>
+              <option value="ft">Feet (ft)</option>
+            </select>
           </div>
         </div>
         
         <div class="results-panel">
-          <div class="result-item">
-            <span class="result-label">Volume ($V$)</span>
-            <span class="result-value" id="resVolume">785.39 cm³</span>
+          <div>
+            <div class="results-header">Calculation Results</div>
+            
+            <div class="result-item">
+              <div class="result-label">Volume ($V$)</div>
+              <div class="result-value" id="resVolume">0.00</div>
+            </div>
+
+            <div class="result-item">
+              <div class="result-label">Total Surface Area ($A$)</div>
+              <div class="result-value" id="resTotalArea">0.00</div>
+            </div>
+
+            <div class="result-item">
+              <div class="result-label">Lateral Surface Area ($L$)</div>
+              <div class="result-value" id="resLateralArea">0.00</div>
+            </div>
+
+            <div class="result-item">
+              <div class="result-label">Base Area ($B$)</div>
+              <div class="result-value" id="resBaseArea">0.00</div>
+            </div>
           </div>
-          <div class="result-item">
-            <span class="result-label">Total Surface Area ($A$)</span>
-            <span class="result-value" id="resTotalArea">471.24 cm²</span>
-          </div>
-          <div class="result-item">
-            <span class="result-label">Lateral Surface Area</span>
-            <span class="result-value" id="resLateralArea">314.16 cm²</span>
-          </div>
-          <div class="result-item">
-            <span class="result-label">Base Area ($2 \times \pi r^2$)</span>
-            <span class="result-value" id="resBaseArea">157.08 cm²</span>
+
+          <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+            <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Real-time Geometric Solver:</span>
+            Calculations update instantly as you adjust dimensions. Results display up to 4 decimal places for high precision.
           </div>
         </div>
       </div>
 
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="calculateCylinder()">Recalculate Values</button>
-        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyResultsToClipboard()">📋 Copy Results</button>
+        <button class="f-btn f-btn-convert" onclick="calculateCylinder()">Compute Results</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultsToClipboard()">📋 Copy Results</button>
         <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
-      </div>
-      
-      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Geometric Calculation Pipeline:</span>
-        All formulas update in real-time as you modify radius, diameter, or height parameters. Calculations utilize high-precision floating-point arithmetic.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Mathematics of Cylindrical Geometry: Formulas, Applications, and Volumetric Analysis</h2>
-      <p class="seo-p">A cylinder is one of the most fundamental three-dimensional geometric shapes in mathematics, engineering, manufacturing, and everyday life. Defined by two parallel circular bases connected by a curved surface, cylinders appear everywhere—from water tanks, oil pipelines, and soda cans to mechanical engine pistons and architectural pillars. Mastering how to compute a cylinder's volume, lateral surface area, and total surface area is essential for professionals across mechanical engineering, civil design, packaging, and construction.</p>
-      <p class="seo-p">This extensive technical manual explores the core mathematical formulas governing right circular cylinders, examines the distinctions between surface area components, reviews real-world conversion challenges, and provides a clear guide on how to utilize our automated calculator for precision engineering projects.</p>
+      <h2 class="seo-title">The Mathematics of Cylindrical Geometry: Formulas, Volume Derivations, Surface Area Computations, and Real-World Applications</h2>
+      <p class="seo-p">The right circular cylinder is one of the most fundamental three-dimensional geometric shapes encountered in engineering, architecture, manufacturing, and daily life. From fluid storage silos and industrial pipelines to soda cans and hydraulic pistons, understanding the exact mathematical properties of cylinders is essential for material estimation, capacity planning, and structural design. A cylinder consists of two parallel, congruent circular bases connected by a curved curved surface whose generator line is perpendicular to the base planes.</p>
+      <p class="seo-p">This extensive computing manual explores the core mathematical formulas governing right circular cylinders, details the step-by-step derivation of volume and surface area, analyzes units of measurement conversions, and highlights how automated calculation utilities streamline complex mathematical workflows with absolute precision.</p>
 
       <div class="seo-callout">
-        <strong>The Fundamental Constant ($\pi$):</strong> In all circular and cylindrical computations, the mathematical constant Pi ($\pi \approx 3.14159265$) represents the ratio of a circle's circumference to its diameter, serving as the scaling anchor for both area and volume equations.
+        <strong>The Geometric Principle:</strong> The volume of a cylinder represents the total three-dimensional space enclosed within its boundaries, whereas surface area measures the total two-dimensional exterior skin required to manufacture or coat the object.
       </div>
 
-      <h3 class="seo-h2">The Technical Core: Mathematical Formulas for Cylinders</h3>
-      <p class="seo-p">When calculating the dimensional attributes of a right circular cylinder with radius $r$ and height $h$, four primary metrics govern the shape:</p>
+      <h3 class="seo-h2">Core Mathematical Formulas for Right Circular Cylinders</h3>
+      <p class="seo-p">To evaluate any cylinder accurately, mathematical models rely on two primary dimensions: the radius ($r$) of the circular base (or diameter $d = 2r$) and the perpendicular height ($h$) spanning between the two bases.</p>
 
       <h4 class="seo-h3">1. Cylinder Volume ($V$)</h4>
-      <p class="seo-p">Volume measures the total three-dimensional space enclosed within the cylinder boundaries. It is calculated by multiplying the area of the circular base ($\pi r^2$) by the perpendicular height ($h$):</p>
-      <p class="seo-p" style="font-family: monospace; font-weight: 700; background: #f8fafc; padding: 12px; border-radius: 8px;">V = \pi r^2 h</p>
+      <p class="seo-p">The volume of a cylinder is calculated by multiplying the area of the circular base ($B = \pi r^2$) by the height ($h$). Expressed algebraically:</p>
+      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; font-weight: 700; background: #f8fafc; padding: 12px; border-radius: 8px;">V = \pi \cdot r^2 \cdot h</p>
+      <p class="seo-p">If working with the diameter ($d$), the volume formula transforms into:</p>
+      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; font-weight: 700; background: #f8fafc; padding: 12px; border-radius: 8px;">V = \frac{\pi \cdot d^2 \cdot h}{4}</p>
 
-      <h4 class="seo-h3">2. Lateral Surface Area ($L$)</h4>
-      <p class="seo-p">The lateral surface area accounts solely for the curved outer wall of the cylinder, excluding the two circular top and bottom faces. It is computed by multiplying the perimeter (circumference) of the base by the height:</p>
-      <p class="seo-p" style="font-family: monospace; font-weight: 700; background: #f8fafc; padding: 12px; border-radius: 8px;">L = 2 \pi r h</p>
+      <h4 class="seo-h3">2. Total Surface Area ($A$)</h4>
+      <p class="seo-p">The total surface area includes the lateral (curved) surface area plus the area of the two circular bases (top and bottom):</p>
+      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; font-weight: 700; background: #f8fafc; padding: 12px; border-radius: 8px;">A = 2 \cdot \pi \cdot r \cdot h + 2 \cdot \pi \cdot r^2 = 2 \cdot \pi \cdot r \cdot (r + h)</p>
 
-      <h4 class="seo-h3">3. Total Surface Area ($A$)</h4>
-      <p class="seo-p">Total surface area includes the lateral surface area plus the area of both circular bases (top and bottom caps):</p>
-      <p class="seo-p" style="font-family: monospace; font-weight: 700; background: #f8fafc; padding: 12px; border-radius: 8px;">A = 2 \pi r h + 2 \pi r^2 = 2 \pi r (r + h)</p>
+      <h4 class="seo-h3">3. Lateral Surface Area ($L$)</h4>
+      <p class="seo-p">The lateral surface area excludes the two circular end caps, measuring only the surrounding curved wall:</p>
+      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; font-weight: 700; background: #f8fafc; padding: 12px; border-radius: 8px;">L = 2 \cdot \pi \cdot r \cdot h</p>
 
-      <h3>The Statutory Reference Matrix: Cylinder Formula Comparison Table</h3>
-      <p class="seo-p">Reviewing how different parameters interact helps engineers verify structural calculations before fabrication or material procurement:</p>
+      <h3>Cylinder Dimension Reference Matrix</h3>
+      <p class="seo-p">Review the standard notation and mathematical definitions used across geometrical modeling for cylindrical structures:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Geometric Metric</th>
-              <th>Mathematical Formula (Radius Base)</th>
-              <th>Mathematical Formula (Diameter Base)</th>
-              <th>Standard Unit of Measurement</th>
-              <th>Practical Engineering Application</th>
+              <th>Geometric Property</th>
+              <th>Symbol</th>
+              <th>Algebraic Formula (Radius Basis)</th>
+              <th>Dimensional Unit</th>
+              <th>Practical Engineering Significance</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><b>Volume ($V$)</b></td>
-              <td>$\pi r^2 h$</td>
-              <td>$\frac{\pi d^2 h}{4}$</td>
-              <td>$\text{cm}^3$, $\text{m}^3$, $\text{liters}$</td>
-              <td>Determines fluid capacity, storage tank limits, and material mass.</td>
+              <td>Radius</td>
+              <td>$r$</td>
+              <td>$d / 2$</td>
+              <td>Linear (cm, m, in)</td>
+              <td>Determines radial span and base footprint size.</td>
             </tr>
             <tr>
-              <td><b>Total Surface Area ($A$)</b></td>
+              <td>Diameter</td>
+              <td>$d$</td>
+              <td>$2 \cdot r$</td>
+              <td>Linear (cm, m, in)</td>
+              <td>Direct outer width measurement for physical objects.</td>
+            </tr>
+            <tr>
+              <td>Height</td>
+              <td>$h$</td>
+              <td>Given input value</td>
+              <td>Linear (cm, m, in)</td>
+              <td>Span between parallel circular bases.</td>
+            </tr>
+            <tr>
+              <td>Base Area</td>
+              <td>$B$</td>
+              <td>$\pi \cdot r^2$</td>
+              <td>Square ($cm^2$, $m^2$)</td>
+              <td>Cross-sectional area of one circular end.</td>
+            </tr>
+            <tr>
+              <td>Total Surface Area</td>
+              <td>$A$</td>
               <td>$2\pi r(r + h)$</td>
-              <td>$\frac{\pi d}{2}(d + 2h)$</td>
-              <td>$\text{cm}^2$, $\text{m}^2$, $\text{in}^2$</td>
-              <td>Calculates total coating, painting, or thermal insulation required.</td>
+              <td>Square ($cm^2$, $m^2$)</td>
+              <td>Total material sheet metal required for fabrication.</td>
             </tr>
             <tr>
-              <td><b>Lateral Surface Area</b></td>
-              <td>$2\pi r h$</td>
-              <td>$\pi d h$</td>
-              <td>$\text{cm}^2$, $\text{m}^2$, $\text{in}^2$</td>
-              <td>Calculates sheet metal wrapper dimensions for cylindrical pipes.</td>
-            </tr>
-            <tr>
-              <td><b>Base Area (Single Cap)</b></td>
-              <td>$\pi r^2$</td>
-              <td>$\frac{\pi d^2}{4}$</td>
-              <td>$\text{cm}^2$, $\text{m}^2$, $\text{in}^2$</td>
-              <td>Determines footing size, circular plate weight, and base pressure.</td>
+              <td>Volume</td>
+              <td>$V$</td>
+              <td>$\pi \cdot r^2 \cdot h$</td>
+              <td>Cubic ($cm^3$, Liters, $m^3$)</td>
+              <td>Fluid capacity, storage weight, and displacement.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Geometric Analysis Segment</h3>
 
       <h3>What is the difference between lateral surface area and total surface area?</h3>
-      <p class="seo-p">Lateral surface area measures only the curved side wall of the cylinder, ignoring the top and bottom circular discs. Total surface area adds the area of both circular caps to the lateral area, representing the complete exterior boundary of a solid cylinder.</p>
+      <p class="seo-p">Lateral surface area accounts only for the curved exterior side of the cylinder (like peeling the label off a soup can). Total surface area adds the area of the top and bottom circular bases to the lateral area, representing the entire exterior surface of a closed cylindrical container.</p>
 
-      <h3>How do I calculate cylinder volume if I only know the diameter?</h3>
-      <p class="seo-p">Since diameter ($d$) is twice the radius ($r$), you can either divide the diameter by 2 to find the radius ($r = d / 2$) and use the standard volume formula, or use the diameter-based formula: $V = \frac{\pi d^2 h}{4}$. Our online calculator handles both input methods instantly.</p>
+      <h3>How do I convert cubic centimeters to liters?</h3>
+      <p class="seo-p">Since 1 liter is defined as exactly 1,000 cubic centimeters ($cm^3$), you can convert any volume calculated in cubic centimeters to liters by dividing the final value by 1,000. Similarly, 1 cubic meter ($m^3$) equals 1,000 liters.</p>
 
-      <h3>Can I calculate volume using mixed units (e.g., radius in inches and height in feet)?</h3>
-      <p class="seo-p">Mixing units directly in geometric formulas results in incorrect calculations. For accurate results, always convert all dimensions to the same unit (such as centimeters or meters) before computing. Our tool allows unit selection for individual fields to streamline measurements.</p>
+      <h3>Why does the calculator require consistent units of measurement?</h3>
+      <p class="seo-p">Mixing units (such as entering radius in centimeters and height in meters) leads to massive mathematical errors. Always ensure both the radius/diameter and height use the exact same unit of measurement before performing calculations.</p>
 
-      <h3>Is my calculation data secure when using Texus Pro Tools?</h3>
-      <p class="seo-p">Yes! All calculations run entirely inside your browser's local JavaScript engine. No geometric data, dimensions, or inputs are ever transmitted to external servers, ensuring complete privacy and offline utility.</p>
-
-      <h3 class="seo-h2">Summary: Best Practices for Geometric Calculations</h3>
-      <p class="seo-p">Precision in geometry requires careful verification of input parameters, consistent measurement units, and robust rounding. Whether you are sizing industrial storage tanks, calculating concrete columns, or designing custom packaging, our Cylinder Volume and Surface Area Calculator delivers lightning-fast, highly accurate results across all desktop and mobile devices.</p>
+      <h3 class="seo-h2">Summary: Streamlining Geometric Calculations</h3>
+      <p class="seo-p">Whether you are an engineering student verifying homework problems, a manufacturing technician calculating raw sheet metal requirements, or a project manager estimating fluid tank capacities, having access to an instant, reliable calculation tool saves valuable time and eliminates human arithmetic errors.</p>
+      <p class="seo-p">Our Cylinder Volume and Surface Area Calculator performs high-precision computations locally in your browser, ensuring instant results across all desktop and mobile devices without network latency.</p>
     </div>
   </main>
 
@@ -303,94 +310,88 @@ crossorigin="anonymous"></script>
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
 
-    // Cylinder Calculator Logic
     function toggleDimensionMode() {
       const mode = document.getElementById('dimensionType').value;
-      const radiusGroup = document.getElementById('radiusGroup');
-      const diameterGroup = document.getElementById('diameterGroup');
+      const label = document.getElementById('primaryDimLabel');
+      const input = document.getElementById('primaryInput');
       
       if (mode === 'radius') {
-        radiusGroup.style.display = 'flex';
-        diameterGroup.style.display = 'none';
+        label.textContent = 'Radius (r)';
+        input.placeholder = 'e.g., 5';
       } else {
-        radiusGroup.style.display = 'none';
-        diameterGroup.style.display = 'flex';
+        label.textContent = 'Diameter (d)';
+        input.placeholder = 'e.g., 10';
       }
       calculateCylinder();
     }
 
     function calculateCylinder() {
       const mode = document.getElementById('dimensionType').value;
-      let radius = 0;
-      let rUnit = document.getElementById('radiusUnit').value;
-      let hVal = parseFloat(document.getElementById('cylinderHeight').value) || 0;
-      let hUnit = document.getElementById('heightUnit').value;
+      const primaryVal = parseFloat(document.getElementById('primaryInput').value);
+      const heightVal = parseFloat(document.getElementById('heightInput').value);
+      const unit = document.getElementById('unitSelect').value;
 
-      // Unit conversion factors to cm (standard base for display formatting or keep matching)
-      if (mode === 'radius') {
-        radius = parseFloat(document.getElementById('cylinderRadius').value) || 0;
-        rUnit = document.getElementById('radiusUnit').value;
-      } else {
-        const diameter = parseFloat(document.getElementById('cylinderDiameter').value) || 0;
-        radius = diameter / 2;
-        rUnit = document.getElementById('diameterUnit').value;
+      let unitLabel = '';
+      let areaUnitLabel = '';
+      let volUnitLabel = '';
+
+      if (unit !== 'units') {
+        unitLabel = ' ' + unit;
+        areaUnitLabel = ' ' + unit + '²';
+        volUnitLabel = ' ' + unit + '³';
       }
 
-      // To maintain mathematical consistency if units differ, normalize to rUnit
-      let height = hVal;
-      if (rUnit !== hUnit) {
-        // Simple conversion table relative to meters or base units
-        const unitToMeters = { cm: 0.01, m: 1, in: 0.0254, ft: 0.3048 };
-        const hInMeters = hVal * (unitToMeters[hUnit] || 1);
-        height = hInMeters / (unitToMeters[rUnit] || 1);
+      if (isNaN(primaryVal) || isNaN(heightVal) || primaryVal < 0 || heightVal < 0) {
+        document.getElementById('resVolume').innerHTML = '0.00' + volUnitLabel;
+        document.getElementById('resTotalArea').innerHTML = '0.00' + areaUnitLabel;
+        document.getElementById('resLateralArea').innerHTML = '0.00' + areaUnitLabel;
+        document.getElementById('resBaseArea').innerHTML = '0.00' + areaUnitLabel;
+        return;
       }
 
-      const volume = Math.PI * Math.pow(radius, 2) * height;
-      const lateralArea = 2 * Math.PI * radius * height;
-      const baseArea = Math.PI * Math.pow(radius, 2);
-      const totalArea = lateralArea + (2 * baseArea);
+      let radius = mode === 'radius' ? primaryVal : primaryVal / 2;
+      let height = heightVal;
 
-      // Formatting output strings
-      document.getElementById('resVolume').textContent = `${formatNumber(volume)} ${rUnit}³`;
-      document.getElementById('resTotalArea').textContent = `${formatNumber(totalArea)} ${rUnit}²`;
-      document.getElementById('resLateralArea').textContent = `${formatNumber(lateralArea)} ${rUnit}²`;
-      document.getElementById('resBaseArea').textContent = `${formatNumber(baseArea)} ${rUnit}²`;
-    }
+      let baseArea = Math.PI * Math.pow(radius, 2);
+      let lateralArea = 2 * Math.PI * radius * height;
+      let totalArea = lateralArea + (2 * baseArea);
+      let volume = baseArea * height;
 
-    function formatNumber(num) {
-      if (isNaN(num) || !isFinite(num)) return '0.00';
-      if (num > 1000000 || (num < 0.001 && num > 0)) {
-        return num.toExponential(4);
-      }
-      return Number(num.toFixed(4)).toLocaleString();
+      document.getElementById('resVolume').innerHTML = volume.toFixed(4) + volUnitLabel;
+      document.getElementById('resTotalArea').innerHTML = totalArea.toFixed(4) + areaUnitLabel;
+      document.getElementById('resLateralArea').innerHTML = lateralArea.toFixed(4) + areaUnitLabel;
+      document.getElementById('resBaseArea').innerHTML = baseArea.toFixed(4) + areaUnitLabel;
     }
 
     function clearCalculator() {
-      document.getElementById('cylinderRadius').value = '';
-      document.getElementById('cylinderDiameter').value = '';
-      document.getElementById('cylinderHeight').value = '';
-      calculateCylinder();
+      document.getElementById('primaryInput').value = '';
+      document.getElementById('heightInput').value = '';
+      document.getElementById('dimensionType').value = 'radius';
+      document.getElementById('unitSelect').value = 'units';
+      toggleDimensionMode();
     }
 
     function copyResultsToClipboard() {
       const vol = document.getElementById('resVolume').textContent;
-      const tot = document.getElementById('resTotalArea').textContent;
-      const lat = document.getElementById('resLateralArea').textContent;
+      const total = document.getElementById('resTotalArea').textContent;
+      const lateral = document.getElementById('resLateralArea').textContent;
       const base = document.getElementById('resBaseArea').textContent;
-      
-      const payload = `Cylinder Calculation Results:\n- Volume: ${vol}\n- Total Surface Area: ${tot}\n- Lateral Surface Area: ${lat}\n- Base Area: ${base}`;
-      
-      navigator.clipboard.writeText(payload).then(() => {
-        const btn = document.getElementById('copyResultsBtn');
+
+      const textToCopy = `Cylinder Calculation Results:\n- Volume: ${vol}\n- Total Surface Area: ${total}\n- Lateral Surface Area: ${lateral}\n- Base Area: ${base}`;
+
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const btn = document.getElementById('copyResultBtn');
         const originalText = btn.textContent;
-        btn.textContent = '✅ Copied to Clipboard!';
-        setTimeout(() => { btn.textContent = originalText; }, 2000);
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 2000);
       }).catch(err => {
         console.error('Failed to copy text: ', err);
       });
     }
 
-    // Run initial calculation on load
+    // Initialize default calculation state on load
     window.addEventListener('DOMContentLoaded', () => {
       calculateCylinder();
     });
