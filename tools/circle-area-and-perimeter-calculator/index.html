@@ -6,7 +6,7 @@ crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Circle Area and Perimeter Calculator | Find Area & Circumference</title>
-  <meta name="description" content="Calculate the area, perimeter (circumference), diameter, and radius of a circle instantly. Free online geometry calculator with step-by-step formulas." />
+  <meta name="description" content="Calculate the area, perimeter (circumference), diameter, and radius of a circle instantly. Free online circle calculator with step-by-step formulas." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -18,8 +18,8 @@ crossorigin="anonymous"></script>
     "@type": "SoftwareApplication",
     "name": "Circle Area and Perimeter Calculator",
     "operatingSystem": "Web",
-    "applicationCategory": "EducationalApplication",
-    "description": "An advanced mathematical utility to calculate circle area, perimeter (circumference), diameter, and radius with instantaneous precision.",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Calculate area, circumference, diameter, and radius of circles instantly with our precise geometric calculator.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -41,25 +41,22 @@ crossorigin="anonymous"></script>
     /* WORKSPACE CORE CONTAINER CARD */
     .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
     
-    /* INTERACTIVE GRID & FORM STYLING */
-    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
-    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
-    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    /* CALCULATOR SPECIFIC GRID */
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .calc-input-group { display: flex; flex-direction: column; gap: 12px; }
+    .calc-label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .f-input-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
-    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    .calc-select, .calc-input { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .calc-select:focus, .calc-input:focus { border-color: #2563eb; background: #ffffff; }
 
-    .f-select-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
-    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
-    
-    /* RESULTS CONSOLE */
-    .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 20px; }
-    .result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: left; }
-    .result-card-title { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-    .result-card-value { font-size: 1.6rem; color: #0f172a; font-weight: 800; font-family: 'Courier New', Courier, monospace; word-break: break-all; }
+    .calc-results-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+    .result-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; }
+    .result-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .result-label { font-size: 0.95rem; font-weight: 600; color: #475569; }
+    .result-value { font-size: 1.25rem; font-weight: 800; color: #2563eb; font-family: 'Courier New', Courier, monospace; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
-    .f-action-strip { display: flex; gap: 12px; margin-top: 25px; }
+    .f-action-strip { display: flex; gap: 12px; margin-top: 24px; }
     .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
     .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
     .f-btn-convert:hover { background: #1d4ed8; }
@@ -93,8 +90,7 @@ crossorigin="anonymous"></script>
     @media (max-width: 768px) {
       .f-card { padding: 25px 20px; border-radius: 20px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
-      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
-      .results-grid { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: 1fr; gap: 20px; }
       
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
@@ -111,145 +107,250 @@ crossorigin="anonymous"></script>
   <div id="site-header"></div>
 
   <main class="f-wrapper">
-    <div class="f-heading"><span>📐</span> Circle Area and Perimeter Calculator</div>
+    <div class="f-heading"><span>⭕</span> Circle Area and Perimeter Calculator</div>
     
     <div class="f-card">
-      <div class="f-io-grid">
-        <div class="f-panel-box">
-          <label for="inputType">Given Input Parameter</label>
-          <select id="inputType" class="f-select-field" onchange="calculateCircle()">
+      <div class="calc-grid">
+        <div class="calc-input-group">
+          <label class="calc-label" for="calcType">Select Known Dimension</label>
+          <select id="calcType" class="calc-select" onchange="toggleInputLabel()">
             <option value="radius">Radius (r)</option>
             <option value="diameter">Diameter (d)</option>
             <option value="perimeter">Perimeter / Circumference (C)</option>
             <option value="area">Area (A)</option>
           </select>
+
+          <label class="calc-label" id="inputLabel" for="inputValue" style="margin-top: 10px;">Radius Value (r)</label>
+          <input type="number" id="inputValue" class="calc-input" placeholder="Enter value..." value="5" min="0" step="any" oninput="calculateCircle()">
         </div>
         
-        <div class="f-panel-box">
-          <label for="inputValue">Parameter Value</label>
-          <input type="number" id="inputValue" class="f-input-field" placeholder="Enter value..." value="5" oninput="calculateCircle()" min="0" step="any" />
-        </div>
-      </div>
-
-      <div class="results-grid">
-        <div class="result-card">
-          <div class="result-card-title">Area ($A$)</div>
-          <div id="resArea" class="result-card-value">78.54</div>
-        </div>
-        <div class="result-card">
-          <div class="result-card-title">Perimeter / Circumference ($C$)</div>
-          <div id="resPerimeter" class="result-card-value">31.42</div>
-        </div>
-        <div class="result-card">
-          <div class="result-card-title">Radius ($r$)</div>
-          <div id="resRadius" class="result-card-value">5.00</div>
-        </div>
-        <div class="result-card">
-          <div class="result-card-title">Diameter ($d$)</div>
-          <div id="resDiameter" class="result-card-value">10.00</div>
+        <div class="calc-results-box">
+          <div class="result-item">
+            <span class="result-label">Area (A):</span>
+            <span class="result-value" id="resArea">78.54</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Perimeter / Circ. (C):</span>
+            <span class="result-value" id="resPerimeter">31.42</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Diameter (d):</span>
+            <span class="result-value" id="resDiameter">10.00</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Radius (r):</span>
+            <span class="result-value" id="resRadius">5.00</span>
+          </div>
         </div>
       </div>
 
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="calculateCircle()">Recalculate Values</button>
-        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyResultsToClipboard()">📋 Copy Results</button>
+        <button class="f-btn f-btn-convert" onclick="calculateCircle()">Calculate</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResults()">📋 Copy Results</button>
         <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
       </div>
       
       <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Real-Time Mathematical Engine:</span>
-        Calculations execute instantly as you type. Results are rounded to 4 decimal places using JavaScript floating-point precision logic adhering to standard Euclidean geometry.
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Multi-Parameter Conversion Engine:</span>
+        Enter any single geometric property of a circle (Radius, Diameter, Circumference, or Area), and our automated calculation engine instantly updates all corresponding dimensions in real time.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Geometry of Circular Boundaries: Mastering Area, Perimeter (Circumference), and Mathematical Constants</h2>
-      <p class="seo-p">The circle is one of the most fundamental and harmonious geometric figures in mathematics, engineering, and architecture. Unlike polygons defined by linear segments and interior angles, a circle is the locus of all points in a plane that maintain a constant fixed distance—known as the radius—from a single central point. Understanding how to compute its essential metrics—specifically its area and perimeter (traditionally termed circumference)—is crucial for disciplines ranging from civil construction and mechanical manufacturing to computer graphics and software programming.</p>
-      <p class="seo-p">This comprehensive technical guide explores the mathematical derivations behind circular measurements, examines the vital role of the transcendental constant $\pi$ (pi), contrasts perimeter calculation methods against rectangular boundaries, and provides detailed formulas for engineers, students, and drafters.</p>
+      <h2 class="seo-title">Mastering Circular Geometry: Formulas, Constants, and Practical Applications of Circle Area and Perimeter</h2>
+      <p class="seo-p">Circles represent one of the most fundamental and symmetrical geometric shapes in mathematics, engineering, architecture, and daily life. From mechanical gears and architectural arches to planetary orbits and circular tracks, understanding how to accurately compute a circle's spatial area and boundary perimeter (commonly referred to as circumference) is essential for design and calculation. Unlike polygons with straight linear edges, circular dimensions rely entirely on the transcendental mathematical constant $\pi$ (Pi), which defines the unchanging ratio of a circle's circumference to its diameter.</p>
+      <p class="seo-p">This extensive mathematical resource explores the core formulas governing circle geometry, analyzes the mathematical relationship between radius, diameter, circumference, and area, provides reference charts, and answers common technical questions regarding circular measurement.</p>
 
       <div class="seo-callout">
-        <strong>The Universal Pi Factor:</strong> The ratio of any circle's circumference to its diameter is always constant, represented by the Greek letter $\pi$ (pi), approximately equal to <b>3.1415926535...</b>, an irrational number that continues infinitely without repeating patterns.
+        <strong>The Universal Constant ($\pi$):</strong> Pi is an irrational number approximately equal to <b>3.1415926535</b>. For standard calculations, it is routinely rounded to <b>3.1416</b> or <b>3.14</b> depending on required precision thresholds.
       </div>
 
-      <h3 class="seo-h2">The Core Mathematical Formulas: Radius, Diameter, Circumference, and Area</h3>
-      <p class="seo-p">To effectively operate our online calculator or solve manual drafting problems, familiarity with four primary interconnecting formulas is indispensable:</p>
+      <h3 class="seo-h2">Core Geometric Formulas: Calculating Area and Perimeter</h3>
+      <p class="seo-p">Depending on which parameter you begin with, computing missing circle dimensions requires specific algebraic equations:</p>
 
-      <h4 class="seo-h3">1. Radius ($r$) and Diameter ($d$)</h4>
-      <p class="seo-p">The radius is the distance from the center to any point on the boundary. The diameter is a straight line segment that passes through the center, connecting two points on the circle. Mathematically, diameter is exactly twice the radius: $d = 2r$.</p>
+      <h4 class="seo-h3">1. Circumference / Perimeter ($C$)</h4>
+      <p class="seo-p">The perimeter of a circle—technically called its circumference—is the total linear distance around the outer boundary. It is calculated directly using the radius ($r$) or diameter ($d$):</p>
+      <ul class="seo-list">
+        <li>Using Diameter: $C = \pi \times d$</li>
+        <li>Using Radius: $C = 2 \times \pi \times r$</li>
+      </ul>
 
-      <h4 class="seo-h3">2. Perimeter or Circumference ($C$)</h4>
-      <p class="seo-p">While rectilinear shapes utilize the term "perimeter" to describe the total distance around their exterior, circular geometries traditionally designate this linear boundary as the "circumference." It is calculated directly by multiplying the diameter by $\pi$, or twice the radius by $\pi$: $C = \pi d = 2\pi r$.</p>
+      <h4 class="seo-h3">2. Area ($A$)</h4>
+      <p class="seo-p">The area measures the two-dimensional surface enclosed within the circle's boundary. It is calculated by multiplying Pi by the square of the radius:</p>
+      <ul class="seo-list">
+        <li>Using Radius: $A = \pi \times r^2$</li>
+        <li>Using Diameter: $A = \frac{\pi \times d^2}{4}$</li>
+      </ul>
 
-      <h4 class="seo-h3">3. Area ($A$)</h4>
-      <p class="seo-p">The area measures the two-dimensional surface enclosed within the circular boundary. It is proportional to the square of the radius, expressed by the classic formula: $A = \pi r^2$.</p>
+      <h4 class="seo-h3">3. Deriving Radius from Area or Perimeter</h4>
+      <p class="seo-p">If you know the area or perimeter and need to find the radius to run further calculations, rearrange the core formulas:</p>
+      <ul class="seo-list">
+        <li>From Perimeter: $r = \frac{C}{2 \pi}$</li>
+        <li>From Area: $r = \sqrt{\frac{A}{\pi}}$</li>
+      </ul>
 
-      <h3>The Statutory Reference Matrix: Circular Measurement Formulas & Relationships</h3>
-      <p class="seo-p">Review the following reference table to quickly convert between known inputs and target geometric properties when designing parts or solving engineering problems:</p>
+      <h3>Comprehensive Circle Dimension Reference Matrix</h3>
+      <p class="seo-p">The following table outlines calculated values for circles of various standard radii, demonstrating the exact mathematical progression of diameter, circumference, and area:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Given Known Parameter</th>
               <th>Radius ($r$)</th>
               <th>Diameter ($d$)</th>
-              <th>Circumference ($C$)</th>
+              <th>Perimeter / Circumference ($C$)</th>
               <th>Area ($A$)</th>
+              <th>Practical Application Context</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><b>Radius ($r$)</b></td>
-              <td>$r$</td>
-              <td>$2r$</td>
-              <td>$2\pi r$</td>
-              <td>$\pi r^2$</td>
+              <td>1 unit</td>
+              <td>2 units</td>
+              <td>6.28 units</td>
+              <td>3.14 sq units</td>
+              <td>Miniature circular gaskets, washers, or small coin dimensions.</td>
             </tr>
             <tr>
-              <td><b>Diameter ($d$)</b></td>
-              <td>$d / 2$</td>
-              <td>$d$</td>
-              <td>$\pi d$</td>
-              <td>$\pi (d/2)^2$</td>
+              <td>2.5 units</td>
+              <td>5 units</td>
+              <td>15.71 units</td>
+              <td>19.63 sq units</td>
+              <td>Standard mechanical discs, tubing cross-sections, and fasteners.</td>
             </tr>
             <tr>
-              <td><b>Circumference ($C$)</b></td>
-              <td>$C / (2\pi)$</td>
-              <td>$C / \pi$</td>
-              <td>$C$</td>
-              <td>$C^2 / (4\pi)$</td>
+              <td>5 units</td>
+              <td>10 units</td>
+              <td>31.42 units</td>
+              <td>78.54 sq units</td>
+              <td>Circular architectural inserts, tabletop sizing, and steering wheels.</td>
             </tr>
             <tr>
-              <td><b>Area ($A$)</b></td>
-              <td>$\sqrt{A/\pi}$</td>
-              <td>$2\sqrt{A/\pi}$</td>
-              <td>$2\sqrt{\pi A}$</td>
-              <td>$A$</td>
+              <td>10 units</td>
+              <td>20 units</td>
+              <td>62.83 units</td>
+              <td>314.16 sq units</td>
+              <td>Garden ponds, round patio layouts, and large satellite dishes.</td>
+            </tr>
+            <tr>
+              <td>50 units</td>
+              <td>100 units</td>
+              <td>314.16 units</td>
+              <td>7,853.98 sq units</td>
+              <td>Sports running tracks, roundabout intersections, and helicopter landing pads.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Geometric Computational Insights</h3>
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Circle Calculations</h3>
 
-<h3>What is the exact mathematical difference between perimeter and circumference?</h3>
-      <p class="seo-p">Strictly speaking, "perimeter" is a general term describing the continuous line forming the boundary of any closed geometric figure (such as triangles, rectangles, or irregular polygons). For circles and ellipses, this specific perimeter is traditionally called "circumference." In modern technical software and manufacturing specifications, both terms are used interchangeably when calculating total linear boundary lengths.</p>
+      <h3>What is the difference between perimeter and circumference for a circle?</h3>
+      <p class="seo-p">In geometry, the perimeter of any two-dimensional shape is the total length around its outer boundary. For a circle, this specific perimeter is universally called the <b>circumference</b>. Both terms refer to the exact same linear measurement.</p>
 
-<h3>How do I calculate the area of a circle if I only know its circumference?</h3>
-      <p class="seo-p">If you know the circumference ($C$), you can find the area by first determining the radius using the formula $r = C / (2\pi)$, and then squaring that result and multiplying by $\pi$. Alternatively, you can use the direct formula: $A = C^2 / (4\pi)$. Our calculator handles this conversion automatically when you select Circumference from the input dropdown menu.</p>
+      <h3>How do I find the radius if I only know the area?</h3>
+      <p class="seo-p">To find the radius from the area, divide the total area by Pi ($\pi$), and then take the square root of that result. Formula: $r = \sqrt{A / \pi}$. For example, if an area is 78.54, dividing by 3.1416 gives 25, and the square root of 25 yields a radius of 5.</p>
 
-<h3>Is client-side calculation secure and private for professional computations?</h3>
-      <p class="seo-p">Yes. All calculations executed on Texus Pro Tools run locally inside your web browser using native JavaScript floating-point engines. No measurement variables or proprietary project parameters are transmitted to external servers, ensuring complete data privacy for engineering firms and educational users alike.</p>
+      <h3>Can this calculator handle decimal and fractional measurements?</h3>
+      <p class="seo-p">Yes! The tool accepts any valid floating-point number (e.g., 2.5, 12.75, 100.33) for all dimensions, allowing you to perform highly accurate engineering and fabrication computations instantly.</p>
 
-      <h3 class="seo-h2">Summary: Practical Applications in Engineering and Design</h3>
-      <p class="seo-p">Accurate computation of circular areas and perimeters is vital across numerous technical fields. Civil engineers calculate circular pipe capacities and storage tank volumes; mechanical designers evaluate gear rotations and pulley perimeters; and software developers compute collision detection boundaries in 2D rendering engines.</p>
-      <p class="seo-p">Our Circle Area and Perimeter Calculator automates these tedious calculations instantly, ensuring absolute precision whether you input radius, diameter, circumference, or total enclosed surface area.</p>
+      <h3 class="seo-h2">Summary: Streamlining Geometric Calculations</h3>
+      <p class="seo-p">Whether you are a student learning geometry, an architect designing circular floor plans, or an engineer calculating material requirements, accurate computation of circle area and perimeter is crucial. Our free online Circle Area and Perimeter Calculator automates these formulas instantly in your browser.</p>
     </div>
   </main>
 
   <div id="site-footer"></div>
 
   <script type="text/javascript">
+    function toggleInputLabel() {
+      const type = document.getElementById('calcType').value;
+      const label = document.getElementById('inputLabel');
+      const input = document.getElementById('inputValue');
+      
+      if (type === 'radius') {
+        label.innerText = 'Radius Value (r)';
+        input.value = '5';
+      } else if (type === 'diameter') {
+        label.innerText = 'Diameter Value (d)';
+        input.value = '10';
+      } else if (type === 'perimeter') {
+        label.innerText = 'Perimeter / Circumference (C)';
+        input.value = '31.4159';
+      } else if (type === 'area') {
+        label.innerText = 'Area Value (A)';
+        input.value = '78.5398';
+      }
+      calculateCircle();
+    }
+
+    function calculateCircle() {
+      const type = document.getElementById('calcType').value;
+      const val = parseFloat(document.getElementById('inputValue').value);
+
+      if (isNaN(val) || val < 0) {
+        document.getElementById('resArea').innerText = '0.00';
+        document.getElementById('resPerimeter').innerText = '0.00';
+        document.getElementById('resDiameter').innerText = '0.00';
+        document.getElementById('resRadius').innerText = '0.00';
+        return;
+      }
+
+      let r = 0, d = 0, c = 0, a = 0;
+      const pi = Math.PI;
+
+      if (type === 'radius') {
+        r = val;
+        d = r * 2;
+        c = 2 * pi * r;
+        a = pi * r * r;
+      } else if (type === 'diameter') {
+        d = val;
+        r = d / 2;
+        c = pi * d;
+        a = pi * r * r;
+      } else if (type === 'perimeter') {
+        c = val;
+        r = c / (2 * pi);
+        d = r * 2;
+        a = pi * r * r;
+      } else if (type === 'area') {
+        a = val;
+        r = Math.sqrt(a / pi);
+        d = r * 2;
+        c = 2 * pi * r;
+      }
+
+      document.getElementById('resArea').innerText = a.toFixed(2);
+      document.getElementById('resPerimeter').innerText = c.toFixed(2);
+      document.getElementById('resDiameter').innerText = d.toFixed(2);
+      document.getElementById('resRadius').innerText = r.toFixed(2);
+    }
+
+    function clearCalculator() {
+      document.getElementById('inputValue').value = '';
+      calculateCircle();
+    }
+
+    function copyResults() {
+      const area = document.getElementById('resArea').innerText;
+      const perimeter = document.getElementById('resPerimeter').innerText;
+      const diameter = document.getElementById('resDiameter').innerText;
+      const radius = document.getElementById('resRadius').innerText;
+
+      const text = `Circle Calculations:\nArea (A): ${area}\nPerimeter / Circumference (C): ${perimeter}\nDiameter (d): ${diameter}\nRadius (r): ${radius}`;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.innerText = '✓ Copied!';
+        setTimeout(() => { btn.innerText = '📋 Copy Results'; }, 2000);
+      });
+    }
+
+    // Initialize calculation on load
+    window.onload = function() {
+      calculateCircle();
+    };
+
     const basePath = window.location.origin;
     
     fetch('/components/header.html')
@@ -261,85 +362,6 @@ crossorigin="anonymous"></script>
       .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
-
-    // CIRCLE CALCULATOR ENGINE LOGIC
-    function calculateCircle() {
-      const inputType = document.getElementById('inputType').value;
-      const valInput = parseFloat(document.getElementById('inputValue').value);
-
-      let radius = 0;
-      let diameter = 0;
-      let perimeter = 0;
-      let area = 0;
-
-      if (isNaN(valInput) || valInput < 0) {
-        document.getElementById('resArea').innerText = '0.0000';
-        document.getElementById('resPerimeter').innerText = '0.0000';
-        document.getElementById('resRadius').innerText = '0.0000';
-        document.getElementById('resDiameter').innerText = '0.0000';
-        return;
-      }
-
-      switch(inputType) {
-        case 'radius':
-          radius = valInput;
-          diameter = radius * 2;
-          perimeter = 2 * Math.PI * radius;
-          area = Math.PI * Math.pow(radius, 2);
-          break;
-        case 'diameter':
-          diameter = valInput;
-          radius = diameter / 2;
-          perimeter = Math.PI * diameter;
-          area = Math.PI * Math.pow(radius, 2);
-          break;
-        case 'perimeter':
-          perimeter = valInput;
-          radius = perimeter / (2 * Math.PI);
-          diameter = radius * 2;
-          area = Math.PI * Math.pow(radius, 2);
-          break;
-        case 'area':
-          area = valInput;
-          radius = Math.sqrt(area / Math.PI);
-          diameter = radius * 2;
-          perimeter = 2 * Math.PI * radius;
-          break;
-      }
-
-      document.getElementById('resArea').innerText = area.toFixed(4);
-      document.getElementById('resPerimeter').innerText = perimeter.toFixed(4);
-      document.getElementById('resRadius').innerText = radius.toFixed(4);
-      document.getElementById('resDiameter').innerText = diameter.toFixed(4);
-    }
-
-    function clearCalculator() {
-      document.getElementById('inputValue').value = '';
-      calculateCircle();
-    }
-
-    function copyResultsToClipboard() {
-      const area = document.getElementById('resArea').innerText;
-      const perimeter = document.getElementById('resPerimeter').innerText;
-      const radius = document.getElementById('resRadius').innerText;
-      const diameter = document.getElementById('resDiameter').innerText;
-
-      const report = `Circle Calculation Results:\n- Area (A): ${area}\n- Perimeter/Circumference (C): ${perimeter}\n- Radius (r): ${radius}\n- Diameter (d): ${diameter}`;
-
-      navigator.clipboard.writeText(report).then(() => {
-        const btn = document.getElementById('copyResultsBtn');
-        const originalText = btn.innerText;
-        btn.innerText = '✓ Copied Successfully!';
-        setTimeout(() => { btn.innerText = originalText; }, 2000);
-      }).catch(err => {
-        console.error('Failed to copy text: ', err);
-      });
-    }
-
-    // Run initial calculation on load
-    window.onload = function() {
-      calculateCircle();
-    };
   </script>
   
   <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
