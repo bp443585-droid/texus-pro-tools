@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Slope of a Line Calculator | Find Line Equation & Gradient Online</title>
-  <meta name="description" content="Calculate the slope of a line from two points ($x_1, y_1$) and ($x_2, y_2$) instantly. Get slope-intercept form, distance, angle of inclination, and step-by-step working." />
+  <title>Slope of a Line Calculator | Free Online Coordinate Geometry Tool</title>
+  <meta name="description" content="Calculate the slope of a line instantly given two points $(x_1, y_1)$ and $(x_2, y_2)$. Get slope-intercept form, distance, midpoint, and step-by-step solutions." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -19,7 +19,7 @@ crossorigin="anonymous"></script>
     "name": "Slope of a Line Calculator Pro",
     "operatingSystem": "Web",
     "applicationCategory": "EducationalApplication",
-    "description": "An advanced mathematical geometry tool to compute linear gradients, slope-intercept equations, distance metrics, and angle parameters instantly from Cartesian coordinates.",
+    "description": "An advanced coordinate geometry tool to calculate line slope, equation of a line, distance, and midpoint instantly.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -33,7 +33,7 @@ crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
   <style>
-    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
     .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
     .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
     .f-heading span { font-size: 2.4rem; }
@@ -46,17 +46,14 @@ crossorigin="anonymous"></script>
     .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
     .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .coord-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .coord-input-group { display: flex; flex-direction: column; gap: 4px; }
-    .coord-input-group label { font-size: 0.75rem; color: #64748b; font-weight: 600; }
-
-    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-row { display: flex; gap: 12px; }
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 14px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
     .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
 
-    .f-textarea-field { width: 100%; height: 200px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field { width: 100%; height: 180px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
     .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
     
-    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1rem; color: #0f172a; background: #f1f5f9; line-height: 1.6; }
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.05rem; color: #0f172a; background: #f1f5f9; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
     .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
@@ -94,7 +91,7 @@ crossorigin="anonymous"></script>
       .f-card { padding: 25px 20px; border-radius: 20px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
       .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
-      .f-textarea-field { height: 180px; font-size: 1rem; }
+      .f-textarea-field { height: 150px; font-size: 1rem; }
       
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
@@ -116,143 +113,231 @@ crossorigin="anonymous"></script>
     <div class="f-card">
       <div class="f-io-grid">
         <div class="f-panel-box">
-          <label>Define Coordinates (Cartesian Plane)</label>
-          
-          <div style="margin-bottom: 12px;">
-            <label style="font-size: 0.8rem; color: #2563eb; display: block; margin-bottom: 4px;">Point 1 (x₁, y₁)</label>
-            <div class="coord-inputs">
-              <div class="coord-input-group">
-                <label for="x1Input">X₁ Coordinate</label>
-                <input type="number" id="x1Input" class="f-input-field" value="1" step="any" oninput="calculateSlope()" />
-              </div>
-              <div class="coord-input-group">
-                <label for="y1Input">Y₁ Coordinate</label>
-                <input type="number" id="y1Input" class="f-input-field" value="2" step="any" oninput="calculateSlope()" />
-              </div>
-            </div>
+          <label>Point 1 Coordinates (x₁, y₁)</label>
+          <div class="f-input-row">
+            <input type="number" id="x1" class="f-input-field" placeholder="x₁ (e.g., 2)" value="2" oninput="calculateSlope()">
+            <input type="number" id="y1" class="f-input-field" placeholder="y₁ (e.g., 3)" value="3" oninput="calculateSlope()">
           </div>
 
-          <div style="margin-bottom: 12px;">
-            <label style="font-size: 0.8rem; color: #2563eb; display: block; margin-bottom: 4px;">Point 2 (x₂, y₂)</label>
-            <div class="coord-inputs">
-              <div class="coord-input-group">
-                <label for="x2Input">X₂ Coordinate</label>
-                <input type="number" id="x2Input" class="f-input-field" value="4" step="any" oninput="calculateSlope()" />
-              </div>
-              <div class="coord-input-group">
-                <label for="y2Input">Y₂ Coordinate</label>
-                <input type="number" id="y2Input" class="f-input-field" value="8" step="any" oninput="calculateSlope()" />
-              </div>
+          <div style="margin-top: 16px;">
+            <label>Point 2 Coordinates (x₂, y₂)</label>
+            <div class="f-input-row">
+              <input type="number" id="x2" class="f-input-field" placeholder="x₂ (e.g., 5)" value="5" oninput="calculateSlope()">
+              <input type="number" id="y2" class="f-input-field" placeholder="y₂ (e.g., 9)" value="9" oninput="calculateSlope()">
             </div>
-          </div>
-
-          <div style="display: flex; gap: 8px; margin-top: 10px;">
-            <button class="f-btn f-btn-copy" onclick="loadPreset(0, 0, 3, 4)" style="padding: 8px 12px; font-size: 0.78rem;">Preset: (0,0) to (3,4)</button>
-            <button class="f-btn f-btn-copy" onclick="loadPreset(-2, 3, 4, -1)" style="padding: 8px 12px; font-size: 0.78rem;">Preset: Negative</button>
           </div>
         </div>
         
         <div class="f-panel-box">
-          <label for="resultConsole">Calculated Line Parameters & Working</label>
-          <textarea id="resultConsole" class="f-textarea-field mono-font-panel" readonly placeholder="Awaiting valid coordinate values..."></textarea>
+          <label for="resultsConsole">Comprehensive Calculation Analysis</label>
+          <textarea id="resultsConsole" class="f-textarea-field mono-font-panel" readonly placeholder="Awaiting valid coordinate parameters..."></textarea>
         </div>
       </div>
 
       <div class="f-action-strip">
         <button class="f-btn f-btn-convert" onclick="calculateSlope()">Calculate Slope</button>
-        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy Results</button>
+        <button class="f-btn f-btn-copy" id="copyBtn" onclick="copyResults()">📋 Copy Analysis</button>
         <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
       </div>
       
       <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Comprehensive Mathematical Analysis:</span>
-        Instantly computes slope ($m$), slope-intercept equation ($y = mx + b$), point-slope form, Euclidean distance, angle of inclination ($\theta$), and exact step-by-step arithmetic.
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Advanced Geometric Metrics Engine:</span>
+        Instantly computes slope ($m$), angle of inclination, slope-intercept form ($y = mx + b$), point-slope form, Euclidean distance, and midpoint coordinates in real-time.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">Mastering Linear Equations: The Mathematics of Slopes, Gradients, and Coordinate Geometry</h2>
-      <p class="seo-p">Linear equations and coordinate geometry form the bedrock of algebra, physics, engineering, computer graphics, and financial modeling. At the heart of linear graphs lies the concept of <b>slope</b> (frequently denoted by the variable $m$), which measures both the steepness and the direction of a straight line connecting two distinct points on a Cartesian plane. Whether you are plotting architectural roof pitches, calculating velocity curves in physics, or optimizing algorithmic gradient descent in machine learning, understanding how to compute and interpret linear slopes is an indispensable analytical skill.</p>
-      <p class="seo-p">This comprehensive technical manual explores the mathematical definitions behind the slope formula, breaks down perpendicular and parallel line behaviors, examines special cases like undefined vertical lines, and provides a clear guide on how to leverage automated computational tools for rapid geometry problem-solving.</p>
+      <h2 class="seo-title">Mastering Coordinate Geometry: The Mathematics of Line Slopes, Equations, and Analytical Modeling</h2>
+      <p class="seo-p">Coordinate geometry serves as the foundational bridge between algebra and visual geometry. At the heart of linear equations lies the concept of slope—a precise numerical measure quantifying both the steepness and direction of a straight line connecting two coordinate points. Whether you are engineering structural load profiles, plotting financial trendlines, or programming computer graphics transformations, understanding how to calculate and interpret line slopes is an indispensable analytical skill.</p>
+      <p class="seo-p">This comprehensive technical guide explores the fundamental formulas governing linear slopes, examines special geometric cases such as vertical and horizontal lines, breaks down derived equations like slope-intercept and point-slope forms, and demonstrates how automated calculation utilities streamline complex mathematical workflows.</p>
 
       <div class="seo-callout">
-        <strong>The Fundamental Slope Formula:</strong> The slope $m$ of a line passing through any two distinct points $(x_1, y_1)$ and $(x_2, y_2)$ is defined as the ratio of the vertical change ($\Delta y$) to the horizontal change ($\Delta x$), expressed mathematically as $m = \frac{y_2 - y_1}{x_2 - x_1}$.
+        <strong>The Fundamental Slope Formula:</strong> The slope $m$ of a line passing through any two distinct points $(x_1, y_1)$ and $(x_2, y_2)$ is defined mathematically as the ratio of vertical change (${\Delta}y$) to horizontal change (${\Delta}x$), commonly phrased as "rise over run":<br><br>
+        <b>$m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{{\Delta}y}{{\Delta}x}$</b>
       </div>
 
-      <h3 class="seo-h2">The Core Mechanics: Rise Over Run and Cartesian Coordinates</h3>
-      <p class="seo-p">To evaluate how steeply a line tilts relative to the horizontal $x$-axis, mathematicians divide the vertical rise by the horizontal run. Let us analyze the distinct parameters generated by our slope calculator:</p>
+      <h3 class="seo-h2">The Anatomy of Linear Equations: Formulas and Derivations</h3>
+      <p class="seo-p">When analyzing linear relationships in a Cartesian coordinate system, mathematicians and engineers rely on several standard algebraic representations. Each form serves a distinct modeling purpose depending on available parameters:</p>
 
-      <h4 class="seo-h3">1. Vertical Change ($\Delta y$) and Horizontal Change ($\Delta x$)</h4>
-      <p class="seo-p">The numerator $(\Delta y = y_2 - y_1)$ calculates how far up or down the line moves as you travel from the first coordinate to the second. Conversely, the denominator $(\Delta x = x_2 - x_1)$ calculates the horizontal displacement along the $x$-axis. A positive ratio indicates an upward slope from left to right, while a negative ratio denotes a downward descent.</p>
+      <h4 class="seo-h3">1. Slope-Intercept Form ($y = mx + b$)</h4>
+      <p class="seo-p">This is the most widely recognized linear equation format. Here, $m$ represents the slope of the line, and $b$ represents the $y$-intercept (the exact coordinate point where the line crosses the vertical $y$-axis when $x = 0$). Given a known slope and one point, $b$ is easily isolated and solved.</p>
 
-      <h4 class="seo-h3">2. Slope-Intercept Form ($y = mx + b$)</h4>
-      <p class="seo-p">Once the gradient $m$ is established, the calculator determines the $y$-intercept ($b$)—the exact point where the linear graph crosses the vertical $y$-axis where $x = 0$. By substituting $m$ and $b$ into the slope-intercept equation $y = mx + b$, you instantly obtain the complete algebraic representation of the line.</p>
+      <h4 class="seo-h3">2. Point-Slope Form ($y - y_1 = m(x - x_1)$)</h4>
+      <p class="seo-p">When you possess a specific coordinate point $(x_1, y_1)$ and the calculated slope $m$, the point-slope form provides an immediate pathway to construct the full linear equation without needing to solve for $b$ beforehand.</p>
 
-      <h4 class="seo-h3">3. Euclidean Distance and Angle of Inclination ($\theta$)</h4>
-      <p class="seo-p">Beyond basic gradients, our calculator computes the straight-line Euclidean distance between the two points using the Pythagorean theorem: $d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$. Furthermore, it calculates the angle of inclination ($\theta$) in degrees relative to the positive horizontal axis using the inverse tangent function: $\theta = \arctan(m) \times \frac{180}{\pi}$.</p>
+      <h4 class="seo-h3">3. Euclidean Distance and Midpoint Calculations</h4>
+      <p class="seo-p">Beyond slope determination, analyzing two points allows us to compute the shortest straight-line distance ($d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$) and locate the precise geographic or spatial midpoint $M\left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right)$, completing the full analytical profile.</p>
 
-      <h3>Reference Matrix: Interpreting Slope Values and Line Orientations</h3>
-      <p class="seo-p">Different numerical slope values reveal immediate insights into the geometric behavior of linear graphs:</p>
+      <h3>The Statutory Reference Matrix: Slope Types and Geometric Characteristics</h3>
+      <p class="seo-p">Depending on the relative positions of $x_1, x_2$ and $y_1, y_2$, the calculated slope exhibits distinct graphical behaviors across the Cartesian plane:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Slope Value ($m$)</th>
-              <th>Geometric Orientation</th>
-              <th>Visual Direction (Left to Right)</th>
-              <th>Real-World Engineering Analogy</th>
+              <th>Slope Classification</th>
+              <th>Mathematical Condition</th>
+              <th>Visual Direction</th>
+              <th>Practical Engineering Significance</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><b>$m > 0$ (Positive)</b></td>
-              <td>Ascending Line</td>
-              <td>Slants upward from left to right</td>
-              <td>Walking up a mountain trail or staircase</td>
+              <td><b>Positive Slope</b></td>
+              <td>$m > 0$ (${\Delta}y$ and ${\Delta}x$ have same sign)</td>
+              <td>Rises from left to right ($\nearrow$)</td>
+              <td>Represents upward economic growth, positive acceleration, or inclined ramps.</td>
             </tr>
             <tr>
-              <td><b>$m < 0$ (Negative)</b></td>
-              <td>Descending Line</td>
-              <td>Slants downward from left to right</td>
-              <td>Driving down a steep vehicle ramp or ski slope</td>
+              <td><b>Negative Slope</b></td>
+              <td>$m < 0$ (${\Delta}y$ and ${\Delta}x$ have opposite signs)</td>
+              <td>Falls from left to right ($\searrow$)</td>
+              <td>Indicates depreciation curves, cooling rates, or downward drainage slopes.</td>
             </tr>
             <tr>
-              <td><b>$m = 0$ (Zero)</b></td>
-              <td>Horizontal Line</td>
-              <td>Perfect flat parallel to $x$-axis</td>
-              <td>A calm swimming pool surface or flat highway</td>
+              <td><b>Zero Slope</b></td>
+              <td>$m = 0$ (${\Delta}y = 0$, $y_1 = y_2$)</td>
+              <td> perfectamente horizontal ($\rightarrow$)</td>
+              <td>Denotes constant velocity, level foundations, or zero grade changes.</td>
             </tr>
             <tr>
-              <td><b>Undefined ($\Delta x = 0$)</b></td>
-              <td>Vertical Line</td>
-              <td>Perfect upright parallel to $y$-axis</td>
-              <td>A vertical skyscraper wall or sheer cliff face</td>
+              <td><b>Undefined Slope</b></td>
+              <td>$m = \text{Undefined}$ (${\Delta}x = 0$, $x_1 = x_2$)</td>
+              <td>perpendicular vertical ($\uparrow$)</td>
+              <td>Represents vertical cliffs, vertical asymptotes, or infinite resistance.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Linear Geometry & Calculations</h3>
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Analytical Problem Solving</h3>
 
-    <h3>What happens if the denominator ($x_2 - x_1$) equals zero?</h3>
-    <p class="seo-p">If both $x$-coordinates are identical ($x_1 = x_2$), the denominator becomes zero. Division by zero is undefined in arithmetic. In geometry, this represents a vertical line (such as $x = 5$). Our calculator automatically detects this condition and reports an undefined slope.</p>
+      <h3>What happens if the denominator ($x_2 - x_1$) equals zero?</h3>
+      <p class="seo-p">If $x_1 = x_2$, the horizontal change ${\Delta}x$ is zero. Division by zero is undefined in real number arithmetic. Geometrically, this means both points lie on a vertical line parallel to the $y$-axis. Our calculator automatically detects this condition and labels the slope as "Undefined".</p>
 
-    <h3>Does the order of the points matter when calculating slope?</h3>
-    <p class="seo-p">No, as long as you maintain consistent pairing order. Whether you calculate $\frac{y_2 - y_1}{x_2 - x_1}$ or $\frac{y_1 - y_2}{x_1 - x_2}$, the resulting slope value remains identical because both the numerator and denominator signs flip simultaneously.</p>
+      <h3>How do I find the equation of a line if I only have two points?</h3>
+      <p class="seo-p">First, calculate the slope $m$ using the rise-over-run formula. Next, substitute $m$ and one of your coordinates into the point-slope formula $y - y_1 = m(x - x_1)$. Finally, distribute $m$ and isolate $y$ to convert the equation into slope-intercept form ($y = mx + b$).</p>
 
-    <h3>How do I find a line equation if I only have one point and the slope?</h3>
-    <p class="seo-p">Use the point-slope form equation: $y - y_1 = m(x - x_1)$. Substitute your known slope $m$ and coordinate $(x_1, y_1)$, then simplify the algebraic expression into slope-intercept form ($y = mx + b$).</p>
+      <h3>Is the order of points important when calculating slope?</h3>
+      <p class="seo-p">No. Whether you designate $(x_1, y_1)$ as Point 1 and $(x_2, y_2)$ as Point 2 (or vice versa), the resulting slope remains identical because both numerator and denominator signs invert proportionally. However, consistency is key: do not mix coordinates between points during subtraction.</p>
 
-      <h3 class="seo-h2">Summary: The Power of Automated Coordinate Analysis</h3>
-      <p class="seo-p">Calculating slopes manually can lead to arithmetic errors involving negative signs, fractions, and decimal placements. By utilizing the <b>Slope of a Line Calculator</b>, students, engineers, and educators can instantly generate precise linear equations, verify homework problems, and explore coordinate geometry with absolute confidence.</p>
-      <p class="seo-p">All computations execute locally within your browser memory sandbox, guaranteeing instantaneous results without server latency or data tracking.</p>
+      <h3 class="seo-h2">Summary: Streamlining Coordinate Calculations for Modern Professionals</h3>
+      <p class="seo-p">Performing manual coordinate geometry calculations increases the risk of arithmetic errors, especially when dealing with negative fractions and multi-step derivations. Utilizing a dedicated automated tool ensures instantaneous, error-free results across slope metrics, intercepts, distances, and midpoints.</p>
+      <p class="seo-p">Our Advanced Slope of a Line Calculator suite executes all mathematical operations locally within your browser, guaranteeing lightning-fast performance and absolute data privacy.</p>
     </div>
   </main>
 
   <div id="site-footer"></div>
 
   <script type="text/javascript">
+    function calculateSlope() {
+      const x1 = parseFloat(document.getElementById('x1').value);
+      const y1 = parseFloat(document.getElementById('y1').value);
+      const x2 = parseFloat(document.getElementById('x2').value);
+      const y2 = parseFloat(document.getElementById('y2').value);
+      const consoleBox = document.getElementById('resultsConsole');
+
+      if (isNaN(x1) || isNaN(y1) || isNaN(x2) || isNaN(y2)) {
+        consoleBox.value = "⚠️ Please enter valid numerical values for all coordinate points.";
+        return;
+      }
+
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      
+      let slopeText = "";
+      let slopeDecimal = 0;
+      let angleDeg = 0;
+      let eqSlopeIntercept = "";
+      let eqPointSlope = `y - (${y1}) = m(x - (${x1}))`;
+
+      if (dx === 0) {
+        if (dy === 0) {
+          slopeText = "Undefined (Identical Points)";
+          eqSlopeIntercept = `Points are identical. x = ${x1}, y = ${y1}`;
+        } else {
+          slopeText = "Undefined (Vertical Line)";
+          eqSlopeIntercept = `x = ${x1} (Vertical Line)`;
+        }
+      } else {
+        slopeDecimal = dy / dx;
+        
+        // Simplify fraction
+        let gcd = (a, b) => b === 0 ? Math.abs(a) : gcd(b, a % b);
+        let common = gcd(dy, dx);
+        let num = dy / common;
+        let den = dx / common;
+        
+        if (den < 0) {
+          num = -num;
+          den = -den;
+        }
+
+        if (den === 1) {
+          slopeText = `${num}`;
+        } else {
+          slopeText = `${num}/${den} (approx. ${slopeDecimal.toFixed(4)})`;
+        }
+
+        // y-intercept b = y1 - m * x1
+        const b = y1 - slopeDecimal * x1;
+        const bFormatted = b >= 0 ? `+ ${b.toFixed(4)}` : `- ${Math.abs(b).toFixed(4)}`;
+        eqSlopeIntercept = `y = ${slopeDecimal.toFixed(4)}x ${bFormatted}`;
+        
+        angleDeg = Math.atan(slopeDecimal) * (180 / Math.PI);
+      }
+
+      // Distance formula: sqrt((x2-x1)^2 + (y2-y1)^2)
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      // Midpoint formula: ((x1+x2)/2, (y1+y2)/2)
+      const midX = (x1 + x2) / 2;
+      const midY = (y1 + y2) / 2;
+
+      let output = `--- GEO-ANALYTICAL METRICS ---
+1. Slope (m): ${slopeText}
+2. Decimal Slope: ${dx === 0 ? "N/A" : slopeDecimal.toFixed(4)}
+3. Angle of Inclination: ${dx === 0 ? "90°" : angleDeg.toFixed(2) + "°"}
+
+--- EQUATIONS OF THE LINE ---
+• Slope-Intercept Form: ${eqSlopeIntercept}
+• Point-Slope Form: y - ${y1} = ${dx === 0 ? "undefined" : (dy/dx).toFixed(2)}(x - ${x1})
+
+--- ADDITIONAL GEOMETRY ---
+• Euclidean Distance: ${distance.toFixed(4)} units
+• Midpoint M: (${midX}, ${midY})
+• Horizontal Change (Δx): ${dx}
+• Vertical Change (Δy): ${dy}`;
+
+      consoleBox.value = output;
+    }
+
+    function copyResults() {
+      const consoleBox = document.getElementById('resultsConsole');
+      if (!consoleBox.value || consoleBox.value.startsWith("⚠️")) {
+        alert("No valid results to copy.");
+        return;
+      }
+      navigator.clipboard.writeText(consoleBox.value).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = "✅ Copied!";
+        setTimeout(() => { btn.textContent = "📋 Copy Analysis"; }, 2000);
+      });
+    }
+
+    function clearCalculator() {
+      document.getElementById('x1').value = '';
+      document.getElementById('y1').value = '';
+      document.getElementById('x2').value = '';
+      document.getElementById('y2').value = '';
+      document.getElementById('resultsConsole').value = '';
+    }
+
+    // Initialize on load
+    window.onload = function() {
+      calculateSlope();
+    };
+
     const basePath = window.location.origin;
     
     fetch('/components/header.html')
@@ -264,111 +349,6 @@ crossorigin="anonymous"></script>
       .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
-
-    // Slope Calculator Core Logic
-    function calculateSlope() {
-      const x1 = parseFloat(document.getElementById('x1Input').value);
-      const y1 = parseFloat(document.getElementById('y1Input').value);
-      const x2 = parseFloat(document.getElementById('x2Input').value);
-      const y2 = parseFloat(document.getElementById('y2Input').value);
-      const consoleArea = document.getElementById('resultConsole');
-
-      if (isNaN(x1) || isNaN(y1) || isNaN(x2) || isNaN(y2)) {
-        consoleArea.value = "⚠️ Error: Please enter valid numerical values for all coordinate fields.";
-        return;
-      }
-
-      const dx = x2 - x1;
-      const dy = y2 - y1;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      let output = `========================================\n`;
-      output += ` LINE SLOPE & GEOMETRY ANALYSIS REPORT\n`;
-      output += `========================================\n\n`;
-      output += `Given Points:\n`;
-      output += `  • Point 1 (x₁, y₁) = (${x1}, ${y1})\n`;
-      output += `  • Point 2 (x₂, y₂) = (${x2}, ${y2})\n\n`;
-
-      output += `Step 1: Calculate Differences (Rise & Run)\n`;
-      output += `  • Horizontal Run (Δx) = x₂ - x₁ = ${x2} - (${x1}) = ${dx}\n`;
-      output += `  • Vertical Rise (Δy)   = y₂ - y₁ = ${y2} - (${y1}) = ${dy}\n\n`;
-
-      if (dx === 0) {
-        output += `Step 2: Slope Calculation (m)\n`;
-        output += `  • m = Δy / Δx = ${dy} / 0\n`;
-        output += `  • Result: UNDEFINED (Vertical Line)\n\n`;
-        output += `Line Equation:\n`;
-        output += `  • Vertical Line: x = ${x1}\n\n`;
-        output += `Geometric Metrics:\n`;
-        output += `  • Euclidean Distance: ${distance.toFixed(4)}\n`;
-        output += `  • Angle of Inclination: 90° (π/2 radians)`;
-      } else {
-        const slope = dy / dx;
-        const b = y1 - slope * x1;
-        const angleRad = Math.atan(slope);
-        const angleDeg = angleRad * (180 / Math.PI);
-
-        output += `Step 2: Slope Calculation (m)\n`;
-        output += `  • m = Δy / Δx = ${dy} / ${dx}\n`;
-        output += `  • Decimal Slope (m) = ${slope.toFixed(6)}\n`;
-        if (Number.isInteger(slope)) {
-          output += `  • Exact Fraction = ${slope}\n`;
-        } else {
-          // Simplify fraction roughly if possible
-          output += `  • Fraction Form = ${dy}/${dx}\n`;
-        }
-        output += `\n`;
-
-        output += `Step 3: Line Equations\n`;
-        output += `  • Slope-Intercept Form: y = ${slope.toFixed(4)}x + ${b.toFixed(4)}\n`;
-        output += `  • Point-Slope Form:     y - (${y1}) = ${slope.toFixed(4)}(x - (${x1}))\n\n`;
-
-        output += `Geometric Metrics:\n`;
-        output += `  • y-intercept (b): ${b.toFixed(4)} (at x = 0, y = ${b.toFixed(4)})\n`;
-        output += `  • x-intercept:     ${(-b / slope).toFixed(4)} (at y = 0, x = ${(-b / slope).toFixed(4)})\n`;
-        output += `  • Euclidean Distance: ${distance.toFixed(4)}\n`;
-        output += `  • Angle of Inclination: ${angleDeg.toFixed(2)}° (${angleRad.toFixed(4)} rad)\n`;
-      }
-
-      consoleArea.value = output;
-    }
-
-    function loadPreset(x1, y1, x2, y2) {
-      document.getElementById('x1Input').value = x1;
-      document.getElementById('y1Input').value = y1;
-      document.getElementById('x2Input').value = x2;
-      document.getElementById('y2Input').value = y2;
-      calculateSlope();
-    }
-
-    function clearCalculator() {
-      document.getElementById('x1Input').value = '';
-      document.getElementById('y1Input').value = '';
-      document.getElementById('x2Input').value = '';
-      document.getElementById('y2Input').value = '';
-      document.getElementById('resultConsole').value = '';
-    }
-
-    function copyResultToClipboard() {
-      const consoleArea = document.getElementById('resultConsole');
-      if (!consoleArea.value.trim()) {
-        alert('No calculation results available to copy.');
-        return;
-      }
-      navigator.clipboard.writeText(consoleArea.value).then(() => {
-        const btn = document.getElementById('copyResultBtn');
-        const originalText = btn.innerText;
-        btn.innerText = '✅ Copied to Clipboard!';
-        setTimeout(() => { btn.innerText = originalText; }, 2000);
-      }).catch(err => {
-        console.error('Failed to copy text: ', err);
-      });
-    }
-
-    // Run initial calculation on load
-    window.addEventListener('DOMContentLoaded', () => {
-      calculateSlope();
-    });
   </script>
   
   <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
