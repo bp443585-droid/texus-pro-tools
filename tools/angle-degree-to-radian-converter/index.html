@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Angle Degree to Radian Converter | Free Online Trigonometry Tool</title>
-  <meta name="description" content="Convert angle degrees to radians instantly with our high-precision online math utility. Includes step-by-step formulas, common angle tables, and reverse calculations." />
+  <title>Angle Degree to Radian Converter | Instant Math Utility</title>
+  <meta name="description" content="Convert angles between degrees and radians instantly with exact pi fraction calculations, decimal precision control, and bidirectional real-time processing." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -19,7 +19,7 @@ crossorigin="anonymous"></script>
     "name": "Angle Degree to Radian Converter",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced mathematical calculator and unit transformation tool designed to convert angular degrees into radians and vice-versa with decimal precision.",
+    "description": "An advanced mathematical angular unit converter to translate degrees to radians and vice versa with precision settings and exact pi notation.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -46,11 +46,15 @@ crossorigin="anonymous"></script>
     .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
     .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    .f-textarea-field { width: 100%; height: 140px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.15rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field { width: 100%; height: 160px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
     .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
     
-    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.2rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
 
+    .f-control-row { display: flex; gap: 16px; margin-bottom: 20px; align-items: center; flex-wrap: wrap; background: #f8fafc; padding: 14px 18px; border-radius: 14px; border: 1px solid #e2e8f0; }
+    .f-control-group { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #334155; font-weight: 600; }
+    .f-select-field { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 12px; font-size: 0.9rem; font-weight: 600; color: #0f172a; outline: none; cursor: pointer; }
+    
     /* UTILITY ACTION CONTROL ROW STRIP */
     .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
     .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -60,6 +64,10 @@ crossorigin="anonymous"></script>
     .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
     .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
     .f-btn-clear:hover { background: #fee2e2; }
+
+    /* MATH DISPLAY BANNER */
+    .f-math-info { margin-top: 15px; font-size: 0.85rem; line-height: 1.5; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 12px 16px; border-radius: 12px; text-align: left; font-weight: 500; }
+    .f-math-info span { font-weight: 700; color: #1d4ed8; }
 
     /* PREMIUM EDITORIAL CONTENT STYLING GRID */
     .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
@@ -87,7 +95,7 @@ crossorigin="anonymous"></script>
       .f-card { padding: 25px 20px; border-radius: 20px; }
       .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
       .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
-      .f-textarea-field { height: 120px; font-size: 1rem; }
+      .f-textarea-field { height: 130px; font-size: 1rem; }
       
       .f-action-strip { flex-direction: column; gap: 8px; }
       .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
@@ -107,121 +115,174 @@ crossorigin="anonymous"></script>
     <div class="f-heading"><span>📐</span> Angle Degree to Radian Converter</div>
     
     <div class="f-card">
+      <div class="f-control-row">
+        <div class="f-control-group">
+          <label for="precisionSelect">Decimal Precision:</label>
+          <select id="precisionSelect" class="f-select-field" onchange="executeAnglePipeline('deg')">
+            <option value="2">2 Decimals</option>
+            <option value="4">4 Decimals</option>
+            <option value="6" selected>6 Decimals</option>
+            <option value="8">8 Decimals</option>
+            <option value="10">10 Decimals</option>
+          </select>
+        </div>
+        <div class="f-control-group">
+          <label for="piNotationToggle">Pi Exact Notation:</label>
+          <select id="piNotationToggle" class="f-select-field" onchange="executeAnglePipeline('deg')">
+            <option value="show" selected>Include π expression</option>
+            <option value="hide">Decimal numeric only</option>
+          </select>
+        </div>
+      </div>
+
       <div class="f-io-grid">
         <div class="f-panel-box">
-          <label for="degreeInput">Angle in Degrees (°)</label>
-          <textarea id="degreeInput" class="f-textarea-field" placeholder="Enter degrees (e.g., 180)..." oninput="convertFromDegree()"></textarea>
+          <label for="degreesConsole">Degrees (°)</label>
+          <textarea id="degreesConsole" class="f-textarea-field" placeholder="Enter degrees value (e.g., 90, 180, 360, 45.5)..." oninput="executeAnglePipeline('deg')"></textarea>
         </div>
         
         <div class="f-panel-box">
-          <label for="radianInput">Angle in Radians (rad)</label>
-          <textarea id="radianInput" class="f-textarea-field mono-font-panel" placeholder="Enter radians (e.g., 3.14159)..." oninput="convertFromRadian()"></textarea>
+          <label for="radiansConsole">Radians (rad)</label>
+          <textarea id="radiansConsole" class="f-textarea-field mono-font-panel" placeholder="Awaiting conversion result (e.g., 1.570796 rad or π/2)..." oninput="executeAnglePipeline('rad')"></textarea>
         </div>
       </div>
 
       <div class="f-action-strip">
-        <button class="f-btn f-btn-convert" onclick="convertFromDegree()">Calculate Conversion</button>
-        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy Radian Result</button>
-        <button class="f-btn f-btn-clear" onclick="clearWorkspace()">Clear</button>
+        <button class="f-btn f-btn-convert" onclick="executeAnglePipeline('deg')">Recalculate Values</button>
+        <button class="f-btn f-btn-copy" id="copyRadianBtn" onclick="copyResultToClipboard()">📋 Copy Radian Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearAngleWorkspace()">Clear</button>
       </div>
       
-      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Bidirectional Trigonometric Calculation Active:</span>
-        Type an angular degree value into the left box to generate radians instantly, or enter a radian value into the right box to calculate degrees in real-time.
+      <div class="f-math-info" id="mathBreakdownInfo">
+        <span>⚡ Instant Bidirectional Computation:</span> Enter angle values in either panel. The standard mathematical conversion applies <b>rad = deg × (π / 180)</b> and <b>deg = rad × (180 / π)</b> dynamically.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">The Mathematics of Angular Measurement: Converting Degrees to Radians in Engineering and Calculus</h2>
-      <p class="seo-p">In mathematics, physics, and software engineering, measuring angles is fundamental to describing rotational movement, wave propagation, and geometric transformations. While degrees are intuitive for human navigation and basic drafting, radians are the natural unit of choice for calculus, advanced physics equations, and computer graphics libraries. When programming game engines or evaluating trigonometric functions in JavaScript or Python, passing raw degree values directly into math libraries leads to catastrophic calculation errors because native trigonometric functions expect inputs in radians.</p>
-      <p class="seo-p">This comprehensive technical guide explores the mathematical relationship between degrees and radians, examines the fundamental formulas governing angle transformation, analyzes precision considerations in floating-point arithmetic, and provides practical insights for developers and students alike.</p>
+      <h2 class="seo-title">The Geometry of Angular Kinematics: Degrees, Radians, and the Fundamentals of Circular Trigonometry</h2>
+      <p class="seo-p">Converting between degrees and radians is one of the most basic tasks in trigonometry, physics, calculus, computer graphics, and engineering. While the sexagesimal system of 360 degrees in a full circle is familiar from elementary geometry, the radian is the standard unit of angular measure in scientific fields and modern computing. Understanding the mathematical relationship between these two systems is essential for performing accurate calculations across physics simulation, 3D render pipelines, signal processing, and robotics.</p>
+      <p class="seo-p">This guide explains the mathematical foundations of angular measurement, details the exact equations linking degrees to radians, reviews fractional pi conversions, and provides step-by-step guidance for integrating angular conversion pipelines into real-world applications.</p>
 
       <div class="seo-callout">
-        <strong>The Fundamental Conversion Ratio:</strong> A full circle consists of 360 degrees, which is equivalent to $2\pi$ radians. Therefore, 180 degrees equals $\pi$ radians ($\approx 3.1415926535$), establishing the scalar multiplier $\frac{\pi}{180}$ for degree-to-radian conversion.
+        <strong>The Radian Arc Principle:</strong> One radian is defined as the central angle subtended by an arc whose arc length ($s$) equals the radius ($r$) of the circle ($s = r$). Because a complete circumference equals $2\pi r$, a full revolution contains exactly $2\pi$ radians, creating the fundamental identity $180^\circ = \pi\text{ rad}$.
       </div>
 
-      <h3 class="seo-h2">The Core Mathematical Formulas: Derivations and Conversions</h3>
-      <p class="seo-p">Converting between angular units relies on proportional scaling against the circumference of a unit circle:</p>
+      <h3 class="seo-h2">Theoretical Foundations of Angular Units</h3>
+      <p class="seo-p">Angular measurement measures the opening between two intersecting lines or vectors. Depending on the context, engineers and mathematicians choose between different coordinate representations:</p>
 
-      <h4 class="seo-h3">1. Converting Degrees to Radians</h4>
-      <p class="seo-p">To convert an angle from degrees ($d$) to radians ($r$), multiply the degree value by $\pi$ and divide by 180:</p>
-      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; font-weight: 700; color: #2563eb;">r = d × (π / 180)</p>
+      <h4 class="seo-h3">1. The Sexagesimal System (Degrees)</h4>
+      <p class="seo-p">Originating in ancient Babylonian astronomy, the degree divides a full circular rotation into 360 equal parts. This division is convenient for manual arithmetic because 360 has 24 divisors (including 2, 3, 4, 5, 6, 8, 9, 10, and 12), allowing easy division into simple fractions without remainders.</p>
 
-      <h4 class="seo-h3">2. Converting Radians to Degrees</h4>
-      <p class="seo-p">Conversely, to convert an angle from radians ($r$) back to degrees ($d$), multiply the radian value by 180 and divide by $\pi$:</p>
-      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; font-weight: 700; color: #2563eb;">d = r × (180 / π)</p>
+      <h4 class="seo-h3">2. The Natural Arc System (Radians)</h4>
+      <p class="seo-p">The radian is the standard International System of Units (SI) derived unit for plane angles. Unlike degrees, which rely on an arbitrary 360-part scale, radians connect angular measurement directly to the ratio of arc length to radius. In calculus, using radians keeps derivative formulas simple: for instance, $\frac{d}{dx}\sin(x) = \cos(x)$ holds true only when $x$ is measured in radians.</p>
 
-      <h4 class="seo-h3">3. Precision and Floating-Point Considerations</h4>
-      <p class="seo-p">Because $\pi$ is an irrational number, computer calculations must rely on rounded decimal approximations (such as `Math.PI` in JavaScript, which provides 15 significant digits of precision). For standard engineering and graphics applications, 6 to 10 decimal places are more than sufficient to eliminate visible rendering artifacts.</p>
+      <h4 class="seo-h3">3. Exact Pi Fraction Representations</h4>
+      <p class="seo-p">In theoretical mathematics and physics, angles are often written as exact multiples or fractions of $\pi$ (such as $\frac{\pi}{6}$, $\frac{\pi}{4}$, $\frac{\pi}{3}$, or $\frac{\pi}{2}$). This eliminates floating-point rounding errors and preserves exact algebraic relationships in trigonometric proofs and wave analysis.</p>
 
-      <h3>The Standard Reference Table: Common Angles in Degrees and Radians</h3>
-      <p class="seo-p">Reviewing standard angle equivalencies helps verify trigonometric computations and troubleshoot game physics vectors quickly:</p>
+      <h3 class="seo-h2">Conversion Equations & Derivations</h3>
+      <p class="seo-p">The primary conversion formula stems from the identity $180^\circ = \pi \text{ radians}$:</p>
+      <ul class="seo-list">
+        <li><b>Degrees to Radians Formula:</b> $\text{Radians} = \text{Degrees} \times \left(\frac{\pi}{180^\circ}\right)$</li>
+        <li><b>Radians to Degrees Formula:</b> $\text{Degrees} = \text{Radians} \times \left(\frac{180^\circ}{\pi}\right)$</li>
+        <li><b>Single Radian Equivalence:</b> $1\text{ rad} \approx 57.295779513^\circ$</li>
+        <li><b>Single Degree Equivalence:</b> $1^\circ \approx 0.01745329252\text{ rad}$</li>
+      </ul>
+
+      <h3 class="seo-h2">Standard Angle Reference Conversion Table</h3>
+      <p class="seo-p">The table below summarizes common reference angles used in navigation, trigonometry, vector graphics, and mechanical engineering:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Angle Description</th>
-              <th>Degrees (°)</th>
-              <th>Exact Radians (Exact Form)</th>
-              <th>Decimal Radians (Approx)</th>
-              <th>Trigonometric Utility & Application</th>
+              <th>Angle (Degrees °)</th>
+              <th>Radians (Exact Pi Multiples)</th>
+              <th>Radians (6-Digit Decimal)</th>
+              <th>Gradians (grad)</th>
+              <th>Cartesian Orientation / Quadrant</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Zero Angle</td>
               <td><b>0°</b></td>
-              <td>`0`</td>
-              <td>`0.0000`</td>
-              <td>Base starting vector for polar coordinate systems and sine waves.</td>
+              <td>0 π</td>
+              <td>0.000000 rad</td>
+              <td>0 grad</td>
+              <td>Positive X-Axis (Initial Vector)</td>
             </tr>
             <tr>
-              <td>Right Angle (Quarter Turn)</td>
+              <td><b>30°</b></td>
+              <td>π / 6</td>
+              <td>0.523599 rad</td>
+              <td>33.333 grad</td>
+              <td>Quadrant I (Acute Angle)</td>
+            </tr>
+            <tr>
+              <td><b>45°</b></td>
+              <td>π / 4</td>
+              <td>0.785398 rad</td>
+              <td>50.000 grad</td>
+              <td>Quadrant I (Diagonal Bisector)</td>
+            </tr>
+            <tr>
+              <td><b>60°</b></td>
+              <td>π / 3</td>
+              <td>1.047198 rad</td>
+              <td>66.667 grad</td>
+              <td>Quadrant I (Acute Equilateral Angle)</td>
+            </tr>
+            <tr>
               <td><b>90°</b></td>
-              <td>`π / 2`</td>
-              <td>`1.5708`</td>
-              <td>Perpendicular vector alignment in 2D/3D matrix transformations.</td>
+              <td>π / 2</td>
+              <td>1.570796 rad</td>
+              <td>100.000 grad</td>
+              <td>Positive Y-Axis (Right Angle)</td>
             </tr>
             <tr>
-              <td>Straight Angle (Half Turn)</td>
+              <td><b>120°</b></td>
+              <td>2π / 3</td>
+              <td>2.094395 rad</td>
+              <td>133.333 grad</td>
+              <td>Quadrant II (Obtuse Angle)</td>
+            </tr>
+            <tr>
               <td><b>180°</b></td>
-              <td>`π`</td>
-              <td>`3.1416`</td>
-              <td>Inversion point for wave phase shifts and rotational direction.</td>
+              <td>π</td>
+              <td>3.141593 rad</td>
+              <td>200.000 grad</td>
+              <td>Negative X-Axis (Straight Angle)</td>
             </tr>
             <tr>
-              <td>Three-Quarter Turn</td>
               <td><b>270°</b></td>
-              <td>`3π / 2`</td>
-              <td>`4.7124`</td>
-              <td>Downward vertical vector orientation in screen coordinate grids.</td>
+              <td>3π / 2</td>
+              <td>4.712389 rad</td>
+              <td>300.000 grad</td>
+              <td>Negative Y-Axis (Three-Quarter Turn)</td>
             </tr>
             <tr>
-              <td>Full Circle (Complete Rotation)</td>
               <td><b>360°</b></td>
-              <td>`2π`</td>
-              <td>`6.2832`</td>
-              <td>Full cyclic completion for periodic functions and rotations.</td>
+              <td>2π</td>
+              <td>6.283185 rad</td>
+              <td>400.000 grad</td>
+              <td>Full Revolution (Complete Cycle)</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Trigonometric Conversion Guide</h3>
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ)</h3>
 
-      <h3>Why do programming languages require trigonometric inputs in radians?</h3>
-      <p class="seo-p">Calculus-based mathematical definitions of sine, cosine, and tangent rely on infinite series expansions and the geometric property of arc length on a unit circle where arc length equals radius length ($s = r\theta$). Radians simplify these calculus derivatives and integrals without requiring arbitrary scaling factors like 180.</p>
+      <h3 class="seo-h3">Why do standard programming languages require trigonometric inputs in radians?</h3>
+      <p class="seo-p">Math libraries in languages like JavaScript, Python, C++, and Java use underlying hardware instructions and Taylor series expansions (e.g., $\sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \dots$) that assume $x$ is measured in radians. Passing degree values directly into functions like <code>Math.sin()</code> produces incorrect results unless the value is converted first using <code>deg * (Math.PI / 180)</code>.</p>
 
-      <h3>How can I convert radians into degrees manually without a calculator?</h3>
-      <p class="seo-p">Multiply your radian value by 57.2958 (which is $180 / \pi$). For example, converting 1 radian yields approximately $1 \times 57.2958 = 57.3^\circ$.</p>
+      <h3 class="seo-h3">How does this tool simplify exact pi fractions?</h3>
+      <p class="seo-p">Our converter uses an automated Euclidean greatest common divisor algorithm to simplify degree ratios ($\frac{\text{deg}}{180}$) into reduced improper or proper fractions (such as $\frac{3\pi}{4}$ instead of $\frac{135\pi}{180}$), giving you both clean symbolic values and accurate decimal figures.</p>
 
-      <h3>Is my input data secure when using this online calculator?</h3>
-      <p class="seo-p">Yes. All calculations are executed entirely within your web browser using client-side JavaScript. No numbers or trigonometric equations are transmitted to external servers, ensuring absolute data privacy.</p>
+      <h3 class="seo-h3">How are negative angles or values exceeding 360° handled?</h3>
+      <p class="seo-p">The converter scales continuously along the real line. Negative angles (indicating clockwise rotation) and values above 360° (representing multi-turn rotations in rotational dynamics) translate directly using the same mathematical ratio without modular wrapping.</p>
 
-      <h3 class="seo-h2">Summary: Best Practices for Angular Calculations</h3>
-      <p class="seo-p">Whether you are building canvas animations, designing mechanical CAD tools, or solving physics homework, keeping track of your angular units is critical. Always verify whether your functions expect degrees or radians before passing variables into trigonometric equations.</p>
-      <p class="seo-p">Our Angle Degree to Radian Converter automates these computations instantly, providing reliable decimal outputs across mobile and desktop devices without friction.</p>
+      <h3 class="seo-h2">Summary: Engineering Best Practices for Angular Measurements</h3>
+      <p class="seo-p">To ensure precision across computational pipelines: convert user interface inputs from degrees to radians before passing them to math engines, select higher decimal precision for orbital or spatial physics calculations, and use exact pi expressions in theoretical documentations. Use our Angle Degree to Radian Converter to quickly verify conversions, analyze exact pi fractions, and handle bidirectional calculations reliably.</p>
     </div>
   </main>
 
@@ -240,73 +301,100 @@ crossorigin="anonymous"></script>
       .then(data => { document.getElementById('site-footer').innerHTML = data; })
       .catch(err => console.error('Footer failed to compile:', err));
 
-    // TOOL LOGIC FOR ANGLE DEGREE TO RADIAN CONVERTER
-    function convertFromDegree() {
-      const degVal = document.getElementById('degreeInput').value.trim();
-      const radField = document.getElementById('radianInput');
-      
-      if (degVal === "") {
-        radField.value = "";
-        return;
+    // EUCLIDEAN GREATEST COMMON DIVISOR
+    function getGCD(a, b) {
+      a = Math.abs(a);
+      b = Math.abs(b);
+      while (b) {
+        let t = b;
+        b = a % b;
+        a = t;
       }
-      
-      const num = parseFloat(degVal);
-      if (isNaN(num)) {
-        radField.value = "Invalid Number";
-        return;
-      }
-      
-      const radians = num * (Math.PI / 180);
-      radField.value = Number(radians.toFixed(6));
+      return a;
     }
 
-    function convertFromRadian() {
-      const radVal = document.getElementById('radianInput').value.trim();
-      const degField = document.getElementById('degreeInput');
+    // CONVERT DEGREE TO EXACT PI FRACTION
+    function formatPiFraction(degVal) {
+      if (isNaN(degVal) || !isFinite(degVal)) return "";
+      if (degVal === 0) return "0 rad";
       
-      if (radVal === "") {
-        degField.value = "";
-        return;
+      let num = degVal;
+      let den = 180;
+      
+      // Scale floating point values to integers for fraction reduction if needed
+      let multiplier = 1;
+      while (num % 1 !== 0 && multiplier <= 10000) {
+        num *= 10;
+        den *= 10;
+        multiplier *= 10;
       }
       
-      const num = parseFloat(radVal);
-      if (isNaN(num)) {
-        degField.value = "Invalid Number";
-        return;
-      }
+      num = Math.round(num);
+      den = Math.round(den);
       
-      const degrees = num * (180 / Math.PI);
-      degField.value = Number(degrees.toFixed(6));
+      let gcd = getGCD(num, den);
+      num /= gcd;
+      den /= gcd;
+
+      let sign = num < 0 ? "-" : "";
+      num = Math.abs(num);
+
+      let piStr = "";
+      if (num === 1) piStr = "π";
+      else piStr = num + "π";
+
+      if (den === 1) return sign + piStr + " rad";
+      return sign + piStr + "/" + den + " rad";
     }
 
-    function copyResultToClipboard() {
-      const radField = document.getElementById('radianInput');
-      if (!radField.value) return;
-      
-      navigator.clipboard.writeText(radField.value).then(() => {
-        const btn = document.getElementById('copyResultBtn');
-        const originalText = btn.innerText;
-        btn.innerText = "✅ Copied to Clipboard!";
-        btn.style.background = "#dcfce7";
-        btn.style.color = "#166534";
-        btn.style.borderColor = "#bbf7d0";
-        setTimeout(() => {
-          btn.innerText = originalText;
-          btn.style.background = "";
-          btn.style.color = "";
-          btn.style.borderColor = "";
-        }, 2000);
-      }).catch(err => {
-        console.error('Failed to copy text: ', err);
-      });
-    }
+    // CORE PIPELINE EXECUTION
+    function executeAnglePipeline(source) {
+      const degInput = document.getElementById('degreesConsole');
+      const radInput = document.getElementById('radiansConsole');
+      const precision = parseInt(document.getElementById('precisionSelect').value, 10) || 6;
+      const showPi = document.getElementById('piNotationToggle').value === 'show';
+      const breakdown = document.getElementById('mathBreakdownInfo');
 
-    function clearWorkspace() {
-      document.getElementById('degreeInput').value = "";
-      document.getElementById('radianInput').value = "";
-    }
-  </script>
-  
-  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
-</body>
-</html>
+      if (source === 'deg') {
+        let valStr = degInput.value.trim();
+        if (valStr === "") {
+          radInput.value = "";
+          breakdown.innerHTML = "<span>⚡ Instant Bidirectional Computation:</span> Enter angle values in either panel. The standard mathematical conversion applies <b>rad = deg × (π / 180)</b> dynamic parsing.";
+          return;
+        }
+
+        let deg = parseFloat(valStr);
+        if (isNaN(deg)) {
+          radInput.value = "Invalid Degree Numeric Input";
+          return;
+        }
+
+        let rad = deg * (Math.PI / 180);
+        let radFormatted = rad.toFixed(precision);
+        // Trim redundant trailing zeros
+        radFormatted = parseFloat(radFormatted).toString();
+
+        let piFraction = formatPiFraction(deg);
+        if (showPi && piFraction) {
+          radInput.value = `${radFormatted} rad  (${piFraction})`;
+        } else {
+          radInput.value = `${radFormatted} rad`;
+        }
+
+        breakdown.innerHTML = `<span>📐 Calculation Breakdown:</span> <b>${deg}°</b> × (π / 180) = <b>${radFormatted} rad</b>. ${showPi && piFraction ? `Exact Fraction: <b>${piFraction}</b>` : ''}`;
+      } else if (source === 'rad') {
+        let valStr = radInput.value.trim();
+        if (valStr === "") {
+          degInput.value = "";
+          breakdown.innerHTML = "<span>⚡ Instant Bidirectional Computation:</span> Enter angle values in either panel. The standard mathematical conversion applies <b>deg = rad × (180 / π)</b> dynamic parsing.";
+          return;
+        }
+
+        // Clean out possible appended 'rad' text or pi expressions if pasted
+        let cleanStr = valStr.replace(/rad/gi, '').trim();
+        let rad = parseFloat(cleanStr);
+        
+        if (isNaN(rad)) {
+          degInput.value = "Invalid Radian Numeric Input";
+          return;
+        }
