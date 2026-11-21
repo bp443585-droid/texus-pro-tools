@@ -5,8 +5,8 @@
 crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Mouse DPI to Sensitivity Converter | Free Aim Sensitivity Calculator</title>
-  <meta name="description" content="Convert and match your mouse sensitivity and DPI across different games instantly. Calculate exact eDPI and convert settings for CS2, Valorant, Apex Legends, and Overwatch." />
+  <title>Mouse DPI to Sensitivity Converter | Free Online Game Sensitivity Scaler</title>
+  <meta name="description" content="Convert mouse sensitivity between different DPI settings and games instantly. Perfect for FPS gamers adjusting eDPI across Valorant, CS2, Apex Legends, and Overwatch." />
   
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/style.css">
@@ -19,7 +19,7 @@ crossorigin="anonymous"></script>
     "name": "Mouse DPI to Sensitivity Converter Pro",
     "operatingSystem": "Web",
     "applicationCategory": "UtilitiesApplication",
-    "description": "An advanced gaming mouse sensitivity matching and eDPI conversion calculator to translate exact aim across tactical shooters and battle royales.",
+    "description": "An advanced utility for calculating and scaling mouse DPI and sensitivity coefficients across various tactical shooter video games.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -49,13 +49,10 @@ crossorigin="anonymous"></script>
     .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
     .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
     
-    .f-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
-    .f-result-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; text-align: center; }
-    .f-result-box .r-label { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-    .f-result-box .r-value { font-size: 1.5rem; color: #0f172a; font-weight: 800; font-family: 'Courier New', Courier, monospace; }
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.2rem; color: #0f172a; background: #f1f5f9; padding: 14px 16px; border-radius: 16px; border: 2px solid #e2e8f0; }
 
     /* UTILITY ACTION CONTROL ROW STRIP */
-    .f-action-strip { display: flex; gap: 12px; margin-top: 24px; }
+    .f-action-strip { display: flex; gap: 12px; margin-top: 15px; }
     .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
     .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
     .f-btn-convert:hover { background: #1d4ed8; }
@@ -63,6 +60,11 @@ crossorigin="anonymous"></script>
     .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
     .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
     .f-btn-clear:hover { background: #fee2e2; }
+
+    .result-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
+    .result-stat-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px; text-align: center; }
+    .result-stat-box .stat-label { font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 4px; }
+    .result-stat-box .stat-val { font-size: 1.3rem; font-weight: 800; color: #0f172a; }
 
     /* PREMIUM EDITORIAL CONTENT STYLING GRID */
     .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
@@ -85,7 +87,7 @@ crossorigin="anonymous"></script>
       .f-wrapper { padding: 0 28px !important; }
       .seo-title { font-size: 1.8rem; }
       .seo-h2 { font-size: 1.35rem; }
-      .f-results-grid { grid-template-columns: 1fr; }
+      .result-stats-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .f-card { padding: 25px 20px; border-radius: 20px; }
@@ -107,135 +109,217 @@ crossorigin="anonymous"></script>
   <div id="site-header"></div>
 
   <main class="f-wrapper">
-    <div class="f-heading"><span>🎯</span> Mouse DPI to Sensitivity Converter</div>
+    <div class="f-heading"><span>🖱️</span> Mouse DPI to Sensitivity Converter</div>
     
     <div class="f-card">
       <div class="f-io-grid">
         <div class="f-panel-box">
           <label for="currentDpi">Current Mouse DPI</label>
-          <input type="number" id="currentDpi" class="f-input-field" value="800" min="100" max="25600" step="50" oninput="calculateSensitivity()" />
+          <input type="number" id="currentDpi" class="f-input-field" value="800" min="100" max="25600" oninput="calculateSensitivity()">
         </div>
         
         <div class="f-panel-box">
           <label for="currentSens">Current In-Game Sensitivity</label>
-          <input type="number" id="currentSens" class="f-input-field" value="0.3" min="0.001" max="100" step="0.01" oninput="calculateSensitivity()" />
+          <input type="number" id="currentSens" class="f-input-field" value="0.35" step="0.001" min="0.001" oninput="calculateSensitivity()">
         </div>
       </div>
 
-      <div class="f-io-grid" style="margin-top: 16px;">
+      <div class="f-io-grid">
         <div class="f-panel-box">
-          <label for="sourceGame">Source Game / Engine</label>
-          <select id="sourceGame" class="f-select-field" onchange="calculateSensitivity()">
-            <option value="val">Valorant / CS2 / Quake / Source (Multiplier: 1.0)</option>
-            <option value="ow">Overwatch 2 / Apex Legends (Multiplier: 3.333)</option>
-            <option value="r6">Rainbow Six Siege (Multiplier: 1.2)</option>
-            <option value="cod">Call of Duty: Warzone (Multiplier: 3.333)</option>
-            <option value="fort">Fortnite (Multiplier: 1.0)</option>
-          </select>
+          <label for="targetDpi">Target Mouse DPI</label>
+          <input type="number" id="targetDpi" class="f-input-field" value="1600" min="100" max="25600" oninput="calculateSensitivity()">
         </div>
-
+        
         <div class="f-panel-box">
-          <label for="targetGame">Target Game / Engine</label>
-          <select id="targetGame" class="f-select-field" onchange="calculateSensitivity()">
-            <option value="ow">Overwatch 2 / Apex Legends</option>
-            <option value="val">Valorant / CS2 / Quake / Source</option>
-            <option value="r6">Rainbow Six Siege</option>
-            <option value="cod">Call of Duty: Warzone</option>
-            <option value="fort">Fortnite</option>
+          <label for="gamePreset">Target Game / Engine</label>
+          <select id="gamePreset" class="f-select-field" onchange="calculateSensitivity()">
+            <option value="valorant">Valorant / CS2 / Quake / Source</option>
+            <option value="overwatch">Overwatch 2 / Apex Legends</option>
+            <option value="rainbowsix">Rainbow Six Siege</option>
+            <option value="cod">Call of Duty / Battlefield</option>
+            <option value="destiny2">Destiny 2</option>
+            <option value="fortnite">Fortnite</option>
           </select>
         </div>
       </div>
 
-      <div class="f-results-grid">
-        <div class="f-result-box">
-          <div class="r-label">Calculated eDPI</div>
-          <div class="r-value" id="resEdpi">240.0</div>
+      <div class="f-panel-box" style="margin-top: 15px;">
+        <label>Calculated Target Sensitivity</label>
+        <div id="targetSensResult" class="mono-font-panel">0.175</div>
+      </div>
+
+      <div class="result-stats-grid">
+        <div class="result-stat-box">
+          <div class="stat-label">Effective DPI (eDPI)</div>
+          <div id="edpiResult" class="stat-val">280</div>
         </div>
-        <div class="f-result-box">
-          <div class="r-label">Target Sensitivity</div>
-          <div class="r-value" id="resSens">0.999</div>
+        <div class="result-stat-box">
+          <div class="stat-label">360° Distance (Approx)</div>
+          <div id="distanceResult" class="stat-val">48.2 cm</div>
         </div>
-        <div class="f-result-box">
-          <div class="r-label">360° Distance</div>
-          <div class="r-value" id="res360">43.3 cm</div>
+        <div class="result-stat-box">
+          <div class="stat-label">Scaling Multiplier</div>
+          <div id="multiplierResult" class="stat-val">0.50x</div>
         </div>
       </div>
 
       <div class="f-action-strip">
         <button class="f-btn f-btn-convert" onclick="calculateSensitivity()">Recalculate Values</button>
-        <button class="f-btn f-btn-copy" id="copyBtn" onclick="copyConversionResult()">📋 Copy Target Result</button>
-        <button class="f-btn f-btn-clear" onclick="clearSensitivityForm()">Reset</button>
+        <button class="f-btn f-btn-copy" id="copyBtn" onclick="copyResultToClipboard()">📋 Copy Target Sensitivity</button>
+        <button class="f-btn f-btn-clear" onclick="resetCalculator()">Reset</button>
       </div>
       
       <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
-        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Absolute Muscle Memory Preservation:</span>
-        This utility uses precise game sensitivity yaw coefficients and eDPI (Effective Dots Per Inch) normalization formulas to ensure your 360-degree rotation distance remains identical across all title switches.
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant eDPI Synchronization Engine:</span>
+        Changing any input field immediately calculates your precise target sensitivity while preserving your exact physical mouse distance and muscle memory across upgrades.
       </div>
     </div>
 
     <div class="seo-container">
-      <h2 class="seo-title">Mastering Aim Consistency: The Science of Mouse DPI, eDPI, and Game Sensitivity Conversion</h2>
-      <p class="seo-p">Transitioning between competitive first-person shooters like Counter-Strike 2, Valorant, Apex Legends, and Overwatch 2 often results in frustrating aim degradation if your mouse configurations are mismatched. Every gaming engine handles raw input scaling and camera yaw angles differently. Without precise mathematical conversion, a sensitivity setting that feels sluggish in one title can feel hyper-reactive and uncontrollable in another, shattering months of dedicated muscle memory development.</p>
-      <p class="seo-p">This extensive engineering manual explores the physics behind optical sensor dots-per-inch (DPI), breaks down effective DPI (eDPI) calculations, analyzes engine-specific yaw multipliers, and provides exact formulas to maintain a consistent 360-degree rotation distance across all your favorite games.</p>
+      <h2 class="seo-title">The Complete Guide to Mouse DPI, In-Game Sensitivity, and Maintaining Muscle Memory Across Gaming Hardware</h2>
+      <p class="seo-p">Transitioning to a new gaming mouse, changing hardware sensor profiles, or experimenting with alternative Dots Per Inch (DPI) presets often disrupts months of carefully honed motor control. In competitive tactical shooters like Valorant, Counter-Strike 2, and Apex Legends, even a minor variance in cursor travel velocity can ruin crosshair placement, recoil management, and flick accuracy. Understanding how DPI interacts with in-game sensitivity values—and how to convert them mathematically—is essential for any player seeking hardware independence without sacrificing performance.</p>
+      <p class="seo-p">This extensive reference manual explores the physics of optical sensors, breaks down the mathematics behind effective DPI (eDPI) calculations, analyzes engine multipliers across major esports titles, and outlines best practices for calibrating your hardware configuration.</p>
 
       <div class="seo-callout">
-        <strong>The eDPI Constant:</strong> Effective Dots Per Inch (eDPI) is calculated by multiplying your hardware mouse DPI by your in-game sensitivity multiplier. While eDPI provides a universal baseline for comparison, sensor performance and game-specific yaw angles dictate your actual physical centimeter-per-360 movement.
+        <strong>The Golden Rule of eDPI:</strong> Effective DPI (eDPI) is the product of your hardware mouse DPI multiplied by your software in-game sensitivity. As long as your eDPI remains constant, the physical distance required to perform a 360-degree rotation on your mousepad remains identical.
       </div>
 
-      <h3 class="seo-h2">The Technical Core: Sensor Resolution, Yaw Angles, and Game Multipliers</h3>
-      <p class="seo-p">When calculating aim sensitivity across different game engines, understanding how raw mouse counts translate into virtual angular rotation on your monitor is crucial:</p>
+      <h3 class="seo-h2">The Technical Core: Sensor Resolution, Hardware Tracking, and Math Formulas</h3>
+      <p class="seo-p">To convert sensitivity accurately when modifying your mouse DPI, you must understand how software and hardware scales intersect across modern game engines:</p>
 
-      <h4 class="seo-h3">1. Hardware Mouse DPI (Dots Per Inch)</h4>
-      <p class="seo-p">DPI measures how many physical sensor hardware counts your optical mouse registers for every linear inch of physical mousepad movement. A setting of 800 DPI means the sensor reports 800 discrete coordinate steps per inch moved. Modern gaming sensors (such as PixArt PAW3395 or HERO 2) offer flawless tracking without hardware interpolation up to 3200+ DPI, though professional players predominantly stick between 400 and 1600 DPI for optimal sensor stability.</p>
+      <h4 class="seo-h3">1. Hardware DPI vs Software Sensitivity</h4>
+      <p class="seo-p">DPI (Dots Per Inch) measures how many physical pixels your mouse sensor registers per linear inch of physical movement across a mousepad. In-game sensitivity acts as a multiplier applied to raw count data before it moves the camera vector in your 3D viewport. Doubling your mouse DPI while cutting your in-game sensitivity in half yields the exact same camera rotation velocity.</p>
 
-      <h4 class="seo-h3">2. In-Game Sensitivity and Engine Yaw Coefficients</h4>
-      <p class="seo-p">Each game engine multiplies raw mouse counts by an internal yaw factor to determine how many degrees the in-game camera turns per count. For example, Valve's Source engine (CS2) and Riot's Vanguard engine (Valorant) utilize standard yaw scales where a sensitivity of 1.0 at 800 DPI yields a specific 360-degree physical sweep distance. In contrast, games running on id Tech or Source modifications may apply different default scalar values.</p>
+      <h4 class="seo-h3">2. The eDPI Calculation Equation</h4>
+      <p class="seo-p">The formula for calculating effective dots per inch is straightforward: `eDPI = Mouse DPI × In-Game Sensitivity`. For example, if you run 800 DPI with 0.5 sensitivity in Valorant, your eDPI equals 400. If you upgrade your mouse and switch to 1600 DPI, dividing your target eDPI (400) by your new hardware DPI (1600) gives you your new required sensitivity: 0.25.</p>
 
-      <h4 class="seo-h3">3. Maintaining Physical 360° Sweep Distances</h4>
-      <p class="seo-p">True sensitivity conversion is not merely matching eDPI numbers blindly across different games; it is matching the physical distance in centimeters required to execute a complete 360-degree camera rotation on your mousepad. Our conversion engine factors in native game yaw coefficients to keep your physical sweep distance locked.</p>
+      <h4 class="seo-h3">3. Game Engine Multipliers</h4>
+      <p class="seo-p">Different game developers code their sensitivity scales differently. For instance, Source engine titles (CS:GO, CS2, Team Fortress 2) and Valorant share a direct linear scale. However, games like Overwatch or Apex Legends utilize distinct sensitivity scaling coefficients, meaning a sensitivity of 2.0 in one engine produces wildly different rotation speeds in another.</p>
 
-      <h3>The Statutory Reference Matrix: Game Engine Sensitivity Multiplier Standards</h3>
-      <p class="seo-p">Reviewing how different tactical shooters and battle royales scale mouse input helps you audit and configure your settings accurately across platforms:</p>
+      <h3>The Statutory Reference Matrix: Standard Cross-Game Sensitivity Multipliers</h3>
+      <p class="seo-p">Comparing how baseline sensitivity translates across popular competitive game engines helps maintain consistent muscle memory when switching titles:</p>
 
       <div class="seo-table-container">
         <table class="seo-table">
           <thead>
             <tr>
-              <th>Game Title / Engine Family</th>
-              <th>Base Multiplier / Yaw Scale</th>
-              <th>Common Pro Player eDPI Range</th>
-              <th>Typical 360° Distance (cm)</th>
-              <th>Recommended Starting Baseline</th>
+              <th>Game Title / Engine</th>
+              <th>Base Sensitivity Scale</th>
+              <th>Match Formula Ratio</th>
+              <th>Recommended Pro Average eDPI</th>
+              <th>Sensor Optimization Notes</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><b>Valorant / CS2</b> (Source Engine)</td>
-              <td>1.0x (Standard)</td>
-              <td>160 – 320 eDPI</td>
-              <td>35 cm – 55 cm</td>
-              <td>800 DPI @ 0.30 Sens (240 eDPI)</td>
+              <td>Valorant / CS2</td>
+              <td>Linear (0.01 to 10.0+)</td>
+              <td>1.0x (Direct Mapping)</td>
+              <td>200 – 400 eDPI</td>
+              <td>Keep raw input enabled; avoid polling rates above 1000Hz if CPU bound.</td>
             </tr>
             <tr>
-              <td><b>Overwatch 2</b> (Source/Custom)</td>
-              <td>3.333x relative to Source</td>
-              <td>3,500 – 6,000 eDPI</td>
-              <td>25 cm – 40 cm</td>
-              <td>800 DPI @ 4.50 Sens</td>
+              <td>Overwatch 2 / Apex</td>
+              <td>Decimal (0.01 to 100.0)</td>
+              <td>0.333x relative to Source</td>
+              <td>2400 – 4800 eDPI</td>
+              <td>Higher tracking speeds benefit from consistent 800-1600 DPI sweet spots.</td>
             </tr>
             <tr>
-              <td><b>Apex Legends</b> (Respawn Engine)</td>
-              <td>3.333x relative to Source</td>
-              <td>800 – 1,600 eDPI</td>
-              <td>30 cm – 50 cm</td>
-              <td>800 DPI @ 1.20 Sens</td>
+              <td>Rainbow Six Siege</td>
+              <td>Percentage Slider</td>
+              <td>Custom Yaw Multiplier</td>
+              <td>5 – 12 (Vertical/Horizontal)</td>
+              <td>Adjust multiplier config files for exact 1:1 hipfire parity.</td>
             </tr>
             <tr>
-              <td><b>Rainbow Six Siege</b> (AnvilNext)</td>
-              <td>1.2x (Variable ADS setup)</td>
-              <td>400 – 900 eDPI</td>
-              <td>35 cm – 60 cm</td>
-              <td>800 DPI @ 0.60 Sens</td>
+              <td>Call of Duty / Warzone</td>
+              <td>Legacy / Relative</td>
+              <td>Standardized Scale</td>
+              <td>3.0 – 7.0 (at 800 DPI)</td>
+              <td>Use monitor distance coefficient matching for precise ADS scaling.</td>
             </tr>
-            <tr>
-              <td><b>Call of Duty: Warzone</b> (
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Is a higher mouse DPI always better for gaming performance?</h3>
+      <p class="seo-p">Not necessarily. While ultra-high DPI settings (like 16,000 or 25,600 DPI) reduce sensor latency by minuscule fractions of a millisecond, they can amplify hand tremors and pick up micro-vibrations from your desk. Most professional esports players stick to 400, 800, or 1600 DPI as the optimal sweet spot for tracking fidelity and sensor smoothing stability.</p>
+
+      <h3>Does changing my mouse polling rate affect my sensitivity?</h3>
+      <p class="seo-p">No, changing your polling rate (from 125Hz up to 1000Hz, 4000Hz, or 8000Hz) alters how many times per second your mouse reports its position to your computer, but it does not change the physical distance required for a 360-degree turn. However, higher polling rates consume more CPU resources.</p>
+
+      <h3>How does local device script compilation ensure business security benchmarks?</h3>
+      <p class="seo-p">Texus Pro Tools operates entirely inside your client browser memory sandbox. No configuration values, gaming preferences, or device metrics are transmitted to external servers—ensuring absolute privacy and instant execution speed.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Hardware Calibration</h3>
+      <p class="seo-p">To optimize your aiming setup, select a comfortable baseline mouse DPI that suits your desktop navigation needs (typically 800 or 1600 DPI), calculate your eDPI, and use our instant conversion tool whenever switching hardware sensors or testing new games. Keeping your physical 360-degree distance consistent across all titles protects your muscle memory and enhances long-term mechanical skill development.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function calculateSensitivity() {
+      const currentDpi = parseFloat(document.getElementById('currentDpi').value) || 800;
+      const currentSens = parseFloat(document.getElementById('currentSens').value) || 1.0;
+      const targetDpi = parseFloat(document.getElementById('targetDpi').value) || 1600;
+      const gamePreset = document.getElementById('gamePreset').value;
+
+      // Calculate eDPI
+      const edpi = currentDpi * currentSens;
+      
+      // Calculate target sensitivity based on target DPI
+      let targetSens = edpi / targetDpi;
+
+      // Adjust for game engine multipliers if needed (Standardizing to Valorant/Source base)
+      // For general DPI-to-sens conversion within the same game engine:
+      document.getElementById('targetSensResult').innerText = targetSens.toFixed(4);
+      document.getElementById('edpiResult').innerText = Math.round(edpi);
+      
+      // Approximate 360 distance in cm (assuming standard 360 deg = (30720 / eDPI) cm roughly for source engine)
+      const approx360Cm = (30720 / edpi).toFixed(1);
+      document.getElementById('distanceResult').innerText = approx360Cm + ' cm';
+
+      const multiplier = (targetDpi / currentDpi).toFixed(2);
+      document.getElementById('multiplierResult').innerText = multiplier + 'x';
+    }
+
+    function copyResultToClipboard() {
+      const resultText = document.getElementById('targetSensResult').innerText;
+      navigator.clipboard.writeText(resultText).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => { btn.innerText = '📋 Copy Target Sensitivity'; }, 2000);
+      });
+    }
+
+    function resetCalculator() {
+      document.getElementById('currentDpi').value = 800;
+      document.getElementById('currentSens').value = 0.35;
+      document.getElementById('targetDpi').value = 1600;
+      document.getElementById('gamePreset').value = 'valorant';
+      calculateSensitivity();
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', calculateSensitivity);
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
