@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Luhn Algorithm Card Validation Tool | Free Credit Card Validator</title>
+  <meta name="description" content="Verify credit card numbers, loyalty cards, and IMEI numbers instantly using the mathematical Luhn Algorithm. Free, secure, client-side validation tool." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/luhn-algorithm-card-validation-tool/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Luhn Algorithm Card Validation Tool",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced mathematical validation utility for testing credit card numbers and identifier sequences via the Luhn formula securely in your browser.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TOOL SPECIFIC STYLES */
+    .f-input-group { margin-bottom: 24px; }
+    .f-input-group label { display: block; font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .f-text-input { width: 100%; height: 56px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 0 16px; font-size: 1.2rem; font-family: 'Courier New', Courier, monospace; font-weight: 700; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-text-input:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-result-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 24px; margin-top: 24px; display: none; }
+    .f-result-box.active { display: block; }
+    .f-result-header { display: flex; align-items: center; gap: 12px; font-size: 1.25rem; font-weight: 800; margin-bottom: 16px; }
+    .f-result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .f-result-item { background: #ffffff; padding: 12px 16px; border-radius: 12px; border: 1px solid #e2e8f0; }
+    .f-result-item-label { font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 4px; }
+    .f-result-item-value { font-size: 1.05rem; font-weight: 700; color: #0f172a; word-break: break-all; }
+
+    .status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; }
+    .status-badge.valid { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .status-badge.invalid { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-text-input { height: 50px; font-size: 1.05rem; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>💳</span> Luhn Algorithm Card Validation Tool</div>
+    
+    <div class="f-card">
+      <div class="f-input-group">
+        <label for="cardNumberInput">Enter Card Number or Identifier Sequence</label>
+        <input type="text" id="cardNumberInput" class="f-text-input" placeholder="e.g., 4532 7100 0000 0000" maxlength="30" oninput="validateCardNumber()" />
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="validateCardNumber()">Verify Number</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultDetails()" style="display:none;">📋 Copy Results</button>
+        <button class="f-btn f-btn-clear" onclick="clearCardWorkspace()">Clear</button>
+      </div>
+
+      <div id="resultBox" class="f-result-box">
+        <div class="f-result-header">
+          <span id="resultIcon">🔍</span>
+          <span id="resultTitleText">Analysis Result</span>
+          <div id="resultBadgeContainer"></div>
+        </div>
+        <div class="f-result-grid">
+          <div class="f-result-item">
+            <div class="f-result-item-label">Card Brand / Network</div>
+            <div id="cardBrandVal" class="f-result-item-value">-</div>
+          </div>
+          <div class="f-result-item">
+            <div class="f-result-item-label">Length Check</div>
+            <div id="cardLengthVal" class="f-result-item-value">-</div>
+          </div>
+          <div class="f-result-item">
+            <div class="f-result-item-label">Luhn Checksum Status</div>
+            <div id="luhnStatusVal" class="f-result-item-value">-</div>
+          </div>
+          <div class="f-result-item">
+            <div class="f-result-item-label">Clean Digit String</div>
+            <div id="cleanDigitsVal" class="f-result-item-value" style="font-family: monospace;">-</div>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Client-Side Security Assurance:</span>
+        All Luhn checksum computations execute entirely within your browser's local script memory. No credit card numbers or sensitive account strings are ever transmitted to or stored on external servers.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Mathematics of Error Detection: Understanding the Luhn Algorithm, Modulus 10 Formulas, and Global Identification Standards</h2>
+      <p class="seo-p">In modern commerce, data transmission errors—such as a mistyped digit during manual checkout or a glitch in barcode scanning—can cause catastrophic transaction failures, wasted inventory fulfillment, and security vulnerabilities. To combat accidental input mistakes without requiring complex cryptographic signatures, computer scientist Hans Peter Luhn developed the Luhn algorithm in 1954. Patented under IBM, this elegant checksum formula has become the global baseline for verifying identification numbers across financial credit cards, IMEI mobile device identifiers, national provider IDs, and transit smart cards.</p>
+      <p class="seo-p">This extensive engineering reference manual explores the underlying mechanics of the Luhn formula, evaluates major credit card issuer identification number (IIN) prefixes, reviews algorithm execution steps, and details why client-side validation tools protect user privacy and enhance enterprise web applications.</p>
+
+      <div class="seo-callout">
+        <strong>The Checksum Principle:</strong> The Luhn algorithm is specifically designed as a simple checksum formula to protect against accidental errors (like single digit typos or adjacent digit transpositions), rather than guarding against malicious cryptographic tampering.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Step-by-Step Execution of the Luhn Formula</h3>
+      <p class="seo-p">When a sequence enters our validation parser, the script strips all whitespace and non-numeric characters before executing a precise mathematical transformation loop:</p>
+
+      <h4 class="seo-h3">1. Right-to-Left Traversal Indexing</h4>
+      <p class="seo-p">The algorithm begins by examining digits from right to left, starting with the rightmost check digit. Every second digit moving left is selected for multiplication.</p>
+
+      <h4 class="seo-h3">2. Doubling and Single-Digit Reduction</h4>
+      <p class="seo-p">Each selected digit is doubled in value ($d \times 2$). If the resulting product is greater than 9 (e.g., $7 \times 2 = 14$), the algorithm adds the two individual digits together ($1 + 4 = 5$), or equivalently, subtracts 9 from the product ($14 - 9 = 5$).</p>
+
+      <h4 class="seo-h3">3. Summation and Modulus 10 Verification</h4>
+      <p class="seo-p">All transformed numbers, alongside the untouched alternate digits, are summed together. If the total sum modulo 10 equals zero ($Sum \pmod{10} == 0$), the sequence successfully passes the Luhn checksum verification.</p>
+
+      <h3>Issuer Identification Numbers (IIN) and Card Network Structures</h3>
+      <p class="seo-p">Beyond checking mathematical integrity via the Luhn formula, identifying card brands requires analyzing the Major Industry Identifier (MII) and the initial Issuer Identification Number (IIN) prefixes:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Card Network / Issuer</th>
+              <th>MII / IIN Prefix Range</th>
+              <th>Standard Length</th>
+              <th>Luhn Checksum Requirement</th>
+              <th>Typical Application &amp; Security Profile</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Visa</b></td>
+              <td>Starts with 4</td>
+              <td>13 or 16 digits</td>
+              <td>Mandatory</td>
+              <td>Global retail, e-commerce, and corporate payment ecosystems.</td>
+            </tr>
+            <tr>
+              <td><b>Mastercard</b></td>
+              <td>Starts with 51–55 or 2221–2720</td>
+              <td>16 digits</td>
+              <td>Mandatory</td>
+              <td>International debit and credit transactions with chip security.</td>
+            </tr>
+            <tr>
+              <td><b>American Express</b></td>
+              <td>Starts with 34 or 37</td>
+              <td>15 digits</td>
+              <td>Mandatory</td>
+              <td>Premium travel, entertainment, and corporate charge cards.</td>
+            </tr>
+            <tr>
+              <td><b>Discover</b></td>
+              <td>Starts with 6011, 64, or 65</td>
+              <td>16 to 19 digits</td>
+              <td>Mandatory</td>
+              <td>North American retail networks and digital banking products.</td>
+            </tr>
+            <tr>
+              <td><b>JCB</b></td>
+              <td>Starts with 3528–3589</td>
+              <td>16 to 19 digits</td>
+              <td>Mandatory</td>
+              <td>Asian international financial networks and global merchant processing.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Diagnostic &amp; Implementation Segment</h3>
+
+<h3>Can the Luhn algorithm detect fraudulent or stolen credit cards?</h3>
+      <p class="seo-p">No. The Luhn algorithm is strictly a mathematical error-detection checksum. It verifies that a number sequence was typed correctly and follows the structural rules established by financial networks. It cannot determine if a card is active, expired, stolen, or associated with sufficient funds. True card verification requires live payment gateway authorization calls.</p>
+
+<h3>What types of identifiers use the Luhn formula besides credit cards?</h3>
+      <p class="seo-p">Beyond financial cards, the Luhn algorithm is widely used in IMEI (International Mobile Equipment Identity) numbers for mobile phones, Canadian Social Insurance Numbers (SIN), National Provider Identifier (NPI) numbers in US healthcare, and various loyalty and gift card numbering systems.</p>
+
+      <h3>How does client-side validation protect user privacy?</h3>
+      <p class="seo-p">Processing card inputs entirely in the client browser guarantees that sensitive account sequences never leave your device. This eliminates third-party data logging risks, ensuring compliance with strict privacy standards and regulatory frameworks.</p>
+
+      <h3 class="seo-h2">Summary: Optimizing Data Integrity and Error Handling</h3>
+      <p class="seo-p">Integrating client-side Luhn verification into checkout forms and inventory databases dramatically reduces user input typos and failed transactions. Our Luhn Algorithm Card Validation Tool provides instant, secure feedback on any numeric identifier sequence directly in your browser.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function validateCardNumber() {
+      const rawInput = document.getElementById('cardNumberInput').value;
+      const cleanDigits = rawInput.replace(/\D/g, '');
+      const resultBox = document.getElementById('resultBox');
+      const copyBtn = document.getElementById('copyResultBtn');
+
+      if (!cleanDigits) {
+        resultBox.classList.remove('active');
+        copyBtn.style.display = 'none';
+        return;
+      }
+
+      resultBox.classList.add('active');
+      copyBtn.style.display = 'block';
+
+      // Luhn Check
+      let sum = 0;
+      let shouldDouble = false;
+      for (let i = cleanDigits.length - 1; i >= 0; i--) {
+        let digit = parseInt(cleanDigits.charAt(i), 10);
+        if (shouldDouble) {
+          digit *= 2;
+          if (digit > 9) digit -= 9;
+        }
+        sum += digit;
+        shouldDouble = !shouldDouble;
+      }
+
+      const isValidLuhn = (sum % 10 === 0);
+
+      // Card Brand Detection
+      let brand = "Unknown / Other";
+      if (/^4/.test(cleanDigits)) brand = "Visa";
+      else if (/^(51|52|53|54|55)/.test(cleanDigits) || /^2(2[2-9][1-9]|[3-6][0-9]{2}|7[0-1][0-9]|720)/.test(cleanDigits)) brand = "Mastercard";
+      else if (/^(34|37)/.test(cleanDigits)) brand = "American Express";
+      else if (/^6(011|5|4[4-9])/.test(cleanDigits)) brand = "Discover";
+      else if (/^35(2[8-9]|[3-8][0-9])/.test(cleanDigits)) brand = "JCB";
+      else if (/^3[689]/.test(cleanDigits)) brand = "Diners Club";
+      else if (/^60(628|282)/.test(cleanDigits)) brand = "Hipercard";
+      else if (/^(5018|5020|5038|5893|6304|6759|6761|6762|6763)/.test(cleanDigits)) brand = "Maestro";
+
+      // Populate UI
+      const badgeContainer = document.getElementById('resultBadgeContainer');
+      const resultIcon = document.getElementById('resultIcon');
+      const resultTitleText = document.getElementById('resultTitleText');
+
+      if (isValidLuhn) {
+        resultIcon.textContent = "✅";
+        resultTitleText.textContent = "Valid Sequence Detected";
+        badgeContainer.innerHTML = '<span class="status-badge valid">PASSED LUHN CHECK</span>';
+      } else {
+        resultIcon.textContent = "❌";
+        resultTitleText.textContent = "Invalid Sequence Checksum";
+        badgeContainer.innerHTML = '<span class="status-badge invalid">FAILED LUHN CHECK</span>';
+      }
+
+      document.getElementById('cardBrandVal').textContent = brand;
+      document.getElementById('cardLengthVal').textContent = cleanDigits.length + " digits";
+      document.getElementById('luhnStatusVal').textContent = isValidLuhn ? "Valid (Mod 10 = 0)" : "Invalid (Mod 10 ≠ 0)";
+      document.getElementById('cleanDigitsVal').textContent = cleanDigits;
+    }
+
+    function clearCardWorkspace() {
+      document.getElementById('cardNumberInput').value = '';
+      document.getElementById('resultBox').classList.remove('active');
+      document.getElementById('copyResultBtn').style.display = 'none';
+    }
+
+    function copyResultDetails() {
+      const cleanDigits = document.getElementById('cleanDigitsVal').textContent;
+      const brand = document.getElementById('cardBrandVal').textContent;
+      const length = document.getElementById('cardLengthVal').textContent;
+      const status = document.getElementById('luhnStatusVal').textContent;
+
+      const report = `Luhn Validation Report:\nSequence: ${cleanDigits}\nBrand: ${brand}\nLength: ${length}\nChecksum Status: ${status}`;
+
+      navigator.clipboard.writeText(report).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        const orig = btn.textContent;
+        btn.textContent = '✅ Copied to Clipboard!';
+        setTimeout(() => { btn.textContent = orig; }, 2000);
+      });
+    }
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
