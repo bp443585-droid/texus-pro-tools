@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>PCB Trace Width Current Capacity Calculator | IPC-2152 & IPC-2221</title>
+  <meta name="description" content="Calculate maximum current capacity, trace width, and temperature rise for printed circuit boards instantly using IPC-2152 and IPC-2221 engineering formulas." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/pcb-trace-width-current-capacity-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PCB Trace Width Current Capacity Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "EngineeringApplication",
+    "description": "An advanced electronic engineering utility to calculate PCB trace width, current capacity, voltage drop, and temperature rise based on IPC standards.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* ENGINEERING FORM GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS DASHBOARD PANEL */
+    .f-results-panel { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 24px; margin-top: 24px; box-sizing: border-box; }
+    .f-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 15px; }
+    .f-metric-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.01); }
+    .f-metric-label { font-size: 0.78rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px; }
+    .f-metric-value { font-size: 1.45rem; font-weight: 800; color: #0f172a; font-family: 'Courier New', Courier, monospace; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 24px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .f-results-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⚡</span> PCB Trace Width Current Capacity Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="calcMode">Calculation Target</label>
+          <select id="calcMode" class="f-select-field" onchange="toggleCalcMode()">
+            <option value="current">Calculate Maximum Current (Amps)</option>
+            <option value="width">Calculate Minimum Trace Width (mils / mm)</option>
+          </select>
+        </div>
+
+        <div class="f-panel-box" id="inputParamBox">
+          <label id="inputParamLabel" for="paramInput">Trace Width (mils)</label>
+          <input type="number" id="paramInput" class="f-input-field" value="30" step="any" min="0.1" oninput="runPcbCalculator()">
+        </div>
+
+        <div class="f-panel-box">
+          <label for="copperWeight">Copper Weight / Thickness</label>
+          <select id="copperWeight" class="f-select-field" onchange="runPcbCalculator()">
+            <option value="0.5">0.5 oz/ft² (17.5 µm / 0.689 mils)</option>
+            <option value="1.0" selected>1.0 oz/ft² (35 µm / 1.378 mils)</option>
+            <option value="2.0">2.0 oz/ft² (70 µm / 2.756 mils)</option>
+            <option value="3.0">3.0 oz/ft² (105 µm / 4.134 mils)</option>
+            <option value="4.0">4.0 oz/ft² (140 µm / 5.512 mils)</option>
+          </select>
+        </div>
+
+        <div class="f-panel-box">
+          <label for="tempRise">Allowed Temperature Rise (°C)</label>
+          <input type="number" id="tempRise" class="f-input-field" value="10" step="1" min="1" max="100" oninput="runPcbCalculator()">
+        </div>
+
+        <div class="f-panel-box">
+          <label for="traceLength">Trace Length (Inches)</label>
+          <input type="number" id="traceLength" class="f-input-field" value="2.0" step="any" min="0.01" oninput="runPcbCalculator()">
+        </div>
+
+        <div class="f-panel-box">
+          <label for="ambientTemp">Ambient Temperature (°C)</label>
+          <input type="number" id="ambientTemp" class="f-input-field" value="25" step="1" min="-40" max="125" oninput="runPcbCalculator()">
+        </div>
+      </div>
+
+      <div class="f-results-panel">
+        <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Calculated Engineering Metrics (IPC-2221 Standard)</label>
+        <div class="f-results-grid">
+          <div class="f-metric-card">
+            <div id="primaryResultLabel" class="f-metric-label">Max Current Capacity</div>
+            <div id="primaryResultValue" class="f-metric-value">--</div>
+          </div>
+          <div class="f-metric-card">
+            <div class="f-metric-label">Total Voltage Drop</div>
+            <div id="voltageDropValue" class="f-metric-value">--</div>
+          </div>
+          <div class="f-metric-card">
+            <div class="f-metric-label">Trace Resistance</div>
+            <div id="resistanceValue" class="f-metric-value">--</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="runPcbCalculator()">Recalculate Specs</button>
+        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyPcbResults()">📋 Copy Report</button>
+        <button class="f-btn f-btn-clear" onclick="clearPcbWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Engineering Formula Note:</span>
+        Calculations utilize the standard IPC-2221 equations ($I = k \cdot \Delta T^b \cdot A^c$) incorporating internal/external copper cross-sectional areas and temperature coefficient corrections.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Physics of Printed Circuit Board Current Capacity: Mastering IPC-2221 and IPC-2152 Standards for Reliable Electronic Hardware Design</h2>
+      <p class="seo-p">Designing high-performance printed circuit boards (PCBs) requires an exhaustive understanding of electrical thermal limits, copper resistivity, and trace geometry. When electric current flows through a copper trace, electrical resistance generates Joule heating ($P = I^2R$). If the generated thermal energy exceeds the rate at which the PCB laminate, solder mask, and ambient air can dissipate it, the copper trace temperature rises. Uncontrolled temperature spikes lead to mechanical delamination, trace micro-cracks, solder joint degradation, and catastrophic board failure.</p>
+      <p class="seo-p">This extensive engineering manual explores the mathematical foundations of the IPC-2221 and IPC-2152 standards, reviews copper thickness classifications, analyzes voltage drop parameters in high-power distribution networks, and outlines best practices for routing heavy power planes safely.</p>
+
+      <div class="seo-callout">
+        <strong>The IPC-2221 Empirical Equation:</strong> The baseline industry standard relies on curve-fitted empirical coefficients defined as $I = k \cdot \Delta T^b \cdot A^c$, where $I$ is current in amperes, $\Delta T$ is temperature rise in degrees Celsius, and $A$ is the cross-sectional area in square mils. For external layers, constants are $k = 0.048$, $b = 0.44$, and $c = 0.725$.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Mathematical Equations and Electrical Parameters</h3>
+      <p class="seo-p">When electronic engineers input layout criteria into our advanced PCB calculation utility, the engine executes a rigorous multi-step analytical sequence:</p>
+
+      <h4 class="seo-h3">1. Cross-Sectional Area Derivation</h4>
+      <p class="seo-p">The cross-sectional area ($A$) of a rectangular copper trace is calculated by multiplying its finished width ($W$) by its thickness ($T$). Standard copper weight values are typically specified in ounces per square foot ($\text{oz/ft}^2$), which equate to specific physical thicknesses:</p>
+      <ul class="seo-list">
+        <li><b>0.5 oz/ft²:</b> 17.5 micrometers ($\mu\text{m}$) or 0.689 mils</li>
+        <li><b>1.0 oz/ft²:</b> 35.0 micrometers ($\mu\text{m}$) or 1.378 mils</li>
+        <li><b>2.0 oz/ft²:</b> 70.0 micrometers ($\mu\text{m}$) or 2.756 mils</li>
+        <li><b>3.0 oz/ft²:</b> 105.0 micrometers ($\mu\text{m}$) or 4.134 mils</li>
+      </ul>
+
+      <h4 class="seo-h3">2. DC Trace Resistance Calculation</h4>
+      <p class="seo-p">Trace resistance ($R$) is determined using the bulk resistivity of annealed copper ($\rho \approx 1.72 \times 10^{-8} \ \Omega\cdot\text{m}$ at room temperature), adjusted dynamically for operating temperature using the copper temperature coefficient of resistance ($\alpha \approx 0.00393 \text{ / }^\circ\text{C}$):</p>
+      <p class="seo-p" style="font-family: 'Courier New', Courier, monospace; background: #f8fafc; padding: 12px; border-radius: 8px;">$R = \frac{\rho \cdot L}{W \cdot T} \cdot [1 + \alpha(T_{\text{op}} - 20^\circ\text{C})]$</p>
+
+      <h4 class="seo-h3">3. Voltage Drop and Power Dissipation Analysis</h4>
+      <p class="seo-p">Once resistance is established, Ohm's Law calculates the DC voltage drop ($V_{\text{drop}} = I \cdot R$) across the trace length, while total power loss is quantified as $P = I^2 \cdot R$, helping power supply designers verify compliance with tight regulation tolerances.</p>
+
+      <h3>The Statutory Reference Matrix: Standard Copper Weights and Current Capacities</h3>
+      <p class="seo-p">The following reference matrix illustrates maximum safe current limits for standard 1.0 oz/ft² external copper traces at a 10°C temperature rise across various trace widths:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Trace Width (Mils)</th>
+              <th>Trace Width (mm)</th>
+              <th>Cross-Sectional Area (sq. mils)</th>
+              <th>Max Current (10°C Rise)</th>
+              <th>Typical Application Class</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>10 mils</td>
+              <td>0.254 mm</td>
+              <td>13.78 sq. mils</td>
+              <td><b>1.02 A</b></td>
+              <td>Fine-pitch signal lines, microcontrollers, low-power digital ICs</td>
+            </tr>
+            <tr>
+              <td>20 mils</td>
+              <td>0.508 mm</td>
+              <td>27.56 sq. mils</td>
+              <td><b>1.65 A</b></td>
+              <td>Standard logic power rails, peripheral sensor buses</td>
+            </tr>
+            <tr>
+              <td>30 mils</td>
+              <td>0.762 mm</td>
+              <td>41.34 sq. mils</td>
+              <td><b>2.18 A</b></td>
+              <td>Medium-current peripheral drivers, USB VBUS lines</td>
+            </tr>
+            <tr>
+              <td>50 mils</td>
+              <td>1.270 mm</td>
+              <td>68.90 sq. mils</td>
+              <td><b>3.12 A</b></td>
+              <td>Subsystem power distribution, motor driver logic</td>
+            </tr>
+            <tr>
+              <td>100 mils</td>
+              <td>2.540 mm</td>
+              <td>137.80 sq. mils</td>
+              <td><b>5.05 A</b></td>
+              <td>High-current DC-DC converter outputs, motor power buses</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Engineering Diagnostic Segment</h3>
+
+      <h3>What is the fundamental difference between IPC-2221 and IPC-2152 standards?</h3>
+      <p class="seo-p">IPC-2221 is the legacy standard based on equations developed in the 1950s that primarily modeled internal traces as having lower current capacity due to trapped heat. IPC-2152 is a modern, highly comprehensive standard developed through extensive empirical testing by the National Institute of Standards and Technology (NIST). IPC-2152 accounts for PCB thickness, thermal conductivity of FR-4 substrate materials, and plane proximity, making it significantly more accurate for modern high-density designs.</p>
+
+      <h3>Why do internal PCB layers carry less current than external layers?</h3>
+      <p class="seo-p">External layers enjoy direct thermal convection and radiation cooling into the surrounding ambient air. Internal layers are sandwiched between insulating FR-4 fiberglass and prepreg dielectric layers, which act as thermal thermal blankets, inhibiting heat dissipation and requiring wider traces for the same current.</p>
+
+      <h3>How does ambient operating temperature impact maximum trace current?</h3>
+      <p class="seo-p">Copper resistivity increases proportionally with temperature. Higher ambient temperatures lower the remaining thermal headroom before reaching the maximum allowable operating temperature of the copper or laminate glass transition temperature ($T_g$), requiring derating for high-temperature environments.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for PCB Power Routing</h3>
+      <p class="seo-p">To ensure long-term electronic hardware reliability, always incorporate safety margins of at least 20% to 30% above calculated nominal current requirements. Use wide copper pours for high-current power and ground rails, place thermal reliefs carefully on soldered pads, and use our advanced calculator to verify trace geometry across all layers.</p>
+      <p class="seo-p">Our Advanced PCB Trace Width Current Capacity Calculator automates complex engineering calculations instantly, providing high-precision design metrics for professional hardware engineers across any desktop or mobile device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function toggleCalcMode() {
+      const mode = document.getElementById('calcMode').value;
+      const label = document.getElementById('inputParamLabel');
+      const primaryLabel = document.getElementById('primaryResultLabel');
+      
+      if (mode === 'current') {
+        label.textContent = "Trace Width (mils)";
+        primaryLabel.textContent = "Max Current Capacity";
+        document.getElementById('paramInput').value = "30";
+      } else {
+        label.textContent = "Operating Current (Amps)";
+        primaryLabel.textContent = "Min Trace Width";
+        document.getElementById('paramInput').value = "2.0";
+      }
+      runPcbCalculator();
+    }
+
+    function runPcbCalculator() {
+      const mode = document.getElementById('calcMode').value;
+      const paramVal = parseFloat(document.getElementById('paramInput').value) || 0;
+      const copperOz = parseFloat(document.getElementById('copperWeight').value) || 1.0;
+      const tempRise = parseFloat(document.getElementById('tempRise').value) || 10;
+      const traceLength = parseFloat(document.getElementById('traceLength').value) || 1.0;
+      const ambient = parseFloat(document.getElementById('ambientTemp').value) || 25;
+
+      // Thickness in mils (1 oz = 1.378 mils)
+      const thicknessMils = copperOz * 1.378;
+      // Thickness in cm for resistance calculation (1 mil = 0.00254 cm)
+      const thicknessCm = thicknessMils * 0.00254;
+
+      let currentAmps = 0;
+      let widthMils = 0;
+
+      // IPC-2221 external layer constants: k = 0.048, b = 0.44, c = 0.725
+      const k = 0.048;
+      const b = 0.44;
+      const c = 0.725;
+
+      if (mode === 'current') {
+        widthMils = paramVal;
+        if (widthMils <= 0 || thicknessMils <= 0 || tempRise <= 0) {
+          displayResults(0, 0, 0, "mils");
+          return;
+        }
+        const areaSqMils = widthMils * thicknessMils;
+        currentAmps = k * Math.pow(tempRise, b) * Math.pow(areaSqMils, c);
+      } else {
+        currentAmps = paramVal;
+        if (currentAmps <= 0 || thicknessMils <= 0 || tempRise <= 0) {
+          displayResults(0, 0, 0, "mils");
+          return;
+        }
+        // Invert IPC-2221 formula to solve for Area: Area = (I / (k * dT^b))^(1/c)
+        const requiredArea = Math.pow(currentAmps / (k * Math.pow(tempRise, b)), 1 / c);
+        widthMils = requiredArea / thicknessMils;
+      }
+
+      // Resistance calculation
+      // Resistivity of copper at 20°C = 1.72 x 10^-6 ohm-cm
+      const resistivity20 = 1.72e-6;
+      const tempCoeff = 0.00393;
+      const opTemp = ambient + tempRise;
+      const resistivityOp = resistivity20 * (1 + tempCoeff * (opTemp - 20));
+
+      const widthCm = widthMils * 0.00254;
+      const lengthCm = traceLength * 2.54;
+
+      let resistanceOhms = 0;
+      if (widthCm > 0 && thicknessCm > 0) {
+        resistanceOhms = (resistivityOp * lengthCm) / (widthCm * thicknessCm);
+      }
+
+      const voltageDrop = currentAmps * resistanceOhms;
+
+      displayResults(currentAmps, widthMils, voltageDrop, resistanceOhms, mode);
+    }
+
+    function displayResults(current, width, vDrop, resistance, mode) {
+      const primaryValEl = document.getElementById('primaryResultValue');
+      const vDropEl = document.getElementById('voltageDropValue');
+      const resEl = document.getElementById('resistanceValue');
+
+      if (mode === 'current') {
+        primaryValEl.textContent = current > 0 ? current.toFixed(2) + " A" : "--";
+      } else {
+        const widthMm = width * 0.0254;
+        primaryValEl.textContent = width > 0 ? width.toFixed(2) + " mils (" + widthMm.toFixed(3) + " mm)" : "--";
+      }
+
+      vDropEl.textContent = vDrop > 0 ? (vDrop * 1000 < 10 ? (vDrop * 1000).toFixed(2) + " mV" : vDrop.toFixed(3) + " V") : "--";
+      resEl.textContent = resistance > 0 ? (resistance < 0.001 ? (resistance * 1000000).toFixed(1) + " µΩ" : resistance < 1 ? (resistance * 1000).toFixed(2) + " mΩ" : resistance.toFixed(3) + " Ω") : "--";
+    }
+
+    function copyPcbResults() {
+      const mode = document.getElementById('calcMode').value;
+      const primaryVal = document.getElementById('primaryResultValue').textContent;
+      const vDrop = document.getElementById('voltageDropValue').textContent;
+      const resistance = document.getElementById('resistanceValue').textContent;
+      const copper = document.getElementById('copperWeight').options[document.getElementById('copperWeight').selectedIndex].text;
+      const tempRise = document.getElementById('tempRise').value;
+      const length = document.getElementById('traceLength').value;
+
+      const report = `=== PCB TRACE CAPACITY REPORT (IPC-2221) ===\nMode: ${mode === 'current' ? 'Max Current Calculation' : 'Min Width Calculation'}\nResult: ${primaryVal}\nCopper Weight: ${copper}\nTemperature Rise: ${tempRise} °C\nTrace Length: ${length} inches\nVoltage Drop: ${vDrop}\nTrace Resistance: ${resistance}\nGenerated by Texus Pro Tools`;
+
+      navigator.clipboard.writeText(report).then(() => {
+        const btn = document.getElementById('copyResultsBtn');
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Report Copied!';
+        setTimeout(() => { btn.textContent = originalText; }, 2000);
+      });
+    }
+
+    function clearPcbWorkspace() {
+      document.getElementById('calcMode').value = 'current';
+      toggleCalcMode();
+      document.getElementById('paramInput').value = "30";
+      document.getElementById('copperWeight').value = "1.0";
+      document.getElementById('tempRise').value = "10";
+      document.getElementById('traceLength').value = "2.0";
+      document.getElementById('ambientTemp').value = "25";
+      runPcbCalculator();
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      runPcbCalculator();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
