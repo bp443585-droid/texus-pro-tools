@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Age on Mars and Planets Calculator | Interplanetary Age Converter</title>
+  <meta name="description" content="Calculate your exact age on Mars, Venus, Mercury, Jupiter, Saturn, Uranus, Neptune, and Pluto. Free online planetary age calculator with live orbital mechanics computations." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/age-on-mars-and-planets-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Age on Mars and Planets Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "EducationalApplication",
+    "description": "An advanced astronomical calculator that computes precise planetary ages, orbital years, and sol counts across solar system bodies based on Keplerian orbital mechanics.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 54px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PLANETARY GRID DISPLAY PANEL */
+    .planet-display-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 25px; }
+    .planet-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; transition: transform 0.2s, border-color 0.2s; }
+    .planet-card:hover { transform: translateY(-2px); border-color: #cbd5e1; }
+    .planet-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+    .planet-name { font-size: 1.15rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px; }
+    .planet-badge { font-size: 0.75rem; background: #e0e7ff; color: #3730a3; padding: 4px 8px; border-radius: 6px; font-weight: 700; text-transform: uppercase; }
+    .planet-stat-row { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.92rem; }
+    .planet-stat-label { color: #64748b; font-weight: 500; }
+    .planet-stat-val { font-weight: 700; color: #0f172a; font-family: monospace; font-size: 1.05rem; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field { height: 48px; font-size: 1rem; }
+      .planet-display-grid { grid-template-columns: 1fr; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🪐</span> Age on Mars and Planets Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="birthDateInput">Select Your Date of Birth</label>
+          <input type="date" id="birthDateInput" class="f-input-field" onchange="computePlanetaryAges()" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="earthAgeInput">Or Enter Earth Age in Years</label>
+          <input type="number" id="earthAgeInput" class="f-input-field" placeholder="e.g. 25" step="0.01" min="0" oninput="computeFromEarthYears()" />
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="computePlanetaryAges()">Recalculate Planetary Ages</button>
+        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyPlanetarySummary()">📋 Copy Summary</button>
+        <button class="f-btn f-btn-clear" onclick="clearPlanetaryWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Astronomical Calculations Active:</span>
+        Calculations use exact sidereal orbital periods and solar day durations derived from NASA JPL ephemeris standards. Adjusting either DOB or numerical age automatically synchronizes all celestial bodies.
+      </div>
+
+      <!-- RESULTS DISPLAY GRID -->
+      <div class="planet-display-grid" id="planetResultsGrid">
+        <!-- Dynamic Cards Inserted via JS -->
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Orbital Mechanics & Planetary Chronology: Computing Human Age Across Solar System Bodies</h2>
+      <p class="seo-p">Human perception of time is intrinsically tethered to Earth's rotational frequency and heliocentric orbital velocity. A single "year" represents one complete 365.256-day revolutions of planet Earth around the Sun, while a "day" signifies a 24-hour solar rotation on its axis. However, across the solar system, planetary orbital velocities and rotational periods vary wildly due to gravitational dynamics, semi-major axis distances, and axial inclinations.</p>
+      <p class="seo-p">Calculating your age on Mars, Venus, Mercury, or Jupiter is far more than a fun science trivia exercise—it is a practical demonstration of <strong>Kepler's Third Law of Planetary Motion</strong>. As distance from the host star increases, orbital circumferences expand while orbital speeds decay, creating drastic variations in planetary year lengths.</p>
+
+      <div class="seo-callout">
+        <strong>The Keplerian Orbital Rule:</strong> A planet's orbital period squared ($P^2$) is directly proportional to the cube of its semi-major axis distance ($a^3$) from the Sun ($P^2 = a^3$). Consequently, inner planets like Mercury zip around the Sun in just 88 Earth days, while outer giants like Neptune require nearly 165 Earth years to complete one orbit.
+      </div>
+
+      <h3 class="seo-h2">The Planetary Mathematical Framework</h3>
+      <p class="seo-p">To convert your age from Earth time to another celestial body, planetary scientists use two primary chronometric values: the <strong>Sidereal Orbital Period</strong> (length of a planetary year in Earth days) and the <strong>Solar Day Duration</strong> (length of one day-night cycle on the surface).</p>
+
+      <h4 class="seo-h3">1. Orbital Year Conversion Formula</h4>
+      <p class="seo-p">To calculate your precise age in planetary years ($Age_{Planet}$), we divide your total lived Earth days ($Days_{Lived}$) by the targeted planet's sidereal orbital period in Earth days ($Period_{Planet}$):</p>
+      <div style="background:#f1f5f9; padding:15px; border-radius:10px; font-family:monospace; margin-bottom:15px; font-weight:700;">
+        Age_Planet = Days_Lived / Orbital_Period_In_Earth_Days
+      </div>
+
+      <h4 class="seo-h3">2. Martian Sol Adjustments</h4>
+      <p class="seo-p">Mars has a unique solar day known as a <strong>Sol</strong>. A Martian Sol is approximately 24 hours, 39 minutes, and 35 seconds (1.027491 Earth days). A Martian year lasts 686.98 Earth days, which equates to exactly 668.6 Martian Sols. Thus, if you are 30 Earth years old, you have experienced roughly 15.95 Martian orbital years, but over 10,660 Martian Sols!</p>
+
+      <h4 class="seo-h3">3. Retrograde Rotations and Extreme Day-Year Inversions</h4>
+      <p class="seo-p">Venus presents one of the most remarkable anomalies in planetary science. It orbits the Sun in 224.7 Earth days, but takes 243 Earth days to rotate once on its axis in a retrograde direction. On Venus, a single planetary day is actually longer than a planetary year!</p>
+
+      <h3>Solar System Planetary Chronology Reference Matrix</h3>
+      <p class="seo-p">The following table details the fundamental astronomical parameters used by our real-time interactive calculation engine to compute planetary ages across major solar system bodies and dwarf planets:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Celestial Body</th>
+              <th>Semi-Major Axis (AU)</th>
+              <th>Orbital Period (Earth Days)</th>
+              <th>Orbital Period (Earth Years)</th>
+              <th>Solar Day Length (Hours/Days)</th>
+              <th>Age Multiplier Relative to Earth</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Mercury</b></td>
+              <td>0.387 AU</td>
+              <td>87.97 days</td>
+              <td>0.241 years</td>
+              <td>175.9 Earth days</td>
+              <td>4.152 × Earth Age</td>
+            </tr>
+            <tr>
+              <td><b>Venus</b></td>
+              <td>0.723 AU</td>
+              <td>224.70 days</td>
+              <td>0.615 years</td>
+              <td>116.7 Earth days</td>
+              <td>1.625 × Earth Age</td>
+            </tr>
+            <tr>
+              <td><b>Earth</b></td>
+              <td>1.000 AU</td>
+              <td>365.26 days</td>
+              <td>1.000 years</td>
+              <td>24.00 hours</td>
+              <td>1.000 × Earth Age</td>
+            </tr>
+            <tr>
+              <td><b>Mars</b></td>
+              <td>1.524 AU</td>
+              <td>686.98 days</td>
+              <td>1.881 years</td>
+              <td>24.66 hours (1 Sol)</td>
+              <td>0.532 × Earth Age</td>
+            </tr>
+            <tr>
+              <td><b>Jupiter</b></td>
+              <td>5.204 AU</td>
+              <td>4,332.59 days</td>
+              <td>11.862 years</td>
+              <td>9.93 hours</td>
+              <td>0.084 × Earth Age</td>
+            </tr>
+            <tr>
+              <td><b>Saturn</b></td>
+              <td>9.582 AU</td>
+              <td>10,759.22 days</td>
+              <td>29.457 years</td>
+              <td>10.70 hours</td>
+              <td>0.034 × Earth Age</td>
+            </tr>
+            <tr>
+              <td><b>Uranus</b></td>
+              <td>19.201 AU</td>
+              <td>30,685.40 days</td>
+              <td>84.017 years</td>
+              <td>17.24 hours</td>
+              <td>0.012 × Earth Age</td>
+            </tr>
+            <tr>
+              <td><b>Neptune</b></td>
+              <td>30.047 AU</td>
+              <td>60,189.00 days</td>
+              <td>164.791 years</td>
+              <td>16.11 hours</td>
+              <td>0.006 × Earth Age</td>
+            </tr>
+            <tr>
+              <td><b>Pluto (Dwarf)</b></td>
+              <td>39.482 AU</td>
+              <td>90,560.00 days</td>
+              <td>247.940 years</td>
+              <td>153.3 hours (6.39 days)</td>
+              <td>0.004 × Earth Age</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ)</h3>
+
+      <h3>How old would a 25-year-old Earthling be on Mars?</h3>
+      <p class="seo-p">On Mars, a 25-year-old human is approximately 13.29 Martian years old. This is calculated by multiplying 25 Earth years by 365.25 days to get ~9,131 Earth days lived, and then dividing by the Martian orbital period of 686.98 Earth days.</p>
+
+      <h3>What is the difference between an Earth day and a Martian Sol?</h3>
+      <p class="seo-p">An Earth day is 24 hours long. A Martian Sol (solar day) is approximately 24 hours, 39 minutes, and 35 seconds long (roughly 2.7% longer than an Earth day). Over a full Earth year, this subtle difference accumulates into a noticeable drift of about 10 days between solar counts.</p>
+
+      <h3>Why is your age on Jupiter so small compared to Earth?</h3>
+      <p class="seo-p">Because Jupiter is 5.2 Astronomical Units away from the Sun, its orbital path is immense, and its orbital speed is slower than Earth's. It takes Jupiter almost 12 Earth years (11.86 years) to complete a single revolution around the Sun. Thus, a 60-year-old human on Earth has experienced only 5 full Jovian years!</p>
+
+      <h3>Does biological aging slow down when calculating age on other planets?</h3>
+      <p class="seo-p">No. Biological aging is governed by biological cell cycles and cellular oxidation rates, which correlate to absolute time elapsed rather than planetary orbits. While your age in "Martian Years" will display a smaller number, your biological age remains identical across all planetary bodies (excluding microscopic Einsteinian general relativity time-dilation effects, which are negligible within our solar system).</p>
+
+      <h3 class="seo-h2">Summary: Mastering Interplanetary Time keeping</h3>
+      <p class="seo-p">Understanding how time is calculated across different celestial bodies offers crucial insights into astrophysics, space exploration logistics, and orbital dynamics. Whether planning mission lifespans for Mars rovers or calculating theoretical anniversaries on Saturn, planetary age calculations bridge the gap between human timekeeping and the laws of universal gravitation.</p>
+      <p class="seo-p">Use our free online Age on Mars and Planets Calculator whenever you need instant, high-precision planetary age metrics for educational, scientific, or entertainment purposes.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // Planetary Constant Matrix (in Earth Days)
+    const PLANETS = [
+      { name: "Mercury", icon: "☿️", orbitDays: 87.969, dayLength: "175.9 Earth Days", color: "#64748b" },
+      { name: "Venus", icon: "♀️", orbitDays: 224.701, dayLength: "116.7 Earth Days", color: "#d97706" },
+      { name: "Earth", icon: "🌍", orbitDays: 365.256, dayLength: "24 Hours", color: "#2563eb" },
+      { name: "Mars", icon: "♂️", orbitDays: 686.980, dayLength: "24h 39m (1 Sol)", color: "#dc2626" },
+      { name: "Jupiter", icon: "♃", orbitDays: 4332.589, dayLength: "9.93 Hours", color: "#b45309" },
+      { name: "Saturn", icon: "♄", orbitDays: 10759.22, dayLength: "10.7 Hours", color: "#ca8a04" },
+      { name: "Uranus", icon: "♅", orbitDays: 30685.4, dayLength: "17.24 Hours", color: "#0891b2" },
+      { name: "Neptune", icon: "♆", orbitDays: 60189.0, dayLength: "16.11 Hours", color: "#1d4ed8" },
+      { name: "Pluto", icon: "♇", orbitDays: 90560.0, dayLength: "6.39 Earth Days", color: "#475569" }
+    ];
+
+    // Initialize Default DOB to 25 Years Ago
+    window.addEventListener('DOMContentLoaded', () => {
+      const defaultDate = new Date();
+      defaultDate.setFullYear(defaultDate.getFullYear() - 25);
+      document.getElementById('birthDateInput').value = defaultDate.toISOString().split('T')[0];
+      computePlanetaryAges();
+    });
+
+    function computePlanetaryAges() {
+      const dobVal = document.getElementById('birthDateInput').value;
+      if (!dobVal) return;
+
+      const birthDate = new Date(dobVal);
+      const today = new Date();
+      const diffTime = Math.max(0, today - birthDate);
+      const totalEarthDays = diffTime / (1000 * 60 * 60 * 24);
+      const earthYears = totalEarthDays / 365.256;
+
+      document.getElementById('earthAgeInput').value = earthYears.toFixed(2);
+      renderPlanetCards(totalEarthDays);
+    }
+
+    function computeFromEarthYears() {
+      const earthYearsVal = parseFloat(document.getElementById('earthAgeInput').value);
+      if (isNaN(earthYearsVal) || earthYearsVal < 0) return;
+
+      const totalEarthDays = earthYearsVal * 365.256;
+      
+      // Update DOB picker roughly to
