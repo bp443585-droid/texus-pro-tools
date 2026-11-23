@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Golden Ratio Face Proportion Grid | Online Facial Aesthetics &amp; Phi Calculator</title>
+  <meta name="description" content="Overlay golden ratio grids, Marquardt Phi masks, and divine facial proportions onto any portrait photo. Calculate facial symmetry and aesthetic ratios instantly online." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/golden-ratio-face-proportion-grid/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Golden Ratio Face Proportion Grid Generator",
+    "operatingSystem": "Web",
+    "applicationCategory": "MultimediaApplication",
+    "description": "An interactive digital aesthetic mapping tool for applying Golden Ratio (Phi 1.618) grids, Marquardt masks, and symmetry lines onto portrait photographs.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    /* CANVAS CONTAINER STYLES */
+    .canvas-viewport-card {
+      position: relative;
+      width: 100%;
+      min-height: 440px;
+      background: #0f172a;
+      border: 2px dashed #cbd5e1;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+    #faceCanvas {
+      max-width: 100%;
+      max-height: 520px;
+      display: block;
+      cursor: move;
+    }
+    
+    /* CONTROL INPUT FORM STYLES */
+    .control-group {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .control-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .control-row label {
+      font-size: 0.82rem;
+      color: #334155;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      margin: 0;
+    }
+    .control-row input[type="range"] {
+      flex: 1;
+      accent-color: #2563eb;
+    }
+    .control-row select, .control-row input[type="color"] {
+      padding: 6px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background: #ffffff;
+      font-size: 0.88rem;
+      color: #0f172a;
+    }
+    
+    .metrics-card {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .metrics-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #1e40af;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .metric-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      color: #1e3a8a;
+      padding: 4px 0;
+      border-bottom: 1px dashed #dbeafe;
+    }
+    .metric-item:last-child { border-bottom: none; }
+    .metric-val { font-weight: 700; color: #0284c7; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e2e8; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+    .file-input-btn { display: none; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📐</span> Golden Ratio Face Proportion Grid</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <!-- LEFT PANEL: CANVAS WORKSPACE -->
+        <div class="f-panel-box">
+          <label>Interactive Portrait Viewport &amp; Overlay</label>
+          <div class="canvas-viewport-card">
+            <canvas id="faceCanvas" width="600" height="700"></canvas>
+          </div>
+          <p style="font-size:0.75rem; color:#64748b; margin:0;">💡 Click and drag directly on the canvas image to position the photo relative to the golden ratio grid.</p>
+        </div>
+        
+        <!-- RIGHT PANEL: GRID CONTROLS & PHI METRICS -->
+        <div class="f-panel-box">
+          <label>Overlay Configuration &amp; Aesthetics Control</label>
+          
+          <div class="control-group">
+            <div class="control-row">
+              <label for="gridPresetSelect">Proportion Overlay Mode</label>
+              <select id="gridPresetSelect" onchange="renderCanvas()">
+                <option value="marquardt">Marquardt Phi Mask / Golden Decagon</option>
+                <option value="thirds">Horizontal Facial Thirds (Tr-Sn-Me)</option>
+                <option value="fifths">Vertical Facial Fifths (Intercanthal)</option>
+                <option value="goldenBox">Golden Rectangle Grid Matrix</option>
+                <option value="goldenSpiral">Golden Spiral (Fibonacci)</option>
+              </select>
+            </div>
+
+            <div class="control-row">
+              <label for="gridScale">Grid Scale</label>
+              <input type="range" id="gridScale" min="0.3" max="2.2" step="0.01" value="1.0" oninput="renderCanvas()">
+            </div>
+
+            <div class="control-row">
+              <label for="gridOpacity">Grid Opacity</label>
+              <input type="range" id="gridOpacity" min="0.1" max="1.0" step="0.05" value="0.85" oninput="renderCanvas()">
+            </div>
+
+            <div class="control-row">
+              <label for="gridRotate">Grid Rotation (Degrees)</label>
+              <input type="range" id="gridRotate" min="-45" max="45" step="0.5" value="0" oninput="renderCanvas()">
+            </div>
+
+            <div class="control-row">
+              <label for="gridColor">Grid Line Color</label>
+              <input type="color" id="gridColor" value="#eab308" onchange="renderCanvas()">
+            </div>
+
+            <div class="control-row">
+              <label for="lineWidth">Line Stroke Weight</label>
+              <input type="range" id="lineWidth" min="1" max="5" step="0.5" value="2" oninput="renderCanvas()">
+            </div>
+          </div>
+
+          <div class="metrics-card">
+            <div class="metrics-title">
+              <span>Facial Harmony Metrics ($\Phi = 1.618$)</span>
+              <span id="phiScoreBadge" style="background:#2563eb; color:#fff; font-size:0.75rem; padding:2px 8px; border-radius:10px;">Score: 96%</span>
+            </div>
+            <div class="metric-item">
+              <span>Face Length / Width Ratio:</span>
+              <span class="metric-val" id="ratioLengthWidth">1.618 (Target: 1.618)</span>
+            </div>
+            <div class="metric-item">
+              <span>Intercanthal / Nose Width Ratio:</span>
+              <span class="metric-val" id="ratioNoseEye">1.000 (Target: 1.000)</span>
+            </div>
+            <div class="metric-item">
+              <span>Upper / Lower Face Segment:</span>
+              <span class="metric-val" id="ratioFaceThirds">1.618 (Target: 1.618)</span>
+            </div>
+            <div class="metric-item">
+              <span>Lips to Chin Symmetry Index:</span>
+              <span class="metric-val" id="ratioLipsChin">1.615 (Target: 1.618)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTONS STRIP -->
+      <div class="f-action-strip">
+        <label for="faceUploadInput" class="f-btn f-btn-convert" style="margin:0;">📷 Upload Photo</label>
+        <input type="file" id="faceUploadInput" class="file-input-btn" accept="image/*" onchange="handleImageUpload(event)">
+        
+        <button class="f-btn f-btn-copy" onclick="downloadAnnotatedPortrait()">💾 Download Vector Masked Image</button>
+        <button class="f-btn f-btn-clear" onclick="resetCanvasTransform()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Private Local Memory Processing Guarantee:</span>
+        All uploaded photos and alignment calculations are rendered natively on your device via HTML5 canvas memory. No images or face biometric details are transmitted to external servers.
+      </div>
+    </div>
+
+    <!-- SEO CONTENT CONTAINER -->
+    <div class="seo-container">
+      <h1 class="seo-title">The Geometry of Aesthetic Perception: Golden Ratio Face Grid Analysis and Divine Proportions in Human Facial Morphology</h1>
+      <p class="seo-p">Human perception of physical beauty and facial attractiveness has intrigued philosophers, artists, plastic surgeons, and scientists for millennia. From Classical Greek sculpture to modern maxillofacial surgery and digital avatar sculpting, the mathematical constant known as the **Golden Ratio** ($\Phi \approx 1.61803398875$) remains one of the most prominent theoretical benchmarks for evaluating facial harmony and structural proportions.</p>
+      <p class="seo-p">The **Golden Ratio Face Proportion Grid** provides an interactive, client-side digital workstation that allows researchers, aestheticians, digital artists, and individuals to superimpose standardized Phi grids, Marquardt masks, and tri-sectional facial division arrays over front-facing portrait photographs in real time.</p>
+
+      <div class="seo-callout">
+        <strong>The Divine Constant ($\Phi$):</strong> In mathematics, two quantities are in the golden ratio if their ratio is the same as the ratio of their sum to the larger of the two quantities:
+        <br><br>
+        $$\frac{a + b}{a} = \frac{a}{b} = \Phi \approx 1.61803398875$$
+        <br>
+        When mapped onto facial morphology, key anatomical landmarks—such as the trichion, subnasale, menton, intercanthal distance, and cheilion width—frequently exhibit proportional relationships matching this mathematical constant.
+      </div>
+
+      <h2 class="seo-h2">Anatomical Landmarks and Golden Ratio Mapping Parameters</h2>
+      <p class="seo-p">To perform precise cephalometric and aesthetic analysis using the online grid workspace, key anatomical landmarks across the neurocranium and viscerocranium must be aligned correctly:</p>
+
+      <h3 class="seo-h3">1. Vertical Facial Thirds (Trichion to Menton)</h3>
+      <p class="seo-p">In classical facial aesthetics, an attractive face is divided horizontally into three equal vertical segments:</p>
+      <ul class="seo-list">
+        <li><strong>Upper Third:</strong> From the Trichion (forehead hairline boundary) to the Nasion (bridge of the nose between the eyes).</li>
+        <li><strong>Middle Third:</strong> From the Nasion to the Subnasale (base of the nose columella).</li>
+        <li><strong>Lower Third:</strong> From the Subnasale to the Menton (lowest contour of the chin tip).</li>
+      </ul>
+      <p class="seo-p">Furthermore, within the lower third, the golden ratio dictates that the distance from the Subnasale to the Labiale Superius (upper lip opening) compared to the distance from the Labiale Inferius to the Menton forms a $1 : 1.618$ relationship.</p>
+
+      <h3 class="seo-h3">2. Horizontal Facial Fifths (Intercanthal Matrix)</h3>
+      <p class="seo-p">In a balanced face, the total width of the face measured across the zygomatic arches equals five times the width of an eye (from medial canthus to lateral canthus). The distance between the two eyes (intercanthal distance) should equal the width of one eye, which also ideally matches the width of the nasal alar base.</p>
+
+      <h3 class="seo-h3">3. The Marquardt Golden Mask Framework</h3>
+      <p class="seo-p">Developed by Dr. Stephen Marquardt, the Marquardt Phi Mask is a complex geometric grid constructed entirely from golden decagons and golden pentagons. The mask synthesizes key facial elements—eye sockets, nose bridge, lip curves, cheekbone highlights, and jawline contours—into a single mathematically cohesive framework. Aligning this mask with a portrait reveals subtle structural deviations and structural symmetry values.</p>
+
+      <h2 class="seo-h2">Facial Proportions &amp; Golden Ratio Reference Table</h2>
+      <p class="seo-p">The following table details key facial measurement pairs, their theoretical target Golden Ratio value, anatomical landmarks involved, and clinical or artistic significance:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Facial Measurement Pair</th>
+              <th>Anatomical Boundaries</th>
+              <th>Ideal $\Phi$ Target</th>
+              <th>Clinical &amp; Aesthetic Relevance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Overall Face Height vs. Width</td>
+              <td>Trichion-to-Menton / Zygomatic-to-Zygomatic</td>
+              <td>1.618</td>
+              <td>Determines baseline facial shape oval balance versus square or round structures.</td>
+            </tr>
+            <tr>
+              <td>Nose Length to Tip Projection</td>
+              <td>Nasion-to-Subnasale / Subnasale-to-Pronasale</td>
+              <td>1.618</td>
+              <td>Rhinoplasty reference line for tip rotation and nasal projection balance.</td>
+            </tr>
+            <tr>
+              <td>Intercanthal vs. Alar Width</td>
+              <td>Medial Canthus L-R / Alar Flare Width</td>
+              <td>1.000 (1:1)</td>
+              <td>Ensures central facial features do not appear constricted or excessively wide.</td>
+            </tr>
+            <tr>
+              <td>Subnasale-to-Stomion vs. Stomion-to-Menton</td>
+              <td>Philtrum Height / Lower Lip to Chin Height</td>
+              <td>1.618</td>
+              <td>Orthodontic and lip augmentation key standard for lower facial height.</td>
+            </tr>
+            <tr>
+              <td>Inter-Pupillary vs. Inter-Cheilion</td>
+              <td>Pupil Center L-R / Lip Corner L-R Width</td>
+              <td>1.618</td>
+              <td>Smile line width alignment relative to facial focal points.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="seo-h2">Frequently Asked Questions (FAQ)</h2>
+
+      <h3 class="seo-h3">How does camera focal length affect facial golden ratio measurements?</h3>
+      <p class="seo-p">Camera lens focal length significantly alters facial perspective. Short focal lengths (e.g., 24mm or 28mm smartphone lenses taken up close) introduce severe barrel distortion, causing the nose and central facial features to appear unnaturally large while narrowing the ears and cheekbones. For accurate facial aesthetics analysis, portraits should be captured with telephoto focal lengths between 85mm and 135mm at eye level under flat, diffuse lighting.</p>
+
+      <h3 class="seo-h3">Is absolute facial symmetry required for high aesthetic beauty?</h3>
+      <p class="seo-p">No. While the Golden Ratio grid measures geometric symmetry, studies in human perception demonstrate that perfect bilateral symmetry can look artificial or uncanny. Subtle micro-asymmetries contribute to natural expression, personality, and biological authenticity. The Golden Ratio serves as a structural framework rather than an absolute binary rule.</p>
+
+      <h3 class="seo-h3">Can this tool be used for cosmetic treatment planning or digital art?</h3>
+      <p class="seo-p">Yes. Digital artists, 3D character sculptors, makeup artists, and aesthetics practitioners use golden ratio overlay grids as visual references to calibrate facial proportions during sketching, digital modeling, or preliminary consultations.</p>
+
+      <h2 class="seo-h2">Summary: Mastering Digital Facial Proportion Analysis</h2>
+      <p class="seo-p">By superimposing standardized Phi grids onto high-resolution portraits, you gain deeper insights into facial symmetry, feature balance, and aesthetic composition. Use the scale, position, opacity, and rotation sliders on this web app to align key facial landmarks accurately, evaluate proportion ratios, and export high-resolution annotated overlay photos effortlessly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // DOM ELEMENTS
+    const canvas = document.getElementById('faceCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // IMAGE STATE
+    let currentImg = null;
+    let imgPos = { x: 0, y: 0 };
+    let isDragging = false;
+    let startMouse = { x: 0, y: 0 };
+    
+    // DEFAULT SYNTHETIC PORTRAIT GENERATOR (Renders when no custom photo is uploaded)
+    function drawDefaultPlaceholderFace() {
+      const offCanvas = document.createElement('canvas');
+      offCanvas.width = 600;
+      offCanvas.height = 700;
+      const octx = offCanvas.getContext('2d');
+
+      // Background Gradient
+      const bgGrad = octx.createLinearGradient(0, 0, 600, 700);
+      bgGrad.addColorStop(0, '#1e293b');
+      bgGrad.addColorStop(1, '#0f172a');
+      octx.fillStyle = bgGrad;
+      octx.fillRect(0, 0, 600, 700);
+
+      // Stylized Face Oval Vector
+      const centerX = 300;
+      const centerY = 330;
+      
+      // Neck
+      octx.fillStyle = '#cbd5e1';
+      octx.fillRect(centerX - 45, centerY + 140, 90, 160);
+
+      // Face Shape
+      octx.beginPath();
+      octx.ellipse(centerX, centerY, 140, 200,
