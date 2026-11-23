@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Countdown Days Until Event Calculator | Online Date & Time Counter</title>
+  <meta name="description" content="Calculate exact days, hours, minutes, and seconds until any event with our free real-time countdown calculator. Track business days, holidays, and milestones effortlessly." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/countdown-days-until-event-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Countdown Days Until Event Calculator",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Real-time date and time counter utility to calculate exact days, business days, hours, and seconds remaining until any target event.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 48px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* PRESET BUTTON STRIP */
+    .f-preset-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+    .f-preset-btn { background: #f1f5f9; border: 1px solid #cbd5e1; color: #334155; font-size: 0.78rem; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: all 0.15s ease; text-transform: uppercase; letter-spacing: 0.3px; }
+    .f-preset-btn:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    /* LIVE TIMER DISPLAY MATRIX */
+    .timer-matrix-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
+    .timer-card { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px 10px; text-align: center; transition: all 0.2s ease; }
+    .timer-card:hover { border-color: #3b82f6; transform: translateY(-2px); }
+    .timer-num { font-size: 2.5rem; font-weight: 800; color: #2563eb; line-height: 1; font-family: 'Courier New', Courier, monospace; }
+    .timer-label { font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-top: 8px; }
+
+    /* STATS SUMMARY DISPLAY BOX */
+    .f-stats-box { background: #f1f5f9; border-radius: 16px; padding: 20px; margin-top: 20px; border: 1px solid #e2e8f0; }
+    .f-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center; }
+    .f-stat-item { background: #ffffff; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; }
+    .f-stat-val { font-size: 1.15rem; font-weight: 800; color: #0f172a; margin-bottom: 4px; font-family: 'Courier New', Courier, monospace; }
+    .f-stat-lbl { font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .timer-matrix-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .f-stats-grid { grid-template-columns: 1fr; gap: 10px; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 16px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+      .timer-num { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⏳</span> Countdown Days Until Event Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="eventName">Event Name / Description</label>
+          <input type="text" id="eventName" class="f-input-field" placeholder="e.g., New Year Celebration, Product Launch, Wedding..." value="My Next Big Event" oninput="calculateCountdown()">
+          <div class="f-preset-strip">
+            <button class="f-preset-btn" onclick="applyPreset('newyear')">🎉 New Year</button>
+            <button class="f-preset-btn" onclick="applyPreset('christmas')">🎄 Christmas</button>
+            <button class="f-preset-btn" onclick="applyPreset('30days')">🗓️ +30 Days</button>
+            <button class="f-preset-btn" onclick="applyPreset('100days')">🚀 +100 Days</button>
+          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="targetDateTime">Target Date & Time</label>
+          <input type="datetime-local" id="targetDateTime" class="f-input-field" onchange="calculateCountdown()">
+          <div style="font-size: 0.78rem; color: #64748b; margin-top: 6px; font-weight: 500;">
+            📍 Calculated in your local system time zone.
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN COUNTDOWN MATRIX -->
+      <div class="timer-matrix-grid">
+        <div class="timer-card">
+          <div class="timer-num" id="cdDays">00</div>
+          <div class="timer-label">Days</div>
+        </div>
+        <div class="timer-card">
+          <div class="timer-num" id="cdHours">00</div>
+          <div class="timer-label">Hours</div>
+        </div>
+        <div class="timer-card">
+          <div class="timer-num" id="cdMinutes">00</div>
+          <div class="timer-label">Minutes</div>
+        </div>
+        <div class="timer-card">
+          <div class="timer-num" id="cdSeconds">00</div>
+          <div class="timer-label">Seconds</div>
+        </div>
+      </div>
+
+      <!-- DETAILED METRIC BREAKDOWN BOX -->
+      <div class="f-stats-box">
+        <div class="f-stats-grid">
+          <div class="f-stat-item">
+            <div class="f-stat-val" id="statBusinessDays">0</div>
+            <div class="f-stat-lbl">Business Days Remaining</div>
+          </div>
+          <div class="f-stat-item">
+            <div class="f-stat-val" id="statTotalHours">0</div>
+            <div class="f-stat-lbl">Total Hours</div>
+          </div>
+          <div class="f-stat-item">
+            <div class="f-stat-val" id="statTargetDay">--</div>
+            <div class="f-stat-lbl">Target Day of Week</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateCountdown()">🔄 Recalculate Now</button>
+        <button class="f-btn f-btn-copy" id="copyCountdownBtn" onclick="copyCountdownSummary()">📋 Copy Event Summary</button>
+        <button class="f-btn f-btn-clear" onclick="resetCountdownWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Live Ticking Counter Activated:</span>
+        Your event countdown updates automatically every second in real time inside your browser memory. Preset triggers allow rapid scenario planning for upcoming project milestones and holiday timelines.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Chronometry of Temporal Planning: Precision Countdown Metrics, Event Horizon Calculations, and Calendar Systems Architecture</h2>
+      <p class="seo-p">Whether organizing enterprise product releases, planning international academic conferences, tracking contract execution deadlines, or eagerly anticipating personal milestones like weddings and vacations, precise temporal measurement remains fundamental to effective project execution. Calculating the exact remaining time until a future event involves navigating complex calendar structures, leap year adjustments, time zone shifts, Daylight Saving Time (DST) offsets, and business day distributions.</p>
+      <p class="seo-p">This engineering guide breaks down the underlying mathematics of temporal delta calculations, examines epoch timestamp conversions, contrasts calendar day tracking against business working day metrics, and provides practical methods for structuring time-sensitive project roadmaps.</p>
+
+      <div class="seo-callout">
+        <strong>The Epoch Baseline Principle:</strong> Modern computing systems represent temporal points using POSIX/Unix timestamps—the total number of non-leap seconds elapsed since 00:00:00 UTC on January 1, 1970. Real-time event countdowns compute the absolute delta $(\Delta t = t_{\text{target}} - t_{\text{current}})$ across local system offsets to eliminate time zone ambiguity.
+      </div>
+
+      <h3 class="seo-h2">Mathematical Mechanics of Event Countdown Calculations</h3>
+      <p class="seo-p">Determining the exact time remaining between two temporal points requires a systematic decomposition of time units. Below is the step-by-step mathematical breakdown executed by client-side calculation engines:</p>
+
+      <h4 class="seo-h3">1. Millisecond Delta Extraction</h4>
+      <p class="seo-p">The system calculates the exact difference in UNIX time milliseconds ($\Delta M$) between the target ISO 8601 string and the current client system clock:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f1f5f9; padding: 10px 14px; border-radius: 8px; font-weight: 700; color: #0f172a;">&Delta;M = TargetTimestampMs - CurrentTimestampMs</p>
+
+      <h4 class="seo-h3">2. Positional Unit Breakdown</h4>
+      <p class="seo-p">To convert the raw millisecond delta into human-readable metrics (Days, Hours, Minutes, Seconds), integer division and modulo math are applied sequentially:</p>
+      <ul class="seo-list">
+        <li><strong>Days ($D$):</strong> $\lfloor \Delta M / (1000 \times 60 \times 60 \times 24) \rfloor$</li>
+        <li><strong>Hours ($H$):</strong> $\lfloor (\Delta M \pmod{86,400,000}) / (1000 \times 60 \times 60) \rfloor$</li>
+        <li><strong>Minutes ($M$):</strong> $\lfloor (\Delta M \pmod{3,600,000}) / (1000 \times 60) \rfloor$</li>
+        <li><strong>Seconds ($S$):</strong> $\lfloor (\Delta M \pmod{60,000}) / 1000 \rfloor$</li>
+      </ul>
+
+      <h4 class="seo-h3">3. Business Working Day Filtering</h4>
+      <p class="seo-p">Calendar day counts include Saturdays and Sundays. For commercial project tracking, business days ($\text{BD}$) are isolated by iterating through each calendar day in the delta range and excluding weekend days (Day 0 = Sunday, Day 6 = Saturday in standard ECMAScript conventions).</p>
+
+      <h3>Temporal Measurement Matrices: Metric Comparisons Across Horizons</h3>
+      <p class="seo-p">Understanding how time totals scale across different units helps event planners communicate schedules effectively with executive stakeholders and technical teams:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Time Duration Horizon</th>
+              <th>Calendar Days</th>
+              <th>Approx. Business Days</th>
+              <th>Total Hours</th>
+              <th>Total Minutes</th>
+              <th>Total Seconds</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 Week</td>
+              <td>7 Days</td>
+              <td>5 Days</td>
+              <td>168 Hours</td>
+              <td>10,080 Mins</td>
+              <td>604,800 Secs</td>
+            </tr>
+            <tr>
+              <td>30-Day Sprint</td>
+              <td>30 Days</td>
+              <td>21–22 Days</td>
+              <td>720 Hours</td>
+              <td>43,200 Mins</td>
+              <td>2,592,000 Secs</td>
+            </tr>
+            <tr>
+              <td>1 Quarter (90 Days)</td>
+              <td>90 Days</td>
+              <td>64–65 Days</td>
+              <td>2,160 Hours</td>
+              <td>129,600 Mins</td>
+              <td>7,776,000 Secs</td>
+            </tr>
+            <tr>
+              <td>Half Year (182 Days)</td>
+              <td>182 Days</td>
+              <td>130 Days</td>
+              <td>4,368 Hours</td>
+              <td>262,080 Mins</td>
+              <td>15,724,800 Secs</td>
+            </tr>
+            <tr>
+              <td>1 Calendar Year (Std)</td>
+              <td>365 Days</td>
+              <td>260–261 Days</td>
+              <td>8,760 Hours</td>
+              <td>525,600 Mins</td>
+              <td>31,536,000 Secs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Temporal Diagnostic Segment</h3>
+
+      <h3>How does daylight saving time (DST) affect countdown calculations?</h3>
+      <p class="seo-p">When a countdown crosses a Daylight Saving Time boundary, the local clock shifts by +1 or -1 hour. Our tool converts both your current local time and the target date into absolute Unix timestamps. This ensures that the overall elapsed physical time remains 100% accurate regardless of clock adjustments.</p>
+
+      <h3>What is the difference between calendar days and business days?</h3>
+      <p class="seo-p">Calendar days represent every 24-hour cycle on the Gregorian calendar without exception. Business days (working days) measure active commercial days, typically Monday through Friday, excluding weekend days. Business day metrics are vital for software sprints, legal compliance windows, and shipment arrival estimates.</p>
+
+      <h3>Can this calculator count up from an event that has already passed?</h3>
+      <p class="seo-p">Yes! If you enter a date in the past, the calculator automatically shifts into count-up mode, informing you exactly how many days, hours, and minutes have elapsed since that milestone occurred.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Event Schedule Execution</h3>
+      <p class="seo-p">Maintaining clear visibility over remaining time prevents scheduling bottlenecks and improves deadline accountability. By monitoring real-time countdown breakdowns alongside business day metrics, teams can adjust resource allocation dynamically as project deadlines approach.</p>
+      <p class="seo-p">Utilize Texus Pro Tools' Countdown Days Until Event Calculator to organize upcoming releases, track holiday timelines, and manage complex schedules effortlessly in your browser.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let timerInterval = null;
+
+    // Initialize Default Target Date: 30 days from now at 09:00 AM
+    window.addEventListener('DOMContentLoaded', () => {
+      const defaultDate = new Date();
+      defaultDate.setDate(defaultDate.getDate() + 30);
+      defaultDate.setHours(9, 0, 0, 0);
+
+      const year = defaultDate.getFullYear();
+      const month = String(defaultDate.getMonth() + 1).padStart(2, '0');
+      const day = String(defaultDate.getDate()).padStart(2, '0');
+      const hours = String(defaultDate.getHours()).padStart(2, '0');
+      const minutes = String(defaultDate.getMinutes()).padStart(2, '0');
+
+      document.getElementById('targetDateTime').value = `${year}-${month}-${day}T${hours}:${minutes}`;
+      
+      calculateCountdown();
+      timerInterval = setInterval(calculateCountdown, 1000);
+    });
