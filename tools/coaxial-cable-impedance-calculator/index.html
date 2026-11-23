@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Coaxial Cable Impedance Calculator | RF & Transmission Line Tool</title>
+  <meta name="description" content="Calculate characteristic impedance ($Z_0$), capacitance, and inductance of coaxial cables instantly with our free online Coaxial Cable Impedance Calculator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/coaxial-cable-impedance-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Coaxial Cable Impedance Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "EngineeringApplication",
+    "description": "An advanced RF engineering calculator to determine characteristic impedance, distributed capacitance, and inductance of coaxial transmission lines.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CUSTOM INPUT & RESULT GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-result-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; }
+    .f-result-item { margin-bottom: 15px; }
+    .f-result-item:last-child { margin-bottom: 0; }
+    .f-result-label { font-size: 0.8rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .f-result-value { font-size: 1.5rem; font-weight: 800; color: #0f172a; font-family: 'Courier New', Courier, monospace; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📡</span> Coaxial Cable Impedance Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="innerDiameter">Inner Conductor Diameter (d)</label>
+          <input type="number" id="innerDiameter" class="f-input-field" value="1.0" step="0.01" min="0.001" placeholder="e.g. 1.0">
+          
+          <label for="outerDiameter" style="margin-top: 12px;">Outer Conductor Inner Diameter (D)</label>
+          <input type="number" id="outerDiameter" class="f-input-field" value="3.5" step="0.01" min="0.001" placeholder="e.g. 3.5">
+
+          <label for="dielectricConstant" style="margin-top: 12px;">Relative Dielectric Permittivity (&epsilon;<sub>r</sub>)</label>
+          <input type="number" id="dielectricConstant" class="f-input-field" value="2.25" step="0.01" min="1.0" placeholder="e.g. 2.25 (Solid PE)">
+
+          <label for="unitSelect" style="margin-top: 12px;">Dimension Units</label>
+          <select id="unitSelect" class="f-select-field">
+            <option value="mm">Millimeters (mm)</option>
+            <option value="in">Inches (in)</option>
+            <option value="mil">Mils (mils)</option>
+          </select>
+        </div>
+        
+        <div class="f-result-box">
+          <div class="f-result-item">
+            <div class="f-result-label">Characteristic Impedance (Z₀)</div>
+            <div class="f-result-value" id="resImpedance">50.00 &Omega;</div>
+          </div>
+          <div class="f-result-item">
+            <div class="f-result-label">Distributed Capacitance (C)</div>
+            <div class="f-result-value" id="resCapacitance">100.00 pF/m</div>
+          </div>
+          <div class="f-result-item">
+            <div class="f-result-label">Distributed Inductance (L)</div>
+            <div class="f-result-value" id="resInductance">250.00 nH/m</div>
+          </div>
+          <div class="f-result-item">
+            <div class="f-result-label">Velocity Factor (VF)</div>
+            <div class="f-result-value" id="resVelocity">0.67</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateImpedance()">Calculate Impedance</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResults()">📋 Copy Results</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ RF Engineering Formula Applied:</span>
+        Calculated using standard coaxial equations: $Z_0 = \frac{138}{\sqrt{\varepsilon_r}} \log_{10}\left(\frac{D}{d}\right)$. Values update instantly upon editing dimensions or selecting preset dielectrics.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Engineering Physics of Transmission Lines: Coaxial Cable Characteristic Impedance, Dielectric Constants, and RF Signal Propagation</h2>
+      <p class="seo-p">Designing high-frequency RF systems, telecommunication networks, antenna feeds, and high-speed digital interconnects requires an absolute mastery of coaxial transmission line physics. The characteristic impedance ($Z_0$) of a coaxial cable governs how electromagnetic waves travel through the medium without experiencing destructive reflections, standing waves, or severe attenuation losses.</p>
+      <p class="seo-p">This extensive engineering reference guide explores the mathematical foundations of coaxial cable design, analyzes the impact of conductor geometries and dielectric core materials, reviews velocity factors, and outlines practical strategies for optimizing impedance matching across diverse radio frequency bands.</p>
+
+      <div class="seo-callout">
+        <strong>The Impedance Equilibrium:</strong> Characteristic impedance is independent of physical cable length. It is determined exclusively by the ratio of the outer conductor diameter to the inner conductor diameter and the relative permittivity of the insulating dielectric material separating them.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Mathematical Equations and Derivations</h3>
+      <p class="seo-p">When high-frequency alternating current travels down a coaxial cable, distributed parameters dictate its electrical performance:</p>
+
+      <h4 class="seo-h3">1. Characteristic Impedance ($Z_0$)</h4>
+      <p class="seo-p">The formula for characteristic impedance in ohms ($\Omega$) for a low-loss coaxial cable is expressed as:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px;">Z₀ = (138 / √εᵣ) × log₁₀(D / d)</p>
+      <p class="seo-p">Where $D$ is the inner diameter of the outer conductor, $d$ is the diameter of the inner conductor, and $\varepsilon_r$ is the relative dielectric constant of the insulating medium.</p>
+
+      <h4 class="seo-h3">2. Distributed Capacitance ($C$) and Inductance ($L$)</h4>
+      <p class="seo-p">The distributed capacitance per unit length (pF/m) is governed by the dielectric permittivity and geometry:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px;">C = (24.16 × εᵣ) / log₁₀(D / d)  [pF/m]</p>
+      <p class="seo-p">The distributed inductance per unit length (nH/m) is calculated via:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px;">L = 200 × ln(D / d)  [nH/m]</p>
+
+      <h4 class="seo-h3">3. Velocity Factor ($VF$)</h4>
+      <p class="seo-p">The velocity factor represents the speed of wave propagation relative to the speed of light in a vacuum ($c$), determined by the inverse square root of the relative dielectric constant:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px;">VF = 1 / √εᵣ</p>
+
+      <h3>Standard Coaxial Cable Types and Dielectric Properties</h3>
+      <p class="seo-p">Different applications require specific characteristic impedance ratings. While 50-ohm cables maximize power handling and minimize attenuation for radio transmitters, 75-ohm cables offer lower signal attenuation per unit length, making them ideal for long-distance video and broadband distribution.</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Cable Standard</th>
+              <th>Impedance ($Z_0$)</th>
+              <th>Dielectric Material</th>
+              <th>Dielectric Constant ($\varepsilon_r$)</th>
+              <th>Velocity Factor ($VF$)</th>
+              <th>Primary Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>RG-58 / U</td>
+              <td><b>50 &Omega;</b></td>
+              <td>Solid Polyethylene</td>
+              <td>2.25</td>
+              <td>0.67</td>
+              <td>Two-way radio, amateur radio antenna feeds, Ethernet basebands.</td>
+            </tr>
+            <tr>
+              <td>RG-213</td>
+              <td><b>50 &Omega;</b></td>
+              <td>Solid Polyethylene</td>
+              <td>2.25</td>
+              <td>0.67</td>
+              <td>High-power HF/VHF transmission lines and military RF links.</td>
+            </tr>
+            <tr>
+              <td>RG-6 / U</td>
+              <td><b>75 &Omega;</b></td>
+              <td>Foamed Polyethylene</td>
+              <td>1.50</td>
+              <td>0.82</td>
+              <td>Cable television (CATV), satellite dishes, broadband internet (DOCSIS).</td>
+            </tr>
+            <tr>
+              <td>RG-59 / U</td>
+              <td><b>75 &Omega;</b></td>
+              <td>Solid Polyethylene</td>
+              <td>2.25</td>
+              <td>0.67</td>
+              <td>CCTV analog security cameras, baseband video signals.</td>
+            </tr>
+            <tr>
+              <td>Air-Spaced Rigid</td>
+              <td><b>50 &Omega;</b></td>
+              <td>Dry Air / PTFE Spacers</td>
+              <td>1.00</td>
+              <td>0.99</td>
+              <td>High-power broadcast transmitter antenna feeds.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Engineering Diagnostic Segment</h3>
+
+      <h3>Why are 50 ohms and 75 ohms the standard impedances for coaxial cables?</h3>
+      <p class="seo-p">Research conducted at Bell Labs in the 1920s and 1930s revealed that an impedance of approximately 77 ohms provides the lowest signal attenuation in air-dielectric coaxial cables, while 30 ohms yields maximum power handling capacity. When solid polyethylene dielectric materials were introduced ($\varepsilon_r \approx 2.25$), the optimal attenuation impedance shifted to roughly 75 ohms, and power handling settled near 50 ohms. These standardized values became worldwide benchmarks.</p>
+
+      <h3>How does skin effect alter high-frequency performance in coaxial lines?</h3>
+      <p class="seo-p">At higher frequencies, alternating current concentrates along the outer skin of the inner conductor and the inner skin of the outer shield due to electromagnetic skin depth phenomena. Resistance increases proportionally with the square root of frequency, creating insertion loss that must be accounted for in long cable runs.</p>
+
+      <h3>Is coaxial cable impedance affected by physical length?</h3>
+      <p class="seo-p">No. Characteristic impedance is an intrinsic property determined strictly by the physical dimensions (conductor diameters) and the electromagnetic properties of the dielectric material. Cutting a cable to a shorter length changes its total capacitance and resistance, but its characteristic impedance remains constant.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for RF Transmission Line Design</h3>
+      <p class="seo-p">To ensure optimal signal integrity and minimize VSWR (Voltage Standing Wave Ratio) reflection losses, verify that your source impedance, transmission line characteristic impedance, and load impedance match precisely. Use high-quality dielectric materials with low dissipation factors for high-frequency GHz applications.</p>
+      <p class="seo-p">Our Coaxial Cable Impedance Calculator automates complex transmission line mathematics instantly, allowing RF engineers, amateur radio operators, and hardware designers to evaluate physical geometries and dielectric properties with absolute precision.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    function calculateImpedance() {
+      const d = parseFloat(document.getElementById('innerDiameter').value);
+      const D = parseFloat(document.getElementById('outerDiameter').value);
+      const er = parseFloat(document.getElementById('dielectricConstant').value);
+      const unit = document.getElementById('unitSelect').value;
+
+      if (isNaN(d) || isNaN(D) || isNaN(er) || d <= 0 || D <= 0 || er < 1 || D <= d) {
+        document.getElementById('resImpedance').innerText = "Invalid Input";
+        document.getElementById('resCapacitance').innerText = "-";
+        document.getElementById('resInductance').innerText = "-";
+        document.getElementById('resVelocity').innerText = "-";
+        return;
+      }
+
+      // Characteristic Impedance Z0 = (138 / sqrt(er)) * log10(D / d)
+      const z0 = (138.0 / Math.sqrt(er)) * Math.log10(D / d);
+
+      // Distributed Capacitance C (pF/m) = (24.16 * er) / log10(D / d)
+      // Note: formula yields pF per meter when dimensions are in consistent units (ratio is unitless)
+      const c = (24.16 * er) / Math.log10(D / d);
+
+      // Distributed Inductance L (nH/m) = 200 * ln(D / d) = 460.52 * log10(D / d)
+      const l = 200 * Math.log(D / d);
+
+      // Velocity Factor VF = 1 / sqrt(er)
+      const vf = 1 / Math.sqrt(er);
+
+      document.getElementById('resImpedance').innerText = z0.toFixed(2) + " Ω";
+      document.getElementById('resCapacitance').innerText = c.toFixed(2) + " pF/m";
+      document.getElementById('resInductance').innerText = l.toFixed(2) + " nH/m";
+      document.getElementById('resVelocity').innerText = vf.toFixed(3);
+    }
+
+    function clearCalculator() {
+      document.getElementById('innerDiameter').value = '1.0';
+      document.getElementById('outerDiameter').value = '3.5';
+      document.getElementById('dielectricConstant').value = '2.25';
+      document.getElementById('unitSelect').value = 'mm';
+      calculateImpedance();
+    }
+
+    function copyResults() {
+      const z0 = document.getElementById('resImpedance').innerText;
+      const c = document.getElementById('resCapacitance').innerText;
+      const l = document.getElementById('resInductance').innerText;
+      const vf = document.getElementById('resVelocity').innerText;
+      
+      const payload = `Coaxial Cable Calculation Results:\n- Characteristic Impedance (Z0): ${z0}\n- Distributed Capacitance (C): ${c}\n- Distributed Inductance (L): ${l}\n- Velocity Factor (VF): ${vf}`;
+      
+      navigator.clipboard.writeText(payload).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.innerText = '✓ Copied Results';
+        setTimeout(() => { btn.innerText = '📋 Copy Results'; }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+
+    // Initialize calculation on load & input changes
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateImpedance();
+      ['innerDiameter', 'outerDiameter', 'dielectricConstant', 'unitSelect'].forEach(id => {
+        document.getElementById(id).addEventListener('input', calculateImpedance);
+        document.getElementById(id).addEventListener('change', calculateImpedance);
+      });
+    });
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
