@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Pixel Density Viewport Scale Calculator | DPR & Screen Scale Tool</title>
+  <meta name="description" content="Calculate screen pixel density (PPI), CSS viewport dimensions, device pixel ratio (DPR), and layout scale factors instantly for responsive UI web design." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/pixel-density-viewport-scale-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Pixel Density Viewport Scale Calculator",
+    "operatingSystem": "Web",
+    "applicationCategory": "DeveloperApplication",
+    "description": "An advanced developer utility for calculating Device Pixel Ratio (DPR), logical CSS viewport resolutions, screen PPI density, and layout scaling media queries.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CONTROL & FORM ELEMENTS */
+    .f-grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 25px; }
+    .f-input-group { display: flex; flex-direction: column; gap: 6px; text-align: left; }
+    .f-input-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-select-field, .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; font-weight: 600; }
+    .f-select-field:focus, .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS STATS GRID */
+    .f-results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 25px 0; }
+    .f-stat-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px; text-align: left; transition: transform 0.15s ease; }
+    .f-stat-card:hover { transform: translateY(-2px); border-color: #cbd5e1; }
+    .f-stat-label { font-size: 0.78rem; text-transform: uppercase; font-weight: 700; color: #64748b; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .f-stat-value { font-size: 1.5rem; font-weight: 800; color: #0f172a; word-break: break-all; }
+    .f-stat-sub { font-size: 0.8rem; color: #2563eb; font-weight: 600; margin-top: 4px; }
+
+    /* CODE OUTPUT CONSOLE */
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; margin-top: 15px; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-textarea-field { width: 100%; height: 110px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; color: #0f172a; background: #f1f5f9; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-grid-4 { grid-template-columns: 1fr; gap: 15px; }
+      .f-results-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .f-textarea-field { height: 130px; font-size: 0.88rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .f-results-grid { grid-template-columns: 1fr; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📱</span> Pixel Density Viewport Scale Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-input-group" style="margin-bottom: 22px;">
+        <label for="devicePreset">Select Quick Device Preset (Optional)</label>
+        <select id="devicePreset" class="f-select-field" onchange="loadPreset()">
+          <option value="custom">-- Custom Manual Input --</option>
+          <option value="iphone15pro" selected>Apple iPhone 15 Pro (2556 × 1179 @ 3x, 6.1")</option>
+          <option value="iphone14">Apple iPhone 14 / 13 (2532 × 1170 @ 3x, 6.1")</option>
+          <option value="iphoneSE">Apple iPhone SE 3rd Gen (1334 × 750 @ 2x, 4.7")</option>
+          <option value="ipadPro12">Apple iPad Pro 12.9" M2 (2732 × 2048 @ 2x, 12.9")</option>
+          <option value="macbookPro16">Apple MacBook Pro 16" (3456 × 2234 @ 2x, 16.2")</option>
+          <option value="galaxyS24">Samsung Galaxy S24 (2340 × 1080 @ 3x, 6.2")</option>
+          <option value="pixel8pro">Google Pixel 8 Pro (2992 × 1344 @ 3x, 6.7")</option>
+          <option value="desktop4k">4K Ultra HD Monitor (3840 × 2160 @ 1.5x scale, 27")</option>
+          <option value="desktop1080">Standard 1080p Desktop (1920 × 1080 @ 1x scale, 24")</option>
+        </select>
+      </div>
+
+      <div class="f-grid-4">
+        <div class="f-input-group">
+          <label for="physWidth">Physical Width (px)</label>
+          <input type="number" id="physWidth" class="f-input-field" value="2556" min="1" oninput="recalculate('physical')">
+        </div>
+
+        <div class="f-input-group">
+          <label for="physHeight">Physical Height (px)</label>
+          <input type="number" id="physHeight" class="f-input-field" value="1179" min="1" oninput="recalculate('physical')">
+        </div>
+
+        <div class="f-input-group">
+          <label for="dprScale">Device Pixel Ratio (DPR)</label>
+          <input type="number" id="dprScale" class="f-input-field" value="3" step="0.05" min="0.5" max="10" oninput="recalculate('dpr')">
+        </div>
+
+        <div class="f-input-group">
+          <label for="screenDiagonal">Screen Diagonal (Inches)</label>
+          <input type="number" id="screenDiagonal" class="f-input-field" value="6.1" step="0.1" min="0.5" oninput="recalculate('screen')">
+        </div>
+      </div>
+
+      <!-- CALCULATED STATS SUMMARY -->
+      <div class="f-results-grid">
+        <div class="f-stat-card">
+          <div class="f-stat-label">CSS Viewport Size</div>
+          <div class="f-stat-value" id="statViewport">852 × 393 px</div>
+          <div class="f-stat-sub" id="statAspect">Aspect Ratio: 19.5 : 9</div>
+        </div>
+
+        <div class="f-stat-card">
+          <div class="f-stat-label">Pixel Density (PPI / DPI)</div>
+          <div class="f-stat-value" id="statPPI">460 PPI</div>
+          <div class="f-stat-sub" id="statDensityClass">High-DPI Retina Class</div>
+        </div>
+
+        <div class="f-stat-card">
+          <div class="f-stat-label">Scaling Factor</div>
+          <div class="f-stat-value" id="statScale">300%</div>
+          <div class="f-stat-sub" id="statDPR">DPR Scale = 3.00x</div>
+        </div>
+
+        <div class="f-stat-card">
+          <div class="f-stat-label">Total Render Pixels</div>
+          <div class="f-stat-value" id="statTotalMP">3.01 MP</div>
+          <div class="f-stat-sub" id="statTotalPixels">3,013,524 Total Px</div>
+        </div>
+      </div>
+
+      <div class="f-panel-box">
+        <label for="cssMediaSnippet">Generated CSS Viewport & DPR Media Query</label>
+        <textarea id="cssMediaSnippet" class="f-textarea-field mono-font-panel" readonly></textarea>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="recalculate('force')">Recalculate Scale</button>
+        <button class="f-btn f-btn-copy" id="copyCssBtn" onclick="copyCssSnippet()">📋 Copy CSS Media Query</button>
+        <button class="f-btn f-btn-clear" onclick="resetForm()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Interactive Viewport Scaling Engine:</span>
+        Adjusting physical resolution or Device Pixel Ratio (DPR) instantly recalculates logical layout breakpoints, density metrics, and matching CSS media queries for high-DPI responsive design.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Mechanics of Pixel Density, Viewport Scaling, and Device Pixel Ratios in Modern Web Architecture</h2>
+      <p class="seo-p">Navigating screen resolutions across mobile smartphones, high-resolution laptops, and ultra-wide desktop monitors demands an explicit technical distinction between hardware physical pixels and logical CSS pixels. In early browser engineering, one CSS pixel mapped directly to one hardware screen dot. However, the introduction of high-density displays—such as Apple Retina panels, 4K displays, and quad-HD mobile OLED matrices—decoupled visual rendering from raw device pixels. Modern web browsers utilize dynamic Device Pixel Ratios (DPR) to scale document layouts into legible, crisp interfaces.</p>
+      <p class="seo-p">This engineering manual provides an in-depth breakdown of pixel density dynamics, screen scale factors, Pixels Per Inch (PPI) geometry, and implementation strategies for building pixel-perfect responsive web applications.</p>
+
+      <div class="seo-callout">
+        <strong>The Viewport Scaling Principle:</strong> CSS Viewport Width equals Physical Pixel Width divided by Device Pixel Ratio ($CSS_{px} = Physical_{px} / DPR$). Operating systems apply DPR scale factors (such as 2x or 3x) to keep user interfaces readable without causing desktop-sized layouts to shrink down to illegible sub-millimeter proportions on small screens.
+      </div>
+
+      <h3 class="seo-h2">Understanding the Metrics: Hardware vs. Logical Abstractions</h3>
+      <p class="seo-p">To build smooth UI components across diverse viewports, developers must differentiate between four core hardware and software display metrics:</p>
+
+      <h4 class="seo-h3">1. Physical Hardware Resolution ($Px_{phys}$)</h4>
+      <p class="seo-p">Physical resolution refers to the exact count of microscopic light-emitting diodes (LEDs or OLED subpixels) embedded across a monitor screen. For instance, a 4K display features a hardware grid of 3840 physical columns by 2160 physical rows.</p>
+
+      <h4 class="seo-h3">2. Logical CSS Viewport Resolution ($Px_{css}$)</h4>
+      <p class="seo-p">Logical pixels define the layout coordinate space used by browser rendering engines (`window.innerWidth` and `window.innerHeight`). When writing responsive layout rules inside CSS media queries, property values strictly target logical viewport dimensions, not raw hardware pixels.</p>
+
+      <h4 class="seo-h3">3. Device Pixel Ratio (DPR)</h4>
+      <p class="seo-p">The Device Pixel Ratio specifies how many hardware screen pixels compose a single side of a logical CSS pixel. On a 3x Retina display (e.g., iPhone 15 Pro), a single CSS square measuring $1 \text{px} \times 1 \text{px}$ is rendered by a $3 \times 3$ grid containing 9 physical hardware pixels.</p>
+
+      <h4 class="seo-h3">4. Pixels Per Inch (PPI) & Display Density</h4>
+      <p class="seo-p">PPI measures spatial hardware density across physical dimensions. It is computed via the Pythagorean theorem across diagonal screen measurements. Displays exceeding ~300 PPI on mobile or ~220 PPI on desktop are categorized as high-density (Retina) panels, where human eyes can no longer distinguish individual hardware subpixels at standard viewing distances.</p>
+
+      <h3 class="seo-h2">Device Reference Matrix: Viewports, Density & Scale Profiles</h3>
+      <p class="seo-p">The following benchmark table maps physical hardware metrics against logical CSS viewports across common consumer electronic profiles:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Device / Screen Target</th>
+              <th>Physical Resolution (px)</th>
+              <th>Logical Viewport (CSS px)</th>
+              <th>DPR Scale Factor</th>
+              <th>Screen Size & Density</th>
+              <th>Typical UI Target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Apple iPhone 15 Pro / 14 Pro</td>
+              <td>2556 × 1179</td>
+              <td>393 × 852</td>
+              <td>3.0x</td>
+              <td>6.1" (460 PPI)</td>
+              <td>Mobile Portrait Layout</td>
+            </tr>
+            <tr>
+              <td>Samsung Galaxy S24</td>
+              <td>2340 × 1080</td>
+              <td>360 × 780</td>
+              <td>3.0x</td>
+              <td>6.2" (416 PPI)</td>
+              <td>Mobile Compact Layout</td>
+            </tr>
+            <tr>
+              <td>Google Pixel 8 Pro</td>
+              <td>2992 × 1344</td>
+              <td>448 × 997</td>
+              <td>3.0x</td>
+              <td>6.7" (489 PPI)</td>
+              <td>Mobile Large Layout</td>
+            </tr>
+            <tr>
+              <td>Apple iPad Pro 12.9" M2</td>
+              <td>2732 × 2048</td>
+              <td>1024 × 1366</td>
+              <td>2.0x</td>
+              <td>12.9" (264 PPI)</td>
+              <td>Tablet / Desktop Hybrid</td>
+            </tr>
+            <tr>
+              <td>MacBook Pro 16" Liquid Retina</td>
+              <td>3456 × 2234</td>
+              <td>1728 × 1117</td>
+              <td>2.0x</td>
+              <td>16.2" (254 PPI)</td>
+              <td>Workstation Desktop</td>
+            </tr>
+            <tr>
+              <td>Standard 4K Desktop Monitor</td>
+              <td>3840 × 2160</td>
+              <td>2560 × 1440 (at 150%)</td>
+              <td>1.5x</td>
+              <td>27.0" (163 PPI)</td>
+              <td>Ultra-Wide Desktop</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ)</h3>
+
+      <h3 class="seo-h3">Why does my 4K monitor report a viewport of 2560×1440 or 1920×1080 in browsers?</h3>
+      <p class="seo-p">Operating systems automatically apply display scaling (such as 150% or 200%) to 4K desktop screens so that text and icons do not render micro-sized. At 150% scale (1.5x DPR), a 3840×2160 panel provides a comfortable 2560×1440 CSS layout viewport while retaining ultra-sharp text subpixels.</p>
+
+      <h3 class="seo-h3">How do non-integer DPR values
