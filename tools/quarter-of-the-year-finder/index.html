@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Quarter of the Year Finder | Calculate Calendar & Fiscal Quarters</title>
+  <meta name="description" content="Find the exact quarter of the year for any date instantly. Calculate calendar and fiscal quarters (Q1, Q2, Q3, Q4), date ranges, day progress, and remaining days." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/quarter-of-the-year-finder/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Quarter of the Year Finder",
+    "operatingSystem": "Web",
+    "applicationCategory": "BusinessApplication",
+    "description": "An interactive calendar and fiscal quarter calculator providing instant quarter identification, quarter start and end dates, day progress, and global fiscal year mapping.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; margin-bottom: 12px; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .f-result-box { width: 100%; height: 100%; min-height: 220px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; }
+    .f-badge-q { display: inline-block; background: #2563eb; color: #ffffff; font-size: 1.8rem; font-weight: 800; padding: 6px 18px; border-radius: 10px; margin-bottom: 10px; width: fit-content; }
+    .f-metric-row { display: flex; justify-content: space-between; border-bottom: 1px solid #e2e8f0; padding: 8px 0; font-size: 0.95rem; }
+    .f-metric-row:last-child { border-bottom: none; }
+    .f-metric-label { font-weight: 600; color: #64748b; }
+    .f-metric-val { font-weight: 700; color: #0f172a; text-align: right; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    .f-preset-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+    .f-pill { background: #e2e8f0; color: #334155; font-size: 0.8rem; font-weight: 700; padding: 6px 12px; border-radius: 20px; cursor: pointer; transition: all 0.15s; border: none; }
+    .f-pill:hover { background: #2563eb; color: #ffffff; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📅</span> Quarter of the Year Finder</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="targetDate">Select Calendar Date</label>
+          <input type="date" id="targetDate" class="f-input-field" onchange="calculateQuarter()" />
+
+          <label for="fiscalConvention">Fiscal Year Convention</label>
+          <select id="fiscalConvention" class="f-select-field" onchange="calculateQuarter()">
+            <option value="standard" selected>Standard Calendar Year (Jan 1 – Dec 31)</option>
+            <option value="us_federal">US Federal Government (Oct 1 – Sep 30)</option>
+            <option value="uk_corporate">UK / Canada / Japan / India Tax (Apr 1 – Mar 31)</option>
+            <option value="australia">Australia / New Zealand Tax (Jul 1 – Jun 30)</option>
+          </select>
+
+          <label>Quick Preset Selectors</label>
+          <div class="f-preset-pills">
+            <button class="f-pill" onclick="setPresetDate('today')">Today</button>
+            <button class="f-pill" onclick="setPresetDate('q1_start')">Q1 Start (Jan 1)</button>
+            <button class="f-pill" onclick="setPresetDate('q2_start')">Q2 Start (Apr 1)</button>
+            <button class="f-pill" onclick="setPresetDate('q3_start')">Q3 Start (Jul 1)</button>
+            <button class="f-pill" onclick="setPresetDate('q4_start')">Q4 Start (Oct 1)</button>
+            <button class="f-pill" onclick="setPresetDate('year_end')">Year End (Dec 31)</button>
+          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Quarter Breakdown Results</label>
+          <div class="f-result-box" id="resultCard">
+            <div>
+              <div class="f-badge-q" id="resQuarterBadge">Q3</div>
+              <div style="font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 12px;" id="resQuarterTitle">Quarter 3 (Jul 1 – Sep 30)</div>
+            </div>
+
+            <div>
+              <div class="f-metric-row">
+                <span class="f-metric-label">Fiscal Quarter:</span>
+                <span class="f-metric-val" id="resFiscalQuarter">FQ3 (FY 2026)</span>
+              </div>
+              <div class="f-metric-row">
+                <span class="f-metric-label">Month in Quarter:</span>
+                <span class="f-metric-val" id="resMonthInQ">Month 2 of Q3 (August)</span>
+              </div>
+              <div class="f-metric-row">
+                <span class="f-metric-label">Quarter Progress:</span>
+                <span class="f-metric-val" id="resDayProgress">Day 45 of 92 (48.9%)</span>
+              </div>
+              <div class="f-metric-row">
+                <span class="f-metric-label">Days Remaining:</span>
+                <span class="f-metric-val" id="resDaysLeft">47 Days Left</span>
+              </div>
+              <div class="f-metric-row">
+                <span class="f-metric-label">Year Progress:</span>
+                <span class="f-metric-val" id="resYearProgress">Day 227 of 365 (62.2%)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="setPresetDate('today')">Set To Today</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyQuarterSummary()">📋 Copy Summary</button>
+        <button class="f-btn f-btn-clear" onclick="resetForm()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Dynamic Real-Time Calculations:</span>
+        Select any date or change the fiscal year standard to compute calendar quarters, fiscal periods, date ranges, leap year parameters, and exact day progress instantly inside your browser.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Mathematics of Temporal Partitioning: Calendar Quarters, Global Fiscal Conventions, and Corporate Financial Reporting Structures</h2>
+      <p class="seo-p">Time management within enterprise environments, financial accounting, and project governance requires precise segmentation of the calendar year. A year divided into four equal three-month periods forms the bedrock of quarterly financial filings (such as SEC Form 10-Q), corporate forecasting, target tracking, and tax compliance. However, identifying which quarter a specific date falls into involves more than simply counting months from January. Discrepancies between standard calendar years and regional fiscal calendars make quarter calculation an essential computational workflow.</p>
+      <p class="seo-p">This guide examines the structure of calendar and fiscal quarters, mathematical quarter-determination algorithms, global tax authority conventions, leap year variances, and practical applications across financial planning, supply chain management, and executive operations.</p>
+
+      <div class="seo-callout">
+        <strong>The Quarterly Division Rule:</strong> A standard calendar year contains 365 days (366 in leap years), split across four distinct quarters (Q1, Q2, Q3, and Q4). Each quarter consists of three consecutive calendar months, with day counts ranging from 90 to 92 days depending on leap year status and month length distributions.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Standard Calendar Quarters vs. Fiscal Quarters</h3>
+      <p class="seo-p">Understanding how quarters are determined requires differentiating between the standard civilian calendar and statutory fiscal years across international jurisdictions.</p>
+
+      <h4 class="seo-h3">1. Standard Calendar Quarters (Jan 1 – Dec 31)</h4>
+      <p class="seo-p">The standard calendar year divides cleanly into four sequential blocks based on the Gregorian calendar:</p>
+      <ul class="seo-list">
+        <li><b>Q1 (Quarter 1):</b> January 1 to March 31 (90 days, or 91 days in leap years).</li>
+        <li><b>Q2 (Quarter 2):</b> April 1 to June 30 (91 days).</li>
+        <li><b>Q3 (Quarter 3):</b> July 1 to September 30 (92 days).</li>
+        <li><b>Q4 (Quarter 4):</b> October 1 to December 31 (92 days).</li>
+      </ul>
+
+      <h4 class="seo-h3">2. Fiscal Year Systems Across International Jurisdictions</h4>
+      <p class="seo-p">Governments, tax authorities, and corporations frequently operate on fiscal calendars that offset from January 1. Key international conventions include:</p>
+      <ul class="seo-list">
+        <li><b>US Federal Government (Oct 1 – Sep 30):</b> Fiscal Q1 begins October 1 of the preceding calendar year. October, November, and December constitute FQ1 of the upcoming fiscal year.</li>
+        <li><b>UK, Canada, Japan, India Tax Year (Apr 1 – Mar 31):</b> Fiscal Q1 spans April 1 through June 30. The fiscal year is named after the calendar year in which it commences or concludes depending on local accounting standards.</li>
+        <li><b>Australia and New Zealand (Jul 1 – Jun 30):</b> Fiscal Q1 spans July 1 through September 30, shifting half the calendar year into the start of the new financial cycle.</li>
+      </ul>
+
+      <h3>Global Fiscal Year Comparison Matrix</h3>
+      <p class="seo-p">The following table outlines how calendar dates map to fiscal quarters across major global jurisdictions:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Calendar Months</th>
+              <th>Standard Calendar Quarter</th>
+              <th>US Federal Fiscal Quarter</th>
+              <th>UK / Canada / India Fiscal Qtr</th>
+              <th>Australia / NZ Fiscal Qtr</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jan, Feb, Mar</td>
+              <td><b>Q1</b> (Days: 90/91)</td>
+              <td><b>FQ2</b></td>
+              <td><b>FQ4</b></td>
+              <td><b>FQ3</b></td>
+            </tr>
+            <tr>
+              <td>Apr, May, Jun</td>
+              <td><b>Q2</b> (Days: 91)</td>
+              <td><b>FQ3</b></td>
+              <td><b>FQ1</b></td>
+              <td><b>FQ4</b></td>
+            </tr>
+            <tr>
+              <td>Jul, Aug, Sep</td>
+              <td><b>Q3</b> (Days: 92)</td>
+              <td><b>FQ4</b></td>
+              <td><b>FQ2</b></td>
+              <td><b>FQ1</b></td>
+            </tr>
+            <tr>
+              <td>Oct, Nov, Dec</td>
+              <td><b>Q4</b> (Days: 92)</td>
+              <td><b>FQ1</b> (Next FY)</td>
+              <td><b>FQ3</b></td>
+              <td><b>FQ2</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Mathematical Determination of Quarters in Code</h3>
+      <p class="seo-p">Calculating the quarter for any given date programmatically uses zero-indexed or one-indexed month math. For a 1-indexed month $M$ (where January = 1 and December = 12), the standard calendar quarter $Q$ is computed as:</p>
+      
+      <div class="seo-callout" style="font-family: monospace; background: #f1f5f9; border-left-color: #0f172a;">
+        Q = Math.ceil(M / 3) = Math.floor((M - 1) / 3) + 1
+      </div>
+
+      <p class="seo-p">For fiscal years with month offset $O$ (e.g., $O = 3$ for an April 1 start date):</p>
+      <div class="seo-callout" style="font-family: monospace; background: #f1f5f9; border-left-color: #0f172a;">
+        Fiscal Month = (M - O + 12) % 12; // 0-indexed offset<br>
+        FQ = Math.floor(Fiscal Month / 3) + 1
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ)</h3>
+
+      <h3>Why do quarters have different numbers of days?</h3>
+      <p class="seo-p">The Gregorian calendar assigns months either 28, 29, 30, or 31 days. Because Q1 includes February, it contains 90 days in standard years and 91 days in leap years. Q2 contains 91 days (30+31+30), while Q3 (31+31+30) and Q4 (31+30+31) each contain 92 days.</p>
+
+      <h3>How does a leap year impact quarterly financial modeling?</h3>
+      <p class="seo-p">In leap years, Q1 gains an extra day (February 29). For quarterly revenue comparisons, companies using calendar quarters must adjust daily average metrics (such as Daily Active Users or Average Revenue Per Day), as Q1 expanded by 1.11% in total time length compared to non-leap years.</p>
+
+      <h3>What is a 4-4-5 accounting quarter system?</h3>
+      <p class="seo-p">Many retail and manufacturing organizations utilize a 4-4-5 calendar rather than standard monthly calendar quarters. A 4-4-5 quarter consists of two 4-week months followed by one 5-week month, ensuring every quarter consists of exactly 13 weeks (91 days) and ends on the same day of the week (e.g., Saturday), simplifying year-over-year weekly sales comparisons.</p>
+
+      <h3 class="seo-h2">Summary and Best Practices for Business Operations</h3>
+      <p class="seo-p">Accurate quarter identification ensures seamless financial compliance, alignment across cross-border teams, and structured milestone tracking. When working with global financial data, explicitly state whether dates refer to Calendar Quarters (CQ) or Fiscal Quarters (FQ) to prevent reporting misalignments.</p>
+      <p class="seo-p">Our online Quarter of the Year Finder automates temporal conversions instantly, computing exact start and end dates, day progress, and global fiscal mappings directly within your local client browser.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // TOOL INTERACTIVE LOGIC
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    function isLeapYear(year) {
+      return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+    }
+
+    function initDefaults() {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      document.getElementById('targetDate').value = `${yyyy}-${mm}-${dd}`;
+      calculateQuarter();
+    }
+
+    function setPresetDate(type) {
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      let targetDateStr = '';
+
+      switch(type) {
+        case 'today':
+          const mm = String(now.getMonth() + 1).padStart(2, '0');
+          const dd = String(now.getDate()).padStart(2, '0');
+          targetDateStr = `${yyyy}-${mm}-${dd}`;
+          break;
+        case 'q1_start': targetDateStr = `${yyyy}-01-01`; break;
+        case 'q2_start': targetDateStr = `${yyyy}-04-01`; break;
+        case 'q3_start': targetDateStr = `${yyyy}-07-01`; break;
+        case 'q4_start': targetDateStr = `${yyyy}-10-01`; break;
+        case 'year_end': targetDateStr = `${yyyy}-12-31`; break;
+      }
+      
+      document.getElementById('targetDate').value = targetDateStr;
+      calculateQuarter();
+    }
+
+    function calculateQuarter() {
+      const dateVal = document.getElementById('targetDate').value;
+      if (!dateVal) return;
+
+      const parts = dateVal.split('-');
+      const year = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10) - 1; // 0-indexed
+      const day = parseInt(parts[2], 10);
+
+      const selDate = new Date(year, month, day);
+
+      // Determine Calendar Quarter
+      const qNum = Math.floor(month / 3) + 1;
+      const qNames = ["Q1", "Q2", "Q3", "Q4"];
+      const qBadge = qNames[qNum - 1];
+
+      // Quarter Start & End Dates
+      const qStartMonth = (qNum - 1) * 3;
+      const qEndMonth = qStartMonth + 2;
+      
+      const qStartDate = new Date(year, qStartMonth, 1);
+      const qEndDate = new Date(year, qEndMonth + 1,
