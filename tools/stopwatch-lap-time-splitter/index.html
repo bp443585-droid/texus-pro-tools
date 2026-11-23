@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Stopwatch Lap Time Splitter | Online High-Precision Lap Timer</title>
+  <meta name="description" content="Free online Stopwatch Lap Time Splitter. Measure, analyze, and split lap and cumulative times with millisecond precision, delta insights, and instant CSV export." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/stopwatch-lap-time-splitter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Stopwatch Lap Time Splitter Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "A high-precision online stopwatch and lap time splitting apparatus for tracking cumulative splits, interval lap metrics, and delta analytics.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* STOPWATCH DISPLAY BOX */
+    .timer-display-container {
+      background: #0f172a;
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 24px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .timer-main {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 4rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #38bdf8;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+      line-height: 1.1;
+    }
+    .timer-sub {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.25rem;
+      color: #94a3b8;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    /* SUMMARY METRICS GRID */
+    .stats-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .stat-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: center;
+    }
+    .stat-box .stat-label {
+      font-size: 0.75rem;
+      color: #64748b;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .stat-box .stat-val {
+      font-size: 1.15rem;
+      color: #0f172a;
+      font-weight: 800;
+      font-family: 'Courier New', Courier, monospace;
+      margin-top: 4px;
+    }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; margin-bottom: 24px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-pause { background: #eab308; color: #ffffff; border-color: #eab308; }
+    .f-btn-pause:hover { background: #ca8a04; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 140px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* LAP TIMES TABLE */
+    .lap-table-wrapper {
+      max-height: 360px;
+      overflow-y: auto;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      background: #ffffff;
+    }
+    .lap-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    .lap-table th {
+      position: sticky;
+      top: 0;
+      background: #f8fafc;
+      border-bottom: 2px solid #e2e8f0;
+      padding: 12px 16px;
+      font-weight: 700;
+      color: #0f172a;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 2;
+    }
+    .lap-table td {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 12px 16px;
+      color: #334155;
+      font-size: 0.95rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 600;
+    }
+    .lap-table tr:last-child td { border-bottom: none; }
+    .lap-row-fastest { background-color: #f0fdf4 !important; color: #166534; }
+    .lap-row-slowest { background-color: #fef2f2 !important; color: #991b1b; }
+    .badge-fastest { background: #dcfce7; color: #15803d; padding: 2px 8px; border-radius: 6px; font-weight: 700; font-size: 0.75rem; font-family: 'Inter', sans-serif; }
+    .badge-slowest { background: #fee2e2; color: #b91c1c; padding: 2px 8px; border-radius: 6px; font-weight: 700; font-size: 0.75rem; font-family: 'Inter', sans-serif; }
+    .badge-normal { background: #f1f5f9; color: #475569; padding: 2px 8px; border-radius: 6px; font-weight: 600; font-size: 0.75rem; font-family: 'Inter', sans-serif; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .stats-summary-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .timer-main { font-size: 2.75rem; }
+      .timer-sub { font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .timer-main { font-size: 2.2rem; }
+      .stats-summary-grid { grid-template-columns: 1fr; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⏱️</span> Stopwatch Lap Time Splitter</div>
+    
+    <div class="f-card">
+      <div class="timer-display-container">
+        <div class="timer-main" id="displayTotal">00:00:00.00</div>
+        <div class="timer-sub" id="displayLap">Current Lap: 00:00:00.00</div>
+      </div>
+
+      <div class="stats-summary-grid">
+        <div class="stat-box">
+          <div class="stat-label">Total Laps</div>
+          <div class="stat-val" id="statLapCount">0</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Average Lap</div>
+          <div class="stat-val" id="statAvgLap">00:00.00</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Fastest Lap</div>
+          <div class="stat-val" style="color: #16a34a;" id="statFastestLap">--:--.--</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Slowest Lap</div>
+          <div class="stat-val" style="color: #dc2626;" id="statSlowestLap">--:--.--</div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" id="toggleBtn" onclick="toggleTimer()">Start</button>
+        <button class="f-btn f-btn-copy" id="lapBtn" onclick="recordLap()" disabled>Lap / Split</button>
+        <button class="f-btn f-btn-copy" id="exportBtn" onclick="copyLapData()" disabled>📋 Copy Laps</button>
+        <button class="f-btn f-btn-clear" id="resetBtn" onclick="resetTimer()">Reset</button>
+      </div>
+
+      <div class="lap-table-wrapper">
+        <table class="lap-table">
+          <thead>
+            <tr>
+              <th>Lap #</th>
+              <th>Lap Time (Interval)</th>
+              <th>Split Time (Total)</th>
+              <th>Delta (Prev)</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="lapTableBody">
+            <tr>
+              <td colspan="5" style="text-align: center; color: #94a3b8; padding: 20px; font-family: 'Inter', sans-serif; font-weight: 500;">
+                No lap splits recorded yet. Click "Start" to begin timing.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ High-Precision Sub-Millisecond Architecture:</span>
+        Our online stopwatch leverages high-resolution hardware timestamps (<code style="font-family: monospace; font-size: 0.85em;">performance.now()</code>) to guarantee drift-free interval measurement regardless of main-thread background execution or tab switching.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h1 class="seo-title">The Architecture of High-Precision Chronometry: Lap vs. Split Timing Dynamics, Millisecond Resolution, and Athletic & Industrial Analytics</h1>
+      <p class="seo-p">Accurate temporal measurement forms the quantitative bedrock of modern athletic coaching, motorsport engineering, industrial time-and-motion studies, and high-frequency software benchmark profiling. Whether timing track-and-field sprints, measuring swimming intervals, calculating pit-stop efficiency in racing, or benchmarking execution bottlenecks in complex JavaScript loops, distinguishing between <em>Lap Time</em> (the discrete duration of an isolated cycle) and <em>Split Time</em> (the cumulative elapsed duration from baseline zero) is mathematically critical.</p>
+      <p class="seo-p">This comprehensive technical guide dissects the underlying mechanics of temporal splitting, examines the mathematical relationships between interval dynamics and cumulative timers, analyzes event loop timing drift in browser execution contexts, and provides best practices for managing chronometric log exports across diverse professional disciplines.</p>
+
+      <div class="seo-callout">
+        <strong>The Sub-Millisecond Chronometric Rule:</strong> Standard JavaScript <code style="font-family: monospace;">setInterval</code> counters suffer from browser execution throttling and main-thread queuing latency. To eliminate timing drift, high-precision applications compute temporal delta vectors using hardware performance timestamps derived from high-resolution microsecond clocks.
+      </div>
+
+      <h2 class="seo-h2">Understanding Chronometric Metrics: Lap Time vs. Split Time</h2>
+      <p class="seo-p">While often used interchangeably in casual communication, lap time and split time refer to fundamentally distinct components of a temporal dataset:</p>
+
+      <h3 class="seo-h3">1. Interval Lap Time ($\Delta t$)</h3>
+      <p class="seo-p">Lap time measures the precise interval elapsed between the start and end of a single repeated segment or loop. Mathematically, for any lap $n$, the lap time $L_n$ is expressed as:</p>
+      <p class="seo-p" style="text-align: center; font-family: 'Courier New', monospace; font-weight: 700; background: #f8fafc; padding: 12px; border-radius: 8px;">
+        $L_n = T_n - T_{n-1}$
+      </p>
+      <p class="seo-p">where $T_n$ is the total cumulative split time at the completion of lap $n$, and $T_{n-1}$ is the cumulative split time at the completion of the preceding lap $n-1$.</p>
+
+      <h3 class="seo-h3">2. Cumulative Split Time ($T_n$)</h3>
+      <p class="seo-p">Split time represents the continuous total time recorded from the initial ignition event ($T_0 = 0$) up to the instant the split marker is triggered. It represents the sum of all preceding lap intervals up to that milestone:</p>
+      <p class="seo-p" style="text-align: center; font-family: 'Courier New', monospace; font-weight: 700; background: #f8fafc; padding: 12px; border-radius: 8px;">
+        $T_n = \sum_{i=1}^{n} L_i$
+      </p>
+
+      <h3 class="seo-h3">3. Interval Delta ($\delta$)</h3>
+      <p class="seo-p">The delta indicates the relative difference in performance between the current lap and the immediate prior lap ($L_n - L_{n-1}$). A negative delta indicates acceleration (a faster lap), whereas a positive delta highlights deceleration or performance degradation.</p>
+
+      <h2 class="seo-h2">Comparative Overview of Chronometric Measurement Dimensions</h2>
+      <p class="seo-p">Different industries prioritize specific temporal metrics based on operational objectives. The matrix below outlines how these parameters are categorized and evaluated:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Timing Dimension</th>
+              <th>Mathematical Definition</th>
+              <th>Primary Application Field</th>
+              <th>Analytical Value</th>
+              <th>Sample Data Point</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Cumulative Split</b></td>
+              <td>$T_n = \text{Current Time} - T_0$</td>
+              <td>Marathons, Relays, Swimming</td>
+              <td>Evaluates overall pacing relative to target finish time goals.</td>
+              <td>00:14:32.45</td>
+            </tr>
+            <tr>
+              <td><b>Interval Lap</b></td>
+              <td>$L_n = T_n - T_{n-1}$</td>
+              <td>Circuit Racing, Track Sprinting</td>
+              <td>Isolates performance consistency across uniform structural loops.</td>
+              <td>00:01:12.18</td>
+            </tr>
+            <tr>
+              <td><b>Delta Shift</b></td>
+              <td>$\delta = L_n - L_{n-1}$</td>
+              <td>Motorsport Telemetry, Athletics</td>
+              <td>Provides immediate feedback on tire wear, fatigue, or pace changes.</td>
+              <td>-00:00:01.40 (Faster)</td>
+            </tr>
+            <tr>
+              <td><b>Average Lap</b></td>
+              <td>$\bar{L} = \frac{T_n}{n}$</td>
+              <td>Industrial Motion Studies, Ergonomics</td>
+              <td>Establishes standardized baseline throughput metrics across shifts.</td>
+              <td>00:01:14.60</td>
+            </tr>
+            <tr>
+              <td><b>Sector Split</b></td>
+              <td>$S_{k} = T_{s_k} - T_{s_{k-1}}$</td>
+              <td>Formula 1, Downhill Skiing</td>
+              <td>Breaks down complex courses into technical sub-segments.</td>
+              <td>00:00:24.05</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="seo-h2">Technical Engineering: Preventing Timing Drift in Web Applications</h2>
+      <p class="seo-p">In standard web browser environments, naive timers relying solely on <code style="font-family: monospace;">setInterval(callback, 10)</code> suffer from inherent timing inaccuracy. Because JavaScript operates on a single-threaded event loop, heavy DOM re-renders, background tab state shifts, or intensive calculations introduce layout frame delays that accumulate over time, causing the display clock to lag behind true wall-clock time.</p>
+      
+      <p class="seo-p">To achieve enterprise-grade chronometric precision, our <strong>Stopwatch Lap Time Splitter</strong> separates the visual display rendering cycle from temporal data collection:</p>
+      
+      <ul class="seo-list">
+        <li><b>High-Resolution Baseline (<code style="font-family: monospace;">performance.now()</code>):</b> Captures monotonic hardware timestamps measured in fractional milliseconds, unaffected by system wall-clock adjustments or NTP synchronizations.</li>
+        <li><b>Monotonic Delta Computation:</b> At every rendering frame executed via <code style="font-family: monospace;">requestAnimationFrame()</code>, the total elapsed time is computed strictly as the subtraction offset between the active hardware clock and the immutable start reference.</li>
+        <li><b>Background State Preservation:</b> Pausing and resuming updates the reference anchor offset seamlessly, ensuring 100% microsecond integrity even if the device transitions into sleep modes.</li>
+      </ul>
+
+      <h2 class="seo-h2">Frequently Asked Questions (FAQ)</h2>
+
+      <h3 class="seo-h3">How does this tool calculate the fastest and slowest laps?</h3>
+      <p class="seo-p">Upon recording each lap split, the algorithm evaluates all recorded interval lap times ($L_1, L_2, \dots, L_n$). The minimal value is assigned the green <b>Fastest</b> status, while the maximum value receives the red <b>Slowest</b> tag. In the event of a tie, the earliest occurring lap retains the badge.</p>
+
+      <h3 class="seo-h3">Can I export my lap data for statistical analysis in Excel or Python?</h3>
+      <p class="seo-p">Yes. Clicking the <b>📋 Copy Laps</b> action button automatically formats the entire session table into a structured tabular text string. You can paste this directly into Microsoft Excel, Google Sheets, or text editors for instant CSV processing.</p>
+
+      <h3 class="seo-h3">Does switching browser tabs cause the stopwatch to lose precision?</h3>
+      <p class="seo-p">No. Because temporal offsets are derived from hardware timestamp differences rather than counting execution ticks, background tab throttling by the browser does not affect accuracy. When you return to the active tab, the timer instantly updates to the correct hardware duration.</p>
+
+      <h2 class="seo-h2">Summary: Strategic Applications of Lap & Split Analytics</h2>
+      <p class="seo-p">Mastering temporal metrics empowers coaches, athletes, laboratory technicians, and software engineers to optimize performance cycles systematically. By continuously tracking interval lap trends alongside cumulative split progression, practitioners can pinpoint fatigue curves, isolate operational bottlenecks, and maintain precise baseline standards.</p>
+      <p class="seo-p">Utilize our High-Precision Stopwatch Lap Time Splitter for all your professional timing, interval splitting, and performance telemetry needs—completely local, secure, and accurate down to the millisecond.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    /* STOPWATCH CONTROLLER APPARATUS */
+    let timerState = 'STOPPED'; // 'STOPPED', 'RUNNING', 'PAUSED'
+    let startTime = 0;
+    let accumulatedTime = 0;
+    let lapStartTime = 0;
+    let lapAccumulatedTime = 0;
+    let animFrameId = null;
+    
+    let laps = []; // Array of { id, lapTimeMs, splitTimeMs, deltaMs }
+
+    const displayTotalEl = document.getElementById('displayTotal');
+    const displayLapEl = document.getElementById('displayLap');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const lapBtn = document.getElementById('lapBtn');
+    const exportBtn = document.getElementById('exportBtn');
+    
+    const statLapCountEl = document.getElementById('statLapCount');
+    const statAvgLapEl = document.getElementById('statAvgLap');
+    const statFastestLapEl = document.getElementById('statFastestLap');
+    const statSlowestLapEl = document.getElementById('statSlowestLap');
+    const lapTableBody = document.getElementById('lapTableBody');
+
+    function formatTime(ms, includeHours = true) {
+      if (ms < 0) ms = 0;
+      const totalSeconds = Math.floor(ms / 1000);
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      const hundredths = Math.floor((ms % 1000) / 10);
+
+      const pad = (num, digits = 2) => String(num).padStart(digits, '0');
+
+      if (includeHours || hours > 0) {
+        return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}.${pad(
