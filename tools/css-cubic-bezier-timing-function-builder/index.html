@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CSS Cubic Bezier Timing Function Builder | Visual Transition Curve Generator</title>
+  <meta name="description" content="Build, test, and generate custom CSS cubic-bezier timing functions instantly with our interactive visual curve builder and live animation preview." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/css-cubic-bezier-timing-function-builder/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CSS Cubic Bezier Timing Function Builder",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced visual timing function builder to craft, test, and copy precise CSS cubic-bezier transition curves for modern web animations.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 200px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* BEZIER BUILDER SPECIFIC UI STYLES */
+    .bezier-builder-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: start; }
+    .canvas-container { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; align-items: center; position: relative; }
+    #bezierCanvas { width: 100%; max-width: 340px; height: 340px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; cursor: crosshair; touch-action: none; }
+    .canvas-info { margin-top: 12px; font-size: 0.85rem; color: #64748b; text-align: center; font-weight: 500; }
+    
+    .controls-stack { display: flex; flex-direction: column; gap: 16px; }
+    .preset-buttons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .preset-btn { background: #f1f5f9; border: 1px solid #cbd5e1; color: #334155; font-weight: 600; font-size: 0.82rem; padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-transform: none; letter-spacing: normal; }
+    .preset-btn:hover { background: #e2e8f0; border-color: #94a3b8; color: #0f172a; }
+    .preset-btn.active { background: #2563eb; border-color: #2563eb; color: #ffffff; }
+
+    .slider-group { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; }
+    .slider-group label { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 6px; }
+    .slider-group label span { color: #2563eb; font-family: monospace; font-size: 0.9rem; }
+    .slider-group input[type="range"] { width: 100%; accent-color: #2563eb; cursor: pointer; }
+
+    .preview-stage { margin-top: 25px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+    .stage-track { width: 100%; height: 60px; background: #e2e8f0; border-radius: 12px; position: relative; overflow: hidden; display: flex; align-items: center; padding: 0 10px; box-sizing: border-box; }
+    .stage-box { width: 44px; height: 44px; background: #2563eb; border-radius: 10px; position: relative; left: 0; box-shadow: 0 4px 6px -1px rgba(37,99,235,0.3); transition: transform 0.05s linear; }
+    .stage-actions { display: flex; gap: 12px; align-items: center; justify-content: space-between; }
+    
+    .code-output-box { background: #0f172a; color: #f8fafc; padding: 16px; border-radius: 12px; font-family: 'Courier New', Courier, monospace; font-size: 1.05rem; display: flex; justify-content: space-between; align-items: center; }
+    .code-output-box span { color: #38bdf8; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .bezier-builder-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🛠️</span> CSS Cubic Bezier Timing Function Builder</div>
+    
+    <div class="f-card">
+      <div class="bezier-builder-grid">
+        <!-- Canvas Visualizer Panel -->
+        <div class="canvas-container">
+          <canvas id="bezierCanvas" width="340" height="340"></canvas>
+          <div class="canvas-info">Drag control handles (P1 & P2) to modify the cubic-bezier curve</div>
+        </div>
+
+        <!-- Controls & Parameters Stack -->
+        <div class="controls-stack">
+          <div class="f-panel-box">
+            <label>Quick Curve Presets</label>
+            <div class="preset-buttons">
+              <button class="preset-btn active" onclick="setPreset(0.25, 0.1, 0.25, 1, this)">Ease</button>
+              <button class="preset-btn" onclick="setPreset(0, 0, 1, 1, this)">Linear</button>
+              <button class="preset-btn" onclick="setPreset(0.42, 0, 1, 1, this)">Ease-In</button>
+              <button class="preset-btn" onclick="setPreset(0, 0, 0.58, 1, this)">Ease-Out</button>
+              <button class="preset-btn" onclick="setPreset(0.42, 0, 0.58, 1, this)">Ease-In-Out</button>
+              <button class="preset-btn" onclick="setPreset(0.68, -0.55, 0.265, 1.55, this)">Bounce / Spring</button>
+            </div>
+          </div>
+
+          <div class="slider-group">
+            <label for="x1Slider">P1 X Coordinate: <span id="x1Val">0.25</span></label>
+            <input type="range" id="x1Slider" min="0" max="1" step="0.01" value="0.25" oninput="updateFromSliders()">
+          </div>
+
+          <div class="slider-group">
+            <label for="y1Slider">P1 Y Coordinate: <span id="y1Val">0.10</span></label>
+            <input type="range" id="y1Slider" min="-2" max="2" step="0.01" value="0.1" oninput="updateFromSliders()">
+          </div>
+
+          <div class="slider-group">
+            <label for="x2Slider">P2 X Coordinate: <span id="x2Val">0.25</span></label>
+            <input type="range" id="x2Slider" min="0" max="1" step="0.01" value="0.25" oninput="updateFromSliders()">
+          </div>
+
+          <div class="slider-group">
+            <label for="y2Slider">P2 Y Coordinate: <span id="y2Val">1.00</span></label>
+            <input type="range" id="y2Slider" min="-2" max="2" step="0.01" value="1" oninput="updateFromSliders()">
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Animation Stage & Code Output -->
+      <div class="preview-stage">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Live Motion Preview</label>
+          <button class="f-btn f-btn-copy" style="max-width: 140px; padding: 6px 12px; font-size: 0.8rem;" onclick="triggerAnimation()">▶ Replay Animation</button>
+        </div>
+        
+        <div class="stage-track" id="stageTrack">
+          <div class="stage-box" id="stageBox"></div>
+        </div>
+
+        <div class="code-output-box">
+          <code id="cssCodeOutput">transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);</code>
+          <button class="f-btn f-btn-convert" style="max-width: 110px; padding: 10px 14px; font-size: 0.85rem;" onclick="copyCssToClipboard()">📋 Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering CSS Transitions: The Mathematics and Mechanics of Cubic Bezier Timing Functions</h2>
+      <p class="seo-p">Web animation has evolved from jerky, scripted JavaScript loops into buttery-smooth, hardware-accelerated CSS transitions. At the heart of every polished user interface interaction—whether it is a floating card hover effect, a modal popup slide, or a subtle button state change—lies the timing function. Among all timing models available in modern browsers, the CSS `cubic-bezier()` function reigns supreme as the ultimate tool for tailoring precise acceleration and deceleration curves.</p>
+      <p class="seo-p">This comprehensive technical manual explores the mathematical foundations of cubic Bézier curves, examines how browser layout engines calculate intermediate frame coordinates, analyzes the differences between standard keyword presets and custom bounce curves, and provides actionable guidelines for crafting delightful user experiences.</p>
+
+      <div class="seo-callout">
+        <strong>The Four-Parameter Architecture:</strong> A cubic Bézier curve in CSS is defined by four numerical parameters: <b>cubic-bezier(x1, y1, x2, y2)</b>. Parameters `x1` and `x2` represent temporal progress along the horizontal timeline (constrained between 0.0 and 1.0), while `y1` and `y2` represent positional progress along the vertical axis (allowing values outside 0 to 1 for elastic spring and bounce effects).
+      </div>
+
+      <h3 class="seo-h2">The Mathematics Behind Cubic Bézier Curves</h3>
+      <p class="seo-p">Understanding how browsers render transitions requires looking at parametric curve equations. A cubic Bézier curve is defined by four points in a 2D Cartesian coordinate plane: $P_0(0, 0)$, control point $P_1(x_1, y_1)$, control point $P_2(x_2, y_2)$, and end point $P_3(1, 1)$.</p>
+
+      <h4 class="seo-h3">1. Temporal Mapping (The X-Axis)</h4>
+      <p class="seo-p">The horizontal axis represents time elapsed from 0% (start of animation) to 100% (end of animation). Because time must move forward linearly in user perception, standard CSS specifications restrict $x_1$ and $x_2$ values between `0` and `1`. If time values exceeded 1 or dropped below 0, the animation would mathematically travel backward in time, which CSS engines reject for standard timing functions.</p>
+
+      <h4 class="seo-h3">2. Positional Progression (The Y-Axis)</h4>
+      <p class="seo-p">The vertical axis represents the percentage of completion for the animated property (e.g., translation distance, opacity, or scale). Unlike the time axis, vertical coordinates `y1` and `y2` are not restricted to the `[0, 1]` range. Allowing y-values greater than 1 or less than 0 enables overshoot and spring physics, where elements temporarily bounce past their final resting destination before settling.</p>
+
+      <h4 class="seo-h3">3. Bernstein Polynomial Evaluation</h4>
+      <p class="seo-p">To calculate the exact position of an animated element at any given millisecond, the browser evaluates the cubic Bernstein polynomial equation:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">B(t) = (1-t)³P₀ + 3(1-t)²t P₁ + 3(1-t)t² P₂ + t³ P₃</p>
+      <p class="seo-p">Where $t$ represents the normalized linear time progress from 0.0 to 1.0. Solving this equation for each frame yields the smooth, natural acceleration curves that users expect from high-end web applications.</p>
+
+      <h3>Standard Keyword Presets vs. Custom Curves</h3>
+      <p class="seo-p">While CSS provides convenient keyword shortcuts like `ease`, `linear`, `ease-in`, `ease-out`, and `ease-in-out`, these presets are simply shorthand aliases for specific cubic-bezier coordinate pairs. Knowing their underlying mathematical definitions allows developers to tweak them for optimal interface responsiveness:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Keyword Preset Name</th>
+              <th>Equivalent Cubic Bezier Coordinates</th>
+              <th>Acceleration Profile Character</th>
+              <th>Optimal UI Interface Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>linear</b></td>
+              <td>`cubic-bezier(0, 0, 1, 1)`</td>
+              <td>Constant speed from start to finish with no acceleration or deceleration.</td>
+              <td>Continuous rotations, loading spinners, background color cycling.</td>
+            </tr>
+            <tr>
+              <td><b>ease</b> (Default)</td>
+              <td>`cubic-bezier(0.25, 0.1, 0.25, 1)`</td>
+              <td>Starts slow, accelerates moderately fast, then decelerates smoothly to a stop.</td>
+              <td>Standard general-purpose transitions, dropdown menus, card hovers.</td>
+            </tr>
+            <tr>
+              <td><b>ease-in</b></td>
+              <td>`cubic-bezier(0.42, 0, 1, 1)`</td>
+              <td>Starts very slowly with gradual momentum buildup, then ends abruptly.</td>
+              <td>Elements sliding off-screen or exiting the visible viewport bounds.</td>
+            </tr>
+            <tr>
+              <td><b>ease-out</b></td>
+              <td>`cubic-bezier(0, 0, 0.58, 1)`</td>
+              <td>Starts instantly at full velocity and decelerates gracefully into position.</td>
+              <td>Elements entering the screen, tooltips appearing, notification toasts.</td>
+            </tr>
+            <tr>
+              <td><b>ease-in-out</b></td>
+              <td>`cubic-bezier(0.42, 0, 0.58, 1)`</td>
+              <td>Gradual start and smooth finish with a faster midpoint velocity.</td>
+              <td>Modal dialog expansions, accordion collapses, state switches.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Can cubic-bezier timing functions create bounce or spring effects?</h3>
+      <p class="seo-p">Yes! By setting vertical coordinates (`y1` or `y2`) to values greater than `1.0` (e.g., `1.5`) or less than `0` (e.g., `-0.3`), the animation property will overshoot its target destination and bounce back into place, creating a lively, tactile spring physics feel without requiring JavaScript animation libraries.</p>
+
+      <h3>Why are X coordinates strictly limited between 0 and 1 in CSS?</h3>
+      <p class="seo-p">The X-axis represents chronological time progression. Allowing X values outside the `[0, 1]` interval would mean time flows backward or repeats frames, which breaks deterministic DOM rendering rules and causes unpredictable layout jitter.</p>
+
+      <h3>How do I test my custom cubic-bezier curves before deploying to production?</h3>
+      <p class="seo-p">Our interactive visual builder features a real-time motion preview stage. As you drag control handles or adjust sliders, the animated box updates instantly. Once you achieve the desired easing feel, simply click the copy button to grab ready-to-use CSS syntax.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for High-Performance UI Transitions</h3>
+      <p class="seo-p">To keep web applications running at a buttery 60 frames per second, apply transition timing functions strictly to composite properties like `transform` and `opacity`. Avoid animating layout-heavy properties such as `width`, `height`, `top`, or `left`, which trigger costly browser reflow cycles regardless of how smooth your timing function is.</p>
+      <p class="seo-p">Use our Advanced CSS Cubic Bezier Timing Function Builder to visually craft, test, and copy precise curves for all your design projects instantly across any device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    /* INTERACTIVE BEZIER BUILDER JAVASCRIPT ENGINE */
+    let p1x = 0.25, p1y = 0.1, p2x = 0.25, p2y = 1.0;
+    
+    const canvas = document.getElementById('bezierCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    const x1Slider = document.getElementById('x1Slider');
+    const y1Slider = document.getElementById('y1Slider');
+    const x2Slider = document.getElementById('x2Slider');
+    const y2Slider = document.getElementById('y2Slider');
+    
+    const x1Val = document.getElementById('x1Val');
+    const y1Val = document.getElementById('y1Val');
+    const x2Val = document.getElementById('x2Val');
+    const y2Val = document.getElementById('y2Val');
+    
+    const cssCodeOutput = document.getElementById('cssCodeOutput');
+    const stageBox = document.getElementById('stageBox');
+    
+    let isDragging = false;
+    let activeHandle = null; // 'p1' or 'p2'
+    
+    const padding = 40;
+    
+    function getCanvasCoords(nx, ny) {
+      const w = canvas.width - (padding * 2);
+      const h = canvas.height - (padding * 2);
+      // Map nx (0 to 1) to x, ny (-2 to 2) to y (inverted for canvas)
+      const cx = padding + (nx * w);
+      // y=0 is bottom (padding + h), y=1 is top (padding)
+      const cy = padding + h - ((ny + 0.5) / 2.5 * h);
+      return { x: cx, y: cy };
+    }
+    
+    function getNormalizedCoords(cx, cy) {
+      const w = canvas.width - (padding * 2);
+      const h = canvas.height - (padding * 2);
+      let nx = (cx - padding) / w;
+      let ny = ((padding + h - cy) / h * 2.5) - 0.5;
+      nx = Math.max(0, Math.min(1, nx));
+      ny = Math.max(-2, Math.min(2, ny));
+      return { x: parseFloat(nx.toFixed(2)), y: parseFloat(ny.toFixed(2)) };
+    }
+    
+    function drawBezier() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      const w = canvas.width - (padding * 2);
+      const h = canvas.height - (padding * 2);
+      
+      // Draw Grid Background
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(padding, padding, w, h);
+      
+      // Grid lines
+      ctx.beginPath();
+      ctx.moveTo(padding, padding + h * 0.8);
+      ctx.lineTo(padding + w, padding + h * 0.8);
+      ctx.stroke();
+      
+      const p0 = getCanvasCoords(0, 0);
+      const cp1 = getCanvasCoords(p1x, p1y);
+      const cp2 = getCanvasCoords(p2x, p2y);
+      const p3 = getCanvasCoords(1, 1);
+      
+      // Draw connection lines
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(p0.x, p0.y);
+      ctx.lineTo(cp1.x, cp1.y);
+      ctx.moveTo(p3.x, p3.y);
+      ctx.lineTo(cp2.x, cp2.y);
+      ctx.stroke();
+      
+      // Draw Cubic Bezier Curve
+      ctx.strokeStyle = '#2563eb';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(p0.x, p0.y);
+      ctx.bezierCurveTo(cp1.x, cp1.y, cp2.x, cp2.y, p3.x, p3.y);
+      ctx.stroke();
+      
+      // Draw Control Point Handles
+      drawHandle(p0.x, p0.y, '#94a3b8', false);
+      drawHandle(p3.x, p3.y, '#94a3b8', false);
+      drawHandle(cp1.x, cp1.y, '#2563eb', true, 'P1');
+      drawHandle(cp2.x, cp2.y, '#2563eb', true, 'P2');
+      
+      // Update Sliders & UI
+      x1Slider.value = p1x; y1Slider.value = p1y;
+      x2Slider.value = p2x; y2Slider.value = p2y;
+      x1Val.textContent = p1x.toFixed(2);
+      y1Val.textContent = p1y.toFixed(2);
+      x2Val.textContent = p2x.toFixed(2);
+      y2Val.textContent = p2y.toFixed(2);
+      
+      const cssString = `transition: all 0.6s cubic-bezier(${p1x.toFixed(2)}, ${p1y.toFixed(2)}, ${p2x.toFixed(2)}, ${p2y.toFixed(2)});`;
+      cssCodeOutput.textContent = cssString;
+    }
+    
+    function drawHandle(x, y, color, interactive, label) {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(x, y, interactive ? 7 : 5, 0, Math.PI * 2);
+      ctx.fill();
+      if (interactive) {
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        ctx.fillStyle = '#0f172a';
+        ctx.font = 'bold 11px Inter, sans-serif';
+        ctx.fillText(label, x + 10, y - 5);
+      }
+    }
+    
+    function updateFromSliders() {
+      p1x = parseFloat(x1Slider.value);
+      p1y = parseFloat(y1Slider.value);
+      p2x = parseFloat(x2Slider.value);
+      p2y = parseFloat(y2Slider.value
