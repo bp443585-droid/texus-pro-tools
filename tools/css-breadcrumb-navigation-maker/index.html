@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CSS Breadcrumb Navigation Maker | Free Online Breadcrumb Generator</title>
+  <meta name="description" content="Design semantic, accessible, and customizable HTML &amp; CSS breadcrumb navigation bars instantly. Generate pure CSS breadcrumbs with Schema.org JSON-LD microdata." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/css-breadcrumb-navigation-maker/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CSS Breadcrumb Navigation Maker Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "DeveloperApplication",
+    "description": "An interactive utility to generate clean, semantic HTML5, pure CSS, and Schema.org JSON-LD structured breadcrumb navigation controls.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CONTROL & PREVIEW PANELS */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 160px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.95rem; font-family: 'Courier New', Courier, monospace; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .f-input-text { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; font-size: 0.95rem; font-family: inherit; color: #0f172a; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-text:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; font-size: 0.95rem; font-family: inherit; color: #0f172a; outline: none; transition: all 0.2s; cursor: pointer; box-sizing: border-box; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* CONTROLS GRID */
+    .f-controls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 16px; margin-bottom: 24px; }
+    .f-control-item { display: flex; flex-direction: column; gap: 6px; }
+    .f-control-item label { font-size: 0.8rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-color-picker-wrap { display: flex; align-items: center; gap: 10px; background: #ffffff; border: 2px solid #e2e8f0; border-radius: 10px; padding: 4px 8px; }
+    .f-color-picker-wrap input[type="color"] { border: none; width: 32px; height: 32px; border-radius: 6px; cursor: pointer; background: transparent; padding: 0; }
+    .f-color-picker-wrap span { font-size: 0.85rem; font-weight: 600; color: #334155; font-family: monospace; }
+
+    /* BREADCRUMB BUILDER ITEM LIST */
+    .f-items-container { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; margin-bottom: 24px; }
+    .f-items-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .f-items-header h4 { font-size: 0.95rem; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; margin: 0; }
+    .f-item-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: center; margin-bottom: 10px; }
+    .f-btn-mini-add { background: #2563eb; color: #ffffff; border: none; padding: 6px 14px; border-radius: 8px; font-weight: 700; font-size: 0.8rem; cursor: pointer; text-transform: uppercase; }
+    .f-btn-mini-add:hover { background: #1d4ed8; }
+    .f-btn-mini-del { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; padding: 8px 12px; border-radius: 8px; font-weight: 700; font-size: 0.8rem; cursor: pointer; }
+    .f-btn-mini-del:hover { background: #fee2e2; }
+
+    /* PREVIEW CONTAINER */
+    .f-preview-card { background: #ffffff; border: 2px dashed #cbd5e1; border-radius: 16px; padding: 30px; margin-bottom: 24px; min-height: 80px; display: flex; align-items: center; justify-content: center; overflow-x: auto; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-item-row { grid-template-columns: 1fr; gap: 8px; border-bottom: 1px dashed #cbd5e1; padding-bottom: 12px; }
+      .f-textarea-field { height: 140px; font-size: 0.9rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🧭</span> CSS Breadcrumb Navigation Maker</div>
+    
+    <div class="f-card">
+      
+      <!-- ITEM MANAGEMENT PANEL -->
+      <div class="f-items-container">
+        <div class="f-items-header">
+          <h4>1. Breadcrumb Node Items & Hierarchy</h4>
+          <button class="f-btn-mini-add" onclick="addBreadcrumbNode()">+ Add Node Item</button>
+        </div>
+        <div id="breadcrumbNodesList">
+          <!-- Dynamic node rows inserted via JS -->
+        </div>
+      </div>
+
+      <!-- DESIGN & STYLING CONTROLS GRID -->
+      <div class="f-controls-grid">
+        <div class="f-control-item">
+          <label for="separatorSelect">Separator Symbol</label>
+          <select id="separatorSelect" class="f-select-field" onchange="updateBreadcrumbsApp()">
+            <option value="/">Slash ( / )</option>
+            <option value=">">Chevron Right ( &gt; )</option>
+            <option value="→">Arrow Right ( → )</option>
+            <option value="»">Double Angle ( » )</option>
+            <option value="•">Bullet Point ( • )</option>
+            <option value="|">Vertical Pipe ( | )</option>
+          </select>
+        </div>
+
+        <div class="f-control-item">
+          <label for="breadcrumbStyle">Layout Style</label>
+          <select id="breadcrumbStyle" class="f-select-field" onchange="updateBreadcrumbsApp()">
+            <option value="classic">Classic Minimalist</option>
+            <option value="pill">Rounded Pills</option>
+            <option value="arrow">Chevron Arrow Block</option>
+            <option value="underlined">Hover Underline</option>
+          </select>
+        </div>
+
+        <div class="f-control-item">
+          <label for="fontSizeInput">Font Size (px)</label>
+          <input type="number" id="fontSizeInput" class="f-input-text" value="14" min="10" max="24" oninput="updateBreadcrumbsApp()">
+        </div>
+
+        <div class="f-control-item">
+          <label>Link Text Color</label>
+          <div class="f-color-picker-wrap">
+            <input type="color" id="linkColorInput" value="#2563eb" oninput="syncColorHex(this, 'linkColorHex'); updateBreadcrumbsApp();">
+            <span id="linkColorHex">#2563eb</span>
+          </div>
+        </div>
+
+        <div class="f-control-item">
+          <label>Hover Color</label>
+          <div class="f-color-picker-wrap">
+            <input type="color" id="hoverColorInput" value="#1d4ed8" oninput="syncColorHex(this, 'hoverColorHex'); updateBreadcrumbsApp();">
+            <span id="hoverColorHex">#1d4ed8</span>
+          </div>
+        </div>
+
+        <div class="f-control-item">
+          <label>Current Page Color</label>
+          <div class="f-color-picker-wrap">
+            <input type="color" id="activeColorInput" value="#64748b" oninput="syncColorHex(this, 'activeColorHex'); updateBreadcrumbsApp();">
+            <span id="activeColorHex">#64748b</span>
+          </div>
+        </div>
+
+        <div class="f-control-item">
+          <label>Separator Color</label>
+          <div class="f-color-picker-wrap">
+            <input type="color" id="sepColorInput" value="#94a3b8" oninput="syncColorHex(this, 'sepColorHex'); updateBreadcrumbsApp();">
+            <span id="sepColorHex">#94a3b8</span>
+          </div>
+        </div>
+
+        <div class="f-control-item">
+          <label>Background Color</label>
+          <div class="f-color-picker-wrap">
+            <input type="color" id="bgColorInput" value="#f8fafc" oninput="syncColorHex(this, 'bgColorHex'); updateBreadcrumbsApp();">
+            <span id="bgColorHex">#f8fafc</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIVE INTERACTIVE PREVIEW -->
+      <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: block;">
+        Real-Time Rendered Breadcrumb Preview
+      </label>
+      <div class="f-preview-card" id="breadcrumbPreviewCard">
+        <!-- Live rendered breadcrumbs -->
+      </div>
+      <style id="dynamicBreadcrumbStylesheet"></style>
+
+      <!-- CODE OUTPUT GRID -->
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="htmlCodeOutput">Semantic HTML5 Markup</label>
+          <textarea id="htmlCodeOutput" class="f-textarea-field" readonly onclick="this.select()"></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="cssCodeOutput">Pure Responsive CSS Code</label>
+          <textarea id="cssCodeOutput" class="f-textarea-field" readonly onclick="this.select()"></textarea>
+        </div>
+      </div>
+
+      <!-- JSON-LD STRUCTURED DATA OUTPUT -->
+      <div class="f-panel-box" style="margin-bottom: 20px;">
+        <label for="jsonLdCodeOutput">Schema.org JSON-LD Structured Data (SEO)</label>
+        <textarea id="jsonLdCodeOutput" class="f-textarea-field" style="height: 120px;" readonly onclick="this.select()"></textarea>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="copyToClipboard('htmlCodeOutput', 'HTML Markup Copied!')">📋 Copy HTML</button>
+        <button class="f-btn f-btn-copy" onclick="copyToClipboard('cssCodeOutput', 'CSS Code Copied!')">🎨 Copy CSS</button>
+        <button class="f-btn f-btn-copy" onclick="copyToClipboard('jsonLdCodeOutput', 'JSON-LD Copied!')">⚡ Copy JSON-LD</button>
+        <button class="f-btn f-btn-clear" onclick="resetDefaults()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ SEO & Accessibility Compliant Generation:</span>
+        All markup follows standard WAI-ARIA breadcrumb patterns (`aria-label="Breadcrumb"` and `aria-current="page"`). Embedded JSON-LD schema empowers search engine crawlers to parse navigation structures cleanly.
+      </div>
+    </div>
+
+    <!-- EDITORIAL SEO ARTICLES CONTAINER -->
+    <div class="seo-container">
+      <h1 class="seo-title">The Architecture of Modern Web Breadcrumbs: User Experience, Semantic Markup, and Schema-Driven Search Optimization</h1>
+      <p class="seo-p">Navigational architecture forms the structural backbone of modern web applications and Content Management Systems (CMS). While primary navigation menus and global headers guide visitors through main categories, secondary navigation mechanisms—specifically breadcrumb trails—provide vital contextual awareness. Breadcrumbs orient users by explicitly displaying their positional path within a website's structural taxonomy. By detailing the exact hierarchical route from the root homepage down to the active document node, breadcrumb trails reduce friction, decrease bounce rates, and improve crawl efficiency for search engines.</p>
+      <p class="seo-p">This technical reference guide covers the engineering parameters for constructing lightweight, pure CSS breadcrumb navigation modules. It analyzes semantic HTML5 element selection, WAI-ARIA accessibility benchmarks, modern CSS layout techniques (Flexbox and pseudo-element rendering), and Schema.org `BreadcrumbList` JSON-LD microdata integration.</p>
+
+      <div class="seo-callout">
+        <strong>The Hierarchical UX Law:</strong> Breadcrumbs serve as contextual aids, not replacements for primary navigation menus. They must explicitly map the parent-child relationship of site content rather than simply mirroring a user's chronological browsing history.
+      </div>
+
+      <h2 class="seo-h2">1. Semantic HTML5 Foundation and Accessibility Standards</h2>
+      <p class="seo-p">Building accessible breadcrumb components requires using semantic HTML elements and appropriate WAI-ARIA attributes to ensure proper interpretation by assistive technologies, such as screen readers:</p>
+
+      <h3 class="seo-h3">Semantic Structure (<nav> and <ol>)</h3>
+      <p class="seo-p">Breadcrumbs represent a ordered list of hierarchical links. Therefore, the core wrapper must use the HTML5 <code>&lt;nav&gt;</code> element to define a distinct navigation landmark, containing an ordered list (<code>&lt;ol&gt;</code>) with individual list items (<code>&lt;li&gt;</code>). Using an ordered list reinforces the sequential parent-to-child relationship of the page hierarchy.</p>
+
+      <h3 class="seo-h3">WAI-ARIA Accessibility Attributes</h3>
+      <p class="seo-p">To ensure accessibility compliance under WCAG 2.1 standards, two key ARIA attributes must be applied:</p>
+      <ul class="seo-list">
+        <li><b>aria-label="Breadcrumb"</b>: Applied to the enclosing <code>&lt;nav&gt;</code> element, this label informs screen reader users of the specific purpose of the navigation landmark, distinguishing it from main site navigation.</li>
+        <li><b>aria-current="page"</b>: Applied directly to the final non-clickable text node (the active page indicator), this attribute explicitly informs assistive tools that the element represents the currently viewed document.</li>
+      </ul>
+
+      <h2 class="seo-h2">2. Pure CSS Styling Strategies and Pseudo-Element Separators</h2>
+      <p class="seo-p">Historically, web developers placed separator characters (such as slashes or chevrons) directly within HTML markup. Modern web design standards discourage mixing visual decor with DOM markup. Modern breadcrumbs rely on CSS pseudo-elements (<code>::before</code> or <code>::after</code>) to render separators dynamically.</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Implementation Technique</th>
+              <th>DOM Cleanliness</th>
+              <th>Accessibility Impact</th>
+              <th>Customizability</th>
+              <th>Performance Standard</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>CSS Pseudo-Elements (::after)</b></td>
+              <td>Optimal (Zero extra markup)</td>
+              <td>Ignored by screen readers (Ideal)</td>
+              <td>High (Content, SVG, Fonts)</td>
+              <td>Fastest (GPU-accelerated)</td>
+            </tr>
+            <tr>
+              <td><b>Inline HTML Symbols</b></td>
+              <td>Poor (Clutters DOM structure)</td>
+              <td>Read aloud by screen readers (Annoying)</td>
+              <td>Low (Requires bulk inline edits)</td>
+              <td>Standard</td>
+            </tr>
+            <tr>
+              <td><b>CSS Background Images</b></td>
+              <td>Good</td>
+              <td>Accessible (Visual only)</td>
+              <td>Medium (Requires image assets)</td>
+              <td>Requires extra network fetch</td>
+            </tr>
+            <tr>
+              <td><b>SVG Inline Sprites</b></td>
+              <td>Moderate (Increased DOM payload)</td>
+              <td>Requires aria-hidden="true"</td>
+              <td>Highest (Scalable vector manipulation)</td>
+              <td>Fast</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="seo-h2">3. Schema.org JSON-LD Microdata Integration</h2>
+      <p class="seo-p">Search engines like Google use structured microdata to extract site hierarchy information and display breadcrumb trails directly within Search Engine Results Pages (SERPs). Injecting JSON-LD (JavaScript Object Notation for Linked Data) scripts ensures search crawlers parse page taxonomies accurately without relying on visual markup alone.</p>
+
+      <div class="seo-callout">
+        <strong>SERP Rich Result Advantage:</strong> Implementing valid <code>BreadcrumbList</code> structured data allows search engines to replace plain URLs in search results with formatted breadcrumb paths, improving organic click-through rates (CTR).
+      </div>
+
+      <h2 class="seo-h2">Frequently Asked Questions (FAQ)</h2>
+
+      <h3 class="seo-h3">Should the active page item in a breadcrumb trail be a clickable link?</h3>
+      <p class="seo-p">No. The final item in the breadcrumb trail represents the current page. Making it a self-referencing link creates UX confusion and redundant server requests. It should be rendered as plain text styled differently from preceding links, accompanied by the <code>aria-current="page"</code> attribute.</p>
+
+      <h3 class="seo-h3">Why are CSS pseudo-element separators preferred over inline characters?</h3>
+      <p class="seo-p">Inline HTML characters (e.g., <code>&lt;span&gt;/&lt;/span&gt;</code>) are treated as readable content by screen readers, causing them to announce "slash" or "greater than" between every single link. CSS pseudo-elements (<code>::before
