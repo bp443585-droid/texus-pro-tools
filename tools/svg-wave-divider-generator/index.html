@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SVG Wave Divider Generator | Free Customizable Vector Wave Generator</title>
+  <meta name="description" content="Generate customizable, ultra-lightweight SVG wave dividers for website headers and section transitions. Customize wave crests, height, layers, colors, and export SVG code instantly." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/svg-wave-divider-generator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SVG Wave Divider Generator",
+    "operatingSystem": "Web",
+    "applicationCategory": "DesignApplication",
+    "description": "An interactive web utility to design, mathematically generate, and export responsive SVG wave shape dividers for web page section transitions.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 180px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 600; font-size: 0.88rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* WAVE CONTROLS FORM STYLING */
+    .wave-controls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 16px; margin-bottom: 20px; }
+    .ctrl-group { display: flex; flex-direction: column; gap: 6px; }
+    .ctrl-group label { font-size: 0.8rem; font-weight: 700; color: #334155; text-transform: uppercase; letter-spacing: 0.4px; }
+    .ctrl-input { width: 100%; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px 10px; font-size: 0.9rem; color: #0f172a; font-family: inherit; box-sizing: border-box; outline: none; transition: border-color 0.2s; }
+    .ctrl-input:focus { border-color: #2563eb; }
+    .ctrl-range { width: 100%; cursor: pointer; accent-color: #2563eb; }
+    .range-val { font-size: 0.8rem; font-weight: 700; color: #2563eb; margin-left: 4px; }
+    
+    .checkbox-label { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: #334155; cursor: pointer; height: 100%; margin-top: 18px; }
+    .checkbox-label input { width: 16px; height: 16px; accent-color: #2563eb; cursor: pointer; }
+
+    /* PREVIEW CONTAINER */
+    .preview-stage { width: 100%; height: 240px; border: 2px solid #e2e8f0; border-radius: 16px; overflow: hidden; position: relative; display: flex; flex-direction: column; justify-content: flex-end; transition: background 0.3s; margin-bottom: 20px; }
+    .preview-stage svg { width: 100%; height: 100%; display: block; }
+    .preview-tag { position: absolute; top: 12px; left: 14px; background: rgba(15, 23, 42, 0.7); color: #ffffff; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; backdrop-filter: blur(4px); pointer-events: none; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 140px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 140px; font-size: 0.88rem; }
+      .wave-controls-grid { grid-template-columns: 1fr 1fr; gap: 12px; padding: 14px; }
+      .preview-stage { height: 180px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .wave-controls-grid { grid-template-columns: 1fr; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🌊</span> SVG Wave Divider Generator</div>
+    
+    <div class="f-card">
+      
+      <!-- CONTROLS DASHBOARD -->
+      <div class="wave-controls-grid">
+        <div class="ctrl-group">
+          <label for="waveShape">Wave Style</label>
+          <select id="waveShape" class="ctrl-input" onchange="renderWaveSystem()">
+            <option value="sine">Smooth Sine Wave</option>
+            <option value="peaks">Curved Peaks</option>
+            <option value="sharp">Sharp Triangular</option>
+            <option value="steps">Stepped Blocks</option>
+            <option value="organic">Multi-Frequency Organic</option>
+          </select>
+        </div>
+
+        <div class="ctrl-group">
+          <label for="waveCount">Crests / Waves: <span id="valWaveCount" class="range-val">3</span></label>
+          <input type="range" id="waveCount" class="ctrl-range" min="1" max="10" value="3" oninput="renderWaveSystem()">
+        </div>
+
+        <div class="ctrl-group">
+          <label for="waveHeight">Height / Amplitude: <span id="valWaveHeight" class="range-val">120px</span></label>
+          <input type="range" id="waveHeight" class="ctrl-range" min="30" max="300" value="120" oninput="renderWaveSystem()">
+        </div>
+
+        <div class="ctrl-group">
+          <label for="waveLayers">Layer Depth</label>
+          <select id="waveLayers" class="ctrl-input" onchange="renderWaveSystem()">
+            <option value="1">Single Layer (1 Wave)</option>
+            <option value="2">Dual Layer (2 Overlapping)</option>
+            <option value="3" selected>Triple Layer (3 Depth Waves)</option>
+          </select>
+        </div>
+
+        <div class="ctrl-group">
+          <label for="layerColorMain">Primary Wave Color</label>
+          <input type="color" id="layerColorMain" class="ctrl-input" value="#2563eb" onchange="renderWaveSystem()">
+        </div>
+
+        <div class="ctrl-group">
+          <label for="bgColor">Stage Background Color</label>
+          <input type="color" id="bgColor" class="ctrl-input" value="#f8fafc" onchange="renderWaveSystem()">
+        </div>
+
+        <div class="ctrl-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="flipY" onchange="renderWaveSystem()"> Invert Vertically (Top Wave)
+          </label>
+        </div>
+
+        <div class="ctrl-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="flipX" onchange="renderWaveSystem()"> Flip Horizontally
+          </label>
+        </div>
+      </div>
+
+      <!-- LIVE PREVIEW STAGE -->
+      <div id="previewStage" class="preview-stage">
+        <div class="preview-tag">Live Vector Preview</div>
+        <div id="svgContainer" style="width: 100%; height: 100%; display: flex; align-items: flex-end;"></div>
+      </div>
+
+      <!-- OUTPUT CODE GRID -->
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="svgOutputConsole">Generated Vector SVG Code</label>
+          <textarea id="svgOutputConsole" class="f-textarea-field mono-font-panel" readonly placeholder="SVG markup code will generate automatically..."></textarea>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="cssOutputConsole">Production CSS Embedding Snippet</label>
+          <textarea id="cssOutputConsole" class="f-textarea-field mono-font-panel" readonly placeholder="CSS background data-URI rule will populate automatically..."></textarea>
+        </div>
+      </div>
+
+      <!-- ACTION STRIP -->
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="randomizeWave()">🎲 Randomize Shape</button>
+        <button class="f-btn f-btn-copy" id="copySvgBtn" onclick="copySvgCode()">📋 Copy SVG Markup</button>
+        <button class="f-btn f-btn-copy" id="copyCssBtn" onclick="copyCssCode()">🎨 Copy CSS Rule</button>
+        <button class="f-btn f-btn-clear" onclick="downloadSvgFile()">💾 Download .SVG</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Responsive Scaling Rule:</span>
+        Generated SVGs leverage <code style="background:#dbeafe; padding:2px 4px; border-radius:4px;">preserveAspectRatio="none"</code> and dynamic <code style="background:#dbeafe; padding:2px 4px; border-radius:4px;">viewBox</code> configurations to guarantee zero-pixel distortion across mobile, tablet, and 4K desktop display monitors.
+      </div>
+    </div>
+
+    <!-- SEO EDITORIAL CONTENT CONTAINER -->
+    <div class="seo-container">
+      <h2 class="seo-title">Vector Geometry &amp; Section Dividers: Engineering Dynamic SVG Wave Topographies, Path Optimization, and Modern CSS Viewport Integration</h2>
+      <p class="seo-p">Modern web design aesthetics rely heavily on organic visual transitions to disrupt rigid rectangular layouts. Standard rectangular grid containers can make digital user interfaces feel sterile and monotonous. Section dividers—specifically vector SVG wave curves—introduce fluid rhythm, guide eye movement downward through hero banners, and elevate structural visual hierarchy without introducing performance bottlenecks.</p>
+      <p class="seo-p">This extensive technical architectural manual explores the mathematical foundations behind cubic Bézier curve synthesis, analyzes performance vectors of inline SVG rendering versus CSS Data-URIs, reviews viewbox scaling mechanics, and details best practices for deploying responsive wave graphics across enterprise content platforms.</p>
+
+      <div class="seo-callout">
+        <strong>The Viewport Aspect Factor:</strong> Unlike standard static vector illustrations, section divider SVGs require <code>preserveAspectRatio="none"</code> inside their top-level root element. This attribute instructs browser layout engines to scale vector paths independently along the horizontal axis, filling 100% of container widths without distorting section height bounds.
+      </div>
+
+      <h3 class="seo-h2">The Mathematical Core: Cubic Bézier Curve Interpolation</h3>
+      <p class="seo-p">Scalable Vector Graphics rely on XML path elements (`&lt;path d="..." /&gt;`) driven by precise coordinate instructions. To render smooth, continuous wave topographies, generators translate geometric parameters (frequency, amplitude, and phase offsets) into cubic Bézier curve command sequences (`C` and `S` directives):</p>
+
+      <h4 class="seo-h3">1.
