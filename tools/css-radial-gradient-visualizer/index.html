@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CSS Radial Gradient Visualizer | Free Online Generator</title>
+  <meta name="description" content="Design, customize, and generate CSS radial gradients instantly with our free online visualizer. Adjust shape, position, color stops, and copy clean CSS code." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/css-radial-gradient-visualizer/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CSS Radial Gradient Visualizer",
+    "operatingSystem": "Web",
+    "applicationCategory": "DeveloperApplication",
+    "description": "An advanced visualizer and code generator for CSS radial gradients featuring live preview, multi-stop controls, positioning adjustments, and export capabilities.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TOOL SPECIFIC STYLING */
+    .gradient-preview-box { width: 100%; height: 300px; border-radius: 16px; border: 2px solid #e2e8f0; margin-bottom: 25px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; transition: background 0.3s ease; }
+    .preview-badge { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(4px); color: #ffffff; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+    
+    .gradient-controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 25px; }
+    .control-group { display: flex; flex-direction: column; gap: 8px; }
+    .control-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .control-group select, .control-group input[type="range"], .control-group input[type="text"] { width: 100%; padding: 12px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; font-family: inherit; }
+    .control-group select:focus, .control-group input[type="text"]:focus { border-color: #2563eb; background: #ffffff; }
+    .range-row { display: flex; align-items: center; gap: 12px; }
+    .range-row input[type="range"] { flex: 1; padding: 0; height: 8px; border: none; background: #e2e8f0; border-radius: 4px; accent-color: #2563eb; }
+    .range-value { font-weight: 700; font-size: 0.95rem; color: #0f172a; min-width: 45px; text-align: right; }
+
+    .color-stops-section { margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
+    .color-stops-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .color-stops-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
+    .color-stop-item { display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 10px 14px; border-radius: 12px; border: 1px solid #e2e8f0; }
+    .color-stop-item input[type="color"] { -webkit-appearance: none; border: none; width: 36px; height: 36px; border-radius: 8px; cursor: pointer; background: none; }
+    .color-stop-item input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+    .color-stop-item input[type="color"]::-webkit-color-swatch { border: 2px solid #cbd5e1; border-radius: 8px; }
+    .color-stop-item input[type="range"] { flex: 1; accent-color: #2563eb; }
+    .stop-pos-label { font-size: 0.85rem; font-weight: 600; color: #475569; min-width: 45px; text-align: right; }
+    .f-btn-remove { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; padding: 8px 12px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
+    .f-btn-remove:hover { background: #fee2e2; }
+    .f-btn-add { background: #f0fdf4; border: 1px solid #bbf7d0; color: #16a34a; padding: 10px 16px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; cursor: pointer; width: 100%; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-add:hover { background: #dcfce7; }
+
+    /* OUTPUT CONSOLE */
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; margin-top: 25px; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-textarea-field { width: 100%; height: 120px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 1.1rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 15px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .gradient-controls-grid { grid-template-columns: 1fr; gap: 20px; }
+      .gradient-preview-box { height: 220px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🎨</span> CSS Radial Gradient Visualizer</div>
+    
+    <div class="f-card">
+      <div id="gradientPreview" class="gradient-preview-box">
+        <div class="preview-badge">Live Preview Area</div>
+      </div>
+
+      <div class="gradient-controls-grid">
+        <div class="control-group">
+          <label for="shapeSelect">Gradient Shape</label>
+          <select id="shapeSelect" onchange="updateGradient()">
+            <option value="ellipse">Ellipse (Default)</option>
+            <option value="circle">Circle</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="sizeSelect">Gradient Size</label>
+          <select id="sizeSelect" onchange="updateGradient()">
+            <option value="farthest-corner">Farthest Corner (Default)</option>
+            <option value="closest-side">Closest Side</option>
+            <option value="closest-corner">Closest Corner</option>
+            <option value="farthest-side">Farthest Side</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="gradient-controls-grid">
+        <div class="control-group">
+          <label for="posX">Position X (% / px)</label>
+          <input type="text" id="posX" value="50%" oninput="updateGradient()" placeholder="e.g. 50% or center">
+        </div>
+
+        <div class="control-group">
+          <label for="posY">Position Y (% / px)</label>
+          <input type="text" id="posY" value="50%" oninput="updateGradient()" placeholder="e.g. 50% or center">
+        </div>
+      </div>
+
+      <div class="color-stops-section">
+        <div class="color-stops-header">
+          <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Color Stops & Transition Points</label>
+        </div>
+        <div id="colorStopsList" class="color-stops-list">
+          <!-- Dynamically populated color stops -->
+        </div>
+        <button class="f-btn-add" onclick="addColorStop()">+ Add Color Stop</button>
+      </div>
+
+      <div class="f-panel-box">
+        <label for="cssOutputConsole">Generated CSS Code Syntax</label>
+        <textarea id="cssOutputConsole" class="f-textarea-field mono-font-panel" readonly placeholder="Awaiting gradient generation..."></textarea>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="updateGradient()">Refresh Visualizer</button>
+        <button class="f-btn f-btn-copy" id="copyCssBtn" onclick="copyCssToClipboard()">📋 Copy CSS Code</button>
+        <button class="f-btn f-btn-clear" onclick="resetGradientDefaults()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant CSS Generation Pipeline:</span>
+        All color stops, shapes, and positioning offsets update in real-time. Click "Copy CSS Code" to instantly transfer production-ready styles into your stylesheet or inline markup.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering CSS Radial Gradients: Geometry, Color Stop Interpolation, and Responsive Web Styling Architectures</h2>
+      <p class="seo-p">Modern user interface engineering relies heavily on fluid, vector-free styling elements to build engaging digital products. While flat colors offer clean minimalism, well-crafted gradients introduce depth, focus, and hierarchy across layout canvases. Among CSS gradient functions, the `radial-gradient()` syntax provides precise control over circular and elliptical color progressions originating from a specific central point.</p>
+      <p class="seo-p">This extensive computing manual explores the mathematical foundations of CSS radial gradients, analyzes positioning rules, evaluates color space interpolation models, and outlines clear workflows to deploy high-performance visual aesthetics natively inside production web environments.</p>
+
+      <div class="seo-callout">
+        <strong>The Radial Gradient Equation:</strong> Unlike linear gradients which flow along an angled straight axis, radial gradients radiate outward from an origin point, mapping color transitions along geometric radii calculated toward designated bounding box edges or corners.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Syntax Anatomy and Geometric Parameters</h3>
+      <p class="seo-p">When assembling a robust radial gradient rule inside CSS stylesheets, understanding the structural parameter sequence is essential for avoiding syntax errors and unexpected visual shifts:</p>
+
+      <h4 class="seo-h3">1. Shape and Size Identifiers</h4>
+      <p class="seo-p">The first parameter block defines the geometry of the gradient. Developers can choose between `circle` (equal horizontal and vertical radii) and `ellipse` (default scaling conforming to element dimensions). Following the shape, sizing keywords (`closest-side`, `farthest-side`, `closest-corner`, `farthest-corner`) determine how far the gradient extends toward the container boundaries.</p>
+
+      <h4 class="seo-h3">2. Origin Positioning Coordinates</h4>
+      <p class="seo-p">Using the `at` keyword, engineers can shift the center point of the gradient anywhere within or beyond the element box (e.g., `at 20% 30%` or `at top right`). This flexibility allows developers to simulate natural light sources, sunbursts, and spotlight highlights seamlessly.</p>
+
+      <h4 class="seo-h3">3. Color Stop Sequences</h4>
+      <p class="seo-p">Color stops define the sequence of hues and their corresponding physical locations along the gradient radius. Modern CSS supports HEX, RGB, RGBA, HSL, and modern color spaces like Display P3, enabling vibrant, accessible color transitions.</p>
+
+      <h3>The Statutory Reference Matrix: Radial Gradient Property Dictionary</h3>
+      <p class="seo-p">Reviewing key parameters and their rendering behaviors helps developers craft optimized styling properties for diverse web applications:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Property / Keyword</th>
+              <th>Syntax Example</th>
+              <th>Rendering Behavior & Geometry</th>
+              <th>Common UI Design Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Circle Shape</td>
+              <td>`circle`</td>
+              <td>Forces equal radii on both X and Y axes, producing a perfectly symmetrical round gradient.</td>
+              <td>Hero section avatars, glowing orb icons, and badge highlights.</td>
+            </tr>
+            <tr>
+              <td>Ellipse Shape</td>
+              <td>`ellipse`</td>
+              <td>Default behavior where the gradient scales proportionally to match the container's aspect ratio.</td>
+              <td>Full-screen background overlays and widescreen header cards.</td>
+            </tr>
+            <tr>
+              <td>Farthest Corner</td>
+              <td>`farthest-corner`</td>
+              <td>Extends the gradient edge so that it reaches the corner furthest from the center point.</td>
+              <td>Deep ambient backgrounds with smooth, gradual falloff.</td>
+            </tr>
+            <tr>
+              <td>Closest Side</td>
+              <td>`closest-side`</td>
+              <td>Terminates the gradient edge when it reaches the side closest to the gradient origin.</td>
+              <td>Contained UI card vignettes and subtle inner shadows.</td>
+            </tr>
+            <tr>
+              <td>Origin Offset</td>
+              <td>`at 80% 20%`</td>
+              <td>Relocates the focal center of the radial gradient to upper-right coordinates.</td>
+              <td>Simulating corner light sources and top-down directional illumination.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>What is the difference between `farthest-corner` and `closest-side` sizing?</h3>
+      <p class="seo-p">The sizing keyword dictates how far the 100% color stop extends. `farthest-corner` sizes the gradient so its ending shape reaches the corner of the box furthest from the center, creating a wide, gradual transition. Conversely, `closest-side` terminates the gradient at the nearest edge of the bounding box, resulting in a much tighter, concentrated color spread.</p>
+
+      <h3>Can radial gradients use transparent color stops for fading effects?</h3>
+      <p class="seo-p">Yes! By combining solid colors with transparent RGBA values or alpha-channel HSL colors (e.g., `rgba(37, 99, 235, 0)`), you can create complex lighting vignettes, smooth image overlays, and multi-layered backdrop effects without needing external bitmap graphics.</p>
+
+      <h3>How does local device gradient generation ensure project security?</h3>
+      <p class="seo-p">Texus Pro Tools prioritizes absolute user data privacy. All visualizer calculations and CSS string generations execute directly inside your browser's local JavaScript environment. No design parameters or styling templates ever leave your local machine, ensuring complete workflow confidentiality.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for CSS Gradient Design</h3>
+      <p class="seo-p">To maintain high performance and clean codebases across production web applications, use semantic color stops, avoid excessive overlapping gradient layers that can impact paint performance, and leverage instant visualizer tools to preview complex color transitions across responsive viewports.</p>
+      <p class="seo-p">Our Advanced CSS Radial Gradient Visualizer suite automates parameter calculations and code generation instantly, empowering developers and designers to build stunning visual interfaces with maximum efficiency.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // Gradient Visualizer Logic
+    let colorStops = [
+      { color: '#2563eb', position: 0 },
+      { color: '#0f172a', position: 100 }
+    ];
+
+    function renderColorStopsUI() {
+      const listContainer = document.getElementById('colorStopsList');
+      listContainer.innerHTML = '';
+      
+      colorStops.forEach((stop, index) => {
+        const item = document.createElement('div');
+        item.className = 'color-stop-item';
+        
+        item.innerHTML = `
+          <input type="color" value="${stop.color}" oninput="updateStopColor(${index}, this.value)">
+          <input type="range" min="0" max="100" value="${stop.position}" oninput="updateStopPosition(${index}, this.value)">
+          <span class="stop-pos-label">${stop.position}%</span>
+          ${colorStops.length > 2 ? `<button class="f-btn-remove" onclick="removeColorStop(${index})">✕</button>` : ''}
+        `;
+        listContainer.appendChild(item);
+      });
+      updateGradient();
+    }
+
+    function addColorStop() {
+      const lastPos = colorStops[colorStops.length - 1].position;
+      const newPos = Math.min(100, lastPos + 10);
+      colorStops.push({ color: '#38bdf8', position: newPos });
+      renderColorStopsUI();
+    }
+
+    function removeColorStop(index) {
+      if (colorStops.length > 2) {
+        colorStops.splice(index, 1);
+        renderColorStopsUI();
+      }
+    }
+
+    function updateStopColor(index, val) {
+      colorStops[index].color = val;
+      updateGradient();
+    }
+
+    function updateStopPosition(index, val) {
+      colorStops[index].position = parseInt(val, 10);
+      // update label text directly
+      const labels = document.querySelectorAll('.stop-pos-label');
+      if (labels[index]) {
+        labels[index].textContent = val + '%';
+      }
+      updateGradient();
+    }
+
+    function updateGradient() {
+      const shape = document.getElementById('shapeSelect').value;
+      const size = document.getElementById('sizeSelect').value;
+      const posX = document.getElementById('posX').value.trim() || '50%';
+      const posY = document.getElementById('posY').value.trim() || '50%';
+      
+      // Sort color stops by position
+      const sortedStops = [...colorStops].sort((a, b) => a.position - b.position);
+      const stopsString = sortedStops.map(s => `${s.color} ${s.position}%`).join(', ');
+      
+      const cssValue = `radial-gradient(${shape} ${size} at ${posX} ${posY}, ${stopsString})`;
+      const fullCss = `background: ${cssValue};`;
+
+      document.getElementById('gradientPreview').style.background = cssValue;
+      document.getElementById('cssOutputConsole').value = fullCss;
+    }
+
+    function resetGradientDefaults() {
+      document.getElementById('shapeSelect').value = 'ellipse';
+      document.getElementById('sizeSelect').value = 'farthest-corner';
+      document.getElementById('posX').value = '50%';
+      document.getElementById('posY').value = '50%';
+      colorStops = [
+        { color: '#2563eb', position: 0 },
+        { color: '#0f172a', position: 100 }
+      ];
+      renderColorStopsUI();
+    }
+
+    function copyCssToClipboard() {
+      const consoleEl = document.getElementById('cssOutputConsole');
+      consoleEl.select();
+      consoleEl.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(consoleEl.value).then(() => {
+        const btn = document.getElementById('copyCssBtn');
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Copied to Clipboard!';
+        btn.style.background = '#dcfce7';
+        btn.style.color = '#16a34a';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text:', err);
+      });
+    }
+
+    // Initialize UI on load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderColorStopsUI();
+    });
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
