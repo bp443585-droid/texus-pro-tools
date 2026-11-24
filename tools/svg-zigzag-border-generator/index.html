@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SVG Zigzag Border Generator | Create Custom CSS & SVG Dividers</title>
+  <meta name="description" content="Generate custom SVG zigzag, sawtooth, and wave borders instantly. Copy raw SVG code, data URIs, or CSS background-image snippets for your web designs." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/svg-zigzag-border-generator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SVG Zigzag Border Generator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "A robust visual designer tool to craft, configure, and export scalable vector zigzag and sawtooth borders instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CUSTOM GENERATOR CONTROLS GRID */
+    .gen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .gen-control-group { display: flex; flex-direction: column; gap: 8px; }
+    .gen-control-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; }
+    .gen-control-group label span { color: #2563eb; font-weight: 800; }
+    
+    .gen-input, .gen-select { width: 100%; padding: 12px 16px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .gen-input:focus, .gen-select:focus { border-color: #2563eb; background: #ffffff; }
+    .gen-range { width: 100%; accent-color: #2563eb; cursor: pointer; }
+
+    /* LIVE PREVIEW STAGE */
+    .preview-stage { width: 100%; min-height: 220px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 30px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; margin-bottom: 24px; }
+    .preview-container { width: 100%; max-width: 800px; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); padding: 40px 20px; text-align: center; position: relative; border: 1px solid #e2e8f0; }
+    
+    /* DYNAMIC SVG BORDER WRAPPER */
+    .svg-border-target { width: 100%; height: 40px; position: absolute; left: 0; pointer-events: none; }
+    .svg-border-target.top { top: 0; }
+    .svg-border-target.bottom { bottom: 0; }
+
+    /* CODE OUTPUT PANEL */
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; margin-bottom: 20px; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-textarea-field { width: 100%; height: 140px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.95rem; font-family: 'Courier New', Courier, monospace; font-weight: 600; color: #0f172a; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.4; word-break: break-all; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95ln; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .gen-grid { grid-template-columns: 1fr; gap: 16px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📐</span> SVG Zigzag Border Generator</div>
+    
+    <div class="f-card">
+      <!-- LIVE PREVIEW STAGE -->
+      <div class="preview-stage" id="previewStage">
+        <div class="preview-container" id="previewContainer">
+          <div id="topBorderMount" class="svg-border-target top"></div>
+          <div style="font-weight: 800; color: #0f172a; font-size: 1.25rem; margin-bottom: 8px;">Live Zigzag Divider Preview</div>
+          <p style="color: #64748b; font-size: 0.95rem; margin: 0;">Adjust the sliders and color parameters below to craft your custom vector border.</p>
+          <div id="bottomBorderMount" class="svg-border-target bottom"></div>
+        </div>
+      </div>
+
+      <!-- GENERATOR CONTROLS GRID -->
+      <div class="gen-grid">
+        <div class="gen-control-group">
+          <label for="patternType">Border Pattern Style</label>
+          <select id="patternType" class="gen-select" onchange="updateGenerator()">
+            <option value="zigzag">Sharp Zigzag (Sawtooth)</option>
+            <option value="wave">Smooth Wave / Sine</option>
+            <option value="slant">Slanted Diagonal Stripe</option>
+          </select>
+        </div>
+
+        <div class="gen-control-group">
+          <label for="borderPosition">Placement Position</label>
+          <select id="borderPosition" class="gen-select" onchange="updateGenerator()">
+            <option value="top">Top Edge Border</option>
+            <option value="bottom" selected>Bottom Edge Border</option>
+            <option value="both">Both Top & Bottom</option>
+          </select>
+        </div>
+
+        <div class="gen-control-group">
+          <label for="fillColor">Border Fill Color <span id="fillColorVal">#2563eb</span></label>
+          <input type="color" id="fillColor" class="gen-input" value="#2563eb" oninput="updateGenerator()" style="height: 48px; padding: 4px; cursor: pointer;">
+        </div>
+
+        <div class="gen-control-group">
+          <label for="patternWidth">Pattern Width (Period) <span id="patternWidthVal">40</span>px</label>
+          <input type="range" id="patternWidth" class="gen-range" min="10" max="200" value="40" oninput="updateGenerator()">
+        </div>
+
+        <div class="gen-control-group">
+          <label for="patternHeight">Border Amplitude / Height <span id="patternHeightVal">20</span>px</label>
+          <input type="range" id="patternHeight" class="gen-range" min="5" max="100" value="20" oninput="updateGenerator()">
+        </div>
+
+        <div class="gen-control-group">
+          <label for="outputFormat">Export Code Format</label>
+          <select id="outputFormat" class="gen-select" onchange="updateGenerator()">
+            <option value="svg">Inline SVG Markup</option>
+            <option value="css">CSS Background Image (Data URI)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- OUTPUT CODE PANEL -->
+      <div class="f-panel-box">
+        <label for="codeOutput">Generated Code Payload</label>
+        <textarea id="codeOutput" class="f-textarea-field" readonly placeholder="Awaiting configuration parameters..."></textarea>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="updateGenerator()">Regenerate Code</button>
+        <button class="f-btn f-btn-copy" id="copyCodeBtn" onclick="copyResultToClipboard()">📋 Copy Code Payload</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Instant Client-Side Vector Rendering:</span>
+        All SVG paths and CSS data URIs are calculated locally in real-time. Copy and paste the resulting code directly into your HTML layouts, React components, or CSS stylesheets.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Modern Web Geometry: SVG Zigzag Borders, CSS Dividers, and Scalable Vector Graphics Architecture</h2>
+      <p class="seo-p">Creating visually engaging web pages often requires breaking away from rigid rectangular grids. Implementing geometric section dividers—such as zigzag edges, sawtooth trims, and smooth wave transitions—adds organic movement and visual depth to landing pages, portfolios, and e-commerce stores. Historically, developers relied on heavy bitmap image files (`.png` or `.gif`) to achieve these effects. However, raster assets scale poorly across high-density Retina displays, inflate page weight, and prevent dynamic color modifications.</p>
+      <p class="seo-p">Enter Scalable Vector Graphics (SVG) and CSS Data URIs. By defining geometric borders using mathematical coordinate vectors, developers can render razor-sharp edges at any viewport dimension while maintaining tiny file sizes and instant runtime manipulation.</p>
+
+      <div class="seo-callout">
+        <strong>The Vector Advantage:</strong> Unlike raster graphics that pixelate when zoomed, SVG borders utilize XML path commands (`M`, `L`, `C`) to render infinitely crisp geometrical shapes on 4K monitors, smartphones, and print media alike.
+      </div>
+
+      <h3 class="seo-h2">The Technical Mechanics: SVG Paths vs. CSS Background Data URIs</h3>
+      <p class="seo-p">When integrating custom zigzag dividers into your web architecture, you generally choose between two high-performance implementation methods:</p>
+
+      <h4 class="seo-h3">1. Inline SVG Markup Injection</h4>
+      <p class="seo-p">Embedding raw SVG code directly within your HTML markup offers the ultimate flexibility. It allows developers to target individual path nodes with CSS transitions, manipulate fill colors on hover states, and ensure semantic accessibility across screen readers.</p>
+
+      <h4 class="seo-h3">2. CSS Background-Image Data URIs</h4>
+      <p class="seo-p">Converting SVG markup into a base64-encoded or URL-encoded data URI enables you to apply complex repeating zigzag patterns directly to CSS properties like `background-image`. This keeps HTML markup clean when applying decorative section dividers across multi-page layouts.</p>
+
+      <h3 class="seo-h2">Comparative Matrix: Choosing Your Integration Strategy</h3>
+      <p class="seo-p">Review the breakdown below to determine whether Inline SVG or CSS Data URIs best fit your specific design requirements:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Evaluation Parameter</th>
+              <th>Inline SVG Markup</th>
+              <th>CSS Background Data URI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DOM Integration</td>
+              <td>Direct markup insertion into HTML DOM tree.</td>
+              <td>Applied via CSS background properties (`background-image`).</td>
+            </tr>
+            <tr>
+              <td>Color Manipulations</td>
+              <td>Easily modified via CSS fill or stroke rules.</td>
+              <td>Requires re-generating code if fill color changes.</td>
+            </tr>
+            <tr>
+              <td>HTML Cleanliness</td>
+              <td>Adds SVG tag structure to markup files.</td>
+              <td>Keeps HTML document structure pristine and semantic.</td>
+            </tr>
+            <tr>
+              <td>Responsiveness</td>
+              <td>Scales automatically using `viewBox="0 0 W H"` attributes.</td>
+              <td>Repeats or stretches based on CSS background-size rules.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Expert Troubleshooting</h3>
+
+      <h3>How can I make my SVG zigzag border fully responsive across mobile viewports?</h3>
+      <p class="seo-p">To ensure responsiveness, always set your SVG element's width to `100%`, height to a fixed pixel value (e.g., `40px`), and include a proper `preserveAspectRatio="none"` attribute. This allows the vector coordinates to stretch fluidly across varying screen widths without distortion.</p>
+
+      <h3>Can I animate SVG zigzag borders using CSS keyframes?</h3>
+      <p class="seo-p">Yes! When using inline SVG markup, you can target the `&lt;path&gt;` element with CSS animations. By adjusting the `d` attribute via JavaScript or animating `transform: translateX()`, you can create scrolling wave and pulsing zigzag motion effects.</p>
+
+      <h3>Does generating SVG borders impact page load speed?</h3>
+      <p class="seo-p">Not at all. Generated SVG markup strings weigh only a few hundred bytes—significantly smaller than compressed JPEG or PNG image files. This reduces HTTP transfer overhead and boosts core web vital performance scores.</p>
+
+      <h3 class="seo-h2">Summary: Elevate Your Web Design Workflow</h3>
+      <p class="seo-p">The SVG Zigzag Border Generator eliminates the hassle of manual vector math and coordinate calculation. By providing instant visual feedback and production-ready code exports, this tool empowers designers and developers to build stunning, modern web interfaces with absolute precision.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // Generator Logic Engine
+    function updateGenerator() {
+      const type = document.getElementById('patternType').value;
+      const position = document.getElementById('borderPosition').value;
+      const color = document.getElementById('fillColor').value;
+      const width = parseInt(document.getElementById('patternWidth').value);
+      const height = parseInt(document.getElementById('patternHeight').value);
+      const format = document.getElementById('outputFormat').value;
+
+      // Update slider value displays
+      document.getElementById('fillColorVal').innerText = color;
+      document.getElementById('patternWidthVal').innerText = width;
+      document.getElementById('patternHeightVal').innerText = height;
+
+      // Generate SVG path based on type
+      let pathData = '';
+      let viewBoxWidth = width * 4;
+      let viewBoxHeight = height;
+
+      if (type === 'zigzag') {
+        // Sawtooth / Zigzag
+        const halfW = width / 2;
+        pathData = `M0,0 L${halfW},${height} L${width},0 L${width + halfW},${height} L${width * 2},0 V${height} H0 Z`;
+        viewBoxWidth = width * 2;
+      } else if (type === 'wave') {
+        // Smooth Wave
+        const halfW = width / 2;
+        pathData = `M0,0 Q${halfW},${height * 2} ${width},0 Q${width + halfW},${height * 2} ${width * 2},0 V${height} H0 Z`;
+        viewBoxWidth = width * 2;
+      } else if (type === 'slant') {
+        // Slanted Diagonal
+        pathData = `M0,0 L${width},${height} V${height} H0 Z`;
+        viewBoxWidth = width;
+      }
+
+      // Build SVG Markup string
+      const svgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${viewBoxWidth} ${viewBoxHeight}" preserveAspectRatio="none" style="width:100%;height:${height}px;"><path d="${pathData}" fill="${color}"/></svg>`;
+
+      // Render Preview Borders
+      const topMount = document.getElementById('topBorderMount');
+      const bottomMount = document.getElementById('bottomBorderMount');
+
+      topMount.innerHTML = '';
+      bottomMount.innerHTML = '';
+
+      if (position === 'top' || position === 'both') {
+        topMount.innerHTML = svgString;
+      }
+      if (position === 'bottom' || position === 'both') {
+        // Flip vertically for bottom border
+        const bottomSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${viewBoxWidth} ${viewBoxHeight}" preserveAspectRatio="none" style="width:100%;height:${height}px;transform:scaleY(-1);"><path d="${pathData}" fill="${color}"/></svg>`;
+        bottomMount.innerHTML = bottomSvgString;
+      }
+
+      // Format Output Code
+      let outputCode = '';
+      if (format === 'svg') {
+        outputCode = svgString;
+      } else {
+        // CSS Data URI
+        const encodedSvg = encodeURIComponent(svgString).replace(/'/g, '%27').replace(/"/g, '%22');
+        outputCode = `background-image: url("data:image/svg+xml,${encodedSvg}");\nbackground-repeat: repeat-x;\nbackground-size: ${viewBoxWidth}px ${height}px;`;
+      }
+
+      document.getElementById('codeOutput').value = outputCode;
+    }
+
+    function copyResultToClipboard() {
+      const textarea = document.getElementById('codeOutput');
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(textarea.value).then(() => {
+        const btn = document.getElementById('copyCodeBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '✅ Copied Successfully!';
+        btn.style.background = '#dcfce7';
+        btn.style.color = '#166534';
+        btn.style.borderColor = '#bbf7d0';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+          btn.style.borderColor = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Copy failed:', err);
+      });
+    }
+
+    // Initialize generator on load
+    window.addEventListener('DOMContentLoaded', () => {
+      updateGenerator();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
