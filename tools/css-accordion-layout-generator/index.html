@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CSS Accordion Layout Generator | Pure CSS Code & Live Preview</title>
+  <meta name="description" content="Free online CSS Accordion Layout Generator. Design modern, accessible, pure CSS expandable panels with zero JavaScript dependencies. Instant HTML & CSS code export." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/css-accordion-layout-generator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CSS Accordion Layout Generator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "DeveloperApplication",
+    "description": "An interactive web utility to visually generate customized HTML and CSS for accessible accordion components with zero JavaScript dependencies.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    /* CONTROL APPARATUS INPUTS */
+    .acc-control-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .acc-input-field, .acc-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 10px 14px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .acc-input-field:focus, .acc-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    .acc-color-picker { width: 100%; height: 42px; border: 2px solid #e2e8f0; border-radius: 12px; padding: 2px 6px; cursor: pointer; background: #f8fafc; }
+    
+    .f-textarea-field { width: 100%; height: 160px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.9rem; font-family: 'Courier New', Courier, monospace; color: #0f172a; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.4; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* PREVIEW CONTAINER */
+    .preview-box { border: 2px dashed #cbd5e1; border-radius: 16px; padding: 24px; background: #fafafa; min-height: 250px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 15px; flex-wrap: wrap; }
+    .f-btn { flex: 1; min-width: 140px; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.9rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* TABBED CODE STYLES */
+    .code-tab-strip { display: flex; gap: 8px; margin-bottom: 8px; border-bottom: 2px solid #e2e8f0; padding-bottom: 4px; }
+    .tab-btn { background: none; border: none; font-size: 0.85rem; font-weight: 700; padding: 6px 12px; cursor: pointer; color: #64748b; border-radius: 6px; }
+    .tab-btn.active { background: #2563eb; color: #ffffff; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .acc-control-group { grid-template-columns: 1fr; }
+      .f-textarea-field { height: 140px; font-size: 0.85rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📂</span> CSS Accordion Layout Generator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <!-- LEFT CONTROL PANEL -->
+        <div class="f-panel-box">
+          <label>Layout & Structural Settings</label>
+          
+          <div class="acc-control-group">
+            <div>
+              <label style="font-size:0.75rem; margin-bottom:4px; display:block;">Implementation Engine</label>
+              <select id="accEngine" class="acc-select-field" onchange="generateAccordion()">
+                <option value="details">Semantic &lt;details&gt; / &lt;summary&gt;</option>
+                <option value="checkbox">Pure CSS Checkbox (Multi-Open)</option>
+                <option value="radio">Pure CSS Radio (Single Open)</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:0.75rem; margin-bottom:4px; display:block;">Item Count</label>
+              <select id="accCount" class="acc-select-field" onchange="generateAccordion()">
+                <option value="3">3 Sections</option>
+                <option value="4" selected>4 Sections</option>
+                <option value="5">5 Sections</option>
+                <option value="6">6 Sections</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="acc-control-group">
+            <div>
+              <label style="font-size:0.75rem; margin-bottom:4px; display:block;">Icon Style</label>
+              <select id="accIcon" class="acc-select-field" onchange="generateAccordion()">
+                <option value="chevron">Chevron (❯)</option>
+                <option value="plus">Plus / Minus (+)</option>
+                <option value="arrow">Arrow (↓)</option>
+                <option value="none">None</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:0.75rem; margin-bottom:4px; display:block;">Border Radius</label>
+              <select id="accRadius" class="acc-select-field" onchange="generateAccordion()">
+                <option value="0px">Sharp (0px)</option>
+                <option value="8px">Subtle (8px)</option>
+                <option value="16px" selected>Rounded (16px)</option>
+                <option value="24px">Pill (24px)</option>
+              </select>
+            </div>
+          </div>
+
+          <label style="margin-top: 10px;">Color Palette & Visual Theme</label>
+          
+          <div class="acc-control-group">
+            <div>
+              <label style="font-size:0.75rem; margin-bottom:4px; display:block;">Header BG</label>
+              <input type="color" id="headerBg" class="acc-color-picker" value="#f8fafc" oninput="generateAccordion()">
+            </div>
+            <div>
+              <label style="font-size:0.75rem; margin-bottom:4px; display:block;">Header Text</label>
+              <input type="color" id="headerText" class="acc-color-picker" value="#0f172a" oninput="generateAccordion()">
+            </div>
+          </div>
+
+          <div class="acc-control-group">
+            <div>
+              <label style="font-size:0.75rem; margin-bottom:4px; display:block;">Active Header BG</label>
+              <input type="color" id="activeBg" class="acc-color-picker" value="#2563eb" oninput="generateAccordion()">
+            </div>
+            <div>
+              <label style="font-size:0.75rem; margin-bottom:4px; display:block;">Active Text Color</label>
+              <input type="color" id="activeText" class="acc-color-picker" value="#ffffff" oninput="generateAccordion()">
+            </div>
+          </div>
+
+          <div class="acc-control-group">
+            <div>
+              <label style="font-size:0.75rem; margin-bottom:4px; display:block;">Content BG</label>
+              <input type="color" id="contentBg" class="acc-color-picker" value="#ffffff" oninput="generateAccordion()">
+            </div>
+            <div>
+              <label style="font-size:0.75rem; margin-bottom:4px; display:block;">Content Text</label>
+              <input type="color" id="contentText" class="acc-color-picker" value="#334155" oninput="generateAccordion()">
+            </div>
+          </div>
+
+          <div class="acc-control-group">
+            <div>
+              <label style="font-size:0.75rem; margin-bottom:4px; display:block;">Border Color</label>
+              <input type="color" id="borderColor" class="acc-color-picker" value="#e2e8f0" oninput="generateAccordion()">
+            </div>
+            <div>
+              <label style="font-size:0.75rem; margin-bottom:4px; display:block;">Preset Styling</label>
+              <select id="accPreset" class="acc-select-field" onchange="applyPreset()">
+                <option value="custom">Custom Configuration</option>
+                <option value="slate">Modern Slate</option>
+                <option value="dark">Dark Mode Elite</option>
+                <option value="minimal">Minimal White</option>
+                <option value="emerald">Emerald Corporate</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <!-- RIGHT LIVE PREVIEW PANEL -->
+        <div class="f-panel-box">
+          <label>Interactive Live Component Preview</label>
+          <div class="preview-box">
+            <!-- Dynamic Accordion Renders Here -->
+            <div id="accordionLivePreview"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GENERATED CODE SECTION -->
+      <div style="margin-top: 25px;">
+        <div class="code-tab-strip">
+          <button class="tab-btn active" id="tabHtmlBtn" onclick="switchTab('html')">HTML Output</button>
+          <button class="tab-btn" id="tabCssBtn" onclick="switchTab('css')">CSS Output</button>
+          <button class="tab-btn" id="tabCombinedBtn" onclick="switchTab('combined')">Combined Code</button>
+        </div>
+
+        <div id="htmlTabPanel">
+          <textarea id="htmlOutputCode" class="f-textarea-field" readonly></textarea>
+        </div>
+        <div id="cssTabPanel" style="display: none;">
+          <textarea id="cssOutputCode" class="f-textarea-field" readonly></textarea>
+        </div>
+        <div id="combinedTabPanel" style="display: none;">
+          <textarea id="combinedOutputCode" class="f-textarea-field" readonly></textarea>
+        </div>
+      </div>
+
+      <!-- ACTIONS STRIP -->
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="copyCurrentCode()">📋 Copy Code Snippet</button>
+        <button class="f-btn f-btn-copy" onclick="copyAllCode()">📦 Copy HTML + CSS</button>
+        <button class="f-btn f-btn-clear" onclick="resetDefaults()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Zero-JavaScript Architecture Guaranteed:</span>
+        Generated code works completely natively without external dependencies. Semantic <code>&lt;details&gt;</code> tags leverage browser engines directly, while input-hack engines operate purely on CSS pseudo-class states.
+      </div>
+    </div>
+
+    <!-- SEO EDITORIAL CONTENT CONTAINER -->
+    <div class="seo-container">
+      <h2 class="seo-title">The Engineering Architecture of Modern Responsive CSS Accordions: Semantics, Animations, and Zero-JS Execution</h2>
+      <p class="seo-p">Accordions represent one of the foundational layout modules in responsive web design. By organizing nested text blocks, standard FAQs, technical feature sets, and complex menu trees into vertically stacked, collapsible panels, web architects maximize screen real estate while retaining contextual readability. However, historical accordion implementations often relied heavily on heavy JavaScript DOM manipulators, dynamic max-height recalculations, and third-party UI framework bloat.</p>
+      <p class="seo-p">With modern CSS Level 4 features, standard CSS Grid fractional transitions, and native HTML5 HTML structural nodes, front-end developers can compile ultra-fast, fully accessible, zero-JS CSS accordions. This comprehensive technical guide analyzes standard accordion mechanics, compares semantic native elements against CSS input pseudo-hacks, examines accessibility (WAI-ARIA) patterns, and reviews optimal rendering strategies for client-side layouts.</p>
+
+      <div class="seo-callout">
+        <strong>The Zero-JS Performance Rule:</strong> Rendering expandable visual blocks via native browser APIs or standard CSS state engines eliminates main-thread JavaScript blocking, reduces layout thrashing during scrolls, and drastically reduces Total Blocking Time (TBT) metrics on modern mobile viewports.
+      </div>
+
+      <h3 class="seo-h2">Comparing Structural Techniques: HTML5 &lt;details&gt; vs Pure CSS State Hacks</h3>
+      <p class="seo-p">When architecting an expandable layout component without JavaScript dependencies, front-end engineers choose between two architectural frameworks:</p>
+
+      <h4 class="seo-h3">1. Modern Semantic Framework: HTML5 &lt;details&gt; &amp; &lt;summary&gt;</h4>
+      <p class="seo-p">The HTML standard provides built-in collapsible capabilities using the <code>&lt;details&gt;</code> parent element wrapper and the <code>&lt;summary&gt;</code> click target. The user agent natively toggles the boolean <code>open</code> attribute upon user interaction. Standard screen readers parse these tags automatically, applying built-in accessibility announcements without custom JavaScript configuration.</p>
