@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CSS Gradient Border Generator | Free Online CSS Border Tool</title>
+  <meta name="description" content="Generate beautiful, customizable CSS gradient borders instantly. Visual controls for angle, colors, border radius, and multiple rendering methods with copy-paste CSS code." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/css-gradient-border-generator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CSS Gradient Border Generator",
+    "operatingSystem": "Web",
+    "applicationCategory": "DeveloperApplication",
+    "description": "An interactive web development tool to design, preview, and output CSS gradient borders using modern CSS background-clip, border-image, and pseudo-element techniques.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 24px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-ctrl-group { display: flex; flex-direction: column; gap: 6px; }
+    .f-ctrl-label-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; color: #334155; font-weight: 600; }
+    .f-ctrl-val { font-family: monospace; font-size: 0.85rem; color: #2563eb; background: #eff6ff; padding: 2px 8px; border-radius: 6px; }
+    
+    .f-input-range { width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; outline: none; -webkit-appearance: none; cursor: pointer; }
+    .f-input-range::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #2563eb; cursor: pointer; transition: transform 0.1s; }
+    .f-input-range::-webkit-slider-thumb:hover { transform: scale(1.15); }
+
+    .f-select-field { width: 100%; padding: 10px 14px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; cursor: pointer; font-weight: 500; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-color-row { display: flex; gap: 10px; align-items: center; }
+    .f-color-picker { width: 44px; height: 44px; padding: 0; border: 2px solid #e2e8f0; border-radius: 10px; cursor: pointer; background: none; }
+    .f-color-picker::-webkit-color-swatch-wrapper { padding: 0; }
+    .f-color-picker::-webkit-color-swatch { border: none; border-radius: 8px; }
+    .f-text-field { flex: 1; padding: 10px 14px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; }
+    .f-text-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* PREVIEW CONTAINER */
+    .preview-box-container { width: 100%; height: 260px; background: #f1f5f9; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 25px; box-sizing: border-box; background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 16px 16px; overflow: hidden; }
+    
+    /* PREVIEW TARGET STYLES */
+    .preview-element { width: 100%; height: 100%; max-width: 360px; max-height: 200px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #0f172a; text-align: center; box-sizing: border-box; transition: all 0.1s ease; }
+    
+    .f-textarea-field { width: 100%; height: 160px; background: #0f172a; border: 2px solid #1e293b; border-radius: 16px; padding: 16px; font-size: 0.92rem; font-family: 'Courier New', Courier, monospace; color: #38bdf8; outline: none; box-sizing: border-box; resize: vertical; line-height: 1.5; white-space: pre-wrap; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 24px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🎨</span> CSS Gradient Border Generator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        
+        <!-- LEFT PANEL: CONTROLS -->
+        <div class="f-panel-box">
+          <label>1. Render Technique &amp; Geometry</label>
+          
+          <div class="f-ctrl-group">
+            <div class="f-ctrl-label-row">
+              <span>CSS Implementation Method</span>
+            </div>
+            <select id="renderMethod" class="f-select-field" onchange="updateGradientBorder()">
+              <option value="background-clip">Background Clip (Supports Border Radius)</option>
+              <option value="border-image">Border Image (Classic Rectangle)</option>
+              <option value="pseudo-element">Pseudo-element ::before (Universal Overlay)</option>
+            </select>
+          </div>
+
+          <div class="f-ctrl-group">
+            <div class="f-ctrl-label-row">
+              <span>Border Width</span>
+              <span class="f-ctrl-val" id="valBorderWidth">4px</span>
+            </div>
+            <input type="range" id="borderWidth" class="f-input-range" min="1" max="30" value="4" oninput="updateGradientBorder()">
+          </div>
+
+          <div class="f-ctrl-group">
+            <div class="f-ctrl-label-row">
+              <span>Border Radius</span>
+              <span class="f-ctrl-val" id="valBorderRadius">16px</span>
+            </div>
+            <input type="range" id="borderRadius" class="f-input-range" min="0" max="60" value="16" oninput="updateGradientBorder()">
+          </div>
+
+          <label style="margin-top: 10px;">2. Gradient Palette &amp; Angle</label>
+
+          <div class="f-ctrl-group">
+            <div class="f-ctrl-label-row">
+              <span>Gradient Type</span>
+            </div>
+            <select id="gradientType" class="f-select-field" onchange="updateGradientBorder()">
+              <option value="linear">Linear Gradient</option>
+              <option value="radial">Radial Gradient</option>
+              <option value="conic">Conic Gradient</option>
+            </select>
+          </div>
+
+          <div class="f-ctrl-group" id="angleContainer">
+            <div class="f-ctrl-label-row">
+              <span>Gradient Angle</span>
+              <span class="f-ctrl-val" id="valAngle">135deg</span>
+            </div>
+            <input type="range" id="gradientAngle" class="f-input-range" min="0" max="360" value="135" oninput="updateGradientBorder()">
+          </div>
+
+          <div class="f-ctrl-group">
+            <div class="f-ctrl-label-row"><span>Start Color Stop</span></div>
+            <div class="f-color-row">
+              <input type="color" id="color1Picker" class="f-color-picker" value="#2563eb" oninput="syncColorInput('color1Picker', 'color1Text')">
+              <input type="text" id="color1Text" class="f-text-field" value="#2563eb" oninput="syncColorPicker('color1Text', 'color1Picker')">
+            </div>
+          </div>
+
+          <div class="f-ctrl-group">
+            <div class="f-ctrl-label-row"><span>End Color Stop</span></div>
+            <div class="f-color-row">
+              <input type="color" id="color2Picker" class="f-color-picker" value="#9333ea" oninput="syncColorInput('color2Picker', 'color2Text')">
+              <input type="text" id="color2Text" class="f-text-field" value="#9333ea" oninput="syncColorPicker('color2Text', 'color2Picker')">
+            </div>
+          </div>
+
+          <div class="f-ctrl-group">
+            <div class="f-ctrl-label-row"><span>Card Background Color</span></div>
+            <div class="f-color-row">
+              <input type="color" id="bgColorPicker" class="f-color-picker" value="#ffffff" oninput="syncColorInput('bgColorPicker', 'bgColorText')">
+              <input type="text" id="bgColorText" class="f-text-field" value="#ffffff" oninput="syncColorPicker('bgColorText', 'bgColorPicker')">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT PANEL: PREVIEW & CODE -->
+        <div class="f-panel-box">
+          <label>3. Real-Time Interactive Canvas</label>
+          <div class="preview-box-container">
+            <div id="previewCard" class="preview-element">
+              <span>Gradient Border Preview</span>
+            </div>
+          </div>
+
+          <label style="margin-top: 10px;">4. Generated Production CSS Code</label>
+          <textarea id="cssCodeOutput" class="f-textarea-field" readonly></textarea>
+        </div>
+
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="updateGradientBorder()">Refresh Preview</button>
+        <button class="f-btn f-btn-copy" id="copyCssBtn" onclick="copyCssCode()">📋 Copy CSS Code</button>
+        <button class="f-btn f-btn-clear" onclick="resetControls()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Pro Layout Tip:</span>
+        To preserve rounded corners (`border-radius`) with gradient strokes, select the <b>Background Clip</b> or <b>Pseudo-element</b> rendering technique. Standard CSS `border-image` automatically disables rounded corners per W3C specification.
+      </div>
+    </div>
+
+    <!-- DEEP SEO EDITORIAL CONTENT CONTAINER -->
+    <div class="seo-container">
+      <h1 class="seo-title">The CSS Engineering Guide to Gradient Borders: Rendering Techniques, Compositing Layers, and Performance Architectures</h1>
+      <p class="seo-p">Modern web design relies on vibrant UI elements, dynamic cards, and subtle glowing accents to guide user attention. While CSS natively supports solid color borders via the `border-color` property, rendering vector gradient fills across element edges requires specialized compositing techniques. Browsers handle CSS gradients as generated image surfaces rather than simple visual strokes. Because standard border properties do not accept direct `linear-gradient()` functions, developers must leverage specific layout patterns to achieve multi-color border outlines.</p>
+      <p class="seo-p">This guide examines the underlying rendering engine logic, compares cross-browser compatibility across gradient border implementation methods, details subpixel anti-aliasing edge cases, and provides production-ready code patterns for modern CSS architectures.</p>
+
+      <div class="seo-callout">
+        <strong>Technical Engine Note:</strong> The standard CSS `border-image` specification explicitly overrides `border-radius`. If your component requires smooth curved corners alongside a multi-color gradient border, use the dual-background `background-clip` technique or absolute pseudo-element layering (`::before`).
+      </div>
+
+      <h2 class="seo-h2">1. The Rendering Mechanics of CSS Gradient Borders</h2>
+      <p class="seo-p">To display a gradient along an element boundary, the browser's painting engine must establish a coordinate box for color stop transitions and isolate that color space to the element's border box region. Three distinct architectural approaches achieve this result:</p>
+
+      <h3 class="seo-h3">A. The Dual Background &amp; Clip Box Model (`background-clip`)</h3>
+      <p class="seo-p">This modern approach layers two background definitions on a single element. The first layer represents the solid inner box color clipped strictly to the `padding-box`. The second background layer contains the multi-stop linear or radial gradient clipped to the outer `border-box`. By setting a transparent `border`, the underlying gradient background shines through the border area while preserving standard `border-radius` curves.</p>
+      <p class="seo-p"><code>border: 4px solid transparent;<br>background: linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, #2563eb, #9333ea) border-box;</code></p>
+
+      <h3 class="seo-h3">B. The Native Border Image Pipeline (`border-image`)</h3>
+      <p class="seo-p">The W3C specification provides `border-image-source` and `border-image-slice` to apply vector graphics or gradients directly to borders. The engine treats the gradient as a 9-slice grid texture, stretching it across the four border edges. While computational overhead is low, this method forces `border-radius` to zero, making it ideal exclusively for sharp, rectangular components.</p>
+
+      <h3 class="seo-h3">C. Isolated Layer Compositing (`::before` Pseudo-Element)</h3>
+      <p class="seo-p">For complex interactive elements, transparent cards, or backdrop-filter blurs, developers often use an absolute-positioned `::before` element positioned behind the primary content. The pseudo-element receives the gradient background and `border-radius`, while an inset margin creates the border stroke effect. This approach isolates paint invalidation cycles, preventing re-renders of the main content during animation.</p>
+
+      <h2 class="seo-h2">2. Technique Comparison &amp; Browser Support Matrix</h2>
+      <p class="seo-p">Selecting the right CSS gradient border method depends on your design layout specifications, support requirements, and container background transparency:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Implementation Method</th>
+              <th>Border Radius Support</th>
+              <th>Transparent Card BG</th>
+              <th>GPU Composite Overhead</th>
+              <th>W3C Recommendation Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Background Clip (Dual Layer)</b></td>
+              <td>Full Support (0px - 100px)</td>
+              <td>Requires Masking</td>
+              <td>Very Low</td>
+              <td>CSS Backgrounds Level 3 Standard</td>
+            </tr>
+            <tr>
+              <td><b>Border Image Slice</b></td>
+              <td>No (Ignored by engine)</td>
+              <td>Fully Supported</td>
+              <td>Extremely Low</td>
+              <td>CSS Backgrounds &amp; Borders Level 3</td>
+            </tr>
+            <tr>
+              <td><b>Pseudo-Element Overlay (::before)</b></td>
+              <td>Full Support (Matching radii)</td>
+              <td>Supported via Z-Index</td>
+              <td>Moderate (New Stacking Context)</td>
+              <td>Structural CSS Level 2 / 3 Layout Pattern</td>
+            </tr>
+            <tr>
+              <td><b>CSS Mask / Mask-Composite</b></td>
+              <td>Full Support</td>
+              <td>Fully Supported (100% Alpha)</td>
+              <td>Moderate to High</td>
+              <td>CSS Masking Module Level 1 (Candidate)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="seo-h2">3. Frequently Asked Questions (FAQ)</h2>
+
+      <h3 class="seo-h3">Why does my rounded border disappear when using `border-image`?</h3>
+      <p class="seo-p">Per the W3C CSS Backgrounds and Borders specification, `border-image` properties intentionally override and suppress `border-radius` clipping paths. To keep rounded corners on a gradient border, switch your rendering method to the <b>Background Clip</b> technique or use a pseudo-element overlay.</p>
+
+      <h3 class="seo-h3">How can I create a CSS gradient border around a element with a transparent background?</h3>
+      <p class="seo-p">When using the `background-clip` approach, the inner layer requires a solid color to cover the gradient fill underneath. For elements with fully transparent inner backgrounds, use a `::before` pseudo-element with `mask-composite: exclude` or CSS `clip-path` masks to hollow out the inner padding area.</p>
+
+      <h3 class="seo-h3">Are CSS gradient borders bad for mobile animation performance?</h3>
+      <p class="seo-p">Animating raw gradient color stops directly causes hardware repaint calls on every frame. For smooth 60fps animations, keep the gradient static and animate the `opacity` or `transform` properties of an underlying pseudo-element layer instead, offloading rendering to the GPU rasterizer.</p>
+
+      <h2 class="seo-h2">4. Best Practices for Production Systems</h2>
+      <ul class="seo-list">
+        <li><b>Maintain Adequate Contrast Ratios:</b> Verify that text colors inside gradient containers meet WCAG 2.1 AA accessibility contrast standards (at least 4.5:1 against the inner background color).</li>
+        <li><b>Prevent Subpixel Bleed:</b> When nesting elements inside gradient borders, match the inner content's `border-radius` using the calculation: <code>inner_radius = outer_radius - border_width</code>.</li>
+        <li><b>Use Fallback Solid Colors:</b> Provide a standard single-color `border` declaration preceding complex gradient rules to ensure high visual quality on legacy user agents.</li>
+      </ul>
+      <p class="seo-p">Use our interactive generator above to adjust border width, color transitions, angles, and geometry in real-time
