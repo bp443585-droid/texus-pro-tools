@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CSS Text Shadow Generator | Free Online CSS Text Shadow Tool</title>
+  <meta name="description" content="Create stunning CSS text shadows visually with our free generator. Customize offsets, blur radius, multi-layer shadows, opacity, and copy production-ready CSS code instantly." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/css-text-shadow-generator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CSS Text Shadow Generator",
+    "operatingSystem": "Web",
+    "applicationCategory": "DeveloperApplication",
+    "description": "An interactive web utility to design, customize, and generate single and multi-layer CSS text-shadow styles with live real-time visual previews.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* PREVIEW CONTAINER STYLING */
+    .ts-preview-box {
+      width: 100%;
+      min-height: 220px;
+      border-radius: 18px;
+      border: 2px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+      box-sizing: border-box;
+      margin-bottom: 25px;
+      overflow: hidden;
+      position: relative;
+      transition: background-color 0.2s ease;
+      background-color: #f8fafc;
+    }
+    .ts-preview-text {
+      font-size: 3.5rem;
+      font-weight: 800;
+      text-align: center;
+      word-break: break-word;
+      line-height: 1.2;
+      transition: color 0.15s ease, text-shadow 0.15s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* CONTROLS TOOLBAR & SETTINGS GRID */
+    .ts-controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 25px; }
+    .ts-section-title { font-size: 0.9rem; color: #0f172a; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+    
+    .ts-input-group { margin-bottom: 16px; }
+    .ts-input-group label { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; color: #475569; margin-bottom: 6px; }
+    .ts-input-group label span { font-weight: 700; color: #2563eb; }
+    
+    .ts-slider-row { display: flex; align-items: center; gap: 12px; }
+    .ts-range { flex: 1; height: 6px; border-radius: 3px; background: #cbd5e1; outline: none; -webkit-appearance: none; cursor: pointer; }
+    .ts-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #2563eb; cursor: pointer; transition: transform 0.1s; }
+    .ts-range::-webkit-slider-thumb:hover { transform: scale(1.15); }
+    .ts-num-input { width: 70px; padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem; text-align: center; font-weight: 600; color: #1e293b; outline: none; }
+    .ts-num-input:focus { border-color: #2563eb; }
+
+    .ts-color-picker-row { display: flex; gap: 10px; align-items: center; }
+    .ts-color-btn { width: 42px; height: 42px; border: 2px solid #e2e8f0; border-radius: 10px; cursor: pointer; padding: 0; background: none; overflow: hidden; box-sizing: border-box; }
+    .ts-color-btn input[type="color"] { border: none; width: 150%; height: 150%; transform: translate(-15%, -15%); cursor: pointer; }
+    .ts-text-input { flex: 1; height: 42px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0 12px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; }
+    .ts-text-input:focus { border-color: #2563eb; background: #ffffff; }
+
+    .ts-preset-select { width: 100%; height: 42px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0 12px; font-size: 0.9rem; font-weight: 600; color: #1e293b; outline: none; cursor: pointer; }
+    .ts-preset-select:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* LAYERS MANAGEMENT CONTAINER */
+    .ts-layers-container { display: flex; flex-direction: column; gap: 12px; max-height: 380px; overflow-y: auto; padding-right: 4px; }
+    .ts-layer-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; position: relative; transition: border-color 0.15s; }
+    .ts-layer-card.active { border-color: #2563eb; background: #ffffff; box-shadow: 0 2px 4px rgba(37, 99, 235, 0.05); }
+    .ts-layer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .ts-layer-title { font-size: 0.85rem; font-weight: 700; color: #1e293b; }
+    .ts-btn-remove { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: background 0.15s; }
+    .ts-btn-remove:hover { background: #fee2e2; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 15px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 140px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    .ts-code-output { width: 100%; height: 100px; background: #0f172a; border: 1px solid #1e293b; border-radius: 14px; padding: 14px 16px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; font-weight: 600; color: #38bdf8; outline: none; resize: none; box-sizing: border-box; line-height: 1.5; margin-top: 20px; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .ts-controls-grid { grid-template-columns: 1fr; gap: 20px; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .ts-preview-text { font-size: 2.2rem; }
+      .ts-preview-box { min-height: 160px; padding: 20px 10px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>✨</span> CSS Text Shadow Generator</div>
+    
+    <div class="f-card">
+      <!-- LIVE INTERACTIVE VISUAL PREVIEW BOX -->
+      <div class="ts-preview-box" id="previewContainer">
+        <div class="ts-preview-text" id="previewText">Texus Pro Tools</div>
+      </div>
+
+      <!-- MAIN CONTROLS GRID -->
+      <div class="ts-controls-grid">
+        <!-- LEFT COLUMN: GLOBAL PREVIEW & PRESET CONFIG -->
+        <div>
+          <div class="ts-section-title">
+            <span>Text & Workspace Canvas</span>
+          </div>
+
+          <div class="ts-input-group">
+            <label for="sampleTextInput">Sample Text String</label>
+            <input type="text" id="sampleTextInput" class="ts-text-input" value="Texus Pro Tools" placeholder="Type preview text..." oninput="updatePreviewText(this.value)">
+          </div>
+
+          <div class="ts-input-group">
+            <label>Preset Style Templates</label>
+            <select id="presetSelect" class="ts-preset-select" onchange="applyPresetStyle(this.value)">
+              <option value="default">Default Drop Shadow</option>
+              <option value="softGlow">Soft Blue Glow</option>
+              <option value="neonCyber">Cyberpunk Neon</option>
+              <option value="retro3d">Retro 3D Extrusion</option>
+              <option value="vintageHard">Vintage Hard Shadow</option>
+              <option value="goldLuxe">Luxury Gold Aura</option>
+              <option value="deepInset">Subtle Inset Light</option>
+            </select>
+          </div>
+
+          <div class="ts-input-group">
+            <label for="textColorPicker">Foreground Text Color <span>#0f172a</span></label>
+            <div class="ts-color-picker-row">
+              <button class="ts-color-btn"><input type="color" id="textColorPicker" value="#0f172a" oninput="updateTextColor(this.value)"></button>
+              <input type="text" id="textColorHex" class="ts-text-input" value="#0f172a" oninput="updateTextColor(this.value)">
+            </div>
+          </div>
+
+          <div class="ts-input-group">
+            <label for="bgColorPicker">Canvas Background Color <span>#f8fafc</span></label>
+            <div class="ts-color-picker-row">
+              <button class="ts-color-btn"><input type="color" id="bgColorPicker" value="#f8fafc" oninput="updateBgColor(this.value)"></button>
+              <input type="text" id="bgColorHex" class="ts-text-input" value="#f8fafc" oninput="updateBgColor(this.value)">
+            </div>
+          </div>
+
+          <div class="ts-input-group">
+            <label for="fontSizeSlider">Font Size <span id="fontSizeVal">56px</span></label>
+            <div class="ts-slider-row">
+              <input type="range" id="fontSizeSlider" class="ts-range" min="16" max="120" value="56" oninput="updateFontSize(this.value)">
+              <input type="number" id="fontSizeNum" class="ts-num-input" min="16" max="120" value="56" oninput="updateFontSize(this.value)">
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: SHADOW LAYERS CONTROLLER -->
+        <div>
+          <div class="ts-section-title">
+            <span>Shadow Layers Stack</span>
+            <button class="f-btn f-btn-convert" style="padding: 6px 14px; font-size: 0.78rem; text-transform: uppercase;" onclick="addNewShadowLayer()">+ Add Layer</button>
+          </div>
+
+          <div id="layersStack" class="ts-layers-container">
+            <!-- Dynamic Shadow Layer Cards render here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- GENERATED CODE DISPLAY AREA -->
+      <div class="ts-section-title" style="margin-top: 10px;">
+        <span>Generated CSS Code</span>
+      </div>
+      <textarea id="cssCodeOutput" class="ts-code-output" readonly></textarea>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="copyCssOutput()">📋 Copy CSS Code</button>
+        <button class="f-btn f-btn-copy" onclick="copyCssRulesOnly()">Copy Value Only</button>
+        <button class="f-btn f-btn-clear" onclick="resetToDefaults()">Reset All</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Multi-Layer Stack Engine Active:</span>
+        CSS permits multiple text-shadow entries separated by commas. Layers at the top of the stack render in front of layers listed beneath them. Re-order or stack colors for multi-dimensional 3D and neon effects.
+      </div>
+    </div>
+
+    <!-- SEO EDITORIAL CONTENT CONTAINER -->
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Modern Web Typography: Syntactical Mechanics, Performance Optimization, and Multi-Layer CSS Text Shadow Architectures</h2>
+      <p class="seo-p">The visual hierarchy of modern digital web interfaces depends heavily on contrast, legibility, and refined typographical depth. While simple text can communicate information effectively, creating immersive user experiences requires subtle visual cues that separate interactive headings from background elements. The W3C Cascading Style Sheets (CSS) specification provides the <code>text-shadow</code> property—a native rendering engine feature that projects drop shadows, outer glows, ambient halos, and 3D extrusion directly behind vector glyphs without requiring bitmap graphic assets.</p>
+      <p class="seo-p">This extensive guide provides frontend architects, UI engineers, and digital design professionals with an in-depth operational breakdown of CSS text-shadow mechanics. It covers vector glyph rasterization performance, multi-layer shadow stacking rules, color space opacity conversions, accessibility guidelines under W3C WCAG 2.1 specifications, and practical cross-browser implementations.</p>
+
+      <div class="seo-callout">
+        <strong>Core Typographical Rule:</strong> Unlike the block-level <code>box-shadow</code> property, which calculates drop shadows based on rectangular element dimensions, <code>text-shadow</code> adheres precisely to the complex vector contours, curves, and counter-spaces of individual font glyph outlines.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Deconstructing the CSS Text Shadow Syntax</h3>
+      <p class="seo-p">The <code>text-shadow</code> property accepts up to four distinct functional parameters arranged in a standardized comma-delimited list. Understanding the mathematical coordinate system of browser layout engines is key to engineering predictable typography across devices:</p>
+
+      <h4 class="seo-h3">1. Horizontal Offset (X-Axis)</h4>
+      <p class="seo-p">The first length value specifies the horizontal displacement of the shadow relative to the original vector glyph position. A positive length unit (e.g., <code>6px</code>) shifts the shadow layer to the right, whereas a negative value (e.g., <code>-6px</code>) translates the shadow output to the left along the Cartesian baseline.</p>
+
+      <h4 class="seo-h3">2. Vertical Offset (Y-Axis)</h4>
+      <p class="seo-p">The second length parameter defines the vertical distance of the rendered shadow. A positive numerical input (e.g., <code>8px</code>) projects the shadow downwards toward the bottom of the viewport coordinate system, while a negative value (e.g., <code>-8px</code>) casts the shadow upwards above the glyph cap height.</p>
+
+      <h4 class="seo-h3">3. Blur Radius (Spread Metric)</h4>
+      <p class="seo-p">The third optional parameter defines the blur distance. Specified as a non-negative length (e.g., <code>10px</code>), this parameter dictates how far the browser's Gaussian blur algorithm spreads the shadow alpha mask. A value of <code>0px</code> maintains sharp, razor-crisp vector boundaries, while higher length metrics create soft, diffused ambient light gradients across the background canvas.</p>
+
+      <h4 class="seo-h3">4. Color Definition and Alpha Transparency</h4>
+      <p class="seo-p">The final parameter sets the color of the projected shadow. Color values can be declared using HEX hexadecimals, RGB, HSL, or 8-digit RGBA formats containing alpha transparency channels (such as <code>rgba(15, 23, 42, 0.4)</code>). Using semi-transparent RGBA channels is standard practice in modern design systems, allowing real background textures to show through naturally.</p>
+
+      <h3 class="seo-h2">Comparative Property Matrix: CSS Text Shadow vs. Box Shadow</h3>
+      <p class="seo-p">Distinguishing between vector text effects and box boundary effects is vital for building clean, performant CSS codebases:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>CSS Layout Property</th>
+              <th>Target Rendering Geometry</th>
+              <th>Supports Spread Parameter</th>
+              <th>Supports Inset Keyword</th>
+              <th>GPU Composite Layer Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>text-shadow</code></td>
+              <td>Vector font glyph contours &amp; curves</td>
+              <td>No (Implicit in blur radius)</td>
+              <td>No (Requires stacked contrast tricks)</td>
+              <td>Low to Moderate (Rasterized per glyph string)</td>
+            </tr>
+            <tr>
+              <td><code>box-shadow</code></td>
+              <td>Element padding box &amp; border radii</td>
+              <td>Yes (4th optional length metric)</td>
+              <td>Yes (<code>inset</code> keyword allowed)</td>
+              <td>Low (Calculated
