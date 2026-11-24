@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CSS Range Slider Visualizer | Custom HTML Input Range Generator</title>
+  <meta name="description" content="Design custom HTML range sliders visually with instant live preview. Generate clean, cross-browser CSS code for WebKit and Gecko engines effortlessly." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/css-range-slider-visualizer/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CSS Range Slider Visualizer",
+    "operatingSystem": "Web",
+    "applicationCategory": "DeveloperApplication",
+    "description": "Visual designer and code generator for custom cross-browser CSS HTML range input sliders.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    /* CONTROL GRID FOR SLIDER STYLING */
+    .ctrl-group-title { font-size: 0.9rem; font-weight: 800; color: #0f172a; text-transform: uppercase; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; margin-top: 5px; margin-bottom: 5px; letter-spacing: 0.5px; }
+    .ctrl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: center; }
+    .ctrl-field { display: flex; flex-direction: column; gap: 4px; }
+    .ctrl-field label { font-size: 0.78rem; font-weight: 600; color: #64748b; text-transform: none; letter-spacing: 0; }
+    .ctrl-input-val { display: flex; align-items: center; gap: 8px; }
+    .ctrl-input-val span { font-size: 0.82rem; font-weight: 700; color: #2563eb; width: 45px; text-align: right; }
+    
+    .f-range-input { width: 100%; height: 6px; border-radius: 4px; background: #cbd5e1; outline: none; -webkit-appearance: none; }
+    .f-range-input::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #2563eb; cursor: pointer; }
+    
+    .f-color-input { width: 100%; height: 38px; border: 2px solid #e2e8f0; border-radius: 10px; cursor: pointer; padding: 2px; background: #ffffff; }
+
+    /* PREVIEW & CODE PANELS */
+    .preview-box { width: 100%; height: 160px; background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
+    .preview-box p { font-size: 0.85rem; font-weight: 600; color: #64748b; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 230px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.9rem; font-family: 'Courier New', Courier, monospace; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; white-space: pre; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* EDITORIAL SEO STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* RESPONSIVE MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .ctrl-row { grid-template-columns: 1fr; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+
+  <!-- DYNAMIC LIVE PREVIEW CSS INJECTION HOLDER -->
+  <style id="dynamic-slider-style"></style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🎚️</span> CSS Range Slider Visualizer</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <!-- LEFT PANEL: VISUAL CONTROLS -->
+        <div class="f-panel-box">
+          <label>Visual Parameter Controls</label>
+
+          <div class="ctrl-group-title">Track Styling</div>
+          <div class="ctrl-row">
+            <div class="ctrl-field">
+              <label for="trackHeight">Track Height</label>
+              <div class="ctrl-input-val">
+                <input type="range" id="trackHeight" min="2" max="30" value="8" class="f-range-input" oninput="updateSliderGenerator()">
+                <span id="val-trackHeight">8px</span>
+              </div>
+            </div>
+            <div class="ctrl-field">
+              <label for="trackRadius">Track Radius</label>
+              <div class="ctrl-input-val">
+                <input type="range" id="trackRadius" min="0" max="25" value="4" class="f-range-input" oninput="updateSliderGenerator()">
+                <span id="val-trackRadius">4px</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ctrl-row">
+            <div class="ctrl-field">
+              <label for="trackBg">Track Color</label>
+              <input type="color" id="trackBg" value="#cbd5e1" class="f-color-input" oninput="updateSliderGenerator()">
+            </div>
+            <div class="ctrl-field">
+              <label for="trackBorderColor">Track Border Color</label>
+              <input type="color" id="trackBorderColor" value="#94a3b8" class="f-color-input" oninput="updateSliderGenerator()">
+            </div>
+          </div>
+
+          <div class="ctrl-row">
+            <div class="ctrl-field">
+              <label for="trackBorderWidth">Track Border Width</label>
+              <div class="ctrl-input-val">
+                <input type="range" id="trackBorderWidth" min="0" max="5" value="0" class="f-range-input" oninput="updateSliderGenerator()">
+                <span id="val-trackBorderWidth">0px</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ctrl-group-title">Thumb Handler Styling</div>
+          <div class="ctrl-row">
+            <div class="ctrl-field">
+              <label for="thumbWidth">Thumb Width</label>
+              <div class="ctrl-input-val">
+                <input type="range" id="thumbWidth" min="10" max="50" value="24" class="f-range-input" oninput="updateSliderGenerator()">
+                <span id="val-thumbWidth">24px</span>
+              </div>
+            </div>
+            <div class="ctrl-field">
+              <label for="thumbHeight">Thumb Height</label>
+              <div class="ctrl-input-val">
+                <input type="range" id="thumbHeight" min="10" max="50" value="24" class="f-range-input" oninput="updateSliderGenerator()">
+                <span id="val-thumbHeight">24px</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ctrl-row">
+            <div class="ctrl-field">
+              <label for="thumbRadius">Thumb Border Radius</label>
+              <div class="ctrl-input-val">
+                <input type="range" id="thumbRadius" min="0" max="25" value="12" class="f-range-input" oninput="updateSliderGenerator()">
+                <span id="val-thumbRadius">12px</span>
+              </div>
+            </div>
+            <div class="ctrl-field">
+              <label for="thumbShadowBlur">Thumb Shadow Blur</label>
+              <div class="ctrl-input-val">
+                <input type="range" id="thumbShadowBlur" min="0" max="20" value="6" class="f-range-input" oninput="updateSliderGenerator()">
+                <span id="val-thumbShadowBlur">6px</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ctrl-row">
+            <div class="ctrl-field">
+              <label for="thumbBg">Thumb Color</label>
+              <input type="color" id="thumbBg" value="#2563eb" class="f-color-input" oninput="updateSliderGenerator()">
+            </div>
+            <div class="ctrl-field">
+              <label for="thumbBorderColor">Thumb Border Color</label>
+              <input type="color" id="thumbBorderColor" value="#1d4ed8" class="f-color-input" oninput="updateSliderGenerator()">
+            </div>
+          </div>
+
+          <div class="ctrl-row">
+            <div class="ctrl-field">
+              <label for="thumbBorderWidth">Thumb Border Width</label>
+              <div class="ctrl-input-val">
+                <input type="range" id="thumbBorderWidth" min="0" max="6" value="2" class="f-range-input" oninput="updateSliderGenerator()">
+                <span id="val-thumbBorderWidth">2px</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- RIGHT PANEL: LIVE PREVIEW & GENERATED CODE -->
+        <div class="f-panel-box">
+          <label>Live Preview Canvas</label>
+          <div class="preview-box">
+            <p>Interactive Custom Slider Result</p>
+            <input type="range" id="custom-slider-preview" min="0" max="100" value="50" style="width: 80%;">
+          </div>
+
+          <label for="generatedCssCode">Generated Cross-Browser CSS Code</label>
+          <textarea id="generatedCssCode" class="f-textarea-field" readonly onclick="this.select()"></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" id="copyCssBtn" onclick="copyResultToClipboard()">📋 Copy Generated CSS Code</button>
+        <button class="f-btn f-btn-copy" onclick="resetSliderDefaults()">🔄 Reset Defaults</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Cross-Browser Standard Support Approved:</span>
+        Generates fully compliant vendor pseudo-element selectors for WebKit (Chrome, Safari, Edge) and Gecko (Firefox) engines with complete target margin corrections.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Cross-Browser HTML Range Sliders: Pseudo-Elements, WebKit Rendering Engines, and Accessible UI Architecture</h2>
+      <p class="seo-p">Designing sleek, intuitive, and accessible custom standard HTML range inputs (`&lt;input type="range"&gt;`) remains one of the most notoriously tricky design challenges in modern web development. While standard text inputs, checkboxes, and buttons respond consistently to common CSS rules, range inputs rely heavily on platform-dependent implementation internals across browser engines. Without exact vendor-prefixed target declarations, custom sliders fracture—rendering missing handles, misaligned tracks, or uneven padding across desktop and mobile screens.</p>
+      <p class="seo-p">This engineering architectural guide details the inner mechanics of standard HTML input range elements, breaks down the required pseudo-element selectors, explains margin compensation math for WebKit engines, and delivers a robust visual styling framework suitable for modern design systems.</p>
+
+      <div class="seo-callout">
+        <strong>The WebKit Track-Thumb Alignment Rule:</strong> In WebKit/Blink browsers (Chrome, Edge, Safari), setting <code>-webkit-appearance: none;</code> on the base input resets system defaults. However, to align the thumb vertically within the track, developers must explicitly compute a negative top margin: <code>margin-top: (Track Height / 2) - (Thumb Height / 2)</code>.
+      </div>
+
+      <h3 class="seo-h2">Understanding the Dual Component Model of HTML Range Sliders</h3>
+      <p class="seo-p">Under the DOM abstraction layer, every native range slider comprises two distinct interactive structural parts:</p>
+
+      <h4 class="seo-h3">1. The Track (Rail Container)</h4>
+      <p class="seo-p">The track represents the underlying visual channel or progress line upon which the handle travels. It defines the minimum and maximum boundaries of the slider value span. Styling the track requires adjusting height, border-radius, background fills, and optional inset shadows.</p>
+
+      <h4 class="seo-h3">2. The Thumb (Draggable Control Handle)</h4>
+      <p class="seo-p">The thumb is the interactive handle that users drag via pointer interfaces or navigate through keyboard arrows. Customizing the thumb involves controlling dimensions, border rings, elevation shadows, and hover states.</p>
+
+      <h3 class="seo-h2">Vendor Pseudo-Element Specifications across Browser Engines</h3>
+      <p class="seo-p">Browsers isolate slider sub-components inside native Shadow DOM trees. Because standard global pseudo-elements are not unified under a single CSS selector level, developers must target engine-specific pseudo-elements separately:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Target Engine Family</th>
+              <th>Track Pseudo-Element Selector</th>
+              <th>Thumb Pseudo-Element Selector</th>
+              <th>Required Reset Property</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>WebKit / Blink</b><br>(Chrome, Safari, Edge, Opera)</td>
+              <td><code>::-webkit-slider-runnable-track</code></td>
+              <td><code>::-webkit-slider-thumb</code></td>
+              <td><code>-webkit-appearance: none;</code></td>
+            </tr>
+            <tr>
+              <td><b>Gecko / Mozilla</b><br>(Firefox Desktop & Mobile)</td>
+              <td><code>::-moz-range-track</code></td>
+              <td><code>::-moz-range-thumb</code></td>
+              <td>None (Automatic Native Parsing)</td>
+            </tr>
+            <tr>
+              <td><b>Standard Accent Color</b><br>(Native Basic Fallback)</td>
+              <td>N/A (Uses OS Track Pattern)</td>
+              <td>N/A (Tint Native Component)</td>
+              <td><code>accent-color: #2563eb;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Technical Diagnostic Segment</h3>
+
+      <h3>Why does my custom range thumb appear cut off or clipped at the edges?</h3>
+      <p class="seo-p">Thumb clipping occurs when the base <code>&lt;input type="range"&gt;</code> element lacks adequate height bounding or overflow clearance. When a thumb height exceeds the track height, ensure the parent <code>&lt;input&gt;</code> element height matches or exceeds the thumb dimensions, or set <code>overflow: visible;</code> in your layout stylesheets.</p>
+
+      <h3>Why can't I combine WebKit and Gecko pseudo-elements in a single comma-separated CSS rule?</h3>
+      <p class="seo-p">CSS specification rules dictate that if a browser encounters an unrecognized selector within a group selector list, it invalidates the entire selector block. If you combine <code>input::-webkit-slider-thumb, input::-moz-range-thumb</code> in one declaration, Firefox drops the WebKit block, while Chrome drops the Gecko selector—resulting in zero styles being applied across both platforms. Always isolate vendor rules in separate CSS blocks.</p>
+
+      <h3>How do client-side tools protect application data privacy?</h3>
+      <p class="seo-p">Texus Pro Tools values developer privacy and system security above everything else. All visual parameter calculation, CSS string concatenation, and DOM preview rendering occur entirely in your local browser memory space. No values or code lines are transmitted to external servers.</p>
+
+      <h3 class="seo-h2">Summary: Professional UX Best Practices for Range Controls</h3>
+      <p class="seo-p">When implementing custom range controls in modern user interfaces, ensure target thumb sizes maintain a minimum touch area of 44x44 pixels on touch screens to comply with WCAG 2.1 accessibility benchmarks. Always provide visible focus rings (<code>:focus-visible</code>) for keyboard navigation users, and pair numerical output badges alongside range sliders to offer clear visual context.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // SLIDER VISUALIZER LOGIC ENGINE
+    function updateSliderGenerator() {
+      // Gather Track Values
+      const
