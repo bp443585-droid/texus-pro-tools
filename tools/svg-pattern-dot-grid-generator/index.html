@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SVG Pattern Dot Grid Generator | Free Online Background Creator</title>
+  <meta name="description" content="Generate custom scalable SVG dot grid patterns instantly. Customize dot spacing, radius, colors, and opacity with real-time preview and one-click SVG/CSS export." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/svg-pattern-dot-grid-generator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SVG Pattern Dot Grid Generator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced vector background generator to create, customize, and export lightweight SVG dot grid patterns for web and graphic design workflows.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* GENERATOR UI LAYOUT: PREVIEW & CONTROLS GRID */
+    .f-generator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 24px; align-items: start; }
+    
+    .f-preview-column { display: flex; flex-direction: column; gap: 12px; }
+    .f-preview-box { width: 100%; height: 360px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 20px 20px; transition: background-color 0.2s; }
+    
+    .f-controls-column { display: flex; flex-direction: column; gap: 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; }
+    
+    .f-control-group { display: flex; flex-direction: column; gap: 6px; }
+    .f-control-label { display: flex; justify-content: space-between; font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-control-label span.val-display { color: #2563eb; font-weight: 800; }
+    
+    .f-range-input { width: 100%; accent-color: #2563eb; cursor: pointer; }
+    .f-color-row { display: flex; gap: 12px; align-items: center; }
+    .f-color-picker { -webkit-appearance: none; border: none; width: 40px; height: 40px; border-radius: 10px; cursor: pointer; background: none; }
+    .f-color-picker::-webkit-color-swatch-wrapper { padding: 0; }
+    .f-color-picker::-webkit-color-swatch { border: 2px solid #cbd5e1; border-radius: 10px; }
+    
+    .f-text-input { flex: 1; background: #ffffff; border: 2px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; font-size: 0.95rem; font-family: monospace; color: #1e293b; outline: none; }
+    .f-text-input:focus { border-color: #2563eb; }
+
+    .f-select-input { width: 100%; background: #ffffff; border: 2px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; cursor: pointer; }
+    .f-select-input:focus { border-color: #2563eb; }
+
+    /* OUTPUT CONSOLE */
+    .f-output-box { display: flex; flex-direction: column; gap: 8px; margin-top: 15px; }
+    .f-output-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-textarea-field { width: 100%; height: 130px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.95rem; font-family: 'Courier New', Courier, monospace; color: #0f172a; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.4; word-break: break-all; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 15px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-generator-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-preview-box { height: 260px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📐</span> SVG Pattern Dot Grid Generator</div>
+    
+    <div class="f-card">
+      <div class="f-generator-grid">
+        <div class="f-preview-column">
+          <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Live Background Preview</label>
+          <div id="previewBox" class="f-preview-box">
+            <div style="background: rgba(255, 255, 255, 0.85); padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 0.9rem; color: #0f172a; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); z-index: 10;">
+              Interactive Dot Grid Viewport
+            </div>
+          </div>
+        </div>
+
+        <div class="f-controls-column">
+          <div class="f-control-group">
+            <label class="f-control-label">Grid Spacing (Gap) <span id="spacingVal" class="val-display">24px</span></label>
+            <input type="range" id="spacingRange" class="f-range-input" min="10" max="80" value="24" oninput="updateGenerator()">
+          </div>
+
+          <div class="f-control-group">
+            <label class="f-control-label">Dot Radius (Size) <span id="radiusVal" class="val-display">2px</span></label>
+            <input type="range" id="radiusRange" class="f-range-input" min="1" max="10" step="0.5" value="2" oninput="updateGenerator()">
+          </div>
+
+          <div class="f-control-group">
+            <label class="f-control-label">Dot Color & Opacity</label>
+            <div class="f-color-row">
+              <input type="color" id="dotColorPicker" class="f-color-picker" value="#94a3b8" oninput="syncColorInput('picker')">
+              <input type="text" id="dotColorHex" class="f-text-input" value="#94a3b8" oninput="syncColorInput('text')">
+            </div>
+          </div>
+
+          <div class="f-control-group">
+            <label class="f-control-label">Background Color</label>
+            <div class="f-color-row">
+              <input type="color" id="bgColorPicker" class="f-color-picker" value="#ffffff" oninput="syncBgColorInput('picker')">
+              <input type="text" id="bgColorHex" class="f-text-input" value="#ffffff" oninput="syncBgColorInput('text')">
+            </div>
+          </div>
+
+          <div class="f-control-group">
+            <label class="f-control-label">Export Format</label>
+            <select id="exportFormat" class="f-select-input" onchange="updateGenerator()">
+              <option value="css">CSS Background (Data URI)</option>
+              <option value="svg">Raw SVG Code Markup</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-output-box">
+        <label for="outputCode">Generated Code Snippet</label>
+        <textarea id="outputCode" class="f-textarea-field" readonly placeholder="Awaiting pattern generation..."></textarea>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="downloadPatternFile()">💾 Download SVG File</button>
+        <button class="f-btn f-btn-copy" id="copyCodeBtn" onclick="copyResultToClipboard()">📋 Copy Code Snippet</button>
+        <button class="f-btn f-btn-clear" onclick="resetDotGridDefaults()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Hardware-Accelerated Vector Rendering Active:</span>
+        Dot grid patterns are generated using scalable vector graphics (SVG) data URIs, ensuring crisp typography and zero pixelation on Retina 4K/5K displays while maintaining near-zero file weight.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Engineering of Scalable Vector Backgrounds: Dot Grids, Performance Optimization, and CSS Data URIs</h2>
+      <p class="seo-p">Modern web design, developer tooling portals, and creative workspace dashboards frequently rely on subtle dot grid backgrounds to establish visual depth, alignment cues, and technical aesthetics. Historically, developers relied on heavy raster PNG tiles or complex multi-layered DOM elements that bloated CSS payloads and caused rendering lag during viewport scaling. Today, Scalable Vector Graphics (SVG) combined with CSS Data URIs provide an ultra-lightweight, infinitely scalable alternative that renders flawlessly across all modern browser engines.</p>
+      <p class="seo-p">This comprehensive technical manual explores the mathematical mechanics behind SVG pattern tiling, examines the performance benefits of Base64 vs. URI-encoded markup strings, analyzes design ergonomics for high-density UI layouts, and outlines best practices for embedding vector textures directly into enterprise style sheets.</p>
+
+      <div class="seo-callout">
+        <strong>The Vector Tile Principle:</strong> Instead of drawing thousands of individual elements across a canvas, an SVG pattern definition encapsulates a single repeating tile containing coordinate anchors (`&lt;pattern&gt;` and `&lt;circle&gt;`), instructing the browser rasterizer to tile the graphic seamlessly across any viewport dimension.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: SVG Pattern Architecture and URI Encoding</h3>
+      <p class="seo-p">When you configure grid parameters using our interactive generator, the utility constructs a standardized XML vector blueprint. Understanding the underlying syntax helps engineers customize and audit their background assets:</p>
+
+      <h4 class="seo-h3">1. Pattern ViewBox and Dimensions</h4>
+      <p class="seo-p">The `<pattern>` element defines the repeat bounding box width and height matching your custom spacing value. As elements scroll or resize, the browser duplicates this micro-tile without quality loss.</p>
+
+      <h4 class="seo-h3">2. Coordinate Placement and Radius</h4>
+      <p class="seo-p">A single `<circle>` element centered at `cx="0" cy="0"` (or offset depending on grid alignment) establishes the dot geometry. Adjusting the radius parameter scales the stroke or fill footprint instantly.</p>
+
+      <h4 class="seo-h3">3. CSS Data URI Optimization</h4>
+      <p class="seo-p">To use SVG code directly inside CSS `background-image` properties without external server requests, the XML string is percent-encoded (replacing characters like `#` with `%23` and `<` with `%3C`), allowing instant DOM painting.</p>
+
+      <h3>The Statutory Reference Matrix: Dot Grid Configuration Standards</h3>
+      <p class="seo-p">Reviewing standard design tokens and property ranges helps maintain visual consistency across your application UI systems:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Parameter Property</th>
+              <th>Recommended Range</th>
+              <th>Default Value</th>
+              <th>UX / UI Design Application Target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Grid Spacing (Gap)</td>
+              <td>12px - 60px</td>
+              <td>24px</td>
+              <td>Controls whitespace density; tighter grids (16px) suit code editors, while breathable grids (32px+) suit landing pages.</td>
+            </tr>
+            <tr>
+              <td>Dot Radius (Size)</td>
+              <td>1px - 5px</td>
+              <td>2px</td>
+              <td>Defines visual weight. Subdued UI elements require 1px-1.5px dots, whereas prominent grids use 2px-3px dots.</td>
+            </tr>
+            <tr>
+              <td>Dot Color / Hex</td>
+              <td>#000000 - #FFFFFF</td>
+              <td>#94a3b8 (Slate)</td>
+              <td>Ensures contrast against background containers. Low-contrast slates prevent visual fatigue in dark or light modes.</td>
+            </tr>
+            <tr>
+              <td>Background Fill</td>
+              <td>Any Hex / Transparent</td>
+              <td>#ffffff (White)</td>
+              <td>Establishes the canvas base layer, ensuring clean layering over page content cards and containers.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>How do I apply the generated CSS background code to my project stylesheet?</h3>
+      <p class="seo-p">Copy the generated CSS snippet from the output box and paste it directly into your target CSS rule (e.g., `.my-container { background-image: url("data:image/svg+xml,..."); }`). The background will tile automatically across any container size without stretching.</p>
+
+      <h3>Will SVG dot grids affect page load speed or SEO performance?</h3>
+      <p class="seo-p">Not at all! SVG data URIs generated by our tool weigh less than 500 bytes—substantially smaller than raster image files. Because they are embedded directly or loaded as lightweight vectors, they eliminate extra HTTP requests and improve Core Web Vitals (LCP/CLS) scores.</p>
+
+      <h3>Is my data and color configuration kept private?</h3>
+      <p class="seo-p">Yes. All pattern generation, SVG compilation, and URI encoding occur entirely within your browser's local memory. No data, files, or custom color palettes are transmitted to external servers.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Vector Backgrounds</h3>
+      <p class="seo-p">Leveraging clean vector patterns elevates the professional polish of web interfaces while keeping asset management simple. Use tighter dot spacings for technical drawing and wireframe canvases, and wider spacings for modern SaaS hero sections and editorial wrappers.</p>
+      <p class="seo-p">Our SVG Pattern Dot Grid Generator automates mathematical vector calculations instantly, allowing you to export production-ready CSS or SVG code with a single click across any device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // Core Generator Script Logic
+    function updateGenerator() {
+      const spacing = parseFloat(document.getElementById('spacingRange').value);
+      const radius = parseFloat(document.getElementById('radiusRange').value);
+      const dotColor = document.getElementById('dotColorHex').value;
+      const bgColor = document.getElementById('bgColorHex').value;
+      const format = document.getElementById('exportFormat').value;
+
+      // Update value text displays
+      document.getElementById('spacingVal').textContent = spacing + 'px';
+      document.getElementById('radiusVal').textContent = radius + 'px';
+
+      // Build SVG String
+      // To ensure perfect centering and repeating, we use width=spacing, height=spacing
+      const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="${spacing}" height="${spacing}" viewBox="0 0 ${spacing} ${spacing}">` +
+        `<rect width="${spacing}" height="${spacing}" fill="${bgColor}"/>` +
+        `<circle cx="${spacing / 2}" cy="${spacing / 2}" r="${radius}" fill="${dotColor}"/>` +
+        `</svg>`;
+
+      // Apply to Preview Box
+      const previewBox = document.getElementById('previewBox');
+      const encodedSvgForCss = encodeURIComponent(svgString)
+        .replace(/'/g, '%27')
+        .replace(/"/g, '%22');
+      
+      previewBox.style.backgroundColor = bgColor;
+      previewBox.style.backgroundImage = `url("data:image/svg+xml,${encodedSvgForCss}")`;
+      previewBox.style.backgroundSize = `${spacing}px ${spacing}px`;
+
+      // Generate Output Code
+      const outputArea = document.getElementById('outputCode');
+      if (format === 'css') {
+        outputArea.value = `background-color: ${bgColor};\nbackground-image: url("data:image/svg+xml,${encodedSvgForCss}");\nbackground-size: ${spacing}px ${spacing}px;`;
+      } else {
+        // Pretty print raw SVG or raw XML
+        outputArea.value = svgString;
+      }
+    }
+
+    function syncColorInput(source) {
+      const picker = document.getElementById('dotColorPicker');
+      const text = document.getElementById('dotColorHex');
+      if (source === 'picker') {
+        text.value = picker.value;
+      } else if (/^#[0-9A-F]{6}$/i.test(text.value)) {
+        picker.value = text.value;
+      }
+      updateGenerator();
+    }
+
+    function syncBgColorInput(source) {
+      const picker = document.getElementById('bgColorPicker');
+      const text = document.getElementById('bgColorHex');
+      if (source === 'picker') {
+        text.value = picker.value;
+      } else if (/^#[0-9A-F]{6}$/i.test(text.value)) {
+        picker.value = text.value;
+      }
+      updateGenerator();
+    }
+
+    function resetDotGridDefaults() {
+      document.getElementById('spacingRange').value = 24;
+      document.getElementById('radiusRange').value = 2;
+      document.getElementById('dotColorPicker').value = '#94a3b8';
+      document.getElementById('dotColorHex').value = '#94a3b8';
+      document.getElementById('bgColorPicker').value = '#ffffff';
+      document.getElementById('bgColorHex').value = '#ffffff';
+      document.getElementById('exportFormat').value = 'css';
+      updateGenerator();
+    }
+
+    function copyResultToClipboard() {
+      const outputArea = document.getElementById('outputCode');
+      outputArea.select();
+      outputArea.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(outputArea.value).then(() => {
+        const btn = document.getElementById('copyCodeBtn');
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Copied Successfully!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+
+    function downloadPatternFile() {
+      const spacing = document.getElementById('spacingRange').value;
+      const radius = document.getElementById('radiusRange').value;
+      const dotColor = document.getElementById('dotColorHex').value;
+      const bgColor = document.getElementById('bgColorHex').value;
+
+      const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="${spacing}" height="${spacing}" viewBox="0 0 ${spacing} ${spacing}">` +
+        `<rect width="${spacing}" height="${spacing}" fill="${bgColor}"/>` +
+        `<circle cx="${spacing / 2}" cy="${spacing / 2}" r="${radius}" fill="${dotColor}"/>` +
+        `</svg>`;
+
+      const blob = new Blob([svgString], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `dot-grid-${spacing}px-${radius}r.svg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      updateGenerator();
+    });
+
+    // Component Fetching
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
