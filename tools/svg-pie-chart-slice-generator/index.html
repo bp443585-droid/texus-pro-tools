@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SVG Pie Chart Slice Generator | Create Custom SVG Pie Slices Online</title>
+  <meta name="description" content="Generate precise SVG pie chart slices and sector paths instantly. Customize radius, angle, start position, colors, and export clean SVG code for data visualizations." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/svg-pie-chart-slice-generator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SVG Pie Chart Slice Generator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "DeveloperApplication",
+    "description": "An advanced vector calculation utility to generate, preview, and export precise SVG path data strings for individual pie chart slices, arcs, and donut sectors.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-textarea-field { width: 100%; height: 160px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-size: 0.95rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; resize: vertical; line-height: 1.5; }
+    .f-textarea-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .mono-font-panel { font-family: 'Courier New', Courier, monospace; font-weight: 600; font-size: 0.95rem; color: #0f172a; background: #f1f5f9; word-break: break-all; }
+
+    /* CUSTOM CONTROLS GRID */
+    .controls-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
+    .control-group { display: flex; flex-direction: column; gap: 6px; }
+    .control-group label { font-size: 0.82rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; }
+    .control-group input[type="number"],
+    .control-group input[type="color"] { width: 100%; height: 44px; padding: 8px 12px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; font-family: inherit; color: #1e293b; background: #f8fafc; box-sizing: border-box; outline: none; transition: border-color 0.2s; }
+    .control-group input[type="color"] { padding: 4px; cursor: pointer; }
+    .control-group input:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .range-slider-wrapper { display: flex; align-items: center; gap: 10px; }
+    .range-slider-wrapper input[type="range"] { flex: 1; accent-color: #2563eb; cursor: pointer; }
+    .range-value { font-weight: 700; font-size: 0.9rem; color: #2563eb; min-width: 45px; text-align: right; }
+
+    /* PREVIEW CONTAINER */
+    .preview-box { width: 100%; height: 260px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; box-sizing: border-box; }
+    .preview-box svg { max-width: 100%; max-height: 100%; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .controls-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-textarea-field { height: 130px; font-size: 0.9rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🥧</span> SVG Pie Chart Slice Generator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <!-- CONTROLS COLUMN -->
+        <div class="f-panel-box">
+          <label>Slice Configuration Parameters</label>
+          
+          <div class="controls-grid">
+            <div class="control-group">
+              <label for="slicePercentage">Percentage (0-100%)</label>
+              <div class="range-slider-wrapper">
+                <input type="range" id="slicePercentageSlider" min="1" max="100" value="25" oninput="syncInput('percentage', this.value)">
+                <input type="number" id="slicePercentage" min="1" max="100" value="25" oninput="syncInput('percentageSlider', this.value)" style="width: 75px; text-align: center;">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label for="sliceRadius">Radius (px)</label>
+              <input type="number" id="sliceRadius" min="20" max="250" value="100" oninput="generatePieSlice()">
+            </div>
+
+            <div class="control-group">
+              <label for="sliceRotation">Start Angle (°)</label>
+              <div class="range-slider-wrapper">
+                <input type="range" id="sliceRotationSlider" min="0" max="360" value="0" oninput="syncInput('rotation', this.value)">
+                <input type="number" id="sliceRotation" min="0" max="360" value="0" oninput="syncInput('rotationSlider', this.value)" style="width: 75px; text-align: center;">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label for="sliceColor">Fill Color</label>
+              <input type="color" id="sliceColor" value="#2563eb" oninput="generatePieSlice()">
+            </div>
+          </div>
+
+          <div class="control-group" style="margin-top: 10px;">
+            <label for="sliceCenter">Center Coordinate (X, Y)</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <input type="number" id="sliceCenterX" min="0" max="400" value="150" oninput="generatePieSlice()" placeholder="X">
+              <input type="number" id="sliceCenterY" min="0" max="400" value="150" oninput="generatePieSlice()" placeholder="Y">
+            </div>
+          </div>
+        </div>
+        
+        <!-- PREVIEW & OUTPUT COLUMN -->
+        <div class="f-panel-box">
+          <label>Live Vector Preview</label>
+          <div class="preview-box" id="svgPreviewContainer">
+            <svg id="liveSvgCanvas" viewBox="0 0 300 300" width="100%" height="100%">
+              <!-- Generated SVG path will be injected here -->
+            </svg>
+          </div>
+          
+          <label for="svgOutputCode" style="margin-top: 12px;">Generated SVG Path &amp; Snippet</label>
+          <textarea id="svgOutputCode" class="f-textarea-field mono-font-panel" readonly placeholder="SVG markup code will appear here..."></textarea>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="generatePieSlice()">Recalculate Slice</button>
+        <button class="f-btn f-btn-copy" id="copySvgBtn" onclick="copySvgToClipboard()">📋 Copy SVG Code</button>
+        <button class="f-btn f-btn-clear" onclick="resetSvgWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Trigonometric Arc Path Generator:</span>
+        Instantly computes exact SVG arc command flags (`A rx ry x-axis-rotation large-arc-flag sweep-flag x y`) for perfect sector rendering across all modern web browsers.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Scalable Vector Graphics: Mathematical Foundations of SVG Pie Slices, Arc Commands, and Trigonometric Path Calculations</h2>
+      <p class="seo-p">Building responsive, high-performance data visualization dashboards requires absolute precision when rendering geometric shapes like pie charts, donut rings, and statistical sector graphs. While traditional HTML5 Canvas rasterizes pixels upon generation, Scalable Vector Graphics (SVG) render shapes as pure mathematical DOM elements that scale infinitely across ultra-high-definition mobile displays, large desktop monitors, and responsive layout grids without degradation.</p>
+      <p class="seo-p">This comprehensive technical manual explores the underlying trigonometry of SVG path commands, dissects the intricacies of the `A` (arc) command flags, reviews performance optimizations for dynamic dashboards, and provides clear workflows for embedding standalone vector slices into modern web applications.</p>
+
+      <div class="seo-callout">
+        <strong>The Arc Command Geometry:</strong> Rendering a precise pie slice in SVG requires shifting the drawing cursor to the circle center, drawing a straight line to the arc's starting point on the circumference, executing an elliptical arc command across calculated coordinates, and closing the path back to the origin.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Trigonometric Path Calculations &amp; Arc Flags</h3>
+      <p class="seo-p">When raw numerical parameters pass through our client-side conversion engine, the script executes precise mathematical transformations to construct valid SVG `d` attribute path strings:</p>
+
+      <h4 class="seo-h3">1. Polar to Cartesian Coordinate Mapping</h4>
+      <p class="seo-p">Because SVG canvases operate on standard cartesian coordinates (X and Y axes), input percentages are first converted into angular radians. Using standard sine and cosine formulas, the script determines the exact X and Y coordinates where the arc begins and terminates along the circle's perimeter.</p>
+
+      <h4 class="seo-h3">2. Evaluating the Large-Arc Flag</h4>
+      <p class="seo-p">The SVG path arc command requires a boolean parameter known as the `large-arc-flag`. If the target slice angle is less than or equal to 180 degrees (50%), the flag evaluates to `0`. If the slice exceeds 180 degrees, the flag switches to `1`, instructing the rendering engine to take the long route around the circle circumference.</p>
+
+      <h4 class="seo-h3">3. Sweep Flag Determination</h4>
+      <p class="seo-p">The `sweep-flag` dictates the directional rotation of the arc along the coordinate plane. Setting this value to `1` ensures clockwise progression, aligning standard data visualization conventions across financial charts, statistical dashboards, and analytics panels.</p>
+
+      <h3>The Statutory Reference Matrix: SVG Path Command Syntax Guide</h3>
+      <p class="seo-p">Understanding how fundamental path instructions construct geometric vectors is vital for debugging templates, optimizing markup size, and writing clean SVG code:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Path Command Letter</th>
+              <th>Command Name</th>
+              <th>Parameter Arguments</th>
+              <th>Functional Behavior and UI Target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>M / m</b></td>
+              <td>Move To</td>
+              <td>`M x y`</td>
+              <td>Moves the virtual drawing cursor to the circle center point without drawing a stroke.</td>
+            </tr>
+            <tr>
+              <td><b>L / l</b></td>
+              <td>Line To</td>
+              <td>`L x y`</td>
+              <td>Draws a straight line from the current cursor position to the arc starting perimeter.</td>
+            </tr>
+            <tr>
+              <td><b>A / a</b></td>
+              <td>Elliptical Arc</td>
+              <td>`A rx ry x-axis-rotation large-arc-flag sweep-flag x y`</td>
+              <td>Draws a curved path segment connecting the current point to the specified end coordinates.</td>
+            </tr>
+            <tr>
+              <td><b>Z / z</b></td>
+              <td>Close Path</td>
+              <td>None</td>
+              <td>Automatically connects the end of the arc back to the initial center point, sealing the slice.</td>
+            </tr>
+            <tr>
+              <td><b>fill</b></td>
+              <td>Style Attribute</td>
+              <td>Hex / RGB / CSS Variable</td>
+              <td>Applies solid coloration, gradients, or opacity masks directly to the interior sector.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>How do I combine multiple SVG slices into a complete multi-segment pie chart?</h3>
+      <p class="seo-p">To build a complete pie chart, calculate the cumulative starting angle for each consecutive slice. For instance, if Slice A occupies 30% (108 degrees), Slice B's start angle must be set to 108 degrees with its own percentage width. Render each path inside a single SVG container element with distinct fill colors.</p>
+
+      <h3>What is the difference between absolute and relative path coordinates?</h3>
+      <p class="seo-p">Absolute commands (indicated by uppercase letters like `M` or `A`) specify exact coordinates relative to the top-left SVG canvas origin `(0,0)`. Relative commands (lowercase letters like `m` or `a`) specify offsets from the current cursor position. Pie slice generators rely primarily on absolute positioning to ensure precise centering.</p>
+
+      <h3>How does local device script compilation ensure business data privacy?</h3>
+      <p class="seo-p">Texus Pro Tools values your enterprise security above everything else. The SVG generation utilities execute entirely within your browser's local JavaScript memory sandbox. No design assets, custom coordinates, or markup code ever traverse external servers—guaranteeing 100% data confidentiality.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Vector Data Visualization</h3>
+      <p class="seo-p">To optimize SVG graphic performance across enterprise applications, always define a clean, scalable `viewBox` attribute rather than relying solely on fixed pixel dimensions. Keep path strings uncluttered by removing unnecessary whitespace, utilize CSS variables for dynamic theming, and leverage real-time generator utilities to streamline frontend development workflows.</p>
+      <p class="seo-p">Our Advanced SVG Pie Chart Slice Generator suite automates all trigonometric path calculations instantly, providing precise code output and live visual feedback across any mobile or desktop viewport seamlessly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // SVG Pie Chart Slice Generator Core Logic
+    function syncInput(targetId, val) {
+      if (targetId === 'percentage') {
+        document.getElementById('slicePercentageSlider').value = val;
+        document.getElementById('slicePercentage').value = val;
+      } else if (targetId === 'percentageSlider') {
+        document.getElementById('slicePercentage').value = val;
+        document.getElementById('slicePercentageSlider').value = val;
+      } else if (targetId === 'rotation') {
+        document.getElementById('sliceRotationSlider').value = val;
+        document.getElementById('sliceRotation').value = val;
+      } else if (targetId === 'rotationSlider') {
+        document.getElementById('sliceRotation').value = val;
+        document.getElementById('sliceRotationSlider').value = val;
+      }
+      generatePieSlice();
+    }
+
+    function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+      const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+      return {
+        x: centerX + (radius * Math.cos(angleInRadians)),
+        y: centerY + (radius * Math.sin(angleInRadians))
+      };
+    }
+
+    function generatePieSlice() {
+      const pct = parseFloat(document.getElementById('slicePercentage').value) || 0;
+      const radius = parseFloat(document.getElementById('sliceRadius').value) || 100;
+      const startAngle = parseFloat(document.getElementById('sliceRotation').value) || 0;
+      const color = document.getElementById('sliceColor').value || '#2563eb';
+      const cx = parseFloat(document.getElementById('sliceCenterX').value) || 150;
+      const cy = parseFloat(document.getElementById('sliceCenterY').value) || 150;
+
+      // Clamp percentage between 0.1 and 100
+      const clampedPct = Math.max(0.1, Math.min(100, pct));
+      const angleSpan = (clampedPct / 100) * 360;
+      
+      // Handle full circle case
+      if (clampedPct >= 100) {
+        const svgCode = `<svg viewBox="0 0 300 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">\n  <circle cx="${cx}" cy="${cy}" r="${radius}" fill="${color}" />\n</svg>`;
+        document.getElementById('liveSvgCanvas').innerHTML = `<circle cx="${cx}" cy="${cy}" r="${radius}" fill="${color}" />`;
+        document.getElementById('svgOutputCode').value = svgCode;
+        return;
+      }
+
+      const endAngle = startAngle + angleSpan;
+
+      const startCoord = polarToCartesian(cx, cy, radius, startAngle);
+      const endCoord = polarToCartesian(cx, cy, radius, endAngle);
+
+      const largeArcFlag = angleSpan <= 180 ? "0" : "1";
+      const sweepFlag = "1";
+
+      const pathData = [
+        `M ${cx} ${cy}`,
+        `L ${startCoord.x.toFixed(2)} ${startCoord.y.toFixed(2)}`,
+        `A ${radius} ${radius} 0 ${largeArcFlag} ${sweepFlag} ${endCoord.x.toFixed(2)} ${endCoord.y.toFixed(2)}`,
+        `Z`
+      ].join(" ");
+
+      const svgCode = `<svg viewBox="0 0 300 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">\n  <path d="${pathData}" fill="${color}" />\n</svg>`;
+
+      document.getElementById('liveSvgCanvas').innerHTML = `<path d="${pathData}" fill="${color}" />`;
+      document.getElementById('svgOutputCode').value = svgCode;
+    }
+
+    function copySvgToClipboard() {
+      const textarea = document.getElementById('svgOutputCode');
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(textarea.value).then(() => {
+        const btn = document.getElementById('copySvgBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '✓ Copied Successfully!';
+        btn.style.background = '#10b981';
+        btn.style.color = '#ffffff';
+        btn.style.borderColor = '#10b981';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+          btn.style.borderColor = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Clipboard copy failed:', err);
+      });
+    }
+
+    function resetSvgWorkspace() {
+      document.getElementById('slicePercentage').value = 25;
+      document.getElementById('slicePercentageSlider').value = 25;
+      document.getElementById('sliceRadius').value = 100;
+      document.getElementById('sliceRotation').value = 0;
+      document.getElementById('sliceRotationSlider').value = 0;
+      document.getElementById('sliceColor').value = '#2563eb';
+      document.getElementById('sliceCenterX').value = 150;
+      document.getElementById('sliceCenterY').value = 150;
+      generatePieSlice();
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      generatePieSlice();
+    });
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
