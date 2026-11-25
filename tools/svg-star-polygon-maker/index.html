@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SVG Star Polygon Maker | Free Online Star & Polygon Generator</title>
+  <meta name="description" content="Generate custom SVG star polygons instantly with our free online tool. Adjust points, inner radius, stroke, fills, and export clean SVG code or PNG data." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/svg-star-polygon-maker/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SVG Star Polygon Maker",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced web utility to generate, customize, and export scalable vector graphic (SVG) star polygons and geometric shapes instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TOOL SPECIFIC LAYOUT */
+    .star-maker-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; margin-bottom: 25px; }
+    .controls-panel { display: flex; flex-direction: column; gap: 16px; }
+    .control-group { display: flex; flex-direction: column; gap: 6px; }
+    .control-group label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
+    .control-group label span.val-display { color: #2563eb; font-weight: 800; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 10px 14px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    input[type="range"] { accent-color: #2563eb; cursor: pointer; height: 6px; }
+    input[type="color"] { -webkit-appearance: none; border: none; width: 100%; height: 42px; border-radius: 12px; cursor: pointer; background: none; padding: 0; }
+    input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+    input[type="color"]::-webkit-color-swatch { border: 2px solid #e2e8f0; border-radius: 12px; }
+
+    .preview-panel { display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; position: relative; min-height: 320px; box-sizing: border-box; }
+    .preview-box { width: 100%; height: 280px; display: flex; align-items: center; justify-content: center; }
+    .preview-box svg { max-width: 100%; max-height: 100%; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.05)); }
+
+    .code-output-box { width: 100%; background: #f1f5f9; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; color: #0f172a; word-break: break-all; max-height: 140px; overflow-y: auto; box-sizing: border-box; margin-bottom: 20px; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .star-maker-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>✨</span> SVG Star Polygon Maker</div>
+    
+    <div class="f-card">
+      <div class="star-maker-grid">
+        <div class="controls-panel">
+          <div class="control-group">
+            <label for="starPoints">Points / Vertices <span class="val-display" id="valPoints">5</span></label>
+            <input type="range" id="starPoints" min="3" max="30" value="5" oninput="updateStarPolygon()">
+          </div>
+
+          <div class="control-group">
+            <label for="innerRadius">Inner Radius Ratio <span class="val-display" id="valInner">0.50</span></label>
+            <input type="range" id="innerRadius" min="0.1" max="0.9" step="0.01" value="0.5" oninput="updateStarPolygon()">
+          </div>
+
+          <div class="control-group">
+            <label for="starRotation">Rotation Angle <span class="val-display" id="valRotation">0°</span></label>
+            <input type="range" id="starRotation" min="0" max="360" value="0" oninput="updateStarPolygon()">
+          </div>
+
+          <div class="control-group">
+            <label for="fillColor">Fill Color</label>
+            <input type="color" id="fillColor" value="#2563eb" oninput="updateStarPolygon()">
+          </div>
+
+          <div class="control-group">
+            <label for="strokeColor">Stroke Color</label>
+            <input type="color" id="strokeColor" value="#0f172a" oninput="updateStarPolygon()">
+          </div>
+
+          <div class="control-group">
+            <label for="strokeWidth">Stroke Width <span class="val-display" id="valStroke">2px</span></label>
+            <input type="range" id="strokeWidth" min="0" max="20" value="2" oninput="updateStarPolygon()">
+          </div>
+        </div>
+
+        <div class="preview-panel">
+          <div class="preview-box" id="previewBox">
+            <!-- Dynamic SVG inserted here -->
+          </div>
+          <div style="font-size: 0.8rem; color: #64748b; font-weight: 600; margin-top: 10px;">Live Scalable Vector Preview</div>
+        </div>
+      </div>
+
+      <div class="code-output-box" id="svgCodeOutput" title="Generated SVG Code">
+        <!-- SVG Code output -->
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="updateStarPolygon()">Regenerate Shape</button>
+        <button class="f-btn f-btn-copy" id="copySvgBtn" onclick="copySvgCode()">📋 Copy SVG Code</button>
+        <button class="f-btn f-btn-clear" onclick="resetStarForm()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Real-time Vector Computation:</span>
+        Adjust sliders to customize star vertices, depth ratios, rotation angles, and strokes instantly. Code is generated with clean, optimized SVG path structures ready for production use.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Geometry of Scalable Vector Graphics: Mastering Star Polygons, Trigonometric Vertex Mapping, and Web Vector Optimization</h2>
+      <p class="seo-p">Scalable Vector Graphics (SVG) represent the industry standard for delivering crisp, resolution-independent iconography and geometric artwork across all modern web viewports and high-density Retina screens. Unlike static raster graphics (JPEG or PNG), vector files are defined by mathematical formulas, coordinate paths, and precise geometric equations. Among the most versatile geometric assets used in modern web design, UI badges, rating stars, and decorative motifs is the star polygon.</p>
+      <p class="seo-p">This comprehensive technical guide explores the mathematics behind star polygons, the anatomy of SVG polygon and path elements, trigonometric vertex calculations, and best practices for integrating lightweight vector assets into high-performance web applications.</p>
+
+      <div class="seo-callout">
+        <strong>The Trigonometric Star Formula:</strong> Star polygons are constructed by alternating outer and inner radius points calculated along a circular polar coordinate system using sine and cosine functions offset by angular step increments.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Trigonometric Vertex Calculation and Path Generation</h3>
+      <p class="seo-p">Generating a precise star polygon programmatically requires careful calculation of vertex coordinates using polar-to-cartesian coordinate transformations. Here is how our high-performance client-side generator computes shapes in real time:</p>
+
+      <h4 class="seo-h3">1. Polar Coordinate Mapping</h4>
+      <p class="seo-p">Given a center point $(C_x, C_y)$ and a base radius $R$, points along a circle are distributed evenly across $N$ vertices. For a star polygon with $n$ points, the algorithm calculates $2n$ total vertices by alternating between outer radius $R_{outer}$ and inner radius $R_{inner}$.</p>
+
+      <h4 class="seo-h3">2. Angular Step Increments</h4>
+      <p class="seo-p">The angle step for each vertex is determined by dividing $360^\circ$ (or $2\pi$ radians) by twice the number of points: $\theta = \frac{\pi}{n}$. Each alternating vertex corresponds to an angle offset plus any user-defined rotation angle.</p>
+
+      <h4 class="seo-h3">3. Cartesian Conversion via Sine and Cosine</h4>
+      <p class="seo-p">The $x$ and $y$ coordinates for each vertex are computed using standard trigonometric identities:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f8fafc; padding: 12px; border-radius: 8px;">
+        $x = C_x + r \cdot \cos(\theta + \text{rotation})$<br>
+        $y = C_y + r \cdot \sin(\theta + \text{rotation})$
+      </p>
+
+      <h3>The Statutory Reference Matrix: Star Polygon Properties and Parameter Guide</h3>
+      <p class="seo-p">Understanding how different parameter adjustments affect the final vector geometry helps designers fine-tune icons for specific brand identities and UI contexts:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Parameter Name</th>
+              <th>Typical Range</th>
+              <th>Mathematical Role</th>
+              <th>Visual & Structural Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Points / Vertices</b></td>
+              <td>3 to 30</td>
+              <td>Determines vertex count $n$.</td>
+              <td>Controls the complexity of the star; 5 points yield a classic star, higher counts produce floral or sunburst patterns.</td>
+            </tr>
+            <tr>
+              <td><b>Inner Radius Ratio</b></td>
+              <td>0.10 to 0.90</td>
+              <td>Ratio of inner radius to outer radius.</td>
+              <td>Lower values create sharp, needle-like spikes; higher values produce thick, robust starburst geometries or polygon shields.</td>
+            </tr>
+            <tr>
+              <td><b>Rotation Angle</b></td>
+              <td>0° to 360°</td>
+              <td>Rotational offset angle.</td>
+              <td>Orients the star apex vertically, horizontally, or at custom angles for precise alignment in layouts.</td>
+            </tr>
+            <tr>
+              <td><b>Stroke Width</b></td>
+              <td>0px to 20px</td>
+              <td>SVG `stroke-width` attribute.</td>
+              <td>Defines outline prominence, adding crisp contrast and definition against complex backgrounds.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>How can I use the generated SVG star in my HTML project?</h3>
+      <p class="seo-p">You can copy the raw SVG code using our copy button and paste it directly into your HTML document markup. Alternatively, you can save the code as an `.svg` file and reference it via an `&lt;img&gt;` tag or CSS background property.</p>
+
+      <h3>What is the difference between an SVG &lt;polygon&gt; and an SVG &lt;path&gt;?</h3>
+      <p class="seo-p">An SVG `&lt;polygon&gt;` element connects a series of explicit coordinate points with straight lines and closes the shape automatically. An SVG `&lt;path&gt;` element uses a versatile mini-language (commands like `M`, `L`, `Z`) to draw complex geometries, curves, and custom shapes. Our tool outputs clean `&lt;polygon&gt;` tags for maximum compatibility.</p>
+
+      <h3>Does this tool require server-side processing?</h3>
+      <p class="seo-p">No. All geometric calculations, real-time SVG rendering, and clipboard operations occur entirely within your web browser using client-side JavaScript. Your designs remain private and secure.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for Vector Asset Management</h3>
+      <p class="seo-p">Optimizing SVG assets ensures fast page load speeds and crisp visual rendering across all devices. By leveraging programmatic tools like our SVG Star Polygon Maker, developers and designers can eliminate bloated design software exports and generate lightweight, production-ready vector code instantly.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function updateStarPolygon() {
+      const points = parseInt(document.getElementById('starPoints').value);
+      const innerRatio = parseFloat(document.getElementById('innerRadius').value);
+      const rotation = parseFloat(document.getElementById('starRotation').value) * (Math.PI / 180);
+      const fillColor = document.getElementById('fillColor').value;
+      const strokeColor = document.getElementById('strokeColor').value;
+      const strokeWidth = parseInt(document.getElementById('strokeWidth').value);
+
+      document.getElementById('valPoints').innerText = points;
+      document.getElementById('valInner').innerText = innerRatio.toFixed(2);
+      document.getElementById('valRotation').innerText = document.getElementById('starRotation').value + '°';
+      document.getElementById('valStroke').innerText = strokeWidth + 'px';
+
+      const size = 300;
+      const center = size / 2;
+      const outerRadius = center - 15 - strokeWidth;
+      const innerRadiusVal = outerRadius * innerRatio;
+      const totalVertices = points * 2;
+      const angleStep = Math.PI / points;
+
+      let ptsArray = [];
+      for (let i = 0; i < totalVertices; i++) {
+        const r = (i % 2 === 0) ? outerRadius : innerRadiusVal;
+        const currentAngle = i * angleStep + rotation - Math.PI / 2;
+        const x = center + r * Math.cos(currentAngle);
+        const y = center + r * Math.sin(currentAngle);
+        ptsArray.push(`${x.toFixed(2)},${y.toFixed(2)}`);
+      }
+
+      const pointsString = ptsArray.join(' ');
+
+      const svgCode = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="100%" height="100%">
+  <polygon points="${pointsString}" fill="${fillColor}" stroke="${strokeColor}" stroke-width="${strokeWidth}" stroke-linejoin="round" />
+</svg>`;
+
+      document.getElementById('previewBox').innerHTML = svgCode;
+      document.getElementById('svgCodeOutput').innerText = svgCode;
+    }
+
+    function copySvgCode() {
+      const codeText = document.getElementById('svgCodeOutput').innerText;
+      navigator.clipboard.writeText(codeText).then(() => {
+        const btn = document.getElementById('copySvgBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '✅ Copied to Clipboard!';
+        btn.style.background = '#dcfce7';
+        btn.style.color = '#166534';
+        btn.style.borderColor = '#bbf7d0';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+          btn.style.borderColor = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+
+    function resetStarForm() {
+      document.getElementById('starPoints').value = 5;
+      document.getElementById('innerRadius').value = 0.5;
+      document.getElementById('starRotation').value = 0;
+      document.getElementById('fillColor').value = '#2563eb';
+      document.getElementById('strokeColor').value = '#0f172a';
+      document.getElementById('strokeWidth').value = 2;
+      updateStarPolygon();
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      updateStarPolygon();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
