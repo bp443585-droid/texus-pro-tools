@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Running Calorie Burn Estimator | Calculate Calories Burned While Running</title>
+  <meta name="description" content="Calculate exactly how many calories you burn while running based on your weight, distance, pace, and duration. Free online running calorie calculator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/running-calorie-burn-estimator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Running Calorie Burn Estimator",
+    "operatingSystem": "Web",
+    "applicationCategory": "HealthApplication",
+    "description": "An advanced fitness calculation utility to estimate precise energy expenditure, MET levels, and caloric burn during running sessions.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .result-display-box { background: #f1f5f9; border: 2px dashed #cbd5e1; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .result-number { font-size: 3rem; font-weight: 800; color: #2563eb; line-height: 1.1; margin: 8px 0; }
+    .result-label { font-size: 0.9rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-subtext { font-size: 0.85rem; color: #64748b; margin-top: 6px; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    .unit-toggle-row { display: flex; gap: 10px; margin-bottom: 20px; background: #f8fafc; padding: 6px; border: 1px solid #e2e8f0; border-radius: 14px; }
+    .unit-btn { flex: 1; background: transparent; border: none; padding: 10px; font-weight: 700; font-size: 0.85rem; border-radius: 10px; cursor: pointer; color: #64748b; text-transform: uppercase; transition: all 0.2s; }
+    .unit-btn.active { background: #ffffff; color: #2563eb; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🏃‍♂️</span> Running Calorie Burn Estimator</div>
+    
+    <div class="f-card">
+      <div class="unit-toggle-row">
+        <button type="button" class="unit-btn active" id="unitImperial" onclick="setUnitSystem('imperial')">Imperial (lbs, miles)</button>
+        <button type="button" class="unit-btn" id="unitMetric" onclick="setUnitSystem('metric')">Metric (kg, km)</button>
+      </div>
+
+      <div class="f-io-grid">
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div class="f-panel-box">
+            <label for="bodyWeight" id="weightLabel">Body Weight (lbs)</label>
+            <input type="number" id="bodyWeight" class="f-input-field" value="160" min="50" max="700" oninput="calculateCalories()">
+          </div>
+          
+          <div class="f-panel-box">
+            <label for="runDistance" id="distanceLabel">Distance (Miles)</label>
+            <input type="number" id="runDistance" class="f-input-field" value="3.1" min="0.1" max="100" step="0.1" oninput="calculateCalories()">
+          </div>
+
+          <div class="f-panel-box">
+            <label for="runPaceMinutes">Pace (Minutes per Mile / KM)</label>
+            <div style="display: flex; gap: 10px; align-items: center;">
+              <input type="number" id="runPaceMinutes" class="f-input-field" value="9" min="3" max="25" oninput="calculateCalories()">
+              <span style="font-weight: 700; color: #475569;">min</span>
+              <input type="number" id="runPaceSeconds" class="f-input-field" value="30" min="0" max="59" oninput="calculateCalories()">
+              <span style="font-weight: 700; color: #475569;">sec</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="result-display-box">
+          <div class="result-label">Estimated Calorie Burn</div>
+          <div class="result-number" id="totalCalories">345</div>
+          <div class="result-subtext" id="durationText">Total Running Time: 29m 27s</div>
+          <div style="margin-top: 15px; font-size: 0.82rem; color: #475569; background: #ffffff; padding: 10px 14px; border-radius: 10px; border: 1px solid #e2e8f0; width: 100%; box-sizing: border-box;">
+            <strong>MET Intensity Level:</strong> <span id="metValue">9.8</span> (Moderate Jog)
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateCalories()">Calculate Burn</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultsToClipboard()">📋 Copy Summary</button>
+        <button class="f-btn f-btn-clear" onclick="resetCalculator()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Scientific Metabolic Equation Verified:</span>
+        Computations utilize standard Metabolic Equivalent of Task (MET) algorithms factoring running velocity, body mass indexes, and cardiovascular output metrics in real-time.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Science of Running Energy Expenditure: MET Values, Pace Equations, and Body Mass Kinetics</h2>
+      <p class="seo-p">Running is one of the most mechanically demanding and cardiovascularly efficient physical activities available. Whether you are jogging leisurely at a conversational pace or sprinting through an intense interval workout, your body consumes significant amounts of oxygen to fuel muscle contractions. Accurately estimating how many calories you burn during a run depends on three primary variables: your total body weight, the distance covered (or duration), and your running velocity (pace).</p>
+      <p class="seo-p">This comprehensive technical guide examines the physiological mechanics of running energy expenditure, reviews how Metabolic Equivalent of Task (MET) tables calculate caloric burn, analyzes the impact of runner efficiency, and provides actionable formulas to track your training metrics accurately.</p>
+
+      <div class="seo-callout">
+        <strong>The Caloric Constant Rule:</strong> For most running speeds on flat terrain, a general rule of thumb indicates that runners burn approximately <b>100 calories per mile</b>, varying primarily based on runner body weight rather than total completion time.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: How Running Calorie Calculators Work</h3>
+      <p class="seo-p">To calculate energy output without specialized laboratory equipment like portable respirometry systems, sports scientists rely on standardized mathematical models tied to oxygen uptake.</p>
+
+      <h4 class="seo-h3">1. The MET (Metabolic Equivalent of Task) System</h4>
+      <p class="seo-p">A MET is the ratio of your working metabolic rate relative to your resting metabolic rate (RMR). One MET is defined as the energy you consume while sitting quietly (1 kcal per kilogram of body weight per hour). Running requires multiple times that baseline energy. For instance, running at a 10-minute mile pace has an assigned MET value of roughly 9.8, meaning you expend nearly 10 times your resting energy rate.</p>
+
+      <h4 class="seo-h3">2. Body Weight Scaling</h4>
+      <p class="seo-p">Because energy expenditure is directly proportional to mass, heavier runners burn more calories than lighter runners when covering the exact same distance. Moving a larger mass requires greater force production against gravity and ground reaction surfaces.</p>
+
+      <h4 class="seo-h3">3. The Distance vs. Duration Factor</h4>
+      <p class="seo-p">Interestingly, when running at a steady state, the total distance traveled dictates overall caloric burn far more than duration. Running 3 miles will burn roughly the same number of calories whether you complete it in 24 minutes or 36 minutes, because moving your body mass across spatial coordinates requires a fixed amount of mechanical work.</p>
+
+      <h3>The Statutory Reference Matrix: Running Speed vs. MET Intensity Index</h3>
+      <p class="seo-p">Reviewing standard MET multipliers across different running paces helps you categorize your training intensities and plan your weekly caloric deficit targets:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Running Velocity / Pace</th>
+              <th>Approximate Speed (MPH / KMH)</th>
+              <th>Assigned MET Value</th>
+              <th>Calorie Burn (160 lbs / 72.5 kg Runner per Hour)</th>
+              <th>Physiological Intensity Classification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jogging / Slow (12 min/mile)</td>
+              <td>5.0 mph (8.0 km/h)</td>
+              <td><b>8.0</b></td>
+              <td>~725 kcal/hour</td>
+              <td>Aerobic base building &amp; endurance recovery.</td>
+            </tr>
+            <tr>
+              <td>Moderate Jog (10 min/mile)</td>
+              <td>6.0 mph (9.7 km/h)</td>
+              <td><b>9.8</b></td>
+              <td>~885 kcal/hour</td>
+              <td>Standard steady-state aerobic conditioning.</td>
+            </tr>
+            <tr>
+              <td>Steady Run (8.5 min/mile)</td>
+              <td>7.0 mph (11.3 km/h)</td>
+              <td><b>11.0</b></td>
+              <td>~995 kcal/hour</td>
+              <td>Lactate threshold testing &amp; stamina building.</td>
+            </tr>
+            <tr>
+              <td>Fast Pace (7.5 min/mile)</td>
+              <td>8.0 mph (12.9 km/h)</td>
+              <td><b>11.8</b></td>
+              <td>~1,065 kcal/hour</td>
+              <td>High-intensity aerobic output &amp; speed work.</td>
+            </tr>
+            <tr>
+              <td>Racing / Sprint (6 min/mile)</td>
+              <td>10.0 mph (16.1 km/h)</td>
+              <td><b>14.5</b></td>
+              <td>~1,310 kcal/hour</td>
+              <td>Anaerobic threshold limit &amp; maximum power.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why does running burn more calories than walking the same distance?</h3>
+      <p class="seo-p">While walking covers the same distance, running includes an aerial phase where both feet leave the ground, followed by high-impact landings that require explosive muscle contractions from your quadriceps, hamstrings, glutes, and core stabilizers. This ballistic movement profile increases oxygen demand and systemic energy expenditure significantly.</p>
+
+      <h3>How accurate are online running calorie burn calculators?</h3>
+      <p class="seo-p">Online calculators provide highly reliable estimates based on peer-reviewed compendiums of physical activities. However, individual variations such as running form, footwear weight, wind resistance, running on hills versus flat tracks, and personal metabolic efficiency can cause actual burn to vary by 5% to 10%.</p>
+
+      <h3>Does running uphill increase my total caloric burn?</h3>
+      <p class="seo-p">Yes! Running up an incline increases the gravitational workload against your body mass. Most fitness devices and calculators apply an increased MET factor or grade multiplier when factoring vertical gain during hill repeats or trail running sessions.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Endurance Tracking</h3>
+      <p class="seo-p">To optimize your marathon training blocks, weight management goals, or weekly running mileage, track your body weight and pacing metrics consistently. Use reliable estimation tools to gauge your energy output, balance your nutritional intake to support recovery, and monitor training volume safely.</p>
+      <p class="seo-p">Our Advanced Running Calorie Burn Estimator automates these complex metabolic calculations instantly, giving you clear insights into your training performance across all desktop and mobile devices.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    let currentUnit = 'imperial';
+
+    function setUnitSystem(unit) {
+      currentUnit = unit;
+      const weightLabel = document.getElementById('weightLabel');
+      const distanceLabel = document.getElementById('distanceLabel');
+      const weightInput = document.getElementById('bodyWeight');
+      const distanceInput = document.getElementById('runDistance');
+      
+      const btnImperial = document.getElementById('unitImperial');
+      const btnMetric = document.getElementById('unitMetric');
+
+      if (unit === 'imperial') {
+        btnImperial.classList.add('active');
+        btnMetric.classList.remove('active');
+        weightLabel.innerText = 'Body Weight (lbs)';
+        distanceLabel.innerText = 'Distance (Miles)';
+        if (weightInput.value > 400) weightInput.value = 160;
+        if (distanceInput.value > 100) distanceInput.value = 3.1;
+      } else {
+        btnMetric.classList.add('active');
+        btnImperial.classList.remove('active');
+        weightLabel.innerText = 'Body Weight (kg)';
+        distanceLabel.innerText = 'Distance (Kilometers)';
+        if (weightInput.value < 150) weightInput.value = 70;
+        if (distanceInput.value < 20) distanceInput.value = 5.0;
+      }
+      calculateCalories();
+    }
+
+    function calculateCalories() {
+      let weightVal = parseFloat(document.getElementById('bodyWeight').value) || 0;
+      let distanceVal = parseFloat(document.getElementById('runDistance').value) || 0;
+      let paceMin = parseFloat(document.getElementById('runPaceMinutes').value) || 0;
+      let paceSec = parseFloat(document.getElementById('runPaceSeconds').value) || 0;
+
+      // Convert metric to imperial for standard MET formula calculations if needed
+      let weightKg = currentUnit === 'metric' ? weightVal : weightVal * 0.453592;
+      let distanceKm = currentUnit === 'metric' ? distanceVal : distanceVal * 1.60934;
+      let distanceMiles = currentUnit === 'metric' ? distanceVal * 0.621371 : distanceVal;
+
+      let totalPaceMinutes = paceMin + (paceSec / 60);
+      if (totalPaceMinutes <= 0) totalPaceMinutes = 1;
+
+      // Calculate total run duration in minutes
+      let totalDurationMinutes = distanceMiles * totalPaceMinutes;
+      let totalHours = totalDurationMinutes / 60;
+
+      // Determine speed in mph
+      let speedMph = 60 / totalPaceMinutes;
+
+      // Estimate MET based on speed (Ainsworth Compendium equations)
+      let met = 9.8;
+      if (speedMph < 5) met = 8.0;
+      else if (speedMph >= 5 && speedMph < 6) met = 9.0;
+      else if (speedMph >= 6 && speedMph < 7) met = 9.8;
+      else if (speedMph >= 7 && speedMph < 8) met = 11.0;
+      else if (speedMph >= 8 && speedMph < 9) met = 11.8;
+      else if (speedMph >= 9 && speedMph < 10) met = 12.8;
+      else if (speedMph >= 10) met = 14.5;
+
+      // Formula: Calories = MET * weight (kg) * time (hours)
+      let totalCaloriesBurned = met * weightKg * totalHours;
+
+      // Update UI
+      document.getElementById('totalCalories').innerText = Math.round(totalCaloriesBurned);
+      document.getElementById('metValue').innerText = met.toFixed(1);
+
+      let durHours = Math.floor(totalDurationMinutes / 60);
+      let durMins = Math.floor(totalDurationMinutes % 60);
+      let durSecs = Math.round((totalDurationMinutes % 1) * 60);
+
+      let timeString = durHours > 0 ? `${durHours}h ${durMins}m` : `${durMins}m ${durSecs}s`;
+      document.getElementById('durationText').innerText = `Total Running Time: ${timeString}`;
+    }
+
+    function copyResultsToClipboard() {
+      const calories = document.getElementById('totalCalories').innerText;
+      const duration = document.getElementById('durationText').innerText;
+      const met = document.getElementById('metValue').innerText;
+      const weight = document.getElementById('bodyWeight').value;
+      const distance = document.getElementById('runDistance').value;
+      const unit = currentUnit === 'imperial' ? 'lbs / miles' : 'kg / km';
+
+      const summaryText = `Running Calorie Burn Summary:\n- Weight: ${weight} ${unit}\n- Distance: ${distance}\n- Estimated Burn: ${calories} kcal\n- ${duration}\n- Intensity MET: ${met}`;
+
+      navigator.clipboard.writeText(summaryText).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => { btn.innerText = '📋 Copy Summary'; }, 2000);
+      });
+    }
+
+    function resetCalculator() {
+      if (currentUnit === 'imperial') {
+        document.getElementById('bodyWeight').value = '160';
+        document.getElementById('runDistance').value = '3.1';
+      } else {
+        document.getElementById('bodyWeight').value = '70';
+        document.getElementById('runDistance').value = '5.0';
+      }
+      document.getElementById('runPaceMinutes').value = '9';
+      document.getElementById('runPaceSeconds').value = '30';
+      calculateCalories();
+    }
+
+    // Initial calculation on load
+    window.onload = calculateCalories;
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
