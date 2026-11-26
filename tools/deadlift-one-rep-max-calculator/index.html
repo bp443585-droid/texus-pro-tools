@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Deadlift One Rep Max Calculator | Accurate 1RM Formula & Training Chart</title>
+  <meta name="description" content="Calculate your maximum deadlift capacity instantly using Epley, Brzycki, and Lander formulas. Free online 1RM calculator with percentage training charts." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/deadlift-one-rep-max-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Deadlift One Rep Max Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced powerlifting estimation utility to calculate single-rep maximum deadlift capacity across multiple scientific formulas and percentage charts.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* CALCULATOR GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS DISPLAY POD */
+    .f-result-pod { background: #f1f5f9; border: 2px solid #cbd5e1; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; justify-content: center; }
+    .f-result-pod h4 { margin: 0; font-size: 0.85rem; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
+    .f-primary-max { font-size: 2.2rem; font-weight: 800; color: #2563eb; line-height: 1; }
+    .f-formula-breakdown { font-size: 0.9rem; color: #334155; display: flex; gap: 15px; flex-wrap: wrap; margin-top: 4px; }
+    .f-formula-breakdown span { background: #ffffff; padding: 4px 10px; border-radius: 6px; border: 1px solid #e2e8f0; font-weight: 600; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 15px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PERCENTAGE CHART SUB-SECTION */
+    .f-chart-box { margin-top: 30px; border-top: 2px solid #e2e8f0; padding-top: 25px; }
+    .f-chart-title { font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-bottom: 15px; }
+    .f-chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+    .f-chart-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; text-align: center; }
+    .f-chart-pct { font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; }
+    .f-chart-val { font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-top: 4px; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table-cell, .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95px; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🏋️‍♂️</span> Deadlift One Rep Max Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="liftWeight">Weight Lifted</label>
+          <input type="number" id="liftWeight" class="f-input-field" placeholder="e.g. 315" value="315" min="1" max="2000" oninput="calculateOneRepMax()" />
+          
+          <label for="liftReps" style="margin-top: 12px;">Reps Performed</label>
+          <input type="number" id="liftReps" class="f-input-field" placeholder="e.g. 5" value="5" min="1" max="30" oninput="calculateOneRepMax()" />
+
+          <label for="weightUnit" style="margin-top: 12px;">Unit Scale</label>
+          <select id="weightUnit" class="f-select-field" onchange="calculateOneRepMax()">
+            <option value="lbs">Pounds (lbs)</option>
+            <option value="kgs">Kilograms (kgs)</option>
+          </select>
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Estimated 1RM Results</label>
+          <div class="f-result-pod">
+            <h4>Primary Estimated Max (Epley)</h4>
+            <div id="primaryMaxResult" class="f-primary-max">365 lbs</div>
+            <div class="f-formula-breakdown">
+              <span>Brzycki: <strong id="brzyckiResult">364 lbs</strong></span>
+              <span>Lander: <strong id="landerResult">362 lbs</strong></span>
+              <span>Lombardi: <strong id="lombardiResult">366 lbs</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateOneRepMax()">Calculate Max</button>
+        <button class="f-btn f-btn-copy" id="copyMaxBtn" onclick="copyMaxResult()">📋 Copy 1RM Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
+      </div>
+
+      <div class="f-chart-box">
+        <div class="f-chart-title">Training Percentage Load Breakdown</div>
+        <div class="f-chart-grid" id="trainingChartGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Powerlifting Safety Notice:</span>
+        One rep max calculations for compound lifts like the deadlift are estimations based on submaximal sets. Always prioritize pristine spinal alignment, proper bracing, and controlled eccentric lowerings over maximum loads.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Mechanics of Powerlifting Progression: Understanding One Rep Max (1RM) Formulas, Deadlift Biomechanics, and Submaximal Programming</h2>
+      <p class="seo-p">For powerlifters, strength athletes, and serious gym-goers, the deadlift stands as the ultimate test of raw posterior chain power. However, regularly testing your absolute one-rep maximum (1RM) places immense stress on the central nervous system, joints, and lumbar spine, increasing injury risk and requiring prolonged recovery periods. To overcome this limitation, exercise scientists and strength coaches developed empirical mathematical formulas to accurately estimate single-rep limits from submaximal repetitions.</p>
+      <p class="seo-p">This comprehensive guide explores the physiological mechanics of deadlifting, breaks down the mathematical equations behind Epley, Brzycki, and Lander models, analyzes rep-range accuracy limits, and outlines structured strategies to program percentage-based training cycles effectively.</p>
+
+      <div class="seo-callout">
+        <strong>The Submaximal Principle:</strong> Repetitions exceeding 10 reps introduce significant muscular endurance fatigue, diminishing the accuracy of 1RM estimations. For optimal deadlift calculations, target sets performed in the 1 to 8 rep range.
+      </div>
+
+      <h3 class="seo-h2">The Scientific Core: Mathematical Models for Strength Estimation</h3>
+      <p class="seo-p">When calculating your predicted deadlift peak, different formulas apply distinct mathematical curves to account for fatigue and neuromuscular efficiency:</p>
+
+      <h4 class="seo-h3">1. The Epley Formula ($1RM = w \times (1 + r / 30)$)</h4>
+      <p class="seo-p">Developed by Boyd Epley in 1985, this linear model is widely regarded as the gold standard for general strength training. It assumes a linear drop-off in weight capacity as repetition counts increase, making it exceptionally accurate for lower rep sets (1 to 10 reps).</p>
+
+      <h4 class="seo-h3">2. The Brzycki Formula ($1RM = w \times \frac{36}{37 - r}$)</h4>
+      <p class="seo-p">Proposed by Matt Brzycki, this equation accounts for higher repetition ranges by utilizing a hyperbolic curve. It tends to yield slightly more conservative, safer max estimates when working with higher rep counts (8 to 15 reps).</p>
+
+      <h4 class="seo-h3">3. The Lander & Lombardi Formulas</h4>
+      <p class="seo-p">Lander's linear formula and Lombardi's exponential equation ($1RM = w \times r^{0.10}$) provide alternative polynomial curves favored by collegiate strength coaches to cross-reference athlete preparedness across multi-week periodization blocks.</p>
+
+      <h3>The Sovereign Deadlift 1RM Reference Matrix: Estimated Multipliers</h3>
+      <p class="seo-p">To understand how submaximal sets scale into maximum output, review the standard percentage distribution table below:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Percentage of 1RM</th>
+              <th>Target Rep Range</th>
+              <th>Primary Training Adaptation</th>
+              <th>Recommended Rest Intervals</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>100%</b></td>
+              <td>1 Rep</td>
+              <td>Peak Strength & Competition Max Testing</td>
+              <td>3 to 5+ Minutes</td>
+            </tr>
+            <tr>
+              <td><b>90% - 95%</b></td>
+              <td>2 - 3 Reps</td>
+              <td>Neuromuscular Strength & Rate of Force Development</td>
+              <td>3 to 4 Minutes</td>
+            </tr>
+            <tr>
+              <td><b>80% - 85%</b></td>
+              <td>5 - 6 Reps</td>
+              <td>Hypertrophy & Maximal Strength Accumulation</td>
+              <td>2 to 3 Minutes</td>
+            </tr>
+            <tr>
+              <td><b>70% - 75%</b></td>
+              <td>8 - 10 Reps</td>
+              <td>Functional Muscle Hypertrophy & Work Capacity</td>
+              <td>90 to 120 Seconds</td>
+            </tr>
+            <tr>
+              <td><b>60% - 65%</b></td>
+              <td>12 - 15 Reps</td>
+              <td>Muscular Endurance & Technique Refinement</td>
+              <td>60 to 90 Seconds</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Powerlifting & 1RM Insights</h3>
+
+      <h3>Why do different formulas produce slightly different deadlift max numbers?</h3>
+      <p class="seo-p">Each formula (Epley, Brzycki, Lander) uses a unique mathematical curve to model human fatigue. Because individuals vary in muscle fiber composition (fast-twitch vs slow-twitch) and mechanical leverage, comparing multiple formulas gives you a realistic weight range rather than a single rigid absolute.</p>
+
+      <h3>How often should I recalculate my deadlift one rep max?</h3>
+      <p class="seo-p">Strength gains occur progressively over 4 to 12-week microcycles. It is recommended to recalculate your estimated 1RM at the conclusion of each training block using a heavy working set (e.g., 3-rep max or 5-rep max) rather than attempting a dangerous 1RM test every week.</p>
+
+      <h3>Is deadlifting with straps acceptable when calculating 1RM?</h3>
+      <p class="seo-p">Yes. Using lifting straps removes grip strength limitations, allowing your posterior chain (glutes, hamstrings, erector spinae) to express true lifting capacity. However, if you compete in raw powerlifting federations where straps are prohibited, test your max with a mixed grip or hook grip.</p>
+
+      <h3 class="seo-h2">Summary: Best Practices for Deadlift Programming</h3>
+      <p class="seo-p">Mastering your deadlift progression requires a balance of heavy submaximal loading, pristine hinge biomechanics, and adequate recovery. Leverage our Deadlift One Rep Max Calculator above to instantly evaluate your working sets, optimize your percentage training blocks, and break through plateaus safely.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function calculateOneRepMax() {
+      const weight = parseFloat(document.getElementById('liftWeight').value) || 0;
+      const reps = parseInt(document.getElementById('liftReps').value) || 0;
+      const unit = document.getElementById('weightUnit').value;
+
+      if (weight <= 0 || reps <= 0) {
+        document.getElementById('primaryMaxResult').innerText = `0 ${unit}`;
+        document.getElementById('brzyckiResult').innerText = `0 ${unit}`;
+        document.getElementById('landerResult').innerText = `0 ${unit}`;
+        document.getElementById('lombardiResult').innerText = `0 ${unit}`;
+        document.getElementById('trainingChartGrid').innerHTML = '';
+        return;
+      }
+
+      let epley1RM = 0;
+      let brzycki1RM = 0;
+      let lander1RM = 0;
+      let lombardi1RM = 0;
+
+      if (reps === 1) {
+        epley1RM = weight;
+        brzycki1RM = weight;
+        lander1RM = weight;
+        lombardi1RM = weight;
+      } else {
+        // Epley: w * (1 + r/30)
+        epley1RM = weight * (1 + reps / 30);
+        // Brzycki: w * (36 / (37 - r))
+        if (reps < 37) {
+          brzycki1RM = weight * (36 / (37 - reps));
+        } else {
+          brzycki1RM = weight * 2.5;
+        }
+        // Lander: w / (1.013 - 0.026712 * r)
+        lander1RM = weight / (1.013 - 0.026712 * reps);
+        // Lombardi: w * r^0.10
+        lombardi1RM = weight * Math.pow(reps, 0.10);
+      }
+
+      const primary = Math.round(epley1RM);
+      
+      document.getElementById('primaryMaxResult').innerText = `${primary} ${unit}`;
+      document.getElementById('brzyckiResult').innerText = `${Math.round(brzycki1RM)} ${unit}`;
+      document.getElementById('landerResult').innerText = `${Math.round(lander1RM)} ${unit}`;
+      document.getElementById('lombardiResult').innerText = `${Math.round(lombardi1RM)} ${unit}`;
+
+      // Render Training Percentage Grid
+      const percentages = [95, 90, 85, 80, 75, 70, 65, 60, 55, 50];
+      let chartHtml = '';
+      percentages.forEach(pct => {
+        const load = Math.round(primary * (pct / 100));
+        chartHtml += `
+          <div class="f-chart-item">
+            <div class="f-chart-pct">${pct}% 1RM</div>
+            <div class="f-chart-val">${load} ${unit}</div>
+          </div>
+        `;
+      });
+      document.getElementById('trainingChartGrid').innerHTML = chartHtml;
+    }
+
+    function copyMaxResult() {
+      const resultText = document.getElementById('primaryMaxResult').innerText;
+      navigator.clipboard.writeText(`Estimated Deadlift 1RM: ${resultText}`).then(() => {
+        const btn = document.getElementById('copyMaxBtn');
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => { btn.innerText = '📋 Copy 1RM Result'; }, 2000);
+      });
+    }
+
+    function clearCalculator() {
+      document.getElementById('liftWeight').value = '';
+      document.getElementById('liftReps').value = '';
+      calculateOneRepMax();
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateOneRepMax();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
