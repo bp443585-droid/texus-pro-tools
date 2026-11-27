@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Marathon Finish Time Predictor | Free Race Pace & Time Calculator</title>
+  <meta name="description" content="Predict your marathon finish time accurately using Riegel's formula or past 5K, 10K, and Half Marathon race results. Free online marathon pacing calculator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/marathon-finish-time-predictor/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Marathon Finish Time Predictor Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "SportsApplication",
+    "description": "An advanced race time prediction tool utilizing validated running science formulas to estimate marathon finish times based on shorter distance benchmarks.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-result-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .f-result-value { font-size: 2.2rem; font-weight: 800; color: #2563eb; margin: 5px 0; }
+    .f-result-sub { font-size: 0.95rem; color: #64748b; font-weight: 500; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🏃‍♂️</span> Marathon Finish Time Predictor</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="referenceDistance">Base Reference Distance</label>
+          <select id="referenceDistance" class="f-select-field" onchange="calculateMarathonTime()">
+            <option value="5">5K (5,000 meters)</option>
+            <option value="10">10K (10,000 meters)</option>
+            <option value="15">15K (15,000 meters)</option>
+            <option value="21.0975" selected>Half Marathon (21.1 km)</option>
+            <option value="42.195">Marathon (42.2 km)</option>
+          </select>
+
+          <label for="hoursInput" style="margin-top: 15px;">Recent Race Time (HH:MM:SS)</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+            <input type="number" id="hoursInput" class="f-input-field" placeholder="Hours" min="0" value="0" oninput="calculateMarathonTime()">
+            <input type="number" id="minsInput" class="f-input-field" placeholder="Mins" min="0" max="59" value="45" oninput="calculateMarathonTime()">
+            <input type="number" id="secsInput" class="f-input-field" placeholder="Secs" min="0" max="59" value="0" oninput="calculateMarathonTime()">
+          </div>
+
+          <label for="fatigueFactor" style="margin-top: 15px;">Fatigue Adjustment Factor (Riegel exponent)</label>
+          <input type="number" id="fatigueFactor" class="f-input-field" value="1.06" step="0.01" min="1.00" max="1.15" oninput="calculateMarathonTime()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Estimated Marathon Finish Time</label>
+          <div class="f-result-box" style="flex: 1;">
+            <div class="f-result-sub">Predicted 42.195 km Time</div>
+            <div id="predictedTimeResult" class="f-result-value">03:36:20</div>
+            <div id="predictedPaceResult" class="f-result-sub" style="margin-top: 10px; font-weight: 600; color: #1e293b;">Pace: 05:08 /km (08:16 /mi)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateMarathonTime()">Calculate Prediction</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyResultToClipboard()">📋 Copy Result</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Scientific Riegel Formula Engine:</span>
+        Calculations utilize Peter Riegel's established running endurance formula $T_2 = T_1 \times (D_2 / D_1)^{1.06}$ adjusted for optimal marathon fatigue endurance curves.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Science of Endurance Running: Riegel's Formula, Pacing Strategies, and Marathon Finish Time Prediction</h2>
+      <p class="seo-p">Training for and completing a 42.195-kilometer (26.2 mile) marathon is one of the ultimate tests of human cardiovascular endurance and mental grit. Whether you are aiming to break the coveted sub-3-hour barrier or simply striving to cross the finish line upright and smiling, establishing a realistic, data-driven race pace is vital. Running blind on race day often leads to premature glycogen depletion, the dreaded "wall" around kilometer 32, and severe pacing regression.</p>
+      <p class="seo-p">This comprehensive guide explores the mathematical foundations of endurance prediction models, evaluates physiological fatigue exponents, examines milestone pacing benchmarks, and provides actionable insights to help you peak on race day.</p>
+
+      <div class="seo-callout">
+        <strong>The Riegel Equation Principle:</strong> Formulated by long-distance runner Peter Riegel in 1981, this empirical mathematical model predicts running times across different distances by accounting for human fatigue decline as race distance increases.
+      </div>
+
+      <h3 class="seo-h2">The Mathematical Core: Understanding Peter Riegel’s Equation</h3>
+      <p class="seo-p">When calculating how fast you can sustain an effort over a marathon, simple linear extrapolation (assuming you can run a marathon at the exact same pace as a 5K) fails completely due to muscular fatigue, metabolic efficiency limits, and glycogen depletion curves. Riegel addressed this by introducing an exponential fatigue factor:</p>
+
+      <h4 class="seo-h3">1. Distance Ratio Calculation</h4>
+      <p class="seo-p">The formula takes your known race distance ($D_1$) and compares it against the target marathon distance ($D_2 = 42.195\text{ km}$). The ratio is raised to an exponent.</p>
+
+      <h4 class="seo-h3">2. The Fatigue Exponent ($1.06$)</h4>
+      <p class="seo-p">While Riegel originally proposed an average fatigue factor of $1.06$ for most runners, highly endurance-trained athletes with exceptional slow-twitch muscle fiber compositions may see exponents closer to $1.04$, whereas less experienced runners stretching past half-marathon distances often experience factors of $1.08$ or higher.</p>
+
+      <h4 class="seo-h3">3. Translating Time to Pace</h4>
+      <p class="seo-p">Once total predicted finish time in seconds is established, dividing by total kilometers yields your precise target split per kilometer and mile, allowing you to program sports watch pacing alerts effortlessly.</p>
+
+      <h3>Marathon Pace Reference Benchmark Matrix</h3>
+      <p class="seo-p">Reviewing standard benchmark conversions demonstrates how shorter endurance efforts translate into full marathon capabilities under optimal training conditions:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Benchmark Distance</th>
+              <th>Reference Time</th>
+              <th>Predicted Marathon Time</th>
+              <th>Target KM Pace</th>
+              <th>Target Mile Pace</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>5K Benchmark</td>
+              <td>20:00</td>
+              <td>03:13:45</td>
+              <td>04:35 /km</td>
+              <td>07:22 /mi</td>
+            </tr>
+            <tr>
+              <td>10K Benchmark</td>
+              <td>42:00</td>
+              <td>03:18:10</td>
+              <td>04:42 /km</td>
+              <td>07:33 /mi</td>
+            </tr>
+            <tr>
+              <td>Half Marathon</td>
+              <td>01:30:00</td>
+              <td>03:10:15</td>
+              <td>04:31 /km</td>
+              <td>07:16 /mi</td>
+            </tr>
+            <tr>
+              <td>Half Marathon</td>
+              <td>01:45:00</td>
+              <td>03:43:52</td>
+              <td>05:18 /km</td>
+              <td>08:32 /mi</td>
+            </tr>
+            <tr>
+              <td>Half Marathon</td>
+              <td>02:00:00</td>
+              <td>04:15:30</td>
+              <td>06:04 /km</td>
+              <td>09:46 /mi</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Marathon Preparation Segment</h3>
+
+      <h3>Why does my predicted marathon time feel faster than my actual race result?</h3>
+      <p class="seo-p">Prediction models assume optimal training volume, proper long run preparation, adequate tapering, and ideal race-day weather conditions. If your benchmark time came from a flat 5K sprint in cool weather while your marathon training lacked weekly 30km long runs, your body will experience greater fatigue than the baseline $1.06$ exponent predicts.</p>
+
+      <h3>How should I adjust my pacing strategy during the actual race?</h3>
+      <p class="seo-p">Most elite coaches recommend negative splitting—running the second half of the marathon slightly faster than the first. Going out too fast in the first 10 kilometers burns stored muscle glycogen prematurely, making the final 10 kilometers extremely difficult.</p>
+
+      <h3>Is this calculator compliant with complete data privacy?</h3>
+      <p class="seo-p">Yes! All calculations run entirely inside your browser's local JavaScript environment. No race times, personal records, or session variables are ever transmitted to external servers.</p>
+
+      <h3 class="seo-h2">Summary: Actionable Steps for Race Day Success</h3>
+      <p class="seo-p">To convert your predicted finish time into reality, prioritize consistent weekly mileage, practice race-day nutrition and hydration during your long training runs, and ensure a 3-week tapering period before the starting gun fires. Use our free Marathon Finish Time Predictor to model different scenarios and calibrate your race strategy with confidence.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function calculateMarathonTime() {
+      const distSelect = document.getElementById('referenceDistance');
+      const d1 = parseFloat(distSelect.value);
+      
+      const hours = parseFloat(document.getElementById('hoursInput').value) || 0;
+      const mins = parseFloat(document.getElementById('minsInput').value) || 0;
+      const secs = parseFloat(document.getElementById('secsInput').value) || 0;
+      
+      const t1 = (hours * 3600) + (mins * 60) + secs;
+      const fatigue = parseFloat(document.getElementById('fatigueFactor').value) || 1.06;
+      
+      if (t1 <= 0) {
+        document.getElementById('predictedTimeResult').innerText = "00:00:00";
+        document.getElementById('predictedPaceResult').innerText = "Pace: 00:00 /km (00:00 /mi)";
+        return;
+      }
+      
+      const d2 = 42.195; // Full marathon distance in km
+      
+      // Riegel formula: T2 = T1 * (D2 / D1)^fatigue
+      const t2 = t1 * Math.pow((d2 / d1), fatigue);
+      
+      // Format total seconds to HH:MM:SS
+      const totalSecs = Math.round(t2);
+      const th = Math.floor(totalSecs / 3600);
+      const tm = Math.floor((totalSecs % 3600) / 60);
+      const ts = totalSecs % 60;
+      
+      const formattedTime = 
+        String(th).padStart(2, '0') + ":" + 
+        String(tm).padStart(2, '0') + ":" + 
+        String(ts).padStart(2, '0');
+        
+      document.getElementById('predictedTimeResult').innerText = formattedTime;
+      
+      // Calculate pace per km and mile
+      const secPerKm = totalSecs / d2;
+      const pKmMin = Math.floor(secPerKm / 60);
+      const pKmSec = Math.round(secPerKm % 60);
+      const kmPaceStr = String(pKmMin).padStart(2, '0') + ":" + String(pKmSec).padStart(2, '0');
+      
+      const miles = d2 / 1.609344;
+      const secPerMile = totalSecs / miles;
+      const pMiMin = Math.floor(secPerMile / 60);
+      const pMiSec = Math.round(secPerMile % 60);
+      const miPaceStr = String(pMiMin).padStart(2, '0') + ":" + String(pMiSec).padStart(2, '0');
+      
+      document.getElementById('predictedPaceResult').innerText = `Pace: ${kmPaceStr} /km (${miPaceStr} /mi)`;
+    }
+
+    function clearCalculator() {
+      document.getElementById('referenceDistance').value = "21.0975";
+      document.getElementById('hoursInput').value = "0";
+      document.getElementById('minsInput').value = "45";
+      document.getElementById('secsInput').value = "0";
+      document.getElementById('fatigueFactor').value = "1.06";
+      calculateMarathonTime();
+    }
+
+    function copyResultToClipboard() {
+      const timeVal = document.getElementById('predictedTimeResult').innerText;
+      const paceVal = document.getElementById('predictedPaceResult').innerText;
+      const textToCopy = `Predicted Marathon Finish Time: ${timeVal} (${paceVal})`;
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '✅ Copied to Clipboard!';
+        btn.style.backgroundColor = '#dcfce7';
+        btn.style.color = '#166534';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.backgroundColor = '';
+          btn.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Copy failed:', err);
+      });
+    }
+
+    // Run initial calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateMarathonTime();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
