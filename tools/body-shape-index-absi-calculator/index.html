@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Body Shape Index ABSI Calculator | A Body Shape Index Calculator</title>
+  <meta name="description" content="Calculate your A Body Shape Index (ABSI) instantly. Assess your abdominal obesity risk and health longevity with accurate waist circumference, BMI, and height metrics." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/body-shape-index-absi-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Body Shape Index ABSI Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "HealthApplication",
+    "description": "An advanced health utility to calculate A Body Shape Index (ABSI) based on waist circumference, height, and BMI for precise metabolic risk assessment.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* ABSI CUSTOM FORM LAYOUT */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-select-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS DASHBOARD PANEL */
+    .result-display-panel { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 20px; padding: 24px; margin-top: 25px; box-sizing: border-box; display: none; }
+    .result-display-panel.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .metric-hero { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 18px; margin-bottom: 18px; flex-wrap: wrap; gap: 15px; }
+    .metric-value-box h4 { font-size: 0.85rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 6px 0; font-weight: 700; }
+    .metric-value-box .big-score { font-size: 2.5rem; font-weight: 800; color: #0f172a; line-height: 1; }
+    .badge-status { padding: 8px 16px; border-radius: 9999px; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .badge-low { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .badge-average { background: #fef9c3; color: #854d0e; border: 1px solid #fef08a; }
+    .badge-high { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+    .breakdown-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px; }
+    .breakdown-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 14px; border-radius: 12px; }
+    .breakdown-card span { display: block; font-size: 0.75rem; color: #64748b; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+    .breakdown-card strong { font-size: 1.1rem; color: #1e293b; font-weight: 700; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 25px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 140px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .breakdown-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { height: 48px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>📐</span> Body Shape Index ABSI Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="unitSystem">Measurement System</label>
+          <select id="unitSystem" class="f-select-field" onchange="toggleUnitSystem()">
+            <option value="metric">Metric (cm, kg)</option>
+            <option value="imperial">Imperial (inches, lbs)</option>
+          </select>
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="genderSelect">Biological Sex</label>
+          <select id="genderSelect" class="f-select-field">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label id="heightLabel" for="heightInput">Height (cm)</label>
+          <input type="number" id="heightInput" class="f-input-field" placeholder="e.g., 175" step="0.1" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label id="weightLabel" for="weightInput">Weight (kg)</label>
+          <input type="number" id="weightInput" class="f-input-field" placeholder="e.g., 70" step="0.1" />
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box" style="grid-column: 1 / -1;">
+          <label id="waistLabel" for="waistInput">Waist Circumference (cm)</label>
+          <input type="number" id="waistInput" class="f-input-field" placeholder="Measure horizontally at navel level (e.g., 85)" step="0.1" />
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateABSI()">Calculate ABSI Score</button>
+        <button class="f-btn f-btn-clear" onclick="clearAbscForm()">Reset Form</button>
+      </div>
+
+      <!-- RESULTS DASHBOARD -->
+      <div id="resultPanel" class="result-display-panel">
+        <div class="metric-hero">
+          <div class="metric-value-box">
+            <h4>Your A Body Shape Index (ABSI)</h4>
+            <div id="absiScoreOutput" class="big-score">0.0815</div>
+          </div>
+          <div id="absiBadge" class="badge-status badge-average">Average Risk</div>
+        </div>
+
+        <div style="font-size: 0.95krem; color: #334155; margin-bottom: 15px; line-height: 1.5;" id="absiDescription">
+          Your ABSI score evaluates your abdominal adiposity relative to your height and weight. Lower scores indicate healthier fat distribution profiles.
+        </div>
+
+        <div class="breakdown-grid">
+          <div class="breakdown-card">
+            <span>Calculated BMI</span>
+            <strong id="bmiOutput">22.9 kg/m²</strong>
+          </div>
+          <div class="breakdown-card">
+            <span>Waist-to-Height Ratio</span>
+            <strong id="wthOutput">0.48</strong>
+          </div>
+          <div class="breakdown-card">
+            <span>Risk Tier</span>
+            <strong id="riskTierOutput">Standard Risk</strong>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Clinical Measurement Standard Notice:</span>
+        Measure your waist circumference horizontally at the level of the navel (umbilicus) while standing relaxed without pulling the measuring tape too tight.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Understanding A Body Shape Index (ABSI): The Scientific Revolution in Abdominal Fat Assessment</h2>
+      <p class="seo-p">Traditional health evaluations have long relied on the Body Mass Index (BMI) as a universal indicator of body composition and metabolic disease risk. However, while BMI effectively gauges total body mass relative to height, it exhibits a significant clinical blind spot: it cannot differentiate between heavy muscle mass and visceral fat, nor can it identify where body fat is stored. This limitation led pioneer researchers Nir Krakauer and Jesse Krakauer to develop <b>A Body Shape Index (ABSI)</b> in 2012.</p>
+      <p class="seo-p">ABSI is specifically engineered to quantify central adiposity—commonly known as belly fat or visceral fat—using waist circumference adjusted for height and weight. High visceral fat accumulation is widely recognized by endocrinologists and cardiologists as a primary driver of metabolic syndrome, Type 2 diabetes, hypertension, and cardiovascular mortality. This comprehensive guide explores the mathematics behind ABSI, how to interpret your score, and why measuring waist geometry transforms personal health forecasting.</p>
+
+      <div class="seo-callout">
+        <strong>The ABSI Mathematical Formula:</strong> ABSI is calculated using the equation <br>
+        <code>ABSI = WC / (BMI^(2/3) × Height^(1/2))</code><br>
+        Where <b>WC</b> represents waist circumference and <b>BMI</b> is body mass index, scaled so that differences in body size do not skew cardiovascular risk predictions.
+      </div>
+
+      <h3 class="seo-h2">Why BMI Falls Short: The Need for Shape-Based Metrics</h3>
+      <p class="seo-p">Consider two athletes of identical height and weight (e.g., 180 cm and 85 kg, yielding a BMI of 26.2, classified as overweight). Athlete A is a competitive decathlete with dense muscle mass and a tight 78 cm waist. Athlete B is a sedentary individual with low muscle tone and a 100 cm waist storing excess visceral fat around abdominal organs.</p>
+      <p class="seo-p">Under standard BMI tables, both individuals receive the exact same "Overweight" classification and identical risk warnings. Yet, their cardiometabolic risk profiles are vastly different. Athlete B carries profound visceral adiposity linked to systemic inflammation, while Athlete A enjoys optimal metabolic health. The <b>Body Shape Index ABSI Calculator</b> bridges this exact diagnostic gap by isolating waist circumference severity.</p>
+
+      <h3 class="seo-h2">Interpreting Your ABSI Score: What Do the Numbers Mean?</h3>
+      <p class="seo-p">Unlike BMI, which uses static integer ranges (e.g., 18.5 to 24.9 for normal weight), ABSI results are expressed as decimal values typically falling between 0.070 and 0.095. Because raw ABSI varies slightly by age and sex, researchers categorize scores into relative risk tiers:</p>
+
+      <h4 class="seo-h3">1. Low Risk (Below Average ABSI)</h4>
+      <p class="seo-p">Scores situated in the lower quartile for your demographic cohort indicate that your waist circumference is smaller than expected given your height and weight. This reflects a favorable body fat distribution with minimal visceral fat accumulation.</p>
+
+      <h4 class="seo-h3">2. Average Risk (Standard ABSI Band)</h4>
+      <p class="seo-p">Scores within the middle range signify standard abdominal adiposity corresponding with typical longevity outcomes for your age and sex group.</p>
+
+      <h4 class="seo-h3">3. High Risk (Elevated ABSI)</h4>
+      <p class="seo-p">Scores in the upper quartile signal an unusually large waist circumference relative to your body mass index and height. Clinical studies demonstrate that individuals with high ABSI face increased long-term mortality risks independent of their overall weight category.</p>
+
+      <h3>Clinical Reference Matrix: ABSI Risk Stratification Benchmark</h3>
+      <p class="seo-p">The following structured reference table outlines how ABSI score tiers correlate with health outcomes and visceral fat distribution:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>ABSI Quartile Tier</th>
+              <th>Relative Waist Size</th>
+              <th>Visceral Fat Indicator</th>
+              <th>Cardiometabolic Risk Level</th>
+              <th>Recommended Health Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Low (Q1)</b></td>
+              <td>Significantly Smaller</td>
+              <td>Minimal visceral fat storage</td>
+              <td>Lower than average mortality risk</td>
+              <td>Maintain active lifestyle and balanced whole-food nutrition.</td>
+            </tr>
+            <tr>
+              <td><b>Average (Q2 - Q3)</b></td>
+              <td>Proportional</td>
+              <td>Typical fat distribution</td>
+              <td>Standard population risk baseline</td>
+              <td>Monitor waist circumference annually; maintain routine physical activity.</td>
+            </tr>
+            <tr>
+              <td><b>High (Q4)</b></td>
+              <td>Significantly Larger</td>
+              <td>High central / visceral fat</td>
+              <td>Elevated metabolic &amp; cardiovascular risk</td>
+              <td>Consult healthcare provider for comprehensive lipid &amp; glycemic screening.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - ABSI Diagnostics</h3>
+
+      <h3>How often should I calculate my A Body Shape Index score?</h3>
+      <p class="seo-p">Because body composition and muscle tone fluctuate gradually, measuring your waist circumference and recalculating your ABSI every 1 to 3 months is ideal for tracking fitness progress or lifestyle interventions.</p>
+
+      <h3>Does age affect normal ABSI thresholds?</h3>
+      <p class="seo-p">Yes. Natural shifts in posture, spinal compression, and fat distribution occur as we age. Epidemiological studies show that ABSI increases slightly with age, meaning reference percentiles are adjusted across different age brackets.</p>
+
+      <h3>Is ABSI a replacement for medical diagnosis?</h3>
+      <p class="seo-p">No. The Body Shape Index ABSI Calculator is designed as an educational and screening tool to assess central adiposity. It does not replace professional medical evaluations, blood work, or physician consultations.</p>
+
+      <h3 class="seo-h2">Summary: Taking Control of Your Metabolic Longevity</h3>
+      <p class="seo-p">Evaluating your body composition goes far beyond the bathroom scale. By measuring waist circumference and factoring in height and weight through the advanced ABSI algorithm, you gain clear insight into your visceral fat levels and cardiovascular resilience. Use our free <b>Body Shape Index ABSI Calculator</b> to measure your health metrics securely on your device today.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function toggleUnitSystem() {
+      const system = document.getElementById('unitSystem').value;
+      const heightLabel = document.getElementById('heightLabel');
+      const weightLabel = document.getElementById('weightLabel');
+      const waistLabel = document.getElementById('waistLabel');
+      
+      const heightInput = document.getElementById('heightInput');
+      const weightInput = document.getElementById('weightInput');
+      const waistInput = document.getElementById('waistInput');
+
+      if (system === 'imperial') {
+        heightLabel.textContent = 'Height (inches)';
+        weightLabel.textContent = 'Weight (lbs)';
+        waistLabel.textContent = 'Waist Circumference (inches)';
+        
+        if(heightInput.value) heightInput.value = (parseFloat(heightInput.value) / 2.54).toFixed(1);
+        if(weightInput.value) weightInput.value = (parseFloat(weightInput.value) * 2.20462).toFixed(1);
+        if(waistInput.value) waistInput.value = (parseFloat(waistInput.value) / 2.54).toFixed(1);
+
+        heightInput.placeholder = 'e.g., 69';
+        weightInput.placeholder = 'e.g., 154';
+        waistInput.placeholder = 'e.g., 33';
+      } else {
+        heightLabel.textContent = 'Height (cm)';
+        weightLabel.textContent = 'Weight (kg)';
+        waistLabel.textContent = 'Waist Circumference (cm)';
+        
+        if(heightInput.value) heightInput.value = (parseFloat(heightInput.value) * 2.54).toFixed(1);
+        if(weightInput.value) weightInput.value = (parseFloat(weightInput.value) / 2.20462).toFixed(1);
+        if(waistInput.value) waistInput.value = (parseFloat(waistInput.value) * 2.54).toFixed(1);
+
+        heightInput.placeholder = 'e.g., 175';
+        weightInput.placeholder = 'e.g., 70';
+        waistInput.placeholder = 'e.g., 85';
+      }
+    }
+
+    function calculateABSI() {
+      const system = document.getElementById('unitSystem').value;
+      const gender = document.getElementById('genderSelect').value;
+      let height = parseFloat(document.getElementById('heightInput').value);
+      let weight = parseFloat(document.getElementById('weightInput').value);
+      let waist = parseFloat(document.getElementById('waistInput').value);
+
+      if (!height || !weight || !waist || height <= 0 || weight <= 0 || waist <= 0) {
+        alert('Please enter valid positive numbers for height, weight, and waist circumference.');
+        return;
+      }
+
+      let heightCm, weightKg, waistCm;
+
+      if (system === 'imperial') {
+        heightCm = height * 2.54;
+        weightKg = weight / 2.20462;
+        waistCm = waist * 2.54;
+      } else {
+        heightCm = height;
+        weightKg = weight;
+        waistCm = waist;
+      }
+
+      const heightM = heightCm / 100.0;
+      const bmi = weightKg / (heightM * heightM);
+      const waistM = waistCm / 100.0;
+      const heightM_sqrt = Math.sqrt(heightM);
+      const bmi_pow = Math.pow(bmi, 2/3);
+
+      // ABSI Formula: WC / (BMI^(2/3) * Height^(1/2)) where WC and Height are in meters
+      const absi = waistM / (bmi_pow * heightM_sqrt);
+      const wth = waistCm / heightCm;
+
+      // Risk assessment logic based on standard ABSI reference medians (approx 0.080 - 0.083)
+      let riskTier = 'Standard Risk';
+      let badgeClass = 'badge-average';
+      let badgeText = 'Average Risk';
+      let descText = 'Your ABSI score is within the normal statistical population range, indicating typical central adiposity.';
+
+      if (absi < 0.078) {
+        riskTier = 'Low Risk';
+        badgeClass = 'badge-low';
+        badgeText = 'Low Risk';
+        descText = 'Your ABSI score is lower than average, reflecting a favorable body shape with reduced visceral fat accumulation.';
+      } else if (absi > 0.085) {
+        riskTier = 'Elevated Risk';
+        badgeClass = 'badge-high';
+        badgeText = 'High Risk';
+        descText = 'Your ABSI score is elevated, indicating a larger waist circumference relative to your BMI. Consider consulting a healthcare professional.';
+      }
+
+      document.getElementById('absiScoreOutput').textContent = absi.toFixed(4);
+      document.getElementById('absiBadge').className = `badge-status ${badgeClass}`;
+      document.getElementById('absiBadge').textContent = badgeText;
+      document.getElementById('absiDescription').textContent = descText;
+      
+      document.getElementById('bmiOutput').textContent = bmi.toFixed(1) + ' kg/m²';
+      document.getElementById('wthOutput').textContent = wth.toFixed(2);
+      document.getElementById('riskTierOutput').textContent = riskTier;
+
+      document.getElementById('resultPanel').classList.add('active');
+    }
+
+    function clearAbscForm() {
+      document.getElementById('heightInput').value = '';
+      document.getElementById('weightInput').value = '';
+      document.getElementById('waistInput').value = '';
+      document.getElementById('resultPanel').classList.remove('active');
+    }
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
