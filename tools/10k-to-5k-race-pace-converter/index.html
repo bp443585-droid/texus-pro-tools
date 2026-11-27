@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>10K to 5K Race Pace Converter | Calculate 5K Race Times from 10K Paces</title>
+  <meta name="description" content="Instantly convert your 10K race time and target pace into equivalent 5K race pace splits. Free online calculator featuring Riegel formula and fatigue modeling." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/10k-to-5k-race-pace-converter/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "10K to 5K Race Pace Converter",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced running calculator to project equivalent 5K race times and target per-kilometer or per-mile paces based on recent 10K personal records.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .result-display-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; justify-content: center; }
+    .result-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+    .result-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .result-label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; }
+    .result-value { font-size: 1.25rem; font-weight: 800; color: #2563eb; font-family: 'Courier New', Courier, monospace; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 10px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🏃</span> 10K to 5K Race Pace Converter</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="hoursInput">Your 10K Finish Time</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+            <div>
+              <span style="font-size: 0.75rem; color: #64748b;">Hours</span>
+              <input type="number" id="hoursInput" class="f-input-field" placeholder="0" min="0" max="5" value="0" oninput="calculatePaceConversion()">
+            </div>
+            <div>
+              <span style="font-size: 0.75rem; color: #64748b;">Minutes</span>
+              <input type="number" id="minsInput" class="f-input-field" placeholder="45" min="0" max="59" value="45" oninput="calculatePaceConversion()">
+            </div>
+            <div>
+              <span style="font-size: 0.75rem; color: #64748b;">Seconds</span>
+              <input type="number" id="secsInput" class="f-input-field" placeholder="0" min="0" max="59" value="0" oninput="calculatePaceConversion()">
+            </div>
+          </div>
+          
+          <div style="margin-top: 16px;">
+            <label for="distanceUnit">Measurement Metric Unit</label>
+            <select id="distanceUnit" class="f-select-field" onchange="calculatePaceConversion()">
+              <option value="km">Kilometers (KM)</option>
+              <option value="mile">Miles (Mi)</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Equivalent 5K Race Projection</label>
+          <div class="result-display-box">
+            <div class="result-item">
+              <span class="result-label">Est. 5K Finish Time</span>
+              <span class="result-value" id="resTotalTime">21:28</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Target 5K Pace / Unit</span>
+              <span class="result-value" id="resUnitPace">4:17 /km</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">10K Baseline Pace</span>
+              <span class="result-value" id="resBasePace">4:30 /km</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculatePaceConversion()">Calculate Projection</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyConversionResults()">📋 Copy Results</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculatorForm()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Riegel's Fatigue Formula Engine Active:</span>
+        This tool uses Peter Riegel's established endurance projection algorithm ($T_2 = T_1 \times (D_2 / D_1)^{1.06}$) to accurately translate endurance speed from a 10-kilometer distance down to a high-intensity 5-kilometer race effort.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Speed Transition: The Science of Converting 10K Endurance Paces into Sub-Threshold 5K Race Targets</h2>
+      <p class="seo-p">Transitioning from a 10K endurance training block down to peak 5K race sharpness requires a fundamental shift in physiological pacing strategies, lactate threshold management, and biomechanical turnover rates. While a 10K is an aerobic test of sustained stamina where cardiovascular efficiency and glycogen preservation dictate success, a 5K race is an explosive, high-intensity exertion that operates close to or slightly above your VO2 max.</p>
+      <p class="seo-p">This comprehensive technical guide explores the mathematical modeling behind running fatigue formulas, evaluates cardiovascular demands across middle-distance race tiers, reviews actionable training transitions, and details how to execute structured speedwork sessions to shatter your personal records safely.</p>
+
+      <div class="seo-callout">
+        <strong>The Riegel Endurance Coefficient:</strong> Endurance running pioneer Peter Riegel established that race times do not scale linearly due to fatigue accumulation. By applying a fatigue factor exponent of approximately <b>1.06</b>, our converter accurately predicts how much faster you can push your pace when cutting distance in half.
+      </div>
+
+      <h3 class="seo-h2">The Mathematical Core: Understanding Riegel’s Law for Runners</h3>
+      <p class="seo-p">When converting running times between different distances, amateur runners often make the mistake of assuming linear scaling—doubling a 5K time or halving a 10K time directly. However, physiological realities prevent this. Here is how our calculation engine processes your inputs:</p>
+
+      <h4 class="seo-h3">1. Baseline Pace Normalization</h4>
+      <p class="seo-p">The calculator first translates your entered hours, minutes, and seconds into total seconds. It calculates your current baseline per-kilometer or per-mile pace during your 10K effort, establishing your aerobic benchmark.</p>
+
+      <h4 class="seo-h3">2. Exponent Fatigue Adjustment</h4>
+      <p class="seo-p">Using Riegel's formula ($T_2 = T_1 \times (D_2 / D_1)^{1.06}$), the algorithm computes the theoretical time for 5,000 meters. Because the distance is shorter, you are able to sustain a significantly higher percentage of your maximum heart rate without hitting the severe lactate accumulation wall typical of longer races.</p>
+
+      <h4 class="seo-h3">3. Split Breakdown and Target Delivery</h4>
+      <p class="seo-p">Finally, the script divides the projected 5K finish time evenly across 5 kilometers (or 3.107 miles), outputting exact split recommendations so you can program your GPS running watch before race day.</p>
+
+      <h3>The Statutory Reference Matrix: 10K to 5K Conversion Benchmark Table</h3>
+      <p class="seo-p">Review the following reference table to see how typical 10K finish times translate into projected 5K race times and target race paces:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>10K Finish Time</th>
+              <th>10K Pace (per KM)</th>
+              <th>Projected 5K Time</th>
+              <th>Target 5K Pace (per KM)</th>
+              <th>Fitness Level &amp; Classification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>35:00</td>
+              <td>3:30 /km</td>
+              <td>16:39</td>
+              <td>3:19 /km</td>
+              <td>Elite / Advanced Club Runner</td>
+            </tr>
+            <tr>
+              <td>40:00</td>
+              <td>4:00 /km</td>
+              <td>19:04</td>
+              <td>3:48 /km</td>
+              <td>Competitive Regional Runner</td>
+            </tr>
+            <tr>
+              <td>45:00</td>
+              <td>4:30 /km</td>
+              <td>21:28</td>
+              <td>4:17 /km</td>
+              <td>Advanced Recreational Runner</td>
+            </tr>
+            <tr>
+              <td>50:00</td>
+              <td>5:00 /km</td>
+              <td>23:53</td>
+              <td>4:46 /km</td>
+              <td>Intermediate Fit Runner</td>
+            </tr>
+            <tr>
+              <td>55:00</td>
+              <td>5:30 /km</td>
+              <td>26:17</td>
+              <td>5:15 /km</td>
+              <td>Solid Fitness Jogger</td>
+            </tr>
+            <tr>
+              <td>1:00:00</td>
+              <td>6:00 /km</td>
+              <td>28:42</td>
+              <td>5:44 /km</td>
+              <td>Active Lifestyle Runner</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Core Diagnostic Segment</h3>
+
+      <h3>Why is my projected 5K pace significantly faster than my 10K pace?</h3>
+      <p class="seo-p">A 5K race is half the distance of a 10K, allowing your body to generate energy at a much higher rate. Because you are racing for a shorter duration, you can push past your lactate threshold into higher oxygen consumption zones that would be impossible to maintain over 10,000 meters.</p>
+
+      <h3>Can I use this calculator if I run in miles instead of kilometers?</h3>
+      <p class="seo-p">Yes! Simply select "Miles (Mi)" from the measurement unit dropdown menu. The calculation engine automatically converts imperial split distances to maintain mathematical precision across all device displays.</p>
+
+      <h3>How should I pace the first kilometer of my 5K race?</h3>
+      <p class="seo-p">A common mistake in 5K racing is starting too fast due to race adrenaline. Experienced coaches recommend holding your target pace for the first kilometer, settling into a rhythm during kilometers two and three, and progressively accelerating through the final 1,000 meters.</p>
+
+      <h3>Are these calculations saved on external servers?</h3>
+      <p class="seo-p">No. All pace calculations and time conversions happen entirely within your browser's local JavaScript environment. Your running data remains 100% private and secure.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Race Day Execution</h3>
+      <p class="seo-p">To achieve your new 5K personal best, combine this pace conversion tool with structured interval workouts, hill repeats, and proper tapering during race week. Monitor your splits carefully during the race, stay hydrated, and trust your training.</p>
+      <p class="seo-p">Our 10K to 5K Race Pace Converter automates complex endurance math instantly, ensuring you step up to the starting line with complete confidence.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    // Core Calculation Engine for 10K to 5K Pace Converter
+    function calculatePaceConversion() {
+      const hours = parseFloat(document.getElementById('hoursInput').value) || 0;
+      const mins = parseFloat(document.getElementById('minsInput').value) || 0;
+      const secs = parseFloat(document.getElementById('secsInput').value) || 0;
+      const unit = document.getElementById('distanceUnit').value;
+
+      const total10kSecs = (hours * 3600) + (mins * 60) + secs;
+
+      if (total10kSecs <= 0) {
+        document.getElementById('resTotalTime').innerText = "00:00";
+        document.getElementById('resUnitPace').innerText = unit === 'km' ? "0:00 /km" : "0:00 /mi";
+        document.getElementById('resBasePace').innerText = unit === 'km' ? "0:00 /km" : "0:00 /mi";
+        return;
+      }
+
+      // 10K distance in meters vs 5K distance in meters
+      // Riegel formula: T2 = T1 * (D2 / D1)^1.06
+      const t1 = total10kSecs;
+      const d1 = 10000;
+      const d2 = 5000;
+      const projected5kSecs = t1 * Math.pow((d2 / d1), 1.06);
+
+      // Format 5K Total Time
+      const p5H = Math.floor(projected5kSecs / 3600);
+      const p5M = Math.floor((projected5kSecs % 3600) / 60);
+      const p5S = Math.round(projected5kSecs % 60);
+
+      let formatted5kTime = "";
+      if (p5H > 0) {
+        formatted5kTime = `${p5H}:${p5M.toString().padStart(2, '0')}:${p5S.toString().padStart(2, '0')}`;
+      } else {
+        formatted5kTime = `${p5M}:${p5S.toString().padStart(2, '0')}`;
+      }
+
+      document.getElementById('resTotalTime').innerText = formatted5kTime;
+
+      // Calculate unit paces (per KM or per Mile)
+      // 10K distance in units
+      const unitMultiplier = unit === 'km' ? 10 : 6.21371;
+      const basePaceSecs = total10kSecs / unitMultiplier;
+      const baseMin = Math.floor(basePaceSecs / 60);
+      const baseSec = Math.round(basePaceSecs % 60);
+      document.getElementById('resBasePace').innerText = `${baseMin}:${baseSec.toString().padStart(2, '0')} /${unit}`;
+
+      // 5K distance in units
+      const unitMultiplier5k = unit === 'km' ? 5 : 3.10686;
+      const targetPaceSecs = projected5kSecs / unitMultiplier5k;
+      const targetMin = Math.floor(targetPaceSecs / 60);
+      const targetSec = Math.round(targetPaceSecs % 60);
+      document.getElementById('resUnitPace').innerText = `${targetMin}:${targetSec.toString().padStart(2, '0')} /${unit}`;
+    }
+
+    function clearCalculatorForm() {
+      document.getElementById('hoursInput').value = 0;
+      document.getElementById('minsInput').value = 45;
+      document.getElementById('secsInput').value = 0;
+      document.getElementById('distanceUnit').value = 'km';
+      calculatePaceConversion();
+    }
+
+    function copyConversionResults() {
+      const time = document.getElementById('resTotalTime').innerText;
+      const pace = document.getElementById('resUnitPace').innerText;
+      const base = document.getElementById('resBasePace').innerText;
+      const textToCopy = `10K to 5K Pace Conversion:\n10K Baseline Pace: ${base}\nProjected 5K Time: ${time}\nTarget 5K Pace: ${pace}`;
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.innerText = "✓ Copied!";
+        setTimeout(() => { btn.innerText = "📋 Copy Results"; }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+
+    // Run initial calculation on load
+    window.onload = function() {
+      calculatePaceConversion();
+    };
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
