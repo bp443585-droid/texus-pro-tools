@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Leg Press 1RM Calculator | Calculate One Rep Max Leg Press</title>
+  <meta name="description" content="Calculate your one-rep max (1RM) on the leg press machine accurately. Supports 45-degree sled and horizontal leg press with Brzycki, Epley, and Lander formulas." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/leg-press-1rm-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Leg Press 1RM Calculator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "HealthApplication",
+    "description": "A biomechanically accurate leg press one-rep max calculator incorporating machine incline angles, sled tare weights, and multi-formula estimation models.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* DOUBLE BOX INTERACTIVE GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .f-select-field { width: 100%; height: 50px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 15px; margin-bottom: 15px; }
+    .f-stat-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px; text-align: center; }
+    .f-stat-card .val { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-top: 4px; }
+    .f-stat-card .lbl { font-size: 0.78rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .f-breakdown-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
+    .f-breakdown-table th { background: #f1f5f9; padding: 10px 14px; font-size: 0.8rem; font-weight: 700; color: #475569; text-transform: uppercase; text-align: left; }
+    .f-breakdown-table td { padding: 10px 14px; font-size: 0.9rem; color: #1e293b; border-top: 1px solid #f1f5f9; }
+    .f-breakdown-table tr:hover { background: #f8fafc; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .f-stats-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 16px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🦵</span> Leg Press 1RM Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="lpWeight">Weight Lifted (Plates Loaded)</label>
+          <input type="number" id="lpWeight" class="f-input-field" placeholder="e.g. 400" min="1" step="any" oninput="calculateLegPress1RM()" />
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="lpReps">Repetitions Completed (1 - 20)</label>
+          <input type="number" id="lpReps" class="f-input-field" placeholder="e.g. 8" min="1" max="20" step="1" oninput="calculateLegPress1RM()" />
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="lpUnit">Measurement Unit</label>
+          <select id="lpUnit" class="f-select-field" onchange="calculateLegPress1RM()">
+            <option value="lbs" selected>Pounds (lbs)</option>
+            <option value="kg">Kilograms (kg)</option>
+          </select>
+        </div>
+
+        <div class="f-panel-box">
+          <label for="lpAngle">Machine Type / Incline Angle</label>
+          <select id="lpAngle" class="f-select-field" onchange="calculateLegPress1RM()">
+            <option value="45" selected>Standard Incline (45° Sled - 70.7% Effective Load)</option>
+            <option value="90">Vertical Leg Press (90° - 100% Direct Load)</option>
+            <option value="horizontal">Horizontal / Seated Cable (Flat Path)</option>
+            <option value="35">Low Incline (35° Sled - 57.4% Effective Load)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="lpSled">Empty Sled Tare Weight (Optional)</label>
+          <input type="number" id="lpSled" class="f-input-field" placeholder="Default: 100 lbs (45 kg) for 45° Sled" step="any" oninput="calculateLegPress1RM()" />
+        </div>
+
+        <div class="f-panel-box">
+          <label for="lpFormula">Estimation Formula Model</label>
+          <select id="lpFormula" class="f-select-field" onchange="calculateLegPress1RM()">
+            <option value="epley" selected>Epley Formula (Gold Standard)</option>
+            <option value="brzycki">Brzycki Formula (Conservative)</option>
+            <option value="lander">Lander Formula</option>
+            <option value="lombardi">Lombardi Formula</option>
+            <option value="mayhew">Mayhew et al.</option>
+            <option value="wathen">Wathen Formula</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-stats-grid">
+        <div class="f-stat-card">
+          <div class="lbl">Total Plate + Sled 1RM</div>
+          <div class="val" id="resGross1RM">0 lbs</div>
+        </div>
+        <div class="f-stat-card">
+          <div class="lbl">Plate-Only Loaded 1RM</div>
+          <div class="val" id="resPlates1RM">0 lbs</div>
+        </div>
+        <div class="f-stat-card">
+          <div class="lbl">Effective Gravity Load (Normal Force)</div>
+          <div class="val" id="resEffective1RM">0 lbs</div>
+        </div>
+      </div>
+
+      <label style="font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 10px; display: block;">Training Load Intensity Spectrum</label>
+      <div style="overflow-x: auto;">
+        <table class="f-breakdown-table">
+          <thead>
+            <tr>
+              <th>Intensity (% 1RM)</th>
+              <th>Total Mass (Sled + Plates)</th>
+              <th>Plates to Load</th>
+              <th>Rep Target Goal</th>
+            </tr>
+          </thead>
+          <tbody id="intensityBreakdownBody">
+            <tr><td colspan="4" style="text-align: center; color: #94a3b8; padding: 20px;">Input weight and reps above to generate training percentages.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateLegPress1RM()">Recalculate 1RM</button>
+        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyLegPressSummary()">📋 Copy 1RM Breakdown</button>
+        <button class="f-btn f-btn-clear" onclick="clearLegPressWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Biomechanical Vector Physics Notice:</span>
+        On a standard 45° angled leg press, gravity operates on a vector inclined plane. The direct physiological force exerted by your lower extremities equals (Total Mass × sin 45°), approximately 70.7% of the total loaded apparatus weight minus linear track friction.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Biomechanics and Mathematics of Leg Press One-Rep Max: Incline Kinematics, Tare Mass, and Strength Profiling</h2>
+      <p class="seo-p">The leg press is among the most effective lower-body closed kinetic chain movements for overloading the quadriceps femoris, gluteus maximus, and adductor magnus with minimal axial spinal compression. However, calculating a true one-rep maximum (1RM) on a leg press machine involves structural engineering and biomechanical variables that do not apply to free-weight barbell squats. Machine mechanics, carriage sled tare weight, linear track friction coefficients, and sled carriage inclination angles all dictate the net resistance experienced by musculoskeletal lever arms.</p>
+      <p class="seo-p">Testing an absolute single-repetition maximum using maximal physical loads on a leg press carries inherent orthopedic risks, including patellofemoral compressive overload, facet joint strain, and acute arterial pressure spikes via prolonged Valsalva maneuvers. A submaximal multi-formula calculation engine provides a secure, clinically sound method to determine peak neuromuscular output without subjecting the knee extensor tendons or lumbar spine to hazardous structural failure limits.</p>
+
+      <div class="seo-callout">
+        <strong>The Inclined Plane Vector Law:</strong> Unlike free-weight squats where force opposes gravity directly at 90 degrees (vertical vector), a 45° leg press distributes mass along a hypotenuse. The true gravitational resistance felt by your quadriceps and hip extensors is calculated as <code>F<sub>load</sub> = (Mass<sub>plates</sub> + Mass<sub>sled</sub>) × sin(45°) ≈ Total Weight × 0.7071</code>.
+      </div>
+
+      <h3 class="seo-h2">Multi-Formula Algorithmic Formulations for Submaximal Conversion</h3>
+      <p class="seo-p">To derive accurate maximal load estimates from submaximal repetitions (typically between 2 and 12 repetitions to technical fatigue), exercise physiologists utilize validated empirical equations. Our leg press calculation engine executes multiple contemporary biomechanical models:</p>
+
+      <h4 class="seo-h3">1. The Epley Equation</h4>
+      <p class="seo-p">Formulated by Boyd Epley in 1985, this linear model is widely recognized as the industry benchmark for lower-body power profiling:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f1f5f9; padding: 8px 12px; border-radius: 8px;">1RM = Weight × (1 + (Reps / 30))</p>
+
+      <h4 class="seo-h3">2. The Brzycki Equation</h4>
+      <p class="seo-p">Developed by Matt Brzycki in 1993, this inverse relationship model is historically conservative, mitigating overestimation when rep counts approach 8 to 10 reps:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f1f5f9; padding: 8px 12px; border-radius: 8px;">1RM = Weight × (36 / (37 - Reps))</p>
+
+      <h4 class="seo-h3">3. The Lander Formula</h4>
+      <p class="seo-p">Introduced in 1985, this non-linear mathematical curve accounts for the rapid drop-off in motor unit firing frequency under prolonged fatigue thresholds:</p>
+      <p class="seo-p" style="font-family: monospace; background: #f1f5f9; padding: 8px 12px; border-radius: 8px;">1RM = (100 × Weight) / (101.3 - (2.67123 × Reps))</p>
+
+      <h3 class="seo-h2">Apparatus Mechanical Factors: Sled Mass and Track Angles</h3>
+      <p class="seo-p">When calculating an accurate one-rep max on a leg press, lifters frequently make the mistake of counting only the circular cast-iron or urethane Olympic plates loaded onto the weight horns. This oversight skews program intensity by ignoring critical hardware factors:</p>
+
+      <ul class="seo-list">
+        <li><strong>Sled Tare Mass:</strong> The unloaded steel carriage, footplate, roller bearings, and plate horns generally weigh between 75 lbs to 118 lbs (34 kg to 53 kg) on commercial gym equipment (e.g., Hammer Strength, Cybex, Atlantis). Leaving this out under-reports total moved weight significantly.</li>
+        <li><strong>Incline Trigonometry:</strong> Standard plate-loaded leg presses sit at a rigid 45° angle. Vertical models track directly perpendicular to the floor at 90°, whereas compact commercial dual-axis machines may operate between 30° and 35°.</li>
+        <li><strong>Track Bearing Friction:</strong> Sealed linear ball bearings running across polished solid-steel rails produce friction coefficients (typically μ = 0.03 to 0.08), slightly offsetting pure gravitational acceleration compared to free-moving barbell physics.</li>
+      </ul>
+
+      <h3>Biomechanical Comparison: Incline Leg Press vs. Vertical and Free Squats</h3>
+      <p class="seo-p">The following table breaks down physical force characteristics across different lower-body closed kinetic chain loading platforms:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Exercise Configuration</th>
+              <th>Vector Angle</th>
+              <th>Effective Normal Gravity Force Factor</th>
+              <th>Axial Spinal Loading</th>
+              <th>Primary Limiting Muscular Stabilizer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard 45° Sled Leg Press</td>
+              <td>45°</td>
+              <td>~70.7% of Total System Mass</td>
+              <td>Virtually Zero (Spine supported against backrest)</td>
+              <td>Vastus Lateralis / Adductor Magnus</td>
+            </tr>
+            <tr>
+              <td>Vertical Leg Press</td>
+              <td>90°</td>
+              <td>100.0% of Total System Mass</td>
+              <td>Low to Moderate (Pelvic tilt dependent)</td>
+              <td>Quadriceps Complex / Gluteus Maximus</td>
+            </tr>
+            <tr>
+              <td>35° Low-Angle Incline Sled</td>
+              <td>35°</td>
+              <td>~57.4% of Total System Mass</td>
+              <td>Zero</td>
+              <td>Knee Extensors (Quadriceps)</td>
+            </tr>
+            <tr>
+              <td>Horizontal / Seated Cable Press</td>
+              <td>0° (Horizontal)</td>
+              <td>Dictated purely by pulley ratio &amp; pin stack</td>
+              <td>Zero</td>
+              <td>Quadriceps / Gluteal Group</td>
+            </tr>
+            <tr>
+              <td>Barbell Back Squat (Free-Weight)</td>
+              <td>90° (True Vertical)</td>
+              <td>100.0% of Barbell + Upper Body Mass</td>
+              <td>High (Direct compression on axial skeleton)</td>
+              <td>Spinal Erectors / Core Abdominal Bracing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Programming Load Intensities from Calculated 1RM</h3>
+      <p class="seo-p">Once an accurate 1RM figure is established through submaximal estimation, athletic trainers structure progressive overload cycles using target percentages mapped directly to specific neurological and morphological adaptations:</p>
+
+      <ul class="seo-list">
+        <li><strong>Absolute Mechanical Tension (90% - 100% 1RM, 1-3 Reps):</strong> Maximizes high-threshold motor unit recruitment and rate coding. Rare in leg press training due to joint shear forces, but useful for maximal power and strength sports.</li>
+        <li><strong>Myofibrillar Hypertrophy (75% - 85% 1RM, 6-10 Reps):</strong> The prime target for hypertrophic quadriceps and adductor adaptation, balancing high mechanical tension with substantial cumulative metabolic work.</li>
+        <li><strong>Metabolic Stress / Sarcoplasmic Expansion (60% - 70% 1RM, 12-20 Reps):</strong> Stimulates capillarization, glycogen storage, and muscular endurance. Highly practical on machines because balance failure is eliminated.</li>
+      </ul>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ)</h3>
+
+      <h3>Why can I leg press significantly more weight than I can squat?</h3>
+      <p class="seo-p">This strength discrepancy stems from three clear physical principles: first, the 45-degree angle reduces the gravitational resistance of the mass by approximately 29.3%. Second, the back pad provides fixed postural support, meaning your spinal erectors, abdominal core, and hip stabilizers are not the limiting link. Third, you do not need to move your own body mass, unlike in a barbell squat where you must lift your entire torso with every rep.</p>
+
+      <h3>How heavy is the empty carriage sled on a commercial 45° leg press?</h3>
+      <p class="seo-p">Most commercial 45° leg presses from leading manufacturers (such as Hammer Strength, Rogue, Life Fitness, and Technogym) feature unloaded carriage sleds that weigh between 75 lbs (34 kg) and 118 lbs (53 kg). Our calculator applies a default 100 lbs (45 kg) tare weight when using the standard 45° sled configuration if no specific sled weight is entered.</p>
+
+      <h3>How many submaximal repetitions provide the most reliable 1RM calculation?</h3>
+      <p class="seo-p">Formulas such as Epley, Brzycki, and Lander exhibit peak scientific validity when inputs are recorded between 3 and 8 repetitions. As repetitions surpass 10 to 12 reps, variations in individual muscle fiber composition (slow-twitch vs. fast-twitch ratios) introduce minor variances, often exaggerating true one-rep max capabilities.</p>
+
+      <h3 class="seo-h2">Summary: Safe Application of One-Rep Max Metrics in Gym Environments</h3>
+      <p class="seo-p">Utilizing a computational submaximal leg press 1RM calculator allows strength athletes, bodybuilders, and physical therapy patients to quantify absolute muscular force production accurately. Factoring in incline machine angles, sled tare masses, and formula variations prevents under-loading during hypertrophy blocks while safeguarding joints against the hazards of direct single-repetition testing.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function getSledDefault(angle, unit) {
+      if (angle === '45') return unit === 'lbs' ? 100 : 45;
+      if (angle === '35') return unit === 'lbs' ? 85 : 38;
+      if (angle === '90') return unit === 'lbs' ? 50 : 23;
+      return 0; // horizontal / cable
+    }
+
+    function calculateLegPress1RM() {
+      const weightInput = parseFloat(document.getElementById('lpWeight').value);
+      const repsInput = parseInt(document.getElementById('lpReps').value, 10);
+      const unit = document.getElementById('lpUnit').value;
+      const angleVal = document.getElementById('lpAngle').value;
+      const formula = document.getElementById('lpFormula').value;
+      const sledField = document.getElementById('lpSled');
+      
+      let sledWeight = parseFloat(sledField.value);
+      if (isNaN(sledWeight) || sledWeight < 0) {
+        sledWeight = getSledDefault(angleVal, unit);
+      }
+
+      if (isNaN(weightInput) || weightInput <= 0 || isNaN(repsInput) || repsInput <= 0) {
+        document.getElementById('resGross1RM').textContent = '0 ' + unit;
+        document.getElementById('resPlates1RM').textContent = '0 ' + unit;
+        document.getElementById('resEffective1RM').textContent = '0 ' + unit;
+        document.getElementById('intensityBreakdownBody').innerHTML = '<tr><td colspan="4" style="text-align: center; color: #94a3b8; padding: 20px;">Input weight and reps above to generate training percentages.</td></tr>';
+        return;
+      }
+
+      const totalLoadedWeight = weightInput + sledWeight;
+      let calculatedGross1RM = 0;
+
+      // Formula calculations
+      if (repsInput === 1) {
+        calculatedGross1RM = totalLoadedWeight;
+      } else {
+        switch (formula) {
+          case 'brzycki':
+            calculatedGross1RM = repsInput >= 37 ? totalLoadedWeight : totalLoadedWeight * (36 / (37 - repsInput));
+            break;
+          case 'lander':
+            calculatedGross1RM = (100 * totalLoadedWeight) / (101.3 - (2.67123 * repsInput));
+            break;
+          case 'lombardi':
+            calculatedGross1RM = totalLoadedWeight * Math.pow(repsInput, 0.10);
+            break;
+          case 'mayhew':
+            calculatedGross1RM = (100 * totalLoadedWeight) / (52.2 + (41.9 * Math.exp(-0.055 * repsInput)));
+            break;
+          case 'wathen':
+            calculatedGross1RM = (100 * totalLoadedWeight) / (48.8 + (53.8 * Math.exp(-0.075 * repsInput)));
+            break;
+          case 'epley':
+          default:
+            calculatedGross1RM = totalLoadedWeight * (1 + (repsInput / 30));
+            break;
+        }
+      }
+
+      // Plate-only 1RM
+      const calculatedPlates1RM = Math.max(0, calculatedGross1RM - sledWeight);
+
+      // Angle normal vector calculation
+      let angleSin = 1.0;
+      if (angleVal === '45') {
+        angleSin = Math.sin(45 * Math.PI / 180); // ~0.7071
+      } else if (angleVal === '35') {
+        angleSin = Math.sin(35 * Math.PI / 180); // ~0.5736
+      } else if (angleVal === 'horizontal') {
+        angleSin = 1.0; // Cable/cam stacks direct
+      }
+
+      const effectiveLoad1RM = calculatedGross1RM * angleSin;
+
+      // Update stat widgets
+      document.getElementById('resGross1RM').textContent = Math.round(calculatedGross1RM).toLocaleString() + ' ' + unit;
+      document.getElementById('resPlates1RM').textContent = Math.round(calculatedPlates1RM).toLocaleString() + ' ' + unit;
+      document.getElementById('resEffective1RM').textContent = Math.round(effectiveLoad1RM).toLocaleString() + ' ' + unit;
+
+      // Populate Percentage Breakdown Matrix
+      const percentages = [
+        { pct: 100, reps: '1' },
+        { pct: 95, reps: '2' },
+        { pct: 90, reps: '3 - 4' },
+        { pct: 85, reps: '5 - 6' },
+        { pct: 80, reps: '7 - 8' },
+        { pct: 75, reps: '9 - 10' },
+        { pct: 70, reps: '11 - 12' },
+        { pct
