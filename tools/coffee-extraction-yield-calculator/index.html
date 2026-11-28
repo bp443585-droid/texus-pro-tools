@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Coffee Extraction Yield Calculator | Brew Percentage & Ratio Tool</title>
+  <meta name="description" content="Calculate your coffee extraction yield percentage and brew strength instantly. Precise professional calculator for espresso and filter brew profiling." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/coffee-extraction-yield-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Coffee Extraction Yield Calculator",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced barista computation utility to determine coffee extraction yields, brew ratios, and Total Dissolved Solids percentages instantly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* COFFEE CALC GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS DASHBOARD BOX */
+    .f-result-dashboard { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 18px; padding: 24px; margin-top: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center; }
+    .f-metric-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.01); }
+    .f-metric-card .label { font-size: 0.78rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-metric-card .value { font-size: 1.6rem; font-weight: 800; color: #0f172a; }
+    .f-metric-card .subtext { font-size: 0.82rem; font-weight: 600; color: #2563eb; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .f-result-dashboard { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field { height: 48px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>☕</span> Coffee Extraction Yield Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="coffeeWeight">Coffee Dose (grams)</label>
+          <input type="number" id="coffeeWeight" class="f-input-field" placeholder="e.g., 18" value="18" step="0.1" oninput="calculateExtraction()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="liquidWeight">Brewed Beverage Weight (grams)</label>
+          <input type="number" id="liquidWeight" class="f-input-field" placeholder="e.g., 36" value="36" step="0.1" oninput="calculateExtraction()">
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="tdsPercent">Total Dissolved Solids (TDS %)</label>
+          <input type="number" id="tdsPercent" class="f-input-field" placeholder="e.g., 9.5" value="9.5" step="0.01" oninput="calculateExtraction()">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="brewMethod">Brewing Method Profile</label>
+          <select id="brewMethod" class="f-input-field" onchange="calculateExtraction()">
+            <option value="espresso">Espresso (Target: 18% - 22%)</option>
+            <option value="filter">Filter / Pour Over (Target: 18% - 20%)</option>
+            <option value="immersion">Immersion / French Press</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="f-result-dashboard">
+        <div class="f-metric-card">
+          <span class="label">Extraction Yield</span>
+          <span class="value" id="resExtractionYield">19.00%</span>
+          <span class="subtext" id="resExtractionStatus">Optimal Range</span>
+        </div>
+        <div class="f-metric-card">
+          <span class="label">Brew Ratio</span>
+          <span class="value" id="resBrewRatio">1 : 2.0</span>
+          <span class="subtext">Coffee to Liquid</span>
+        </div>
+        <div class="f-metric-card">
+          <span class="label">Total Solubles Extracted</span>
+          <span class="value" id="resSolublesWeight">3.42 g</span>
+          <span class="subtext">Extracted Matter</span>
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateExtraction()">Recalculate Yield</button>
+        <button class="f-btn f-btn-copy" id="copyResultBtn" onclick="copyExtractionResult()">📋 Copy Calculation Summary</button>
+        <button class="f-btn f-btn-clear" onclick="clearCoffeeWorkspace()">Clear</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Professional Barista Calculation Formula:</span>
+        Extraction Yield (%) = [Liquid Beverage Weight (g) × TDS (%)] / Coffee Dose Weight (g). This standard equation determines precisely how much soluble flavor compound has transferred from your roasted coffee bed into your cup.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Science of Specialty Coffee Extraction: Understanding Soluble Yields, Total Dissolved Solids, and Specialty Coffee Association (SCA) Brewing Control Charts</h2>
+      <p class="seo-p">Brewing exceptional coffee requires absolute command over physical chemistry, thermodynamic variables, and precise volumetric measurements. Whether you pull artisanal espresso shots on commercial dual-boiler machinery or dial in single-origin pour-overs through precision ceramic drippers, understanding extraction yield transforms haphazard brewing into repeatable culinary science. Without tracking soluble extraction percentages, baristas operate in the dark—unable to diagnose whether a sour cup stems from under-extraction or if a bitter, astringent sip is the direct result of channeled, over-extracted coffee beds.</p>
+      <p class="seo-p">This extensive technical manual explores the mathematical foundations of coffee extraction, examines the relationship between Total Dissolved Solids (TDS) and brew ratios, reviews golden extraction targets defined by coffee authorities, and outlines clear steps to diagnose flavor profiles based on numerical outputs.</p>
+
+      <div class="seo-callout">
+        <strong>The Golden Extraction Window:</strong> According to decades of SCA research and sensory analysis, the optimal extraction yield for specialty coffee falls strictly between <b>18.0% and 22.0%</b>. Anything below 18% results in grassy, underdeveloped, and sour notes, while extractions exceeding 22% extract harsh, unpleasant wood and dry tannins from the cellulose structure.
+      </div>
+
+      <h3 class="seo-h2">The Technical Core: Mathematical Equations and Variable Mechanics</h3>
+      <p class="seo-p">When calculating coffee extraction metrics, three foundational variables dictate the final sensory outcome in the cup. Here is how our automated tool processes your inputs in real time:</p>
+
+      <h4 class="seo-h3">1. Coffee Dose Weight (Dry Grind Mass)</h4>
+      <p class="seo-p">Measured in grams, this represents the total dry coffee placed into your portafilter basket or paper filter prior to water contact. Precision scales accurate to 0.1 grams are essential here, as minor dosing discrepancies drastically skew extraction ratios.</p>
+
+      <h4 class="seo-h3">2. Liquid Beverage Weight (Extracted Volume)</h4>
+      <p class="seo-p">Unlike traditional fluid volume measurements in milliliters, specialty coffee extraction relies on mass (grams). This accounts for foam crema layers and varying liquid densities across brewing styles, ensuring exact measurements for your brew ratio.</p>
+
+      <h4 class="seo-h3">3. Total Dissolved Solids (TDS %)</h4>
+      <p class="seo-p">TDS measures the actual concentration of coffee compounds dissolved in the brewed water, typically quantified using a digital refractometer. For espresso, TDS generally ranges from 8% to 12%, whereas lighter filter brews range from 1.2% to 1.5% TDS.</p>
+
+      <h3>The Statutory Reference Matrix: Brewing Method Extraction Standards</h3>
+      <p class="seo-p">Different extraction methods and roast profiles require distinct target metrics to achieve balanced flavor clarity, sweetness, and acidity. Review the standard operational ranges below:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Brewing Method Category</th>
+              <th>Standard Dose-to-Yield Ratio</th>
+              <th>Typical TDS Percentage</th>
+              <th>Target Extraction Yield</th>
+              <th>Sensory Flavor Profile Characteristics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Modern Espresso</td>
+              <td>1 : 2.0 to 1 : 2.5</td>
+              <td>8.0% - 12.0%</td>
+              <td>18.0% - 22.0%</td>
+              <td>Balanced sweetness, vibrant fruit acidity, syrupy body, clean finish.</td>
+            </tr>
+            <tr>
+              <td>Pour Over / Filter (V60 / Chemex)</td>
+              <td>1 : 15.0 to 1 : 17.0</td>
+              <td>1.2% - 1.5%</td>
+              <td>18.0% - 20.0%</td>
+              <td>High clarity, delicate floral aromatics, juicy acidity, crisp clean cup.</td>
+            </tr>
+            <tr>
+              <td>Immersion (French Press / AeroPress)</td>
+              <td>1 : 13.0 to 1 : 15.0</td>
+              <td>1.3% - 1.6%</td>
+              <td>19.0% - 21.0%</td>
+              <td>Heavy body, rich mouthfeel, prominent sweetness, robust finish.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Barista Diagnostic Segment</h3>
+
+      <h3>What is the primary difference between Brew Ratio and Extraction Yield?</h3>
+      <p class="seo-p">The brew ratio is simply a static mathematical proportion comparing the weight of dry coffee grounds to the weight of the liquid beverage produced (e.g., 18g coffee to 36g espresso equals a 1:2 ratio). Extraction yield, however, measures the percentage of the actual physical coffee bean mass that has dissolved into the water. Two identical 1:2 espresso shots can have vastly different extraction yields depending on grind size, water temperature, and extraction time.</p>
+
+      <h3>Why does my espresso taste sour even when my extraction yield is within range?</h3>
+      <p class="seo-p">If your extraction yield sits at 19% but the cup tastes aggressively sour, you may be experiencing uneven channeling during the shot. Channeling creates localized areas of extreme over-extraction alongside pockets of heavy under-extraction. When blended together in the cup, these contrasting zones produce a confusing flavor profile marked by sharp acidity and bitter astringency simultaneously.</p>
+
+      <h3>How does water mineral composition impact extraction efficiency?</h3>
+      <p class="seo-p">Water chemistry plays a massive role in extraction yield. High concentrations of magnesium and calcium ions act as extraction magnets, pulling flavor compounds out of coffee grounds much faster than pure distilled water. Using balanced specialty water with optimal alkalinity and hardness prevents flat-tasting cups and ensures accurate, repeatable extraction yields.</p>
+
+      <h3 class="seo-h2">Summary: Mastering Dial-In Workflows for Exceptional Coffee</h3>
+      <p class="seo-p">Achieving mastery over coffee extraction requires disciplined measurement, reliable scales, and continuous logging of your parameters. By pairing your barista gear with our real-time Coffee Extraction Yield Calculator, you eliminate guesswork and gain immediate diagnostic insight into your brew quality.</p>
+      <p class="seo-p">Our Advanced Coffee Extraction Yield Calculator runs entirely within your device's browser memory—ensuring lightning-fast calculations without external server requests, keeping your coffee lab notes completely private and secure.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function calculateExtraction() {
+      const coffeeWeight = parseFloat(document.getElementById('coffeeWeight').value) || 0;
+      const liquidWeight = parseFloat(document.getElementById('liquidWeight').value) || 0;
+      const tdsPercent = parseFloat(document.getElementById('tdsPercent').value) || 0;
+      const brewMethod = document.getElementById('brewMethod').value;
+
+      if (coffeeWeight <= 0 || liquidWeight <= 0) {
+        document.getElementById('resExtractionYield').innerText = '0.00%';
+        document.getElementById('resExtractionStatus').innerText = 'Invalid Input';
+        document.getElementById('resBrewRatio').innerText = '1 : 0.0';
+        document.getElementById('resSolublesWeight').innerText = '0.00 g';
+        return;
+      }
+
+      // Extraction Yield (%) = (Liquid Weight * TDS %) / Coffee Weight
+      const extractionYield = (liquidWeight * tdsPercent) / coffeeWeight;
+      const solublesWeight = (liquidWeight * (tdsPercent / 100));
+      const ratio = liquidWeight / coffeeWeight;
+
+      document.getElementById('resExtractionYield').innerText = extractionYield.toFixed(2) + '%';
+      document.getElementById('resSolublesWeight').innerText = solublesWeight.toFixed(2) + ' g';
+      document.getElementById('resBrewRatio').innerText = '1 : ' + ratio.toFixed(1);
+
+      let statusText = 'Optimal Range';
+      let statusColor = '#2563eb';
+
+      if (brewMethod === 'espresso') {
+        if (extractionYield < 18.0) {
+          statusText = 'Under-Extracted (Sour)';
+          statusColor = '#d97706';
+        } else if (extractionYield > 22.0) {
+          statusText = 'Over-Extracted (Bitter)';
+          statusColor = '#dc2626';
+        } else {
+          statusText = 'Optimal Espresso Zone';
+          statusColor = '#16a34a';
+        }
+      } else {
+        if (extractionYield < 18.0) {
+          statusText = 'Under-Extracted (Grassy)';
+          statusColor = '#d97706';
+        } else if (extractionYield > 20.0) {
+          statusText = 'Over-Extracted (Astringent)';
+          statusColor = '#dc2626';
+        } else {
+          statusText = 'Optimal Filter Zone';
+          statusColor = '#16a34a';
+        }
+      }
+
+      const statusEl = document.getElementById('resExtractionStatus');
+      statusEl.innerText = statusText;
+      statusEl.style.color = statusColor;
+    }
+
+    function copyExtractionResult() {
+      const yieldVal = document.getElementById('resExtractionYield').innerText;
+      const ratioVal = document.getElementById('resBrewRatio').innerText;
+      const solublesVal = document.getElementById('resSolublesWeight').innerText;
+      const statusVal = document.getElementById('resExtractionStatus').innerText;
+      
+      const summary = `Coffee Extraction Summary:\n- Extraction Yield: ${yieldVal} (${statusVal})\n- Brew Ratio: ${ratioVal}\n- Total Solubles: ${solublesVal}`;
+      
+      navigator.clipboard.writeText(summary).then(() => {
+        const btn = document.getElementById('copyResultBtn');
+        btn.innerText = '✓ Summary Copied!';
+        setTimeout(() => { btn.innerText = '📋 Copy Calculation Summary'; }, 2000);
+      });
+    }
+
+    function clearCoffeeWorkspace() {
+      document.getElementById('coffeeWeight').value = '';
+      document.getElementById('liquidWeight').value = '';
+      document.getElementById('tdsPercent').value = '';
+      calculateExtraction();
+    }
+
+    // Initialize calculation on load
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateExtraction();
+    });
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
