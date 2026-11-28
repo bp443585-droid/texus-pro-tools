@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Aerobic Threshold Heart Rate Zone Finder | Calculate AeT & Training Zones</title>
+  <meta name="description" content="Calculate your Aerobic Threshold (AeT) heart rate and personalized endurance training zones instantly. Free online physiological calculator for runners and cyclists." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/aerobic-threshold-heart-rate-zone-finder/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Aerobic Threshold Heart Rate Zone Finder",
+    "operatingSystem": "Web",
+    "applicationCategory": "HealthApplication",
+    "description": "An advanced physiological calculator to determine Aerobic Threshold (AeT) and customized heart rate zones for optimal endurance training.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* INTERACTIVE FORM GRID SYSTEM */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    /* RESULTS PANEL DISPLAY */
+    .results-display-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 24px; margin-top: 20px; }
+    .results-title { font-size: 1.1rem; color: #0f172a; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .metric-highlight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+    .metric-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; text-align: center; }
+    .metric-card .label { font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 6px; }
+    .metric-card .value { font-size: 1.6rem; font-weight: 800; color: #2563eb; }
+    
+    .zones-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+    .zones-table th { background: #f1f5f9; padding: 12px 16px; text-align: left; font-size: 0.85rem; font-weight: 700; color: #0f172a; text-transform: uppercase; }
+    .zones-table td { padding: 12px 16px; border-top: 1px solid #e2e8f0; font-size: 0.95rem; color: #334155; }
+    .zones-table tr:hover { background: #f8fafc; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+      .metric-highlight-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>❤️</span> Aerobic Threshold Heart Rate Zone Finder</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="maxHeartRate">Max Heart Rate (MHR - bpm)</label>
+          <input type="number" id="maxHeartRate" class="f-input-field" placeholder="e.g., 185" value="185" min="100" max="230">
+        </div>
+        
+        <div class="f-panel-box">
+          <label for="restingHeartRate">Resting Heart Rate (RHR - bpm)</label>
+          <input type="number" id="restingHeartRate" class="f-input-field" placeholder="e.g., 52" value="52" min="30" max="100">
+        </div>
+      </div>
+
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="calculationMethod">Estimation Protocol</label>
+          <select id="calculationMethod" class="f-select-field">
+            <option value="hrr">Heart Rate Reserve (Karvonen Method)</option>
+            <option value="mhr">Percentage of Max Heart Rate (MHR)</option>
+            <option value="maf">Maximum Aerobic Function (MAF 180 formula)</option>
+          </select>
+        </div>
+
+        <div class="f-panel-box" id="ageBox">
+          <label for="athleteAge">Athlete Age (Required for MAF)</label>
+          <input type="number" id="athleteAge" class="f-input-field" placeholder="e.g., 35" value="35" min="10" max="100">
+        </div>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateAerobicZones()">Calculate AeT & Zones</button>
+        <button class="f-btn f-btn-copy" id="copyZonesBtn" onclick="copyZonesResult()">📋 Copy Training Zones</button>
+        <button class="f-btn f-btn-clear" onclick="clearCalculator()">Clear</button>
+      </div>
+
+      <div class="results-display-box" id="resultsContainer">
+        <div class="results-title">📈 Calculated Physiological Thresholds</div>
+        <div class="metric-highlight-grid">
+          <div class="metric-card">
+            <div class="label">Estimated AeT</div>
+            <div class="value" id="resAeT">138 bpm</div>
+          </div>
+          <div class="metric-card">
+            <div class="label">Estimated AnT (Anaerobic)</div>
+            <div class="value" id="resAnT">165 bpm</div>
+          </div>
+          <div class="metric-card">
+            <div class="label">Training Polarization</div>
+            <div class="value" id="resPolarization">80% Easy / 20% Hard</div>
+          </div>
+        </div>
+
+        <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: #475569; margin-bottom: 8px;">Personalized Endurance Training Zones</div>
+        <div style="overflow-x: auto;">
+          <table class="zones-table">
+            <thead>
+              <tr>
+                <th>Zone</th>
+                <th>Intensity Descriptor</th>
+                <th>Heart Rate Range</th>
+                <th>Primary Physiological Adaptation</th>
+              </tr>
+            </thead>
+            <tbody id="zonesTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Endurance Training Intelligence:</span>
+        Your Aerobic Threshold (AeT) marks the inflection point where blood lactate begins to accumulate above resting levels. Training directly below this marker builds supreme mitochondrial density, capillary bed expansion, and fat oxidation efficiency.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Physiological Architecture of Aerobic Threshold (AeT): Unlocking Mitochondrial Efficiency, Fat Oxidation, and Polarized Endurance Training</h2>
+      <p class="seo-p">In the world of endurance sports—whether marathon running, ultra-cycling, triathlon, or cross-country skiing—success is defined not merely by how fast you can push in a short sprint, but by how long and efficiently you can sustain an aerobic effort without premature glycogen depletion or excessive metabolic acidosis. At the center of this physiological capability lies the <strong>Aerobic Threshold (AeT)</strong>, often considered the holy grail of endurance training intensity monitoring.</p>
+      <p class="seo-p">Unlike the Anaerobic Threshold (AnT or Lactate Threshold), which marks the boundary where lactate production outpaces clearance, the Aerobic Threshold represents the upper limit of your pure aerobic zone. Operating right below your AeT allows your cardiovascular system to maximize fat oxidation, preserve precious muscle glycogen stores, and stimulate extensive mitochondrial biogenesis without triggering high levels of stress hormones or muscular fatigue. This comprehensive guide explores the science of AeT, mathematical estimation algorithms, polarized training distributions, and how to utilize our free online calculator to optimize your training architecture.</p>
+
+      <div class="seo-callout">
+        <strong>The Aerobic Engine Principle:</strong> Top endurance athletes derive up to 80% to 90% of their weekly training volume below their Aerobic Threshold. Building a robust aerobic base prevents overtraining, enhances recovery kinetics, and establishes a massive foundation for high-intensity race performance.
+      </div>
+
+      <h3 class="seo-h2">Defining Aerobic Threshold (AeT) vs. Anaerobic Threshold (AnT)</h3>
+      <p class="seo-p">To structure an effective training program, athletes must distinguish between two vital metabolic tipping points that govern human energy systems during sustained exertion:</p>
+
+      <h4 class="seo-h3">1. Aerobic Threshold (AeT / VT1)</h4>
+      <p class="seo-p">AeT corresponds roughly to the first ventilatory threshold (VT1) or a blood lactate concentration hovering around 2.0 mmol/L. At this heart rate, ventilation increases non-linearly relative to oxygen consumption, yet talking in full sentences remains comfortable. It is the ceiling of conversational pace.</p>
+
+      <h4 class="seo-h3">2. Anaerobic Threshold (AnT / LT2 / OBLA)</h4>
+      <p class="seo-p">AnT represents the second ventilatory threshold (VT2) or Onset of Blood Lactate Accumulation (typically 4.0 mmol/L). Breathing becomes labored, conversation is restricted to single-word bursts, and metabolic byproducts accumulate rapidly, forcing a rapid cessation of exercise if sustained.</p>
+
+      <h4 class="seo-h3">3. The Transitional Sweet Spot (Tempo Zone)</h4>
+      <p class="seo-p">The zone situated strictly between AeT and AnT is often termed the "grey zone" or moderate-hard tempo territory. While beneficial in small doses, spending excessive training time here induces high cumulative fatigue without providing superior aerobic adaptations compared to true easy training below AeT.</p>
+
+      <h3>The Statutory Reference Matrix: Heart Rate Zone Breakdown and Adaptations</h3>
+      <p class="seo-p">Using our calculation engine, your personalized heart rate reserve (HRR) or maximum heart rate (MHR) is parsed into five distinct physiological tiers:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Training Zone</th>
+              <th>Intensity (% of HRR / MHR)</th>
+              <th>Metabolic Fuel Source</th>
+              <th>Primary Training Adaptation &amp; Objective</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Zone 1 (Recovery)</td>
+              <td>50% – 60% MHR</td>
+              <td>90% Fat / 10% Carbs</td>
+              <td>Active recovery, flushing metabolic byproducts, promoting parasympathetic nervous system tone.</td>
+            </tr>
+            <tr>
+              <td>Zone 2 (Aerobic Base / AeT)</td>
+              <td>60% – 75% MHR (Up to AeT)</td>
+              <td>75% Fat / 25% Carbs</td>
+              <td>Mitochondrial proliferation, capillary density increase, fat oxidation enzyme upregulation.</td>
+            </tr>
+            <tr>
+              <td>Zone 3 (Tempo / Moderate)</td>
+              <td>75% – 85% MHR (AeT to AnT)</td>
+              <td>50% Fat / 50% Carbs</td>
+              <td>Muscular endurance, aerobic power, sustained race-pace simulation (use sparingly).</td>
+            </tr>
+            <tr>
+              <td>Zone 4 (Threshold / AnT)</td>
+              <td>85% – 95% MHR (Around AnT)</td>
+              <td>20% Fat / 80% Carbs</td>
+              <td>Lactate clearance capacity, anaerobic threshold raising, time-trial speed endurance.</td>
+            </tr>
+            <tr>
+              <td>Zone 5 (VO2 Max / Anaerobic)</td>
+              <td>95% – 100% MHR</td>
+              <td>5% Fat / 95% Carbs</td>
+              <td>Maximum oxygen uptake (VO2 max), neuromuscular recruitment, fast-twitch fiber activation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Estimation Methodologies: Karvonen, MHR Percentages, and the MAF 180 Formula</h3>
+      <p class="seo-p">While gold-standard laboratory testing involves incremental ramp treadmill or cycle ergometer protocols with simultaneous expired gas analysis (VO2 testing) and earlobe blood lactate draws, field estimations provide highly practical, cost-free alternatives for everyday athletes:</p>
+
+      <h4 class="seo-h3">The Heart Rate Reserve (Karvonen Method)</h4>
+      <p class="seo-p">Heart Rate Reserve accounts for individual fitness by incorporating resting heart rate (RHR): <br>
+      <code>HRR = Maximum Heart Rate - Resting Heart Rate</code><br>
+      Target training hearts are then computed as: <code>(HRR × % Intensity) + RHR</code>. This method provides superior accuracy for athletes with lower resting heart rates due to high cardiovascular conditioning.</p>
+
+      <h4 class="seo-h3">The Dr. Phil Maffetone (MAF 180) Formula</h4>
+      <p class="seo-p">Popularized in ultra-endurance running, the MAF formula calculates maximum aerobic heart rate as <code>180 minus your age</code>, with adjustments for injury history, illness, or recovery status. This conservative threshold ensures workouts occur strictly under the aerobic ceiling.</p>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Expert Endurance Guidelines</h3>
+
+      <h3>How can I test my Aerobic Threshold in the field without laboratory equipment?</h3>
+      <p class="seo-p">The most reliable field methods include the <strong>Conconi Test</strong> (monitoring heart rate deflection against incremental speed), the <strong>Talk Test</strong> (AeT sits right at the highest intensity where you can speak in full paragraphs without gasping for breath), or tracking heart rate drift during a steady 60-minute indoor cycling or running effort where heart rate shouldn't drift upward by more than 5% relative to power output or pace.</p>
+
+      <h3>Why do I feel like my Zone 2 (AeT) pace is frustratingly slow when I first start?</h3>
+      <p class="seo-p">This is a common phenomenon for athletes transitioning from high-intensity training to a polarized model. Years of chronic high-intensity training often upregulates glycolytic pathways while leaving oxidative (fat-burning) pathways underdeveloped. Over 8 to 12 weeks of consistent training below AeT, your cardiovascular efficiency will improve dramatically, allowing you to run or cycle significantly faster at the exact same heart rate.</p>
+
+      <h3>Is my Aerobic Threshold a fixed number forever?</h3>
+      <p class="seo-p">No! Aerobic Threshold is highly dynamic and responsive to training stimuli. As your aerobic fitness improves, your absolute speed or power output at your AeT heart rate will increase, meaning you can travel faster while remaining entirely within your fat-burning zone.</p>
+
+      <h3>Is my data secure when using this calculator?</h3>
+      <p class="seo-p">Yes. All calculations execute entirely client-side within your browser's local memory engine. No personal health metrics or heart rate numbers are transmitted or stored on external servers, ensuring absolute data privacy.</p>
+
+      <h3 class="seo-h2">Summary: Mastering Endurance with Structured Training Zones</h3>
+      <p class="seo-p">Pinpointing your Aerobic Threshold is the single most transformative step you can take in your endurance training journey. By shedding ego, slowing down your easy days, and anchoring your volume below AeT, you prime your body to build an unshakeable physiological engine ready for any race distance.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // Interactive Calculator Logic
+    document.getElementById('calculationMethod').addEventListener('change', function() {
+      const method = this.value;
+      const ageBox = document.getElementById('ageBox');
+      if (method === 'maf') {
+        ageBox.style.display = 'flex';
+      } else {
+        ageBox.style.display = 'flex'; // Keep visible for reference or toggle
+      }
+      calculateAerobicZones();
+    });
+
+    function calculateAerobicZones() {
+      const mhr = parseInt(document.getElementById('maxHeartRate').value) || 185;
+      const rhr = parseInt(document.getElementById('restingHeartRate').value) || 52;
+      const age = parseInt(document.getElementById('athleteAge').value) || 35;
+      const method = document.getElementById('calculationMethod').value;
+
+      let aet = 0;
+      let ant = 0;
+      let z1Min = 0, z1Max = 0;
+      let z2Min = 0, z2Max = 0;
+      let z3Min = 0, z3Max = 0;
+      let z4Min = 0, z4Max = 0;
+      let z5Min = 0, z5Max = 0;
+
+      const hrr = mhr - rhr;
+
+      if (method === 'hrr') {
+        // Karvonen method
+        z1Min = Math.round(rhr + (hrr * 0.50));
+        z1Max = Math.round(rhr + (hrr * 0.60));
+        z2Min = z1Max + 1;
+        z2Max = Math.round(rhr + (hrr * 0.75)); // AeT approx at 75% HRR
+        aet = z2Max;
+        z3Min = aet + 1;
+        z3Max = Math.round(rhr + (hrr * 0.82));
+        ant = z3Max; // AnT approx at 82-85% HRR
+        z4Min = ant + 1;
+        z4Max = Math.round(rhr + (hrr * 0.90));
+        z5Min = z4Max + 1;
+        z5Max = mhr;
+      } else if (method === 'maf') {
+        // MAF 180 formula (180 - age)
+        aet = 180 - age;
+        z2Min = aet - 10;
+        z2Max = aet;
+        z1Min = Math.round(mhr * 0.50);
+        z1Max = z2Min - 1;
+        ant = Math.round(mhr * 0.85);
+        z3Min = aet + 1;
+        z3Max = ant;
+        z4Min = ant + 1;
+        z4Max = Math.round(mhr * 0.95);
+        z5Min = z4Max + 1;
+        z5Max = mhr;
+      } else {
+        // MHR percentage
+        z1Min = Math.round(mhr * 0.50);
+        z1Max = Math.round(mhr * 0.60);
+        z2Min = z1Max + 1;
+        z2Max = Math.round(mhr * 0.75);
+        aet = z2Max;
+        z3Min = aet + 1;
+        z3Max = Math.round(mhr * 0.85);
+        ant = z3Max;
+        z4Min = ant + 1;
+        z4Max = Math.round(mhr * 0.92);
+        z5Min = z4Max + 1;
+        z5Max = mhr;
+      }
+
+      // Update UI Highlights
+      document.getElementById('resAeT').innerText = aet + ' bpm';
+      document.getElementById('resAnT').innerText = (ant ? ant : Math.round(mhr * 0.85)) + ' bpm';
+      document.getElementById('resPolarization').innerText = '80% Easy / 20% Hard';
+
+      // Build Table
+      const tbody = document.getElementById('zonesTableBody');
+      tbody.innerHTML = `
+        <tr>
+          <td><strong>Zone 1</strong></td>
+          <td>Recovery / Active Rest</td>
+          <td>${z1Min} – ${z1Max} bpm</td>
+          <td>Parasympathetic recovery &amp; flushing metabolites</td>
+        </tr>
+        <tr>
+          <td><strong>Zone 2</strong></td>
+          <td>Aerobic Base (AeT)</td>
+          <td>${z2Min} – ${z2Max} bpm</td>
+          <td>Mitochondrial growth &amp; fat oxidation efficiency</td>
+        </tr>
+        <tr>
+          <td><strong>Zone 3</strong></td>
+          <td>Tempo / Moderate-Hard</td>
+          <td>${z3Min} – ${z3Max} bpm</td>
+          <td>Aerobic power &amp; muscular endurance</td>
+        </tr>
+        <tr>
+          <td><strong>Zone 4</strong></td>
+          <td>Threshold (AnT)</td>
+          <td>${z4Min} – ${z4Max} bpm</td>
+          <td>Lactate clearance &amp; time-trial speed</td>
+        </tr>
+        <tr>
+          <td><strong>Zone 5</strong></td>
+          <td>VO2 Max / Anaerobic</td>
+          <td>${z5Min} – ${z5Max} bpm</td>
+          <td>Maximum aerobic capacity &amp; fast-twitch recruitment</td>
+        </tr>
+      `;
+    }
+
+    function clearCalculator() {
+      document.getElementById('maxHeartRate').value = '185';
+      document.getElementById('restingHeartRate').value = '52';
+      document.getElementById('athleteAge').value = '35';
+      document.getElementById('calculationMethod').value = 'hrr';
+      calculateAerobicZones();
+    }
+
+    function copyZonesResult() {
+      const aet = document.getElementById('resAeT').innerText;
+      const ant = document.getElementById('resAnT').innerText;
+      const textToCopy = `Aerobic Threshold (AeT): ${aet}\nAnaerobic Threshold (AnT): ${ant}\nCalculated via Texus Pro Tools - Aerobic Threshold Heart Rate Zone Finder`;
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const btn = document.getElementById('copyZonesBtn');
+        btn.innerText = '✅ Copied to Clipboard';
+        setTimeout(() => { btn.innerText = '📋 Copy Training Zones'; }, 2000);
+      });
+    }
+
+    // Run initial calculation on load
+    window.addEventListener('DOMContentLoaded', calculateAerobicZones);
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
