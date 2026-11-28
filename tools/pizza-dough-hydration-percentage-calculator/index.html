@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Pizza Dough Hydration Percentage Calculator | Baker's Math Tool</title>
+  <meta name="description" content="Calculate your pizza dough hydration percentage instantly using baker's math. Determine exact water-to-flour ratios for Neapolitan, New York, and Detroit styles." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/pizza-dough-hydration-percentage-calculator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Pizza Dough Hydration Percentage Calculator",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "An advanced baker's math calculator to determine exact water hydration ratios, salt percentages, yeast quantities, and total batch weights for artisan pizza dough.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* INPUT GRID & CONTROLS */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .f-select-field { width: 100%; height: 52px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 0 16px; font-size: 1rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; cursor: pointer; }
+    .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+    
+    .results-display-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px; }
+    .result-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; }
+    .result-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .result-label { font-size: 0.9rem; color: #475569; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .result-value { font-size: 1.25rem; font-family: 'Courier New', Courier, monospace; font-weight: 800; color: #0f172a; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { height: 46px; font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>🍕</span> Pizza Dough Hydration Percentage Calculator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div class="f-panel-box">
+            <label for="presetSelect">Pizza Style Preset</label>
+            <select id="presetSelect" class="f-select-field" onchange="applyPreset()">
+              <option value="custom">Custom Recipe</option>
+              <option value="neapolitan" selected>Neapolitan (60% Hydration)</option>
+              <option value="ny">New York Style (65% Hydration)</option>
+              <option value="sicilian">Sicilian / Pan Pizza (72% Hydration)</option>
+              <option value="roman">Roman Pinsa / High Hydration (80% Hydration)</option>
+            </select>
+          </div>
+
+          <div class="f-panel-box">
+            <label for="flourInput">Total Flour Weight (grams)</label>
+            <input type="number" id="flourInput" class="f-input-field" value="1000" min="1" oninput="calculateDough()">
+          </div>
+
+          <div class="f-panel-box">
+            <label for="waterInput">Total Water Weight (grams)</label>
+            <input type="number" id="waterInput" class="f-input-field" value="600" min="1" oninput="calculateDough('water')">
+          </div>
+
+          <div class="f-io-grid" style="margin-bottom: 0; gap: 12px;">
+            <div class="f-panel-box">
+              <label for="saltInput">Salt Percentage (%)</label>
+              <input type="number" id="saltInput" class="f-input-field" value="2.5" step="0.1" min="0" oninput="calculateDough()">
+            </div>
+            <div class="f-panel-box">
+              <label for="yeastInput">Yeast Percentage (%)</label>
+              <input type="number" id="yeastInput" class="f-input-field" value="0.5" step="0.05" min="0" oninput="calculateDough()">
+            </div>
+          </div>
+
+          <div class="f-io-grid" style="margin-bottom: 0; gap: 12px;">
+            <div class="f-panel-box">
+              <label for="oilInput">Olive Oil / Sugar (%)</label>
+              <input type="number" id="oilInput" class="f-input-field" value="0" step="0.5" min="0" oninput="calculateDough()">
+            </div>
+            <div class="f-panel-box">
+              <label for="ballCountInput">Number of Dough Balls</label>
+              <input type="number" id="ballCountInput" class="f-input-field" value="4" min="1" oninput="calculateDough()">
+            </div>
+          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Baker's Percentage Summary</label>
+          <div class="results-display-box">
+            <div class="result-row">
+              <span class="result-label">Hydration Ratio</span>
+              <span id="resHydration" class="result-value" style="color: #2563eb;">60.0%</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Total Dough Weight</span>
+              <span id="resTotalWeight" class="result-value">1,630 g</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Water Weight</span>
+              <span id="resWaterWeight" class="result-value">600 g</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Salt Weight</span>
+              <span id="resSaltWeight" class="result-value">25.0 g</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Yeast Weight</span>
+              <span id="resYeastWeight" class="result-value">5.0 g</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Oil / Sugar Weight</span>
+              <span id="resOilWeight" class="result-value">0.0 g</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Weight Per Dough Ball</span>
+              <span id="resBallWeight" class="result-value">407.5 g</span>
+            </div>
+          </div>
+
+          <div class="f-action-strip" style="margin-top: auto;">
+            <button class="f-btn f-btn-convert" onclick="calculateDough()">Recalculate Batch</button>
+            <button class="f-btn f-btn-copy" id="copyRecipeBtn" onclick="copyRecipeSummary()">📋 Copy Recipe</button>
+            <button class="f-btn f-btn-clear" onclick="resetCalculator()">Reset</button>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 12px 16px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Baker's Math Precision Rule:</span>
+        In professional baking, flour is always established as 100%. Every other ingredient (water, salt, yeast, oil) is measured as a strict percentage relative to the total flour mass.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">Mastering Baker's Math: The Science of Pizza Dough Hydration Percentages and Water-to-Flour Ratios</h2>
+      <p class="seo-p">Achieving artisan pizza crusts at home requires moving away from rigid volumetric measurements like cups and tablespoons. Professional pizzaiolos rely entirely on <strong>Baker's Percentages</strong>—a standardized formulation system where flour is designated as 100%, and all other ingredients are calculated as direct weight ratios against that flour base. At the heart of this system is the <strong>hydration percentage</strong>, defined as the total weight of water divided by the total weight of flour, multiplied by one hundred.</p>
+      <p class="seo-p">This comprehensive technical guide explores the physics of water absorption in wheat endosperm proteins, examines how varying hydration levels alter crumb structure and oven spring, reviews style-specific formulation benchmarks, and provides practical protocols for managing sticky high-hydration doughs.</p>
+
+      <div class="seo-callout">
+        <strong>The Hydration Equation:</strong> $\text{Hydration \%} = \left( \frac{\text{Weight of Water (g)}}{\text{Weight of Flour (g)}} \right) \times 100$. For instance, 700 grams of water mixed with 1,000 grams of flour yields exactly 70.0% dough hydration.
+      </div>
+
+      <h3 class="seo-h2">The Biochemistry of Water Absorption: Gluten Development and Protein Networks</h3>
+      <p class="seo-p">Flour is not a uniform powder; it is a complex matrix of starch granules, damaged starch, enzymes, and vital storage proteins known as gliadin and glutenin. When water is introduced to flour during mixing, these two proteins hydrate and bond together to form a viscoelastic network called <strong>gluten</strong>. This elastic net traps carbon dioxide gas produced by fermenting yeast, allowing the pizza cornicione (crust) to inflate dramatically in a 900°F wood-fired oven.</p>
+
+      <h4 class="seo-h3">1. Low Hydration (50% to 58%)</h4>
+      <p class="seo-p">Lower hydration doughs are stiff, easy to handle, and require minimal kneading. They resist sticking to work surfaces and peel surfaces. However, they yield tighter crumb structures with smaller gas bubbles, resulting in denser, chewier crusts typical of traditional crackers, Greek pan pizzas, or older cracker-thin Midwestern styles.</p>
+
+      <h4 class="seo-h3">2. Medium Hydration (60% to 68%)</h4>
+      <p class="seo-p">This is the sweet spot for traditional Neapolitan and classic New York style pizzas. At 60% to 65% hydration, the dough balances extensibility and elasticity. It stretches smoothly without tearing easily, holds its shape during fermentation, and bakes into a light, airy cornicione with moderate internal blistering.</p>
+
+      <h4 class="seo-h3">3. High Hydration (70% to 85%+)</h4>
+      <p class="seo-p">High-hydration formulas are used for Roman Pinsa, Detroit-style pan pizzas, Sicilian sfincione, and artisan pan crusts. Because water molecules lubricate flour particles rather than binding instantly, high-hydration doughs feel wet, sticky, and slack. They trap massive amounts of steam during baking, creating an open, irregular, honeycomb-like crumb structure with a crisp exterior and custard-like interior.</p>
+
+      <h3>Style-Specific Formulation Benchmark Matrix</h3>
+      <p class="seo-p">Different pizza styles demand distinct flour protein contents, water ratios, and fermentation timelines. Use this reference matrix to configure your batch parameters:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Pizza Style Category</th>
+              <th>Target Hydration (%)</th>
+              <th>Recommended Flour Type</th>
+              <th>Typical Salt (%)</th>
+              <th>Fermentation Profile</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Neapolitan (AVPN Style)</td>
+              <td><b>58% - 62%</b></td>
+              <td>Italian Tipo '00' (W 280-320)</td>
+              <td>2.5% - 3.0%</td>
+              <td>8 - 24 hours (Room Temp / Cold Ferment)</td>
+            </tr>
+            <tr>
+              <td>New York Style</td>
+              <td><b>63% - 67%</b></td>
+              <td>High-Gluten or Bread Flour (12.5% protein)</td>
+              <td>2.0% - 2.5%</td>
+              <td>24 - 72 hours Cold Fermentation</td>
+            </tr>
+            <tr>
+              <td>Detroit Style Pan Pizza</td>
+              <td><b>70% - 75%</b></td>
+              <td>Bread Flour / Unbleached All-Purpose</td>
+              <td>2.0%</td>
+              <td>12 - 24 hours (In-pan proofing)</td>
+            </tr>
+            <tr>
+              <td>Roman Pinsa / Pan</td>
+              <td><b>78% - 85%</b></td>
+              <td>Blended Wheat, Soy, and Rice Flour</td>
+              <td>2.2%</td>
+              <td>48 - 72 hours Cold Fermentation</td>
+            </tr>
+            <tr>
+              <td>Thin Bar Style</td>
+              <td><b>52% - 56%</b></td>
+              <td>Unbleached All-Purpose Flour</td>
+              <td>1.8%</td>
+              <td>4 - 8 hours Quick Rise</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Expert Baking Inquiries</h3>
+
+      <h3>How does flour protein content affect maximum pizza dough hydration?</h3>
+      <p class="seo-p">Flour protein content determines water absorption capacity. Strong flours with high protein percentages (12.5% to 14% like high-gluten flour or strong Canadian red spring wheat) can absorb 70% to 75% water easily without collapsing. Weaker all-purpose flours (10% to 11% protein) struggle to hold water above 62%, turning into an unmanageable batter.</p>
+
+      <h3>Why is my high-hydration pizza dough so sticky and difficult to knead?</h3>
+      <p class="seo-p">High-hydration stickiness is caused by unabsorbed free water before gluten networks fully organize. Instead of traditional aggressive kneading, use the <strong>autolyse method</strong> (mixing flour and water together for 30–60 minutes before adding salt and yeast) or use stretch-and-fold techniques in a bowl every 20 minutes during the first hour of bulk fermentation.</p>
+
+      <h3>How do ambient temperature and water temperature impact dough fermentation?</h3>
+      <p class="seo-p">Water temperature controls final dough temperature (FDT). Bakers use warm water (85°F–95°F) in winter to stimulate yeast activity and cool water (55°F–65°F) in summer to prevent over-fermentation during mixing. Aim for a final mixed dough temperature of around 75°F to 78°F for optimal yeast performance.</p>
+
+      <h3 class="seo-h2">Summary: Professional Workflow for Precision Pizza Baking</h3>
+      <p class="seo-p">Calculating your pizza dough hydration with baker's math ensures consistent crust results every single time. By measuring ingredients in grams using a digital kitchen scale, adjusting water levels based on your flour's protein strength, and matching hydration targets to your specific pizza style, you eliminate guesswork from your baking routine.</p>
+      <p class="seo-p">Our Pizza Dough Hydration Percentage Calculator automates all these computational steps instantly, providing precise weight allocations for flours, waters, salts, yeasts, and individual dough balls across any mobile or desktop device.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    function calculateDough(source) {
+      const flour = parseFloat(document.getElementById('flourInput').value) || 0;
+      let water = parseFloat(document.getElementById('waterInput').value) || 0;
+      const saltPct = parseFloat(document.getElementById('saltInput').value) || 0;
+      const yeastPct = parseFloat(document.getElementById('yeastInput').value) || 0;
+      const oilPct = parseFloat(document.getElementById('oilInput').value) || 0;
+      const ballCount = parseInt(document.getElementById('ballCountInput').value) || 1;
+
+      if (flour <= 0) return;
+
+      let hydration = 0;
+      if (source === 'water') {
+        hydration = (water / flour) * 100;
+      } else {
+        // If user changed preset or flour, calculate water from hydration in preset or keep water if custom
+        const preset = document.getElementById('presetSelect').value;
+        if (preset !== 'custom' && source !== 'waterInput') {
+          let targetHydration = 60;
+          if (preset === 'neapolitan') targetHydration = 60;
+          if (preset === 'ny') targetHydration = 65;
+          if (preset === 'sicilian') targetHydration = 72;
+          if (preset === 'roman') targetHydration = 80;
+          water = flour * (targetHydration / 100);
+          document.getElementById('waterInput').value = water.toFixed(1);
+        }
+        hydration = (water / flour) * 100;
+      }
+
+      const saltWeight = flour * (saltPct / 100);
+      const yeastWeight = flour * (yeastPct / 100);
+      const oilWeight = flour * (oilPct / 100);
+      const totalWeight = flour + water + saltWeight + yeastWeight + oilWeight;
+      const ballWeight = totalWeight / ballCount;
+
+      document.getElementById('resHydration').innerText = hydration.toFixed(1) + '%';
+      document.getElementById('resTotalWeight').innerText = totalWeight.toFixed(1) + ' g';
+      document.getElementById('resWaterWeight').innerText = water.toFixed(1) + ' g';
+      document.getElementById('resSaltWeight').innerText = saltWeight.toFixed(1) + ' g';
+      document.getElementById('resYeastWeight').innerText = yeastWeight.toFixed(2) + ' g';
+      document.getElementById('resOilWeight').innerText = oilWeight.toFixed(1) + ' g';
+      document.getElementById('resBallWeight').innerText = ballWeight.toFixed(1) + ' g';
+    }
+
+    function applyPreset() {
+      const preset = document.getElementById('presetSelect').value;
+      const flour = parseFloat(document.getElementById('flourInput').value) || 1000;
+      
+      if (preset === 'neapolitan') {
+        document.getElementById('waterInput').value = flour * 0.60;
+        document.getElementById('saltInput').value = 2.5;
+        document.getElementById('yeastInput').value = 0.5;
+        document.getElementById('oilInput').value = 0;
+      } else if (preset === 'ny') {
+        document.getElementById('waterInput').value = flour * 0.65;
+        document.getElementById('saltInput').value = 2.2;
+        document.getElementById('yeastInput').value = 0.4;
+        document.getElementById('oilInput').value = 2.0;
+      } else if (preset === 'sicilian') {
+        document.getElementById('waterInput').value = flour * 0.72;
+        document.getElementById('saltInput').value = 2.5;
+        document.getElementById('yeastInput').value = 0.8;
+        document.getElementById('oilInput').value = 3.0;
+      } else if (preset === 'roman') {
+        document.getElementById('waterInput').value = flour * 0.80;
+        document.getElementById('saltInput').value = 2.2;
+        document.getElementById('yeastInput').value = 0.6;
+        document.getElementById('oilInput').value = 2.0;
+      }
+      calculateDough();
+    }
+
+    function resetCalculator() {
+      document.getElementById('presetSelect').value = 'neapolitan';
+      document.getElementById('flourInput').value = 1000;
+      document.getElementById('waterInput').value = 600;
+      document.getElementById('saltInput').value = 2.5;
+      document.getElementById('yeastInput').value = 0.5;
+      document.getElementById('oilInput').value = 0;
+      document.getElementById('ballCountInput').value = 4;
+      calculateDough();
+    }
+
+    function copyRecipeSummary() {
+      const hyd = document.getElementById('resHydration').innerText;
+      const tot = document.getElementById('resTotalWeight').innerText;
+      const flr = document.getElementById('flourInput').value;
+      const wat = document.getElementById('waterInput').value;
+      const slt = document.getElementById('resSaltWeight').innerText;
+      const yst = document.getElementById('resYeastWeight').innerText;
+      const ball = document.getElementById('resBallWeight').innerText;
+      const count = document.getElementById('ballCountInput').value;
+
+      const text = `Pizza Dough Recipe (${hyd} Hydration):\n- Flour: ${flr}g (100%)\n- Water: ${wat}g (${hyd})\n- Salt: ${slt}\n- Yeast: ${yst}\n- Total Dough: ${tot}\n- Divided into ${count} balls @ ${ball} each`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyRecipeBtn');
+        btn.innerText = '✅ Copied Recipe!';
+        setTimeout(() => { btn.innerText = '📋 Copy Recipe'; }, 2000);
+      });
+    }
+
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
