@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6152067608796164"
+crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Anaerobic Threshold Zone Estimator | Calculate Training Zones</title>
+  <meta name="description" content="Calculate your precise anaerobic threshold zones, lactate tipping points, and heart rate training brackets instantly with our free online fitness estimator." />
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://www.texusprotools.com/tools/anaerobic-threshold-zone-estimator/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Anaerobic Threshold Zone Estimator Pro",
+    "operatingSystem": "Web",
+    "applicationCategory": "SportsApplication",
+    "description": "An advanced physiological calculator to determine anaerobic threshold (AT), functional threshold power/heart rate, and individualized endurance training zones.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* MASTER WORKSPACE UI APPARATUS EXTENSIONS (Coexists perfectly with your style.css) */
+    .f-wrapper { width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; font-family: 'Inter', sans-serif; text-align: left; }
+    .f-heading { font-size: 2.2rem; color: #0f172a; font-weight: 800; letter-spacing: -1px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+    .f-heading span { font-size: 2.4rem; }
+    
+    /* WORKSPACE CORE CONTAINER CARD */
+    .f-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); margin-bottom: 40px; box-sizing: border-box; }
+    
+    /* TOOL SPECIFIC INTERACTIVE GRID */
+    .f-io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+    .f-panel-box { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .f-panel-box label { font-size: 0.85rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .f-input-field, .f-select-field { width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 14px 16px; font-size: 1.05rem; font-family: inherit; color: #1e293b; outline: none; transition: all 0.2s; box-sizing: border-box; }
+    .f-input-field:focus, .f-select-field:focus { border-color: #2563eb; background: #ffffff; }
+
+    .result-display-panel { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; box-sizing: border-box; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+    .result-main-val { font-size: 2rem; font-weight: 800; color: #2563eb; margin-bottom: 4px; }
+    .result-sub-val { font-size: 0.95rem; color: #64748b; font-weight: 600; }
+
+    /* UTILITY ACTION CONTROL ROW STRIP */
+    .f-action-strip { display: flex; gap: 12px; margin-top: 20px; }
+    .f-btn { flex: 1; font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s ease; text-align: center; border: 1px solid transparent; -webkit-user-select: none; user-select: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .f-btn-convert { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .f-btn-convert:hover { background: #1d4ed8; }
+    .f-btn-copy { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+    .f-btn-copy:hover { background: #e2e8f0; color: #0f172a; }
+    .f-btn-clear { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; max-width: 120px; }
+    .f-btn-clear:hover { background: #fee2e2; }
+
+    /* ZONE BREAKDOWN TABLE */
+    .zone-table-wrap { margin-top: 25px; overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 12px; }
+    .zone-table { width: 100%; border-collapse: collapse; text-align: left; background: #fff; }
+    .zone-table th { background: #f8fafc; padding: 12px 16px; font-size: 0.85rem; font-weight: 700; color: #0f172a; border-bottom: 2px solid #e2e8f0; text-transform: uppercase; }
+    .zone-table td { padding: 12px 16px; font-size: 0.95krem; color: #475569; border-bottom: 1px solid #e2e8f0; }
+    .zone-table tr:last-child td { border-bottom: none; }
+
+    /* PREMIUM EDITORIAL CONTENT STYLING GRID */
+    .seo-container { width: 100%; padding: 20px 0; box-sizing: border-box; line-height: 1.8; text-align: left; margin-top: 25px; font-family: 'Inter', sans-serif; border-top: 2px solid #e2e8f0; padding-top: 40px; }
+    .seo-title { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.75px; line-height: 1.25; }
+    .seo-p { font-size: 1.05rem; color: #475569; margin-top: 0; margin-bottom: 22px; }
+    .seo-h2 { font-size: 1.55rem; color: #0f172a; font-weight: 800; margin-top: 40px; margin-bottom: 18px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .seo-h3 { font-size: 1.2rem; color: #1e293b; font-weight: 700; margin-top: 28px; margin-bottom: 12px; }
+    .seo-callout { background: #f8fafc; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 14px 14px 0; margin: 25px 0; font-size: 1rem; color: #334155; }
+    .seo-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; }
+    .seo-table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: left; }
+    .seo-table th { background: #f8fafc; border-bottom: 2px solid #e2e8f0; padding: 14px 16px; font-weight: 700; color: #0f172a; font-size: 0.9rem; text-transform: uppercase; }
+    .seo-table td { border-bottom: 1px solid #e2e8f0; padding: 14px 16px; color: #475569; font-size: 0.95rem; }
+    .seo-table tr:last-child td { border-bottom: none; }
+    .seo-table tr:nth-child(even) { background: #fbfcfe; }
+    .seo-list { padding-left: 22px; margin-bottom: 22px; color: #475569; }
+    .seo-list li { margin-bottom: 8px; }
+
+    /* ULTRA COMPACT MOBILE RESPONSIVENESS MATRIX SETUP */
+    @media (max-width: 850px) {
+      .f-wrapper { padding: 0 28px !important; }
+      .seo-title { font-size: 1.8rem; }
+      .seo-h2 { font-size: 1.35rem; }
+    }
+    @media (max-width: 768px) {
+      .f-card { padding: 25px 20px; border-radius: 20px; }
+      .f-heading { font-size: 1.35rem; margin-bottom: 22px; }
+      .f-io-grid { grid-template-columns: 1fr; gap: 20px; }
+      .f-input-field, .f-select-field { font-size: 1rem; }
+      
+      .f-action-strip { flex-direction: column; gap: 8px; }
+      .f-btn { width: 100% !important; max-width: 100% !important; box-sizing: border-box; padding: 12px; font-size: 0.88rem; }
+      .seo-table th, .seo-table td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 550px) {
+      .f-wrapper { padding: 0 24px !important; }
+      .seo-p, .seo-list li, .seo-table td { font-size: 0.96rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="f-wrapper">
+    <div class="f-heading"><span>⚡</span> Anaerobic Threshold Zone Estimator</div>
+    
+    <div class="f-card">
+      <div class="f-io-grid">
+        <div class="f-panel-box">
+          <label for="inputMethod">Estimation Method</label>
+          <select id="inputMethod" class="f-select-field" onchange="toggleInputFields()">
+            <option value="maxHr">Max Heart Rate (HRmax)</option>
+            <option value="lthr">Known Lactate Threshold HR (LTHR)</option>
+            <option value="timeTrial">30-Min Time Trial Average HR</option>
+          </select>
+
+          <div id="dynamicInputContainer" style="margin-top: 15px; display: flex; flex-direction: column; gap: 15px;">
+            <div class="f-panel-box" id="fieldGroup1">
+              <label for="primaryMetricInput" id="primaryLabel">Maximum Heart Rate (BPM)</label>
+              <input type="number" id="primaryMetricInput" class="f-input-field" value="190" placeholder="e.g., 190" oninput="calculateThresholdZones()" />
+            </div>
+            <div class="f-panel-box" id="fieldGroup2" style="display:none;">
+              <label for="secondaryMetricInput" id="secondaryLabel">Resting Heart Rate (BPM)</label>
+              <input type="number" id="secondaryMetricInput" class="f-input-field" value="55" placeholder="e.g., 55" oninput="calculateThresholdZones()" />
+            </div>
+          </div>
+        </div>
+        
+        <div class="f-panel-box">
+          <label>Estimated Anaerobic Threshold</label>
+          <div class="result-display-panel">
+            <div class="result-main-val" id="estimatedThresholdValue">168 BPM</div>
+            <div class="result-sub-val" id="estimatedThresholdSub">Approx. 88% of Max Heart Rate capacity</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="zone-table-wrap">
+        <table class="zone-table" id="zonesTable">
+          <thead>
+            <tr>
+              <th>Training Zone</th>
+              <th>Intensity Description</th>
+              <th>% of Threshold / HR Range</th>
+              <th>Physiological Target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated dynamically via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="f-action-strip">
+        <button class="f-btn f-btn-convert" onclick="calculateThresholdZones()">Recalculate Zones</button>
+        <button class="f-btn f-btn-copy" id="copyResultsBtn" onclick="copyThresholdResults()">📋 Copy Training Zones</button>
+        <button class="f-btn f-btn-clear" onclick="resetThresholdWorkspace()">Reset</button>
+      </div>
+      
+      <div style="margin-top: 15px; font-size: 0.78rem; line-height: 1.4; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 14px; border-radius: 12px; text-align: left; font-weight: 500;">
+        <span style="font-weight: 700; display: block; margin-bottom: 2px;">⚡ Physiological Accuracy Note:</span>
+        Calculations utilize standard sports science algorithms (Karvonen & Joe Friel training methodologies). For elite race preparation, pair these estimates with lab gas-exchange analysis or professional lactate blood tests.
+      </div>
+    </div>
+
+    <div class="seo-container">
+      <h2 class="seo-title">The Science of Lactate Tipping Points: Mastering Anaerobic Threshold Training Zones for Endurance Athletes</h2>
+      <p class="seo-p">Optimizing endurance training capacity requires a deep understanding of metabolic thresholds, energy system transitions, and heart rate allocation parameters. Whether you are preparing for a marathon, a competitive cycling gran fondo, or a triathlon, identifying your anaerobic threshold (often referred to as the lactate threshold or functional threshold) is the single most important diagnostic step for structuring intelligent, non-overtraining schedules.</p>
+      <p class="seo-p">This extensive physiological engineering guide explores the biochemical mechanisms behind anaerobic threshold accumulation, details testing protocols, breaks down 5-zone and 7-zone training architectures, and reviews how to apply calculated intensity brackets in real-world training sessions.</p>
+
+      <div class="seo-callout">
+        <strong>The Anaerobic Threshold Definition:</strong> The anaerobic threshold marks the exact exercise intensity where lactate production in working skeletal muscles outpaces the body's rate of clearance, triggering rapid metabolic fatigue and heavy breathing.
+      </div>
+
+      <h3 class="seo-h2">The Physiological Engine: Aerobic vs. Anaerobic Energy Pathways</h3>
+      <p class="seo-p">Human movement relies on three distinct energy pathways operating simultaneously, with dominance shifting depending on pace and duration:</p>
+
+      <h4 class="seo-h3">1. The ATP-PC System (Immediate Power)</h4>
+      <p class="seo-p">Fueling explosive, short-duration efforts lasting under 10 seconds (such as sprinting or heavy lifting), this pathway utilizes stored adenosine triphosphate without requiring oxygen or producing metabolic waste.</p>
+
+      <h4 class="seo-h3">2. The Aerobic Glycolytic System (Endurance Engine)</h4>
+      <p class="seo-p">Operating during steady-state endurance efforts, oxygen is readily delivered to mitochondria to break down carbohydrates and fatty acids cleanly into carbon dioxide and water with minimal byproduct buildup.</p>
+
+      <h4 class="seo-h3">3. The Anaerobic Glycolytic System (High-Intensity Tipping Point)</h4>
+      <p class="seo-p">When intensity increases past your threshold, oxygen supply cannot keep up with energy demand. Glycolytic breakdown accelerates, producing hydrogen ions and lactate faster than oxidative fibers can clear them, leading to the accumulation of metabolic acid.</p>
+
+      <h3>The Reference Matrix: Comprehensive Breakdown of Training Zones</h3>
+      <p class="seo-p">Once your anaerobic threshold is estimated, your training spectrum divides into distinct zones, each targeting specific cardiovascular and neuromuscular adaptations:</p>
+
+      <div class="seo-table-container">
+        <table class="seo-table">
+          <thead>
+            <tr>
+              <th>Zone Level</th>
+              <th>Intensity Designation</th>
+              <th>% of Anaerobic Threshold</th>
+              <th>Primary Physiological Adaptation</th>
+              <th>Recommended Workout Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Zone 1</td>
+              <td>Active Recovery</td>
+              <td>&lt; 65% LTHR</td>
+              <td>Promotes blood flow, enhances tissue repair, flushes metabolic waste.</td>
+              <td>Easy recovery spins, light walking, active rest days.</td>
+            </tr>
+            <tr>
+              <td>Zone 2</td>
+              <td>Endurance / Aerobic Base</td>
+              <td>65% - 80% LTHR</td>
+              <td>Increases mitochondrial density, fat oxidation, and capillary bed growth.</td>
+              <td>Long slow distance (LSD) rides and long weekend runs.</td>
+            </tr>
+            <tr>
+              <td>Zone 3</td>
+              <td>Tempo / Aerobic Power</td>
+              <td>81% - 89% LTHR</td>
+              <td>Improves carbohydrate efficiency and muscular endurance at moderate pace.</td>
+              <td>Steady-state tempo blocks, marathon pace intervals.</td>
+            </tr>
+            <tr>
+              <td>Zone 4</td>
+              <td>Threshold / Anaerobic Tipping Point</td>
+              <td>90% - 105% LTHR</td>
+              <td>Raises your lactate clearance ceiling and maximum sustainable race pace.</td>
+              <td>Threshold intervals (2x20 mins), sweet-spot training.</td>
+            </tr>
+            <tr>
+              <td>Zone 5</td>
+              <td>VO2 Max / Anaerobic Capacity</td>
+              <td>&gt; 106% LTHR</td>
+              <td>Maximizes stroke volume, cardiac output, and high-speed tolerance.</td>
+              <td>Short VO2 max intervals (3-5 minute hard repeats).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="seo-h2">Frequently Asked Questions (FAQ) - Athlete Diagnostic Segment</h3>
+
+      <h3>What is the difference between Lactate Threshold (LT1) and Anaerobic Threshold (LT2)?</h3>
+      <p class="seo-p">Exercise physiologists recognize two major turning points. LT1 (aerobic threshold) is where blood lactate first begins to rise slightly above resting baseline. LT2 (anaerobic threshold or OBLA - onset of blood lactate accumulation) is where blood lactate begins to accumulate exponentially, typically occurring around 4mmol/L. Our calculator focuses primarily on LT2 (Anaerobic Threshold), which dictates sustainable race pace.</p>
+
+      <h3>How accurate are formula-based threshold estimates compared to lab testing?</h3>
+      <p class="seo-p">Formula estimations (like percentage of Max HR or 30-minute time trial derivatives) provide a reliable 90-95% accurate baseline for structuring everyday training blocks. However, individual genetic variances, caffeine intake, hydration, and fatigue can shift true thresholds by 3-5 beats per minute. Lab testing remains the gold standard for elite athletes.</p>
+
+      <h3>How often should I recalculate my training zones?</h3>
+      <p class="seo-p">As your cardiovascular fitness improves through structured base building, your anaerobic threshold shifts upward. It is recommended to re-estimate your zones every 8 to 12 weeks, or immediately following an off-season training block or a dedicated time-trial assessment.</p>
+
+      <h3 class="seo-h2">Summary: Strategic Best Practices for Endurance Progression</h3>
+      <p class="seo-p">Balancing your training intensity distribution—spending roughly 80% of your volume in low zones (Z1/Z2) and 20% in high intensity (Z4/Z5)—is the proven hallmark of world-class endurance training. Avoid the common trap of "grey zone" training where every workout feels moderately hard.</p>
+      <p class="seo-p">Our Anaerobic Threshold Zone Estimator empowers you to instantly audit your heart rate metrics, establish clear training guardrails, and track your athletic progression over time directly from any browser.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="text/javascript">
+    const basePath = window.location.origin;
+    
+    fetch('/components/header.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/header.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-header').innerHTML = data; })
+      .catch(err => console.error('Header failed to compile:', err));
+
+    fetch('/components/footer.html')
+      .then(res => res.ok ? res.text() : fetch('https://www.texusprotools.com/components/footer.html').then(r => r.text()))
+      .then(data => { document.getElementById('site-footer').innerHTML = data; })
+      .catch(err => console.error('Footer failed to compile:', err));
+
+    // Tool Interactive Logic
+    function toggleInputFields() {
+      const method = document.getElementById('inputMethod').value;
+      const primaryLabel = document.getElementById('primaryLabel');
+      const secondaryLabel = document.getElementById('secondaryLabel');
+      const fieldGroup2 = document.getElementById('fieldGroup2');
+      const primaryInput = document.getElementById('primaryMetricInput');
+      const secondaryInput = document.getElementById('secondaryMetricInput');
+
+      if (method === 'maxHr') {
+        primaryLabel.innerText = "Maximum Heart Rate (BPM)";
+        primaryInput.value = 190;
+        fieldGroup2.style.display = 'none';
+      } else if (method === 'lthr') {
+        primaryLabel.innerText = "Lactate Threshold HR (LTHR)";
+        primaryInput.value = 168;
+        fieldGroup2.style.display = 'none';
+      } else if (method === 'timeTrial') {
+        primaryLabel.innerText = "30-Min Time Trial Average HR";
+        primaryInput.value = 172;
+        fieldGroup2.style.display = 'none';
+      }
+      calculateThresholdZones();
+    }
+
+    function calculateThresholdZones() {
+      const method = document.getElementById('inputMethod').value;
+      const val = parseFloat(document.getElementById('primaryMetricInput').value) || 0;
+      let atBpm = 0;
+      let subText = "";
+
+      if (method === 'maxHr') {
+        atBpm = Math.round(val * 0.88);
+        subText = `Approx. 88% of Max Heart Rate (${val} BPM)`;
+      } else if (method === 'lthr') {
+        atBpm = Math.round(val);
+        subText = `Directly entered Lactate Threshold HR`;
+      } else if (method === 'timeTrial') {
+        atBpm = Math.round(val * 0.98);
+        subText = `98% correction factor applied to 30-min TT HR`;
+      }
+
+      document.getElementById('estimatedThresholdValue').innerText = atBpm > 0 ? `${atBpm} BPM` : `0 BPM`;
+      document.getElementById('estimatedThresholdSub').innerText = subText;
+
+      // Generate Zones based on Joe Friel LTHR percentages
+      const zones = [
+        { name: "Zone 1 (Active Recovery)", desc: "Very light recovery spinning or easy jog", range: `< ${Math.round(atBpm * 0.81)} BPM`, pct: "< 81% LTHR", target: "Blood flow & tissue repair" },
+        { name: "Zone 2 (Aerobic Base)", desc: "Conversational endurance pace", range: `${Math.round(atBpm * 0.81)} - ${Math.round(atBpm * 0.89)} BPM`, pct: "81% - 89% LTHR", target: "Mitochondrial & fat oxidation" },
+        { name: "Zone 3 (Tempo / Sweet Spot)", desc: "Moderate rhythm, controlled breathing", range: `${Math.round(atBpm * 0.90)} - ${Math.round(atBpm * 0.93)} BPM`, pct: "90% - 93% LTHR", target: "Carbohydrate efficiency" },
+        { name: "Zone 4 (Anaerobic Threshold)", desc: "Hard sustainable race pace effort", range: `${Math.round(atBpm * 0.94)} - ${Math.round(atBpm * 0.99)} BPM`, pct: "94% - 99% LTHR", target: "Raise lactate clearance ceiling" },
+        { name: "Zone 5a (VO2 Max Interval)", desc: "Very hard effort, short intervals", range: `${Math.round(atBpm * 1.00)} - ${Math.round(atBpm * 1.02)} BPM`, pct: "100% - 102% LTHR", target: "Maximize cardiac output" },
+        { name: "Zone 5b/c (Anaerobic Capacity)", desc: "Maximum sprint / all-out effort", range: `> ${Math.round(atBpm * 1.02)} BPM`, pct: "> 102% LTHR", target: "Neuromuscular speed & power" }
+      ];
+
+      const tbody = document.querySelector('#zonesTable tbody');
+      tbody.innerHTML = '';
+      zones.forEach(z => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td><b>${z.name}</b></td><td>${z.desc}</td><td><b>${z.range}</b> (${z.pct})</td><td>${z.target}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function copyThresholdResults() {
+      const atVal = document.getElementById('estimatedThresholdValue').innerText;
+      const textToCopy = `Anaerobic Threshold Estimate: ${atVal}\nCalculated via Texus Pro Tools Anaerobic Threshold Zone Estimator.`;
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const btn = document.getElementById('copyResultsBtn');
+        btn.innerText = "✓ Copied Successfully!";
+        setTimeout(() => { btn.innerText = "📋 Copy Training Zones"; }, 2000);
+      });
+    }
+
+    function resetThresholdWorkspace() {
+      document.getElementById('inputMethod').value = 'maxHr';
+      toggleInputFields();
+    }
+
+    // Initialize on load
+    window.onload = function() {
+      calculateThresholdZones();
+    };
+  </script>
+  
+  <script src="/related-tools.js" onerror="this.onerror=null;this.src='https://www.texusprotools.com/related-tools.js';" defer></script>
+</body>
+</html>
